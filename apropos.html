@@ -1,282 +1,232 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>À propos — Aeconomia Courtiers Orléans</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet"/>
-<style>
-
-*{box-sizing:border-box;margin:0;padding:0;}
+<html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>À propos — Aeconomia</title><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet"/>
+<style>*{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#F8F7F4;--bg2:#F1F0EC;--bg3:#E8E6E0;--white:#fff;
+  --bg:#F7F5F0;--bg2:#EDE9E1;--bg3:#E3DDD3;--white:#fff;
   --ob:#1A1917;--ob2:#2C2B28;
-  --beige1:#BEAD93;--beige2:#DED6C8;--beige3:#F1F0EC;
+  --beige1:#BEAD93;--beige2:#D4C9B4;--beige3:#EDE9E1;
+  --beige4:#F2EFE8;--beige5:#F7F5F0;
   --sage:#a2b5a8;--sage2:#75847c;--lime:#bcd41a;
   --muted:#8A8680;--muted2:#6B6762;
-  --border:rgba(26,25,23,.07);--border2:rgba(26,25,23,.12);
-  --clay:8px 8px 20px rgba(190,173,147,.22),-4px -4px 12px rgba(255,255,255,.82),inset 0 1px 0 rgba(255,255,255,.65);
-  --clay-sm:4px 4px 12px rgba(190,173,147,.18),-2px -2px 8px rgba(255,255,255,.75),inset 0 1px 0 rgba(255,255,255,.5);
-  --clay-h:10px 10px 28px rgba(190,173,147,.32),-5px -5px 16px rgba(255,255,255,.92),inset 0 1px 0 rgba(255,255,255,.7);
+  --border:rgba(26,25,23,.08);--border2:rgba(26,25,23,.13);
+  --clay:6px 6px 18px rgba(180,163,136,.22),-3px -3px 10px rgba(255,255,255,.85),inset 0 1px 0 rgba(255,255,255,.7);
+  --clay-sm:3px 3px 10px rgba(180,163,136,.18),-2px -2px 7px rgba(255,255,255,.8),inset 0 1px 0 rgba(255,255,255,.55);
+  --clay-h:8px 8px 24px rgba(180,163,136,.28),-4px -4px 14px rgba(255,255,255,.92),inset 0 1px 0 rgba(255,255,255,.72);
 }
 html{scroll-behavior:smooth;}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ob);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(26,25,23,.034) 1px,transparent 1px),linear-gradient(90deg,rgba(26,25,23,.034) 1px,transparent 1px);
-  background-size:52px 52px;}
+  background-image:linear-gradient(rgba(26,25,23,.032) 1px,transparent 1px),linear-gradient(90deg,rgba(26,25,23,.032) 1px,transparent 1px);
+  background-size:48px 48px;}
 ::selection{background:rgba(162,181,168,.28);}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;}
-.logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.08rem;color:var(--ob);letter-spacing:-.3px;line-height:1;user-select:none;}
+.logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.06rem;color:var(--ob);letter-spacing:-.3px;line-height:1;user-select:none;}
 .logo-text i{font-style:italic;}
-
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2.5rem;height:66px;display:flex;align-items:center;justify-content:space-between;transition:background .35s,box-shadow .35s,border-color .35s;}
-nav.scrolled{background:rgba(248,247,244,.95);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--border);box-shadow:0 2px 28px rgba(190,173,147,.13);}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2.5rem;height:64px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s,border-color .4s;}
+nav.scrolled{background:rgba(247,245,240,.96);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--border);box-shadow:0 2px 24px rgba(180,163,136,.12);}
 .nav-logo{cursor:pointer;}
-.nav-center{display:flex;align-items:center;gap:.2rem;}
-.nav-link{font-family:'Space Grotesk',sans-serif;font-size:.64rem;font-weight:500;color:var(--muted);letter-spacing:.04em;padding:.42rem .9rem;border-radius:50px;transition:color .22s,background .22s,border-color .22s,transform .18s;position:relative;border:1px solid transparent;white-space:nowrap;}
+.nav-center{display:flex;align-items:center;gap:.15rem;}
+.nav-link{font-family:'Space Grotesk',sans-serif;font-size:.63rem;font-weight:500;color:var(--muted);letter-spacing:.04em;padding:.4rem .85rem;border-radius:50px;transition:color .22s,background .22s,border-color .22s,transform .2s;position:relative;border:1px solid transparent;}
 .nav-link:hover{color:var(--ob);background:rgba(26,25,23,.055);border-color:var(--border);transform:translateY(-1px);}
-.nav-link.active{color:var(--ob);font-weight:600;background:rgba(26,25,23,.04);border-color:var(--border);}
-.nav-link.active::after{content:'';position:absolute;bottom:.28rem;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--lime);}
-.nav-right{display:flex;align-items:center;gap:.55rem;}
-.nav-tel{font-family:'Space Grotesk',sans-serif;font-size:.66rem;font-weight:600;color:var(--ob2);padding:.38rem .8rem;border-radius:9px;background:var(--bg2);border:1px solid var(--border2);transition:all .22s;}
+.nav-link.active{color:var(--ob);font-weight:600;background:rgba(26,25,23,.042);border-color:var(--border);}
+.nav-link.active::after{content:'';position:absolute;bottom:.26rem;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--lime);}
+.nav-right{display:flex;align-items:center;gap:.5rem;}
+.nav-tel{font-family:'Space Grotesk',sans-serif;font-size:.65rem;font-weight:600;color:var(--ob2);padding:.36rem .78rem;border-radius:9px;background:var(--beige3);border:1px solid var(--border2);transition:all .22s;}
 .nav-tel:hover{background:var(--white);box-shadow:var(--clay-sm);transform:translateY(-1px);}
-.btn-nav-cta{font-family:'Space Grotesk',sans-serif;font-size:.67rem;font-weight:700;background:var(--ob);color:var(--bg);border:none;border-radius:10px;padding:9px 19px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.btn-nav-cta{font-family:'Space Grotesk',sans-serif;font-size:.65rem;font-weight:700;background:var(--ob);color:var(--beige5);border:none;border-radius:10px;padding:8px 18px;cursor:pointer;transition:all .25s;overflow:hidden;position:relative;}
 .btn-nav-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent 60%);opacity:0;transition:opacity .25s;}
-.btn-nav-cta:hover{transform:translateY(-1px);box-shadow:0 5px 18px rgba(26,25,23,.24);}
+.btn-nav-cta:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(26,25,23,.22);}
 .btn-nav-cta:hover::after{opacity:1;}
 .nav-burger{display:none;flex-direction:column;gap:4.5px;cursor:pointer;padding:5px;}
-.nav-burger span{display:block;width:21px;height:2px;background:var(--ob);border-radius:2px;transition:all .3s cubic-bezier(.22,1,.36,1);}
+.nav-burger span{display:block;width:21px;height:2px;background:var(--ob);border-radius:2px;transition:all .32s cubic-bezier(.22,1,.36,1);}
 .nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px);}
 .nav-burger.open span:nth-child(2){opacity:0;transform:translateX(-8px);}
 .nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px);}
-.mob-menu{display:none;position:fixed;inset:0;z-index:999;background:rgba(248,247,244,.98);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+.mob-menu{display:none;position:fixed;inset:0;z-index:999;background:rgba(247,245,240,.98);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;}
 .mob-menu.open{display:flex;}
-.mob-menu a{font-family:'Space Grotesk',sans-serif;font-size:1.55rem;font-weight:700;color:var(--ob);letter-spacing:-1px;transition:color .2s,transform .2s;}
+.mob-menu a{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--ob);letter-spacing:-1px;transition:color .2s,transform .2s;}
 .mob-menu a:hover{color:var(--sage2);transform:translateX(4px);}
-.mob-tel{font-family:'Space Grotesk',sans-serif;font-size:.85rem;color:var(--muted);}
-.mob-cta-btn{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;background:var(--ob);color:var(--bg);border:none;border-radius:12px;padding:13px 32px;cursor:pointer;margin-top:.3rem;}
-
+.mob-tel{font-family:'Space Grotesk',sans-serif;font-size:.82rem;color:var(--muted);margin-top:.3rem;}
+.mob-cta-btn{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:var(--ob);color:var(--beige5);border:none;border-radius:12px;padding:12px 30px;cursor:pointer;margin-top:.2rem;}
 /* UTILS */
 .wrap{max-width:1180px;margin:0 auto;padding:5rem 2.5rem;position:relative;z-index:1;}
 .divider{height:1px;background:var(--border);max-width:1180px;margin:0 auto;}
-.sec-tag{font-family:'Space Grotesk',sans-serif;font-size:.53rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--sage2);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;}
+.sec-tag{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--sage2);margin-bottom:.55rem;display:flex;align-items:center;gap:.45rem;}
 .sec-tag::before{content:'';width:16px;height:1.5px;background:var(--lime);border-radius:2px;flex-shrink:0;}
-.sec-h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;letter-spacing:-1.3px;line-height:1.02;margin-bottom:.7rem;}
+.sec-h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.65rem,3vw,2.4rem);font-weight:700;letter-spacing:-1.3px;line-height:1.0;margin-bottom:.65rem;}
 .sec-h2 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
-.btn-p{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:700;background:var(--ob);color:var(--bg);border:none;border-radius:13px;padding:13px 24px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .25s;text-decoration:none;}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(26,25,23,.2);}
-.btn-s{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:600;background:var(--white);color:var(--ob);border:1.5px solid var(--border2);border-radius:13px;padding:13px 24px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .25s;box-shadow:var(--clay-sm);text-decoration:none;}
-.btn-s:hover{transform:translateY(-2px);box-shadow:var(--clay-h);border-color:rgba(162,181,168,.35);}
-
+.btn-p{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:700;background:var(--ob);color:var(--beige5);border:none;border-radius:12px;padding:12px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .25s;text-decoration:none;}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(26,25,23,.2);}
+.btn-s{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;background:var(--beige3);color:var(--ob);border:1.5px solid var(--border2);border-radius:12px;padding:12px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .25s;box-shadow:var(--clay-sm);text-decoration:none;}
+.btn-s:hover{transform:translateY(-2px);box-shadow:var(--clay-h);background:var(--white);border-color:rgba(162,181,168,.35);}
 /* CTA BANNER */
-.cta-banner{background:var(--ob);border-radius:26px;padding:3.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(26,25,23,.18);}
-.cta-banner::before{content:'';position:absolute;top:-50px;right:-50px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.07),transparent 65%);pointer-events:none;}
-.cta-h3{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.4rem,2.8vw,2.1rem);font-weight:700;letter-spacing:-1px;color:var(--bg);line-height:1.05;margin-bottom:.5rem;}
-.cta-sub{font-size:.82rem;color:rgba(248,247,244,.45);line-height:1.65;max-width:420px;}
-.cta-btns{display:flex;gap:.6rem;flex-wrap:wrap;}
-.btn-light{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:700;background:var(--bg);color:var(--ob);border:none;border-radius:13px;padding:13px 24px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .25s;text-decoration:none;}
-.btn-light:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(248,247,244,.18);}
-.btn-ghost{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:600;background:rgba(248,247,244,.1);color:var(--bg);border:1.5px solid rgba(248,247,244,.15);border-radius:13px;padding:13px 24px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .22s;text-decoration:none;}
-.btn-ghost:hover{background:rgba(248,247,244,.18);transform:translateY(-2px);}
-
+.cta-banner{background:var(--ob);border-radius:24px;padding:3.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;position:relative;overflow:hidden;box-shadow:0 16px 50px rgba(26,25,23,.17);}
+.cta-banner::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.07),transparent 65%);pointer-events:none;}
+.cta-h3{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.35rem,2.8vw,2rem);font-weight:700;letter-spacing:-1px;color:var(--beige5);line-height:1.02;margin-bottom:.45rem;}
+.cta-sub{font-size:.8rem;color:rgba(247,245,240,.42);line-height:1.65;max-width:400px;}
+.cta-btns{display:flex;gap:.55rem;flex-wrap:wrap;}
+.btn-light{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:700;background:var(--beige5);color:var(--ob);border:none;border-radius:12px;padding:12px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .25s;text-decoration:none;}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(247,245,240,.18);}
+.btn-ghost{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;background:rgba(247,245,240,.1);color:var(--beige5);border:1.5px solid rgba(247,245,240,.15);border-radius:12px;padding:12px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .22s;text-decoration:none;}
+.btn-ghost:hover{background:rgba(247,245,240,.18);transform:translateY(-2px);}
 /* FOOTER */
-footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-index:1;background:rgba(248,247,244,.97);}
-.footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2rem;}
-.footer-brand-desc{font-size:.68rem;color:var(--muted2);line-height:1.7;max-width:230px;margin-bottom:1rem;margin-top:.6rem;}
-.footer-socials{display:flex;gap:.45rem;}
-.footer-social{width:32px;height:32px;border-radius:9px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .22s;text-decoration:none;color:var(--ob);}
-.footer-social:hover{background:var(--ob);color:var(--bg);transform:translateY(-2px);}
-.footer-col-title{font-family:'Space Grotesk',sans-serif;font-size:.53rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem;}
-.footer-links{display:flex;flex-direction:column;gap:.42rem;}
-.footer-links a{font-size:.7rem;color:var(--ob2);transition:color .2s,transform .2s;display:inline-block;}
+footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-index:1;background:rgba(247,245,240,.97);}
+.footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:1.8rem;}
+.footer-brand-desc{font-size:.67rem;color:var(--muted2);line-height:1.7;max-width:225px;margin-bottom:.9rem;margin-top:.6rem;}
+.footer-socials{display:flex;gap:.42rem;}
+.footer-social{width:31px;height:31px;border-radius:9px;background:var(--beige3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.72rem;transition:all .22s;text-decoration:none;color:var(--ob);}
+.footer-social:hover{background:var(--ob);color:var(--beige5);transform:translateY(-2px);}
+.footer-col-title{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem;}
+.footer-links{display:flex;flex-direction:column;gap:.4rem;}
+.footer-links a{font-size:.68rem;color:var(--ob2);transition:color .2s,transform .2s;display:inline-block;}
 .footer-links a:hover{color:var(--sage2);transform:translateX(3px);}
-.footer-bottom{max-width:1180px;margin:0 auto;border-top:1px solid var(--border);padding-top:1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;}
-.footer-legal{font-size:.58rem;color:var(--muted);line-height:1.65;}
-.footer-badges{display:flex;gap:.5rem;}
-.footer-badge{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:3px 8px;color:var(--muted2);}
-
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.footer-bottom{max-width:1180px;margin:0 auto;border-top:1px solid var(--border);padding-top:1.1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem;}
+.footer-legal{font-size:.57rem;color:var(--muted);line-height:1.65;}
+.footer-badges{display:flex;gap:.45rem;}
+.footer-badge{font-family:'Space Grotesk',sans-serif;font-size:.51rem;font-weight:600;background:var(--beige3);border:1px solid var(--border2);border-radius:6px;padding:3px 8px;color:var(--muted2);}
+/* REVEAL ANIMATIONS - safe: visible by default, animated when JS ready */
+.reveal,.reveal-l,.reveal-r{transition:opacity .62s cubic-bezier(.22,1,.36,1),transform .62s cubic-bezier(.22,1,.36,1);}
+.js-loaded .reveal{opacity:0;transform:translateY(16px);}
+.js-loaded .reveal-l{opacity:0;transform:translateX(-16px);}
+.js-loaded .reveal-r{opacity:0;transform:translateX(16px);}
+.reveal.on,.reveal-l.on,.reveal-r.on{opacity:1!important;transform:none!important;}
+.stagger>.reveal:nth-child(1){transition-delay:.04s}.stagger>.reveal:nth-child(2){transition-delay:.09s}.stagger>.reveal:nth-child(3){transition-delay:.14s}.stagger>.reveal:nth-child(4){transition-delay:.19s}.stagger>.reveal:nth-child(5){transition-delay:.24s}.stagger>.reveal:nth-child(6){transition-delay:.29s}.stagger>.reveal:nth-child(7){transition-delay:.34s}.stagger>.reveal:nth-child(8){transition-delay:.39s}
+/* FU - hero entrance */
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes pulse-lime{0%,100%{box-shadow:0 0 0 0 rgba(188,212,26,.5)}70%{box-shadow:0 0 0 9px rgba(188,212,26,0)}}
-@keyframes glitch{0%{transform:translate(0);filter:none}25%{transform:translate(-2px,1px);filter:blur(.4px)}50%{transform:translate(2px,-1px);filter:none}75%{transform:translate(-1px,2px);filter:blur(.3px)}100%{transform:translate(0);filter:none}}
-.fu{opacity:0;animation:fadeUp .65s cubic-bezier(.22,1,.36,1) forwards;}
+@keyframes pulse-lime{0%,100%{box-shadow:0 0 0 0 rgba(188,212,26,.45)}70%{box-shadow:0 0 0 8px rgba(188,212,26,0)}}
+@keyframes glitch{0%{transform:translate(0)}25%{transform:translate(-2px,1px)}50%{transform:translate(2px,-1px)}75%{transform:translate(-1px,2px)}100%{transform:translate(0)}}
+.fu{opacity:0;animation:fadeUp .62s cubic-bezier(.22,1,.36,1) forwards;}
 .d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}.d5{animation-delay:.35s}.d6{animation-delay:.42s}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
-.reveal.on{opacity:1;transform:translateY(0);}
-.reveal-l{opacity:0;transform:translateX(-18px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
-.reveal-l.on{opacity:1;transform:translateX(0);}
-.reveal-r{opacity:0;transform:translateX(18px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
-.reveal-r.on{opacity:1;transform:translateX(0);}
-.stagger>*:nth-child(1){transition-delay:.04s}.stagger>*:nth-child(2){transition-delay:.09s}.stagger>*:nth-child(3){transition-delay:.14s}.stagger>*:nth-child(4){transition-delay:.19s}.stagger>*:nth-child(5){transition-delay:.24s}.stagger>*:nth-child(6){transition-delay:.29s}.stagger>*:nth-child(7){transition-delay:.34s}.stagger>*:nth-child(8){transition-delay:.39s}
-
+/* RESPONSIVE */
 @media(max-width:768px){.nav-center,.nav-tel{display:none;}.nav-burger{display:flex;}nav{padding:0 1.5rem;}}
-@media(max-width:640px){.footer-inner{grid-template-columns:1fr 1fr;gap:1.5rem;}.wrap{padding:3rem 1.5rem;}}
+@media(max-width:640px){.wrap{padding:3rem 1.5rem;}.footer-inner{grid-template-columns:1fr 1fr;gap:1.4rem;}}
 @media(max-width:420px){.footer-inner{grid-template-columns:1fr;}}
-
-/* HERO AVEC PHOTO ÉQUIPE EN FOND */
 .hero{min-height:88vh;display:flex;align-items:flex-end;padding:7rem 2.5rem 3.5rem;position:relative;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;z-index:0;}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 25%;}
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(26,25,23,.12) 0%,rgba(248,247,244,0) 40%,rgba(248,247,244,.88) 68%,var(--bg) 100%);}
+.hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(26,25,23,.1) 0%,rgba(247,245,240,0) 38%,rgba(247,245,240,.86) 66%,var(--bg) 100%);}
 .hero-inner{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:2;}
-.hero-tag{font-family:'Space Grotesk',sans-serif;font-size:.54rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sage2);margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem;}
-.hero-tag::before{content:'';width:16px;height:1.5px;background:var(--lime);border-radius:2px;}
-.hero-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:700;letter-spacing:-3px;line-height:.9;margin-bottom:.9rem;}
+.hero-tag{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sage2);margin-bottom:.65rem;display:flex;align-items:center;gap:.38rem;}
+.hero-tag::before{content:'';width:15px;height:1.5px;background:var(--lime);border-radius:2px;}
+.hero-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,5.5vw,4.6rem);font-weight:700;letter-spacing:-3px;line-height:.9;margin-bottom:.85rem;}
 .hero-h1 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
-.hero-sub{font-size:.9rem;color:var(--muted2);line-height:1.8;max-width:520px;margin-bottom:1.4rem;}
-.hero-badges{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:1.6rem;}
-.hero-badge{font-family:'Space Grotesk',sans-serif;font-size:.59rem;font-weight:600;padding:5px 13px;border-radius:50px;background:rgba(248,247,244,.9);border:1.5px solid var(--border2);box-shadow:var(--clay-sm);backdrop-filter:blur(8px);}
-.hero-badge.green{background:rgba(188,212,26,.12);border-color:rgba(188,212,26,.3);color:#5a6e00;}
-.hero-stats{display:flex;gap:.65rem;flex-wrap:wrap;}
-.stat-pill{background:rgba(248,247,244,.92);border-radius:14px;padding:.6rem .9rem;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.8);text-align:center;min-width:85px;backdrop-filter:blur(8px);}
-.stat-pill-n{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:-1px;color:var(--ob);line-height:1;}
+.hero-sub{font-size:.88rem;color:var(--muted2);line-height:1.78;max-width:510px;margin-bottom:1.35rem;}
+.hero-badges{display:flex;gap:.42rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.hero-badge{font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:600;padding:4px 12px;border-radius:50px;background:rgba(247,245,240,.9);border:1.5px solid var(--border2);box-shadow:var(--clay-sm);backdrop-filter:blur(8px);}
+.hero-badge.green{background:rgba(188,212,26,.12);border-color:rgba(188,212,26,.28);color:#5a6e00;}
+.hero-stats{display:flex;gap:.6rem;flex-wrap:wrap;}
+.stat-pill{background:rgba(247,245,240,.92);border-radius:13px;padding:.55rem .85rem;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.8);text-align:center;min-width:82px;backdrop-filter:blur(8px);}
+.stat-pill-n{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;letter-spacing:-1px;color:var(--ob);line-height:1;}
 .stat-pill-n em{color:var(--sage2);font-style:normal;}
-.stat-pill-l{font-family:'Space Grotesk',sans-serif;font-size:.49rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:.18rem;}
-
-/* STATS GRID */
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;}
-.sc{background:var(--white);border-radius:20px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);padding:1.4rem 1.1rem;text-align:center;transition:all .3s cubic-bezier(.22,1,.36,1);cursor:default;}
+.stat-pill-l{font-family:'Space Grotesk',sans-serif;font-size:.48rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:.16rem;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;}
+.sc{background:var(--white);border-radius:18px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);padding:1.3rem 1rem;text-align:center;transition:box-shadow .3s,transform .3s;cursor:default;}
 .sc:hover{transform:translateY(-4px);box-shadow:var(--clay-h);}
 .sc.dark{background:var(--ob);}
-.sc-n{font-family:'Space Grotesk',sans-serif;font-size:2.1rem;font-weight:700;letter-spacing:-1.5px;color:var(--ob);line-height:1;margin-bottom:.28rem;}
-.sc.dark .sc-n{color:var(--bg);}
+.sc-n{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;letter-spacing:-1.5px;color:var(--ob);line-height:1;margin-bottom:.26rem;}
+.sc.dark .sc-n{color:var(--beige5);}
 .sc-n em{color:var(--sage2);font-style:normal;}
 .sc.dark .sc-n em{color:var(--sage);}
-.sc-l{font-family:'Space Grotesk',sans-serif;font-size:.53rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);}
-.sc.dark .sc-l{color:rgba(248,247,244,.38);}
-
-/* HISTOIRE */
-.histoire-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
-.histoire-img-wrap{position:relative;}
-.main-img{border-radius:24px;overflow:hidden;aspect-ratio:4/5;box-shadow:var(--clay);}
-.main-img img{width:100%;height:100%;object-fit:cover;}
-.float-img{position:absolute;bottom:-18px;right:-18px;width:44%;aspect-ratio:1;border-radius:18px;overflow:hidden;box-shadow:var(--clay);border:3px solid var(--white);}
-.float-img img{width:100%;height:100%;object-fit:cover;}
-.quote-card{position:absolute;top:20px;left:-18px;background:var(--ob);border-radius:14px;padding:.85rem 1rem;max-width:185px;box-shadow:0 8px 28px rgba(26,25,23,.2);}
-.quote-text{font-family:'Plus Jakarta Sans',sans-serif;font-size:.63rem;font-style:italic;color:rgba(248,247,244,.72);line-height:1.55;margin-bottom:.28rem;}
-.quote-author{font-family:'Space Grotesk',sans-serif;font-size:.54rem;font-weight:600;color:var(--sage);}
-.histoire-p{font-size:.82rem;color:var(--muted2);line-height:1.8;margin-bottom:.75rem;}
-.bullet-list{display:flex;flex-direction:column;gap:.42rem;margin-top:.8rem;}
-.bullet{display:flex;align-items:flex-start;gap:.52rem;font-size:.78rem;color:var(--ob2);line-height:1.5;}
-.bullet::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:.33rem;}
-
-/* GALERIE LOCAUX */
-.galerie-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:200px 200px;gap:.7rem;}
-.gcell{border-radius:16px;overflow:hidden;box-shadow:var(--clay-sm);transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s;cursor:default;}
+.sc-l{font-family:'Space Grotesk',sans-serif;font-size:.51rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);}
+.sc.dark .sc-l{color:rgba(247,245,240,.36);}
+.histoire-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;}
+.hist-img-wrap{position:relative;}
+.hist-main{border-radius:22px;overflow:hidden;aspect-ratio:4/5;box-shadow:var(--clay);}
+.hist-main img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+.hist-main:hover img{transform:scale(1.03);}
+.hist-float{position:absolute;bottom:-16px;right:-16px;width:42%;aspect-ratio:1;border-radius:16px;overflow:hidden;box-shadow:var(--clay);border:3px solid var(--white);}
+.hist-float img{width:100%;height:100%;object-fit:cover;}
+.hist-quote{position:absolute;top:18px;left:-16px;background:var(--ob);border-radius:13px;padding:.8rem .95rem;max-width:178px;box-shadow:0 7px 24px rgba(26,25,23,.18);}
+.hist-quote-text{font-family:'Plus Jakarta Sans',sans-serif;font-size:.62rem;font-style:italic;color:rgba(247,245,240,.7);line-height:1.52;margin-bottom:.26rem;}
+.hist-quote-author{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;color:var(--sage);}
+.hist-p{font-size:.8rem;color:var(--muted2);line-height:1.8;margin-bottom:.72rem;}
+.bullet-list{display:flex;flex-direction:column;gap:.4rem;margin-top:.75rem;}
+.bullet{display:flex;align-items:flex-start;gap:.5rem;font-size:.76rem;color:var(--ob2);line-height:1.5;}
+.bullet::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:.31rem;}
+.galerie-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:195px 195px;gap:.68rem;}
+.gcell{border-radius:14px;overflow:hidden;box-shadow:var(--clay-sm);transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s;cursor:default;}
 .gcell:hover{transform:scale(1.025);box-shadow:var(--clay-h);}
-.gcell img{width:100%;height:100%;object-fit:cover;}
+.gcell img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.gcell:hover img{transform:scale(1.04);}
 .gcell.tall{grid-row:span 2;}
 .gcell.wide{grid-column:span 2;}
-
-/* APPROCHE BENTO */
-.approche-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.82rem;}
-.ap-card{background:var(--white);border-radius:22px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);padding:1.55rem;transition:all .3s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;}
+.approche-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;}
+.ap-card{background:var(--white);border-radius:20px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);padding:1.5rem;transition:box-shadow .3s,transform .3s;position:relative;overflow:hidden;}
 .ap-card:hover{transform:translateY(-4px);box-shadow:var(--clay-h);}
 .ap-card.dark{background:var(--ob);}
 .ap-card.sage-c{background:var(--sage);}
-.ap-num{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.07em;color:var(--muted);margin-bottom:.75rem;}
-.ap-card.dark .ap-num{color:rgba(255,255,255,.22);}
-.ap-card.sage-c .ap-num{color:rgba(255,255,255,.45);}
-.ap-icon{font-size:1.25rem;margin-bottom:.65rem;}
-.ap-title{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:-.2px;line-height:1.2;margin-bottom:.45rem;}
-.ap-card.dark .ap-title{color:var(--bg);}
+.ap-num{font-family:'Space Grotesk',sans-serif;font-size:.49rem;font-weight:700;letter-spacing:.07em;color:var(--muted);margin-bottom:.72rem;}
+.ap-card.dark .ap-num{color:rgba(255,255,255,.2);}
+.ap-card.sage-c .ap-num{color:rgba(255,255,255,.42);}
+.ap-icon{font-size:1.2rem;margin-bottom:.62rem;}
+.ap-title{font-family:'Space Grotesk',sans-serif;font-size:.86rem;font-weight:700;letter-spacing:-.2px;line-height:1.15;margin-bottom:.42rem;}
+.ap-card.dark .ap-title{color:var(--beige5);}
 .ap-card.sage-c .ap-title{color:var(--ob);}
-.ap-desc{font-size:.7rem;line-height:1.65;color:var(--muted2);}
-.ap-card.dark .ap-desc{color:rgba(248,247,244,.42);}
-.ap-card.sage-c .ap-desc{color:rgba(26,25,23,.58);}
-
-/* SOLUTIONS */
-.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.68rem;}
-.sol{background:var(--white);border-radius:15px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);padding:1.05rem;display:flex;align-items:flex-start;gap:.65rem;transition:all .25s;cursor:default;}
-.sol:hover{transform:translateY(-3px);box-shadow:var(--clay-h);border-color:rgba(162,181,168,.28);}
-.sol-icon{font-size:1.05rem;flex-shrink:0;margin-top:.04rem;}
-.sol-title{font-family:'Space Grotesk',sans-serif;font-size:.74rem;font-weight:700;margin-bottom:.15rem;}
-.sol-desc{font-size:.61rem;color:var(--muted);line-height:1.5;}
-
-/* PARCOURS */
-.parcours-bento{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
-.pc{background:var(--white);border-radius:20px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);overflow:hidden;transition:all .3s cubic-bezier(.22,1,.36,1);}
+.ap-desc{font-size:.69rem;line-height:1.63;color:var(--muted2);}
+.ap-card.dark .ap-desc{color:rgba(247,245,240,.4);}
+.ap-card.sage-c .ap-desc{color:rgba(26,25,23,.56);}
+.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;}
+.sol{background:var(--white);border-radius:14px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);padding:1rem;display:flex;align-items:flex-start;gap:.62rem;transition:box-shadow .25s,transform .25s;cursor:default;}
+.sol:hover{transform:translateY(-3px);box-shadow:var(--clay-h);border-color:rgba(162,181,168,.25);}
+.sol-icon{font-size:1rem;flex-shrink:0;margin-top:.04rem;}
+.sol-title{font-family:'Space Grotesk',sans-serif;font-size:.72rem;font-weight:700;margin-bottom:.14rem;}
+.sol-desc{font-size:.6rem;color:var(--muted);line-height:1.5;}
+.parcours-bento{display:grid;grid-template-columns:1fr 1fr;gap:.88rem;}
+.pc{background:var(--white);border-radius:18px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);overflow:hidden;transition:box-shadow .3s,transform .3s;}
 .pc:hover{transform:translateY(-4px);box-shadow:var(--clay-h);}
 .pc.dark{background:var(--ob);}
-.pc-img{height:175px;overflow:hidden;}
+.pc-img{height:165px;overflow:hidden;}
 .pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.22,1,.36,1);}
 .pc:hover .pc-img img{transform:scale(1.05);}
-.pc-body{padding:1.2rem;}
-.pc-n{font-family:'Space Grotesk',sans-serif;font-size:2.4rem;font-weight:700;letter-spacing:-2px;color:var(--beige2);line-height:1;margin-bottom:.45rem;}
+.pc-body{padding:1.1rem;}
+.pc-n{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;letter-spacing:-2px;color:var(--beige2);line-height:1;margin-bottom:.42rem;}
 .pc.dark .pc-n{color:rgba(255,255,255,.08);}
-.pc-title{font-family:'Space Grotesk',sans-serif;font-size:.86rem;font-weight:700;letter-spacing:-.2px;margin-bottom:.38rem;}
-.pc.dark .pc-title{color:var(--bg);}
-.pc-desc{font-size:.69rem;color:var(--muted2);line-height:1.65;}
-.pc.dark .pc-desc{color:rgba(248,247,244,.42);}
-.pc-badge{display:inline-flex;align-items:center;gap:.32rem;font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;color:var(--sage2);background:rgba(162,181,168,.12);border:1px solid rgba(162,181,168,.2);border-radius:50px;padding:3px 10px;margin-top:.55rem;}
+.pc-title{font-family:'Space Grotesk',sans-serif;font-size:.84rem;font-weight:700;letter-spacing:-.2px;margin-bottom:.35rem;}
+.pc.dark .pc-title{color:var(--beige5);}
+.pc-desc{font-size:.67rem;color:var(--muted2);line-height:1.62;}
+.pc.dark .pc-desc{color:rgba(247,245,240,.4);}
+.pc-badge{display:inline-flex;align-items:center;gap:.3rem;font-family:'Space Grotesk',sans-serif;font-size:.51rem;font-weight:600;color:var(--sage2);background:rgba(162,181,168,.11);border:1px solid rgba(162,181,168,.2);border-radius:50px;padding:3px 9px;margin-top:.52rem;}
 .pc-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--lime);}
-.pc.dark .pc-badge{background:rgba(162,181,168,.15);color:var(--sage);border-color:rgba(162,181,168,.2);}
-
-/* ÉQUIPE — RONDS */
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.95rem;}
-.team-card{background:var(--white);border-radius:22px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);padding:1.35rem;text-align:center;transition:all .3s cubic-bezier(.22,1,.36,1);cursor:default;}
-.team-card:hover{transform:translateY(-5px);box-shadow:var(--clay-h);border-color:rgba(162,181,168,.25);}
-.team-avatar{width:76px;height:76px;border-radius:50%;overflow:hidden;margin:0 auto .9rem;box-shadow:var(--clay-sm);border:3px solid var(--white);background:var(--beige3);}
-.team-avatar img{width:100%;height:100%;object-fit:cover;object-position:top center;}
-.team-name{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:700;color:var(--ob);margin-bottom:.18rem;}
-.team-role{font-family:'Space Grotesk',sans-serif;font-size:.51rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--sage2);margin-bottom:.55rem;}
-.team-quote{font-size:.61rem;color:var(--muted2);line-height:1.55;font-style:italic;border-left:2px solid var(--lime);padding-left:.55rem;text-align:left;margin-bottom:.65rem;}
-.team-links{display:flex;justify-content:center;gap:.38rem;}
-.team-link{width:27px;height:27px;border-radius:8px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.68rem;transition:all .2s;text-decoration:none;color:var(--ob);}
-.team-link:hover{background:var(--ob);color:var(--bg);border-color:var(--ob);transform:scale(1.1);}
-
-/* DECO PHOTO STRIP */
-.photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.4rem;}
-.ps-cell{border-radius:16px;overflow:hidden;aspect-ratio:4/3;box-shadow:var(--clay-sm);transition:transform .32s cubic-bezier(.22,1,.36,1);}
+.pc.dark .pc-badge{background:rgba(162,181,168,.13);color:var(--sage);}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;}
+.team-card{background:var(--white);border-radius:20px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);padding:1.25rem;text-align:center;transition:box-shadow .3s,transform .3s;cursor:default;}
+.team-card:hover{transform:translateY(-5px);box-shadow:var(--clay-h);border-color:rgba(162,181,168,.22);}
+.team-av{width:74px;height:74px;border-radius:50%;overflow:hidden;margin:0 auto .82rem;box-shadow:var(--clay-sm);border:3px solid var(--white);background:var(--beige3);}
+.team-av img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .4s;}
+.team-card:hover .team-av img{transform:scale(1.08);}
+.team-name{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:700;color:var(--ob);margin-bottom:.16rem;}
+.team-role{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--sage2);margin-bottom:.52rem;}
+.team-quote{font-size:.6rem;color:var(--muted2);line-height:1.52;font-style:italic;border-left:2px solid var(--lime);padding-left:.52rem;text-align:left;margin-bottom:.62rem;}
+.team-links{display:flex;justify-content:center;gap:.35rem;}
+.team-link{width:26px;height:26px;border-radius:8px;background:var(--beige3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.66rem;transition:all .2s;text-decoration:none;color:var(--ob);}
+.team-link:hover{background:var(--ob);color:var(--beige5);transform:scale(1.1);}
+.photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1.3rem;}
+.ps-cell{border-radius:14px;overflow:hidden;aspect-ratio:4/3;box-shadow:var(--clay-sm);transition:transform .32s cubic-bezier(.22,1,.36,1);}
 .ps-cell:hover{transform:scale(1.025);box-shadow:var(--clay-h);}
-.ps-cell img{width:100%;height:100%;object-fit:cover;}
-
-/* PARTENAIRES */
-.partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:2rem;}
-.partner-card{background:var(--white);border-radius:15px;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.8);padding:1.2rem;display:flex;align-items:center;justify-content:center;min-height:78px;transition:all .25s;}
+.ps-cell img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.ps-cell:hover img{transform:scale(1.05);}
+.partners-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:1.8rem;}
+.partner-card{background:var(--white);border-radius:14px;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.8);padding:1.1rem;display:flex;align-items:center;justify-content:center;min-height:75px;transition:box-shadow .25s,transform .25s;}
 .partner-card:hover{transform:translateY(-3px);box-shadow:var(--clay-h);}
-.partner-label{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:700;color:var(--ob2);text-align:center;}
-.partner-img{max-height:40px;width:auto;object-fit:contain;}
-
-/* RESPONSIVE */
-@media(max-width:1024px){.team-grid{grid-template-columns:repeat(3,1fr);}.approche-grid{grid-template-columns:1fr 1fr;}.partners-grid{grid-template-columns:repeat(3,1fr);}.galerie-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}.gcell.tall,.gcell.wide{grid-row:auto;grid-column:auto;}}
-@media(max-width:768px){.hero{padding:7rem 1.5rem 3rem;}.histoire-grid{grid-template-columns:1fr;}.float-img,.quote-card{display:none;}.wrap{padding:3rem 1.5rem;}.approche-grid,.sol-grid,.parcours-bento{grid-template-columns:1fr;}.stats-grid{grid-template-columns:1fr 1fr;}.team-grid{grid-template-columns:1fr 1fr;}.galerie-grid{grid-template-columns:1fr;}.photo-strip{grid-template-columns:1fr 1fr;}.cta-banner{padding:2rem;}}
+.partner-label{font-family:'Space Grotesk',sans-serif;font-size:.68rem;font-weight:700;color:var(--ob2);text-align:center;}
+@media(max-width:1024px){.team-grid{grid-template-columns:repeat(3,1fr);}.approche-grid{grid-template-columns:1fr 1fr;}.galerie-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}.gcell.tall,.gcell.wide{grid-row:auto;grid-column:auto;}.partners-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:768px){.hero{padding:7rem 1.5rem 3rem;}.histoire-grid{grid-template-columns:1fr;}.hist-float,.hist-quote{display:none;}.wrap{padding:3rem 1.5rem;}.approche-grid,.sol-grid,.parcours-bento{grid-template-columns:1fr;}.stats-grid{grid-template-columns:1fr 1fr;}.team-grid{grid-template-columns:1fr 1fr;}.galerie-grid{grid-template-columns:1fr;}.photo-strip{grid-template-columns:1fr 1fr;}.cta-banner{padding:2rem;}}
 @media(max-width:480px){.team-grid{grid-template-columns:1fr 1fr;}.sol-grid{grid-template-columns:1fr;}.partners-grid{grid-template-columns:1fr 1fr;}}
-</style>
-</head>
-<body>
-<nav id="mn">
-  <a href="index.html" class="nav-logo"><div class="logo-text">aeconom<i>i</i>a.</div></a>
-  <div class="nav-center"><a href="index.html" class="nav-link">Accueil</a><a href="apropos.html" class="nav-link active">À propos</a><a href="simulation.html" class="nav-link">Simulation</a><a href="contact.html" class="nav-link">Contact</a></div>
-  <div class="nav-right">
-    <a href="tel:0279414243" class="nav-tel">📞 02.79.41.42.43</a>
-    <a href="contact.html"><button class="btn-nav-cta">Nous contacter</button></a>
-  </div>
-  <div class="nav-burger" id="nb" onclick="toggleMob()"><span></span><span></span><span></span></div>
-</nav>
-<div class="mob-menu" id="mm">
-  <a href="index.html" onclick="closeMob()">Accueil</a><a href="apropos.html" onclick="closeMob()">À propos</a><a href="simulation.html" onclick="closeMob()">Simulation</a><a href="contact.html" onclick="closeMob()">Contact</a>
-  <a href="contact.html" onclick="closeMob()"><button class="mob-cta-btn">Nous contacter</button></a>
-  <span class="mob-tel">📞 02.79.41.42.43</span>
-</div>
-
-<!-- HERO -->
+</style></head><body>
+<nav id="mn"><a href="index.html" class="nav-logo"><div class="logo-text">aeconom<i>i</i>a.</div></a><div class="nav-center"><a href="index.html" class="nav-link">Accueil</a><a href="apropos.html" class="nav-link active">À propos</a><a href="simulation.html" class="nav-link">Simulation</a><a href="contact.html" class="nav-link">Contact</a></div><div class="nav-right"><a href="tel:0279414243" class="nav-tel">📞 02.79.41.42.43</a><a href="contact.html"><button class="btn-nav-cta">Nous contacter</button></a></div><div class="nav-burger" id="nb" onclick="toggleMob()"><span></span><span></span><span></span></div></nav><div class="mob-menu" id="mm"><a href="index.html" onclick="closeMob()">Accueil</a><a href="apropos.html" onclick="closeMob()">À propos</a><a href="simulation.html" onclick="closeMob()">Simulation</a><a href="contact.html" onclick="closeMob()">Contact</a><a href="contact.html" onclick="closeMob()"><button class="mob-cta-btn">Nous contacter</button></a><span class="mob-tel">📞 02.79.41.42.43</span></div>
 <section class="hero">
-  <div class="hero-bg"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photodequipe.jpg" alt="Équipe Aeconomia Orléans"/></div>
-  <div class="hero-overlay"></div>
+  <div class="hero-bg"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodequipe.jpg" alt="Équipe Aeconomia"/></div>
+  <div class="hero-ov"></div>
   <div class="hero-inner">
     <div class="hero-tag fu d1">À propos d'Aeconomia</div>
     <h1 class="hero-h1 fu d2">/à propos<br/><em>de nous.</em></h1>
-    <p class="hero-sub fu d3">L'alliance parfaite entre expertise locale et approche humaine. Fondé en 2022 à Orléans, le cabinet N°1 du Centre-Val de Loire selon Google, ChatGPT et nos clients.</p>
-    <div class="hero-badges fu d4">
-      <span class="hero-badge green">✓ N°1 Centre-Val de Loire</span>
-      <span class="hero-badge">Fondé en 2022</span>
-      <span class="hero-badge">ORIAS 22002183</span>
-      <span class="hero-badge">Cabinet indépendant</span>
-    </div>
+    <p class="hero-sub fu d3">L'alliance parfaite entre expertise locale et approche humaine. Fondé en 2022 à Orléans, le cabinet N°1 du Centre-Val de Loire.</p>
+    <div class="hero-badges fu d4"><span class="hero-badge green">✓ N°1 Centre-Val de Loire</span><span class="hero-badge">Fondé en 2022</span><span class="hero-badge">ORIAS 22002183</span><span class="hero-badge">Cabinet indépendant</span></div>
     <div class="hero-stats fu d5">
       <div class="stat-pill"><div class="stat-pill-n">3<em>k+</em></div><div class="stat-pill-l">Clients</div></div>
       <div class="stat-pill"><div class="stat-pill-n">750<em>+</em></div><div class="stat-pill-l">Avis 5★</div></div>
@@ -285,306 +235,182 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
     </div>
   </div>
 </section>
-
-<!-- STATS -->
 <section class="wrap" style="padding-bottom:2rem">
-  <div class="stats-grid stagger reveal">
-    <div class="sc"><div class="sc-n" data-target="3000" data-suffix="+">0+</div><div class="sc-l">Clients accompagnés</div></div>
-    <div class="sc dark"><div class="sc-n" data-target="750" data-suffix="+">0+</div><div class="sc-l">Avis 5 étoiles</div></div>
-    <div class="sc"><div class="sc-n">8<em>%</em></div><div class="sc-l">Économies en moyenne</div></div>
-    <div class="sc"><div class="sc-n" style="font-size:1.2rem">Jan. <em style="font-size:1.6rem">2022</em></div><div class="sc-l">Création du cabinet</div></div>
+  <div class="stats-grid stagger">
+    <div class="sc reveal"><div class="sc-n" data-target="3000" data-suffix="+">0+</div><div class="sc-l">Clients accompagnés</div></div>
+    <div class="sc dark reveal"><div class="sc-n" data-target="750" data-suffix="+">0+</div><div class="sc-l">Avis 5 étoiles</div></div>
+    <div class="sc reveal"><div class="sc-n">8<em>%</em></div><div class="sc-l">Économies en moyenne</div></div>
+    <div class="sc reveal"><div class="sc-n" style="font-size:1.15rem">Jan.<em style="font-size:1.55rem"> 2022</em></div><div class="sc-l">Création du cabinet</div></div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- HISTOIRE / DIMITRI -->
 <section class="wrap">
   <div class="histoire-grid">
-    <div class="histoire-img-wrap reveal-l">
-      <div class="main-img"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photodedimitri.jpg" alt="Dimitri Toulon, fondateur Aeconomia"/></div>
-      <div class="float-img"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/PHOTO%20DECO%201.jpg" alt="Bureau Aeconomia"/></div>
-      <div class="quote-card"><div class="quote-text">« L'algorithme est humain chez nous. »</div><div class="quote-author">— Dimitri Toulon, Fondateur</div></div>
+    <div class="hist-img-wrap reveal-l">
+      <div class="hist-main"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt="Dimitri Toulon"/></div>
+      <div class="hist-float"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/PHOTO%20DECO%201.jpg" alt="Bureau Aeconomia"/></div>
+      <div class="hist-quote"><div class="hist-quote-text">« L'algorithme est humain chez nous. »</div><div class="hist-quote-author">— Dimitri Toulon, Fondateur</div></div>
     </div>
     <div class="reveal-r">
       <div class="sec-tag">Notre histoire</div>
       <h2 class="sec-h2">Pourquoi on a<br/>créé <em>Aeconomia.</em></h2>
-      <p class="histoire-p">En 2022, Dimitri Toulon fait un constat simple : entre les courtiers en ligne impersonnels et les acteurs traditionnels peu réactifs, il manquait quelque chose. Un cabinet qui combine la proximité humaine d'un expert local et l'efficacité des outils digitaux.</p>
-      <p class="histoire-p">Aeconomia naît de cette conviction : le meilleur financement ne s'obtient pas avec un algorithme froid, mais avec un expert qui vous connaît, connaît les banques locales, et ne lâche pas votre dossier jusqu'à la remise des clés.</p>
+      <p class="hist-p">En 2022, Dimitri Toulon fait un constat simple : entre les courtiers en ligne impersonnels et les acteurs traditionnels peu réactifs, il manquait quelque chose. Un cabinet qui combine la proximité humaine d'un expert local et l'efficacité des outils digitaux.</p>
+      <p class="hist-p">Aeconomia naît de cette conviction : le meilleur financement ne s'obtient pas avec un algorithme froid, mais avec un expert qui vous connaît, connaît les banques locales, et ne lâche pas votre dossier jusqu'à la remise des clés.</p>
       <div class="bullet-list">
-        <div class="bullet">Fondé à Orléans avec une vision : devenir le N°1 régional en 3 ans.</div>
+        <div class="bullet">Fondé à Orléans avec une vision : devenir N°1 régional en 3 ans.</div>
         <div class="bullet">Aujourd'hui N°1 en Centre-Val de Loire sur Google, ChatGPT et Trustpilot.</div>
-        <div class="bullet">Sélectionné par l'Armée de Terre et l'Armée de l'Air pour leurs collaborateurs.</div>
+        <div class="bullet">Sélectionné par l'Armée de Terre et l'Armée de l'Air.</div>
         <div class="bullet">Présent à Orléans, Tours, Blois, Chartres, Montargis, Châteaudun et Paris.</div>
       </div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- GALERIE LOCAUX -->
 <section class="wrap" style="padding-top:3rem;padding-bottom:2.5rem">
-  <div class="reveal" style="margin-bottom:2rem">
-    <div class="sec-tag">Nos locaux</div>
-    <h2 class="sec-h2">Un espace pensé pour<br/><em>vous accueillir.</em></h2>
-  </div>
+  <div class="reveal" style="margin-bottom:1.8rem"><div class="sec-tag">Nos locaux</div><h2 class="sec-h2">Un espace pensé pour<br/><em>vous accueillir.</em></h2></div>
   <div class="galerie-grid reveal" style="transition-delay:.05s">
-    <div class="gcell tall"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/LOCAL%202.jpg" alt="Locaux Aeconomia Orléans"/></div>
-    <div class="gcell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/bureau%20local.jpg" alt="Bureau Aeconomia"/></div>
-    <div class="gcell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photodubureau1.jpg" alt="Aeconomia Orléans"/></div>
-    <div class="gcell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photodelexterieur.jpg" alt="Extérieur Aeconomia Orléans"/></div>
-    <div class="gcell wide"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photomiseensituation1.jpg" alt="Équipe Aeconomia au bureau"/></div>
-    <div class="gcell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photodubureau2.jpg" alt="Agence Aeconomia"/></div>
+    <div class="gcell tall"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/LOCAL%202.jpg" alt="Locaux Aeconomia"/></div>
+    <div class="gcell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/bureau%20local.jpg" alt="Bureau Aeconomia"/></div>
+    <div class="gcell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodubureau1.jpg" alt="Aeconomia Orléans"/></div>
+    <div class="gcell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodelexterieur.jpg" alt="Extérieur Aeconomia"/></div>
+    <div class="gcell wide"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photomiseensituation1.jpg" alt="Équipe au bureau"/></div>
+    <div class="gcell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodubureau2.jpg" alt="Agence Aeconomia"/></div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- APPROCHE -->
 <section class="wrap">
-  <div class="reveal" style="margin-bottom:2.5rem">
-    <div class="sec-tag">Notre approche</div>
-    <h2 class="sec-h2">Le meilleur des deux<br/><em>mondes.</em></h2>
-    <p style="font-size:.85rem;color:var(--muted2);line-height:1.75;max-width:520px">Proximité des courtiers locaux + réactivité du digital. Mais chez nous, l'algorithme est humain.</p>
-  </div>
-  <div class="approche-grid stagger reveal" style="transition-delay:.05s">
-    <div class="ap-card"><div class="ap-num">01</div><div class="ap-icon">🎯</div><div class="ap-title">Transparence totale</div><div class="ap-desc">Communication honnête, suivi sans surprise. Aucun petit caractère caché. Vous savez toujours où en est votre dossier.</div></div>
-    <div class="ap-card dark"><div class="ap-num">02</div><div class="ap-icon">⭐</div><div class="ap-title">Excellence prouvée</div><div class="ap-desc">750+ avis 5 étoiles sur Google, Trustpilot et Immodvisor. Pas une promesse — une réalité validée par nos clients depuis 2022.</div></div>
-    <div class="ap-card sage-c"><div class="ap-num">03</div><div class="ap-icon">🤝</div><div class="ap-title">Proximité garantie</div><div class="ap-desc">Courtiers locaux, l'humain au cœur de chaque accompagnement. Votre projet devient le nôtre.</div></div>
-    <div class="ap-card"><div class="ap-num">04</div><div class="ap-icon">⚡</div><div class="ap-title">Réactivité maximale</div><div class="ap-desc">8h-20h en semaine. Accord de principe immédiat. Retour bancaire sous 7-10 jours. On ne vous fait pas attendre.</div></div>
-    <div class="ap-card"><div class="ap-num">05</div><div class="ap-icon">💰</div><div class="ap-title">Indépendance absolue</div><div class="ap-desc">Aucun lien capitalistique avec les banques. Nous travaillons dans votre intérêt exclusif.</div></div>
-    <div class="ap-card"><div class="ap-num">06</div><div class="ap-icon">🔑</div><div class="ap-title">De A aux clés</div><div class="ap-desc">Votre courtier gère l'appel de fonds entre la banque et le notaire. Littéralement jusqu'aux clés.</div></div>
+  <div class="reveal" style="margin-bottom:2.2rem"><div class="sec-tag">Notre approche</div><h2 class="sec-h2">Le meilleur des deux<br/><em>mondes.</em></h2><p style="font-size:.83rem;color:var(--muted2);line-height:1.74;max-width:500px">Proximité des courtiers locaux + réactivité du digital. L'algorithme est humain chez nous.</p></div>
+  <div class="approche-grid stagger">
+    <div class="ap-card reveal"><div class="ap-num">01</div><div class="ap-icon">🎯</div><div class="ap-title">Transparence totale</div><div class="ap-desc">Communication honnête, suivi sans surprise. Aucun petit caractère caché. Vous savez toujours où en est votre dossier.</div></div>
+    <div class="ap-card dark reveal"><div class="ap-num">02</div><div class="ap-icon">⭐</div><div class="ap-title">Excellence prouvée</div><div class="ap-desc">750+ avis 5 étoiles sur Google, Trustpilot et Immodvisor. Une réalité validée par nos clients depuis 2022.</div></div>
+    <div class="ap-card sage-c reveal"><div class="ap-num">03</div><div class="ap-icon">🤝</div><div class="ap-title">Proximité garantie</div><div class="ap-desc">Courtiers locaux, l'humain au cœur de chaque accompagnement. Votre projet devient le nôtre.</div></div>
+    <div class="ap-card reveal"><div class="ap-num">04</div><div class="ap-icon">⚡</div><div class="ap-title">Réactivité maximale</div><div class="ap-desc">8h-20h en semaine. Accord de principe immédiat. Retour bancaire sous 7-10 jours.</div></div>
+    <div class="ap-card reveal"><div class="ap-num">05</div><div class="ap-icon">💰</div><div class="ap-title">Indépendance absolue</div><div class="ap-desc">Aucun lien capitalistique avec les banques. Dans votre intérêt exclusif.</div></div>
+    <div class="ap-card reveal"><div class="ap-num">06</div><div class="ap-icon">🔑</div><div class="ap-title">De A aux clés</div><div class="ap-desc">Gestion de l'appel de fonds entre la banque et le notaire. Littéralement jusqu'aux clés.</div></div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- SOLUTIONS -->
 <section class="wrap">
-  <div class="reveal" style="margin-bottom:2.5rem">
-    <div class="sec-tag">Nos solutions</div>
-    <h2 class="sec-h2">Quel que soit<br/><em>votre profil.</em></h2>
-  </div>
-  <div class="sol-grid stagger reveal" style="transition-delay:.05s">
-    <div class="sol"><div class="sol-icon">🏠</div><div><div class="sol-title">Crédit immobilier</div><div class="sol-desc">Résidence principale ou secondaire</div></div></div>
-    <div class="sol"><div class="sol-icon">🔄</div><div><div class="sol-title">Renégociation</div><div class="sol-desc">Révision de vos conditions actuelles</div></div></div>
-    <div class="sol"><div class="sol-icon">🌆</div><div><div class="sol-title">Orléans is the new Paris</div><div class="sol-desc">Quittez la capitale, économisez</div></div></div>
-    <div class="sol"><div class="sol-icon">⚖️</div><div><div class="sol-title">Rachat de soulte</div><div class="sol-desc">Séparation, divorce, succession</div></div></div>
-    <div class="sol"><div class="sol-icon">🛡️</div><div><div class="sol-title">Assurance emprunteur</div><div class="sol-desc">Jusqu'à 2× moins cher</div></div></div>
-    <div class="sol"><div class="sol-icon">🎖️</div><div><div class="sol-title">Fonctionnaire / Militaire</div><div class="sol-desc">Solutions adaptées à votre statut</div></div></div>
-    <div class="sol"><div class="sol-icon">🏁</div><div><div class="sol-title">Primo-accédant</div><div class="sol-desc">Accompagnement renforcé</div></div></div>
-    <div class="sol"><div class="sol-icon">📈</div><div><div class="sol-title">Investissement locatif</div><div class="sol-desc">Rentabilité maximisée</div></div></div>
-    <div class="sol"><div class="sol-icon">💼</div><div><div class="sol-title">TNS / Profession libérale</div><div class="sol-desc">Approches sur-mesure</div></div></div>
+  <div class="reveal" style="margin-bottom:2.2rem"><div class="sec-tag">Nos solutions</div><h2 class="sec-h2">Quel que soit<br/><em>votre profil.</em></h2></div>
+  <div class="sol-grid stagger">
+    <div class="sol reveal"><div class="sol-icon">🏠</div><div><div class="sol-title">Crédit immobilier</div><div class="sol-desc">Résidence principale ou secondaire</div></div></div>
+    <div class="sol reveal"><div class="sol-icon">🔄</div><div><div class="sol-title">Renégociation</div><div class="sol-desc">Révision de vos conditions actuelles</div></div></div>
+    <div class="sol reveal"><div class="sol-icon">🌆</div><div><div class="sol-title">Orléans is the new Paris</div><div class="sol-desc">Quittez la capitale, économisez</div></div></div>
+    <div class="sol reveal"><div class="sol-icon">⚖️</div><div><div class="sol-title">Rachat de soulte</div><div class="sol-desc">Séparation, divorce, succession</div></div></div>
+    <div class="sol reveal"><div class="sol-icon">🛡️</div><div><div class="sol-title">Assurance emprunteur</div><div class="sol-desc">Jusqu'à 2× moins cher</div></div></div>
+    <div class="sol reveal"><div class="sol-icon">🎖️</div><div><div class="sol-title">Fonctionnaire / Militaire</div><div class="sol-desc">Adapté à votre statut</div></div></div>
+    <div class="sol reveal"><div class="sol-icon">🏁</div><div><div class="sol-title">Primo-accédant</div><div class="sol-desc">Accompagnement renforcé</div></div></div>
+    <div class="sol reveal"><div class="sol-icon">📈</div><div><div class="sol-title">Investissement locatif</div><div class="sol-desc">Rentabilité maximisée</div></div></div>
+    <div class="sol reveal"><div class="sol-icon">💼</div><div><div class="sol-title">TNS / Profession libérale</div><div class="sol-desc">Solutions sur-mesure</div></div></div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- PARCOURS -->
 <section class="wrap">
-  <div class="reveal" style="margin-bottom:2.5rem">
-    <div class="sec-tag">Votre parcours</div>
-    <h2 class="sec-h2">/parcours. De l'étude<br/><em>à la remise des clés.</em></h2>
-  </div>
-  <div class="parcours-bento stagger reveal" style="transition-delay:.05s">
-    <div class="pc">
-      <div class="pc-img"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/PHOTO%20DECO%201.jpg" alt="Premier rendez-vous"/></div>
-      <div class="pc-body"><div class="pc-n">01</div><div class="pc-title">Premier contact & analyse</div><div class="pc-desc">Échange initial gratuit. Analyse approfondie de votre projet. Accord de solvabilité immédiat pour rassurer les vendeurs.</div><div class="pc-badge">Gratuit · Sans engagement</div></div>
-    </div>
-    <div class="pc">
-      <div class="pc-img"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photodepassage.jpg" alt="Constitution du dossier"/></div>
-      <div class="pc-body"><div class="pc-n">02</div><div class="pc-title">Montage de votre dossier</div><div class="pc-desc">Dossier béton pour maximiser vos chances. Collecte des pièces, mise en forme bancaire. Notre expertise fait la différence.</div><div class="pc-badge">Aucun frais jusqu'au déblocage</div></div>
-    </div>
-    <div class="pc dark">
-      <div class="pc-body" style="padding-top:1.5rem"><div class="pc-n">03</div><div class="pc-title">Négociation optimale</div><div class="pc-desc">Mise en concurrence de toutes les banques. Nous faisons jouer la concurrence à votre avantage grâce à nos conventions directes.</div><div class="pc-badge">20+ banques en compétition</div></div>
-    </div>
-    <div class="pc">
-      <div class="pc-img"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/PHOTO%2014.jpg" alt="Remise des clés Aeconomia"/></div>
-      <div class="pc-body"><div class="pc-n">04</div><div class="pc-title">Remise des clés 🔑</div><div class="pc-desc">Accompagnement jusqu'au notaire. Gestion de l'appel de fonds entre la banque et le notaire. De A jusqu'aux clés, littéralement.</div><div class="pc-badge">Place aux cartons !</div></div>
-    </div>
+  <div class="reveal" style="margin-bottom:2.2rem"><div class="sec-tag">Votre parcours</div><h2 class="sec-h2">/parcours. De l'étude<br/><em>à la remise des clés.</em></h2></div>
+  <div class="parcours-bento stagger">
+    <div class="pc reveal"><div class="pc-img"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/PHOTO%20DECO%201.jpg" alt="Premier RDV"/></div><div class="pc-body"><div class="pc-n">01</div><div class="pc-title">Premier contact & analyse</div><div class="pc-desc">Échange gratuit. Analyse approfondie. Accord de solvabilité immédiat pour rassurer les vendeurs.</div><div class="pc-badge">Gratuit · Sans engagement</div></div></div>
+    <div class="pc reveal"><div class="pc-img"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodepassage.jpg" alt="Constitution dossier"/></div><div class="pc-body"><div class="pc-n">02</div><div class="pc-title">Montage du dossier</div><div class="pc-desc">Dossier béton. Collecte des pièces, mise en forme bancaire. Notre expertise fait la différence.</div><div class="pc-badge">Aucun frais jusqu'au déblocage</div></div></div>
+    <div class="pc dark reveal"><div class="pc-body" style="padding-top:1.4rem"><div class="pc-n">03</div><div class="pc-title">Négociation optimale</div><div class="pc-desc">Mise en concurrence de toutes les banques. Nos conventions directes jouent en votre faveur.</div><div class="pc-badge">20+ banques en compétition</div></div></div>
+    <div class="pc reveal"><div class="pc-img"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/PHOTO%2014.jpg" alt="Remise des clés"/></div><div class="pc-body"><div class="pc-n">04</div><div class="pc-title">Remise des clés 🔑</div><div class="pc-desc">Accompagnement jusqu'au notaire. Gestion de l'appel de fonds. De A jusqu'aux clés.</div><div class="pc-badge">Place aux cartons !</div></div></div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- ÉQUIPE -->
 <section class="wrap">
-  <div class="reveal" style="margin-bottom:2.5rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem">
-    <div>
-      <div class="sec-tag">Notre équipe</div>
-      <h2 class="sec-h2">Les meilleurs courtiers<br/><em>du Loiret.</em></h2>
-      <p style="font-size:.82rem;color:var(--muted2);line-height:1.75;max-width:480px;margin-top:.5rem">Des experts locaux passionnés. +750 avis 5 étoiles certifiés.</p>
-    </div>
+  <div class="reveal" style="margin-bottom:2.2rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem">
+    <div><div class="sec-tag">Notre équipe</div><h2 class="sec-h2">Les meilleurs courtiers<br/><em>du Loiret.</em></h2></div>
     <a href="contact.html" class="btn-s">Prendre rendez-vous →</a>
   </div>
-  <div class="team-grid stagger">
-    
-    <div class="team-card reveal">
-      <div class="team-avatar"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photodedimitri.jpg" alt="Dimitri Toulon"/></div>
-      <div class="team-name">Dimitri Toulon</div>
-      <div class="team-role">Directeur · Fondateur</div>
-      <div class="team-quote">« Extrêmement réactif, compétent et toujours disponible. »</div>
-      <div class="team-links">
-        <a href="tel:0769457572" class="team-link">📞</a>
-        <a href="https://www.linkedin.com/in/dimitri-toulon-969746184/" target="_blank" class="team-link">in</a>
-      </div>
-    </div>
-    <div class="team-card reveal">
-      <div class="team-avatar"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/RAPAHEL.jpg" alt="Raphaël Nicq"/></div>
-      <div class="team-name">Raphaël Nicq</div>
-      <div class="team-role">Courtier</div>
-      <div class="team-quote">« Disponible, à l'écoute. Nous avons signé notre bien rapidement. »</div>
-      <div class="team-links">
-        <a href="tel:0637179128" class="team-link">📞</a>
-        <a href="https://www.linkedin.com/in/raphael-nicq-1643b4136/" target="_blank" class="team-link">in</a>
-      </div>
-    </div>
-    <div class="team-card reveal">
-      <div class="team-avatar"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photodedelphine.jpg" alt="Delphine Dechartre"/></div>
-      <div class="team-name">Delphine Dechartre</div>
-      <div class="team-role">Courtière</div>
-      <div class="team-quote">« Réactive et toujours à l'écoute. Le suivi du dossier est impeccable. »</div>
-      <div class="team-links">
-        <a href="tel:0607908233" class="team-link">📞</a>
-        <a href="https://www.linkedin.com/in/delphine-dechartre-6141b5134/" target="_blank" class="team-link">in</a>
-      </div>
-    </div>
-    <div class="team-card reveal">
-      <div class="team-avatar"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photoderobin-2.jpg" alt="Robin Villette"/></div>
-      <div class="team-name">Robin Villette</div>
-      <div class="team-role">Courtier</div>
-      <div class="team-quote">« Il a trouvé un financement dans un temps record — moins de deux mois. »</div>
-      <div class="team-links">
-        <a href="tel:0686250034" class="team-link">📞</a>
-        <a href="https://www.linkedin.com/in/robin-villette-37aa771b5/" target="_blank" class="team-link">in</a>
-      </div>
-    </div>
-    <div class="team-card reveal">
-      <div class="team-avatar"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/gabriel.jpg" alt="Gabriel Despeisse"/></div>
-      <div class="team-name">Gabriel Despeisse</div>
-      <div class="team-role">Courtier</div>
-      <div class="team-quote">« Accompagnement malgré la difficulté et l'urgence. Très réactif. »</div>
-      <div class="team-links">
-        <a href="tel:0613164040" class="team-link">📞</a>
-        <a href="https://www.linkedin.com/in/gabriel-despeisse-699855264/" target="_blank" class="team-link">in</a>
-      </div>
-    </div>
-    <div class="team-card reveal">
-      <div class="team-avatar"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/matteo.jpg" alt="Matteo Martolini"/></div>
-      <div class="team-name">Matteo Martolini</div>
-      <div class="team-role">Courtier</div>
-      <div class="team-quote">« Très réactif et de bons conseils. Très bon taux obtenu. »</div>
-      <div class="team-links">
-        <a href="tel:0601499492" class="team-link">📞</a>
-        <a href="#" target="_blank" class="team-link">in</a>
-      </div>
-    </div>
-    <div class="team-card reveal">
-      <div class="team-avatar"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/Adrien%20.jpg" alt="Adrien Meneghini"/></div>
-      <div class="team-name">Adrien Meneghini</div>
-      <div class="team-role">Courtier</div>
-      <div class="team-quote">« Professionnalisme remarquable. Carré du début jusqu'à la fin. »</div>
-      <div class="team-links">
-        <a href="tel:0686238440" class="team-link">📞</a>
-        <a href="#" target="_blank" class="team-link">in</a>
-      </div>
-    </div>
-    <div class="team-card reveal">
-      <div class="team-avatar"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/mariephoto.jpg" alt="Marie"/></div>
-      <div class="team-name">Marie</div>
-      <div class="team-role">Courtière</div>
-      <div class="team-quote">« Professionnelle et à l'écoute. Je recommande sans hésitation. »</div>
-      <div class="team-links">
-        <a href="tel:#" class="team-link">📞</a>
-        <a href="#" target="_blank" class="team-link">in</a>
-      </div>
-    </div>
-  </div>
+  <div class="team-grid stagger"><div class="team-card reveal">
+  <div class="team-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt="Dimitri Toulon"/></div>
+  <div class="team-name">Dimitri Toulon</div>
+  <div class="team-role">Directeur · Fondateur</div>
+  <div class="team-quote">« Extrêmement réactif, compétent et toujours disponible. »</div>
+  <div class="team-links"><a href="tel:0769457572" class="team-link">📞</a><a href="https://linkedin.com/in/dimitri-toulon-969746184/" target="_blank" class="team-link">in</a></div>
+</div><div class="team-card reveal">
+  <div class="team-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt="Raphaël Nicq"/></div>
+  <div class="team-name">Raphaël Nicq</div>
+  <div class="team-role">Courtier</div>
+  <div class="team-quote">« Disponible, à l'écoute. Nous avons signé rapidement. »</div>
+  <div class="team-links"><a href="tel:0637179128" class="team-link">📞</a><a href="https://linkedin.com/in/raphael-nicq-1643b4136/" target="_blank" class="team-link">in</a></div>
+</div><div class="team-card reveal">
+  <div class="team-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt="Delphine Dechartre"/></div>
+  <div class="team-name">Delphine Dechartre</div>
+  <div class="team-role">Courtière</div>
+  <div class="team-quote">« Réactive et toujours à l'écoute. Suivi impeccable. »</div>
+  <div class="team-links"><a href="tel:0607908233" class="team-link">📞</a><a href="https://linkedin.com/in/delphine-dechartre-6141b5134/" target="_blank" class="team-link">in</a></div>
+</div><div class="team-card reveal">
+  <div class="team-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt="Robin Villette"/></div>
+  <div class="team-name">Robin Villette</div>
+  <div class="team-role">Courtier</div>
+  <div class="team-quote">« Financement trouvé en moins de deux mois. »</div>
+  <div class="team-links"><a href="tel:0686250034" class="team-link">📞</a><a href="https://linkedin.com/in/robin-villette-37aa771b5/" target="_blank" class="team-link">in</a></div>
+</div><div class="team-card reveal">
+  <div class="team-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt="Gabriel Despeisse"/></div>
+  <div class="team-name">Gabriel Despeisse</div>
+  <div class="team-role">Courtier</div>
+  <div class="team-quote">« Accompagnement malgré l'urgence du dossier. »</div>
+  <div class="team-links"><a href="tel:0613164040" class="team-link">📞</a><a href="https://linkedin.com/in/gabriel-despeisse-699855264/" target="_blank" class="team-link">in</a></div>
+</div><div class="team-card reveal">
+  <div class="team-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/matteo.jpg" alt="Matteo Martolini"/></div>
+  <div class="team-name">Matteo Martolini</div>
+  <div class="team-role">Courtier</div>
+  <div class="team-quote">« Très réactif. Très bon taux obtenu. »</div>
+  <div class="team-links"><a href="tel:0601499492" class="team-link">📞</a><a href="#" target="_blank" class="team-link">in</a></div>
+</div><div class="team-card reveal">
+  <div class="team-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Adrien%20.jpg" alt="Adrien Meneghini"/></div>
+  <div class="team-name">Adrien Meneghini</div>
+  <div class="team-role">Courtier</div>
+  <div class="team-quote">« Professionnalisme remarquable, carré du début à la fin. »</div>
+  <div class="team-links"><a href="tel:0686238440" class="team-link">📞</a><a href="#" target="_blank" class="team-link">in</a></div>
+</div><div class="team-card reveal">
+  <div class="team-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/mariephoto.jpg" alt="Marie"/></div>
+  <div class="team-name">Marie</div>
+  <div class="team-role">Courtière</div>
+  <div class="team-quote">« Professionnelle et à l'écoute, je recommande. »</div>
+  <div class="team-links"><a href="tel:#" class="team-link">📞</a><a href="#" target="_blank" class="team-link">in</a></div>
+</div></div>
 </section>
-
 <div class="divider"></div>
-
-<!-- DECO STRIP -->
 <section class="wrap" style="padding-top:2.5rem;padding-bottom:2.5rem">
-  <div class="reveal" style="margin-bottom:1.5rem">
-    <div class="sec-tag">Au quotidien</div>
-    <h2 class="sec-h2">Dans nos locaux,<br/><em>chaque jour.</em></h2>
-  </div>
+  <div class="reveal" style="margin-bottom:1.4rem"><div class="sec-tag">Au quotidien</div><h2 class="sec-h2">Dans nos locaux,<br/><em>chaque jour.</em></h2></div>
   <div class="photo-strip reveal" style="transition-delay:.05s">
-    <div class="ps-cell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/Photo%20de%20d%C3%A9co%20des%20gars.jpg" alt="Courtiers Aeconomia"/></div>
-    <div class="ps-cell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/PHOTO%2013.jpg" alt="Raphaël et Gabriel"/></div>
-    <div class="ps-cell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photomiseensituation2.jpg" alt="Client Aeconomia"/></div>
+    <div class="ps-cell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Photo%20de%20d%C3%A9co%20des%20gars.jpg" alt="Courtiers Aeconomia"/></div>
+    <div class="ps-cell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/PHOTO%2013.jpg" alt="Raphaël et Gabriel"/></div>
+    <div class="ps-cell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photomiseensituation2.jpg" alt="Client Aeconomia"/></div>
   </div>
-  <div class="photo-strip reveal" style="transition-delay:.1s;margin-top:.8rem">
-    <div class="ps-cell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/delphinedevantordi.jpg" alt="Delphine Aeconomia"/></div>
-    <div class="ps-cell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/PHOTO%2010.jpg" alt="Bureau Aeconomia"/></div>
-    <div class="ps-cell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photodubureau3.jpg" alt="Aeconomia locaux"/></div>
+  <div class="photo-strip reveal" style="transition-delay:.1s">
+    <div class="ps-cell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/delphinedevantordi.jpg" alt="Delphine"/></div>
+    <div class="ps-cell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/PHOTO%2010.jpg" alt="Bureau Aeconomia"/></div>
+    <div class="ps-cell"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodubureau3.jpg" alt="Locaux Aeconomia"/></div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- PARTENAIRES -->
 <section class="wrap">
-  <div class="reveal" style="margin-bottom:2.5rem">
-    <div class="sec-tag">Ils nous font confiance</div>
-    <h2 class="sec-h2">Une PME choisie<br/><em>par les grands.</em></h2>
-    <p style="font-size:.82rem;color:var(--muted2);line-height:1.75;max-width:500px;margin-top:.5rem">Sélectionnés pour intégrer les comités d'entreprise de grandes organisations, dont l'Armée de Terre et l'Armée de l'Air.</p>
-  </div>
-  <div class="partners-grid stagger reveal" style="transition-delay:.05s">
-    <div class="partner-card"><div class="partner-label">🎖️ Armée de Terre</div></div>
-    <div class="partner-card"><div class="partner-label">✈️ Armée de l'Air & Espace</div></div>
-    <div class="partner-card"><div class="partner-label">🏦 Partenaires Bancaires</div></div>
-    <div class="partner-card"><div class="partner-label">🤝 Comités d'Entreprise</div></div>
+  <div class="reveal" style="margin-bottom:2.2rem"><div class="sec-tag">Ils nous font confiance</div><h2 class="sec-h2">Une PME choisie<br/><em>par les grands.</em></h2><p style="font-size:.8rem;color:var(--muted2);line-height:1.74;max-width:490px;margin-top:.45rem">Sélectionnés pour intégrer les comités d'entreprise de l'Armée de Terre et de l'Armée de l'Air.</p></div>
+  <div class="partners-grid stagger">
+    <div class="partner-card reveal"><div class="partner-label">🎖️ Armée de Terre</div></div>
+    <div class="partner-card reveal"><div class="partner-label">✈️ Armée de l'Air & Espace</div></div>
+    <div class="partner-card reveal"><div class="partner-label">🏦 Partenaires Bancaires</div></div>
+    <div class="partner-card reveal"><div class="partner-label">🤝 Comités d'Entreprise</div></div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- CTA -->
 <section class="wrap" style="padding-bottom:4rem">
   <div class="cta-banner reveal">
-    <div>
-      <h3 class="cta-h3">Prêt à concrétiser<br/>votre projet ?</h3>
-      <p class="cta-sub">Rejoignez les 3 000+ clients qui nous font confiance. Premier rendez-vous gratuit, réponse sous 24h.</p>
-    </div>
-    <div class="cta-btns">
-      <a href="simulation.html" class="btn-light">Simuler mon projet →</a>
-      <a href="contact.html" class="btn-ghost">Prendre rendez-vous</a>
-    </div>
+    <div><h3 class="cta-h3">Prêt à concrétiser<br/>votre projet ?</h3><p class="cta-sub">3 000+ clients nous font confiance. Premier rendez-vous gratuit, réponse sous 24h.</p></div>
+    <div class="cta-btns"><a href="simulation.html" class="btn-light">Simuler mon projet →</a><a href="contact.html" class="btn-ghost">Prendre rendez-vous</a></div>
   </div>
 </section>
-
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="logo-text">aeconom<i>i</i>a.</div>
-      <p class="footer-brand-desc">Cabinet de courtage en prêt immobilier, leader indépendant à Orléans et en région Centre depuis 2022.</p>
-      <div class="footer-socials">
-        <a href="https://www.instagram.com/aeconomia.courtage/" target="_blank" class="footer-social">📸</a>
-        <a href="https://www.facebook.com/Aeconomia.courtage/" target="_blank" class="footer-social">f</a>
-        <a href="https://www.linkedin.com/company/82227304/" target="_blank" class="footer-social">in</a>
-      </div>
-    </div>
-    <div><div class="footer-col-title">Navigation</div><div class="footer-links"><a href="index.html">Accueil</a><a href="apropos.html">À propos</a><a href="simulation.html">Simulation</a><a href="contact.html">Contact</a></div></div>
-    <div><div class="footer-col-title">Zones</div><div class="footer-links"><a href="#">Orléans</a><a href="#">Tours</a><a href="#">Blois</a><a href="#">Chartres</a><a href="#">Montargis</a><a href="#">Paris</a></div></div>
-    <div><div class="footer-col-title">Contact</div><div class="footer-links"><a href="tel:0279414243">02.79.41.42.43</a><a href="mailto:contact@aeconomia.fr">contact@aeconomia.fr</a><a href="#">22 rue de la République</a><a href="#">45000 Orléans</a></div></div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-legal">EURL · RCS Orléans 909 326 613 · COBSP · ORIAS n°22002183 · Contrôle ACPR · Médiateur IEAM · © 2026 Aeconomia</div>
-    <div class="footer-badges"><span class="footer-badge">ORIAS ✓</span><span class="footer-badge">COBSP ✓</span><span class="footer-badge">ACPR ✓</span></div>
-  </div>
-</footer>
+<footer><div class="footer-inner"><div><div class="logo-text">aeconom<i>i</i>a.</div><p class="footer-brand-desc">Cabinet de courtage en prêt immobilier, leader indépendant à Orléans et en région Centre depuis 2022.</p><div class="footer-socials"><a href="https://www.instagram.com/aeconomia.courtage/" target="_blank" class="footer-social">📸</a><a href="https://www.facebook.com/Aeconomia.courtage/" target="_blank" class="footer-social">f</a><a href="https://www.linkedin.com/company/82227304/" target="_blank" class="footer-social">in</a></div></div><div><div class="footer-col-title">Navigation</div><div class="footer-links"><a href="index.html">Accueil</a><a href="apropos.html">À propos</a><a href="simulation.html">Simulation</a><a href="contact.html">Contact</a></div></div><div><div class="footer-col-title">Zones</div><div class="footer-links"><a href="#">Orléans</a><a href="#">Tours</a><a href="#">Blois</a><a href="#">Chartres</a><a href="#">Montargis</a><a href="#">Paris</a></div></div><div><div class="footer-col-title">Contact</div><div class="footer-links"><a href="tel:0279414243">02.79.41.42.43</a><a href="mailto:contact@aeconomia.fr">contact@aeconomia.fr</a><a href="#">22 rue de la République</a><a href="#">45000 Orléans</a></div></div></div><div class="footer-bottom"><div class="footer-legal">EURL · RCS Orléans 909 326 613 · COBSP · ORIAS n°22002183 · Contrôle ACPR · © 2026 Aeconomia</div><div class="footer-badges"><span class="footer-badge">ORIAS ✓</span><span class="footer-badge">COBSP ✓</span><span class="footer-badge">ACPR ✓</span></div></div></footer>
 <script>
-const cro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.target.dataset.target){const t=+e.target.dataset.target,s=e.target.dataset.suffix||'',d=1800,t0=performance.now();function st(now){const p=Math.min(1,(now-t0)/d),ease=1-Math.pow(1-p,4);e.target.textContent=Math.round(t*ease).toLocaleString('fr-FR')+s;if(p<1)requestAnimationFrame(st);}requestAnimationFrame(st);cro.unobserve(e.target);}});},{threshold:.5});
-document.querySelectorAll('[data-target]').forEach(el=>cro.observe(el));
-
-function toggleMob(){document.getElementById('mm').classList.toggle('open');document.getElementById('nb').classList.toggle('open');document.body.style.overflow=document.getElementById('mm').classList.contains('open')?'hidden':'';}
-function closeMob(){document.getElementById('mm').classList.remove('open');document.getElementById('nb').classList.remove('open');document.body.style.overflow='';}
-window.addEventListener('scroll',()=>{document.getElementById('mn').classList.toggle('scrolled',window.scrollY>30);},{passive:true});
-const _ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.06});
-document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>_ro.observe(el));
-
+var cro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting&&e.target.dataset.target){var t=+e.target.dataset.target,s=e.target.dataset.suffix||'',d=1800,t0=performance.now();function st(now){var p=Math.min(1,(now-t0)/d),ease=1-Math.pow(1-p,4);e.target.textContent=Math.round(t*ease).toLocaleString('fr-FR')+s;if(p<1)requestAnimationFrame(st);}requestAnimationFrame(st);cro.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(function(el){cro.observe(el);});
 </script>
-</body></html>
+<script>
+function toggleMob(){var m=document.getElementById('mm'),b=document.getElementById('nb');m.classList.toggle('open');b.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+function closeMob(){document.getElementById('mm').classList.remove('open');document.getElementById('nb').classList.remove('open');document.body.style.overflow='';}
+window.addEventListener('scroll',function(){document.getElementById('mn').classList.toggle('scrolled',window.scrollY>30);},{passive:true});
+document.documentElement.classList.add('js-loaded');
+var ro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(function(el){ro.observe(el);});
+</script></body></html>
