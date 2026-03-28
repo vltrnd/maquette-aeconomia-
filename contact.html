@@ -1,250 +1,491 @@
 <!DOCTYPE html>
 <html lang="fr"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Contact — Aeconomia</title><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet"/>
-<style>*{box-sizing:border-box;margin:0;padding:0;}
+<title>Contact — Aeconomia Courtiers Orléans</title><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#F7F5F0;--bg2:#EDE9E1;--bg3:#E3DDD3;--white:#fff;
-  --ob:#1A1917;--ob2:#2C2B28;
-  --beige1:#BEAD93;--beige2:#D4C9B4;--beige3:#EDE9E1;
-  --beige4:#F2EFE8;--beige5:#F7F5F0;
+  --bg:#F7F4EF;--bg2:#EDE8DF;--bg3:#E3DDD3;--white:#FAFAF8;
+  --ob:#151412;--ob2:#2A2824;
+  --beige1:#BEAD93;--beige2:#D4C9B4;--beige3:#EDE8DF;--beige4:#F4F0E8;
   --sage:#a2b5a8;--sage2:#75847c;--lime:#bcd41a;
   --muted:#8A8680;--muted2:#6B6762;
-  --border:rgba(26,25,23,.08);--border2:rgba(26,25,23,.13);
-  --clay:6px 6px 18px rgba(180,163,136,.22),-3px -3px 10px rgba(255,255,255,.85),inset 0 1px 0 rgba(255,255,255,.7);
-  --clay-sm:3px 3px 10px rgba(180,163,136,.18),-2px -2px 7px rgba(255,255,255,.8),inset 0 1px 0 rgba(255,255,255,.55);
-  --clay-h:8px 8px 24px rgba(180,163,136,.28),-4px -4px 14px rgba(255,255,255,.92),inset 0 1px 0 rgba(255,255,255,.72);
+  --border:rgba(21,20,18,.08);--border2:rgba(21,20,18,.14);
+  --clay:6px 6px 18px rgba(170,153,126,.24),-3px -3px 10px rgba(255,255,255,.88),inset 0 1px 0 rgba(255,255,255,.72);
+  --clay-sm:3px 3px 10px rgba(170,153,126,.2),-2px -2px 7px rgba(255,255,255,.82),inset 0 1px 0 rgba(255,255,255,.58);
+  --clay-h:8px 8px 24px rgba(170,153,126,.3),-4px -4px 14px rgba(255,255,255,.94),inset 0 1px 0 rgba(255,255,255,.74);
+  --clay-dark:4px 4px 16px rgba(0,0,0,.35),-2px -2px 8px rgba(255,255,255,.04),inset 0 1px 0 rgba(255,255,255,.06);
 }
 html{scroll-behavior:smooth;}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ob);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(26,25,23,.032) 1px,transparent 1px),linear-gradient(90deg,rgba(26,25,23,.032) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(21,20,18,.033) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(21,20,18,.033) 1px,transparent 1px);
   background-size:48px 48px;}
-::selection{background:rgba(162,181,168,.28);}
+::selection{background:rgba(162,181,168,.3);}
 a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;}
 .logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.06rem;color:var(--ob);letter-spacing:-.3px;line-height:1;user-select:none;}
 .logo-text i{font-style:italic;}
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2.5rem;height:64px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s,border-color .4s;}
-nav.scrolled{background:rgba(247,245,240,.96);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--border);box-shadow:0 2px 24px rgba(180,163,136,.12);}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2.5rem;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s,box-shadow .4s,border-color .4s;}
+nav.sc{background:rgba(247,244,239,.96);backdrop-filter:blur(24px) saturate(180%);
+  border-bottom:1px solid var(--border);box-shadow:0 2px 24px rgba(170,153,126,.12);}
 .nav-logo{cursor:pointer;}
 .nav-center{display:flex;align-items:center;gap:.15rem;}
-.nav-link{font-family:'Space Grotesk',sans-serif;font-size:.63rem;font-weight:500;color:var(--muted);letter-spacing:.04em;padding:.4rem .85rem;border-radius:50px;transition:color .22s,background .22s,border-color .22s,transform .2s;position:relative;border:1px solid transparent;}
-.nav-link:hover{color:var(--ob);background:rgba(26,25,23,.055);border-color:var(--border);transform:translateY(-1px);}
-.nav-link.active{color:var(--ob);font-weight:600;background:rgba(26,25,23,.042);border-color:var(--border);}
-.nav-link.active::after{content:'';position:absolute;bottom:.26rem;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--lime);}
+.nl{font-family:'Space Grotesk',sans-serif;font-size:.63rem;font-weight:500;color:var(--muted);
+  letter-spacing:.04em;padding:.38rem .82rem;border-radius:50px;
+  transition:color .22s,background .22s,border-color .22s,transform .2s;
+  position:relative;border:1px solid transparent;}
+.nl:hover{color:var(--ob);background:rgba(21,20,18,.055);border-color:var(--border);transform:translateY(-1px);}
+.nl.active{color:var(--ob);font-weight:600;background:rgba(21,20,18,.042);border-color:var(--border);}
+.nl.active::after{content:'';position:absolute;bottom:.24rem;left:50%;transform:translateX(-50%);
+  width:4px;height:4px;border-radius:50%;background:var(--lime);}
 .nav-right{display:flex;align-items:center;gap:.5rem;}
-.nav-tel{font-family:'Space Grotesk',sans-serif;font-size:.65rem;font-weight:600;color:var(--ob2);padding:.36rem .78rem;border-radius:9px;background:var(--beige3);border:1px solid var(--border2);transition:all .22s;}
+.nav-tel{font-family:'Space Grotesk',sans-serif;font-size:.64rem;font-weight:600;color:var(--ob2);
+  padding:.35rem .76rem;border-radius:9px;background:var(--beige3);border:1px solid var(--border2);
+  transition:all .22s;}
 .nav-tel:hover{background:var(--white);box-shadow:var(--clay-sm);transform:translateY(-1px);}
-.btn-nav-cta{font-family:'Space Grotesk',sans-serif;font-size:.65rem;font-weight:700;background:var(--ob);color:var(--beige5);border:none;border-radius:10px;padding:8px 18px;cursor:pointer;transition:all .25s;overflow:hidden;position:relative;}
-.btn-nav-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent 60%);opacity:0;transition:opacity .25s;}
-.btn-nav-cta:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(26,25,23,.22);}
-.btn-nav-cta:hover::after{opacity:1;}
+.btn-nav{font-family:'Space Grotesk',sans-serif;font-size:.64rem;font-weight:700;
+  background:var(--ob);color:var(--bg);border:none;border-radius:10px;
+  padding:8px 18px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.btn-nav::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.1),transparent 60%);
+  opacity:0;transition:opacity .25s;}
+.btn-nav:hover{transform:translateY(-1px);box-shadow:0 5px 16px rgba(21,20,18,.24);}
+.btn-nav:hover::after{opacity:1;}
 .nav-burger{display:none;flex-direction:column;gap:4.5px;cursor:pointer;padding:5px;}
-.nav-burger span{display:block;width:21px;height:2px;background:var(--ob);border-radius:2px;transition:all .32s cubic-bezier(.22,1,.36,1);}
+.nav-burger span{display:block;width:21px;height:2px;background:var(--ob);border-radius:2px;
+  transition:all .32s cubic-bezier(.22,1,.36,1);}
 .nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px);}
 .nav-burger.open span:nth-child(2){opacity:0;transform:translateX(-8px);}
 .nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px);}
-.mob-menu{display:none;position:fixed;inset:0;z-index:999;background:rgba(247,245,240,.98);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;}
+.mob-menu{display:none;position:fixed;inset:0;z-index:999;
+  background:rgba(247,244,239,.98);backdrop-filter:blur(24px);
+  flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;}
 .mob-menu.open{display:flex;}
-.mob-menu a{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--ob);letter-spacing:-1px;transition:color .2s,transform .2s;}
+.mob-menu a{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--ob);
+  letter-spacing:-1px;transition:color .2s,transform .2s;}
 .mob-menu a:hover{color:var(--sage2);transform:translateX(4px);}
 .mob-tel{font-family:'Space Grotesk',sans-serif;font-size:.82rem;color:var(--muted);margin-top:.3rem;}
-.mob-cta-btn{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;background:var(--ob);color:var(--beige5);border:none;border-radius:12px;padding:12px 30px;cursor:pointer;margin-top:.2rem;}
-/* UTILS */
+.mob-cta{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;
+  background:var(--ob);color:var(--bg);border:none;border-radius:12px;
+  padding:12px 28px;cursor:pointer;margin-top:.2rem;}
+
+/* ── UTILS ── */
 .wrap{max-width:1180px;margin:0 auto;padding:5rem 2.5rem;position:relative;z-index:1;}
 .divider{height:1px;background:var(--border);max-width:1180px;margin:0 auto;}
-.sec-tag{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--sage2);margin-bottom:.55rem;display:flex;align-items:center;gap:.45rem;}
-.sec-tag::before{content:'';width:16px;height:1.5px;background:var(--lime);border-radius:2px;flex-shrink:0;}
-.sec-h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.65rem,3vw,2.4rem);font-weight:700;letter-spacing:-1.3px;line-height:1.0;margin-bottom:.65rem;}
-.sec-h2 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
-.btn-p{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:700;background:var(--ob);color:var(--beige5);border:none;border-radius:12px;padding:12px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .25s;text-decoration:none;}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(26,25,23,.2);}
-.btn-s{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;background:var(--beige3);color:var(--ob);border:1.5px solid var(--border2);border-radius:12px;padding:12px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .25s;box-shadow:var(--clay-sm);text-decoration:none;}
-.btn-s:hover{transform:translateY(-2px);box-shadow:var(--clay-h);background:var(--white);border-color:rgba(162,181,168,.35);}
-/* CTA BANNER */
-.cta-banner{background:var(--ob);border-radius:24px;padding:3.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;position:relative;overflow:hidden;box-shadow:0 16px 50px rgba(26,25,23,.17);}
-.cta-banner::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.07),transparent 65%);pointer-events:none;}
-.cta-h3{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.35rem,2.8vw,2rem);font-weight:700;letter-spacing:-1px;color:var(--beige5);line-height:1.02;margin-bottom:.45rem;}
-.cta-sub{font-size:.8rem;color:rgba(247,245,240,.42);line-height:1.65;max-width:400px;}
+.tag{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--sage2);margin-bottom:.55rem;
+  display:flex;align-items:center;gap:.45rem;}
+.tag::before{content:'';width:14px;height:2px;background:var(--lime);border-radius:2px;flex-shrink:0;}
+.h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.65rem,3vw,2.35rem);font-weight:700;
+  letter-spacing:-1.2px;line-height:1.0;margin-bottom:.65rem;}
+.h2 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
+/* bullet with lime dot */
+.bl{display:flex;align-items:flex-start;gap:.55rem;font-size:.78rem;color:var(--ob2);line-height:1.55;}
+.bl::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--lime);
+  flex-shrink:0;margin-top:.35rem;}
+.bl-list{display:flex;flex-direction:column;gap:.42rem;}
+
+/* ── BUTTONS ── */
+.btn-p{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:700;
+  background:var(--ob);color:var(--bg);border:none;border-radius:12px;
+  padding:12px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+  transition:all .25s;text-decoration:none;}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(21,20,18,.2);}
+.btn-s{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;
+  background:var(--beige3);color:var(--ob);border:1.5px solid var(--border2);
+  border-radius:12px;padding:12px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+  transition:all .25s;box-shadow:var(--clay-sm);text-decoration:none;}
+.btn-s:hover{transform:translateY(-2px);box-shadow:var(--clay-h);
+  background:var(--white);border-color:rgba(162,181,168,.35);}
+
+/* ── CLAY CARDS ── */
+.card{background:var(--white);border-radius:20px;border:1px solid rgba(255,255,255,.8);
+  box-shadow:var(--clay);transition:box-shadow .3s cubic-bezier(.22,1,.36,1),transform .3s cubic-bezier(.22,1,.36,1);}
+.card:hover{box-shadow:var(--clay-h);transform:translateY(-4px);}
+.card-sm{background:var(--white);border-radius:16px;border:1px solid rgba(255,255,255,.8);
+  box-shadow:var(--clay-sm);transition:box-shadow .28s,transform .28s;}
+.card-sm:hover{box-shadow:var(--clay-h);transform:translateY(-3px);}
+.card-dark{background:var(--ob);border-radius:20px;box-shadow:var(--clay-dark);}
+.card-beige{background:var(--beige4);border-radius:20px;border:1px solid rgba(190,173,147,.22);
+  box-shadow:var(--clay-sm);}
+
+/* ── CTA BANNER ── */
+.cta-banner{background:var(--ob);border-radius:24px;padding:3.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+  position:relative;overflow:hidden;box-shadow:0 16px 50px rgba(21,20,18,.17);}
+.cta-banner::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;
+  border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.07),transparent 65%);pointer-events:none;}
+.cta-h3{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.35rem,2.8vw,2rem);
+  font-weight:700;letter-spacing:-1px;color:var(--bg);line-height:1.0;margin-bottom:.42rem;}
+.cta-sub{font-size:.8rem;color:rgba(247,244,239,.42);line-height:1.65;max-width:400px;}
 .cta-btns{display:flex;gap:.55rem;flex-wrap:wrap;}
-.btn-light{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:700;background:var(--beige5);color:var(--ob);border:none;border-radius:12px;padding:12px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .25s;text-decoration:none;}
-.btn-light:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(247,245,240,.18);}
-.btn-ghost{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;background:rgba(247,245,240,.1);color:var(--beige5);border:1.5px solid rgba(247,245,240,.15);border-radius:12px;padding:12px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .22s;text-decoration:none;}
-.btn-ghost:hover{background:rgba(247,245,240,.18);transform:translateY(-2px);}
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-index:1;background:rgba(247,245,240,.97);}
-.footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:1.8rem;}
-.footer-brand-desc{font-size:.67rem;color:var(--muted2);line-height:1.7;max-width:225px;margin-bottom:.9rem;margin-top:.6rem;}
-.footer-socials{display:flex;gap:.42rem;}
-.footer-social{width:31px;height:31px;border-radius:9px;background:var(--beige3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.72rem;transition:all .22s;text-decoration:none;color:var(--ob);}
-.footer-social:hover{background:var(--ob);color:var(--beige5);transform:translateY(-2px);}
-.footer-col-title{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem;}
-.footer-links{display:flex;flex-direction:column;gap:.4rem;}
-.footer-links a{font-size:.68rem;color:var(--ob2);transition:color .2s,transform .2s;display:inline-block;}
-.footer-links a:hover{color:var(--sage2);transform:translateX(3px);}
-.footer-bottom{max-width:1180px;margin:0 auto;border-top:1px solid var(--border);padding-top:1.1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem;}
-.footer-legal{font-size:.57rem;color:var(--muted);line-height:1.65;}
-.footer-badges{display:flex;gap:.45rem;}
-.footer-badge{font-family:'Space Grotesk',sans-serif;font-size:.51rem;font-weight:600;background:var(--beige3);border:1px solid var(--border2);border-radius:6px;padding:3px 8px;color:var(--muted2);}
-/* REVEAL ANIMATIONS - safe: visible by default, animated when JS ready */
-.reveal,.reveal-l,.reveal-r{transition:opacity .62s cubic-bezier(.22,1,.36,1),transform .62s cubic-bezier(.22,1,.36,1);}
-.js-loaded .reveal{opacity:0;transform:translateY(16px);}
-.js-loaded .reveal-l{opacity:0;transform:translateX(-16px);}
-.js-loaded .reveal-r{opacity:0;transform:translateX(16px);}
-.reveal.on,.reveal-l.on,.reveal-r.on{opacity:1!important;transform:none!important;}
-.stagger>.reveal:nth-child(1){transition-delay:.04s}.stagger>.reveal:nth-child(2){transition-delay:.09s}.stagger>.reveal:nth-child(3){transition-delay:.14s}.stagger>.reveal:nth-child(4){transition-delay:.19s}.stagger>.reveal:nth-child(5){transition-delay:.24s}.stagger>.reveal:nth-child(6){transition-delay:.29s}.stagger>.reveal:nth-child(7){transition-delay:.34s}.stagger>.reveal:nth-child(8){transition-delay:.39s}
-/* FU - hero entrance */
-@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.btn-light{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:700;
+  background:var(--bg);color:var(--ob);border:none;border-radius:12px;
+  padding:12px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+  transition:all .25s;text-decoration:none;}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(247,244,239,.18);}
+.btn-ghost{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:600;
+  background:rgba(247,244,239,.1);color:var(--bg);border:1.5px solid rgba(247,244,239,.16);
+  border-radius:12px;padding:12px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+  transition:all .22s;text-decoration:none;}
+.btn-ghost:hover{background:rgba(247,244,239,.18);transform:translateY(-2px);}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-index:1;
+  background:rgba(247,244,239,.97);}
+.fi{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:2.5rem;margin-bottom:1.8rem;}
+.fb-desc{font-size:.67rem;color:var(--muted2);line-height:1.7;max-width:225px;margin-bottom:.9rem;margin-top:.6rem;}
+.fsoc{display:flex;gap:.42rem;}
+.fsl{width:30px;height:30px;border-radius:9px;background:var(--beige3);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:.72rem;
+  transition:all .22s;text-decoration:none;color:var(--ob);}
+.fsl:hover{background:var(--ob);color:var(--bg);transform:translateY(-2px);}
+.fct{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem;}
+.flinks{display:flex;flex-direction:column;gap:.4rem;}
+.flinks a{font-size:.68rem;color:var(--ob2);transition:color .2s,transform .2s;display:inline-block;}
+.flinks a:hover{color:var(--sage2);transform:translateX(3px);}
+.fb{max-width:1180px;margin:0 auto;border-top:1px solid var(--border);padding-top:1.1rem;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem;}
+.fb-legal{font-size:.57rem;color:var(--muted);line-height:1.65;}
+.fb-badges{display:flex;gap:.45rem;}
+.fb-badge{font-family:'Space Grotesk',sans-serif;font-size:.51rem;font-weight:600;
+  background:var(--beige3);border:1px solid var(--border2);border-radius:6px;
+  padding:3px 8px;color:var(--muted2);}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes pulse-lime{0%,100%{box-shadow:0 0 0 0 rgba(188,212,26,.45)}70%{box-shadow:0 0 0 8px rgba(188,212,26,0)}}
-@keyframes glitch{0%{transform:translate(0)}25%{transform:translate(-2px,1px)}50%{transform:translate(2px,-1px)}75%{transform:translate(-1px,2px)}100%{transform:translate(0)}}
+@keyframes pl{0%,100%{box-shadow:0 0 0 0 rgba(188,212,26,.45)}70%{box-shadow:0 0 0 8px rgba(188,212,26,0)}}
+@keyframes glitch{0%{transform:translate(0)}25%{transform:translate(-2px,1px)}
+  50%{transform:translate(2px,-1px)}75%{transform:translate(-1px,2px)}100%{transform:translate(0)}}
+@keyframes blob{0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(18px,-12px) scale(1.04)}66%{transform:translate(-12px,8px) scale(.97)}}
 .fu{opacity:0;animation:fadeUp .62s cubic-bezier(.22,1,.36,1) forwards;}
-.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}.d5{animation-delay:.35s}.d6{animation-delay:.42s}
-/* RESPONSIVE */
-@media(max-width:768px){.nav-center,.nav-tel{display:none;}.nav-burger{display:flex;}nav{padding:0 1.5rem;}}
-@media(max-width:640px){.wrap{padding:3rem 1.5rem;}.footer-inner{grid-template-columns:1fr 1fr;gap:1.4rem;}}
-@media(max-width:420px){.footer-inner{grid-template-columns:1fr;}}
-.page-top{padding-top:64px;position:relative;z-index:1;}
-.ch{max-width:1180px;margin:0 auto;padding:3.5rem 2.5rem 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;}
-.ch-tag{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sage2);margin-bottom:.55rem;display:flex;align-items:center;gap:.38rem;}
-.ch-tag::before{content:'';width:15px;height:1.5px;background:var(--lime);border-radius:2px;}
-.ch-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.9rem,4.5vw,3.4rem);font-weight:700;letter-spacing:-2px;line-height:.95;margin-bottom:.85rem;}
+.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}
+.d4{animation-delay:.28s}.d5{animation-delay:.35s}.d6{animation-delay:.42s}
+/* REVEAL — visible by default, hidden only when JS loaded */
+.rv,.rv-l,.rv-r{transition:opacity .62s cubic-bezier(.22,1,.36,1),transform .62s cubic-bezier(.22,1,.36,1);}
+.js-on .rv{opacity:0;transform:translateY(16px);}
+.js-on .rv-l{opacity:0;transform:translateX(-16px);}
+.js-on .rv-r{opacity:0;transform:translateX(16px);}
+.rv.on,.rv-l.on,.rv-r.on{opacity:1!important;transform:none!important;}
+.st>.rv:nth-child(1){transition-delay:.04s}.st>.rv:nth-child(2){transition-delay:.09s}
+.st>.rv:nth-child(3){transition-delay:.14s}.st>.rv:nth-child(4){transition-delay:.19s}
+.st>.rv:nth-child(5){transition-delay:.24s}.st>.rv:nth-child(6){transition-delay:.29s}
+.st>.rv:nth-child(7){transition-delay:.34s}.st>.rv:nth-child(8){transition-delay:.39s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-center,.nav-tel{display:none;}.nav-burger{display:flex;}nav{padding:0 1.5rem;}
+}
+@media(max-width:640px){.wrap{padding:3rem 1.5rem;}.fi{grid-template-columns:1fr 1fr;gap:1.4rem;}}
+@media(max-width:420px){.fi{grid-template-columns:1fr;}}
+
+.pt{padding-top:64px;position:relative;z-index:1;}
+/* HERO */
+.ch{max-width:1180px;margin:0 auto;padding:3.5rem 2.5rem 2.5rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;}
+.ch-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.9rem,4.5vw,3.4rem);
+  font-weight:700;letter-spacing:-2px;line-height:.95;margin-bottom:.85rem;}
 .ch-h1 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
 .ch-sub{font-size:.86rem;color:var(--muted2);line-height:1.78;max-width:400px;}
 .ch-photo{border-radius:20px;overflow:hidden;aspect-ratio:4/3;box-shadow:var(--clay);position:relative;}
 .ch-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
 .ch-photo:hover img{transform:scale(1.03);}
-.ch-photo-badge{position:absolute;bottom:14px;left:14px;background:var(--white);border-radius:11px;padding:.55rem .85rem;box-shadow:var(--clay);display:flex;align-items:center;gap:.45rem;}
+.ch-badge{position:absolute;bottom:14px;left:14px;background:var(--white);border-radius:11px;
+  padding:.55rem .85rem;box-shadow:var(--clay);display:flex;align-items:center;gap:.45rem;}
 .ch-badge-stars{color:#F5A623;font-size:.7rem;}
 .ch-badge-txt{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:700;}
-.contact-body{max-width:1180px;margin:0 auto;padding:0 2.5rem 5rem;display:grid;grid-template-columns:1fr 1.35fr;gap:1.3rem;align-items:start;}
-.contact-left{display:flex;flex-direction:column;gap:.8rem;}
-.ic{background:var(--white);border-radius:16px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);padding:1.1rem;transition:box-shadow .28s,transform .28s;}
+/* BODY */
+.cb{max-width:1180px;margin:0 auto;padding:0 2.5rem 5rem;
+  display:grid;grid-template-columns:1fr 1.35fr;gap:1.3rem;align-items:start;}
+.cl{display:flex;flex-direction:column;gap:.8rem;}
+/* info cards */
+.ic{background:var(--white);border-radius:16px;border:1px solid rgba(255,255,255,.8);
+  box-shadow:var(--clay-sm);padding:1.1rem;transition:box-shadow .28s,transform .28s;}
 .ic:hover{box-shadow:var(--clay-h);transform:translateY(-3px);}
 .ic.dark{background:var(--ob);}
-.ic.beige{background:var(--beige4);border:1px solid rgba(190,173,147,.2);}
-.ic-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.88rem;margin-bottom:.65rem;}
-.ic-icon.bg-beige{background:var(--beige3);box-shadow:var(--clay-sm);}
-.ic-icon.bg-sage{background:rgba(162,181,168,.14);box-shadow:var(--clay-sm);}
-.ic-icon.bg-lime{background:rgba(188,212,26,.1);box-shadow:var(--clay-sm);}
+.ic.beige{background:var(--beige4);border:1px solid rgba(190,173,147,.18);}
+.ic-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  font-size:.88rem;margin-bottom:.65rem;}
+.ic-icon.bg-b{background:var(--beige3);box-shadow:var(--clay-sm);}
+.ic-icon.bg-s{background:rgba(162,181,168,.14);box-shadow:var(--clay-sm);}
+.ic-icon.bg-l{background:rgba(188,212,26,.1);box-shadow:var(--clay-sm);}
 .ic-title{font-family:'Space Grotesk',sans-serif;font-size:.76rem;font-weight:700;margin-bottom:.22rem;}
-.ic.dark .ic-title{color:var(--beige5);}
+.ic.dark .ic-title{color:var(--bg);}
 .ic-val{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:700;color:var(--sage2);margin-bottom:.1rem;}
 .ic.dark .ic-val{color:var(--sage);}
 .ic-sub{font-size:.61rem;color:var(--muted);line-height:1.5;}
-.ic.dark .ic-sub{color:rgba(247,245,240,.35);}
-.open-badge{display:inline-flex;align-items:center;gap:.32rem;font-family:'Space Grotesk',sans-serif;font-size:.56rem;font-weight:600;background:rgba(188,212,26,.14);color:#5a6e00;border:1px solid rgba(188,212,26,.28);border-radius:50px;padding:3px 10px;margin-bottom:.75rem;}
-.open-dot{width:5px;height:5px;border-radius:50%;background:var(--lime);animation:pulse-lime 2s infinite;}
-.horaires-title{font-family:'Space Grotesk',sans-serif;font-size:.76rem;font-weight:700;margin-bottom:.65rem;}
-.h-row{display:flex;justify-content:space-between;align-items:center;padding:.32rem 0;border-bottom:1px solid rgba(190,173,147,.13);}
+.ic.dark .ic-sub{color:rgba(247,244,239,.35);}
+/* horaires */
+.open-badge{display:inline-flex;align-items:center;gap:.32rem;font-family:'Space Grotesk',sans-serif;
+  font-size:.56rem;font-weight:600;background:rgba(188,212,26,.14);color:#5a6e00;
+  border:1px solid rgba(188,212,26,.28);border-radius:50px;padding:3px 10px;margin-bottom:.75rem;}
+.ob-dot{width:5px;height:5px;border-radius:50%;background:var(--lime);animation:pl 2s infinite;}
+.h-title{font-family:'Space Grotesk',sans-serif;font-size:.76rem;font-weight:700;margin-bottom:.65rem;}
+.h-row{display:flex;justify-content:space-between;align-items:center;padding:.32rem 0;
+  border-bottom:1px solid rgba(190,173,147,.13);}
 .h-row:last-child{border-bottom:none;}
 .h-day{font-family:'Space Grotesk',sans-serif;font-size:.65rem;font-weight:600;color:var(--ob2);}
 .h-time{font-family:'Space Grotesk',sans-serif;font-size:.65rem;font-weight:700;color:var(--sage2);}
-.h-closed{font-family:'Space Grotesk',sans-serif;font-size:.62rem;color:var(--muted);}
+.h-cls{font-family:'Space Grotesk',sans-serif;font-size:.62rem;color:var(--muted);}
+/* zones */
 .zones{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.38rem;}
-.ztag{font-family:'Space Grotesk',sans-serif;font-size:.57rem;font-weight:600;background:var(--beige3);border-radius:6px;padding:3px 7px;color:var(--ob2);}
+.ztag{font-family:'Space Grotesk',sans-serif;font-size:.57rem;font-weight:600;
+  background:var(--beige3);border-radius:6px;padding:3px 7px;color:var(--ob2);}
 .ztag.sp{background:rgba(162,181,168,.13);color:var(--sage2);}
-.map-card{border-radius:16px;overflow:hidden;height:180px;box-shadow:var(--clay-sm);border:1px solid var(--border);position:relative;}
+/* map */
+.map-card{border-radius:16px;overflow:hidden;height:180px;box-shadow:var(--clay-sm);
+  border:1px solid var(--border);position:relative;}
 .map-card iframe{width:100%;height:100%;border:none;}
-.map-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(247,245,240,.95),transparent);padding:.65rem;}
+.map-ov{position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(247,244,239,.95),transparent);padding:.65rem;}
 .map-addr{font-family:'Space Grotesk',sans-serif;font-size:.61rem;font-weight:600;}
-.contact-right{display:flex;flex-direction:column;gap:.85rem;}
-.form-card{background:var(--white);border-radius:20px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay);padding:1.8rem;}
-.form-title{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;letter-spacing:-.3px;margin-bottom:.22rem;}
-.form-title em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
-.form-sub{font-size:.68rem;color:var(--muted2);line-height:1.5;margin-bottom:1.3rem;}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:.65rem;}
+/* RIGHT */
+.cr{display:flex;flex-direction:column;gap:.85rem;}
+/* form card */
+.fcard{background:var(--white);border-radius:20px;border:1px solid rgba(255,255,255,.8);
+  box-shadow:var(--clay);padding:1.8rem;}
+.ft{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;letter-spacing:-.3px;margin-bottom:.22rem;}
+.ft em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
+.fsub{font-size:.68rem;color:var(--muted2);line-height:1.5;margin-bottom:1.3rem;}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-bottom:.65rem;}
 .fg{display:flex;flex-direction:column;gap:.26rem;}
 .fg.full{grid-column:span 2;}
-.fg label{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
-.fg input,.fg textarea,.fg select{background:var(--beige3);border:1.5px solid var(--border2);border-radius:10px;padding:.65rem .88rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.77rem;color:var(--ob);outline:none;transition:all .2s;-webkit-appearance:none;}
-.fg input::placeholder,.fg textarea::placeholder{color:rgba(26,25,23,.2);}
-.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--sage);background:var(--white);box-shadow:0 0 0 3px rgba(162,181,168,.11);}
+.fg label{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.fg input,.fg textarea,.fg select{background:var(--beige3);border:1.5px solid var(--border2);
+  border-radius:10px;padding:.65rem .88rem;font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.77rem;color:var(--ob);outline:none;transition:all .2s;-webkit-appearance:none;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(21,20,18,.2);}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--sage);
+  background:var(--white);box-shadow:0 0 0 3px rgba(162,181,168,.11);}
 .fg textarea{resize:vertical;min-height:82px;}
-.projet-choices{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.16rem;}
-.projet-badge{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:600;padding:4px 10px;border-radius:8px;border:1.5px solid var(--border2);background:var(--beige3);cursor:pointer;transition:all .2s;}
-.projet-badge.active{background:var(--ob);color:var(--beige5);border-color:var(--ob);}
-.projet-badge:not(.active):hover{border-color:var(--sage);background:var(--white);}
-.form-footer{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:1rem;flex-wrap:wrap;}
-.form-note{font-size:.57rem;color:var(--muted);line-height:1.44;max-width:205px;}
-.btn-submit{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:700;background:var(--ob);color:var(--beige5);border:none;border-radius:11px;padding:11px 24px;cursor:pointer;display:flex;align-items:center;gap:7px;transition:all .25s;}
-.btn-submit:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(26,25,23,.2);}
-.form-success{display:none;background:rgba(188,212,26,.1);border:1px solid rgba(188,212,26,.28);border-radius:13px;padding:1.3rem;text-align:center;}
-.form-success.show{display:block;}
-.form-success-icon{font-size:1.7rem;margin-bottom:.45rem;}
-.form-success-title{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;}
-.form-success-sub{font-size:.66rem;color:var(--muted2);margin-top:.18rem;}
-.vask-card{background:var(--ob);border-radius:18px;padding:1.35rem;box-shadow:0 7px 28px rgba(26,25,23,.16);position:relative;overflow:hidden;}
-.vask-card::before{content:'';position:absolute;top:-25px;right:-25px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.09),transparent 70%);}
-.vask-tag{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(162,181,168,.65);margin-bottom:.32rem;}
-.vask-title{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;color:var(--beige5);margin-bottom:.2rem;}
-.vask-sub{font-size:.65rem;color:rgba(247,245,240,.4);line-height:1.5;margin-bottom:.9rem;}
-.vask-embed{border-radius:13px;overflow:hidden;background:var(--beige3);}
-.vask-embed iframe{width:100%;display:block;border:none;}
-@media(max-width:860px){.ch,.contact-body{grid-template-columns:1fr;}.ch{padding-bottom:1.5rem;}.form-grid{grid-template-columns:1fr;}.fg.full{grid-column:span 1;}.form-footer{flex-direction:column;align-items:stretch;}.btn-submit{justify-content:center;}}
-@media(max-width:580px){.ch,.contact-body{padding-left:1.5rem;padding-right:1.5rem;}}
+/* projet badges */
+.pbadges{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.16rem;}
+.pb{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:600;
+  padding:4px 10px;border-radius:8px;border:1.5px solid var(--border2);
+  background:var(--beige3);cursor:pointer;transition:all .2s;}
+.pb.active{background:var(--ob);color:var(--bg);border-color:var(--ob);}
+.pb:not(.active):hover{border-color:var(--sage);background:var(--white);}
+.ff{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:1rem;flex-wrap:wrap;}
+.fn{font-size:.57rem;color:var(--muted);line-height:1.44;max-width:205px;}
+.bsub{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:700;
+  background:var(--ob);color:var(--bg);border:none;border-radius:11px;
+  padding:11px 24px;cursor:pointer;display:flex;align-items:center;gap:7px;transition:all .25s;}
+.bsub:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(21,20,18,.2);}
+.fsuccess{display:none;background:rgba(188,212,26,.1);border:1px solid rgba(188,212,26,.28);
+  border-radius:13px;padding:1.3rem;text-align:center;}
+.fsuccess.show{display:block;}
+.fsi{font-size:1.7rem;margin-bottom:.45rem;}
+.fst{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;}
+.fss{font-size:.66rem;color:var(--muted2);margin-top:.18rem;}
+/* videoask */
+.vcard{background:var(--ob);border-radius:18px;padding:1.35rem;
+  box-shadow:0 7px 28px rgba(21,20,18,.16);position:relative;overflow:hidden;}
+.vcard::before{content:'';position:absolute;top:-25px;right:-25px;width:110px;height:110px;
+  border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.09),transparent 70%);}
+.vtag{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:rgba(162,181,168,.65);margin-bottom:.32rem;}
+.vtt{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;color:var(--bg);margin-bottom:.2rem;}
+.vsub{font-size:.65rem;color:rgba(247,244,239,.4);line-height:1.5;margin-bottom:.9rem;}
+.vembed{border-radius:13px;overflow:hidden;background:var(--beige3);}
+.vembed iframe{width:100%;display:block;border:none;}
+@media(max-width:860px){.ch,.cb{grid-template-columns:1fr;}.fgrid{grid-template-columns:1fr;}
+  .fg.full{grid-column:span 1;}.ff{flex-direction:column;align-items:stretch;}.bsub{justify-content:center;}}
+@media(max-width:580px){.ch,.cb{padding-left:1.5rem;padding-right:1.5rem;}}
 </style></head><body>
-<nav id="mn"><a href="index.html" class="nav-logo"><div class="logo-text">aeconom<i>i</i>a.</div></a><div class="nav-center"><a href="index.html" class="nav-link">Accueil</a><a href="apropos.html" class="nav-link">À propos</a><a href="simulation.html" class="nav-link">Simulation</a><a href="contact.html" class="nav-link active">Contact</a></div><div class="nav-right"><a href="tel:0279414243" class="nav-tel">📞 02.79.41.42.43</a><a href="contact.html"><button class="btn-nav-cta">Nous contacter</button></a></div><div class="nav-burger" id="nb" onclick="toggleMob()"><span></span><span></span><span></span></div></nav><div class="mob-menu" id="mm"><a href="index.html" onclick="closeMob()">Accueil</a><a href="apropos.html" onclick="closeMob()">À propos</a><a href="simulation.html" onclick="closeMob()">Simulation</a><a href="contact.html" onclick="closeMob()">Contact</a><a href="contact.html" onclick="closeMob()"><button class="mob-cta-btn">Nous contacter</button></a><span class="mob-tel">📞 02.79.41.42.43</span></div>
-<div class="page-top">
+<nav id="mn"><a href="index.html" class="nav-logo"><div class="logo-text">aeconom<i>i</i>a.</div></a>
+<div class="nav-center"><a href="index.html" class="nl">Accueil</a><a href="apropos.html" class="nl">À propos</a><a href="simulation.html" class="nl">Simulation</a><a href="contact.html" class="nl active">Contact</a></div>
+<div class="nav-right"><a href="tel:0279414243" class="nav-tel">📞 02.79.41.42.43</a>
+<a href="contact.html"><button class="btn-nav">Nous contacter</button></a></div>
+<div class="nav-burger" id="nb" onclick="toggleMob()"><span></span><span></span><span></span></div></nav>
+<div class="mob-menu" id="mm"><a href="index.html" onclick="closeMob()">Accueil</a><a href="apropos.html" onclick="closeMob()">À propos</a><a href="simulation.html" onclick="closeMob()">Simulation</a><a href="contact.html" onclick="closeMob()">Contact</a>
+<a href="contact.html" onclick="closeMob()"><button class="mob-cta">Nous contacter</button></a>
+<span class="mob-tel">📞 02.79.41.42.43</span></div>
+<div class="pt">
+  <!-- HERO -->
   <div class="ch">
     <div>
-      <div class="ch-tag fu d1">Contactez-nous</div>
+      <div class="tag fu d1">Contactez-nous</div>
       <h1 class="ch-h1 fu d2">Parlons de<br/><em>votre projet.</em></h1>
       <p class="ch-sub fu d3">Premier rendez-vous gratuit et sans engagement. Téléphonique ou physique. Réponse sous 24h.</p>
+      <div style="display:flex;gap:.6rem;margin-top:1.2rem" class="fu d4">
+        <a href="simulation.html" class="btn-p">Simuler d'abord →</a>
+        <a href="tel:0279414243" class="btn-s">📞 02.79.41.42.43</a>
+      </div>
     </div>
     <div class="ch-photo fu d3">
-      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/PHOTO%2014.jpg" alt="Dimitri avec ses clients"/>
-      <div class="ch-photo-badge"><span class="ch-badge-stars">★★★★★</span><span class="ch-badge-txt">750+ avis 5 étoiles</span></div>
+      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photomiseensituation1.jpg" alt="Équipe Aeconomia avec clients"/>
+      <div class="ch-badge"><span class="ch-badge-stars">★★★★★</span><span class="ch-badge-txt">750+ avis 5 étoiles</span></div>
     </div>
   </div>
-  <div class="contact-body">
-    <div class="contact-left">
-      <div class="ic beige reveal"><div class="open-badge"><span class="open-dot"></span>Ouvert maintenant</div><div class="horaires-title">Horaires d'ouverture</div><div class="h-row"><span class="h-day">Lundi — Vendredi</span><span class="h-time">8h00 — 20h00</span></div><div class="h-row"><span class="h-day">Samedi</span><span class="h-time">Sur rendez-vous</span></div><div class="h-row"><span class="h-day">Dimanche</span><span class="h-closed">Fermé</span></div></div>
-      <div class="ic reveal" style="transition-delay:.05s"><div class="ic-icon bg-beige">📞</div><div class="ic-title">Téléphone</div><a href="tel:0279414243"><div class="ic-val">02.79.41.42.43</div></a><div class="ic-sub">Réponse immédiate · Accord de principe le jour même</div></div>
-      <div class="ic reveal" style="transition-delay:.1s"><div class="ic-icon bg-sage">✉️</div><div class="ic-title">Email</div><a href="mailto:contact@aeconomia.fr"><div class="ic-val">contact@aeconomia.fr</div></a><div class="ic-sub">Réponse sous 24h ouvrées</div></div>
-      <div class="ic dark reveal" style="transition-delay:.15s"><div class="ic-icon" style="background:rgba(255,255,255,.07)">📍</div><div class="ic-title">Agence principale</div><div class="ic-val">22 rue de la République</div><div class="ic-sub">45000 Orléans · Parking à proximité</div></div>
-      <div class="ic reveal" style="transition-delay:.2s"><div class="ic-icon bg-lime">🗺️</div><div class="ic-title">Zones d'intervention</div><div class="zones"><span class="ztag">Orléans</span><span class="ztag">Tours</span><span class="ztag">Blois</span><span class="ztag">Chartres</span><span class="ztag">Montargis</span><span class="ztag">Châteaudun</span><span class="ztag sp">Paris 13e·15e·16e</span></div></div>
-      <div class="map-card reveal" style="transition-delay:.25s"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2651.4!2d1.9046!3d47.9048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4e5799c5794d7%3A0xe7bed25426794771!2sAeconomia!5e0!3m2!1sfr!2sfr!4v1" loading="lazy" title="Aeconomia Orléans"></iframe><div class="map-overlay"><div class="map-addr">📍 22 rue de la République · 45000 Orléans</div></div></div>
+
+  <!-- BODY -->
+  <div class="cb">
+    <!-- LEFT -->
+    <div class="cl">
+      <div class="ic beige rv">
+        <div class="open-badge"><span class="ob-dot"></span>Ouvert maintenant</div>
+        <div class="h-title">Horaires d'ouverture</div>
+        <div class="h-row"><span class="h-day">Lundi — Vendredi</span><span class="h-time">8h00 — 20h00</span></div>
+        <div class="h-row"><span class="h-day">Samedi</span><span class="h-time">Sur rendez-vous</span></div>
+        <div class="h-row"><span class="h-day">Dimanche</span><span class="h-cls">Fermé</span></div>
+      </div>
+      <div class="ic rv" style="transition-delay:.05s">
+        <div class="ic-icon bg-b">📞</div>
+        <div class="ic-title">Téléphone</div>
+        <a href="tel:0279414243"><div class="ic-val">02.79.41.42.43</div></a>
+        <div class="ic-sub">Réponse immédiate · Accord de principe le jour même</div>
+      </div>
+      <div class="ic rv" style="transition-delay:.1s">
+        <div class="ic-icon bg-s">✉️</div>
+        <div class="ic-title">Email</div>
+        <a href="mailto:contact@aeconomia.fr"><div class="ic-val">contact@aeconomia.fr</div></a>
+        <div class="ic-sub">Réponse sous 24h ouvrées</div>
+      </div>
+      <div class="ic dark rv" style="transition-delay:.15s">
+        <div class="ic-icon" style="background:rgba(255,255,255,.07)">📍</div>
+        <div class="ic-title">Agence principale</div>
+        <div class="ic-val">22 rue de la République</div>
+        <div class="ic-sub">45000 Orléans · Parking à proximité</div>
+      </div>
+      <div class="ic rv" style="transition-delay:.2s">
+        <div class="ic-icon bg-l">🗺️</div>
+        <div class="ic-title">Zones d'intervention</div>
+        <div class="zones">
+          <span class="ztag">Orléans</span><span class="ztag">Tours</span><span class="ztag">Blois</span>
+          <span class="ztag">Chartres</span><span class="ztag">Montargis</span><span class="ztag">Châteaudun</span>
+          <span class="ztag sp">Paris 13e · 15e · 16e</span>
+        </div>
+      </div>
+      <div class="map-card rv" style="transition-delay:.25s">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2651.4!2d1.9046!3d47.9048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4e5799c5794d7%3A0xe7bed25426794771!2sAeconomia!5e0!3m2!1sfr!2sfr!4v1" loading="lazy" title="Aeconomia Orléans"></iframe>
+        <div class="map-ov"><div class="map-addr">📍 22 rue de la République · 45000 Orléans</div></div>
+      </div>
     </div>
-    <div class="contact-right">
-      <div class="form-card reveal">
-        <div class="form-title">Parlez-nous de <em>votre projet.</em></div>
-        <div class="form-sub">Rendez-vous gratuit, sans engagement. Votre courtier dédié vous recontacte sous 24h.</div>
-        <form id="cf" onsubmit="submitF(event)">
-          <div class="form-grid">
+
+    <!-- RIGHT -->
+    <div class="cr">
+      <div class="fcard rv">
+        <div class="ft">Parlez-nous de <em>votre projet.</em></div>
+        <div class="fsub">Rendez-vous gratuit, sans engagement. Votre courtier dédié vous recontacte sous 24h.</div>
+        <form id="cf" onsubmit="subF(event)">
+          <div class="fgrid">
             <div class="fg"><label>Prénom *</label><input type="text" placeholder="Jean" required/></div>
             <div class="fg"><label>Nom *</label><input type="text" placeholder="Dupont" required/></div>
             <div class="fg"><label>Téléphone *</label><input type="tel" placeholder="06 XX XX XX XX" required/></div>
             <div class="fg"><label>Email *</label><input type="email" placeholder="jean@exemple.fr" required/></div>
-            <div class="fg full"><label>Votre projet</label><div class="projet-choices"><span class="projet-badge active" onclick="selP(this)">Achat résidence principale</span><span class="projet-badge" onclick="selP(this)">Investissement locatif</span><span class="projet-badge" onclick="selP(this)">Primo-accédant</span><span class="projet-badge" onclick="selP(this)">Renégociation</span><span class="projet-badge" onclick="selP(this)">Rachat de soulte</span><span class="projet-badge" onclick="selP(this)">Autre</span></div></div>
-            <div class="fg full"><label>Budget estimé</label><select><option value="">Sélectionner...</option><option>Moins de 150 000 €</option><option>150 000 — 250 000 €</option><option>250 000 — 400 000 €</option><option>400 000 — 600 000 €</option><option>Plus de 600 000 €</option><option>Je ne sais pas encore</option></select></div>
-            <div class="fg full"><label>Message (optionnel)</label><textarea placeholder="Décrivez votre situation, vos disponibilités..."></textarea></div>
+            <div class="fg full"><label>Votre projet</label>
+              <div class="pbadges">
+                <span class="pb active" onclick="selP(this)">Achat résidence principale</span>
+                <span class="pb" onclick="selP(this)">Investissement locatif</span>
+                <span class="pb" onclick="selP(this)">Primo-accédant</span>
+                <span class="pb" onclick="selP(this)">Renégociation</span>
+                <span class="pb" onclick="selP(this)">Rachat de soulte</span>
+                <span class="pb" onclick="selP(this)">Autre</span>
+              </div>
+            </div>
+            <div class="fg full"><label>Budget estimé</label>
+              <select><option value="">Sélectionner...</option>
+                <option>Moins de 150 000 €</option><option>150 000 — 250 000 €</option>
+                <option>250 000 — 400 000 €</option><option>400 000 — 600 000 €</option>
+                <option>Plus de 600 000 €</option><option>Je ne sais pas encore</option>
+              </select>
+            </div>
+            <div class="fg full"><label>Message (optionnel)</label>
+              <textarea placeholder="Décrivez votre situation, vos disponibilités..."></textarea>
+            </div>
           </div>
-          <div class="form-footer"><div class="form-note">Vos données sont utilisées uniquement pour vous recontacter.</div><button type="submit" class="btn-submit">Envoyer ma demande →</button></div>
+          <div class="ff">
+            <div class="fn">Vos données sont utilisées uniquement pour vous recontacter.</div>
+            <button type="submit" class="bsub">Envoyer ma demande →</button>
+          </div>
         </form>
-        <div class="form-success" id="fs"><div class="form-success-icon">✅</div><div class="form-success-title">Demande envoyée !</div><div class="form-success-sub">Votre courtier vous recontacte sous 24h ouvrées.</div></div>
+        <div class="fsuccess" id="fs">
+          <div class="fsi">✅</div>
+          <div class="fst">Demande envoyée !</div>
+          <div class="fss">Votre courtier vous recontacte sous 24h ouvrées.</div>
+        </div>
       </div>
-      <div class="vask-card reveal" style="transition-delay:.1s">
-        <div class="vask-tag">Préférez le format vidéo ?</div>
-        <div class="vask-title">Parlez-nous directement 🎥</div>
-        <div class="vask-sub">Répondez en vidéo, recevez une réponse personnalisée sous 24h.</div>
-        <div class="vask-embed"><iframe src="https://www.videoask.com/fbdf37bma" allow="camera *; microphone *; autoplay *; encrypted-media *; fullscreen *; display-capture *;" height="440px"></iframe></div>
+
+      <div class="vcard rv" style="transition-delay:.1s">
+        <div class="vtag">Préférez le format vidéo ?</div>
+        <div class="vtt">Parlez-nous directement 🎥</div>
+        <div class="vsub">Répondez en vidéo, recevez une réponse personnalisée de votre courtier sous 24h.</div>
+        <div class="vembed">
+          <iframe src="https://www.videoask.com/fbdf37bma"
+            allow="camera *; microphone *; autoplay *; encrypted-media *; fullscreen *; display-capture *;"
+            height="440px"></iframe>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<footer><div class="footer-inner"><div><div class="logo-text">aeconom<i>i</i>a.</div><p class="footer-brand-desc">Cabinet de courtage en prêt immobilier, leader indépendant à Orléans et en région Centre depuis 2022.</p><div class="footer-socials"><a href="https://www.instagram.com/aeconomia.courtage/" target="_blank" class="footer-social">📸</a><a href="https://www.facebook.com/Aeconomia.courtage/" target="_blank" class="footer-social">f</a><a href="https://www.linkedin.com/company/82227304/" target="_blank" class="footer-social">in</a></div></div><div><div class="footer-col-title">Navigation</div><div class="footer-links"><a href="index.html">Accueil</a><a href="apropos.html">À propos</a><a href="simulation.html">Simulation</a><a href="contact.html">Contact</a></div></div><div><div class="footer-col-title">Zones</div><div class="footer-links"><a href="#">Orléans</a><a href="#">Tours</a><a href="#">Blois</a><a href="#">Chartres</a><a href="#">Montargis</a><a href="#">Paris</a></div></div><div><div class="footer-col-title">Contact</div><div class="footer-links"><a href="tel:0279414243">02.79.41.42.43</a><a href="mailto:contact@aeconomia.fr">contact@aeconomia.fr</a><a href="#">22 rue de la République</a><a href="#">45000 Orléans</a></div></div></div><div class="footer-bottom"><div class="footer-legal">EURL · RCS Orléans 909 326 613 · COBSP · ORIAS n°22002183 · Contrôle ACPR · © 2026 Aeconomia</div><div class="footer-badges"><span class="footer-badge">ORIAS ✓</span><span class="footer-badge">COBSP ✓</span><span class="footer-badge">ACPR ✓</span></div></div></footer>
+<footer>
+<div class="fi">
+  <div>
+    <div class="logo-text">aeconom<i>i</i>a.</div>
+    <p class="fb-desc">Cabinet de courtage en prêt immobilier, leader indépendant à Orléans et en région Centre depuis 2022. 3000+ clients, 750+ avis 5★.</p>
+    <div class="fsoc">
+      <a href="https://www.instagram.com/aeconomia.courtage/" target="_blank" class="fsl">📸</a>
+      <a href="https://www.facebook.com/Aeconomia.courtage/" target="_blank" class="fsl">f</a>
+      <a href="https://www.linkedin.com/company/82227304/" target="_blank" class="fsl">in</a>
+    </div>
+  </div>
+  <div><div class="fct">Navigation</div><div class="flinks">
+    <a href="index.html">Accueil</a><a href="apropos.html">À propos</a>
+    <a href="simulation.html">Simulation</a><a href="contact.html">Contact</a>
+  </div></div>
+  <div><div class="fct">Zones</div><div class="flinks">
+    <a href="contact.html">Orléans</a><a href="contact.html">Tours</a>
+    <a href="contact.html">Blois</a><a href="contact.html">Chartres</a>
+    <a href="contact.html">Montargis</a><a href="contact.html">Paris</a>
+  </div></div>
+  <div><div class="fct">Contact</div><div class="flinks">
+    <a href="tel:0279414243">02.79.41.42.43</a>
+    <a href="mailto:contact@aeconomia.fr">contact@aeconomia.fr</a>
+    <a href="contact.html">22 rue de la République</a>
+    <a href="contact.html">45000 Orléans</a>
+  </div></div>
+</div>
+<div class="fb">
+  <div class="fb-legal">EURL · RCS Orléans 909 326 613 · COBSP · ORIAS n°22002183 · ACPR · © 2026 Aeconomia</div>
+  <div class="fb-badges"><span class="fb-badge">ORIAS ✓</span><span class="fb-badge">COBSP ✓</span><span class="fb-badge">ACPR ✓</span></div>
+</div>
+</footer>
 <script>
-function selP(el){document.querySelectorAll('.projet-badge').forEach(function(b){b.classList.remove('active');});el.classList.add('active');}
-function submitF(e){e.preventDefault();document.getElementById('cf').style.display='none';document.getElementById('fs').classList.add('show');}
+function selP(el){document.querySelectorAll('.pb').forEach(function(b){b.classList.remove('active');});el.classList.add('active');}
+function subF(e){e.preventDefault();document.getElementById('cf').style.display='none';document.getElementById('fs').classList.add('show');}
 </script>
 <script>
-function toggleMob(){var m=document.getElementById('mm'),b=document.getElementById('nb');m.classList.toggle('open');b.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
-function closeMob(){document.getElementById('mm').classList.remove('open');document.getElementById('nb').classList.remove('open');document.body.style.overflow='';}
-window.addEventListener('scroll',function(){document.getElementById('mn').classList.toggle('scrolled',window.scrollY>30);},{passive:true});
-document.documentElement.classList.add('js-loaded');
-var ro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on');});},{threshold:0,rootMargin:'0px 0px -20px 0px'});
-document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(function(el){ro.observe(el);});
+(function(){
+  document.documentElement.classList.add('js-on');
+  var ro=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on');});
+  },{threshold:0,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(function(el){ro.observe(el);});
+  window.addEventListener('scroll',function(){
+    document.getElementById('mn').classList.toggle('sc',window.scrollY>30);
+  },{passive:true});
+  window.toggleMob=function(){
+    var m=document.getElementById('mm'),b=document.getElementById('nb');
+    m.classList.toggle('open');b.classList.toggle('open');
+    document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+  };
+  window.closeMob=function(){
+    document.getElementById('mm').classList.remove('open');
+    document.getElementById('nb').classList.remove('open');
+    document.body.style.overflow='';
+  };
+})();
 </script></body></html>
