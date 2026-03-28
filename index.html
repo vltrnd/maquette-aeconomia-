@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Aeconomia — Courtiers en prêts immobiliers à Orléans</title>
+<meta name="description" content="1er cabinet de courtage local et indépendant du Loiret. 3000+ clients, 750 avis 5 étoiles. Simulez votre projet gratuitement."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet"/>
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F8F7F4;--bg2:#F1F0EC;--bg3:#E8E6E0;--white:#fff;
+  --ob:#1A1917;--ob2:#2C2B28;
+  --beige1:#BEAD93;--beige2:#DED6C8;--beige3:#F1F0EC;
+  --sage:#a2b5a8;--sage2:#75847c;--lime:#bcd41a;
+  --muted:#8A8680;--muted2:#6B6762;
+  --border:rgba(26,25,23,.07);--border2:rgba(26,25,23,.12);
+  --clay:8px 8px 20px rgba(190,173,147,.22),-4px -4px 12px rgba(255,255,255,.82),inset 0 1px 0 rgba(255,255,255,.65);
+  --clay-sm:4px 4px 12px rgba(190,173,147,.18),-2px -2px 8px rgba(255,255,255,.75),inset 0 1px 0 rgba(255,255,255,.5);
+  --clay-h:10px 10px 28px rgba(190,173,147,.32),-5px -5px 16px rgba(255,255,255,.92),inset 0 1px 0 rgba(255,255,255,.7);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ob);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(26,25,23,.034) 1px,transparent 1px),linear-gradient(90deg,rgba(26,25,23,.034) 1px,transparent 1px);
+  background-size:52px 52px;}
+::selection{background:rgba(162,181,168,.28);}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+.logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.08rem;color:var(--ob);letter-spacing:-.3px;line-height:1;user-select:none;}
+.logo-text i{font-style:italic;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2.5rem;height:66px;display:flex;align-items:center;justify-content:space-between;transition:background .35s,box-shadow .35s,border-color .35s;}
+nav.scrolled{background:rgba(248,247,244,.95);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--border);box-shadow:0 2px 28px rgba(190,173,147,.13);}
+.nav-logo{cursor:pointer;}
+.nav-center{display:flex;align-items:center;gap:.2rem;}
+.nav-link{font-family:'Space Grotesk',sans-serif;font-size:.64rem;font-weight:500;color:var(--muted);letter-spacing:.04em;padding:.42rem .9rem;border-radius:50px;transition:color .22s,background .22s,border-color .22s,transform .18s;position:relative;border:1px solid transparent;white-space:nowrap;}
+.nav-link:hover{color:var(--ob);background:rgba(26,25,23,.055);border-color:var(--border);transform:translateY(-1px);}
+.nav-link.active{color:var(--ob);font-weight:600;background:rgba(26,25,23,.04);border-color:var(--border);}
+.nav-link.active::after{content:'';position:absolute;bottom:.28rem;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--lime);}
+.nav-right{display:flex;align-items:center;gap:.55rem;}
+.nav-tel{font-family:'Space Grotesk',sans-serif;font-size:.66rem;font-weight:600;color:var(--ob2);padding:.38rem .8rem;border-radius:9px;background:var(--bg2);border:1px solid var(--border2);transition:all .22s;}
+.nav-tel:hover{background:var(--white);box-shadow:var(--clay-sm);transform:translateY(-1px);}
+.btn-nav-cta{font-family:'Space Grotesk',sans-serif;font-size:.67rem;font-weight:700;background:var(--ob);color:var(--bg);border:none;border-radius:10px;padding:9px 19px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.btn-nav-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent 60%);opacity:0;transition:opacity .25s;}
+.btn-nav-cta:hover{transform:translateY(-1px);box-shadow:0 5px 18px rgba(26,25,23,.24);}
+.btn-nav-cta:hover::after{opacity:1;}
+.nav-burger{display:none;flex-direction:column;gap:4.5px;cursor:pointer;padding:5px;}
+.nav-burger span{display:block;width:21px;height:2px;background:var(--ob);border-radius:2px;transition:all .3s cubic-bezier(.22,1,.36,1);}
+.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px);}
+.nav-burger.open span:nth-child(2){opacity:0;transform:translateX(-8px);}
+.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px);}
+.mob-menu{display:none;position:fixed;inset:0;z-index:999;background:rgba(248,247,244,.98);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+.mob-menu.open{display:flex;}
+.mob-menu a{font-family:'Space Grotesk',sans-serif;font-size:1.55rem;font-weight:700;color:var(--ob);letter-spacing:-1px;transition:color .2s,transform .2s;}
+.mob-menu a:hover{color:var(--sage2);transform:translateX(4px);}
+.mob-tel{font-family:'Space Grotesk',sans-serif;font-size:.85rem;color:var(--muted);}
+.mob-cta-btn{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;background:var(--ob);color:var(--bg);border:none;border-radius:12px;padding:13px 32px;cursor:pointer;margin-top:.3rem;}
+
+/* UTILS */
+.wrap{max-width:1180px;margin:0 auto;padding:5rem 2.5rem;position:relative;z-index:1;}
+.divider{height:1px;background:var(--border);max-width:1180px;margin:0 auto;}
+.sec-tag{font-family:'Space Grotesk',sans-serif;font-size:.53rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--sage2);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;}
+.sec-tag::before{content:'';width:16px;height:1.5px;background:var(--lime);border-radius:2px;flex-shrink:0;}
+.sec-h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;letter-spacing:-1.3px;line-height:1.02;margin-bottom:.7rem;}
+.sec-h2 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
+.btn-p{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:700;background:var(--ob);color:var(--bg);border:none;border-radius:13px;padding:13px 24px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .25s;text-decoration:none;}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(26,25,23,.2);}
+.btn-s{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:600;background:var(--white);color:var(--ob);border:1.5px solid var(--border2);border-radius:13px;padding:13px 24px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .25s;box-shadow:var(--clay-sm);text-decoration:none;}
+.btn-s:hover{transform:translateY(-2px);box-shadow:var(--clay-h);border-color:rgba(162,181,168,.35);}
+
+/* CTA BANNER */
+.cta-banner{background:var(--ob);border-radius:26px;padding:3.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(26,25,23,.18);}
+.cta-banner::before{content:'';position:absolute;top:-50px;right:-50px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.07),transparent 65%);pointer-events:none;}
+.cta-h3{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.4rem,2.8vw,2.1rem);font-weight:700;letter-spacing:-1px;color:var(--bg);line-height:1.05;margin-bottom:.5rem;}
+.cta-sub{font-size:.82rem;color:rgba(248,247,244,.45);line-height:1.65;max-width:420px;}
+.cta-btns{display:flex;gap:.6rem;flex-wrap:wrap;}
+.btn-light{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:700;background:var(--bg);color:var(--ob);border:none;border-radius:13px;padding:13px 24px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .25s;text-decoration:none;}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(248,247,244,.18);}
+.btn-ghost{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:600;background:rgba(248,247,244,.1);color:var(--bg);border:1.5px solid rgba(248,247,244,.15);border-radius:13px;padding:13px 24px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .22s;text-decoration:none;}
+.btn-ghost:hover{background:rgba(248,247,244,.18);transform:translateY(-2px);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-index:1;background:rgba(248,247,244,.97);}
+.footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2rem;}
+.footer-brand-desc{font-size:.68rem;color:var(--muted2);line-height:1.7;max-width:230px;margin-bottom:1rem;margin-top:.6rem;}
+.footer-socials{display:flex;gap:.45rem;}
+.footer-social{width:32px;height:32px;border-radius:9px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .22s;text-decoration:none;color:var(--ob);}
+.footer-social:hover{background:var(--ob);color:var(--bg);transform:translateY(-2px);}
+.footer-col-title{font-family:'Space Grotesk',sans-serif;font-size:.53rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem;}
+.footer-links{display:flex;flex-direction:column;gap:.42rem;}
+.footer-links a{font-size:.7rem;color:var(--ob2);transition:color .2s,transform .2s;display:inline-block;}
+.footer-links a:hover{color:var(--sage2);transform:translateX(3px);}
+.footer-bottom{max-width:1180px;margin:0 auto;border-top:1px solid var(--border);padding-top:1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;}
+.footer-legal{font-size:.58rem;color:var(--muted);line-height:1.65;}
+.footer-badges{display:flex;gap:.5rem;}
+.footer-badge{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:3px 8px;color:var(--muted2);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulse-lime{0%,100%{box-shadow:0 0 0 0 rgba(188,212,26,.5)}70%{box-shadow:0 0 0 9px rgba(188,212,26,0)}}
+@keyframes glitch{0%{transform:translate(0);filter:none}25%{transform:translate(-2px,1px);filter:blur(.4px)}50%{transform:translate(2px,-1px);filter:none}75%{transform:translate(-1px,2px);filter:blur(.3px)}100%{transform:translate(0);filter:none}}
+.fu{opacity:0;animation:fadeUp .65s cubic-bezier(.22,1,.36,1) forwards;}
+.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}.d5{animation-delay:.35s}.d6{animation-delay:.42s}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
+.reveal.on{opacity:1;transform:translateY(0);}
+.reveal-l{opacity:0;transform:translateX(-18px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
+.reveal-l.on{opacity:1;transform:translateX(0);}
+.reveal-r{opacity:0;transform:translateX(18px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
+.reveal-r.on{opacity:1;transform:translateX(0);}
+.stagger>*:nth-child(1){transition-delay:.04s}.stagger>*:nth-child(2){transition-delay:.09s}.stagger>*:nth-child(3){transition-delay:.14s}.stagger>*:nth-child(4){transition-delay:.19s}.stagger>*:nth-child(5){transition-delay:.24s}.stagger>*:nth-child(6){transition-delay:.29s}.stagger>*:nth-child(7){transition-delay:.34s}.stagger>*:nth-child(8){transition-delay:.39s}
+
+@media(max-width:768px){.nav-center,.nav-tel{display:none;}.nav-burger{display:flex;}nav{padding:0 1.5rem;}}
+@media(max-width:640px){.footer-inner{grid-template-columns:1fr 1fr;gap:1.5rem;}.wrap{padding:3rem 1.5rem;}}
+@media(max-width:420px){.footer-inner{grid-template-columns:1fr;}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:7rem 2.5rem 4rem;overflow:hidden;z-index:1;}
+.hero-blob1{position:absolute;top:-10%;right:-8%;width:55vw;height:70vh;background:radial-gradient(ellipse,rgba(162,181,168,.1),transparent 65%);pointer-events:none;border-radius:50%;animation:blob 12s ease-in-out infinite;}
+.hero-blob2{position:absolute;bottom:-5%;left:-5%;width:35vw;height:45vh;background:radial-gradient(ellipse,rgba(188,212,26,.055),transparent 65%);pointer-events:none;border-radius:50%;animation:blob 16s ease-in-out infinite reverse;}
+.hero-inner{max-width:1180px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Grotesk',sans-serif;font-size:.57rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--sage2);background:rgba(162,181,168,.1);border:1px solid rgba(162,181,168,.22);border-radius:50px;padding:5px 14px;margin-bottom:1.4rem;}
+.hero-eyebrow-dot{width:5px;height:5px;border-radius:50%;background:var(--lime);animation:pulse-lime 2s infinite;}
+.hero-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.6rem,5vw,4.4rem);font-weight:700;letter-spacing:-2.5px;line-height:.9;margin-bottom:1.2rem;}
+.hero-h1 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);display:block;margin-top:.1rem;}
+.hero-sub{font-size:.93rem;color:var(--muted2);line-height:1.8;max-width:460px;margin-bottom:1.8rem;}
+.hero-ctas{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1.8rem;}
+.hero-trust{display:flex;align-items:center;gap:.9rem;flex-wrap:wrap;}
+.hero-stars{display:flex;gap:2px;}
+.hero-stars span{color:#F5A623;font-size:.88rem;}
+.hero-trust-info{font-size:.7rem;color:var(--muted);line-height:1.45;}
+.hero-trust-info strong{color:var(--ob);font-weight:700;}
+.hero-trust-sep{width:1px;height:22px;background:var(--border2);}
+.hero-trust-tel{font-family:'Space Grotesk',sans-serif;font-size:.74rem;font-weight:600;color:var(--ob2);}
+/* HERO CARD RIGHT */
+.hero-right{position:relative;}
+.hero-card{background:var(--white);border-radius:24px;padding:1.7rem;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.8);position:relative;overflow:hidden;animation:float 5.5s ease-in-out infinite;}
+.hero-card::before{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.1),transparent 70%);pointer-events:none;}
+.hc-label{font-family:'Space Grotesk',sans-serif;font-size:.49rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem;display:flex;align-items:center;gap:.38rem;}
+.hc-label::before{content:'';width:10px;height:1.5px;background:var(--sage);border-radius:2px;}
+.hc-row{margin-bottom:.52rem;}
+.hc-row-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:.28rem;}
+.hc-row-lbl{font-family:'Space Grotesk',sans-serif;font-size:.59rem;font-weight:600;color:var(--ob2);}
+.hc-row-val{font-family:'Space Grotesk',sans-serif;font-size:.61rem;font-weight:700;background:var(--bg2);border-radius:7px;padding:2px 8px;box-shadow:var(--clay-sm);}
+.hc-track{position:relative;height:18px;display:flex;align-items:center;}
+.hc-bg{position:absolute;left:0;right:0;height:4px;border-radius:50px;background:var(--bg3);}
+.hc-fill{position:absolute;left:0;height:4px;border-radius:50px;background:linear-gradient(90deg,var(--sage),var(--sage2));transition:width .06s;pointer-events:none;}
+input[type=range]{-webkit-appearance:none;appearance:none;position:absolute;inset:0;width:100%;height:4px;background:transparent;cursor:pointer;outline:none;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--white);box-shadow:3px 3px 8px rgba(190,173,147,.3),-2px -2px 6px rgba(255,255,255,.9);cursor:pointer;transition:transform .18s;}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25);}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--white);border:none;}
+.hc-result{background:var(--beige3);border-radius:14px;padding:.88rem;margin-top:.65rem;border:1px solid rgba(190,173,147,.18);}
+.hc-result-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.55rem;}
+.hc-result-label{font-family:'Space Grotesk',sans-serif;font-size:.47rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:.18rem;}
+.hc-result-num{font-family:'Space Grotesk',sans-serif;font-size:1.65rem;font-weight:700;letter-spacing:-1.5px;color:var(--ob);line-height:1;}
+.hc-result-num.glitch{animation:glitch .1s steps(1) 4;}
+.hc-taux{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:700;color:var(--sage2);}
+.hc-divider{height:1px;background:rgba(190,173,147,.2);margin:.45rem 0;}
+.hc-result-row{display:flex;justify-content:space-between;}
+.hc-result-sub{font-size:.58rem;color:var(--muted);}
+.hc-result-sub strong{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--ob2);}
+.hc-btn{width:100%;font-family:'Space Grotesk',sans-serif;font-size:.73rem;font-weight:700;background:var(--ob);color:var(--bg);border:none;border-radius:11px;padding:11px;cursor:pointer;margin-top:.75rem;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .22s;text-decoration:none;}
+.hc-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(26,25,23,.2);}
+.hc-disc{font-family:'Space Grotesk',sans-serif;font-size:.45rem;color:rgba(26,25,23,.22);text-align:center;margin-top:.38rem;}
+.hero-badge-float{position:absolute;background:var(--white);border-radius:14px;box-shadow:var(--clay);border:1.5px solid rgba(255,255,255,.8);padding:.58rem .88rem;}
+.hbf-rate{top:-16px;right:16px;background:var(--sage2);}
+.hbf-rate .hbf-n{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:#fff;line-height:1;}
+.hbf-rate .hbf-l{font-family:'Space Grotesk',sans-serif;font-size:.47rem;font-weight:600;color:rgba(255,255,255,.58);}
+.hbf-reviews{bottom:-16px;left:16px;display:flex;align-items:center;gap:.45rem;animation:float 5.5s ease-in-out infinite .8s;}
+.hbf-reviews .hbf-stars{color:#F5A623;font-size:.7rem;}
+.hbf-reviews .hbf-txt{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:700;color:var(--ob);}
+/* TICKER */
+.ticker{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.52rem 0;overflow:hidden;position:relative;z-index:1;}
+.ticker-inner{display:inline-flex;animation:ticker 38s linear infinite;white-space:nowrap;}
+.ticker-inner:hover{animation-play-state:paused;}
+.ticker-item{font-family:'Space Grotesk',sans-serif;font-size:.61rem;font-weight:500;color:var(--muted);padding:0 2rem;display:flex;align-items:center;gap:.45rem;white-space:nowrap;}
+.ticker-dot{width:4px;height:4px;border-radius:50%;background:var(--lime);flex-shrink:0;}
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;}
+.sc{background:var(--white);border-radius:20px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);padding:1.4rem 1.1rem;text-align:center;transition:all .3s cubic-bezier(.22,1,.36,1);cursor:default;}
+.sc:hover{transform:translateY(-4px);box-shadow:var(--clay-h);}
+.sc.dark{background:var(--ob);}
+.sc-n{font-family:'Space Grotesk',sans-serif;font-size:2.1rem;font-weight:700;letter-spacing:-1.5px;color:var(--ob);line-height:1;margin-bottom:.28rem;}
+.sc.dark .sc-n{color:var(--bg);}
+.sc-n em{color:var(--sage2);font-style:normal;}
+.sc.dark .sc-n em{color:var(--sage);}
+.sc-l{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);}
+.sc.dark .sc-l{color:rgba(248,247,244,.38);}
+/* WHY BENTO */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.82rem;}
+.wc{background:var(--white);border-radius:22px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);padding:1.55rem;transition:all .3s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;}
+.wc:hover{transform:translateY(-4px);box-shadow:var(--clay-h);}
+.wc.dark{background:var(--ob);}
+.wc.sage-c{background:var(--sage);}
+.wc-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.9rem;}
+.wc-icon.bg-beige{background:var(--beige3);box-shadow:var(--clay-sm);}
+.wc-icon.bg-white{background:rgba(255,255,255,.15);}
+.wc-icon.bg-sage{background:rgba(255,255,255,.18);}
+.wc-title{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:-.2px;line-height:1.2;margin-bottom:.5rem;}
+.wc.dark .wc-title{color:var(--bg);}
+.wc.sage-c .wc-title{color:var(--ob);}
+.wc-bullets{display:flex;flex-direction:column;gap:.36rem;margin-top:.5rem;}
+.wc-bullet{font-size:.69rem;color:var(--muted2);display:flex;align-items:flex-start;gap:.48rem;line-height:1.45;}
+.wc.dark .wc-bullet{color:rgba(248,247,244,.42);}
+.wc.sage-c .wc-bullet{color:rgba(26,25,23,.6);}
+.wc-bullet::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:.3rem;}
+/* SIM PREVIEW */
+.sim-preview-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:1rem;}
+.sp-left{background:var(--white);border-radius:22px;padding:1.8rem;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.8);}
+.sp-lbl-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.38rem;}
+.sp-lbl{font-family:'Space Grotesk',sans-serif;font-size:.61rem;font-weight:600;color:var(--ob2);}
+.sp-val{font-family:'Space Grotesk',sans-serif;font-size:.63rem;font-weight:700;background:var(--bg2);border-radius:7px;padding:2px 9px;box-shadow:var(--clay-sm);}
+.sp-track{position:relative;height:20px;display:flex;align-items:center;margin-bottom:.65rem;}
+.sp-bg{position:absolute;left:0;right:0;height:5px;border-radius:50px;background:var(--bg3);}
+.sp-fill{position:absolute;left:0;height:5px;border-radius:50px;background:linear-gradient(90deg,var(--sage),var(--sage2));pointer-events:none;transition:width .06s;}
+.sp-result{background:var(--beige3);border-radius:14px;padding:1rem;border:1px solid rgba(190,173,147,.18);margin-top:.5rem;}
+.sp-result-row{display:flex;justify-content:space-between;align-items:flex-end;}
+.sp-result-lbl{font-family:'Space Grotesk',sans-serif;font-size:.47rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.22rem;}
+.sp-result-big{font-family:'Space Grotesk',sans-serif;font-size:1.85rem;font-weight:700;letter-spacing:-1.5px;color:var(--ob);line-height:1;}
+.sp-result-big.glitch{animation:glitch .1s steps(1) 4;}
+.sp-result-taux{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:700;color:var(--sage2);}
+.sp-full-btn{display:flex;width:100%;text-align:center;font-family:'Space Grotesk',sans-serif;font-size:.76rem;font-weight:700;background:var(--ob);color:var(--bg);border:none;border-radius:12px;padding:11px;cursor:pointer;margin-top:.72rem;transition:all .22s;text-decoration:none;align-items:center;justify-content:center;gap:6px;}
+.sp-full-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(26,25,23,.2);}
+.sp-right{display:flex;flex-direction:column;gap:.78rem;}
+.spc{background:var(--white);border-radius:17px;padding:1.1rem;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.8);transition:all .25s;}
+.spc:hover{transform:translateY(-3px);box-shadow:var(--clay-h);}
+.spc.dark{background:var(--ob);}
+.spc.lime-c{background:rgba(188,212,26,.08);border-color:rgba(188,212,26,.2);}
+.spc-label{font-family:'Space Grotesk',sans-serif;font-size:.49rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:.28rem;}
+.spc.dark .spc-label{color:rgba(255,255,255,.28);}
+.spc-val{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;letter-spacing:-.5px;color:var(--ob);}
+.spc.dark .spc-val{color:var(--bg);}
+.spc-sub{font-size:.59rem;color:var(--muted);margin-top:.14rem;line-height:1.4;}
+.spc.dark .spc-sub{color:rgba(248,247,244,.32);}
+/* STEPS */
+.steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.step-card{background:var(--white);border-radius:22px;padding:1.55rem;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.8);transition:all .3s cubic-bezier(.22,1,.36,1);overflow:hidden;}
+.step-card:hover{transform:translateY(-4px);box-shadow:var(--clay-h);}
+.step-card.dark{background:var(--ob);}
+.step-card.has-img{padding:0;}
+.step-img{height:180px;overflow:hidden;}
+.step-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.22,1,.36,1);}
+.step-card:hover .step-img img{transform:scale(1.05);}
+.step-body{padding:1.3rem;}
+.step-n{font-family:'Space Grotesk',sans-serif;font-size:3rem;font-weight:700;letter-spacing:-2.5px;color:var(--beige2);line-height:1;margin-bottom:.5rem;}
+.step-card.dark .step-n{color:rgba(255,255,255,.08);}
+.step-title{font-family:'Space Grotesk',sans-serif;font-size:.86rem;font-weight:700;letter-spacing:-.2px;margin-bottom:.38rem;}
+.step-card.dark .step-title{color:var(--bg);}
+.step-desc{font-size:.69rem;color:var(--muted2);line-height:1.65;}
+.step-card.dark .step-desc{color:rgba(248,247,244,.42);}
+.step-badge{display:inline-flex;align-items:center;gap:.32rem;font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;color:var(--sage2);background:rgba(162,181,168,.12);border:1px solid rgba(162,181,168,.2);border-radius:50px;padding:3px 10px;margin-top:.55rem;}
+.step-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--lime);}
+.step-card.dark .step-badge{background:rgba(162,181,168,.15);color:var(--sage);}
+.step-card.full{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:0;}
+/* REVIEWS */
+.reviews-hd{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;}
+.score-group{display:flex;gap:.65rem;}
+.score-badge{background:var(--white);border-radius:13px;padding:.65rem .95rem;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.8);text-align:center;}
+.score-badge-n{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;letter-spacing:-.8px;color:var(--ob);line-height:1;}
+.score-badge-p{font-family:'Space Grotesk',sans-serif;font-size:.51rem;font-weight:600;color:var(--muted);letter-spacing:.04em;margin-top:.14rem;}
+.reviews-track{overflow:hidden;border-radius:18px;margin-top:1.5rem;}
+.reviews-inner{display:inline-flex;gap:.82rem;animation:ticker 42s linear infinite;}
+.reviews-inner:hover{animation-play-state:paused;}
+.review-card{flex-shrink:0;width:295px;background:var(--white);border-radius:18px;padding:1.15rem;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.8);transition:all .25s;}
+.review-card:hover{transform:scale(1.025);box-shadow:var(--clay-h);}
+.review-stars{color:#F5A623;font-size:.7rem;letter-spacing:1.5px;margin-bottom:.45rem;}
+.review-text{font-size:.7rem;color:var(--ob2);line-height:1.7;font-style:italic;margin-bottom:.58rem;}
+.review-author{display:flex;align-items:center;gap:.45rem;}
+.review-av{width:24px;height:24px;border-radius:50%;background:var(--beige3);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:700;color:var(--sage2);box-shadow:var(--clay-sm);flex-shrink:0;}
+.review-name{font-family:'Space Grotesk',sans-serif;font-size:.63rem;font-weight:700;color:var(--ob);}
+.review-platform{font-size:.55rem;color:var(--muted);}
+/* TEAM PREVIEW */
+.team-preview{display:grid;grid-template-columns:repeat(8,1fr);gap:.7rem;}
+.tpm{background:var(--white);border-radius:16px;padding:.9rem .7rem;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.8);text-align:center;transition:all .28s cubic-bezier(.22,1,.36,1);cursor:default;}
+.tpm:hover{transform:translateY(-4px);box-shadow:var(--clay-h);border-color:rgba(162,181,168,.25);}
+.tpm-av{width:46px;height:46px;border-radius:50%;overflow:hidden;margin:0 auto .65rem;box-shadow:var(--clay-sm);border:2px solid var(--white);background:var(--beige3);}
+.tpm-av img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+.tpm-name{font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:700;color:var(--ob);margin-bottom:.12rem;}
+.tpm-role{font-family:'Space Grotesk',sans-serif;font-size:.48rem;font-weight:600;letter-spacing:.04em;color:var(--muted);}
+/* SOLUTIONS */
+.sol-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.68rem;}
+.sol{background:var(--white);border-radius:15px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);padding:1.05rem;display:flex;align-items:flex-start;gap:.62rem;transition:all .25s;cursor:default;}
+.sol:hover{transform:translateY(-3px);box-shadow:var(--clay-h);border-color:rgba(162,181,168,.25);}
+.sol-icon{font-size:1.05rem;flex-shrink:0;margin-top:.04rem;}
+.sol-title{font-family:'Space Grotesk',sans-serif;font-size:.73rem;font-weight:700;margin-bottom:.14rem;}
+.sol-desc{font-size:.6rem;color:var(--muted);line-height:1.5;}
+/* AI WIDGET */
+.ai-widget{position:fixed;bottom:1.5rem;right:1.5rem;z-index:800;}
+.ai-btn{width:50px;height:50px;border-radius:50%;background:var(--ob);color:var(--bg);border:none;box-shadow:0 4px 20px rgba(26,25,23,.25);display:flex;align-items:center;justify-content:center;font-size:1.25rem;cursor:pointer;transition:all .25s;position:relative;}
+.ai-btn::before{content:'';position:absolute;inset:-3px;border-radius:50%;border:2px solid var(--lime);opacity:.4;animation:pulse-lime 2.5s infinite;}
+.ai-btn:hover{transform:scale(1.1);box-shadow:0 8px 28px rgba(26,25,23,.3);}
+.ai-bubble{position:absolute;bottom:60px;right:0;background:var(--white);border-radius:17px;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.8);padding:.95rem;width:235px;display:none;transform-origin:bottom right;animation:pop-in .25s cubic-bezier(.22,1,.36,1);}
+.ai-bubble.open{display:block;}
+.ai-bubble-title{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:700;margin-bottom:.28rem;}
+.ai-bubble-sub{font-size:.63rem;color:var(--muted2);line-height:1.5;margin-bottom:.75rem;}
+.ai-bubble-btns{display:flex;flex-direction:column;gap:.32rem;}
+.ai-quick{font-family:'Space Grotesk',sans-serif;font-size:.61rem;font-weight:600;background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:6px 9px;cursor:pointer;transition:all .2s;color:var(--ob2);text-align:left;}
+.ai-quick:hover{background:var(--beige3);border-color:var(--sage);color:var(--sage2);}
+/* EXTRA ANIMATIONS */
+@keyframes blob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(20px,-15px) scale(1.05)}66%{transform:translate(-15px,10px) scale(.97)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes pop-in{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+/* RESPONSIVE */
+@media(max-width:1100px){.hero-inner{grid-template-columns:1fr;gap:3rem;}.hero-right{display:none;}.team-preview{grid-template-columns:repeat(4,1fr);}.sim-preview-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){.hero{padding:7rem 1.5rem 3rem;}.stats-grid{grid-template-columns:1fr 1fr;}.why-grid{grid-template-columns:1fr;}.steps-grid{grid-template-columns:1fr;}.step-card.full{grid-column:span 1;grid-template-columns:1fr;}.team-preview{grid-template-columns:repeat(4,1fr);}.sol-grid{grid-template-columns:1fr 1fr;}.score-group{display:none;}.wrap{padding:3rem 1.5rem;}}
+@media(max-width:480px){.team-preview{grid-template-columns:repeat(2,1fr);}.sol-grid{grid-template-columns:1fr;}.hero-ctas{flex-direction:column;}}
+</style>
+</head>
+<body>
+<nav id="mn">
+  <a href="index.html" class="nav-logo"><div class="logo-text">aeconom<i>i</i>a.</div></a>
+  <div class="nav-center"><a href="index.html" class="nav-link active">Accueil</a><a href="apropos.html" class="nav-link">À propos</a><a href="simulation.html" class="nav-link">Simulation</a><a href="contact.html" class="nav-link">Contact</a></div>
+  <div class="nav-right">
+    <a href="tel:0279414243" class="nav-tel">📞 02.79.41.42.43</a>
+    <a href="contact.html"><button class="btn-nav-cta">Nous contacter</button></a>
+  </div>
+  <div class="nav-burger" id="nb" onclick="toggleMob()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-menu" id="mm">
+  <a href="index.html" onclick="closeMob()">Accueil</a><a href="apropos.html" onclick="closeMob()">À propos</a><a href="simulation.html" onclick="closeMob()">Simulation</a><a href="contact.html" onclick="closeMob()">Contact</a>
+  <a href="contact.html" onclick="closeMob()"><button class="mob-cta-btn">Nous contacter</button></a>
+  <span class="mob-tel">📞 02.79.41.42.43</span>
+</div>
+<div class="hero-blob1"></div>
+<div class="hero-blob2"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow fu d1"><span class="hero-eyebrow-dot"></span>N°1 courtage indépendant · Centre-Val de Loire</div>
+      <h1 class="hero-h1 fu d2">Trouvez le bien,<br/><em>on s'occupe<br/>du crédit.</em></h1>
+      <p class="hero-sub fu d3">1er cabinet de courtage local et indépendant du Loiret. 3 000+ clients, 750 avis 5 étoiles. On négocie pour vous — gratuitement.</p>
+      <div class="hero-ctas fu d4">
+        <a href="simulation.html" class="btn-p">Simuler mon projet →</a>
+        <a href="apropos.html" class="btn-s">Nos avantages ↓</a>
+      </div>
+      <div class="hero-trust fu d5">
+        <div class="hero-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="hero-trust-info"><strong>5/5</strong> · +750 avis certifiés Google</div>
+        <div class="hero-trust-sep"></div>
+        <div class="hero-trust-tel">02.79.41.42.43</div>
+      </div>
+    </div>
+    <div class="hero-right fu d3">
+      <div class="hero-card">
+        <div class="hc-label">Simulation express</div>
+        <div class="hc-row">
+          <div class="hc-row-head"><span class="hc-row-lbl">Revenus nets / mois</span><span class="hc-row-val" id="h-rev-val">3 800 €</span></div>
+          <div class="hc-track"><div class="hc-bg"></div><div class="hc-fill" id="h-rev-fill" style="width:23.6%"></div><input type="range" min="1000" max="15000" step="100" value="3800" oninput="hUpd('rev',this.value)"/></div>
+        </div>
+        <div class="hc-row">
+          <div class="hc-row-head"><span class="hc-row-lbl">Apport personnel</span><span class="hc-row-val" id="h-apt-val">20 000 €</span></div>
+          <div class="hc-track"><div class="hc-bg"></div><div class="hc-fill" id="h-apt-fill" style="width:6.67%"></div><input type="range" min="0" max="300000" step="2000" value="20000" oninput="hUpd('apt',this.value)"/></div>
+        </div>
+        <div class="hc-row">
+          <div class="hc-row-head"><span class="hc-row-lbl">Durée du prêt</span><span class="hc-row-val" id="h-dur-val">25 ans</span></div>
+          <div class="hc-track"><div class="hc-bg"></div><div class="hc-fill" id="h-dur-fill" style="width:75%"></div><input type="range" min="10" max="30" step="1" value="25" oninput="hUpd('dur',this.value)"/></div>
+        </div>
+        <div class="hc-result">
+          <div class="hc-result-top">
+            <div><div class="hc-result-label">Vous pourriez emprunter</div><div class="hc-result-num" id="h-cap">225 000 €</div></div>
+            <div style="text-align:right"><div class="hc-result-label">Taux estimé</div><div class="hc-taux" id="h-taux">3.50%</div></div>
+          </div>
+          <div class="hc-divider"></div>
+          <div class="hc-result-row">
+            <div class="hc-result-sub">Budget <strong id="h-bien">245 000 €</strong></div>
+            <div class="hc-result-sub">Mensualité <strong id="h-mens">1 330 €/mois</strong></div>
+          </div>
+        </div>
+        <a href="simulation.html" class="hc-btn">Affiner ma simulation →</a>
+        <div class="hc-disc">Indicatif · Taux mars 2026 · Sans engagement</div>
+      </div>
+      <div class="hero-badge-float hbf-rate"><div class="hbf-l">Taux dès</div><div class="hbf-n">3.05%</div></div>
+      <div class="hero-badge-float hbf-reviews"><div class="hbf-stars">★★★★★</div><div class="hbf-txt">750+ avis 5⭐</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item"><span class="ticker-dot"></span>Taux dès 3.05% sur 10 ans</span><span class="ticker-item"><span class="ticker-dot"></span>3 000+ clients accompagnés</span><span class="ticker-item"><span class="ticker-dot"></span>750+ avis 5 étoiles Google</span><span class="ticker-item"><span class="ticker-dot"></span>RDV sous 48h · Accord immédiat</span><span class="ticker-item"><span class="ticker-dot"></span>Économisez jusqu'à 8% sur vos mensualités</span><span class="ticker-item"><span class="ticker-dot"></span>N°1 Centre-Val de Loire</span><span class="ticker-item"><span class="ticker-dot"></span>Orléans · Tours · Blois · Chartres · Paris</span><span class="ticker-item"><span class="ticker-dot"></span>ORIAS 22002183 · Cabinet indépendant</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Taux dès 3.05% sur 10 ans</span><span class="ticker-item"><span class="ticker-dot"></span>3 000+ clients accompagnés</span><span class="ticker-item"><span class="ticker-dot"></span>750+ avis 5 étoiles Google</span><span class="ticker-item"><span class="ticker-dot"></span>RDV sous 48h · Accord immédiat</span><span class="ticker-item"><span class="ticker-dot"></span>Économisez jusqu'à 8% sur vos mensualités</span><span class="ticker-item"><span class="ticker-dot"></span>N°1 Centre-Val de Loire</span><span class="ticker-item"><span class="ticker-dot"></span>Orléans · Tours · Blois · Chartres · Paris</span><span class="ticker-item"><span class="ticker-dot"></span>ORIAS 22002183 · Cabinet indépendant</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="wrap" style="padding-bottom:2rem">
+  <div class="stats-grid stagger reveal">
+    <div class="sc"><div class="sc-n" data-target="3000" data-suffix="+">0+</div><div class="sc-l">Clients accompagnés</div></div>
+    <div class="sc dark"><div class="sc-n" data-target="750" data-suffix="+">0+</div><div class="sc-l">Avis 5 étoiles</div></div>
+    <div class="sc"><div class="sc-n">8<em>%</em></div><div class="sc-l">Économies en moyenne</div></div>
+    <div class="sc"><div class="sc-n">3.05<em>%</em></div><div class="sc-l">Taux dès mars 2026</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- POURQUOI -->
+<section class="wrap">
+  <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:2.5rem">
+    <div><div class="sec-tag">Pourquoi nous choisir</div><h2 class="sec-h2">Un courtier ne coûte pas,<br/><em>il rapporte.</em></h2></div>
+    <p style="font-size:.83rem;color:var(--muted2);line-height:1.75;max-width:400px">Économisez jusqu'à 8% grâce à notre intervention. Honoraires intégrés au financement — si on ne trouve pas, vous ne payez rien.</p>
+  </div>
+  <div class="why-grid stagger reveal" style="transition-delay:.05s">
+    <div class="wc"><div class="wc-icon bg-beige">⏰</div><div class="wc-title">Vous n'avez pas le temps,<br/>nous si.</div><div class="wc-bullets"><div class="wc-bullet">Ouvert de 8h à 20h en semaine</div><div class="wc-bullet">Rendez-vous en 2 jours seulement</div><div class="wc-bullet">Accord de principe immédiat</div><div class="wc-bullet">Retour des banques sous 7-10 jours</div></div></div>
+    <div class="wc dark"><div class="wc-icon bg-white">💰</div><div class="wc-title" style="color:var(--bg)">Une réelle économie,<br/>sinon rien.</div><div class="wc-bullets"><div class="wc-bullet">Taux négociés via conventions bancaires</div><div class="wc-bullet">Négociation de tous les coûts</div><div class="wc-bullet">Avec ou sans apport</div><div class="wc-bullet">Assurance emprunteur optimisée</div></div></div>
+    <div class="wc sage-c"><div class="wc-icon bg-sage">🤝</div><div class="wc-title">Pas de stress,<br/>on s'occupe de tout.</div><div class="wc-bullets"><div class="wc-bullet">Transparence à chaque étape</div><div class="wc-bullet">Un interlocuteur unique et dédié</div><div class="wc-bullet">Accompagnement jusqu'au notaire</div><div class="wc-bullet">Gestion de l'appel de fonds</div></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SIMULATEUR PREVIEW -->
+<section class="wrap">
+  <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:2.5rem">
+    <div><div class="sec-tag">Simulation</div><h2 class="sec-h2">Calculez votre<br/><em>capacité d'emprunt.</em></h2></div>
+    <a href="simulation.html" class="btn-s">Simulation complète →</a>
+  </div>
+  <div class="sim-preview-grid reveal" style="transition-delay:.05s">
+    <div class="sp-left">
+      <div style="font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.1rem;display:flex;align-items:center;gap:.38rem"><span style="width:10px;height:1.5px;background:var(--sage);border-radius:2px;display:inline-block"></span>Taux mars 2026 intégrés</div>
+      <div class="sp-lbl-row"><span class="sp-lbl">Revenus nets / mois</span><span class="sp-val" id="s-rev-val">3 800 €/mois</span></div>
+      <div class="sp-track"><div class="sp-bg"></div><div class="sp-fill" id="s-rev-fill" style="width:23.6%"></div><input type="range" min="1000" max="15000" step="100" value="3800" oninput="sUpd('rev',this.value)"/></div>
+      <div class="sp-lbl-row" style="margin-top:.5rem"><span class="sp-lbl">Apport personnel</span><span class="sp-val" id="s-apt-val">20 000 €</span></div>
+      <div class="sp-track"><div class="sp-bg"></div><div class="sp-fill" id="s-apt-fill" style="width:6.67%"></div><input type="range" min="0" max="300000" step="2000" value="20000" oninput="sUpd('apt',this.value)"/></div>
+      <div class="sp-lbl-row" style="margin-top:.5rem"><span class="sp-lbl">Durée du prêt</span><span class="sp-val" id="s-dur-val">25 ans</span></div>
+      <div class="sp-track"><div class="sp-bg"></div><div class="sp-fill" id="s-dur-fill" style="width:75%"></div><input type="range" min="10" max="30" step="1" value="25" oninput="sUpd('dur',this.value)"/></div>
+      <div class="sp-result">
+        <div class="sp-result-row">
+          <div><div class="sp-result-lbl">Vous pourriez emprunter</div><div class="sp-result-big" id="s-cap">225 000 €</div></div>
+          <div style="text-align:right"><div class="sp-result-lbl">Taux estimé</div><div class="sp-result-taux" id="s-taux">3.50 %</div></div>
+        </div>
+      </div>
+      <a href="simulation.html" class="sp-full-btn">Simuler mon taux avec un courtier →</a>
+    </div>
+    <div class="sp-right">
+      <div class="spc"><div class="spc-label">Mensualité estimée</div><div class="spc-val" id="s-mens">1 330 €/mois</div><div class="spc-sub">35% de taux d'endettement max</div></div>
+      <div class="spc dark"><div class="spc-label">Budget total projet</div><div class="spc-val" id="s-bien">245 000 €</div><div class="spc-sub">Capacité d'emprunt + apport personnel</div></div>
+      <div class="spc lime-c"><div class="spc-label">Économie vs taux marché</div><div class="spc-val" style="color:var(--sage2)">jusqu'à 8 %</div><div class="spc-sub">Grâce aux conventions bancaires Aeconomia</div></div>
+      <div class="spc"><div class="spc-label">Premier RDV</div><div class="spc-val" style="font-size:.86rem">Gratuit · Sans engagement</div><div class="spc-sub">Accord de principe le jour même</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PARCOURS -->
+<section class="wrap">
+  <div class="reveal" style="margin-bottom:2.5rem">
+    <div class="sec-tag">Votre parcours</div>
+    <h2 class="sec-h2">De l'étude de capacité<br/><em>à la remise des clés.</em></h2>
+  </div>
+  <div class="steps-grid stagger reveal" style="transition-delay:.05s">
+    <div class="step-card"><div class="step-n">01</div><div class="step-title">Étudiez votre capacité d'emprunt</div><div class="step-desc">Analyse approfondie de votre projet. Étude gratuite, accord de solvabilité immédiat pour rassurer les vendeurs.</div><div class="step-badge">Gratuit · Sans engagement</div></div>
+    <div class="step-card has-img">
+      <div class="step-img"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/PHOTO%20DECO%201.jpg" alt="Bureau Aeconomia"/></div>
+      <div class="step-body"><div class="step-n">02</div><div class="step-title">Montage de votre dossier gagnant</div><div class="step-desc">Dossier béton. Notre expertise fait la différence dès cette étape.</div></div>
+    </div>
+    <div class="step-card dark"><div class="step-n">03</div><div class="step-title">Négociation optimale</div><div class="step-desc">Mise en concurrence de toutes les banques. Conventions directes. Vous choisissez la meilleure offre.</div><div class="step-badge" style="background:rgba(162,181,168,.15);color:var(--sage);border-color:rgba(162,181,168,.2)">20+ banques en compétition</div></div>
+    <div class="step-card full has-img">
+      <div class="step-img"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/PHOTO%2014.jpg" alt="Remise des clés Aeconomia"/></div>
+      <div class="step-body"><div class="step-n">04</div><div class="step-title">Remise des clés 🔑</div><div class="step-desc">Accompagnement jusqu'au notaire. Gestion de l'appel de fonds. De A jusqu'aux clés, littéralement.</div><div class="step-badge">Place aux cartons et à un nouveau départ !</div><div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap"><a href="contact.html" class="btn-p" style="font-size:.75rem;padding:11px 20px">Démarrer →</a><a href="simulation.html" class="btn-s" style="font-size:.75rem;padding:11px 20px">Simuler d'abord</a></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REVIEWS -->
+<section class="wrap" style="padding-bottom:2rem">
+  <div class="reviews-hd reveal">
+    <div><div class="sec-tag">Avis clients vérifiés</div><h2 class="sec-h2">Les meilleurs courtiers<br/><em>du Loiret.</em></h2><p style="font-size:.78rem;color:var(--muted2);margin-top:.4rem">Et ce sont nos clients qui le disent.</p></div>
+    <div class="score-group">
+      <div class="score-badge"><div class="score-badge-n">5/5</div><div class="score-badge-p">★★★★★ Google</div></div>
+      <div class="score-badge"><div class="score-badge-n">4.9/5</div><div class="score-badge-p">Trustpilot</div></div>
+      <div class="score-badge"><div class="score-badge-n">4.9/5</div><div class="score-badge-p">Immodvisor</div></div>
+    </div>
+  </div>
+  <div class="reviews-track reveal" style="transition-delay:.1s">
+    <div class="reviews-inner">
+      <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">« Dimitri a été à l'écoute, clair dans ses explications et très réactif. Il a su analyser ma situation et m'accompagner à chaque étape. »</div><div class="review-author"><div class="review-av">J</div><div><div class="review-name">Joannin M.</div><div class="review-platform">Google · déc. 2025</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">« Grâce à Romain, nous venons d'obtenir notre prêt pour notre premier achat. Son accompagnement a été extrêmement précieux. »</div><div class="review-author"><div class="review-av">T</div><div><div class="review-name">Tom & Sarah</div><div class="review-platform">Google · déc. 2025</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">« Adrien a été d'un professionnalisme remarquable. Carré du début jusqu'à la fin. Toujours disponible et de bon conseil. »</div><div class="review-author"><div class="review-av">V</div><div><div class="review-name">Vincent D.</div><div class="review-platform">Google · déc. 2025</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">« Parfaitement accompagnée dans mes démarches. Réponse très rapide à toutes mes questions. Je recommande Aeconomia sans hésitation. »</div><div class="review-author"><div class="review-av">C</div><div><div class="review-name">Caroline O.</div><div class="review-platform">Trustpilot · déc. 2025</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">« Matteo nous a chaleureusement accompagnés. Très réactif, des conseils pertinents et avisés. Très bon taux obtenu ! »</div><div class="review-author"><div class="review-av">R</div><div><div class="review-name">RPZ</div><div class="review-platform">Google · nov. 2025</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">« Robin : très professionnel, à l'écoute et réactif. Mon expérience a été simple et rassurante du début à la fin. »</div><div class="review-author"><div class="review-av">W</div><div><div class="review-name">Westry C.</div><div class="review-platform">Google · nov. 2025</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">« Gabriel nous a accompagnés malgré la difficulté et l'urgence du dossier. Grâce à sa réactivité, nous avons pu finaliser. »</div><div class="review-author"><div class="review-av">C</div><div><div class="review-name">Corentin L.</div><div class="review-platform">Google · déc. 2025</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">« Dimitri a été à l'écoute, clair dans ses explications et très réactif. Il a su analyser ma situation et m'accompagner. »</div><div class="review-author"><div class="review-av">J</div><div><div class="review-name">Joannin M.</div><div class="review-platform">Google · déc. 2025</div></div></div></div>
+      <div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">« Grâce à Romain, nous venons d'obtenir notre prêt pour notre premier achat. Extrêmement précieux. »</div><div class="review-author"><div class="review-av">T</div><div><div class="review-name">Tom & Sarah</div><div class="review-platform">Google · déc. 2025</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ÉQUIPE PREVIEW -->
+<section class="wrap">
+  <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem">
+    <div><div class="sec-tag">Notre équipe</div><h2 class="sec-h2">Des experts locaux<br/><em>à votre service.</em></h2></div>
+    <a href="apropos.html" class="btn-s">Rencontrer l'équipe →</a>
+  </div>
+  <div class="team-preview stagger reveal" style="transition-delay:.05s">
+    <div class="tpm"><div class="tpm-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photodedimitri.jpg" alt="Dimitri Toulon"/></div><div class="tpm-name">Dimitri T.</div><div class="tpm-role">Directeur</div></div>
+    <div class="tpm"><div class="tpm-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/RAPAHEL.jpg" alt="Raphaël Nicq"/></div><div class="tpm-name">Raphaël N.</div><div class="tpm-role">Courtier</div></div>
+    <div class="tpm"><div class="tpm-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photodedelphine.jpg" alt="Delphine Dechartre"/></div><div class="tpm-name">Delphine D.</div><div class="tpm-role">Courtière</div></div>
+    <div class="tpm"><div class="tpm-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/photoderobin-2.jpg" alt="Robin Villette"/></div><div class="tpm-name">Robin V.</div><div class="tpm-role">Courtier</div></div>
+    <div class="tpm"><div class="tpm-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/gabriel.jpg" alt="Gabriel Despeisse"/></div><div class="tpm-name">Gabriel D.</div><div class="tpm-role">Courtier</div></div>
+    <div class="tpm"><div class="tpm-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/matteo.jpg" alt="Matteo Martolini"/></div><div class="tpm-name">Matteo M.</div><div class="tpm-role">Courtier</div></div>
+    <div class="tpm"><div class="tpm-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/Adrien%20.jpg" alt="Adrien Meneghini"/></div><div class="tpm-name">Adrien M.</div><div class="tpm-role">Courtier</div></div>
+    <div class="tpm"><div class="tpm-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/mariephoto.jpg" alt="Marie"/></div><div class="tpm-name">Marie</div><div class="tpm-role">Courtière</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SOLUTIONS -->
+<section class="wrap">
+  <div class="reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem">
+    <div><div class="sec-tag">Nos solutions</div><h2 class="sec-h2">Quel que soit<br/><em>votre profil.</em></h2></div>
+    <a href="apropos.html" class="btn-s">Toutes nos solutions →</a>
+  </div>
+  <div class="sol-grid stagger reveal" style="transition-delay:.05s">
+    <div class="sol"><div class="sol-icon">🏠</div><div><div class="sol-title">Crédit immobilier</div><div class="sol-desc">Résidence principale ou secondaire</div></div></div>
+    <div class="sol"><div class="sol-icon">🔄</div><div><div class="sol-title">Renégociation</div><div class="sol-desc">Révision de vos conditions actuelles</div></div></div>
+    <div class="sol"><div class="sol-icon">🏁</div><div><div class="sol-title">Primo-accédant</div><div class="sol-desc">Accompagnement renforcé</div></div></div>
+    <div class="sol"><div class="sol-icon">📈</div><div><div class="sol-title">Investissement locatif</div><div class="sol-desc">LMNP, Pinel, rentabilité optimisée</div></div></div>
+    <div class="sol"><div class="sol-icon">🎖️</div><div><div class="sol-title">Fonctionnaire / Militaire</div><div class="sol-desc">Adapté à votre statut</div></div></div>
+    <div class="sol"><div class="sol-icon">⚖️</div><div><div class="sol-title">Rachat de soulte</div><div class="sol-desc">Séparation, divorce, succession</div></div></div>
+    <div class="sol"><div class="sol-icon">🛡️</div><div><div class="sol-title">Assurance emprunteur</div><div class="sol-desc">Jusqu'à 2× moins cher</div></div></div>
+    <div class="sol"><div class="sol-icon">💼</div><div><div class="sol-title">TNS / Libéral</div><div class="sol-desc">Solutions sur-mesure</div></div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section class="wrap" style="padding-bottom:4rem">
+  <div class="cta-banner reveal">
+    <div><h3 class="cta-h3">Prêt à concrétiser<br/>votre projet ?</h3><p class="cta-sub">Premier rendez-vous gratuit et sans engagement. Accord de principe le jour même. Rejoignez les 3 000+ clients qui nous font confiance.</p></div>
+    <div class="cta-btns"><a href="simulation.html" class="btn-light">Simuler mon projet →</a><a href="contact.html" class="btn-ghost">Prendre rendez-vous</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="logo-text">aeconom<i>i</i>a.</div>
+      <p class="footer-brand-desc">Cabinet de courtage en prêt immobilier, leader indépendant à Orléans et en région Centre depuis 2022.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/aeconomia.courtage/" target="_blank" class="footer-social">📸</a>
+        <a href="https://www.facebook.com/Aeconomia.courtage/" target="_blank" class="footer-social">f</a>
+        <a href="https://www.linkedin.com/company/82227304/" target="_blank" class="footer-social">in</a>
+      </div>
+    </div>
+    <div><div class="footer-col-title">Navigation</div><div class="footer-links"><a href="index.html">Accueil</a><a href="apropos.html">À propos</a><a href="simulation.html">Simulation</a><a href="contact.html">Contact</a></div></div>
+    <div><div class="footer-col-title">Zones</div><div class="footer-links"><a href="#">Orléans</a><a href="#">Tours</a><a href="#">Blois</a><a href="#">Chartres</a><a href="#">Montargis</a><a href="#">Paris</a></div></div>
+    <div><div class="footer-col-title">Contact</div><div class="footer-links"><a href="tel:0279414243">02.79.41.42.43</a><a href="mailto:contact@aeconomia.fr">contact@aeconomia.fr</a><a href="#">22 rue de la République</a><a href="#">45000 Orléans</a></div></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">EURL · RCS Orléans 909 326 613 · COBSP · ORIAS n°22002183 · Contrôle ACPR · Médiateur IEAM · © 2026 Aeconomia</div>
+    <div class="footer-badges"><span class="footer-badge">ORIAS ✓</span><span class="footer-badge">COBSP ✓</span><span class="footer-badge">ACPR ✓</span></div>
+  </div>
+</footer>
+
+<!-- AI WIDGET -->
+<div class="ai-widget">
+  <div class="ai-bubble" id="ai-bubble">
+    <div class="ai-bubble-title">💬 Besoin d'aide ?</div>
+    <div class="ai-bubble-sub">Questions rapides sur votre projet</div>
+    <div class="ai-bubble-btns">
+      <a href="simulation.html"><button class="ai-quick">📊 Simuler ma capacité</button></a>
+      <a href="contact.html"><button class="ai-quick">📞 Parler à un courtier</button></a>
+      <a href="apropos.html"><button class="ai-quick">❓ Comment ça marche ?</button></a>
+      <a href="tel:0279414243"><button class="ai-quick">📱 02.79.41.42.43</button></a>
+    </div>
+  </div>
+  <button class="ai-btn" onclick="toggleAI()">💬</button>
+</div>
+
+<script>
+const TAUX={10:3.05,15:3.20,20:3.35,25:3.50,30:3.65};
+function getTaux(d){for(const k of[10,15,20,25,30])if(d<=k)return TAUX[k];return 3.65;}
+let S={rev:3800,apt:20000,dur:25};
+function fmt(n){return Math.abs(Math.round(n)).toLocaleString('fr-FR');}
+function calcAll(){
+  const tx=getTaux(S.dur)/100/12,n=S.dur*12,mMax=S.rev*.35;
+  const cap=Math.round(mMax*(1-Math.pow(1+tx,-n))/tx);
+  const bien=cap+S.apt;const mens=Math.round(S.rev*.35);const taux=getTaux(S.dur);
+  animN('h-cap',cap,' €');animN('h-bien',bien,' €');
+  document.getElementById('h-mens').textContent=fmt(mens)+' €/mois';
+  document.getElementById('h-taux').textContent=taux.toFixed(2)+'%';
+  animN('s-cap',cap,' €');animN('s-bien',bien,' €');
+  document.getElementById('s-mens').textContent=fmt(mens)+' €/mois';
+  document.getElementById('s-taux').textContent=taux.toFixed(2)+' %';
+}
+function animN(id,target,suffix){const el=document.getElementById(id);if(!el)return;const start=parseInt(el.textContent.replace(/[^0-9]/g,''))||0,dur=380,t0=performance.now();function step(now){const p=Math.min(1,(now-t0)/dur),ease=1-Math.pow(1-p,3);el.textContent=fmt(Math.round(start+(target-start)*ease))+suffix;if(p<1)requestAnimationFrame(step);else{el.textContent=fmt(target)+suffix;el.classList.remove('glitch');void el.offsetWidth;el.classList.add('glitch');};}requestAnimationFrame(step);}
+function hUpd(k,v){v=+v;S[k]=v;const c={rev:{fill:'h-rev-fill',disp:'h-rev-val',min:1000,max:15000,fmt:x=>fmt(x)+' €'},apt:{fill:'h-apt-fill',disp:'h-apt-val',min:0,max:300000,fmt:x=>x===0?'Sans apport':fmt(x)+' €'},dur:{fill:'h-dur-fill',disp:'h-dur-val',min:10,max:30,fmt:x=>x+' ans'}}[k];document.getElementById(c.fill).style.width=((v-c.min)/(c.max-c.min))*100+'%';document.getElementById(c.disp).textContent=c.fmt(v);sSync(k,v);calcAll();}
+function sUpd(k,v){v=+v;S[k]=v;const c={rev:{fill:'s-rev-fill',disp:'s-rev-val',min:1000,max:15000,fmt:x=>fmt(x)+' €/mois'},apt:{fill:'s-apt-fill',disp:'s-apt-val',min:0,max:300000,fmt:x=>x===0?'Sans apport':fmt(x)+' €'},dur:{fill:'s-dur-fill',disp:'s-dur-val',min:10,max:30,fmt:x=>x+' ans'}}[k];document.getElementById(c.fill).style.width=((v-c.min)/(c.max-c.min))*100+'%';document.getElementById(c.disp).textContent=c.fmt(v);calcAll();}
+function sSync(k,v){const map={rev:{fill:'s-rev-fill',disp:'s-rev-val',min:1000,max:15000,fmt:x=>fmt(x)+' €/mois'},apt:{fill:'s-apt-fill',disp:'s-apt-val',min:0,max:300000,fmt:x=>x===0?'Sans apport':fmt(x)+' €'},dur:{fill:'s-dur-fill',disp:'s-dur-val',min:10,max:30,fmt:x=>x+' ans'}}[k];if(!map)return;document.getElementById(map.fill).style.width=((v-map.min)/(map.max-map.min))*100+'%';document.getElementById(map.disp).textContent=map.fmt(v);}
+const cro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.target.dataset.target){const t=+e.target.dataset.target,s=e.target.dataset.suffix||'',d=1800,t0=performance.now();function st(now){const p=Math.min(1,(now-t0)/d),ease=1-Math.pow(1-p,4);e.target.textContent=Math.round(t*ease).toLocaleString('fr-FR')+s;if(p<1)requestAnimationFrame(st);}requestAnimationFrame(st);cro.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el=>cro.observe(el));
+function toggleAI(){document.getElementById('ai-bubble').classList.toggle('open');}
+document.addEventListener('click',e=>{if(!e.target.closest('.ai-widget'))document.getElementById('ai-bubble').classList.remove('open');});
+calcAll();
+
+function toggleMob(){document.getElementById('mm').classList.toggle('open');document.getElementById('nb').classList.toggle('open');document.body.style.overflow=document.getElementById('mm').classList.contains('open')?'hidden':'';}
+function closeMob(){document.getElementById('mm').classList.remove('open');document.getElementById('nb').classList.remove('open');document.body.style.overflow='';}
+window.addEventListener('scroll',()=>{document.getElementById('mn').classList.toggle('scrolled',window.scrollY>30);},{passive:true});
+const _ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.06});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>_ro.observe(el));
+
+</script>
+</body></html>

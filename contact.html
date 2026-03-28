@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Contact — Aeconomia Courtiers Orléans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet"/>
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F8F7F4;--bg2:#F1F0EC;--bg3:#E8E6E0;--white:#fff;
+  --ob:#1A1917;--ob2:#2C2B28;
+  --beige1:#BEAD93;--beige2:#DED6C8;--beige3:#F1F0EC;
+  --sage:#a2b5a8;--sage2:#75847c;--lime:#bcd41a;
+  --muted:#8A8680;--muted2:#6B6762;
+  --border:rgba(26,25,23,.07);--border2:rgba(26,25,23,.12);
+  --clay:8px 8px 20px rgba(190,173,147,.22),-4px -4px 12px rgba(255,255,255,.82),inset 0 1px 0 rgba(255,255,255,.65);
+  --clay-sm:4px 4px 12px rgba(190,173,147,.18),-2px -2px 8px rgba(255,255,255,.75),inset 0 1px 0 rgba(255,255,255,.5);
+  --clay-h:10px 10px 28px rgba(190,173,147,.32),-5px -5px 16px rgba(255,255,255,.92),inset 0 1px 0 rgba(255,255,255,.7);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ob);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(26,25,23,.034) 1px,transparent 1px),linear-gradient(90deg,rgba(26,25,23,.034) 1px,transparent 1px);
+  background-size:52px 52px;}
+::selection{background:rgba(162,181,168,.28);}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+.logo-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.08rem;color:var(--ob);letter-spacing:-.3px;line-height:1;user-select:none;}
+.logo-text i{font-style:italic;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2.5rem;height:66px;display:flex;align-items:center;justify-content:space-between;transition:background .35s,box-shadow .35s,border-color .35s;}
+nav.scrolled{background:rgba(248,247,244,.95);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--border);box-shadow:0 2px 28px rgba(190,173,147,.13);}
+.nav-logo{cursor:pointer;}
+.nav-center{display:flex;align-items:center;gap:.2rem;}
+.nav-link{font-family:'Space Grotesk',sans-serif;font-size:.64rem;font-weight:500;color:var(--muted);letter-spacing:.04em;padding:.42rem .9rem;border-radius:50px;transition:color .22s,background .22s,border-color .22s,transform .18s;position:relative;border:1px solid transparent;white-space:nowrap;}
+.nav-link:hover{color:var(--ob);background:rgba(26,25,23,.055);border-color:var(--border);transform:translateY(-1px);}
+.nav-link.active{color:var(--ob);font-weight:600;background:rgba(26,25,23,.04);border-color:var(--border);}
+.nav-link.active::after{content:'';position:absolute;bottom:.28rem;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--lime);}
+.nav-right{display:flex;align-items:center;gap:.55rem;}
+.nav-tel{font-family:'Space Grotesk',sans-serif;font-size:.66rem;font-weight:600;color:var(--ob2);padding:.38rem .8rem;border-radius:9px;background:var(--bg2);border:1px solid var(--border2);transition:all .22s;}
+.nav-tel:hover{background:var(--white);box-shadow:var(--clay-sm);transform:translateY(-1px);}
+.btn-nav-cta{font-family:'Space Grotesk',sans-serif;font-size:.67rem;font-weight:700;background:var(--ob);color:var(--bg);border:none;border-radius:10px;padding:9px 19px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.btn-nav-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent 60%);opacity:0;transition:opacity .25s;}
+.btn-nav-cta:hover{transform:translateY(-1px);box-shadow:0 5px 18px rgba(26,25,23,.24);}
+.btn-nav-cta:hover::after{opacity:1;}
+.nav-burger{display:none;flex-direction:column;gap:4.5px;cursor:pointer;padding:5px;}
+.nav-burger span{display:block;width:21px;height:2px;background:var(--ob);border-radius:2px;transition:all .3s cubic-bezier(.22,1,.36,1);}
+.nav-burger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px);}
+.nav-burger.open span:nth-child(2){opacity:0;transform:translateX(-8px);}
+.nav-burger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px);}
+.mob-menu{display:none;position:fixed;inset:0;z-index:999;background:rgba(248,247,244,.98);backdrop-filter:blur(24px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+.mob-menu.open{display:flex;}
+.mob-menu a{font-family:'Space Grotesk',sans-serif;font-size:1.55rem;font-weight:700;color:var(--ob);letter-spacing:-1px;transition:color .2s,transform .2s;}
+.mob-menu a:hover{color:var(--sage2);transform:translateX(4px);}
+.mob-tel{font-family:'Space Grotesk',sans-serif;font-size:.85rem;color:var(--muted);}
+.mob-cta-btn{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;background:var(--ob);color:var(--bg);border:none;border-radius:12px;padding:13px 32px;cursor:pointer;margin-top:.3rem;}
+
+/* UTILS */
+.wrap{max-width:1180px;margin:0 auto;padding:5rem 2.5rem;position:relative;z-index:1;}
+.divider{height:1px;background:var(--border);max-width:1180px;margin:0 auto;}
+.sec-tag{font-family:'Space Grotesk',sans-serif;font-size:.53rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--sage2);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;}
+.sec-tag::before{content:'';width:16px;height:1.5px;background:var(--lime);border-radius:2px;flex-shrink:0;}
+.sec-h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;letter-spacing:-1.3px;line-height:1.02;margin-bottom:.7rem;}
+.sec-h2 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
+.btn-p{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:700;background:var(--ob);color:var(--bg);border:none;border-radius:13px;padding:13px 24px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .25s;text-decoration:none;}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(26,25,23,.2);}
+.btn-s{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:600;background:var(--white);color:var(--ob);border:1.5px solid var(--border2);border-radius:13px;padding:13px 24px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .25s;box-shadow:var(--clay-sm);text-decoration:none;}
+.btn-s:hover{transform:translateY(-2px);box-shadow:var(--clay-h);border-color:rgba(162,181,168,.35);}
+
+/* CTA BANNER */
+.cta-banner{background:var(--ob);border-radius:26px;padding:3.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(26,25,23,.18);}
+.cta-banner::before{content:'';position:absolute;top:-50px;right:-50px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.07),transparent 65%);pointer-events:none;}
+.cta-h3{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.4rem,2.8vw,2.1rem);font-weight:700;letter-spacing:-1px;color:var(--bg);line-height:1.05;margin-bottom:.5rem;}
+.cta-sub{font-size:.82rem;color:rgba(248,247,244,.45);line-height:1.65;max-width:420px;}
+.cta-btns{display:flex;gap:.6rem;flex-wrap:wrap;}
+.btn-light{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:700;background:var(--bg);color:var(--ob);border:none;border-radius:13px;padding:13px 24px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .25s;text-decoration:none;}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(248,247,244,.18);}
+.btn-ghost{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:600;background:rgba(248,247,244,.1);color:var(--bg);border:1.5px solid rgba(248,247,244,.15);border-radius:13px;padding:13px 24px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .22s;text-decoration:none;}
+.btn-ghost:hover{background:rgba(248,247,244,.18);transform:translateY(-2px);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-index:1;background:rgba(248,247,244,.97);}
+.footer-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2rem;}
+.footer-brand-desc{font-size:.68rem;color:var(--muted2);line-height:1.7;max-width:230px;margin-bottom:1rem;margin-top:.6rem;}
+.footer-socials{display:flex;gap:.45rem;}
+.footer-social{width:32px;height:32px;border-radius:9px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;transition:all .22s;text-decoration:none;color:var(--ob);}
+.footer-social:hover{background:var(--ob);color:var(--bg);transform:translateY(-2px);}
+.footer-col-title{font-family:'Space Grotesk',sans-serif;font-size:.53rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem;}
+.footer-links{display:flex;flex-direction:column;gap:.42rem;}
+.footer-links a{font-size:.7rem;color:var(--ob2);transition:color .2s,transform .2s;display:inline-block;}
+.footer-links a:hover{color:var(--sage2);transform:translateX(3px);}
+.footer-bottom{max-width:1180px;margin:0 auto;border-top:1px solid var(--border);padding-top:1.2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;}
+.footer-legal{font-size:.58rem;color:var(--muted);line-height:1.65;}
+.footer-badges{display:flex;gap:.5rem;}
+.footer-badge{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:3px 8px;color:var(--muted2);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulse-lime{0%,100%{box-shadow:0 0 0 0 rgba(188,212,26,.5)}70%{box-shadow:0 0 0 9px rgba(188,212,26,0)}}
+@keyframes glitch{0%{transform:translate(0);filter:none}25%{transform:translate(-2px,1px);filter:blur(.4px)}50%{transform:translate(2px,-1px);filter:none}75%{transform:translate(-1px,2px);filter:blur(.3px)}100%{transform:translate(0);filter:none}}
+.fu{opacity:0;animation:fadeUp .65s cubic-bezier(.22,1,.36,1) forwards;}
+.d1{animation-delay:.07s}.d2{animation-delay:.14s}.d3{animation-delay:.21s}.d4{animation-delay:.28s}.d5{animation-delay:.35s}.d6{animation-delay:.42s}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
+.reveal.on{opacity:1;transform:translateY(0);}
+.reveal-l{opacity:0;transform:translateX(-18px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
+.reveal-l.on{opacity:1;transform:translateX(0);}
+.reveal-r{opacity:0;transform:translateX(18px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1);}
+.reveal-r.on{opacity:1;transform:translateX(0);}
+.stagger>*:nth-child(1){transition-delay:.04s}.stagger>*:nth-child(2){transition-delay:.09s}.stagger>*:nth-child(3){transition-delay:.14s}.stagger>*:nth-child(4){transition-delay:.19s}.stagger>*:nth-child(5){transition-delay:.24s}.stagger>*:nth-child(6){transition-delay:.29s}.stagger>*:nth-child(7){transition-delay:.34s}.stagger>*:nth-child(8){transition-delay:.39s}
+
+@media(max-width:768px){.nav-center,.nav-tel{display:none;}.nav-burger{display:flex;}nav{padding:0 1.5rem;}}
+@media(max-width:640px){.footer-inner{grid-template-columns:1fr 1fr;gap:1.5rem;}.wrap{padding:3rem 1.5rem;}}
+@media(max-width:420px){.footer-inner{grid-template-columns:1fr;}}
+
+.page-top{padding-top:66px;position:relative;z-index:1;}
+/* HERO */
+.contact-hero{max-width:1180px;margin:0 auto;padding:3.5rem 2.5rem 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.ch-tag{font-family:'Space Grotesk',sans-serif;font-size:.53rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--sage2);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem;}
+.ch-tag::before{content:'';width:16px;height:1.5px;background:var(--lime);border-radius:2px;}
+.ch-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4.5vw,3.6rem);font-weight:700;letter-spacing:-2px;line-height:.92;margin-bottom:.9rem;}
+.ch-h1 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
+.ch-sub{font-size:.88rem;color:var(--muted2);line-height:1.8;max-width:420px;}
+.ch-photo{border-radius:22px;overflow:hidden;aspect-ratio:4/3;box-shadow:var(--clay);position:relative;}
+.ch-photo img{width:100%;height:100%;object-fit:cover;}
+.ch-photo-badge{position:absolute;bottom:16px;left:16px;background:var(--white);border-radius:12px;padding:.6rem .9rem;box-shadow:var(--clay);display:flex;align-items:center;gap:.5rem;}
+.ch-photo-badge-stars{color:#F5A623;font-size:.72rem;}
+.ch-photo-badge-txt{font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:700;color:var(--ob);}
+/* MAIN GRID */
+.contact-body{max-width:1180px;margin:0 auto;padding:0 2.5rem 5rem;display:grid;grid-template-columns:1fr 1.35fr;gap:1.4rem;align-items:start;}
+/* LEFT */
+.contact-left{display:flex;flex-direction:column;gap:.85rem;}
+.info-card{background:var(--white);border-radius:18px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);padding:1.2rem;transition:all .28s cubic-bezier(.22,1,.36,1);}
+.info-card:hover{box-shadow:var(--clay-h);transform:translateY(-3px);}
+.info-card.dark{background:var(--ob);}
+.ic-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.9rem;margin-bottom:.7rem;}
+.ic-icon.beige{background:var(--beige3);box-shadow:var(--clay-sm);}
+.ic-icon.sage-light{background:rgba(162,181,168,.15);box-shadow:var(--clay-sm);}
+.ic-icon.lime-light{background:rgba(188,212,26,.1);box-shadow:var(--clay-sm);}
+.ic-title{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:700;margin-bottom:.25rem;}
+.info-card.dark .ic-title{color:var(--bg);}
+.ic-val{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:700;color:var(--sage2);margin-bottom:.12rem;}
+.info-card.dark .ic-val{color:var(--sage);}
+.ic-sub{font-size:.63rem;color:var(--muted);line-height:1.5;}
+.info-card.dark .ic-sub{color:rgba(248,247,244,.38);}
+.horaires-card{background:var(--beige3);border-radius:18px;border:1px solid rgba(190,173,147,.2);box-shadow:var(--clay-sm);padding:1.2rem;}
+.open-badge{display:inline-flex;align-items:center;gap:.35rem;font-family:'Space Grotesk',sans-serif;font-size:.57rem;font-weight:600;background:rgba(188,212,26,.15);color:#5a6e00;border:1px solid rgba(188,212,26,.3);border-radius:50px;padding:3px 10px;margin-bottom:.8rem;}
+.open-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse-lime 2s infinite;}
+.horaires-title{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:700;margin-bottom:.7rem;}
+.h-row{display:flex;justify-content:space-between;align-items:center;padding:.35rem 0;border-bottom:1px solid rgba(190,173,147,.15);}
+.h-row:last-child{border-bottom:none;}
+.h-day{font-family:'Space Grotesk',sans-serif;font-size:.67rem;font-weight:600;color:var(--ob2);}
+.h-time{font-family:'Space Grotesk',sans-serif;font-size:.67rem;font-weight:700;color:var(--sage2);}
+.h-closed{font-family:'Space Grotesk',sans-serif;font-size:.64rem;color:var(--muted);}
+.zones-wrap{display:flex;flex-wrap:wrap;gap:.32rem;margin-top:.4rem;}
+.zone-tag{font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:600;background:var(--bg2);border-radius:6px;padding:3px 8px;color:var(--ob2);}
+.zone-tag.special{background:rgba(162,181,168,.15);color:var(--sage2);}
+.map-card{border-radius:18px;overflow:hidden;height:190px;box-shadow:var(--clay-sm);border:1px solid var(--border);position:relative;}
+.map-card iframe{width:100%;height:100%;border:none;}
+.map-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(248,247,244,.95),transparent);padding:.7rem;}
+.map-addr{font-family:'Space Grotesk',sans-serif;font-size:.63rem;font-weight:600;color:var(--ob);}
+/* RIGHT */
+.contact-right{display:flex;flex-direction:column;gap:.9rem;}
+.form-card{background:var(--white);border-radius:22px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay);padding:2rem;}
+.form-card-title{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:-.3px;margin-bottom:.25rem;}
+.form-card-title em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
+.form-card-sub{font-size:.7rem;color:var(--muted2);line-height:1.5;margin-bottom:1.4rem;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.7rem;}
+.fg{display:flex;flex-direction:column;gap:.28rem;}
+.fg.full{grid-column:span 2;}
+.fg label{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.fg input,.fg textarea,.fg select{background:var(--bg2);border:1.5px solid var(--border2);border-radius:11px;padding:.7rem .9rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.79rem;color:var(--ob);outline:none;transition:all .2s;-webkit-appearance:none;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(26,25,23,.2);}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--sage);background:var(--white);box-shadow:0 0 0 3px rgba(162,181,168,.12);}
+.fg textarea{resize:vertical;min-height:88px;}
+.projet-choices{display:flex;flex-wrap:wrap;gap:.38rem;margin-top:.18rem;}
+.projet-badge{font-family:'Space Grotesk',sans-serif;font-size:.61rem;font-weight:600;padding:5px 11px;border-radius:8px;border:1.5px solid var(--border2);background:var(--bg2);cursor:pointer;transition:all .2s;box-shadow:var(--clay-sm);}
+.projet-badge.active{background:var(--ob);color:var(--bg);border-color:var(--ob);box-shadow:none;}
+.projet-badge:not(.active):hover{border-color:var(--sage);}
+.form-footer{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-top:1.1rem;flex-wrap:wrap;}
+.form-note{font-size:.59rem;color:var(--muted);line-height:1.45;max-width:210px;}
+.btn-submit{font-family:'Space Grotesk',sans-serif;font-size:.8rem;font-weight:700;background:var(--ob);color:var(--bg);border:none;border-radius:12px;padding:12px 26px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(26,25,23,.22);}
+.form-success{display:none;background:rgba(188,212,26,.1);border:1px solid rgba(188,212,26,.3);border-radius:14px;padding:1.4rem;text-align:center;}
+.form-success.show{display:block;}
+.form-success-icon{font-size:1.8rem;margin-bottom:.5rem;}
+.form-success-title{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;}
+.form-success-sub{font-size:.68rem;color:var(--muted2);margin-top:.2rem;}
+.videoask-card{background:var(--ob);border-radius:20px;padding:1.4rem;box-shadow:0 8px 32px rgba(26,25,23,.18);position:relative;overflow:hidden;}
+.videoask-card::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.1),transparent 70%);}
+.vask-tag{font-family:'Space Grotesk',sans-serif;font-size:.51rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(162,181,168,.7);margin-bottom:.35rem;}
+.vask-title{font-family:'Space Grotesk',sans-serif;font-size:.92rem;font-weight:700;color:var(--bg);margin-bottom:.22rem;}
+.vask-sub{font-size:.67rem;color:rgba(248,247,244,.42);line-height:1.5;margin-bottom:1rem;}
+.vask-embed{border-radius:14px;overflow:hidden;background:var(--bg3);}
+.vask-embed iframe{width:100%;display:block;border:none;}
+@media(max-width:900px){.contact-hero,.contact-body{grid-template-columns:1fr;}.contact-hero{padding-bottom:1.5rem;}.form-grid{grid-template-columns:1fr;}.fg.full{grid-column:span 1;}.form-footer{flex-direction:column;align-items:stretch;}.btn-submit{justify-content:center;}}
+@media(max-width:640px){.contact-hero,.contact-body{padding-left:1.5rem;padding-right:1.5rem;}}
+</style>
+</head>
+<body>
+<nav id="mn">
+  <a href="index.html" class="nav-logo"><div class="logo-text">aeconom<i>i</i>a.</div></a>
+  <div class="nav-center"><a href="index.html" class="nav-link">Accueil</a><a href="apropos.html" class="nav-link">À propos</a><a href="simulation.html" class="nav-link">Simulation</a><a href="contact.html" class="nav-link active">Contact</a></div>
+  <div class="nav-right">
+    <a href="tel:0279414243" class="nav-tel">📞 02.79.41.42.43</a>
+    <a href="contact.html"><button class="btn-nav-cta">Nous contacter</button></a>
+  </div>
+  <div class="nav-burger" id="nb" onclick="toggleMob()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-menu" id="mm">
+  <a href="index.html" onclick="closeMob()">Accueil</a><a href="apropos.html" onclick="closeMob()">À propos</a><a href="simulation.html" onclick="closeMob()">Simulation</a><a href="contact.html" onclick="closeMob()">Contact</a>
+  <a href="contact.html" onclick="closeMob()"><button class="mob-cta-btn">Nous contacter</button></a>
+  <span class="mob-tel">📞 02.79.41.42.43</span>
+</div>
+<div class="page-top">
+  <!-- HERO -->
+  <div class="contact-hero">
+    <div>
+      <div class="ch-tag fu d1">Contactez-nous</div>
+      <h1 class="ch-h1 fu d2">Parlons de<br/><em>votre projet.</em></h1>
+      <p class="ch-sub fu d3">Premier rendez-vous gratuit et sans engagement. Téléphonique ou physique selon vos disponibilités. Réponse sous 24h.</p>
+    </div>
+    <div class="ch-photo fu d3">
+      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/images/PHOTO%2014.jpg" alt="Dimitri Toulon avec ses clients"/>
+      <div class="ch-photo-badge"><span class="ch-photo-badge-stars">★★★★★</span><span class="ch-photo-badge-txt">750+ avis 5 étoiles</span></div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="contact-body">
+    <!-- LEFT -->
+    <div class="contact-left">
+      <div class="horaires-card reveal">
+        <div class="open-badge"><span class="open-dot"></span> Ouvert maintenant</div>
+        <div class="horaires-title">Horaires d'ouverture</div>
+        <div class="h-row"><span class="h-day">Lundi — Vendredi</span><span class="h-time">8h00 — 20h00</span></div>
+        <div class="h-row"><span class="h-day">Samedi</span><span class="h-time">Sur rendez-vous</span></div>
+        <div class="h-row"><span class="h-day">Dimanche</span><span class="h-closed">Fermé</span></div>
+      </div>
+      <div class="info-card reveal" style="transition-delay:.05s">
+        <div class="ic-icon beige">📞</div>
+        <div class="ic-title">Téléphone</div>
+        <a href="tel:0279414243"><div class="ic-val">02.79.41.42.43</div></a>
+        <div class="ic-sub">Réponse immédiate · Accord de principe le jour même</div>
+      </div>
+      <div class="info-card reveal" style="transition-delay:.1s">
+        <div class="ic-icon sage-light">✉️</div>
+        <div class="ic-title">Email</div>
+        <a href="mailto:contact@aeconomia.fr"><div class="ic-val">contact@aeconomia.fr</div></a>
+        <div class="ic-sub">Réponse sous 24h ouvrées</div>
+      </div>
+      <div class="info-card dark reveal" style="transition-delay:.15s">
+        <div class="ic-icon" style="background:rgba(255,255,255,.08)">📍</div>
+        <div class="ic-title">Agence principale</div>
+        <div class="ic-val">22 rue de la République</div>
+        <div class="ic-sub">45000 Orléans · Parking à proximité</div>
+      </div>
+      <div class="info-card reveal" style="transition-delay:.2s">
+        <div class="ic-icon lime-light">🗺️</div>
+        <div class="ic-title">Zones d'intervention</div>
+        <div class="zones-wrap">
+          <span class="zone-tag">Orléans</span><span class="zone-tag">Tours</span><span class="zone-tag">Blois</span>
+          <span class="zone-tag">Chartres</span><span class="zone-tag">Montargis</span><span class="zone-tag">Châteaudun</span>
+          <span class="zone-tag special">Paris 13e · 15e · 16e</span>
+        </div>
+      </div>
+      <div class="map-card reveal" style="transition-delay:.25s">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2651.4!2d1.9046!3d47.9048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4e5799c5794d7%3A0xe7bed25426794771!2sAeconomia!5e0!3m2!1sfr!2sfr!4v1" loading="lazy" title="Aeconomia Orléans"></iframe>
+        <div class="map-overlay"><div class="map-addr">📍 22 rue de la République · 45000 Orléans</div></div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="contact-right">
+      <div class="form-card reveal">
+        <div class="form-card-title">Parlez-nous de <em>votre projet.</em></div>
+        <div class="form-card-sub">Rendez-vous gratuit, sans engagement. Votre courtier dédié vous recontacte sous 24h.</div>
+        <form id="contact-form" onsubmit="submitForm(event)">
+          <div class="form-grid">
+            <div class="fg"><label>Prénom *</label><input type="text" name="prenom" placeholder="Jean" required/></div>
+            <div class="fg"><label>Nom *</label><input type="text" name="nom" placeholder="Dupont" required/></div>
+            <div class="fg"><label>Téléphone *</label><input type="tel" name="tel" placeholder="06 XX XX XX XX" required/></div>
+            <div class="fg"><label>Email *</label><input type="email" name="email" placeholder="jean@exemple.fr" required/></div>
+            <div class="fg full">
+              <label>Votre projet</label>
+              <div class="projet-choices">
+                <span class="projet-badge active" onclick="selProjet(this)">Achat résidence principale</span>
+                <span class="projet-badge" onclick="selProjet(this)">Investissement locatif</span>
+                <span class="projet-badge" onclick="selProjet(this)">Primo-accédant</span>
+                <span class="projet-badge" onclick="selProjet(this)">Renégociation</span>
+                <span class="projet-badge" onclick="selProjet(this)">Rachat de soulte</span>
+                <span class="projet-badge" onclick="selProjet(this)">Autre</span>
+              </div>
+            </div>
+            <div class="fg full">
+              <label>Budget estimé</label>
+              <select name="budget"><option value="">Sélectionner...</option><option>Moins de 150 000 €</option><option>150 000 — 250 000 €</option><option>250 000 — 400 000 €</option><option>400 000 — 600 000 €</option><option>Plus de 600 000 €</option><option>Je ne sais pas encore</option></select>
+            </div>
+            <div class="fg full"><label>Message (optionnel)</label><textarea name="message" placeholder="Décrivez votre situation, vos questions, vos disponibilités..."></textarea></div>
+          </div>
+          <div class="form-footer">
+            <div class="form-note">En soumettant ce formulaire, vous acceptez que vos données soient utilisées pour vous recontacter.</div>
+            <button type="submit" class="btn-submit">Envoyer ma demande →</button>
+          </div>
+        </form>
+        <div class="form-success" id="form-success"><div class="form-success-icon">✅</div><div class="form-success-title">Demande envoyée !</div><div class="form-success-sub">Votre courtier dédié vous recontacte sous 24h ouvrées.</div></div>
+      </div>
+
+      <div class="videoask-card reveal" style="transition-delay:.1s">
+        <div class="vask-tag">Préférez le format vidéo ?</div>
+        <div class="vask-title">Parlez-nous directement 🎥</div>
+        <div class="vask-sub">Répondez à quelques questions en vidéo et recevez une réponse personnalisée de votre courtier sous 24h.</div>
+        <div class="vask-embed">
+          <iframe src="https://www.videoask.com/fbdf37bma" allow="camera *; microphone *; autoplay *; encrypted-media *; fullscreen *; display-capture *;" height="460px"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="logo-text">aeconom<i>i</i>a.</div>
+      <p class="footer-brand-desc">Cabinet de courtage en prêt immobilier, leader indépendant à Orléans et en région Centre depuis 2022.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/aeconomia.courtage/" target="_blank" class="footer-social">📸</a>
+        <a href="https://www.facebook.com/Aeconomia.courtage/" target="_blank" class="footer-social">f</a>
+        <a href="https://www.linkedin.com/company/82227304/" target="_blank" class="footer-social">in</a>
+      </div>
+    </div>
+    <div><div class="footer-col-title">Navigation</div><div class="footer-links"><a href="index.html">Accueil</a><a href="apropos.html">À propos</a><a href="simulation.html">Simulation</a><a href="contact.html">Contact</a></div></div>
+    <div><div class="footer-col-title">Zones</div><div class="footer-links"><a href="#">Orléans</a><a href="#">Tours</a><a href="#">Blois</a><a href="#">Chartres</a><a href="#">Montargis</a><a href="#">Paris</a></div></div>
+    <div><div class="footer-col-title">Contact</div><div class="footer-links"><a href="tel:0279414243">02.79.41.42.43</a><a href="mailto:contact@aeconomia.fr">contact@aeconomia.fr</a><a href="#">22 rue de la République</a><a href="#">45000 Orléans</a></div></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">EURL · RCS Orléans 909 326 613 · COBSP · ORIAS n°22002183 · Contrôle ACPR · Médiateur IEAM · © 2026 Aeconomia</div>
+    <div class="footer-badges"><span class="footer-badge">ORIAS ✓</span><span class="footer-badge">COBSP ✓</span><span class="footer-badge">ACPR ✓</span></div>
+  </div>
+</footer>
+<script>
+function selProjet(el){document.querySelectorAll('.projet-badge').forEach(b=>b.classList.remove('active'));el.classList.add('active');}
+function submitForm(e){e.preventDefault();document.getElementById('contact-form').style.display='none';document.getElementById('form-success').classList.add('show');}
+
+function toggleMob(){document.getElementById('mm').classList.toggle('open');document.getElementById('nb').classList.toggle('open');document.body.style.overflow=document.getElementById('mm').classList.contains('open')?'hidden':'';}
+function closeMob(){document.getElementById('mm').classList.remove('open');document.getElementById('nb').classList.remove('open');document.body.style.overflow='';}
+window.addEventListener('scroll',()=>{document.getElementById('mn').classList.toggle('scrolled',window.scrollY>30);},{passive:true});
+const _ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.06});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>_ro.observe(el));
+
+</script>
+</body></html>
