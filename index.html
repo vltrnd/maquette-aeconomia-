@@ -536,28 +536,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .rev-name{font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:700;color:var(--ob);}
 .rev-pl{font-size:.53rem;color:var(--muted);}
 
-/* ██ TEAM — flip card ██ */
-.tpg{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;}
-.tpm{position:relative;height:180px;cursor:pointer;perspective:1000px;}
-.tpm-front,.tpm-back{position:absolute;inset:0;border-radius:18px;border:1px solid rgba(255,255,255,.8);box-shadow:var(--clay-sm);backface-visibility:hidden;transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .3s;overflow:hidden;}
-.tpm-front{background:var(--white);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;gap:.5rem;}
-.tpm:hover .tpm-front{transform:rotateY(-180deg);box-shadow:var(--clay-h);}
-.tpm-back{background:var(--ob);transform:rotateY(180deg);display:flex;flex-direction:column;padding:.85rem;gap:.32rem;}
-.tpm:hover .tpm-back{transform:rotateY(0deg);box-shadow:var(--clay-h);}
-.tpm-av{width:60px;height:60px;border-radius:50%;overflow:hidden;border:3px solid var(--white);box-shadow:var(--clay-sm);background:var(--beige3);flex-shrink:0;}
-.tpm-av img{width:100%;height:100%;object-fit:cover;object-position:top center;}
-.tpm-name{font-family:'Space Grotesk',sans-serif;font-size:.75rem;font-weight:700;color:var(--ob);text-align:center;}
-.tpm-role{font-family:'Space Grotesk',sans-serif;font-size:.47rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center;}
-.tpm-bav{width:36px;height:36px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,.18);flex-shrink:0;background:var(--beige3);}
-.tpm-bav img{width:100%;height:100%;object-fit:cover;object-position:top center;}
-.tpm-bname{font-family:'Space Grotesk',sans-serif;font-size:.72rem;font-weight:700;color:var(--bg);margin-top:.1rem;}
-.tpm-brole{font-family:'Space Grotesk',sans-serif;font-size:.47rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(247,244,239,.38);margin-bottom:.18rem;}
-.tpm-bspecs{display:flex;flex-wrap:wrap;gap:.22rem;margin-bottom:.3rem;}
-.ts{font-family:'Space Grotesk',sans-serif;font-size:.46rem;font-weight:600;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12);border-radius:50px;padding:2px 7px;color:rgba(247,244,239,.7);}
-.tpm-bmeta{display:flex;flex-direction:column;gap:.16rem;margin-bottom:.3rem;}
-.tpm-bmeta span{font-size:.52rem;color:rgba(247,244,239,.42);}
-.tpm-bcta{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:700;background:var(--lime);color:var(--ob);border-radius:7px;padding:5px 10px;text-decoration:none;display:inline-block;margin-top:auto;text-align:center;transition:all .2s;}
-.tpm-bcta:hover{background:#d4ee1f;transform:translateY(-1px);}
+
 
 /* ██ SOLUTIONS ██ */
 .solg{display:grid;grid-template-columns:repeat(4,1fr);gap:.65rem;}
@@ -655,6 +634,154 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .tlx-content h3{font-size:1.15rem;}
   .tlx-finale{margin-top:3rem;padding:2rem 1.2rem;}
 }
+
+<!-- ══ 9. ÉQUIPE — MAGAZINE CARDS ══ -->
+<section class="wrap" id="teamSec">
+  <div class="rv" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:2.2rem">
+    <div>
+      <div class="tag">Notre équipe</div>
+      <h2 class="h2">Des experts locaux<br/><em>à votre service.</em></h2>
+      <p style="font-size:.74rem;color:var(--muted);margin-top:.4rem">Survolez un profil — les détails viennent à vous ↗</p>
+    </div>
+    <a href="apropos.html" class="btn-s">Rencontrer l'équipe →</a>
+  </div>
+
+  <div class="tm-grid st">
+    <article class="tm rv" data-idx="0">
+      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt="Dimitri Toulon" loading="lazy"/>
+      <div class="tm-grad"></div>
+      <div class="tm-shine"></div>
+      <div class="tm-tag">01 · Directeur</div>
+      <div class="tm-body">
+        <div class="tm-role">Directeur · Fondateur</div>
+        <div class="tm-name">Dimitri<br/>Toulon</div>
+        <div class="tm-line"></div>
+        <div class="tm-extra">
+          <div class="tm-specs">
+            <span>Primo-accédant</span><span>Invest. locatif</span><span>Militaires</span>
+          </div>
+          <div class="tm-meta">
+            <span><i>🎬</i>Inception</span><span><i>🎵</i>Daft Punk</span>
+          </div>
+          <a href="contact.html" class="tm-cta">Contacter Dimitri <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tm rv" data-idx="1">
+      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt="Raphaël Nicq" loading="lazy"/>
+      <div class="tm-grad"></div><div class="tm-shine"></div>
+      <div class="tm-tag">02 · Courtier</div>
+      <div class="tm-body">
+        <div class="tm-role">Courtier senior</div>
+        <div class="tm-name">Raphaël<br/>Nicq</div>
+        <div class="tm-line"></div>
+        <div class="tm-extra">
+          <div class="tm-specs"><span>Résidence principale</span><span>Renégociation</span><span>TNS</span></div>
+          <div class="tm-meta"><span><i>🎬</i>Le Parrain</span><span><i>🎵</i>The Weeknd</span></div>
+          <a href="contact.html" class="tm-cta">Contacter Raphaël <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tm rv" data-idx="2">
+      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt="Delphine Dechartre" loading="lazy"/>
+      <div class="tm-grad"></div><div class="tm-shine"></div>
+      <div class="tm-tag">03 · Courtière</div>
+      <div class="tm-body">
+        <div class="tm-role">Courtière</div>
+        <div class="tm-name">Delphine<br/>Dechartre</div>
+        <div class="tm-line"></div>
+        <div class="tm-extra">
+          <div class="tm-specs"><span>Famille</span><span>Rachat de soulte</span><span>Primo-accédant</span></div>
+          <div class="tm-meta"><span><i>🎬</i>Amélie</span><span><i>🎵</i>Beyoncé</span></div>
+          <a href="contact.html" class="tm-cta">Contacter Delphine <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tm rv" data-idx="3">
+      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt="Robin Villette" loading="lazy"/>
+      <div class="tm-grad"></div><div class="tm-shine"></div>
+      <div class="tm-tag">04 · Courtier</div>
+      <div class="tm-body">
+        <div class="tm-role">Courtier</div>
+        <div class="tm-name">Robin<br/>Villette</div>
+        <div class="tm-line"></div>
+        <div class="tm-extra">
+          <div class="tm-specs"><span>Dossiers complexes</span><span>Investissement</span><span>Secundo</span></div>
+          <div class="tm-meta"><span><i>🎬</i>Interstellar</span><span><i>🎵</i>Stromae</span></div>
+          <a href="contact.html" class="tm-cta">Contacter Robin <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tm rv" data-idx="4">
+      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt="Gabriel Despeisse" loading="lazy"/>
+      <div class="tm-grad"></div><div class="tm-shine"></div>
+      <div class="tm-tag">05 · Courtier</div>
+      <div class="tm-body">
+        <div class="tm-role">Courtier</div>
+        <div class="tm-name">Gabriel<br/>Despeisse</div>
+        <div class="tm-line"></div>
+        <div class="tm-extra">
+          <div class="tm-specs"><span>Urgences</span><span>Primo-accédant</span><span>Orléans</span></div>
+          <div class="tm-meta"><span><i>🎬</i>Intouchables</span><span><i>🎵</i>Angèle</span></div>
+          <a href="contact.html" class="tm-cta">Contacter Gabriel <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tm rv" data-idx="5">
+      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/matteo.jpg" alt="Matteo Martolini" loading="lazy"/>
+      <div class="tm-grad"></div><div class="tm-shine"></div>
+      <div class="tm-tag">06 · Courtier</div>
+      <div class="tm-body">
+        <div class="tm-role">Courtier</div>
+        <div class="tm-name">Matteo<br/>Martolini</div>
+        <div class="tm-line"></div>
+        <div class="tm-extra">
+          <div class="tm-specs"><span>Invest. locatif</span><span>Libéral</span><span>LMNP</span></div>
+          <div class="tm-meta"><span><i>🎬</i>Scarface</span><span><i>🎵</i>Jul</span></div>
+          <a href="contact.html" class="tm-cta">Contacter Matteo <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tm rv" data-idx="6">
+      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Adrien%20.jpg" alt="Adrien Meneghini" loading="lazy"/>
+      <div class="tm-grad"></div><div class="tm-shine"></div>
+      <div class="tm-tag">07 · Courtier</div>
+      <div class="tm-body">
+        <div class="tm-role">Courtier</div>
+        <div class="tm-name">Adrien<br/>Meneghini</div>
+        <div class="tm-line"></div>
+        <div class="tm-extra">
+          <div class="tm-specs"><span>Résidence principale</span><span>Assurance</span><span>Fonctionnaire</span></div>
+          <div class="tm-meta"><span><i>🎬</i>Monte-Cristo</span><span><i>🎵</i>Kendrick</span></div>
+          <a href="contact.html" class="tm-cta">Contacter Adrien <span>→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="tm rv" data-idx="7">
+      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/mariephoto.jpg" alt="Marie" loading="lazy"/>
+      <div class="tm-grad"></div><div class="tm-shine"></div>
+      <div class="tm-tag">08 · Courtière</div>
+      <div class="tm-body">
+        <div class="tm-role">Courtière</div>
+        <div class="tm-name">Marie</div>
+        <div class="tm-line"></div>
+        <div class="tm-extra">
+          <div class="tm-specs"><span>Famille</span><span>Primo-accédant</span><span>Rachat soulte</span></div>
+          <div class="tm-meta"><span><i>🎬</i>Amélie Poulain</span><span><i>🎵</i>Clara Luciani</span></div>
+          <a href="contact.html" class="tm-cta">Contacter Marie <span>→</span></a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+<div class="divider"></div>
 
 /* RESP */
 @media(max-width:1060px){
@@ -1467,5 +1594,35 @@ calcAll();
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onScroll);
   update();
+})();
+
+
+  /* ══ TEAM MAGNETIC TILT ══ */
+(function(){
+  if(matchMedia('(hover:none)').matches)return;
+  var cards=document.querySelectorAll('.tm');
+  cards.forEach(function(card,i){
+    var raf=null,tx=0,ty=0,cx=0,cy=0;
+    function move(e){
+      var r=card.getBoundingClientRect();
+      cx=((e.clientX-r.left)/r.width-.5)*2;
+      cy=((e.clientY-r.top)/r.height-.5)*2;
+      if(!raf)raf=requestAnimationFrame(apply);
+    }
+    function apply(){
+      raf=null;
+      var rx=cy*-7,ry=cx*7;
+      card.style.transform='perspective(1200px) rotateX('+rx+'deg) rotateY('+ry+'deg) translateY(-6px) scale(1.015)';
+      var img=card.querySelector('.tm-img');
+      if(img)img.style.transformOrigin=(50+cx*15)+'% '+(18+cy*10)+'%';
+    }
+    function reset(){
+      card.style.transform='';
+      var img=card.querySelector('.tm-img');
+      if(img)img.style.transformOrigin='center 18%';
+    }
+    card.addEventListener('mousemove',move);
+    card.addEventListener('mouseleave',reset);
+  });
 })();
 </script></body></html>
