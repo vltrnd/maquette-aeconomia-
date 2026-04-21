@@ -478,6 +478,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 .ps-c:hover{transform:scale(1.025);box-shadow:var(--clay-h);}
 .ps-c img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
 .ps-c:hover img{transform:scale(1.05);}
+  
 /* PARTENAIRES */
 .pag{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-top:1.8rem;}
 .pac{background:var(--white);border-radius:14px;box-shadow:var(--clay-sm);
@@ -495,6 +496,74 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
   .gg{grid-template-columns:1fr;}.ps{grid-template-columns:1fr 1fr;}.cta-banner{padding:2rem;}}
 @media(max-width:480px){.tg{grid-template-columns:1fr 1fr;}.sol-g{grid-template-columns:1fr;}
   .pag{grid-template-columns:1fr 1fr;}}
+
+/* ══ APPROCHE — BENTO MANIFEST ══ */
+.apX-bento{display:grid;grid-template-columns:repeat(4,1fr);gap:.85rem;grid-auto-rows:minmax(240px,1fr);}
+.apX-c{position:relative;background:var(--white);border-radius:22px;padding:1.5rem;border:1px solid rgba(255,255,255,.85);box-shadow:var(--clay-sm);overflow:hidden;transition:box-shadow .35s cubic-bezier(.22,1,.36,1),transform .35s cubic-bezier(.22,1,.36,1),border-color .3s;display:flex;flex-direction:column;}
+.apX-c:hover{transform:translateY(-5px);box-shadow:var(--clay-h);border-color:rgba(162,181,168,.25);}
+.apX-hero{grid-column:span 2;padding:1.9rem 2rem;min-height:340px;}
+.apX-dk{background:var(--ob);border-color:rgba(255,255,255,.04);box-shadow:var(--clay-dark);color:var(--bg);}
+.apX-sg{background:linear-gradient(135deg,var(--sage) 0%,#8aa096 100%);border-color:rgba(255,255,255,.2);color:var(--bg);}
+.apX-be{background:var(--beige4);border-color:rgba(190,173,147,.26);}
+.apX-lm{background:radial-gradient(120% 120% at 10% 10%,#1f1e1a 0%,#0f0e0c 100%);border-color:rgba(188,212,26,.1);box-shadow:var(--clay-dark);color:var(--bg);}
+.apX-dk::before{content:'';position:absolute;top:-60%;right:-30%;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(188,212,26,.14),transparent 65%);pointer-events:none;animation:blob 16s ease-in-out infinite;z-index:0;}
+.apX-lm::before{content:'';position:absolute;bottom:-40%;left:-20%;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(188,212,26,.18),transparent 68%);pointer-events:none;animation:blob 14s ease-in-out infinite reverse;z-index:0;}
+.apX-lm::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--lime) 50%,transparent);opacity:.7;}
+.apX-ghost{position:absolute;top:1rem;right:1.1rem;font-family:'Space Grotesk',sans-serif;font-size:3.6rem;font-weight:700;letter-spacing:-2.5px;color:rgba(21,20,18,.055);line-height:1;pointer-events:none;transition:transform .5s cubic-bezier(.22,1,.36,1),color .4s;z-index:1;}
+.apX-c:hover .apX-ghost{transform:scale(1.08) rotate(-4deg);color:rgba(162,181,168,.14);}
+.apX-dk .apX-ghost,.apX-lm .apX-ghost{color:rgba(188,212,26,.08);}
+.apX-dk:hover .apX-ghost,.apX-lm:hover .apX-ghost{color:rgba(188,212,26,.18);}
+.apX-sg .apX-ghost{color:rgba(255,255,255,.18);}
+.apX-sg:hover .apX-ghost{color:rgba(255,255,255,.28);}
+.apX-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem;position:relative;z-index:2;}
+.apX-ico{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,rgba(188,212,26,.18),rgba(162,181,168,.1));border:1.5px solid rgba(188,212,26,.32);display:inline-flex;align-items:center;justify-content:center;font-size:1.42rem;margin-bottom:1.05rem;position:relative;z-index:2;transition:transform .55s cubic-bezier(.34,1.56,.64,1);flex-shrink:0;}
+.apX-head .apX-ico{margin-bottom:0;}
+.apX-ico::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px dashed rgba(188,212,26,.32);opacity:0;transition:opacity .35s;animation:apXRot 18s linear infinite;}
+.apX-c:hover .apX-ico{transform:scale(1.12) rotate(-8deg);}
+.apX-c:hover .apX-ico::before{opacity:1;}
+.apX-ico-lg{width:62px;height:62px;font-size:1.75rem;}
+.apX-sg .apX-ico{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.38);}
+.apX-sg .apX-ico::before{border-color:rgba(255,255,255,.4);}
+.apX-be .apX-ico{background:rgba(190,173,147,.24);border-color:rgba(190,173,147,.42);}
+.apX-dk .apX-ico,.apX-lm .apX-ico{background:rgba(188,212,26,.16);border-color:rgba(188,212,26,.42);box-shadow:0 0 30px rgba(188,212,26,.15);}
+@keyframes apXRot{to{transform:rotate(360deg);}}
+.apX-c h3{font-family:'Space Grotesk',sans-serif;font-size:.98rem;font-weight:700;letter-spacing:-.5px;line-height:1.15;margin-bottom:.52rem;position:relative;z-index:2;color:inherit;}
+.apX-hero h3{font-size:clamp(1.35rem,2.2vw,1.75rem);letter-spacing:-1.2px;line-height:1.02;margin-bottom:.95rem;}
+.apX-hero h3 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--lime);}
+.apX-c p{font-size:.72rem;color:var(--muted2);line-height:1.65;position:relative;z-index:2;margin-bottom:auto;}
+.apX-dk p,.apX-lm p{color:rgba(247,244,239,.58);}
+.apX-sg p{color:rgba(247,244,239,.88);}
+.apX-hero p{font-size:.82rem;line-height:1.75;max-width:430px;}
+.apX-stat{display:inline-flex;align-items:baseline;gap:.42rem;font-family:'Space Grotesk',sans-serif;padding:.42rem .85rem;background:rgba(21,20,18,.05);border-radius:50px;border:1px solid var(--border);margin-top:1rem;align-self:flex-start;position:relative;z-index:2;transition:all .3s;}
+.apX-c:hover .apX-stat{background:rgba(188,212,26,.12);border-color:rgba(188,212,26,.32);}
+.apX-stat span{font-size:.92rem;font-weight:700;color:var(--sage2);letter-spacing:-.4px;}
+.apX-stat em{font-size:.55rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-style:normal;}
+.apX-sg .apX-stat{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.28);}
+.apX-sg .apX-stat span{color:var(--bg);}
+.apX-sg .apX-stat em{color:rgba(255,255,255,.72);}
+.apX-sg:hover .apX-stat{background:rgba(255,255,255,.25);}
+.apX-be .apX-stat{background:rgba(190,173,147,.2);border-color:rgba(190,173,147,.32);}
+.apX-badge{display:inline-flex;align-items:center;gap:.42rem;font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:50px;background:rgba(188,212,26,.12);border:1px solid rgba(188,212,26,.32);color:var(--lime);}
+.apX-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);animation:pl 1.8s infinite;}
+.apX-kpi{display:flex;align-items:baseline;gap:.85rem;margin:.9rem 0 .6rem;padding:.95rem 0;border-top:1px solid rgba(247,244,239,.12);border-bottom:1px solid rgba(247,244,239,.12);position:relative;z-index:2;}
+.kpi-n{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,4vw,3.4rem);font-weight:700;color:var(--lime);letter-spacing:-2.5px;line-height:1;}
+.kpi-l{font-family:'Space Grotesk',sans-serif;font-size:.64rem;font-weight:600;color:rgba(247,244,239,.6);line-height:1.3;letter-spacing:.02em;}
+.apX-sources{display:flex;gap:.85rem;flex-wrap:wrap;font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.06em;color:rgba(247,244,239,.48);margin-top:.5rem;position:relative;z-index:2;}
+.apX-sources span{white-space:nowrap;}
+.apX-steps{display:flex;align-items:center;flex-wrap:wrap;gap:.45rem;margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(247,244,239,.12);position:relative;z-index:2;}
+.apX-step{display:inline-flex;align-items:center;gap:.38rem;font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:600;color:rgba(247,244,239,.72);padding:6px 11px;border-radius:10px;background:rgba(247,244,239,.07);border:1px solid rgba(247,244,239,.1);transition:all .25s;}
+.apX-step b{font-family:'Space Grotesk',sans-serif;font-weight:800;color:var(--lime);font-size:.68rem;}
+.apX-step-end{background:var(--lime);color:var(--ob);border-color:var(--lime);box-shadow:0 0 20px rgba(188,212,26,.35);}
+.apX-step-end b{color:var(--ob);}
+.apX-c:hover .apX-step{background:rgba(247,244,239,.1);border-color:rgba(247,244,239,.18);}
+.apX-sep{color:rgba(188,212,26,.5);font-family:'Space Grotesk',sans-serif;font-weight:700;}
+.apX-arrow{position:absolute;bottom:1.1rem;right:1.1rem;width:34px;height:34px;border-radius:50%;background:var(--lime);color:var(--ob);display:flex;align-items:center;justify-content:center;font-size:.88rem;font-weight:700;opacity:0;transform:translate(-10px,10px) scale(.85);transition:all .45s cubic-bezier(.22,1,.36,1);box-shadow:0 6px 18px rgba(188,212,26,.4);z-index:3;}
+.apX-c:hover .apX-arrow{opacity:1;transform:translate(0,0) scale(1);}
+.apX-hero .apX-arrow{bottom:1.4rem;right:1.4rem;}
+@media(max-width:1024px){.apX-bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:minmax(220px,auto);}.apX-hero{grid-column:span 2;min-height:auto;}}
+@media(max-width:560px){.apX-bento{grid-template-columns:1fr;}.apX-hero{grid-column:span 1;padding:1.5rem;}.apX-steps{gap:.3rem;}.apX-step{font-size:.56rem;padding:4px 8px;}.apX-sources{gap:.6rem;}}
+
+  
 </style></head><body>
 <nav id="mn">
   <a href="index.html" class="nav-logo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/logotype_noir_1000px.png" alt="Aeconomia" style="height:26px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/><div class="logo-text" style="display:none">aeconom<i>i</i>a.</div></a>
@@ -603,24 +672,98 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 
 <div class="divider"></div>
 
-<!-- APPROCHE -->
-<section class="wrap">
-  <div class="rv" style="margin-bottom:2.2rem">
+<!-- APPROCHE — BENTO MANIFEST -->
+<section class="wrap" id="apX">
+  <div class="apX-hd rv" style="margin-bottom:2.2rem;max-width:680px">
     <div class="tag">Notre approche</div>
     <h2 class="h2">Le meilleur des deux<br/><em>mondes.</em></h2>
-    <p style="font-size:.83rem;color:var(--muted2);line-height:1.74;max-width:500px">Proximité des courtiers locaux + réactivité du digital. L'algorithme est humain chez nous.</p>
+    <p style="font-size:.83rem;color:var(--muted2);line-height:1.74;margin-top:.5rem">Proximité des courtiers locaux + réactivité du digital. L'algorithme est humain chez nous.</p>
   </div>
-  <div class="ag st">
-    <div class="ac rv"><div class="ac-num">01</div><div class="ac-icon">🎯</div><div class="ac-title">Transparence totale</div><div class="ac-desc">Communication honnête, suivi sans surprise. Aucun petit caractère caché. Vous savez toujours où en est votre dossier.</div></div>
-    <div class="ac dk rv"><div class="ac-num">02</div><div class="ac-icon">⭐</div><div class="ac-title">Excellence prouvée</div><div class="ac-desc">750+ avis 5 étoiles sur Google, Trustpilot et Immodvisor. Pas une promesse — une réalité validée par nos clients depuis 2022.</div></div>
-    <div class="ac sg rv"><div class="ac-num">03</div><div class="ac-icon">🤝</div><div class="ac-title">Proximité garantie</div><div class="ac-desc">Courtiers locaux, l'humain au cœur de chaque accompagnement. Votre projet devient le nôtre.</div></div>
-    <div class="ac rv"><div class="ac-num">04</div><div class="ac-icon">⚡</div><div class="ac-title">Réactivité maximale</div><div class="ac-desc">8h-20h en semaine. Accord de principe immédiat. Retour bancaire sous 7-10 jours.</div></div>
-    <div class="ac rv"><div class="ac-num">05</div><div class="ac-icon">💰</div><div class="ac-title">Indépendance absolue</div><div class="ac-desc">Aucun lien capitalistique avec les banques. Dans votre intérêt exclusif.</div></div>
-    <div class="ac rv"><div class="ac-num">06</div><div class="ac-icon">🔑</div><div class="ac-title">De A aux clés</div><div class="ac-desc">Gestion de l'appel de fonds entre la banque et le notaire. Littéralement jusqu'aux clés.</div></div>
+
+  <div class="apX-bento st">
+    <!-- 01 — white -->
+    <article class="apX-c rv">
+      <div class="apX-ghost">01</div>
+      <div class="apX-ico">🎯</div>
+      <h3>Transparence totale</h3>
+      <p>Communication honnête, suivi sans surprise. Aucun petit caractère caché, vous savez toujours où en est votre dossier.</p>
+      <div class="apX-stat"><span>100%</span><em>de clarté</em></div>
+      <div class="apX-arrow">↗</div>
+    </article>
+
+    <!-- 02 — DARK HERO spans 2 -->
+    <article class="apX-c apX-hero apX-dk rv">
+      <div class="apX-ghost">02</div>
+      <div class="apX-head">
+        <div class="apX-ico">⭐</div>
+        <div class="apX-badge"><span class="apX-dot"></span>Validé quotidiennement</div>
+      </div>
+      <h3>Excellence prouvée, chaque jour.</h3>
+      <p>Pas une promesse — une réalité validée par nos clients depuis 2022. Trois plateformes, une seule note : le 5 étoiles.</p>
+      <div class="apX-kpi">
+        <div class="kpi-n" data-t="750" data-s="+">0+</div>
+        <div class="kpi-l">avis 5 étoiles<br/>certifiés</div>
+      </div>
+      <div class="apX-sources">
+        <span>★★★★★ Google</span>
+        <span>★★★★★ Trustpilot</span>
+        <span>★★★★★ Immodvisor</span>
+      </div>
+      <div class="apX-arrow">↗</div>
+    </article>
+
+    <!-- 03 — sage -->
+    <article class="apX-c apX-sg rv">
+      <div class="apX-ghost">03</div>
+      <div class="apX-ico">🤝</div>
+      <h3>Proximité garantie</h3>
+      <p>Courtiers locaux, l'humain au cœur de chaque accompagnement. Votre projet devient le nôtre.</p>
+      <div class="apX-stat"><span>7j/7</span><em>disponibles</em></div>
+      <div class="apX-arrow">↗</div>
+    </article>
+
+    <!-- 04 — beige -->
+    <article class="apX-c apX-be rv">
+      <div class="apX-ghost">04</div>
+      <div class="apX-ico">⚡</div>
+      <h3>Réactivité maximale</h3>
+      <p>Accord de principe immédiat. Retour bancaire sous 7 à 10 jours maximum, jamais au-delà.</p>
+      <div class="apX-stat"><span>8h–20h</span><em>en semaine</em></div>
+      <div class="apX-arrow">↗</div>
+    </article>
+
+    <!-- 05 — white -->
+    <article class="apX-c rv">
+      <div class="apX-ghost">05</div>
+      <div class="apX-ico">💰</div>
+      <h3>Indépendance absolue</h3>
+      <p>Aucun lien capitalistique avec les banques. Dans votre intérêt exclusif.</p>
+      <div class="apX-stat"><span>0</span><em>lien capitalistique</em></div>
+      <div class="apX-arrow">↗</div>
+    </article>
+
+    <!-- 06 — LIME HERO spans 2 -->
+    <article class="apX-c apX-hero apX-lm rv">
+      <div class="apX-ghost">06</div>
+      <div class="apX-head">
+        <div class="apX-ico apX-ico-lg">🔑</div>
+        <div class="apX-badge"><span class="apX-dot"></span>Jusqu'au notaire</div>
+      </div>
+      <h3>De A jusqu'aux clés.<br/><em>Littéralement.</em></h3>
+      <p>Gestion de l'appel de fonds entre la banque et le notaire, coordination de la signature, suivi post-signature. Vous n'avez qu'à faire vos cartons.</p>
+      <div class="apX-steps">
+        <span class="apX-step"><b>A</b> Analyse</span>
+        <span class="apX-sep">→</span>
+        <span class="apX-step"><b>B</b> Banque</span>
+        <span class="apX-sep">→</span>
+        <span class="apX-step"><b>N</b> Notaire</span>
+        <span class="apX-sep">→</span>
+        <span class="apX-step apX-step-end"><b>🔑</b> Clés</span>
+      </div>
+      <div class="apX-arrow">↗</div>
+    </article>
   </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- SOLUTIONS -->
 <section class="wrap">
