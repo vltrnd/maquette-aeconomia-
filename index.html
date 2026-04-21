@@ -839,17 +839,98 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 </section>
 <div class="divider"></div>
 
-<!-- ══ 7. PARCOURS ══ -->
-<section class="wrap">
-  <div class="rv" style="margin-bottom:2.2rem">
-    <div class="tag">Votre parcours</div>
+<!-- ══ 7. PARCOURS — CINEMATIC TIMELINE ══ -->
+<section class="tlx" id="tlx">
+  <div class="tlx-hd rv">
+    <div class="tag" style="justify-content:center">Votre parcours</div>
     <h2 class="h2">De l'étude de capacité<br/><em>à la remise des clés.</em></h2>
+    <div class="tlx-sub">4 étapes · 1 interlocuteur unique · ~6 à 8 semaines</div>
   </div>
-  <div class="stg st">
-    <div class="stc rv"><div class="stn">01</div><div class="stt">Étudiez votre capacité</div><div class="std">Analyse approfondie gratuite. Accord de solvabilité immédiat pour rassurer les vendeurs.</div><div class="stbdg">Gratuit · Sans engagement</div></div>
-    <div class="stc hi rv"><div class="sti"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodubureau7.jpg" alt="Bureau Aeconomia" loading="lazy"/></div><div class="stb"><div class="stn">02</div><div class="stt">Montage du dossier</div><div class="std">Dossier béton. Notre expertise fait la différence dès cette étape.</div></div></div>
-    <div class="stc dk rv"><div class="stn">03</div><div class="stt">Négociation optimale</div><div class="std">Toutes les banques en concurrence. Vous choisissez la meilleure offre. 20+ établissements.</div><div class="stbdg" style="background:rgba(162,181,168,.13);color:var(--sage)">20+ banques</div></div>
-    <div class="stc full hi rv"><div class="sti"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photomiseensituation1.jpg" alt="Remise des clés" loading="lazy"/></div><div class="stb"><div class="stn">04</div><div class="stt">Remise des clés 🔑</div><div class="std">Accompagnement jusqu'au notaire. Gestion de l'appel de fonds. De A jusqu'aux clés, littéralement.</div><div class="stbdg">Place aux cartons !</div><div style="margin-top:.9rem;display:flex;gap:.55rem;flex-wrap:wrap"><a href="contact.html" class="btn-p" style="font-size:.74rem;padding:10px 18px">Démarrer →</a><a href="simulation.html" class="btn-s" style="font-size:.74rem;padding:10px 18px">Simuler d'abord</a></div></div></div>
+
+  <div class="tlx-rail" id="tlxRail">
+    <div class="tlx-spine"><div class="tlx-spine-fill" id="tlxFill"></div></div>
+    <div class="tlx-dot" id="tlxDot"><span></span></div>
+    <div class="tlx-pct" id="tlxPct">0%</div>
+
+    <!-- STEP 01 — right -->
+    <article class="tlx-step" data-idx="0">
+      <div class="tlx-ghost">01</div>
+      <div class="tlx-node"><span>01</span></div>
+      <div class="tlx-content tlx-r">
+        <div class="tlx-eyebrow">Étape 01 · Jour J</div>
+        <h3>Étudiez votre capacité</h3>
+        <p>Analyse approfondie gratuite. Accord de solvabilité immédiat pour rassurer les vendeurs et verrouiller votre offre.</p>
+        <div class="tlx-meta">
+          <span class="tlx-chip lime">● Gratuit</span>
+          <span class="tlx-chip">Sans engagement</span>
+          <span class="tlx-chip">RDV en 48h</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- STEP 02 — left, image -->
+    <article class="tlx-step" data-idx="1">
+      <div class="tlx-ghost">02</div>
+      <div class="tlx-node"><span>02</span></div>
+      <div class="tlx-content tlx-l">
+        <div class="tlx-img-wrap">
+          <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodubureau7.jpg" alt="Montage du dossier" loading="lazy"/>
+          <div class="tlx-img-badge">⚙ Dossier béton</div>
+        </div>
+        <div class="tlx-eyebrow">Étape 02 · J+3 à J+7</div>
+        <h3>Montage du dossier</h3>
+        <p>Documents vérifiés, cohérence validée, profil optimisé. Notre expertise fait la différence dès cette étape — là où 80% des dossiers bloquent.</p>
+        <div class="tlx-meta">
+          <span class="tlx-chip">Vérifications</span>
+          <span class="tlx-chip">Optimisation profil</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- STEP 03 — right, dark -->
+    <article class="tlx-step" data-idx="2">
+      <div class="tlx-ghost">03</div>
+      <div class="tlx-node"><span>03</span></div>
+      <div class="tlx-content tlx-r dk">
+        <div class="tlx-eyebrow">Étape 03 · J+10 à J+20</div>
+        <h3>Négociation optimale</h3>
+        <p>Toutes les banques mises en concurrence. Vous choisissez la meilleure offre, en connaissance de cause. Transparence totale sur les conditions.</p>
+        <div class="tlx-meta">
+          <span class="tlx-chip lime">● 20+ banques</span>
+          <span class="tlx-chip dk">Dérogation tarifaire</span>
+          <span class="tlx-chip dk">Taux négociés</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- STEP 04 — left, image + CTA -->
+    <article class="tlx-step" data-idx="3">
+      <div class="tlx-ghost">04</div>
+      <div class="tlx-node"><span>04</span></div>
+      <div class="tlx-content tlx-l">
+        <div class="tlx-img-wrap">
+          <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photomiseensituation1.jpg" alt="Remise des clés" loading="lazy"/>
+          <div class="tlx-img-badge">🔑 Place aux cartons</div>
+        </div>
+        <div class="tlx-eyebrow">Étape 04 · J+45 à J+55</div>
+        <h3>Remise des clés</h3>
+        <p>Accompagnement jusqu'au notaire. Gestion de l'appel de fonds. De A jusqu'aux clés, <em style="font-style:italic;color:var(--sage2);font-weight:700">littéralement.</em></p>
+        <div class="tlx-step-ctas">
+          <a href="contact.html" class="btn-p" style="font-size:.74rem;padding:10px 18px">Démarrer →</a>
+          <a href="simulation.html" class="btn-s" style="font-size:.74rem;padding:10px 18px">Simuler d'abord</a>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="tlx-finale" id="tlxFinale">
+    <div class="tlx-finale-emoji">🎉</div>
+    <h3>Vous y êtes.</h3>
+    <p>3 000+ clients ont vécu exactement ce parcours avec nous. Prêt à rejoindre la liste ?</p>
+    <div class="tlx-finale-ctas">
+      <a href="simulation.html" class="btn-p">Lancer l'étape 01 →</a>
+      <a href="tel:0279414243" class="btn-s">02.79.41.42.43</a>
+    </div>
   </div>
 </section>
 <div class="divider"></div>
