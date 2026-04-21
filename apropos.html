@@ -333,33 +333,64 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 @media(max-width:640px){.wrap{padding:3rem 1.5rem;}.fi{grid-template-columns:1fr 1fr;gap:1.4rem;}}
 @media(max-width:420px){.fi{grid-template-columns:1fr;}}
 
-/* HERO */
-.hero{min-height:88vh;display:flex;align-items:flex-end;padding:7rem 2.5rem 3.5rem;
-  position:relative;overflow:hidden;}
-.h-bg{position:absolute;inset:0;z-index:0;}
-.h-bg img{width:100%;height:100%;object-fit:cover;object-position:center 25%;}
-.h-ov{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(to bottom,rgba(21,20,18,.1) 0%,rgba(247,244,239,0) 38%,
-  rgba(247,244,239,.88) 68%,var(--bg) 100%);}
-.h-inner{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:2;}
-.h-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,5.5vw,4.6rem);
-  font-weight:700;letter-spacing:-3px;line-height:.9;margin-bottom:.85rem;}
-.h-h1 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
-.h-sub{font-size:.88rem;color:var(--muted2);line-height:1.78;max-width:510px;margin-bottom:1.35rem;}
-.h-badges{display:flex;gap:.42rem;flex-wrap:wrap;margin-bottom:1.5rem;}
-.hb{font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:600;padding:4px 12px;
-  border-radius:50px;background:rgba(247,244,239,.9);border:1.5px solid var(--border2);
-  box-shadow:var(--clay-sm);backdrop-filter:blur(8px);}
-.hb.green{background:rgba(188,212,26,.12);border-color:rgba(188,212,26,.28);color:#5a6e00;}
-.h-stats{display:flex;gap:.6rem;flex-wrap:wrap;}
-.sp{background:rgba(247,244,239,.92);border-radius:13px;padding:.55rem .85rem;
-  box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.8);text-align:center;
-  min-width:82px;backdrop-filter:blur(8px);}
-.sp-n{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;
-  letter-spacing:-1px;color:var(--ob);line-height:1;}
-.sp-n em{color:var(--sage2);font-style:normal;}
-.sp-l{font-family:'Space Grotesk',sans-serif;font-size:.48rem;font-weight:600;
-  letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:.16rem;}
+/* ══ HERO ABOUT — CLEAN TYPO + FOUNDER CARD ══ */
+.hero-x{position:relative;min-height:90vh;padding:8rem 2.5rem 4rem;overflow:hidden;display:flex;align-items:center;z-index:1;}
+.hxb{position:absolute;border-radius:50%;pointer-events:none;z-index:0;filter:blur(2px);}
+.hxb1{top:-10%;right:-5%;width:620px;height:620px;background:radial-gradient(circle,rgba(162,181,168,.18),transparent 65%);animation:blob 14s ease-in-out infinite;}
+.hxb2{bottom:-20%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(188,212,26,.1),transparent 70%);animation:blob 18s ease-in-out infinite reverse;}
+.hxb3{top:30%;left:40%;width:320px;height:320px;background:radial-gradient(circle,rgba(190,173,147,.14),transparent 70%);animation:blob 22s ease-in-out infinite;}
+.hx-inner{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:2;display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:center;}
+.hx-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Grotesk',sans-serif;font-size:.56rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--sage2);background:rgba(162,181,168,.1);border:1px solid rgba(162,181,168,.24);border-radius:50px;padding:5px 14px;margin-bottom:1.5rem;}
+.hx-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);animation:pl 2s infinite;}
+.hx-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:700;letter-spacing:-3px;line-height:.88;margin-bottom:1.2rem;}
+.hx-h1 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);display:block;}
+.hx-sub{font-size:.92rem;color:var(--muted2);line-height:1.78;max-width:510px;margin-bottom:1.6rem;}
+.hx-badges{display:flex;gap:.42rem;flex-wrap:wrap;margin-bottom:1.8rem;}
+.hx-badge{font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:600;padding:5px 13px;border-radius:50px;background:rgba(247,244,239,.85);border:1.5px solid var(--border2);box-shadow:var(--clay-sm);backdrop-filter:blur(10px);transition:transform .25s,background .25s;}
+.hx-badge:hover{transform:translateY(-2px);background:var(--white);}
+.hx-badge.green{background:rgba(188,212,26,.14);border-color:rgba(188,212,26,.34);color:#5a6e00;}
+.hx-stats{display:flex;gap:.7rem;flex-wrap:wrap;}
+.hx-sp{background:rgba(247,244,239,.85);border-radius:14px;padding:.7rem 1rem;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.85);text-align:left;min-width:88px;backdrop-filter:blur(10px);transition:all .3s;}
+.hx-sp:hover{transform:translateY(-3px);box-shadow:var(--clay);}
+.hx-sp-n{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:-1.2px;color:var(--ob);line-height:1;}
+.hx-sp-n em{color:var(--sage2);font-style:normal;font-size:.85rem;}
+.hx-sp-l{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.22rem;}
+
+/* FOUNDER CARD — right column */
+.hx-right{position:relative;}
+.hx-fcard{background:var(--white);border-radius:24px;padding:1.7rem;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.85);position:relative;overflow:hidden;animation:float 6s ease-in-out infinite;}
+.hx-fcard::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.12),transparent 70%);pointer-events:none;}
+.hx-fcard::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--lime) 50%,transparent);}
+.hx-fhead{display:flex;align-items:center;gap:.8rem;margin-bottom:1.1rem;position:relative;z-index:2;}
+.hx-fav{width:56px;height:56px;border-radius:50%;overflow:hidden;border:2.5px solid var(--white);box-shadow:var(--clay-sm);background:var(--beige3);flex-shrink:0;position:relative;}
+.hx-fav::after{content:'';position:absolute;bottom:-2px;right:-2px;width:16px;height:16px;border-radius:50%;background:var(--lime);border:2.5px solid var(--white);box-shadow:0 0 8px var(--lime);animation:pl 2s infinite;}
+.hx-fav img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+.hx-fhead-txt{flex:1;}
+.hx-fname{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:-.3px;line-height:1.1;}
+.hx-frole{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.18rem;}
+.hx-fbdg{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:rgba(188,212,26,.14);color:#6a7e00;padding:4px 10px;border-radius:50px;border:1px solid rgba(188,212,26,.32);}
+.hx-fquote{font-family:'Plus Jakarta Sans',sans-serif;font-size:.86rem;font-style:italic;color:var(--ob2);line-height:1.65;margin-bottom:1.1rem;position:relative;z-index:2;padding-left:1rem;border-left:3px solid var(--lime);}
+.hx-fsig{font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:700;color:var(--sage2);letter-spacing:.02em;margin-bottom:1.2rem;position:relative;z-index:2;}
+.hx-fteam{display:flex;align-items:center;justify-content:space-between;padding-top:1.1rem;border-top:1px solid var(--border);position:relative;z-index:2;}
+.hx-fteam-l{font-family:'Space Grotesk',sans-serif;font-size:.54rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.hx-fteam-avs{display:flex;}
+.hx-fta{width:32px;height:32px;border-radius:50%;overflow:hidden;border:2.5px solid var(--white);box-shadow:var(--clay-sm);margin-left:-9px;background:var(--beige3);transition:transform .3s;}
+.hx-fta:first-child{margin-left:0;}
+.hx-fta:hover{transform:translateY(-3px) scale(1.08);z-index:2;}
+.hx-fta img{width:100%;height:100%;object-fit:cover;object-position:top center;}
+.hx-fta-more{display:flex;align-items:center;justify-content:center;background:var(--ob);color:var(--lime);font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:700;}
+
+/* Floating badges near founder card */
+.hx-fb{position:absolute;background:var(--white);border-radius:13px;box-shadow:var(--clay);border:1.5px solid rgba(255,255,255,.8);padding:.55rem .85rem;z-index:3;}
+.hx-fb-rev{top:-14px;right:16px;display:flex;align-items:center;gap:.42rem;animation:float 5s ease-in-out infinite .5s;}
+.hx-fb-rev .hx-fb-s{color:#F5A623;font-size:.68rem;letter-spacing:1px;}
+.hx-fb-rev .hx-fb-t{font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:700;}
+.hx-fb-orias{bottom:-14px;left:20px;background:var(--ob);animation:float 5s ease-in-out infinite 1s;}
+.hx-fb-orias .hx-fb-t{font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:700;color:var(--bg);}
+.hx-fb-orias .hx-fb-s{font-family:'Space Grotesk',sans-serif;font-size:.45rem;font-weight:600;letter-spacing:.09em;color:rgba(247,244,239,.5);}
+
+@media(max-width:1060px){.hx-inner{grid-template-columns:1fr;gap:3rem;}.hx-right{max-width:440px;margin:0 auto;width:100%;}}
+@media(max-width:768px){.hero-x{padding:7rem 1.5rem 3rem;}.hx-badges{gap:.3rem;}.hx-stats{gap:.45rem;}.hx-sp{padding:.55rem .75rem;min-width:70px;}}
 /* STATS GRID */
 .sg{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;}
 .sc{background:var(--white);border-radius:18px;border:1px solid rgba(255,255,255,.8);
@@ -399,6 +430,15 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 .gc:hover img{transform:scale(1.04);}
 .gc.tall{grid-row:span 2;}
 .gc.wide{grid-column:span 2;}
+/* ══ PHOTO STRIP — "Dans nos locaux" ══ */
+.ps{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-top:1.3rem;}
+.ps-c{border-radius:14px;overflow:hidden;aspect-ratio:4/3;box-shadow:var(--clay-sm);transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s;background:var(--beige3);}
+.ps-c:hover{transform:scale(1.025);box-shadow:var(--clay-h);}
+.ps-c img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.ps-c:hover img{transform:scale(1.05);}
+@media(max-width:768px){.ps{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.ps{grid-template-columns:1fr;}}
+  
 /* ══ APPROCHE — LIGHT BENTO (no black) ══ */
 .apX-bento{display:grid;grid-template-columns:repeat(4,1fr);gap:.85rem;grid-auto-rows:minmax(240px,1fr);}
 .apX-c{position:relative;background:var(--white);border-radius:22px;padding:1.5rem;border:1px solid rgba(255,255,255,.85);box-shadow:var(--clay-sm);overflow:hidden;transition:box-shadow .35s cubic-bezier(.22,1,.36,1),transform .35s cubic-bezier(.22,1,.36,1),border-color .3s;display:flex;flex-direction:column;}
@@ -468,7 +508,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 
 /* ══ PARCOURS — INTERACTIVE MAP ══ */
 .prX-wrap{display:flex;flex-direction:column;gap:.85rem;}
-.prX-stage{background:var(--white);border-radius:24px;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.85);overflow:hidden;display:grid;grid-template-columns:1fr 1fr;min-height:440px;}
+.prX-stage{background:var(--white);border-radius:24px;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.85);overflow:hidden;display:grid;grid-template-columns:.92fr 1.08fr;min-height:420px;max-height:460px;}
+.prX-img{max-height:460px;}
 .prX-img{position:relative;overflow:hidden;background:var(--beige3);}
 .prX-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.5s cubic-bezier(.22,1,.36,1);}
 .prX-stage.is-in .prX-img img{animation:prXZoom 2s cubic-bezier(.22,1,.36,1) both;}
@@ -559,6 +600,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 .soX-s{font-size:.62rem;color:var(--muted);line-height:1.5;}
 .soX-arrow{position:absolute;top:50%;right:1.1rem;transform:translate(6px,-50%);opacity:0;font-size:.88rem;color:var(--sage2);transition:all .3s cubic-bezier(.22,1,.36,1);pointer-events:none;}
 .soX:hover .soX-arrow{opacity:1;transform:translate(0,-50%);}
+  
 @media(max-width:700px){.soX-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:480px){.soX-grid{grid-template-columns:1fr;}}
 </style></head><body>
@@ -588,29 +630,57 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
   <a href="contact.html" onclick="closeMob()"><button class="mob-cta">Nous contacter</button></a>
   <span class="mob-tel">📞 02.79.41.42.43</span>
 </div>
-<!-- HERO -->
-<section class="hero">
-  <div class="h-bg"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodequipe.jpg" alt="Équipe Aeconomia Orléans" loading="lazy"/></div>
-  <div class="h-ov"></div>
-  <div class="h-inner">
-    <div class="tag fu d1">À propos d'Aeconomia</div>
-    <h1 class="h-h1 fu d2">/à propos<br/><em>de nous.</em></h1>
-    <p class="h-sub fu d3">L'alliance parfaite entre expertise locale et approche humaine. Fondé en janvier 2022 à Orléans, le cabinet N°1 du Centre-Val de Loire selon Google, ChatGPT et nos clients.</p>
-    <div class="h-badges fu d4">
-      <span class="hb green">✓ N°1 Centre-Val de Loire</span>
-      <span class="hb">Fondé en janvier 2022</span>
-      <span class="hb">ORIAS 22002183</span>
-      <span class="hb">Cabinet indépendant</span>
+<!-- HERO ABOUT — CLEAN -->
+<section class="hero-x">
+  <div class="hxb hxb1"></div>
+  <div class="hxb hxb2"></div>
+  <div class="hxb hxb3"></div>
+  <div class="hx-inner">
+    <div class="hx-left">
+      <div class="hx-eyebrow fu d1"><span class="hx-dot"></span>À propos d'Aeconomia</div>
+      <h1 class="hx-h1 fu d2">/à propos<br/><em>de nous.</em></h1>
+      <p class="hx-sub fu d3">L'alliance parfaite entre expertise locale et approche humaine. Fondé en janvier 2022 à Orléans, le cabinet N°1 du Centre-Val de Loire selon Google, ChatGPT et nos clients.</p>
+      <div class="hx-badges fu d4">
+        <span class="hx-badge green">✓ N°1 Centre-Val de Loire</span>
+        <span class="hx-badge">Fondé en janvier 2022</span>
+        <span class="hx-badge">ORIAS 22002183</span>
+        <span class="hx-badge">Cabinet indépendant</span>
+      </div>
+      <div class="hx-stats fu d5">
+        <div class="hx-sp"><div class="hx-sp-n">3<em>k+</em></div><div class="hx-sp-l">Clients</div></div>
+        <div class="hx-sp"><div class="hx-sp-n">750<em>+</em></div><div class="hx-sp-l">Avis 5★</div></div>
+        <div class="hx-sp"><div class="hx-sp-n">8<em>%</em></div><div class="hx-sp-l">Économies</div></div>
+        <div class="hx-sp"><div class="hx-sp-n">3<em>ans</em></div><div class="hx-sp-l">N°1 région</div></div>
+      </div>
     </div>
-    <div class="h-stats fu d5">
-      <div class="sp"><div class="sp-n">3<em>k+</em></div><div class="sp-l">Clients</div></div>
-      <div class="sp"><div class="sp-n">750<em>+</em></div><div class="sp-l">Avis 5★</div></div>
-      <div class="sp"><div class="sp-n">8<em>%</em></div><div class="sp-l">Économies</div></div>
-      <div class="sp"><div class="sp-n">3<em>ans</em></div><div class="sp-l">N°1 région</div></div>
+    <div class="hx-right fu d3">
+      <div class="hx-fb hx-fb-rev"><div class="hx-fb-s">★★★★★</div><div class="hx-fb-t">750+ avis 5⭐</div></div>
+      <div class="hx-fb hx-fb-orias"><div class="hx-fb-t">ORIAS ✓</div><div class="hx-fb-s">22002183</div></div>
+      <div class="hx-fcard">
+        <div class="hx-fhead">
+          <div class="hx-fav"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt="Dimitri Toulon"/></div>
+          <div class="hx-fhead-txt">
+            <div class="hx-fname">Dimitri Toulon</div>
+            <div class="hx-frole">Fondateur · Depuis 2022</div>
+          </div>
+          <div class="hx-fbdg">Message</div>
+        </div>
+        <div class="hx-fquote">L'algorithme est humain chez nous. Aeconomia, c'est un cabinet où chaque dossier est suivi par un humain qui connaît les banques locales et votre situation.</div>
+        <div class="hx-fsig">— D. Toulon, Fondateur</div>
+        <div class="hx-fteam">
+          <div class="hx-fteam-l">Toute l'équipe</div>
+          <div class="hx-fteam-avs">
+            <div class="hx-fta"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt="Raphaël"/></div>
+            <div class="hx-fta"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt="Delphine"/></div>
+            <div class="hx-fta"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt="Robin"/></div>
+            <div class="hx-fta"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt="Gabriel"/></div>
+            <div class="hx-fta hx-fta-more">+4</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
 <!-- STATS -->
 <section class="wrap" style="padding-bottom:2rem">
   <div class="sg st">
