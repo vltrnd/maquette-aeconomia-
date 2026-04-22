@@ -415,7 +415,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 /* ██ WHY — redesign dark bento avec formule ██ */
 .why-dark{background:var(--ob);border-radius:24px;padding:2.8rem;position:relative;overflow:hidden;}
 .why-dark::after{content:'';position:absolute;bottom:-60px;left:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(188,212,26,.05),transparent 70%);pointer-events:none;}
-.why-formula{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;margin-bottom:2.2rem;}
+.why-formula{display:flex;align-items:center;justify-content:center;gap:.65rem;flex-wrap:wrap;margin-bottom:2.2rem;text-align:center;}
 .wf-pill{font-family:'Space Grotesk',sans-serif;font-size:clamp(.75rem,1.5vw,1.1rem);font-weight:700;color:var(--bg);padding:.35rem 1.1rem;border-radius:50px;background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.13);}
 .wf-op{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:300;color:rgba(255,255,255,.2);}
 .wf-res{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(.75rem,1.5vw,1.1rem);font-weight:800;font-style:italic;color:var(--lime);padding:.35rem 1.1rem;border-radius:50px;background:rgba(188,212,26,.1);border:1.5px solid rgba(188,212,26,.25);}
@@ -488,35 +488,6 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .stc.dk .stbdg{background:rgba(162,181,168,.13);color:var(--sage);}
 .stc.full{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:0;}
 
-/* ██ YOUTUBE STACKED CARDS ██ */
-.yt-section{display:grid;grid-template-columns:1fr 1.1fr;gap:4rem;align-items:center;}
-.yt-left h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.65rem,3vw,2.35rem);font-weight:700;letter-spacing:-1.2px;line-height:1.0;margin-bottom:.65rem;}
-.yt-left h2 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
-.yt-left p{font-size:.8rem;color:var(--muted2);line-height:1.75;margin-bottom:1.5rem;}
-.yt-nav{display:flex;gap:.45rem;flex-wrap:wrap;}
-.yt-nav-btn{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:600;background:var(--beige3);border:1.5px solid var(--border2);border-radius:8px;padding:5px 10px;cursor:pointer;transition:all .22s;}
-.yt-nav-btn.active{background:var(--ob);color:var(--bg);border-color:var(--ob);}
-.yt-nav-btn:not(.active):hover{border-color:var(--sage);background:var(--white);}
-.yt-stack{position:relative;height:420px;}
-.yt-card{position:absolute;width:100%;background:var(--white);border-radius:20px;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.8);overflow:hidden;cursor:pointer;transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s,z-index 0s;transform-origin:bottom center;}
-.yt-card:hover{box-shadow:var(--clay-h);}
-.yt-tab{position:absolute;top:-1px;left:1.2rem;font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--ob);color:var(--bg);padding:4px 12px;border-radius:0 0 9px 9px;z-index:2;}
-.yt-thumb{display:block;position:relative;height:185px;overflow:hidden;}
-.yt-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
-.yt-card:hover .yt-thumb img{transform:scale(1.04);}
-.yt-play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(21,20,18,.35);transition:background .22s;}
-.yt-card:hover .yt-play-btn{background:rgba(21,20,18,.25);}
-.yt-play-btn svg{filter:drop-shadow(0 2px 8px rgba(0,0,0,.5));transition:transform .22s;}
-.yt-card:hover .yt-play-btn svg{transform:scale(1.15);}
-.yt-dur{position:absolute;bottom:8px;right:8px;font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:700;background:rgba(21,20,18,.82);color:#fff;border-radius:5px;padding:2px 6px;}
-.yt-body{padding:1rem 1.1rem 1.1rem;}
-.yt-step-lbl{font-family:'Space Grotesk',sans-serif;font-size:.47rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sage2);margin-bottom:.22rem;}
-.yt-title{font-family:'Space Grotesk',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:-.2px;color:var(--ob);margin-bottom:.35rem;}
-.yt-desc{font-size:.66rem;color:var(--muted2);line-height:1.6;margin-bottom:.7rem;}
-.yt-foot{display:flex;align-items:center;justify-content:space-between;}
-.yt-watch{font-family:'Space Grotesk',sans-serif;font-size:.68rem;font-weight:700;background:rgba(21,20,18,.07);border:1.5px solid var(--border2);color:var(--ob);border-radius:8px;padding:5px 12px;text-decoration:none;transition:all .22s;display:inline-flex;align-items:center;gap:5px;}
-.yt-watch:hover{background:var(--ob);color:var(--bg);border-color:var(--ob);}
-.yt-card.is-back{pointer-events:none;}
 
 /* ██ REVIEWS ██ */
 .rev-hd{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;}
@@ -740,6 +711,28 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 }
 @media(max-width:640px){.solX-chooser{grid-template-columns:1fr;}.solX-bot{flex-direction:column;align-items:flex-start;}}
 
+/* ══ TRUST BANNER ══ */
+.trust-banner{background:var(--white);border-radius:22px;padding:1.8rem 2.5rem;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:space-between;gap:2.5rem;flex-wrap:wrap;position:relative;overflow:hidden;}
+.trust-banner::before{content:'';position:absolute;top:-60px;right:-40px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(188,212,26,.1),transparent 65%);pointer-events:none;animation:blob 14s ease-in-out infinite;z-index:0;}
+.trust-banner::after{content:'';position:absolute;bottom:-50px;left:-30px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.08),transparent 70%);pointer-events:none;animation:blob 18s ease-in-out infinite reverse;z-index:0;}
+.trust-score{display:flex;align-items:center;gap:1.3rem;position:relative;z-index:1;}
+.trust-stars{color:#F5A623;font-size:1.55rem;letter-spacing:3px;line-height:1;filter:drop-shadow(0 2px 6px rgba(245,166,35,.3));}
+.trust-num{font-family:'Space Grotesk',sans-serif;font-size:2.9rem;font-weight:700;color:var(--ob);letter-spacing:-2px;line-height:1;}
+.trust-num span{font-size:1.4rem;color:var(--muted);font-weight:500;}
+.trust-label{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:500;color:var(--muted2);line-height:1.45;}
+.trust-label strong{color:var(--ob);font-weight:700;}
+.trust-label em{font-style:normal;color:var(--sage2);font-weight:700;}
+.trust-divider{width:1px;height:60px;background:var(--border2);flex-shrink:0;position:relative;z-index:1;}
+.trust-logos{display:flex;align-items:center;gap:2.2rem;flex-wrap:wrap;position:relative;z-index:1;}
+.trust-logo{display:flex;flex-direction:column;align-items:center;gap:.35rem;transition:transform .35s cubic-bezier(.22,1,.36,1);cursor:default;}
+.trust-logo:hover{transform:translateY(-3px);}
+.trust-logo-img{height:38px;display:flex;align-items:center;justify-content:center;}
+.trust-logo-img img{max-height:38px;width:auto;object-fit:contain;opacity:.82;transition:opacity .3s;filter:grayscale(0);}
+.trust-logo:hover .trust-logo-img img{opacity:1;}
+.trust-logo-rating{display:inline-flex;align-items:center;gap:.3rem;font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:700;color:var(--ob2);background:rgba(188,212,26,.12);border:1px solid rgba(188,212,26,.3);border-radius:50px;padding:3px 9px;}
+.trust-logo-rating::before{content:'★';color:#F5A623;font-size:.62rem;}
+@media(max-width:768px){.trust-banner{flex-direction:column;gap:1.8rem;text-align:center;padding:1.6rem;}.trust-divider{width:100%;height:1px;}.trust-logos{justify-content:center;gap:1.5rem;}.trust-score{justify-content:center;}}
+
   
 /* RESP */
 @media(max-width:1060px){
@@ -918,86 +911,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 </section>
 <div class="divider"></div>
 
-<!-- ══ 6. YOUTUBE STACKED CARDS ══ -->
-<section class="wrap">
-  <div class="yt-section">
-    <div class="yt-left rv">
-      <div class="tag">Nos tutos YouTube</div>
-      <h2>Votre projet en<br/><em>4 étapes vidéo.</em></h2>
-      <p>Découvrez comment Aeconomia vous accompagne de A à Z. Nos courtiers expliquent en vidéo chaque étape de votre financement immobilier.</p>
-      <div class="yt-nav">
-        <button class="yt-nav-btn active" onclick="showCard(0,this)">Étape 01</button>
-        <button class="yt-nav-btn" onclick="showCard(1,this)">Étape 02</button>
-        <button class="yt-nav-btn" onclick="showCard(2,this)">Étape 03</button>
-        <button class="yt-nav-btn" onclick="showCard(3,this)">Étape 04</button>
-      </div>
-    </div>
-    <div class="yt-stack rv" style="transition-delay:.1s" id="yt-stack">
-      <div class="yt-card" data-idx="0" style="transform:rotate(-2deg) translateY(0px);z-index:4;">
-  <div class="yt-tab">Étape 01</div>
-  <a href="https://youtube.com/shorts/i58g8NBseN4" target="_blank" class="yt-thumb">
-    <img src="https://img.youtube.com/vi/i58g8NBseN4/hqdefault.jpg" alt="Étudiez votre capacité d'emprunt" loading="lazy"/>
-    <div class="yt-play-btn"><svg viewBox="0 0 24 24" fill="white" width="36" height="36"><path d="M8 5v14l11-7z"/></svg></div>
-    <div class="yt-dur">0:42</div>
-  </a>
-  <div class="yt-body">
-    <div class="yt-step-lbl">Étape 01</div>
-    <div class="yt-title">Étudiez votre capacité d'emprunt</div>
-    <div class="yt-desc">Savoir se projeter concrètement en amont c'est important. Obtenez un accord de solvabilité immédiat pour rassurer les vendeurs.</div>
-    <div class="yt-foot">
-      <a href="https://youtube.com/shorts/i58g8NBseN4" target="_blank" class="yt-watch">▶ Regarder (0:42)</a>
-    </div>
-  </div>
-</div><div class="yt-card" data-idx="1" style="transform:rotate(1.5deg) translateY(10px);z-index:3;">
-  <div class="yt-tab">Étape 02</div>
-  <a href="https://youtube.com/shorts/i58g8NBseN4" target="_blank" class="yt-thumb">
-    <img src="https://img.youtube.com/vi/i58g8NBseN4/hqdefault.jpg" alt="La négociation du prêt immobilier" loading="lazy"/>
-    <div class="yt-play-btn"><svg viewBox="0 0 24 24" fill="white" width="36" height="36"><path d="M8 5v14l11-7z"/></svg></div>
-    <div class="yt-dur">0:46</div>
-  </a>
-  <div class="yt-body">
-    <div class="yt-step-lbl">Étape 02</div>
-    <div class="yt-title">La négociation du prêt immobilier</div>
-    <div class="yt-desc">Nous délèguez la négociation, le stress et l'administratif. Nous allons à l'essentiel et vous tenons informé de chaque démarche.</div>
-    <div class="yt-foot">
-      <a href="https://youtube.com/shorts/i58g8NBseN4" target="_blank" class="yt-watch">▶ Regarder (0:46)</a>
-    </div>
-  </div>
-</div><div class="yt-card" data-idx="2" style="transform:rotate(-1deg) translateY(20px);z-index:2;">
-  <div class="yt-tab">Étape 03</div>
-  <a href="https://youtube.com/shorts/i58g8NBseN4" target="_blank" class="yt-thumb">
-    <img src="https://img.youtube.com/vi/i58g8NBseN4/hqdefault.jpg" alt="Choisir la meilleure offre de prêt" loading="lazy"/>
-    <div class="yt-play-btn"><svg viewBox="0 0 24 24" fill="white" width="36" height="36"><path d="M8 5v14l11-7z"/></svg></div>
-    <div class="yt-dur">0:50</div>
-  </a>
-  <div class="yt-body">
-    <div class="yt-step-lbl">Étape 03</div>
-    <div class="yt-title">Choisir la meilleure offre de prêt</div>
-    <div class="yt-desc">Nous prenons le temps de comparer toutes les simulations négociées. Vous restez décisionnaire à 100%.</div>
-    <div class="yt-foot">
-      <a href="https://youtube.com/shorts/i58g8NBseN4" target="_blank" class="yt-watch">▶ Regarder (0:50)</a>
-    </div>
-  </div>
-</div><div class="yt-card" data-idx="3" style="transform:rotate(2deg) translateY(30px);z-index:1;">
-  <div class="yt-tab">Étape 04</div>
-  <a href="https://youtube.com/shorts/i58g8NBseN4" target="_blank" class="yt-thumb">
-    <img src="https://img.youtube.com/vi/i58g8NBseN4/hqdefault.jpg" alt="La remise des clés 🔑" loading="lazy"/>
-    <div class="yt-play-btn"><svg viewBox="0 0 24 24" fill="white" width="36" height="36"><path d="M8 5v14l11-7z"/></svg></div>
-    <div class="yt-dur">0:18</div>
-  </a>
-  <div class="yt-body">
-    <div class="yt-step-lbl">Étape 04</div>
-    <div class="yt-title">La remise des clés 🔑</div>
-    <div class="yt-desc">Votre courtier gère l'appel de fonds entre le notaire et la banque. Vous n'avez plus qu'à faire vos cartons !</div>
-    <div class="yt-foot">
-      <a href="https://youtube.com/shorts/i58g8NBseN4" target="_blank" class="yt-watch">▶ Regarder (0:18)</a>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-</section>
-<div class="divider"></div>
+
 
 <!-- ══ 7. PARCOURS — CINEMATIC TIMELINE ══ -->
 <section class="tlx" id="tlx">
@@ -1094,6 +1008,35 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   </div>
 </section>
 <div class="divider"></div>
+
+
+  <!-- ══ TRUST BANNER ══ -->
+<section class="wrap" style="padding-top:2rem;padding-bottom:2rem">
+  <div class="trust-banner rv">
+    <div class="trust-score">
+      <div class="trust-stars">★★★★★</div>
+      <div>
+        <div class="trust-num">5<span>/5</span></div>
+        <div class="trust-label">Noté <em>excellent</em> par<br/><strong>+750 clients certifiés</strong></div>
+      </div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-logos">
+      <div class="trust-logo">
+        <div class="trust-logo-img"><img src="google.png" alt="Avis Google"/></div>
+        <div class="trust-logo-rating">5/5 · 750+ avis</div>
+      </div>
+      <div class="trust-logo">
+        <div class="trust-logo-img"><img src="solocal.png" alt="SoLocal"/></div>
+        <div class="trust-logo-rating">5/5 · Pages Jaunes</div>
+      </div>
+      <div class="trust-logo">
+        <div class="trust-logo-img"><img src="immodvisor.png" alt="Immodvisor"/></div>
+        <div class="trust-logo-rating">4.9/5 · Certifié</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ══ 8. AVIS ══ -->
 <section class="wrap" style="padding-bottom:2rem">
@@ -1431,51 +1374,6 @@ document.querySelectorAll('[data-t]').forEach(function(el){cro.observe(el);});
 
   
 
-/* ── YOUTUBE STACKED CARDS ── */
-var ytCurrent=0;
-function showCard(idx,btn){
-  var cards=document.querySelectorAll('.yt-card');
-  var total=cards.length;
-  ytCurrent=idx;
-  cards.forEach(function(c,i){
-    var offset=i-idx;
-    var isTop=(i===idx);
-    var isBehind=(i>idx);
-    if(isTop){
-      c.style.transform='rotate(0deg) translateY(0px)';
-      c.style.zIndex=total;
-      c.style.opacity='1';
-      c.style.pointerEvents='auto';
-    } else if(isBehind){
-      var behindIdx=i-idx;
-      var rot=[1.5,-1,2][behindIdx-1]||2;
-      c.style.transform='rotate('+rot+'deg) translateY('+(behindIdx*10)+'px)';
-      c.style.zIndex=total-behindIdx;
-      c.style.opacity=behindIdx>2?'0':'1';
-      c.style.pointerEvents='none';
-    } else {
-      // card is before current — hide below
-      c.style.transform='rotate(0deg) translateY(30px) scale(.96)';
-      c.style.zIndex=0;
-      c.style.opacity='0';
-      c.style.pointerEvents='none';
-    }
-  });
-  // update nav buttons
-  document.querySelectorAll('.yt-nav-btn').forEach(function(b,i){b.classList.toggle('active',i===idx);});
-}
-
-// click on card = go to next
-document.getElementById('yt-stack').addEventListener('click',function(e){
-  var card=e.target.closest('.yt-card');
-  if(!card||e.target.closest('a'))return;
-  var idx=+card.dataset.idx;
-  if(idx===ytCurrent){
-    var next=(ytCurrent+1)%document.querySelectorAll('.yt-card').length;
-    showCard(next,null);
-  }
-});
-showCard(0,null);
 
 /* ── AI WIDGET ── */
 function toggleAI(){document.getElementById('ai-bub').classList.toggle('open');}
