@@ -333,65 +333,65 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 @media(max-width:640px){.wrap{padding:3rem 1.5rem;}.fi{grid-template-columns:1fr 1fr;gap:1.4rem;}}
 @media(max-width:420px){.fi{grid-template-columns:1fr;}}
 
-/* ══ HERO ABOUT — CLEAN TYPO + FOUNDER CARD ══ */
+
+  /* ══ HERO ABOUT v2 — HUMAN FIRST ══ */
 .hero-x{position:relative;min-height:90vh;padding:8rem 2.5rem 4rem;overflow:hidden;display:flex;align-items:center;z-index:1;}
 .hxb{position:absolute;border-radius:50%;pointer-events:none;z-index:0;filter:blur(2px);}
 .hxb1{top:-10%;right:-5%;width:620px;height:620px;background:radial-gradient(circle,rgba(162,181,168,.18),transparent 65%);animation:blob 14s ease-in-out infinite;}
 .hxb2{bottom:-20%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(188,212,26,.1),transparent 70%);animation:blob 18s ease-in-out infinite reverse;}
 .hxb3{top:30%;left:40%;width:320px;height:320px;background:radial-gradient(circle,rgba(190,173,147,.14),transparent 70%);animation:blob 22s ease-in-out infinite;}
-.hx-inner{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:2;display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:center;}
+.hx-inner{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.1fr;gap:3.5rem;align-items:center;}
 .hx-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Grotesk',sans-serif;font-size:.56rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--sage2);background:rgba(162,181,168,.1);border:1px solid rgba(162,181,168,.24);border-radius:50px;padding:5px 14px;margin-bottom:1.5rem;}
 .hx-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);animation:pl 2s infinite;}
-.hx-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:700;letter-spacing:-3px;line-height:.88;margin-bottom:1.2rem;}
+.hx-h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.6rem,5.5vw,4.7rem);font-weight:700;letter-spacing:-2.8px;line-height:.92;margin-bottom:1.2rem;}
 .hx-h1 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);display:block;}
-.hx-sub{font-size:.92rem;color:var(--muted2);line-height:1.78;max-width:510px;margin-bottom:1.6rem;}
-.hx-badges{display:flex;gap:.42rem;flex-wrap:wrap;margin-bottom:1.8rem;}
+.hx-sub{font-size:.92rem;color:var(--muted2);line-height:1.78;max-width:520px;margin-bottom:1.5rem;}
+.hx-badges{display:flex;gap:.42rem;flex-wrap:wrap;margin-bottom:1.5rem;}
 .hx-badge{font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:600;padding:5px 13px;border-radius:50px;background:rgba(247,244,239,.85);border:1.5px solid var(--border2);box-shadow:var(--clay-sm);backdrop-filter:blur(10px);transition:transform .25s,background .25s;}
 .hx-badge:hover{transform:translateY(-2px);background:var(--white);}
 .hx-badge.green{background:rgba(188,212,26,.14);border-color:rgba(188,212,26,.34);color:#5a6e00;}
-.hx-stats{display:flex;gap:.7rem;flex-wrap:wrap;}
-.hx-sp{background:rgba(247,244,239,.85);border-radius:14px;padding:.7rem 1rem;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.85);text-align:left;min-width:88px;backdrop-filter:blur(10px);transition:all .3s;}
-.hx-sp:hover{transform:translateY(-3px);box-shadow:var(--clay);}
-.hx-sp-n{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:-1.2px;color:var(--ob);line-height:1;}
-.hx-sp-n em{color:var(--sage2);font-style:normal;font-size:.85rem;}
-.hx-sp-l{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.22rem;}
+.hx-team-row{display:flex;align-items:center;gap:.85rem;padding:.55rem .8rem .55rem .55rem;background:rgba(247,244,239,.82);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.75);border-radius:60px;box-shadow:var(--clay-sm);max-width:fit-content;}
+.hx-avs{display:flex;flex-shrink:0;}
+.hx-av{width:34px;height:34px;border-radius:50%;overflow:hidden;border:2.5px solid var(--white);box-shadow:var(--clay-sm);margin-left:-9px;background:var(--beige3);transition:transform .3s cubic-bezier(.22,1,.36,1);}
+.hx-av:first-child{margin-left:0;}
+.hx-av:hover{transform:translateY(-4px) scale(1.12);z-index:2;}
+.hx-av img{width:100%;height:100%;object-fit:cover;object-position:top;}
+.hx-team-t{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:700;color:var(--ob);line-height:1.1;}
+.hx-team-s{font-family:'Space Grotesk',sans-serif;font-size:.54rem;font-weight:600;color:var(--muted);margin-top:.14rem;letter-spacing:.04em;}
 
-/* FOUNDER CARD — right column */
-.hx-right{position:relative;}
-.hx-fcard{background:var(--white);border-radius:24px;padding:1.7rem;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.85);position:relative;overflow:hidden;animation:float 6s ease-in-out infinite;}
-.hx-fcard::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.12),transparent 70%);pointer-events:none;}
-.hx-fcard::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--lime) 50%,transparent);}
-.hx-fhead{display:flex;align-items:center;gap:.8rem;margin-bottom:1.1rem;position:relative;z-index:2;}
-.hx-fav{width:56px;height:56px;border-radius:50%;overflow:hidden;border:2.5px solid var(--white);box-shadow:var(--clay-sm);background:var(--beige3);flex-shrink:0;position:relative;}
-.hx-fav::after{content:'';position:absolute;bottom:-2px;right:-2px;width:16px;height:16px;border-radius:50%;background:var(--lime);border:2.5px solid var(--white);box-shadow:0 0 8px var(--lime);animation:pl 2s infinite;}
-.hx-fav img{width:100%;height:100%;object-fit:cover;object-position:top center;}
-.hx-fhead-txt{flex:1;}
-.hx-fname{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:-.3px;line-height:1.1;}
-.hx-frole{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.18rem;}
-.hx-fbdg{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:rgba(188,212,26,.14);color:#6a7e00;padding:4px 10px;border-radius:50px;border:1px solid rgba(188,212,26,.32);}
-.hx-fquote{font-family:'Plus Jakarta Sans',sans-serif;font-size:.86rem;font-style:italic;color:var(--ob2);line-height:1.65;margin-bottom:1.1rem;position:relative;z-index:2;padding-left:1rem;border-left:3px solid var(--lime);}
-.hx-fsig{font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:700;color:var(--sage2);letter-spacing:.02em;margin-bottom:1.2rem;position:relative;z-index:2;}
-.hx-fteam{display:flex;align-items:center;justify-content:space-between;padding-top:1.1rem;border-top:1px solid var(--border);position:relative;z-index:2;}
-.hx-fteam-l{font-family:'Space Grotesk',sans-serif;font-size:.54rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
-.hx-fteam-avs{display:flex;}
-.hx-fta{width:32px;height:32px;border-radius:50%;overflow:hidden;border:2.5px solid var(--white);box-shadow:var(--clay-sm);margin-left:-9px;background:var(--beige3);transition:transform .3s;}
-.hx-fta:first-child{margin-left:0;}
-.hx-fta:hover{transform:translateY(-3px) scale(1.08);z-index:2;}
-.hx-fta img{width:100%;height:100%;object-fit:cover;object-position:top center;}
-.hx-fta-more{display:flex;align-items:center;justify-content:center;background:var(--ob);color:var(--lime);font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:700;}
+/* Hero right — photo magazine */
+.hx-right{position:relative;padding:1.5rem 1rem 2.5rem 1rem;}
+.hx-main-photo{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--clay);border:7px solid var(--white);transform:rotate(-1.8deg);transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .5s;aspect-ratio:4/3;background:var(--beige3);}
+.hx-main-photo:hover{transform:rotate(0deg) scale(1.015);box-shadow:var(--clay-h);}
+.hx-main-photo img{width:100%;height:100%;object-fit:cover;}
+.hx-main-photo::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--lime) 50%,transparent);}
+.hx-main-photo-tag{position:absolute;bottom:14px;left:14px;background:rgba(247,244,239,.96);backdrop-filter:blur(10px);padding:7px 14px;border-radius:50px;font-family:'Space Grotesk',sans-serif;font-size:.56rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ob);border:1px solid rgba(255,255,255,.9);display:inline-flex;align-items:center;gap:.45rem;}
+.hx-main-photo-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pl 2s infinite;}
+.hx-side-photo{position:absolute;bottom:0;left:-10px;width:150px;border-radius:14px;overflow:hidden;box-shadow:var(--clay);border:5px solid var(--white);transform:rotate(5deg);transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .5s;aspect-ratio:3/4;z-index:3;background:var(--beige3);animation:float 5.5s ease-in-out infinite .5s;}
+.hx-side-photo:hover{transform:rotate(0deg) scale(1.06);box-shadow:var(--clay-h);}
+.hx-side-photo img{width:100%;height:100%;object-fit:cover;}
+.hx-sticky-note{position:absolute;top:-8px;right:0px;background:var(--lime);color:var(--ob);padding:.85rem 1.05rem;border-radius:14px;box-shadow:0 12px 32px rgba(188,212,26,.38);transform:rotate(6deg);max-width:185px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem;font-style:italic;line-height:1.45;font-weight:500;z-index:4;transition:transform .55s cubic-bezier(.22,1,.36,1);animation:float 6s ease-in-out infinite 1.2s;}
+.hx-sticky-note:hover{transform:rotate(0deg) scale(1.06);}
+.hx-sticky-note strong{font-weight:800;font-style:normal;}
+.hxs-stars{color:#F5A623;font-size:.75rem;letter-spacing:1.5px;display:block;margin-bottom:.3rem;filter:drop-shadow(0 2px 4px rgba(245,166,35,.3));}
 
-/* Floating badges near founder card */
-.hx-fb{position:absolute;background:var(--white);border-radius:13px;box-shadow:var(--clay);border:1.5px solid rgba(255,255,255,.8);padding:.55rem .85rem;z-index:3;}
-.hx-fb-rev{top:-14px;right:16px;display:flex;align-items:center;gap:.42rem;animation:float 5s ease-in-out infinite .5s;}
-.hx-fb-rev .hx-fb-s{color:#F5A623;font-size:.68rem;letter-spacing:1px;}
-.hx-fb-rev .hx-fb-t{font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:700;}
-.hx-fb-orias{bottom:-14px;left:20px;background:var(--ob);animation:float 5s ease-in-out infinite 1s;}
-.hx-fb-orias .hx-fb-t{font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:700;color:var(--bg);}
-.hx-fb-orias .hx-fb-s{font-family:'Space Grotesk',sans-serif;font-size:.45rem;font-weight:600;letter-spacing:.09em;color:rgba(247,244,239,.5);}
+@media(max-width:1060px){
+  .hx-inner{grid-template-columns:1fr;gap:3rem;}
+  .hx-right{max-width:500px;margin:0 auto;width:100%;}
+  .hx-main-photo{transform:rotate(0deg);}
+}
+@media(max-width:768px){
+  .hero-x{padding:7rem 1.5rem 3rem;}
+  .hx-side-photo{width:110px;bottom:10px;left:-6px;}
+  .hx-sticky-note{top:-4px;right:-6px;max-width:155px;padding:.7rem .85rem;font-size:.62rem;}
+  .hx-badges{gap:.3rem;}
+}
+@media(max-width:480px){
+  .hx-sticky-note,.hx-side-photo{display:none;}
+  .hx-main-photo{border-width:5px;}
+}
 
-@media(max-width:1060px){.hx-inner{grid-template-columns:1fr;gap:3rem;}.hx-right{max-width:440px;margin:0 auto;width:100%;}}
-@media(max-width:768px){.hero-x{padding:7rem 1.5rem 3rem;}.hx-badges{gap:.3rem;}.hx-stats{gap:.45rem;}.hx-sp{padding:.55rem .75rem;min-width:70px;}}
-/* STATS GRID */
+ /* ══ stat grid  ══ */
 .sg{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;}
 .sc{background:var(--white);border-radius:18px;border:1px solid rgba(255,255,255,.8);
   box-shadow:var(--clay-sm);padding:1.3rem 1rem;text-align:center;
@@ -603,6 +603,160 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
   
 @media(max-width:700px){.soX-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:480px){.soX-grid{grid-template-columns:1fr;}}
+
+
+/* ════════════════════════════════════════════════
+   ZONE D'ACTION — STYLIZED MAP
+════════════════════════════════════════════════ */
+.za-wrap{background:var(--white);border-radius:28px;padding:2rem;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.85);display:grid;grid-template-columns:1.1fr .9fr;gap:2.2rem;align-items:center;overflow:hidden;position:relative;}
+.za-wrap::before{content:'';position:absolute;top:-80px;right:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(188,212,26,.1),transparent 65%);pointer-events:none;animation:blob 16s ease-in-out infinite;}
+.za-map-wrap{position:relative;background:linear-gradient(135deg,var(--beige4),rgba(237,232,223,.5));border-radius:20px;aspect-ratio:6/5;padding:1rem;overflow:hidden;border:1px solid var(--border);}
+.za-map-wrap::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(21,20,18,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(21,20,18,.04) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
+.za-map{width:100%;height:100%;position:relative;z-index:2;}
+.za-compass{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;background:var(--white);box-shadow:var(--clay-sm);display:flex;align-items:center;justify-content:center;z-index:3;border:1px solid var(--border);}
+.za-compass::after{content:'';width:2.5px;height:20px;background:linear-gradient(to bottom,var(--lime) 50%,var(--sage2) 50%);position:absolute;border-radius:2px;}
+.za-compass span{position:absolute;top:4px;font-family:'Space Grotesk',sans-serif;font-size:.48rem;font-weight:700;letter-spacing:.08em;color:var(--sage2);}
+.za-legend{position:absolute;bottom:14px;left:14px;display:flex;flex-direction:column;gap:.32rem;z-index:3;}
+.za-leg-i{display:inline-flex;align-items:center;gap:.45rem;font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;color:var(--muted2);background:rgba(255,255,255,.88);padding:3px 9px;border-radius:50px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.5);}
+.za-leg-d{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.za-leg-d.hq{background:var(--ob);box-shadow:0 0 0 3px rgba(188,212,26,.5);}
+.za-leg-d.cv{background:var(--sage2);}
+.za-leg-d.ex{background:#C9A961;}
+.za-map-region{fill:rgba(188,212,26,.14);stroke:rgba(162,181,168,.55);stroke-width:1.5;stroke-dasharray:4 3;animation:zaDash 30s linear infinite;}
+@keyframes zaDash{to{stroke-dashoffset:-200;}}
+.za-map-line{stroke:var(--sage2);stroke-width:1.5;stroke-dasharray:3 4;fill:none;opacity:.45;animation:zaDash 18s linear infinite;}
+.za-map-line.p{stroke:#C9A961;opacity:.7;animation-duration:14s;}
+.za-map-ring{fill:none;stroke:var(--lime);stroke-width:1.6;opacity:0;transform-origin:300px 250px;animation:zaRing 2.8s cubic-bezier(.22,1,.36,1) infinite;}
+.za-map-ring.r2{animation-delay:.9s;}
+.za-map-ring.r3{animation-delay:1.8s;}
+@keyframes zaRing{0%{transform:scale(.3);opacity:.75;}100%{transform:scale(3.6);opacity:0;}}
+.za-pin-halo{fill:none;stroke:var(--sage);stroke-width:1.5;opacity:.4;transform-box:fill-box;transform-origin:center;animation:zaPulse 2.6s cubic-bezier(.22,1,.36,1) infinite;}
+.za-pin.hq .za-pin-halo{stroke:var(--lime);opacity:.6;stroke-width:2;}
+.za-pin.paris .za-pin-halo{stroke:#C9A961;opacity:.55;}
+@keyframes zaPulse{0%,100%{transform:scale(.7);opacity:.5;}50%{transform:scale(1.6);opacity:0;}}
+.za-pin-dot{fill:var(--sage2);transition:transform .3s;}
+.za-pin.hq .za-pin-dot{fill:var(--ob);}
+.za-pin.paris .za-pin-dot{fill:#C9A961;}
+.za-pin-lbl{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.02em;fill:var(--ob);}
+.za-pin.paris .za-pin-lbl{fill:#8a6a1c;}
+.za-pin-sub{font-family:'Space Grotesk',sans-serif;font-size:7.5px;font-weight:600;fill:var(--muted);letter-spacing:.04em;}
+.za-info{position:relative;z-index:2;}
+.za-info .h2{margin-bottom:.85rem;}
+.za-info .h2 .slash{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
+.za-info p{font-size:.82rem;color:var(--muted2);line-height:1.76;margin-bottom:1.3rem;}
+.za-cities{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1.4rem;}
+.za-city{display:inline-flex;align-items:center;gap:.4rem;font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:600;padding:7px 11px;border-radius:10px;background:var(--beige4);border:1px solid var(--border);color:var(--ob2);transition:all .25s cubic-bezier(.22,1,.36,1);}
+.za-city:hover{background:var(--white);border-color:rgba(188,212,26,.4);transform:translateY(-2px);box-shadow:var(--clay-sm);}
+.za-city::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--sage2);flex-shrink:0;}
+.za-city.hq::before{background:var(--lime);box-shadow:0 0 8px var(--lime);}
+.za-city.paris::before{background:#C9A961;}
+.za-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;padding-top:1.2rem;border-top:1px solid var(--border);}
+.za-stat-n{font-family:'Space Grotesk',sans-serif;font-size:1.55rem;font-weight:700;letter-spacing:-1.1px;color:var(--sage2);line-height:1;}
+.za-stat-n em{font-style:normal;color:var(--muted);font-weight:500;}
+.za-stat-l{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;}
+@media(max-width:900px){.za-wrap{grid-template-columns:1fr;gap:1.8rem;padding:1.6rem;}.za-cities{grid-template-columns:1fr 1fr;}}
+
+/* ════════════════════════════════════════════════
+   3D ICONS SLOT (approche bento)
+════════════════════════════════════════════════ */
+.apX-ico3d{width:84px;height:84px;margin-bottom:1.1rem;position:relative;z-index:2;display:inline-flex;align-items:center;justify-content:center;transition:transform .55s cubic-bezier(.34,1.56,.64,1);}
+.apX-c:hover .apX-ico3d{transform:scale(1.1) rotate(-6deg);}
+.apX-ico3d img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 22px rgba(170,153,126,.3));}
+.apX-hero .apX-ico3d{width:100px;height:100px;}
+
+/* ════════════════════════════════════════════════
+   TEAM CARD — "Voir la fiche" button
+════════════════════════════════════════════════ */
+.teX-actions{display:flex;justify-content:space-between;align-items:center;gap:.5rem;margin-top:.2rem;}
+.teX-moreBtn{display:inline-flex;align-items:center;gap:.35rem;font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ob);background:transparent;border:none;padding:0;cursor:pointer;position:relative;transition:color .25s;}
+.teX-moreBtn::after{content:'';position:absolute;bottom:-3px;left:0;right:12px;height:1.5px;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .32s cubic-bezier(.22,1,.36,1);}
+.teX-moreBtn:hover{color:var(--sage2);}
+.teX-moreBtn:hover::after{transform:scaleX(1);}
+.teX-moreBtn span{transition:transform .25s;display:inline-block;}
+.teX-moreBtn:hover span{transform:translateX(3px);}
+
+/* ════════════════════════════════════════════════
+   PASSPORT MODAL — Fiche d'identité
+════════════════════════════════════════════════ */
+.pass-backdrop{position:fixed;inset:0;background:rgba(21,20,18,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .4s cubic-bezier(.22,1,.36,1);}
+.pass-backdrop.open{opacity:1;pointer-events:auto;}
+body.pass-locked{overflow:hidden;}
+.pass{position:relative;max-width:720px;width:100%;max-height:92vh;overflow-y:auto;background:linear-gradient(135deg,#FAF6EB 0%,#F4EFE0 100%);border-radius:22px;padding:0;box-shadow:0 32px 80px rgba(21,20,18,.4);transform:scale(.92) translateY(24px);opacity:0;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .4s;}
+.pass-backdrop.open .pass{transform:scale(1) translateY(0);opacity:1;}
+.pass::-webkit-scrollbar{width:6px;}
+.pass::-webkit-scrollbar-track{background:transparent;}
+.pass::-webkit-scrollbar-thumb{background:rgba(21,20,18,.18);border-radius:3px;}
+.pass-strip{height:18px;background:repeating-linear-gradient(45deg,rgba(188,212,26,.38) 0 8px,rgba(162,181,168,.22) 8px 16px);border-bottom:1px dashed rgba(21,20,18,.18);border-radius:22px 22px 0 0;position:relative;overflow:hidden;}
+.pass-strip::before{content:'AECONOMIA · CERTIFIED · AECONOMIA · CERTIFIED · AECONOMIA · CERTIFIED · AECONOMIA ·';position:absolute;inset:0;display:flex;align-items:center;font-family:'Space Grotesk',sans-serif;font-size:.48rem;font-weight:700;letter-spacing:.22em;color:rgba(21,20,18,.35);padding:0 1.5rem;white-space:nowrap;}
+.pass-head{padding:1.2rem 1.8rem .6rem;display:flex;justify-content:space-between;align-items:center;gap:.8rem;border-bottom:1px dashed rgba(21,20,18,.15);}
+.pass-hl{font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ob2);display:flex;align-items:center;gap:.55rem;}
+.pass-hl b{color:var(--sage2);font-weight:800;letter-spacing:.13em;}
+.pass-hr{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;letter-spacing:.1em;color:var(--muted);display:inline-flex;align-items:center;gap:.4rem;text-transform:uppercase;}
+.pass-hr::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pl 2s infinite;}
+.pass-close{position:absolute;top:32px;right:18px;width:36px;height:36px;border-radius:50%;background:var(--ob);color:var(--bg);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;z-index:5;transition:transform .3s cubic-bezier(.22,1,.36,1),background .25s;box-shadow:0 4px 16px rgba(21,20,18,.35);}
+.pass-close:hover{transform:rotate(90deg) scale(1.08);background:var(--sage2);}
+.pass-main{padding:1.6rem 1.8rem;display:grid;grid-template-columns:170px 1fr;gap:1.5rem;align-items:flex-start;}
+.pass-photo-frame{width:100%;aspect-ratio:3/4;border-radius:12px;overflow:hidden;border:4px solid var(--white);box-shadow:0 14px 32px rgba(21,20,18,.22);background:var(--beige3);}
+.pass-photo-frame img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s cubic-bezier(.22,1,.36,1);}
+.pass-photo-no{margin-top:.55rem;font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.14em;text-align:center;color:var(--muted);text-transform:uppercase;}
+.pass-idBody{position:relative;}
+.pass-id-top{display:flex;align-items:flex-end;gap:.9rem;flex-wrap:wrap;margin-bottom:.95rem;padding-bottom:.95rem;border-bottom:1px dashed rgba(21,20,18,.15);}
+.pass-id-prenom{font-family:'Space Grotesk',sans-serif;font-size:.56rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem;}
+.pass-id-prenom b{color:var(--sage2);}
+.pass-id-nom{font-family:'Space Grotesk',sans-serif;font-size:1.9rem;font-weight:700;letter-spacing:-1.2px;line-height:.98;color:var(--ob);}
+.pass-id-role{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-size:.78rem;color:var(--sage2);font-weight:700;margin-top:.35rem;}
+.pass-stamp{position:absolute;top:-8px;right:0;width:85px;height:85px;border-radius:50%;border:3px solid rgba(188,212,26,.7);color:#6a7e00;background:rgba(188,212,26,.09);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:800;letter-spacing:.09em;text-align:center;line-height:1.06;text-transform:uppercase;transform:rotate(-14deg);opacity:.92;}
+.pass-fields{display:grid;grid-template-columns:1fr 1fr;gap:.75rem .95rem;margin-bottom:.85rem;}
+.pass-field{display:flex;flex-direction:column;gap:.14rem;}
+.pass-field.full{grid-column:1 / -1;}
+.pass-field-l{font-family:'Space Grotesk',sans-serif;font-size:.48rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);}
+.pass-field-v{font-family:'Space Grotesk',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:-.2px;color:var(--ob);line-height:1.2;}
+.pass-field-v em{font-style:italic;color:var(--sage2);font-weight:700;}
+.pass-section{padding:1rem 1.8rem;border-top:1px dashed rgba(21,20,18,.15);}
+.pass-sec-l{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;}
+.pass-sec-l::before{content:'';width:14px;height:2px;background:var(--lime);border-radius:2px;}
+.pass-bio{font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;color:var(--ob2);line-height:1.72;font-style:italic;}
+.pass-favs{padding:1rem 1.8rem;border-top:1px dashed rgba(21,20,18,.15);display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;}
+.pass-fav{background:rgba(255,255,255,.65);border:1px solid var(--border);border-radius:12px;padding:.8rem;display:flex;flex-direction:column;gap:.22rem;transition:all .3s;}
+.pass-fav:hover{background:var(--white);transform:translateY(-2px);box-shadow:var(--clay-sm);border-color:rgba(188,212,26,.4);}
+.pass-fav-l{font-family:'Space Grotesk',sans-serif;font-size:.47rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:.38rem;}
+.pass-fav-v{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:-.2px;color:var(--ob);margin-top:.16rem;line-height:1.2;}
+.pass-foot{padding:1.15rem 1.8rem 1.6rem;border-top:1px dashed rgba(21,20,18,.15);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+.pass-barcode{display:flex;align-items:center;gap:.7rem;}
+.pass-barcode-bars{display:flex;gap:2px;align-items:flex-end;height:28px;flex-shrink:0;}
+.pass-barcode-bars span{display:block;width:2px;background:var(--ob);}
+.pass-barcode-bars span:nth-child(2){width:3px;height:70%;}
+.pass-barcode-bars span:nth-child(3){height:100%;}
+.pass-barcode-bars span:nth-child(4){height:55%;}
+.pass-barcode-bars span:nth-child(5){height:90%;width:3px;}
+.pass-barcode-bars span:nth-child(6){height:100%;}
+.pass-barcode-bars span:nth-child(7){height:70%;width:3px;}
+.pass-barcode-bars span:nth-child(8){height:100%;}
+.pass-barcode-bars span:nth-child(9){height:60%;}
+.pass-barcode-bars span:nth-child(10){height:95%;width:3px;}
+.pass-barcode-bars span:nth-child(11){height:100%;}
+.pass-barcode-bars span:nth-child(12){height:70%;}
+.pass-barcode-bars span:nth-child(13){height:85%;width:3px;}
+.pass-barcode-num{font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:700;letter-spacing:.15em;color:var(--ob2);}
+.pass-ctas{display:flex;gap:.5rem;}
+.pass-cta{font-family:'Space Grotesk',sans-serif;font-size:.68rem;font-weight:700;padding:9px 16px;border-radius:10px;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;transition:all .25s;}
+.pass-cta.p{background:var(--ob);color:var(--bg);}
+.pass-cta.p:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(21,20,18,.3);}
+.pass-cta.s{background:rgba(255,255,255,.75);color:var(--ob);border:1px solid var(--border2);}
+.pass-cta.s:hover{background:var(--white);transform:translateY(-2px);}
+@media(max-width:680px){
+  .pass-main{grid-template-columns:1fr;padding:1.3rem;}
+  .pass-photo{width:150px;margin:0 auto;}
+  .pass-stamp{top:-6px;right:-8px;width:68px;height:68px;font-size:.45rem;}
+  .pass-id-nom{font-size:1.55rem;}
+  .pass-favs{grid-template-columns:1fr;padding:.9rem 1.3rem;}
+  .pass-foot{padding:1rem 1.3rem 1.3rem;}
+  .pass-section{padding:.9rem 1.3rem;}
+  .pass-head{padding:1rem 1.3rem .55rem;}
+  .pass-close{top:24px;right:12px;}
+  .pass-fields{grid-template-columns:1fr;}
+}
+  
 </style></head><body>
 <nav id="mn">
   <a href="index.html" class="nav-logo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/logotype_noir_1000px.png" alt="Aeconomia" style="height:26px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/><div class="logo-text" style="display:none">aeconom<i>i</i>a.</div></a>
@@ -630,53 +784,47 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
   <a href="contact.html" onclick="closeMob()"><button class="mob-cta">Nous contacter</button></a>
   <span class="mob-tel">📞 02.79.41.42.43</span>
 </div>
-<!-- HERO ABOUT — CLEAN -->
+<!-- HERO ABOUT — HUMAN v2 -->
 <section class="hero-x">
   <div class="hxb hxb1"></div>
   <div class="hxb hxb2"></div>
   <div class="hxb hxb3"></div>
   <div class="hx-inner">
     <div class="hx-left">
-      <div class="hx-eyebrow fu d1"><span class="hx-dot"></span>À propos d'Aeconomia</div>
-      <h1 class="hx-h1 fu d2">/à propos<br/><em>de nous.</em></h1>
-      <p class="hx-sub fu d3">L'alliance parfaite entre expertise locale et approche humaine. Fondé en janvier 2022 à Orléans, le cabinet N°1 du Centre-Val de Loire selon Google, ChatGPT et nos clients.</p>
+      <div class="hx-eyebrow fu d1"><span class="hx-dot"></span>L'équipe Aeconomia</div>
+      <h1 class="hx-h1 fu d2">Derrière chaque<br/>crédit,<em>un humain.</em></h1>
+      <p class="hx-sub fu d3">8 experts, 1 cabinet à Orléans, zéro algorithme. On décroche quand ça sonne, on vous appelle par votre prénom, on ne lâche pas votre dossier jusqu'à la remise des clés. Pas de script. Pas de bot. Juste des gens qui font le job.</p>
       <div class="hx-badges fu d4">
-        <span class="hx-badge green">✓ N°1 Centre-Val de Loire</span>
-        <span class="hx-badge">Fondé en janvier 2022</span>
+        <span class="hx-badge green">✓ 8 experts humains</span>
+        <span class="hx-badge">📍 Orléans</span>
+        <span class="hx-badge">Fondé en 2022</span>
         <span class="hx-badge">ORIAS 22002183</span>
-        <span class="hx-badge">Cabinet indépendant</span>
       </div>
-      <div class="hx-stats fu d5">
-        <div class="hx-sp"><div class="hx-sp-n">3<em>k+</em></div><div class="hx-sp-l">Clients</div></div>
-        <div class="hx-sp"><div class="hx-sp-n">750<em>+</em></div><div class="hx-sp-l">Avis 5★</div></div>
-        <div class="hx-sp"><div class="hx-sp-n">8<em>%</em></div><div class="hx-sp-l">Économies</div></div>
-        <div class="hx-sp"><div class="hx-sp-n">3<em>ans</em></div><div class="hx-sp-l">N°1 région</div></div>
+      <div class="hx-team-row fu d5">
+        <div class="hx-avs">
+          <div class="hx-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt="Dimitri"/></div>
+          <div class="hx-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt="Raphaël"/></div>
+          <div class="hx-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt="Delphine"/></div>
+          <div class="hx-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt="Robin"/></div>
+          <div class="hx-av"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt="Gabriel"/></div>
+        </div>
+        <div>
+          <div class="hx-team-t">L'équipe au complet</div>
+          <div class="hx-team-s">8 courtiers experts · Orléans</div>
+        </div>
       </div>
     </div>
     <div class="hx-right fu d3">
-      <div class="hx-fb hx-fb-rev"><div class="hx-fb-s">★★★★★</div><div class="hx-fb-t">750+ avis 5⭐</div></div>
-      <div class="hx-fb hx-fb-orias"><div class="hx-fb-t">ORIAS ✓</div><div class="hx-fb-s">22002183</div></div>
-      <div class="hx-fcard">
-        <div class="hx-fhead">
-          <div class="hx-fav"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt="Dimitri Toulon"/></div>
-          <div class="hx-fhead-txt">
-            <div class="hx-fname">Dimitri Toulon</div>
-            <div class="hx-frole">Fondateur · Depuis 2022</div>
-          </div>
-          <div class="hx-fbdg">Message</div>
-        </div>
-        <div class="hx-fquote">L'algorithme est humain chez nous. Aeconomia, c'est un cabinet où chaque dossier est suivi par un humain qui connaît les banques locales et votre situation.</div>
-        <div class="hx-fsig">— D. Toulon, Fondateur</div>
-        <div class="hx-fteam">
-          <div class="hx-fteam-l">Toute l'équipe</div>
-          <div class="hx-fteam-avs">
-            <div class="hx-fta"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt="Raphaël"/></div>
-            <div class="hx-fta"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt="Delphine"/></div>
-            <div class="hx-fta"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt="Robin"/></div>
-            <div class="hx-fta"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt="Gabriel"/></div>
-            <div class="hx-fta hx-fta-more">+4</div>
-          </div>
-        </div>
+      <div class="hx-main-photo">
+        <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photogroupe.jpg" alt="L'équipe Aeconomia au complet"/>
+        <div class="hx-main-photo-tag">Équipe · Orléans</div>
+      </div>
+      <div class="hx-side-photo">
+        <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/verticalphotodedimetgab.jpg" alt="Dimitri, Gabriel et Matteo"/>
+      </div>
+      <div class="hx-sticky-note">
+        <div class="hxs-stars">★★★★★</div>
+        On vous appelle <strong>par votre prénom.</strong>
       </div>
     </div>
   </div>
@@ -719,37 +867,106 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- GALERIE LOCAUX -->
-<section class="wrap" style="padding-top:3rem;padding-bottom:2.5rem">
-  <div class="rv" style="margin-bottom:1.8rem">
-    <div class="tag">Nos locaux</div>
-    <h2 class="h2">Un espace pensé pour<br/><em>vous accueillir.</em></h2>
+<!-- ZONE D'ACTION -->
+<section class="wrap">
+  <div class="rv" style="margin-bottom:1.8rem;max-width:640px">
+    <div class="tag">Notre territoire</div>
+    <h2 class="h2"><span style="font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2)">/</span>votre projet.</h2>
+    <p style="font-size:.82rem;color:var(--muted2);line-height:1.76;margin-top:.5rem">Aujourd'hui, Aeconomia couvre toute la région Centre et les départements limitrophes, dont Paris. Nous intervenons partout où notre expertise locale peut faire la différence — et vous faire économiser.</p>
   </div>
-  <div class="gg rv" style="transition-delay:.05s">
-    <div class="gc tall"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/LOCAL%202.jpg" alt="Locaux Aeconomia Orléans" loading="lazy"/></div>
-    <div class="gc"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/bureau%20local.jpg" alt="Bureau Aeconomia" loading="lazy"/></div>
-    <div class="gc"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodubureau2.jpg" alt="Aeconomia Orléans" loading="lazy"/></div>
-    <div class="gc"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodelexterieur.jpg" alt="Extérieur Aeconomia Orléans" loading="lazy"/></div>
-    <div class="gc wide"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photomiseensituation1.jpg" alt="Équipe Aeconomia au bureau" loading="lazy"/></div>
-    <div class="gc"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodubureau3.jpg" alt="Agence Aeconomia" loading="lazy"/></div>
+  <div class="za-wrap rv" style="transition-delay:.05s">
+    <div class="za-map-wrap">
+      <div class="za-compass"><span>N</span></div>
+      <div class="za-legend">
+        <div class="za-leg-i"><span class="za-leg-d hq"></span>Cabinet · Orléans</div>
+        <div class="za-leg-i"><span class="za-leg-d cv"></span>Villes d'intervention</div>
+        <div class="za-leg-i"><span class="za-leg-d ex"></span>Extension Paris</div>
+      </div>
+      <svg class="za-map" viewBox="0 0 600 500" preserveAspectRatio="xMidYMid meet">
+        <path class="za-map-region" d="M 140,120 C 210,70 310,60 400,110 C 470,175 470,275 425,365 C 345,425 210,430 140,390 C 70,325 55,220 90,170 C 105,145 120,130 140,120 Z"/>
+        <line class="za-map-line p" x1="300" y1="250" x2="340" y2="80"/>
+        <line class="za-map-line" x1="300" y1="250" x2="225" y2="130"/>
+        <line class="za-map-line" x1="300" y1="250" x2="420" y2="215"/>
+        <line class="za-map-line" x1="300" y1="250" x2="185" y2="215"/>
+        <line class="za-map-line" x1="300" y1="250" x2="195" y2="335"/>
+        <line class="za-map-line" x1="300" y1="250" x2="95" y2="395"/>
+        <circle class="za-map-ring" cx="300" cy="250" r="22"/>
+        <circle class="za-map-ring r2" cx="300" cy="250" r="22"/>
+        <circle class="za-map-ring r3" cx="300" cy="250" r="22"/>
+        <g class="za-pin paris">
+          <circle class="za-pin-halo" cx="340" cy="80" r="10"/>
+          <circle class="za-pin-dot" cx="340" cy="80" r="5"/>
+          <text class="za-pin-lbl" x="352" y="77">Paris</text>
+          <text class="za-pin-sub" x="352" y="90">Extension</text>
+        </g>
+        <g class="za-pin">
+          <circle class="za-pin-halo" cx="225" cy="130" r="9"/>
+          <circle class="za-pin-dot" cx="225" cy="130" r="4.5"/>
+          <text class="za-pin-lbl" x="237" y="128">Chartres</text>
+        </g>
+        <g class="za-pin">
+          <circle class="za-pin-halo" cx="420" cy="215" r="9"/>
+          <circle class="za-pin-dot" cx="420" cy="215" r="4.5"/>
+          <text class="za-pin-lbl" x="432" y="213">Montargis</text>
+        </g>
+        <g class="za-pin">
+          <circle class="za-pin-halo" cx="185" cy="215" r="9"/>
+          <circle class="za-pin-dot" cx="185" cy="215" r="4.5"/>
+          <text class="za-pin-lbl" x="175" y="213" text-anchor="end">Châteaudun</text>
+        </g>
+        <g class="za-pin">
+          <circle class="za-pin-halo" cx="195" cy="335" r="9"/>
+          <circle class="za-pin-dot" cx="195" cy="335" r="4.5"/>
+          <text class="za-pin-lbl" x="207" y="339">Blois</text>
+        </g>
+        <g class="za-pin">
+          <circle class="za-pin-halo" cx="95" cy="395" r="9"/>
+          <circle class="za-pin-dot" cx="95" cy="395" r="4.5"/>
+          <text class="za-pin-lbl" x="107" y="400">Tours</text>
+        </g>
+        <g class="za-pin hq">
+          <circle class="za-pin-halo" cx="300" cy="250" r="15"/>
+          <circle class="za-pin-dot" cx="300" cy="250" r="7.5"/>
+          <text class="za-pin-lbl" x="315" y="246" style="font-size:11.5px">Orléans</text>
+          <text class="za-pin-sub" x="315" y="260">★ Cabinet · Siège</text>
+        </g>
+      </svg>
+    </div>
+    <div class="za-info">
+      <p>Depuis notre cabinet d'Orléans, nous couvrons toute la région <strong>Centre-Val de Loire</strong> et nous étendons notre expertise jusqu'à <strong style="color:#8a6a1c">Paris</strong>. Peu importe où se trouve votre projet : on fait le déplacement, ou on vous reçoit en rendez-vous visio. Le local, c'est notre force.</p>
+      <div class="za-cities">
+        <span class="za-city hq">Orléans</span>
+        <span class="za-city">Chartres</span>
+        <span class="za-city">Montargis</span>
+        <span class="za-city">Châteaudun</span>
+        <span class="za-city">Blois</span>
+        <span class="za-city">Tours</span>
+        <span class="za-city paris">Paris</span>
+        <span class="za-city">+ limitrophes</span>
+      </div>
+      <div class="za-stats">
+        <div><div class="za-stat-n">2</div><div class="za-stat-l">Régions</div></div>
+        <div><div class="za-stat-n">7</div><div class="za-stat-l">Villes clés</div></div>
+        <div><div class="za-stat-n">150<em> km</em></div><div class="za-stat-l">Rayon d'action</div></div>
+      </div>
+    </div>
   </div>
 </section>
-
 <div class="divider"></div>
 
-<!-- APPROCHE — LIGHT BENTO -->
+
+
+  <!-- APPROCHE — LIGHT BENTO + 3D ICONS -->
 <section class="wrap" id="apX">
   <div class="rv" style="margin-bottom:2.2rem;max-width:680px">
-    <div class="tag">Notre approche</div>
+    <div class="tag">Pourquoi nous choisir</div>
     <h2 class="h2">Le meilleur des deux<br/><em>mondes.</em></h2>
     <p style="font-size:.83rem;color:var(--muted2);line-height:1.74;margin-top:.5rem">Proximité des courtiers locaux + réactivité du digital. L'algorithme est humain chez nous.</p>
   </div>
   <div class="apX-bento st">
     <article class="apX-c rv">
       <div class="apX-ghost">01</div>
-      <div class="apX-ico">🎯</div>
+      <div class="apX-ico3d"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/icon-transparence.png" alt="Transparence" onerror="var p=this.parentNode;p.className='apX-ico';p.innerHTML='🎯'"/></div>
       <h3>Transparence totale</h3>
       <p>Communication honnête, suivi sans surprise. Aucun petit caractère caché, vous savez toujours où en est votre dossier.</p>
       <div class="apX-stat"><span>100%</span><em>de clarté</em></div>
@@ -758,23 +975,23 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
     <article class="apX-c apX-hero apX-sg rv">
       <div class="apX-ghost">02</div>
       <div class="apX-head">
-        <div class="apX-ico">⭐</div>
+        <div class="apX-ico3d"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/icon-excellence.png" alt="Excellence" onerror="var p=this.parentNode;p.className='apX-ico';p.innerHTML='⭐'"/></div>
         <div class="apX-badge"><span class="apX-dot"></span>Validé quotidiennement</div>
       </div>
       <h3>Excellence prouvée, chaque jour.</h3>
       <p>Pas une promesse — une réalité validée par nos clients depuis 2022. Trois plateformes, une seule note : le 5 étoiles.</p>
       <div class="apX-kpi">
-        <div class="kpi-n" data-t="750" data-s="+">0+</div>
-        <div class="kpi-l">avis 5 étoiles<br/>certifiés</div>
+        <div class="kpi-n" data-t="906" data-s="+">0+</div>
+        <div class="kpi-l">avis certifiés<br/>sur 3 plateformes</div>
       </div>
       <div class="apX-sources">
-        <span>★★★★★ Google</span><span>★★★★★ Trustpilot</span><span>★★★★★ Immodvisor</span>
+        <span>★★★★★ Google</span><span>★★★★★ Pages Jaunes</span><span>★★★★★ Immodvisor</span>
       </div>
       <div class="apX-arrow">↗</div>
     </article>
     <article class="apX-c apX-be rv">
       <div class="apX-ghost">03</div>
-      <div class="apX-ico">🤝</div>
+      <div class="apX-ico3d"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/icon-proximite.png" alt="Proximité" onerror="var p=this.parentNode;p.className='apX-ico';p.innerHTML='🤝'"/></div>
       <h3>Proximité garantie</h3>
       <p>Courtiers locaux, l'humain au cœur de chaque accompagnement. Votre projet devient le nôtre.</p>
       <div class="apX-stat"><span>7j/7</span><em>disponibles</em></div>
@@ -782,7 +999,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
     </article>
     <article class="apX-c apX-be rv">
       <div class="apX-ghost">04</div>
-      <div class="apX-ico">⚡</div>
+      <div class="apX-ico3d"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/icon-reactivite.png" alt="Réactivité" onerror="var p=this.parentNode;p.className='apX-ico';p.innerHTML='⚡'"/></div>
       <h3>Réactivité maximale</h3>
       <p>Accord de principe immédiat. Retour bancaire sous 7 à 10 jours maximum, jamais au-delà.</p>
       <div class="apX-stat"><span>8h–20h</span><em>en semaine</em></div>
@@ -790,7 +1007,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
     </article>
     <article class="apX-c rv">
       <div class="apX-ghost">05</div>
-      <div class="apX-ico">💰</div>
+      <div class="apX-ico3d"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/icon-independance.png" alt="Indépendance" onerror="var p=this.parentNode;p.className='apX-ico';p.innerHTML='💰'"/></div>
       <h3>Indépendance absolue</h3>
       <p>Aucun lien capitalistique avec les banques. Dans votre intérêt exclusif, toujours.</p>
       <div class="apX-stat"><span>0</span><em>lien capital.</em></div>
@@ -799,7 +1016,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
     <article class="apX-c apX-hero apX-lm rv">
       <div class="apX-ghost">06</div>
       <div class="apX-head">
-        <div class="apX-ico apX-ico-lg">🔑</div>
+        <div class="apX-ico3d apX-ico-lg"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/icon-cles.png" alt="Remise des clés" onerror="var p=this.parentNode;p.className='apX-ico apX-ico-lg';p.innerHTML='🔑'"/></div>
         <div class="apX-badge"><span class="apX-dot"></span>Jusqu'au notaire</div>
       </div>
       <h3>De A jusqu'aux clés.<br/><em>Littéralement.</em></h3>
@@ -882,13 +1099,16 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
     </div>
   </div>
 </section>
-<!-- ÉQUIPE — REFINED -->
+
+
+
+  <!-- ÉQUIPE — REFINED + PASSPORT -->
 <section class="wrap">
   <div class="rv" style="margin-bottom:2.2rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem">
     <div>
       <div class="tag">Notre équipe</div>
       <h2 class="h2">Les meilleurs courtiers<br/><em>du Loiret.</em></h2>
-      <p style="font-size:.76rem;color:var(--muted);margin-top:.4rem">Des experts locaux passionnés · 750+ avis 5 étoiles certifiés</p>
+      <p style="font-size:.76rem;color:var(--muted);margin-top:.4rem">8 experts locaux · Cliquez sur une fiche pour tout savoir →</p>
     </div>
     <a href="contact.html" class="btn-s">Prendre rendez-vous →</a>
   </div>
@@ -898,8 +1118,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
       <div class="teX-body">
         <div class="teX-name">Dimitri Toulon</div>
         <div class="teX-role">Directeur · Fondateur</div>
-        <div class="teX-quote">« Extrêmement réactif, compétent et toujours disponible. Prêt obtenu sans se déplacer. »</div>
-        <div class="teX-links"><a href="tel:0769457572" class="teX-link">📞</a><a href="https://linkedin.com/in/dimitri-toulon-969746184/" target="_blank" class="teX-link">in</a></div>
+        <div class="teX-quote">« Extrêmement réactif, compétent et toujours disponible. »</div>
+        <div class="teX-actions">
+          <div class="teX-links"><a href="tel:0769457572" class="teX-link">📞</a><a href="https://linkedin.com/in/dimitri-toulon-969746184/" target="_blank" class="teX-link">in</a></div>
+          <button class="teX-moreBtn" onclick="openPass(0)">Voir la fiche <span>→</span></button>
+        </div>
       </div>
     </article>
     <article class="teX rv">
@@ -907,8 +1130,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
       <div class="teX-body">
         <div class="teX-name">Raphaël Nicq</div>
         <div class="teX-role">Courtier</div>
-        <div class="teX-quote">« Disponible, à l'écoute et professionnel. Signature rapide, merci 1000 fois ! »</div>
-        <div class="teX-links"><a href="tel:0637179128" class="teX-link">📞</a><a href="https://linkedin.com/in/raphael-nicq-1643b4136/" target="_blank" class="teX-link">in</a></div>
+        <div class="teX-quote">« Disponible, à l'écoute et professionnel. Signature rapide, merci ! »</div>
+        <div class="teX-actions">
+          <div class="teX-links"><a href="tel:0637179128" class="teX-link">📞</a><a href="https://linkedin.com/in/raphael-nicq-1643b4136/" target="_blank" class="teX-link">in</a></div>
+          <button class="teX-moreBtn" onclick="openPass(1)">Voir la fiche <span>→</span></button>
+        </div>
       </div>
     </article>
     <article class="teX rv">
@@ -917,7 +1143,10 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
         <div class="teX-name">Delphine Dechartre</div>
         <div class="teX-role">Courtière</div>
         <div class="teX-quote">« Réactive et toujours à l'écoute. Le suivi du dossier est impeccable. »</div>
-        <div class="teX-links"><a href="tel:0607908233" class="teX-link">📞</a><a href="https://linkedin.com/in/delphine-dechartre-6141b5134/" target="_blank" class="teX-link">in</a></div>
+        <div class="teX-actions">
+          <div class="teX-links"><a href="tel:0607908233" class="teX-link">📞</a><a href="https://linkedin.com/in/delphine-dechartre-6141b5134/" target="_blank" class="teX-link">in</a></div>
+          <button class="teX-moreBtn" onclick="openPass(2)">Voir la fiche <span>→</span></button>
+        </div>
       </div>
     </article>
     <article class="teX rv">
@@ -925,8 +1154,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
       <div class="teX-body">
         <div class="teX-name">Robin Villette</div>
         <div class="teX-role">Courtier</div>
-        <div class="teX-quote">« Dossier compliqué résolu haut la main dans un temps record de moins de deux mois. »</div>
-        <div class="teX-links"><a href="tel:0686250034" class="teX-link">📞</a><a href="https://linkedin.com/in/robin-villette-37aa771b5/" target="_blank" class="teX-link">in</a></div>
+        <div class="teX-quote">« Dossier compliqué résolu haut la main en moins de deux mois. »</div>
+        <div class="teX-actions">
+          <div class="teX-links"><a href="tel:0686250034" class="teX-link">📞</a><a href="https://linkedin.com/in/robin-villette-37aa771b5/" target="_blank" class="teX-link">in</a></div>
+          <button class="teX-moreBtn" onclick="openPass(3)">Voir la fiche <span>→</span></button>
+        </div>
       </div>
     </article>
     <article class="teX rv">
@@ -934,8 +1166,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
       <div class="teX-body">
         <div class="teX-name">Gabriel Despeisse</div>
         <div class="teX-role">Courtier</div>
-        <div class="teX-quote">« Accompagnement malgré la difficulté et l'urgence. Grâce à lui, projet finalisé. »</div>
-        <div class="teX-links"><a href="tel:0613164040" class="teX-link">📞</a><a href="https://linkedin.com/in/gabriel-despeisse-699855264/" target="_blank" class="teX-link">in</a></div>
+        <div class="teX-quote">« Accompagnement malgré la difficulté et l'urgence. Projet finalisé grâce à lui. »</div>
+        <div class="teX-actions">
+          <div class="teX-links"><a href="tel:0613164040" class="teX-link">📞</a><a href="https://linkedin.com/in/gabriel-despeisse-699855264/" target="_blank" class="teX-link">in</a></div>
+          <button class="teX-moreBtn" onclick="openPass(4)">Voir la fiche <span>→</span></button>
+        </div>
       </div>
     </article>
     <article class="teX rv">
@@ -943,8 +1178,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
       <div class="teX-body">
         <div class="teX-name">Matteo Martolini</div>
         <div class="teX-role">Courtier</div>
-        <div class="teX-quote">« Très réactif, conseils avisés. Excellent taux obtenu grâce à son expertise. »</div>
-        <div class="teX-links"><a href="tel:0601499492" class="teX-link">📞</a><a href="#" target="_blank" class="teX-link">in</a></div>
+        <div class="teX-quote">« Très réactif, conseils avisés. Excellent taux obtenu. »</div>
+        <div class="teX-actions">
+          <div class="teX-links"><a href="tel:0601499492" class="teX-link">📞</a><a href="#" target="_blank" class="teX-link">in</a></div>
+          <button class="teX-moreBtn" onclick="openPass(5)">Voir la fiche <span>→</span></button>
+        </div>
       </div>
     </article>
     <article class="teX rv">
@@ -952,8 +1190,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
       <div class="teX-body">
         <div class="teX-name">Adrien Meneghini</div>
         <div class="teX-role">Courtier</div>
-        <div class="teX-quote">« Professionnalisme remarquable. Carré du début à la fin. Je referai appel à lui. »</div>
-        <div class="teX-links"><a href="tel:0686238440" class="teX-link">📞</a><a href="#" target="_blank" class="teX-link">in</a></div>
+        <div class="teX-quote">« Professionnalisme remarquable. Carré du début à la fin. »</div>
+        <div class="teX-actions">
+          <div class="teX-links"><a href="tel:0686238440" class="teX-link">📞</a><a href="#" target="_blank" class="teX-link">in</a></div>
+          <button class="teX-moreBtn" onclick="openPass(6)">Voir la fiche <span>→</span></button>
+        </div>
       </div>
     </article>
     <article class="teX rv">
@@ -962,7 +1203,10 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
         <div class="teX-name">Marie</div>
         <div class="teX-role">Courtière</div>
         <div class="teX-quote">« Professionnelle et à l'écoute. Recommandée sans hésitation. »</div>
-        <div class="teX-links"><a href="tel:#" class="teX-link">📞</a><a href="#" target="_blank" class="teX-link">in</a></div>
+        <div class="teX-actions">
+          <div class="teX-links"><a href="tel:#" class="teX-link">📞</a><a href="#" target="_blank" class="teX-link">in</a></div>
+          <button class="teX-moreBtn" onclick="openPass(7)">Voir la fiche <span>→</span></button>
+        </div>
       </div>
     </article>
   </div>
@@ -1022,6 +1266,61 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
     </article>
   </div>
 </section>
+
+
+  <!-- PASSPORT MODAL -->
+<div class="pass-backdrop" id="passBackdrop">
+  <div class="pass" id="passCard">
+    <div class="pass-strip"></div>
+    <button class="pass-close" onclick="closePass()" aria-label="Fermer">✕</button>
+    <div class="pass-head">
+      <div class="pass-hl">Fiche technique · <b id="passNo">N° 001 / 08</b></div>
+      <div class="pass-hr">Aeconomia · Orléans</div>
+    </div>
+    <div class="pass-main">
+      <div class="pass-photo">
+        <div class="pass-photo-frame"><img id="passPhoto" src="" alt=""/></div>
+        <div class="pass-photo-no">ID <span id="passPhotoNo">AEC-001</span></div>
+      </div>
+      <div class="pass-idBody">
+        <div class="pass-id-top">
+          <div>
+            <div class="pass-id-prenom">Prénom · <b id="passPrenom"></b></div>
+            <div class="pass-id-nom" id="passNom"></div>
+            <div class="pass-id-role" id="passRole"></div>
+          </div>
+          <div class="pass-stamp">Certifié<br/>Aeconomia</div>
+        </div>
+        <div class="pass-fields">
+          <div class="pass-field"><div class="pass-field-l">Dans le métier depuis</div><div class="pass-field-v" id="passExp"></div></div>
+          <div class="pass-field"><div class="pass-field-l">Rejoint Aeconomia</div><div class="pass-field-v" id="passJoin"></div></div>
+          <div class="pass-field"><div class="pass-field-l">Ville d'origine</div><div class="pass-field-v" id="passCity"></div></div>
+          <div class="pass-field"><div class="pass-field-l">Signe distinctif</div><div class="pass-field-v" id="passSign"></div></div>
+          <div class="pass-field full"><div class="pass-field-l">Spécialités</div><div class="pass-field-v" id="passSpe"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pass-section">
+      <div class="pass-sec-l">Parcours</div>
+      <div class="pass-bio" id="passBio"></div>
+    </div>
+    <div class="pass-favs">
+      <div class="pass-fav"><div class="pass-fav-l">🎬 Film culte</div><div class="pass-fav-v" id="passFilm"></div></div>
+      <div class="pass-fav"><div class="pass-fav-l">🎵 Musique</div><div class="pass-fav-v" id="passMusic"></div></div>
+      <div class="pass-fav"><div class="pass-fav-l">⭐ Mentor</div><div class="pass-fav-v" id="passMentor"></div></div>
+    </div>
+    <div class="pass-foot">
+      <div class="pass-barcode">
+        <div class="pass-barcode-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="pass-barcode-num" id="passCode">AEC·22·001</div>
+      </div>
+      <div class="pass-ctas">
+        <a class="pass-cta s" id="passTel" href="#">📞 Appeler</a>
+        <a class="pass-cta p" id="passLi" href="#" target="_blank">in LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- CTA -->
 <section class="wrap" style="padding-bottom:4rem">
@@ -1157,4 +1456,98 @@ document.querySelectorAll('[data-t]').forEach(function(el){cro.observe(el);});
   stage.addEventListener('mouseleave',function(){paused=false;});
   render(0);stage.classList.add('is-in');startAuto();
 })();
+
+/* ══ PASSPORT MODAL ══ */
+(function(){
+  var BASE='https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/';
+  var TEAM=[
+    {prenom:'Dimitri',nom:'Toulon',role:'Fondateur · Directeur',photo:BASE+'dimitriphoto.jpg',
+     exp:'5 ans',join:'Janvier 2022',city:'Orléans',sign:'Esprit stratège',
+     spe:'Primo-accédant · Investissement locatif · Militaires',
+     bio:"Avant Aeconomia, Dimitri a fait ses armes dans le courtage traditionnel puis en ligne. En janvier 2022, il monte son cabinet à Orléans avec une idée simple : refaire du courtage un métier humain. Passionné de finance comportementale et de café torréfié localement.",
+     film:'Inception',music:'Daft Punk',mentor:'Son grand-père, banquier',
+     tel:'0769457572',li:'https://linkedin.com/in/dimitri-toulon-969746184/',code:'AEC·22·001'},
+    {prenom:'Raphaël',nom:'Nicq',role:'Courtier senior',photo:BASE+'RAPAHEL.jpg',
+     exp:'7 ans',join:'Mars 2022',city:'Tours',sign:'Le négociateur',
+     spe:'Résidence principale · Renégociation · TNS',
+     bio:"Ancien chargé d'affaires pro en banque, Raphaël connaît les banques de l'intérieur. Il rejoint Aeconomia dès les premiers mois pour apporter son flair du montage complexe. Amateur de jazz manouche et de balades en forêt de Sologne.",
+     film:'Le Parrain',music:'The Weeknd',mentor:'Warren Buffett',
+     tel:'0637179128',li:'https://linkedin.com/in/raphael-nicq-1643b4136/',code:'AEC·22·002'},
+    {prenom:'Delphine',nom:'Dechartre',role:'Courtière',photo:BASE+'photodedelphine.jpg',
+     exp:'4 ans',join:'Juin 2022',city:'Orléans',sign:"Sens de l'écoute",
+     spe:'Famille · Rachat de soulte · Primo-accédant',
+     bio:"Delphine a commencé dans l'accompagnement social avant de se reconvertir dans le courtage. Cette sensibilité humaine fait toute la différence sur les dossiers familiaux et les situations délicates (divorce, succession). Lectrice compulsive de polars nordiques.",
+     film:'Amélie',music:'Beyoncé',mentor:'Simone Veil',
+     tel:'0607908233',li:'https://linkedin.com/in/delphine-dechartre-6141b5134/',code:'AEC·22·003'},
+    {prenom:'Robin',nom:'Villette',role:'Courtier',photo:BASE+'photoderobin-2.jpg',
+     exp:'3 ans',join:'Septembre 2023',city:'Blois',sign:'Le solveur',
+     spe:'Dossiers complexes · Investissement · Secundo-accédant',
+     bio:"Rien ne l'arrête : plus le dossier est compliqué, plus Robin s'y intéresse. Issu d'un parcours en gestion de patrimoine, il excelle sur les montages en SCI et l'investissement locatif. Fan d'astronomie et de randonnée en montagne.",
+     film:'Interstellar',music:'Stromae',mentor:'Elon Musk',
+     tel:'0686250034',li:'https://linkedin.com/in/robin-villette-37aa771b5/',code:'AEC·23·004'},
+    {prenom:'Gabriel',nom:'Despeisse',role:'Courtier',photo:BASE+'gabriel.jpg',
+     exp:'2 ans',join:'Janvier 2024',city:'Orléans',sign:'Réactivité absolue',
+     spe:'Urgences · Primo-accédant · Orléans',
+     bio:"Gabriel a grandi à Orléans, il connaît chaque agence bancaire de la ville. Sa spécialité : débloquer les dossiers urgents qui semblent perdus. Joueur de rugby le week-end, disponible pour ses clients le reste du temps.",
+     film:'Intouchables',music:'Angèle',mentor:'Son père',
+     tel:'0613164040',li:'https://linkedin.com/in/gabriel-despeisse-699855264/',code:'AEC·24·005'},
+    {prenom:'Matteo',nom:'Martolini',role:'Courtier',photo:BASE+'matteo.jpg',
+     exp:'3 ans',join:'Mars 2023',city:'Orléans',sign:'Fibre investisseur',
+     spe:'Investissement locatif · Libéral · LMNP',
+     bio:"Passionné d'immobilier depuis ses études de gestion, Matteo a géré son propre patrimoine avant de conseiller celui des autres. Expert LMNP et SCI à l'IS, il accompagne les profils entrepreneurs et indépendants. Collectionneur de montres vintage.",
+     film:'Scarface',music:'Jul',mentor:'Robert Kiyosaki',
+     tel:'0601499492',li:'#',code:'AEC·23·006'},
+    {prenom:'Adrien',nom:'Meneghini',role:'Courtier',photo:BASE+'Adrien%20.jpg',
+     exp:'4 ans',join:'Avril 2023',city:'Orléans',sign:'Le méthodique',
+     spe:'Résidence principale · Assurance · Fonctionnaire',
+     bio:"Ancien conseiller bancaire spécialisé fonction publique, Adrien maîtrise les statuts particuliers (fonctionnaires, militaires) et les conditions CASDEN/MGEN. Rigoureux, pédagogue, il explique tout, même ce qu'on n'a pas osé demander. Fan de course à pied longue distance.",
+     film:'Le Comte de Monte-Cristo',music:'Kendrick Lamar',mentor:'Barack Obama',
+     tel:'0686238440',li:'#',code:'AEC·23·007'},
+    {prenom:'Marie',nom:'',role:'Courtière',photo:BASE+'mariephoto.jpg',
+     exp:'2 ans',join:'Septembre 2024',city:'Orléans',sign:'Nouvelle promesse',
+     spe:'Famille · Primo-accédant · Rachat de soulte',
+     bio:"Dernière arrivée, Marie a rejoint Aeconomia en sortie d'école de commerce après un stage décisif chez nous. Sa jeunesse est un atout : elle parle la langue des primo-accédants de moins de 35 ans. Voyageuse, elle a vécu 6 mois au Japon.",
+     film:"Le Fabuleux Destin d'Amélie Poulain",music:'Clara Luciani',mentor:'Brené Brown',
+     tel:'#',li:'#',code:'AEC·24·008'}
+  ];
+  var bd=document.getElementById('passBackdrop');
+  if(!bd)return;
+  var P={no:document.getElementById('passNo'),photo:document.getElementById('passPhoto'),photoNo:document.getElementById('passPhotoNo'),prenom:document.getElementById('passPrenom'),nom:document.getElementById('passNom'),role:document.getElementById('passRole'),exp:document.getElementById('passExp'),join:document.getElementById('passJoin'),city:document.getElementById('passCity'),sign:document.getElementById('passSign'),spe:document.getElementById('passSpe'),bio:document.getElementById('passBio'),film:document.getElementById('passFilm'),music:document.getElementById('passMusic'),mentor:document.getElementById('passMentor'),tel:document.getElementById('passTel'),li:document.getElementById('passLi'),code:document.getElementById('passCode')};
+  window.openPass=function(i){
+    var d=TEAM[i];if(!d)return;
+    var n=('0'+(i+1)).slice(-2);
+    P.no.textContent='N° '+n+' / 08';
+    P.photo.src=d.photo;P.photo.alt=d.prenom+' '+d.nom;
+    P.photoNo.textContent='AEC-0'+n;
+    P.prenom.textContent=d.prenom.toUpperCase();
+    P.nom.textContent=(d.nom||'').toUpperCase()||d.prenom.toUpperCase();
+    P.role.textContent=d.role;
+    P.exp.textContent=d.exp;P.join.textContent=d.join;
+    P.city.textContent=d.city;P.sign.textContent=d.sign;
+    P.spe.textContent=d.spe;P.bio.textContent=d.bio;
+    P.film.textContent=d.film;P.music.textContent=d.music;P.mentor.textContent=d.mentor;
+    P.tel.href=d.tel&&d.tel!=='#'?'tel:'+d.tel:'#';
+    P.li.href=d.li||'#';
+    P.code.textContent=d.code;
+    bd.classList.add('open');
+    document.body.classList.add('pass-locked');
+  };
+  window.closePass=function(){
+    bd.classList.remove('open');
+    document.body.classList.remove('pass-locked');
+  };
+  bd.addEventListener('click',function(e){if(e.target===bd)closePass();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&bd.classList.contains('open'))closePass();});
+  // Parallax on photo
+  var card=document.getElementById('passCard'),photoImg=document.querySelector('.pass-photo-frame img');
+  card.addEventListener('mousemove',function(e){
+    if(!bd.classList.contains('open'))return;
+    var r=card.getBoundingClientRect();
+    var x=((e.clientX-r.left)/r.width-.5)*7;
+    var y=((e.clientY-r.top)/r.height-.5)*7;
+    if(photoImg)photoImg.style.transform='translate('+x+'px,'+y+'px) scale(1.04)';
+  });
+  card.addEventListener('mouseleave',function(){if(photoImg)photoImg.style.transform='';});
+})();
+  
 </script></body></html>
