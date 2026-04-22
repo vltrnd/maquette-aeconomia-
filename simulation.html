@@ -399,9 +399,9 @@ body{display:flex;flex-direction:column;min-height:100vh;}
 .sml{font-family:'Space Grotesk',sans-serif;font-size:.56rem;font-weight:600;letter-spacing:.05em;color:var(--muted);}
 .svb{font-family:'Space Grotesk',sans-serif;font-size:.86rem;font-weight:800;letter-spacing:-.3px;color:var(--ob);background:var(--lime);border-radius:9px;padding:4px 11px;box-shadow:0 3px 10px rgba(188,212,26,.36);}
 .str{position:relative;height:22px;display:flex;align-items:center;}
-.sbg{position:absolute;left:0;right:0;height:6px;border-radius:50px;background:var(--beige3);box-shadow:inset 2px 2px 4px rgba(170,153,126,.2);}
-.sfi{position:absolute;left:0;height:6px;border-radius:50px;background:linear-gradient(90deg,var(--sage),var(--sage2));pointer-events:none;transition:width .08s;}
-.str input[type=range]{-webkit-appearance:none;appearance:none;position:absolute;inset:0;width:100%;height:6px;background:transparent;cursor:pointer;outline:none;}
+.sbg{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:6px;border-radius:50px;background:var(--beige3);box-shadow:inset 2px 2px 4px rgba(170,153,126,.2);}
+.sfi{position:absolute;left:0;top:50%;transform:translateY(-50%);height:6px;border-radius:50px;background:linear-gradient(90deg,var(--sage),var(--sage2));pointer-events:none;transition:width .08s;}
+.str input[type=range]{-webkit-appearance:none;appearance:none;position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);width:100%;height:6px;background:transparent;cursor:pointer;outline:none;}
 .str input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--white);box-shadow:3px 3px 8px rgba(170,153,126,.38),-2px -2px 5px rgba(255,255,255,.9);cursor:pointer;transition:transform .2s;border:2px solid var(--white);}
 .str input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25);}
 .str input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--white);border:2px solid var(--white);}
@@ -647,129 +647,6 @@ body{display:flex;flex-direction:column;min-height:100vh;}
   </div>
 </div>
 
-  <!-- RIGHT 2/3 -->
-  <div class="sr">
-    <div class="dash-hd">
-      <div class="dash-title">/simulation. <em>Dashboard.</em></div>
-      <div class="tbadge">🟢 Taux avril 2026 intégrés</div>
-    </div>
-    <div class="dg">
-
-      <!-- SITUATION -->
-      <div class="dc">
-        <div class="dc-tag">Situation</div>
-        <div class="dc-lbl">J'emprunte :</div>
-        <div class="rg">
-          <div class="ro sel" id="os" onclick="selEmp('s')">
-            <div class="rc"></div><span class="rl">Seul(e)</span>
-          </div>
-          <div class="ro" id="od" onclick="selEmp('d')">
-            <div class="rc"></div><span class="rl">À deux</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- AGES -->
-      <div class="dc">
-        <div class="dc-tag">Âge(s)</div>
-        <div class="dc-lbl">Vous avez :</div>
-        <div class="aw">
-          <input type="number" class="ai" id="a1" value="32" min="18" max="75" onchange="calc()"/>
-          <span id="asep" style="display:none;font-family:'Space Grotesk',sans-serif;font-size:.62rem;color:var(--muted)">et</span>
-          <input type="number" class="ai" id="a2" value="29" style="display:none" min="18" max="75" onchange="calc()"/>
-          <span style="font-family:'Space Grotesk',sans-serif;font-size:.64rem;color:var(--muted)">ans</span>
-        </div>
-      </div>
-
-      <!-- REVENUS -->
-      <div class="dc">
-        <div class="dc-tag">Revenus</div>
-        <div class="dc-lbl">Votre foyer gagne :</div>
-        <div class="slw">
-          <div class="slh"><span class="sml">Nets/mois</span><span class="svb" id="rv">3 800 €/mois</span></div>
-          <div class="str"><div class="sbg"></div><div class="sfi" id="rf" style="width:23.6%"></div>
-            <input type="range" min="1000" max="15000" step="100" value="3800" oninput="upd('r',this.value)"/>
-          </div>
-        </div>
-        <div class="qts">
-          <span class="qt" onclick="sRev(2000)">2k€</span>
-          <span class="qt on" onclick="sRev(3800)">3.8k€</span>
-          <span class="qt" onclick="sRev(5500)">5.5k€</span>
-          <span class="qt" onclick="sRev(8000)">8k€</span>
-        </div>
-      </div>
-
-      <!-- APPORT -->
-      <div class="dc">
-        <div class="dc-tag">Apport</div>
-        <div class="dc-lbl">Apport personnel :</div>
-        <div class="slw">
-          <div class="slh"><span class="sml">Montant</span><span class="svb" id="av">20 000 €</span></div>
-          <div class="str"><div class="sbg"></div><div class="sfi" id="af" style="width:6.67%"></div>
-            <input type="range" min="0" max="300000" step="2000" value="20000" oninput="upd('a',this.value)"/>
-          </div>
-        </div>
-        <p style="font-family:'Space Grotesk',sans-serif;font-size:.55rem;color:var(--muted);margin-top:.45rem">Sans apport : des solutions existent !</p>
-      </div>
-
-      <!-- DURÉE -->
-      <div class="dc full">
-        <div class="dc-tag">Durée</div>
-        <div class="dc-lbl">Le prêt durerait :</div>
-        <div class="pills">
-          <span class="pill" onclick="sDur(15,this)">15 ans</span>
-          <span class="pill" onclick="sDur(20,this)">20 ans</span>
-          <span class="pill on" onclick="sDur(25,this)">25 ans</span>
-          <span class="pill" onclick="sDur(30,this)">30 ans</span>
-        </div>
-        <div class="slw" style="margin-top:.65rem">
-          <div class="slh"><span class="sml">Durée précise</span><span class="svb" id="dv">25 ans</span></div>
-          <div class="str"><div class="sbg"></div><div class="sfi" id="df" style="width:75%"></div>
-            <input type="range" min="10" max="30" step="1" value="25" oninput="upd('d',this.value)"/>
-          </div>
-        </div>
-      </div>
-
-      <!-- TAUX -->
-      <div class="dc">
-        <div class="dc-tag">Taux estimé</div>
-        <div style="margin-top:.28rem"><div class="tpill" id="tbadge">Taux : 3.50 %</div></div>
-        <p style="font-size:.58rem;color:var(--muted2);margin-top:.55rem;line-height:1.5">Barèmes avril 2026. Dérogation via conventions bancaires exclusives.</p>
-      </div>
-
-      <!-- MENSUALITÉ -->
-      <div class="dc">
-        <div class="dc-tag">Mensualité estimée</div>
-        <div class="rn" id="mn2" style="font-size:1.3rem;margin-top:.28rem">1 330 €</div>
-        <p style="font-size:.57rem;color:var(--muted);margin-top:.2rem">/ mois · 35% taux d'endettement</p>
-      </div>
-
-      <!-- RÉSULTAT -->
-      <div class="dc beige full">
-        <div class="rg2">
-          <div>
-            <div class="rl2">Vous pourriez emprunter</div>
-            <div class="rn" id="cn">225 000 €</div>
-            <div class="rs2">Capital empruntable maximum</div>
-          </div>
-          <div>
-            <div class="rl2">Pour un bien à</div>
-            <div class="rn" id="bn">245 000 €</div>
-            <div class="rs2">Budget total avec apport</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CTA -->
-      <div class="scta">
-        <a href="contact.html" class="bsp">Simuler mon taux avec un courtier ›</a>
-        <button class="bss" onclick="resetSim()">Réinitialiser</button>
-      </div>
-
-      <p class="disc">⚠️ Simulation indicative et non contractuelle. Résultats basés sur les taux moyens avril 2026 et la règle des 35% de taux d'endettement. Un crédit vous engage. ORIAS n°22002183.</p>
-    </div>
-  </div>
-</div>
 
   
   
@@ -892,7 +769,8 @@ function sDur(v,el){S.d=v;document.querySelectorAll('.pill').forEach(function(p)
 calc();
 
   
-<script>
+</script>
+  <script>
 (function(){
   document.documentElement.classList.add('js-on');
   var ro=new IntersectionObserver(function(es){
