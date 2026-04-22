@@ -711,28 +711,48 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 }
 @media(max-width:640px){.solX-chooser{grid-template-columns:1fr;}.solX-bot{flex-direction:column;align-items:flex-start;}}
 
-/* ══ TRUST BANNER ══ */
-.trust-banner{background:var(--white);border-radius:22px;padding:1.8rem 2.5rem;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:space-between;gap:2.5rem;flex-wrap:wrap;position:relative;overflow:hidden;}
-.trust-banner::before{content:'';position:absolute;top:-60px;right:-40px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(188,212,26,.1),transparent 65%);pointer-events:none;animation:blob 14s ease-in-out infinite;z-index:0;}
-.trust-banner::after{content:'';position:absolute;bottom:-50px;left:-30px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.08),transparent 70%);pointer-events:none;animation:blob 18s ease-in-out infinite reverse;z-index:0;}
-.trust-score{display:flex;align-items:center;gap:1.3rem;position:relative;z-index:1;}
-.trust-stars{color:#F5A623;font-size:1.55rem;letter-spacing:3px;line-height:1;filter:drop-shadow(0 2px 6px rgba(245,166,35,.3));}
-.trust-num{font-family:'Space Grotesk',sans-serif;font-size:2.9rem;font-weight:700;color:var(--ob);letter-spacing:-2px;line-height:1;}
-.trust-num span{font-size:1.4rem;color:var(--muted);font-weight:500;}
-.trust-label{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:500;color:var(--muted2);line-height:1.45;}
-.trust-label strong{color:var(--ob);font-weight:700;}
-.trust-label em{font-style:normal;color:var(--sage2);font-weight:700;}
-.trust-divider{width:1px;height:60px;background:var(--border2);flex-shrink:0;position:relative;z-index:1;}
-.trust-logos{display:flex;align-items:center;gap:2.2rem;flex-wrap:wrap;position:relative;z-index:1;}
-.trust-logo{display:flex;flex-direction:column;align-items:center;gap:.35rem;transition:transform .35s cubic-bezier(.22,1,.36,1);cursor:default;}
-.trust-logo:hover{transform:translateY(-3px);}
-.trust-logo-img{height:38px;display:flex;align-items:center;justify-content:center;}
-.trust-logo-img img{max-height:38px;width:auto;object-fit:contain;opacity:.82;transition:opacity .3s;filter:grayscale(0);}
-.trust-logo:hover .trust-logo-img img{opacity:1;}
-.trust-logo-rating{display:inline-flex;align-items:center;gap:.3rem;font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:700;color:var(--ob2);background:rgba(188,212,26,.12);border:1px solid rgba(188,212,26,.3);border-radius:50px;padding:3px 9px;}
-.trust-logo-rating::before{content:'★';color:#F5A623;font-size:.62rem;}
-@media(max-width:768px){.trust-banner{flex-direction:column;gap:1.8rem;text-align:center;padding:1.6rem;}.trust-divider{width:100%;height:1px;}.trust-logos{justify-content:center;gap:1.5rem;}.trust-score{justify-content:center;}}
+/* ══ TRUST BANNER — REDESIGN ══ */
+.tb-new{background:var(--white);border-radius:24px;padding:2rem 2.4rem;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.85);display:grid;grid-template-columns:minmax(280px,1fr) minmax(540px,1.85fr);gap:2.4rem;align-items:center;position:relative;overflow:hidden;}
+.tb-new::before{content:'';position:absolute;top:-60px;right:-40px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(188,212,26,.11),transparent 65%);pointer-events:none;animation:blob 14s ease-in-out infinite;z-index:0;}
+.tb-new::after{content:'';position:absolute;bottom:-50px;left:-30px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.08),transparent 70%);pointer-events:none;animation:blob 18s ease-in-out infinite reverse;z-index:0;}
 
+/* LEFT — hero rating */
+.tb-hero{display:flex;flex-direction:column;gap:.75rem;position:relative;z-index:1;}
+.tb-badge{display:inline-flex;align-items:center;gap:.45rem;align-self:flex-start;font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--sage2);background:rgba(188,212,26,.11);border:1px solid rgba(188,212,26,.28);border-radius:50px;padding:5px 12px;}
+.tb-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px rgba(188,212,26,.8);animation:pl 2s infinite;}
+.tb-bigscore{display:flex;align-items:flex-end;gap:.95rem;margin:.1rem 0 .15rem;}
+.tb-bigscore-num{font-family:'Space Grotesk',sans-serif;font-size:clamp(3.4rem,5.8vw,4.8rem);font-weight:700;letter-spacing:-3px;line-height:.85;color:var(--ob);}
+.tb-bigscore-num span{font-size:.38em;color:var(--muted);font-weight:500;letter-spacing:-1px;}
+.tb-bigscore-side{display:flex;flex-direction:column;gap:.35rem;padding-bottom:.5rem;}
+.tb-bigscore-stars{color:#F5A623;font-size:1.25rem;letter-spacing:2.5px;line-height:1;filter:drop-shadow(0 2px 5px rgba(245,166,35,.28));}
+.tb-bigscore-lbl{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sage2);}
+.tb-caption{font-family:'Plus Jakarta Sans',sans-serif;font-size:.82rem;color:var(--muted2);line-height:1.62;}
+.tb-caption strong{font-family:'Space Grotesk',sans-serif;color:var(--ob);font-weight:800;}
+.tb-caption em{font-style:italic;color:var(--sage2);font-weight:700;}
+
+/* RIGHT — 3 cartes plateformes strictement identiques */
+.tb-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;position:relative;z-index:1;}
+.tb-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.1rem 1rem;box-shadow:var(--clay-sm);display:flex;flex-direction:column;align-items:center;gap:.45rem;min-height:178px;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s,border-color .4s;}
+.tb-card::before{content:'';position:absolute;top:0;left:-110%;width:55%;height:100%;background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.72) 50%,transparent 100%);transition:left .95s cubic-bezier(.22,1,.36,1);pointer-events:none;z-index:2;mix-blend-mode:overlay;}
+.tb-card:hover{transform:translateY(-5px);box-shadow:var(--clay-h);border-color:rgba(188,212,26,.32);}
+.tb-card:hover::before{left:160%;}
+.tb-stars{color:#F5A623;font-size:.82rem;letter-spacing:2.2px;line-height:1;filter:drop-shadow(0 1px 3px rgba(245,166,35,.25));}
+.tb-score{font-family:'Space Grotesk',sans-serif;font-size:1.55rem;font-weight:700;letter-spacing:-1.1px;line-height:1;color:var(--ob);}
+.tb-score span{font-size:.6em;color:var(--muted);font-weight:500;letter-spacing:-.3px;}
+.tb-count{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sage2);display:inline-flex;align-items:center;gap:.3rem;}
+.tb-count::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--lime);flex-shrink:0;}
+.tb-logo-frame{width:100%;height:42px;display:flex;align-items:center;justify-content:center;margin-top:auto;padding-top:.85rem;border-top:1px solid var(--border);}
+.tb-logo-frame img{max-height:26px;max-width:90%;width:auto;object-fit:contain;opacity:.88;transition:opacity .35s,transform .35s,filter .35s;filter:grayscale(.08);}
+.tb-card:hover .tb-logo-frame img{opacity:1;transform:scale(1.05);filter:grayscale(0);}
+
+@media(max-width:900px){
+  .tb-new{grid-template-columns:1fr;gap:1.8rem;padding:1.8rem;}
+  .tb-bigscore-num{font-size:3.7rem;}
+}
+@media(max-width:580px){
+  .tb-cards{grid-template-columns:1fr;gap:.6rem;}
+  .tb-card{min-height:auto;padding:1rem;}
+}
   
 /* RESP */
 @media(max-width:1060px){
@@ -1010,33 +1030,48 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 <div class="divider"></div>
 
 
-  <!-- ══ TRUST BANNER ══ -->
+ <!-- ══ TRUST BANNER — REDESIGN ══ -->
 <section class="wrap" style="padding-top:2rem;padding-bottom:2rem">
-  <div class="trust-banner rv">
-    <div class="trust-score">
-      <div class="trust-stars">★★★★★</div>
-      <div>
-        <div class="trust-num">5<span>/5</span></div>
-        <div class="trust-label">Noté <em>excellent</em> par<br/><strong>+750 clients certifiés</strong></div>
+  <div class="tb-new rv">
+
+    <!-- HERO RATING -->
+    <div class="tb-hero">
+      <div class="tb-badge">N°1 avis clients · Centre-Val de Loire</div>
+      <div class="tb-bigscore">
+        <div class="tb-bigscore-num">5<span>/5</span></div>
+        <div class="tb-bigscore-side">
+          <div class="tb-bigscore-stars">★★★★★</div>
+          <div class="tb-bigscore-lbl">Noté excellent</div>
+        </div>
+      </div>
+      <p class="tb-caption">Par <strong data-t="906" data-s="+">0+</strong> clients certifiés sur<br/><em>Google, Pages Jaunes &amp; Immodvisor.</em></p>
+    </div>
+
+    <!-- 3 CARTES PLATEFORMES IDENTIQUES -->
+    <div class="tb-cards st">
+      <div class="tb-card rv">
+        <div class="tb-stars">★★★★★</div>
+        <div class="tb-score">5,0<span>/5</span></div>
+        <div class="tb-count">750+ avis vérifiés</div>
+        <div class="tb-logo-frame"><img src="google.png" alt="Google"/></div>
+      </div>
+      <div class="tb-card rv">
+        <div class="tb-stars">★★★★★</div>
+        <div class="tb-score">5,0<span>/5</span></div>
+        <div class="tb-count">65+ avis vérifiés</div>
+        <div class="tb-logo-frame"><img src="solocal.png" alt="Pages Jaunes — Solocal"/></div>
+      </div>
+      <div class="tb-card rv">
+        <div class="tb-stars">★★★★★</div>
+        <div class="tb-score">4,9<span>/5</span></div>
+        <div class="tb-count">91 avis vérifiés</div>
+        <div class="tb-logo-frame"><img src="immodvisor.png" alt="Immodvisor"/></div>
       </div>
     </div>
-    <div class="trust-divider"></div>
-    <div class="trust-logos">
-      <div class="trust-logo">
-        <div class="trust-logo-img"><img src="google.png" alt="Avis Google"/></div>
-        <div class="trust-logo-rating">5/5 · 750+ avis</div>
-      </div>
-      <div class="trust-logo">
-        <div class="trust-logo-img"><img src="solocal.png" alt="SoLocal"/></div>
-        <div class="trust-logo-rating">5/5 · Pages Jaunes</div>
-      </div>
-      <div class="trust-logo">
-        <div class="trust-logo-img"><img src="immodvisor.png" alt="Immodvisor"/></div>
-        <div class="trust-logo-rating">4.9/5 · Certifié</div>
-      </div>
-    </div>
+
   </div>
 </section>
+
 
 <!-- ══ 8. AVIS ══ -->
 <section class="wrap" style="padding-bottom:2rem">
