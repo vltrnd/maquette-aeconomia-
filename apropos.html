@@ -758,15 +758,17 @@ body.pass-locked{overflow:hidden;}
   .pass-head{padding:1rem 1.3rem .55rem;}
   .pass-close{top:24px;right:12px;}
   .pass-fields{grid-template-columns:1fr;}
-  a.hx-team-row{cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,background .35s;}
+}
+
+/* Team row link + hero highlight (hors media) */
+a.hx-team-row{cursor:pointer;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,background .35s;}
 a.hx-team-row:hover{transform:translateY(-3px) scale(1.02);box-shadow:var(--clay);background:rgba(255,255,255,.95);}
 a.hx-team-row:hover .hx-team-t{color:var(--sage2);}
 a.hx-team-row .hx-team-t::after{content:' →';color:var(--sage2);opacity:0;transition:opacity .3s,transform .3s;display:inline-block;margin-left:.15rem;}
 a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
 #team{scroll-margin-top:100px;}
 .hx-sub strong{font-weight:800;color:var(--ob);}
-.hx-sub mark.hl{background:linear-gradient(transparent 62%,rgba(188,212,26,.5) 62%);color:var(--ob);padding:0 .2em;font-weight:700;}
-}
+.hx-sub mark.hl{background:linear-gradient(transparent 58%,rgba(188,212,26,.8) 58%);color:var(--ob);padding:0 .15em;font-weight:700;border-radius:2px;}
 
   /* Histoire — animations renforcées */
 .him{animation:float 8s ease-in-out infinite;transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s;}
@@ -903,7 +905,7 @@ a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
           <div class="hx-team-t">L'équipe au complet</div>
           <div class="hx-team-s">8 courtiers experts · Orléans</div>
         </div>
-      </div>
+      </a>
     </div>
     <div class="hx-right fu d3">
       <div class="hx-main-photo">
@@ -977,11 +979,15 @@ a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
       <div class="tag">Notre histoire</div>
       <h2 class="h2">Pourquoi on a créé<br/><em>Aeconomia.</em></h2>
     <p class="hp">En 2022, Dimitri Toulon fait un <strong>constat simple</strong> : entre les courtiers en ligne impersonnels et les acteurs traditionnels peu réactifs, il manquait quelque chose. Un cabinet qui combine la <strong>proximité humaine</strong> d'un expert local et l'<strong>efficacité</strong> des outils digitaux.</p>
-<p class="hp">Aeconomia naît de cette conviction : le meilleur financement ne s'obtient pas avec un algorithme froid, mais avec un <strong>expert qui vous connaît</strong>, connaît les banques locales, et ne <strong>lâche pas votre dossier</strong> jusqu'à la remise des clés.</p>
-        <div class="bl">Présent à Orléans, Tours, Blois, Chartres, Montargis, Châteaudun et Paris.</div>
+    <p class="hp">Aeconomia naît de cette conviction : le meilleur financement ne s'obtient pas avec un algorithme froid, mais avec un <strong>expert qui vous connaît</strong>, connaît les banques locales, et ne <strong>lâche pas votre dossier</strong> jusqu'à la remise des clés.</p>
+    <div class="bl-list">
+      <div class="bl">Fondé à Orléans avec une vision : devenir N°1 régional en 3 ans.</div>
+      <div class="bl">Aujourd'hui N°1 en Centre-Val de Loire sur Google, ChatGPT et Trustpilot.</div>
+      <div class="bl">Sélectionné par l'Armée de Terre et l'Armée de l'Air pour leurs collaborateurs.</div>
+      <div class="bl">Présent à Orléans, Tours, Blois, Chartres, Montargis, Châteaudun et Paris.</div>
+    </div>
       </div>
     </div>
-  </div>
 </section>
 
 <!-- ZONE D'ACTION -->
@@ -1223,7 +1229,7 @@ a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
 
 
   <!-- ÉQUIPE — REFINED + PASSPORT -->
-<section class="wrap">
+  <!-- ÉQUIPE — REFINED + PASSPORT -->
 <section class="wrap" id="team">
   <div class="rv" style="margin-bottom:2.2rem;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem">
     <div>
