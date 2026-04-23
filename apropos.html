@@ -370,14 +370,10 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 .hx-side-photo{position:absolute;bottom:0;left:-10px;width:150px;border-radius:14px;overflow:hidden;box-shadow:var(--clay);border:5px solid var(--white);transform:rotate(5deg);transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .5s;aspect-ratio:3/4;z-index:3;background:var(--beige3);animation:float 5.5s ease-in-out infinite .5s;}
 .hx-side-photo:hover{transform:rotate(0deg) scale(1.06);box-shadow:var(--clay-h);}
 .hx-side-photo img{width:100%;height:100%;object-fit:cover;}
-.hx-sticky-note{position:absolute;top:-10px;right:0;background:var(--white);color:var(--ob2);padding:1rem 1.15rem .9rem;border-radius:14px;box-shadow:0 14px 36px rgba(170,153,126,.3),0 1px 0 rgba(255,255,255,.9) inset;border:1px solid rgba(255,255,255,.9);max-width:210px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.74rem;font-style:italic;line-height:1.5;font-weight:500;z-index:4;transition:transform .55s cubic-bezier(.22,1,.36,1);animation:stickyFloat 4.5s ease-in-out infinite;transform-origin:top right;overflow:hidden;}
-.hx-sticky-note:hover{animation-play-state:paused;transform:rotate(0deg) scale(1.08) translateY(-4px);box-shadow:0 20px 50px rgba(170,153,126,.4);}
-@keyframes stickyFloat{
-  0%,100%{transform:rotate(8deg) translateY(0);}
-  25%{transform:rotate(10deg) translateY(-10px);}
-  50%{transform:rotate(6deg) translateY(-16px);}
-  75%{transform:rotate(9deg) translateY(-8px);}
-}
+.hx-sticky-note{position:absolute;top:-10px;right:0;background:var(--white);color:var(--ob2);padding:1rem 1.15rem .9rem;border-radius:14px;box-shadow:0 14px 36px rgba(170,153,126,.3),0 1px 0 rgba(255,255,255,.9) inset;border:1px solid rgba(255,255,255,.9);transform:rotate(5deg);max-width:210px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.74rem;font-style:italic;line-height:1.5;font-weight:500;z-index:4;transition:transform .55s cubic-bezier(.22,1,.36,1);animation:float 6s ease-in-out infinite 1.2s;overflow:hidden;}
+.hx-sticky-note::before{content:'';position:absolute;top:0;left:18px;right:18px;height:3px;background:linear-gradient(90deg,transparent,var(--lime) 50%,transparent);}
+.hx-sticky-note:hover{transform:rotate(0deg) scale(1.06);box-shadow:0 18px 44px rgba(170,153,126,.36);}
+.hx-sticky-note strong{font-weight:800;font-style:normal;color:var(--sage2);}
 .hxs-stars{color:#F5A623;font-size:.8rem;letter-spacing:1.8px;display:block;margin-bottom:.35rem;filter:drop-shadow(0 2px 4px rgba(245,166,35,.3));}
 
 @media(max-width:1060px){
@@ -421,8 +417,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 .hif{position:absolute;bottom:-16px;right:-16px;width:42%;aspect-ratio:1;
   border-radius:16px;overflow:hidden;box-shadow:var(--clay);border:3px solid var(--white);}
 .hif img{width:100%;height:100%;object-fit:cover;}
-.hiq{position:absolute;top:18px;left:-16px;background:var(--ob);border-radius:13px;
-  padding:.8rem .95rem;max-width:178px;box-shadow:0 7px 24px rgba(21,20,18,.18);}
+.hiq{position:absolute;top:18px;left:-26px;background:var(--ob);border-radius:13px;padding:.8rem .95rem;max-width:178px;box-shadow:0 10px 28px rgba(21,20,18,.25);transform:rotate(-6deg);transform-origin:bottom right;}
 .hiq-t{font-family:'Plus Jakarta Sans',sans-serif;font-size:.62rem;font-style:italic;
   color:rgba(247,244,239,.7);line-height:1.52;margin-bottom:.26rem;}
 .hiq-a{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:600;color:var(--sage);}
@@ -869,6 +864,13 @@ a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
 .fb-legal-links a::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.22,1,.36,1);}
 .fb-legal-links a:hover{color:var(--sage2);}
 .fb-legal-links a:hover::after{transform:scaleX(1);}
+
+
+  .fb-legal-row{max-width:1180px;margin:1.5rem auto 0;padding:1.2rem 0;border-top:1px solid var(--border);display:flex;justify-content:center;flex-wrap:wrap;gap:.5rem 1.4rem;font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:600;}
+.fb-legal-row a{color:var(--ob2);position:relative;transition:color .22s;}
+.fb-legal-row a::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.22,1,.36,1);}
+.fb-legal-row a:hover{color:var(--sage2);}
+.fb-legal-row a:hover::after{transform:scaleX(1);}
 </style></head><body>
 <nav id="mn">
   <a href="index.html" class="nav-logo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/logotype_noir_1000px.png" alt="Aeconomia" style="height:26px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/><div class="logo-text" style="display:none">aeconom<i>i</i>a.</div></a>
@@ -1485,6 +1487,14 @@ a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
     <a href="contact.html">45000 Orléans</a>
   </div></div>
 </div>
+<div class="fb-legal-row">
+  <a href="#">Mentions légales</a>
+  <a href="#">Politique de confidentialité</a>
+  <a href="#">Conditions générales</a>
+  <a href="#">Gestion des cookies</a>
+  <a href="#">RGPD</a>
+  <a href="#">Réclamation</a>
+</div>
 <div class="fb">
   <div class="fb-legal">© 2026 Aeconomia · Tous droits réservés</div>
   <div class="fb-badges"><span class="fb-badge">ORIAS ✓</span><span class="fb-badge">COBSP ✓</span><span class="fb-badge">ACPR ✓</span><span class="fb-badge">RGPD ✓</span></div>
@@ -1626,6 +1636,7 @@ document.querySelectorAll('[data-t]').forEach(function(el){if(!el.closest('.sg')
      film:"Le Fabuleux Destin d'Amélie Poulain",music:'Clara Luciani',passion:'Voyages au Japon',
      tel:'#',li:'#',code:'AEC·24·008'}
   ];
+  
   var bd=document.getElementById('passBackdrop');
   if(!bd)return;
   var P={no:document.getElementById('passNo'),photo:document.getElementById('passPhoto'),photoNo:document.getElementById('passPhotoNo'),prenom:document.getElementById('passPrenom'),nom:document.getElementById('passNom'),role:document.getElementById('passRole'),exp:document.getElementById('passExp'),join:document.getElementById('passJoin'),city:document.getElementById('passCity'),sign:document.getElementById('passSign'),spe:document.getElementById('passSpe'),bio:document.getElementById('passBio'),film:document.getElementById('passFilm'),music:document.getElementById('passMusic'),passion:document.getElementById('passPassion'),tel:document.getElementById('passTel'),li:document.getElementById('passLi'),code:document.getElementById('passCode')};
@@ -1662,3 +1673,8 @@ document.querySelectorAll('[data-t]').forEach(function(el){if(!el.closest('.sg')
   });
   card.addEventListener('mouseleave',function(){if(photoImg)photoImg.style.transform='';});
 })();
+
+
+  </script>
+</body>
+</html>
