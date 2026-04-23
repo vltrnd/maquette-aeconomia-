@@ -370,10 +370,14 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 .hx-side-photo{position:absolute;bottom:0;left:-10px;width:150px;border-radius:14px;overflow:hidden;box-shadow:var(--clay);border:5px solid var(--white);transform:rotate(5deg);transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .5s;aspect-ratio:3/4;z-index:3;background:var(--beige3);animation:float 5.5s ease-in-out infinite .5s;}
 .hx-side-photo:hover{transform:rotate(0deg) scale(1.06);box-shadow:var(--clay-h);}
 .hx-side-photo img{width:100%;height:100%;object-fit:cover;}
-.hx-sticky-note{position:absolute;top:-10px;right:0;background:var(--white);color:var(--ob2);padding:1rem 1.15rem .9rem;border-radius:14px;box-shadow:0 14px 36px rgba(170,153,126,.3),0 1px 0 rgba(255,255,255,.9) inset;border:1px solid rgba(255,255,255,.9);transform:rotate(5deg);max-width:210px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.74rem;font-style:italic;line-height:1.5;font-weight:500;z-index:4;transition:transform .55s cubic-bezier(.22,1,.36,1);animation:float 6s ease-in-out infinite 1.2s;overflow:hidden;}
-.hx-sticky-note::before{content:'';position:absolute;top:0;left:18px;right:18px;height:3px;background:linear-gradient(90deg,transparent,var(--lime) 50%,transparent);}
-.hx-sticky-note:hover{transform:rotate(0deg) scale(1.06);box-shadow:0 18px 44px rgba(170,153,126,.36);}
-.hx-sticky-note strong{font-weight:800;font-style:normal;color:var(--sage2);}
+.hx-sticky-note{position:absolute;top:-10px;right:0;background:var(--white);color:var(--ob2);padding:1rem 1.15rem .9rem;border-radius:14px;box-shadow:0 14px 36px rgba(170,153,126,.3),0 1px 0 rgba(255,255,255,.9) inset;border:1px solid rgba(255,255,255,.9);max-width:210px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.74rem;font-style:italic;line-height:1.5;font-weight:500;z-index:4;transition:transform .55s cubic-bezier(.22,1,.36,1);animation:stickyFloat 4.5s ease-in-out infinite;transform-origin:top right;overflow:hidden;}
+.hx-sticky-note:hover{animation-play-state:paused;transform:rotate(0deg) scale(1.08) translateY(-4px);box-shadow:0 20px 50px rgba(170,153,126,.4);}
+@keyframes stickyFloat{
+  0%,100%{transform:rotate(8deg) translateY(0);}
+  25%{transform:rotate(10deg) translateY(-10px);}
+  50%{transform:rotate(6deg) translateY(-16px);}
+  75%{transform:rotate(9deg) translateY(-8px);}
+}
 .hxs-stars{color:#F5A623;font-size:.8rem;letter-spacing:1.8px;display:block;margin-bottom:.35rem;filter:drop-shadow(0 2px 4px rgba(245,166,35,.3));}
 
 @media(max-width:1060px){
@@ -610,8 +614,10 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 /* ════════════════════════════════════════════════
    ZONE D'ACTION — STYLIZED MAP
 ════════════════════════════════════════════════ */
-.za-wrap{background:var(--white);border-radius:28px;padding:2rem;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.85);display:grid;grid-template-columns:1.1fr .9fr;gap:2.2rem;align-items:center;overflow:hidden;position:relative;}
-.za-wrap::before{content:'';position:absolute;top:-80px;right:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(188,212,26,.1),transparent 65%);pointer-events:none;animation:blob 16s ease-in-out infinite;}
+.za-wrap{background:var(--white);border-radius:28px;padding:2rem;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.85);display:grid;grid-template-columns:.7fr 1.3fr;gap:2.5rem;align-items:center;overflow:hidden;position:relative;}
+.za-map-wrap{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:3/4;max-width:340px;margin:0 auto;padding:0;border:1px solid var(--border);background:var(--beige4);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6);}
+.za-map-img{width:100%;height:100%;object-fit:contain;padding:1.2rem;display:block;filter:saturate(.82) contrast(.96) brightness(1.02);}
+@media(max-width:900px){.za-wrap{grid-template-columns:1fr;}.za-map-wrap{max-width:280px;}}
 .za-map-wrap{position:relative;background:linear-gradient(135deg,var(--beige4),rgba(237,232,223,.5));border-radius:20px;aspect-ratio:6/5;padding:1rem;overflow:hidden;border:1px solid var(--border);}
 .za-map-wrap::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(21,20,18,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(21,20,18,.04) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;}
 .za-map{width:100%;height:100%;position:relative;z-index:2;}
@@ -822,7 +828,18 @@ a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
 @media(max-width:480px){.loc-grid{grid-template-columns:1fr;}.loc-main,.loc-hl{grid-column:span 1;}}
 
 
-
+.za-info{padding:0 .5rem;}
+.za-info p{font-size:.84rem;color:var(--muted2);line-height:1.72;margin-bottom:1.2rem;}
+.za-info p strong{color:var(--ob);font-weight:700;}
+.za-cities{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem;}
+.za-city{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:600;padding:5px 11px;border-radius:50px;background:rgba(255,255,255,.8);border:1px solid var(--border2);color:var(--ob2);transition:all .28s cubic-bezier(.22,1,.36,1);cursor:default;}
+.za-city:hover{transform:translateY(-2px);background:var(--white);border-color:rgba(162,181,168,.4);box-shadow:var(--clay-sm);}
+.za-city.hq{background:var(--ob);color:var(--bg);border-color:var(--ob);}
+.za-city.paris{background:rgba(201,169,97,.14);color:#8a6a1c;border-color:rgba(201,169,97,.4);}
+.za-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;padding-top:1.1rem;border-top:1px dashed rgba(21,20,18,.15);}
+.za-stat-n{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--ob);letter-spacing:-1.2px;line-height:1;margin-bottom:.2rem;}
+.za-stat-n em{font-size:.8rem;color:var(--sage2);font-style:normal;font-weight:600;}
+.za-stat-l{font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
   /* ══ VIDEO PRESENTATION ══ */
 .vp-wrap{background:var(--white);border-radius:28px;padding:2rem;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.85);display:grid;grid-template-columns:.85fr 1.15fr;gap:2.2rem;align-items:center;position:relative;overflow:hidden;}
 .vp-wrap::before{content:'';position:absolute;top:-60px;left:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.16),transparent 65%);pointer-events:none;animation:blob 18s ease-in-out infinite;}
@@ -1008,38 +1025,17 @@ a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
         <div class="za-leg-i"><span class="za-leg-d ex"></span>Extension Paris</div>
       </div>
       <img class="za-map-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/carteregion.png" alt="Carte Centre-Val de Loire" loading="lazy"/>
-      <div class="za-map-overlay">
-        <div class="za-ring" style="left:50%;top:55%"></div>
-        <a class="za-pin-o paris" style="left:56%;top:10%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">Paris</div></a>
-        <a class="za-pin-o" style="left:38%;top:28%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">Chartres</div></a>
-        <a class="za-pin-o" style="left:28%;top:44%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">Châteaudun</div></a>
-        <a class="za-pin-o" style="left:70%;top:50%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">Montargis</div></a>
-        <a class="za-pin-o hq" style="left:50%;top:55%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">★ Orléans</div></a>
-        <a class="za-pin-o" style="left:34%;top:70%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">Blois</div></a>
-        <a class="za-pin-o" style="left:18%;top:82%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">Tours</div></a>
-      </div>
+     <div class="za-map-overlay">
+  <div class="za-ring" style="left:56%;top:50%"></div>
+  <a class="za-pin-o paris" style="left:72%;top:8%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">Paris</div></a>
+  <a class="za-pin-o" style="left:48%;top:22%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">Chartres</div></a>
+  <a class="za-pin-o" style="left:36%;top:36%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">Châteaudun</div></a>
+  <a class="za-pin-o" style="left:75%;top:42%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">Montargis</div></a>
+  <a class="za-pin-o hq" style="left:56%;top:50%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">★ Orléans</div></a>
+  <a class="za-pin-o" style="left:42%;top:64%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">Blois</div></a>
+  <a class="za-pin-o" style="left:20%;top:78%" href="#"><div class="za-pin-halo"></div><div class="za-pin-dot"></div><div class="za-pin-lbl">Tours</div></a>
+</div>
     </div>
-    <div class="za-info">
-      <p>Depuis notre cabinet d'Orléans, nous couvrons toute la région <strong>Centre-Val de Loire</strong> et nous étendons notre expertise jusqu'à <strong style="color:#8a6a1c">Paris</strong>. Peu importe où se trouve votre projet : on fait le déplacement, ou on vous reçoit en rendez-vous visio. Le local, c'est notre force.</p>
-      <div class="za-cities">
-        <span class="za-city hq">Orléans</span>
-        <span class="za-city">Chartres</span>
-        <span class="za-city">Montargis</span>
-        <span class="za-city">Châteaudun</span>
-        <span class="za-city">Blois</span>
-        <span class="za-city">Tours</span>
-        <span class="za-city paris">Paris</span>
-        <span class="za-city">+ limitrophes</span>
-      </div>
-      <div class="za-stats">
-        <div><div class="za-stat-n">2</div><div class="za-stat-l">Régions</div></div>
-        <div><div class="za-stat-n">7</div><div class="za-stat-l">Villes clés</div></div>
-        <div><div class="za-stat-n">150<em> km</em></div><div class="za-stat-l">Rayon d'action</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-<div class="divider"></div>
     <div class="za-info">
       <p>Depuis notre cabinet d'Orléans, nous couvrons toute la région <strong>Centre-Val de Loire</strong> et nous étendons notre expertise jusqu'à <strong style="color:#8a6a1c">Paris</strong>. Peu importe où se trouve votre projet : on fait le déplacement, ou on vous reçoit en rendez-vous visio. Le local, c'est notre force.</p>
       <div class="za-cities">
