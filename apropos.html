@@ -365,8 +365,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 .hx-main-photo:hover{transform:rotate(0deg) scale(1.015);box-shadow:var(--clay-h);}
 .hx-main-photo img{width:100%;height:100%;object-fit:cover;}
 .hx-main-photo::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--lime) 50%,transparent);}
-.hx-main-photo-tag{position:absolute;bottom:14px;left:14px;background:rgba(247,244,239,.96);backdrop-filter:blur(10px);padding:7px 14px;border-radius:50px;font-family:'Space Grotesk',sans-serif;font-size:.56rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ob);border:1px solid rgba(255,255,255,.9);display:inline-flex;align-items:center;gap:.45rem;}
-.hx-main-photo-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pl 2s infinite;}
+.hx-main-photo-tag{position:absolute;top:14px;right:14px;background:rgba(247,244,239,.96);backdrop-filter:blur(10px);padding:7px 14px;border-radius:50px;font-family:'Space Grotesk',sans-serif;font-size:.56rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ob);border:1px solid rgba(255,255,255,.9);display:inline-flex;align-items:center;gap:.45rem;box-shadow:var(--clay-sm);}
 .hx-side-photo{position:absolute;bottom:0;left:-10px;width:150px;border-radius:14px;overflow:hidden;box-shadow:var(--clay);border:5px solid var(--white);transform:rotate(5deg);transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .5s;aspect-ratio:3/4;z-index:3;background:var(--beige3);animation:float 5.5s ease-in-out infinite .5s;}
 .hx-side-photo:hover{transform:rotate(0deg) scale(1.06);box-shadow:var(--clay-h);}
 .hx-side-photo img{width:100%;height:100%;object-fit:cover;}
@@ -537,7 +536,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 .prX-stage.is-in .prX-checks{animation:prXFadeIn .55s cubic-bezier(.22,1,.36,1) .34s both;}
 .prX-stage.is-in .prX-badge{animation:prXFadeIn .55s cubic-bezier(.22,1,.36,1) .42s both;}
 .prX-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;}
-.prX-tab{background:var(--white);border-radius:16px;border:1.5px solid var(--border2);box-shadow:var(--clay-sm);padding:1rem 1.05rem;cursor:pointer;text-align:left;position:relative;overflow:hidden;transition:all .35s cubic-bezier(.22,1,.36,1);display:flex;align-items:center;gap:.85rem;}
+..prX-tab{background:var(--white);border-radius:16px;border:1.5px solid var(--border2);box-shadow:var(--clay-sm);padding:1rem 1.05rem;cursor:pointer;text-align:left;position:relative;overflow:hidden;transition:all .35s cubic-bezier(.22,1,.36,1);display:flex;align-items:center;gap:.85rem;min-height:78px;}
+.prX-tab-num{flex:0 0 42px;width:42px;}
 .prX-tab:hover{transform:translateY(-3px);box-shadow:var(--clay);border-color:rgba(162,181,168,.35);}
 .prX-tab-num{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;letter-spacing:-1.5px;color:var(--beige2);line-height:1;flex-shrink:0;transition:color .35s;}
 .prX-tab-body{flex:1;min-width:0;}
@@ -658,7 +658,10 @@ footer{border-top:1px solid var(--border);padding:2.5rem;position:relative;z-ind
 @media(max-width:900px){.za-wrap{grid-template-columns:1fr;gap:1.8rem;padding:1.6rem;}.za-cities{grid-template-columns:1fr 1fr;}}
 .za-france{fill:rgba(162,181,168,.05);stroke:rgba(21,20,18,.14);stroke-width:1;stroke-dasharray:5 4;}
 .za-france-lbl{font-family:'Space Grotesk',sans-serif;font-size:10px;font-weight:700;letter-spacing:.15em;fill:rgba(21,20,18,.25);}
+.za-map-dept{fill:rgba(162,181,168,.06);stroke:rgba(117,132,124,.28);stroke-width:.8;stroke-dasharray:2 2;}
+.za-region-lbl{font-family:'Space Grotesk',sans-serif;font-size:8px;font-weight:700;letter-spacing:.22em;fill:var(--sage2);opacity:.5;}
 
+  
 /* ════════════════════════════════════════════════
    3D ICONS SLOT (approche bento)
 ════════════════════════════════════════════════ */
@@ -849,7 +852,16 @@ a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
 .vp-player-tag{position:absolute;top:12px;left:12px;z-index:3;background:rgba(21,20,18,.85);backdrop-filter:blur(10px);padding:5px 12px;border-radius:50px;font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:700;letter-spacing:.08em;color:var(--bg);text-transform:uppercase;display:inline-flex;align-items:center;gap:.38rem;border:1px solid rgba(255,255,255,.14);}
 .vp-player-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:#e74c3c;animation:pl 1.5s infinite;box-shadow:0 0 8px rgba(231,76,60,.7);}
 @media(max-width:900px){.vp-wrap{grid-template-columns:1fr;gap:1.5rem;padding:1.5rem;}.vp-p{max-width:none;}}
-  
+
+  .fb-legal-full{max-width:1180px;margin:0 auto;border-top:1px solid var(--border);padding:1.4rem 0 1.1rem;}
+.fb-legal-t{font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.65rem;}
+.fb-legal-body{font-size:.58rem;color:var(--muted2);line-height:1.75;margin-bottom:.9rem;}
+.fb-legal-body strong{color:var(--ob);font-weight:800;}
+.fb-legal-links{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:600;margin-bottom:.9rem;}
+.fb-legal-links a{color:var(--ob2);position:relative;transition:color .22s;}
+.fb-legal-links a::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:1.5px;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.22,1,.36,1);}
+.fb-legal-links a:hover{color:var(--sage2);}
+.fb-legal-links a:hover::after{transform:scaleX(1);}
 </style></head><body>
 <nav id="mn">
   <a href="index.html" class="nav-logo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/logotype_noir_1000px.png" alt="Aeconomia" style="height:26px;width:auto" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/><div class="logo-text" style="display:none">aeconom<i>i</i>a.</div></a>
@@ -953,7 +965,6 @@ a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
       </div>
     </div>
     <div class="vp-player">
-      <div class="vp-player-tag">Présentation · 1min</div>
       <video controls muted loop playsinline poster="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/pausevideo.png">
         <source src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Aeconomia_V3_Musique_A%20(2).mp4" type="video/mp4"/>
         Votre navigateur ne supporte pas la vidéo.
@@ -995,8 +1006,7 @@ a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
   <div class="rv" style="margin-bottom:1.8rem;max-width:640px">
     <div class="tag">Notre territoire</div>
     <h2 class="h2"><span style="font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2)">/</span>votre projet.</h2>
-    <p style="font-size:.82rem;color:var(--muted2);line-height:1.76;margin-top:.5rem">Aujourd'hui, Aeconomia couvre toute la région Centre et les départements limitrophes, dont Paris. Nous intervenons partout où notre expertise locale peut faire la différence — et vous faire économiser.</p>
-  </div>
+  <p style="font-size:.82rem;color:var(--muted2);line-height:1.76;margin-top:.5rem">22 rue de la République · 45000 Orléans. Un cabinet à notre image : chaleureux, moderne et <strong style="color:var(--ob);white-space:nowrap">100%&nbsp;humain</strong>.</p>
   <div class="za-wrap rv" style="transition-delay:.05s">
     <div class="za-map-wrap">
       <div class="za-compass"><span>N</span></div>
@@ -1007,23 +1017,16 @@ a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
         <div class="za-leg-i"><span class="za-leg-d ex"></span>Extension Paris</div>
       </div>
       <svg class="za-map" viewBox="0 0 600 500" preserveAspectRatio="xMidYMid meet">
-        <path class="za-france" d="M 285,35 L 345,45 L 390,70 L 430,95 L 465,135 L 485,180 L 495,235 L 490,290 L 475,340 L 445,385 L 400,415 L 345,435 L 280,445 L 215,440 L 155,425 L 105,395 L 70,355 L 45,310 L 30,255 L 35,200 L 55,150 L 85,110 L 125,80 L 175,60 L 230,45 L 285,35 Z"/>
-<text class="za-france-lbl" x="510" y="55" text-anchor="end">FRANCE</text>
-        <path class="za-map-region" d="M 140,120 C 210,70 310,60 400,110 C 470,175 470,275 425,365 C 345,425 210,430 140,390 C 70,325 55,220 90,170 C 105,145 120,130 140,120 Z"/>
-        <line class="za-map-line p" x1="300" y1="250" x2="340" y2="80"/>
-        <line class="za-map-line" x1="300" y1="250" x2="225" y2="130"/>
-        <line class="za-map-line" x1="300" y1="250" x2="420" y2="215"/>
-        <line class="za-map-line" x1="300" y1="250" x2="185" y2="215"/>
-        <line class="za-map-line" x1="300" y1="250" x2="195" y2="335"/>
-        <line class="za-map-line" x1="300" y1="250" x2="95" y2="395"/>
-        <circle class="za-map-ring" cx="300" cy="250" r="22"/>
-        <circle class="za-map-ring r2" cx="300" cy="250" r="22"/>
-        <circle class="za-map-ring r3" cx="300" cy="250" r="22"/>
-        <g class="za-pin paris">
-          <circle class="za-pin-halo" cx="340" cy="80" r="10"/>
-          <circle class="za-pin-dot" cx="340" cy="80" r="5"/>
-          <text class="za-pin-lbl" x="352" y="77">Paris</text>
-          <text class="za-pin-sub" x="352" y="90">Extension</text>
+              <path class="za-france" d="M 170,30 L 240,32 L 310,40 L 385,55 L 440,90 L 475,145 L 495,210 L 500,280 L 485,340 L 455,390 L 400,425 L 330,445 L 255,455 L 180,445 L 110,420 L 60,375 L 30,315 L 20,245 L 30,180 L 65,120 L 115,70 L 170,30 Z"/>
+        <text class="za-france-lbl" x="485" y="50" text-anchor="end">FRANCE</text>
+        <path class="za-map-region" d="M 125,145 L 175,115 L 235,100 L 300,98 L 360,110 L 420,135 L 455,175 L 475,220 L 480,270 L 470,320 L 445,365 L 400,395 L 345,415 L 280,425 L 210,420 L 150,400 L 100,365 L 70,320 L 55,265 L 60,210 L 85,170 L 125,145 Z"/>
+        <path class="za-map-dept" d="M 200,140 L 260,210 L 220,260 L 160,240 Z"/>
+        <path class="za-map-dept" d="M 260,210 L 335,195 L 335,275 L 260,270 Z"/>
+        <path class="za-map-dept" d="M 335,195 L 410,180 L 440,240 L 380,290 L 335,275 Z"/>
+        <path class="za-map-dept" d="M 220,260 L 260,270 L 335,275 L 300,350 L 220,355 Z"/>
+        <path class="za-map-dept" d="M 160,240 L 220,260 L 220,355 L 150,350 L 110,310 Z"/>
+        <path class="za-map-dept" d="M 300,350 L 380,290 L 440,240 L 450,320 L 395,385 L 320,405 Z"/>
+        <text class="za-region-lbl" x="290" y="430" text-anchor="middle">CENTRE-VAL DE LOIRE</text>
         </g>
         <g class="za-pin">
           <circle class="za-pin-halo" cx="225" cy="130" r="9"/>
@@ -1451,7 +1454,7 @@ a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
     <div class="pass-favs">
       <div class="pass-fav"><div class="pass-fav-l">🎬 Film culte</div><div class="pass-fav-v" id="passFilm"></div></div>
       <div class="pass-fav"><div class="pass-fav-l">🎵 Musique</div><div class="pass-fav-v" id="passMusic"></div></div>
-      <div class="pass-fav"><div class="pass-fav-l">⭐ Mentor</div><div class="pass-fav-v" id="passMentor"></div></div>
+      <div class="pass-fav"><div class="pass-fav-l">❤️ Passion</div><div class="pass-fav-v" id="passPassion"></div></div>
     </div>
     <div class="pass-foot">
       <div class="pass-barcode">
@@ -1507,9 +1510,27 @@ a.hx-team-row:hover .hx-team-t::after{opacity:1;transform:translateX(4px);}
     <a href="contact.html">45000 Orléans</a>
   </div></div>
 </div>
+<div class="fb-legal-full">
+  <div class="fb-legal-t">Mentions légales</div>
+  <div class="fb-legal-body">
+    <strong>Aeconomia</strong> — EURL au capital de 5 000 € · SIRET 909 326 613 00014 · TVA intracommunautaire FR76909326613 · RCS Orléans 909 326 613 · Code NAF 6619B.<br/>
+    Siège social : 22 rue de la République, 45000 Orléans. Directeur de la publication : <strong>Dimitri Toulon</strong>. Téléphone : 02.79.41.42.43 · Email : contact@aeconomia.fr.<br/>
+    <strong>ORIAS n°22002183</strong> (vérifiable sur www.orias.fr) · Courtier en Opérations de Banque et Services de Paiement (COBSP) · Courtier en Assurance (COA) · Mandataire non exclusif.<br/>
+    Autorité de contrôle : <strong>ACPR</strong> — 4 Place de Budapest, CS 92459, 75436 Paris Cedex 09. En cas de litige : <strong>Médiateur de l'ANACOFI</strong> — 92 rue d'Amsterdam, 75009 Paris.<br/>
+    Hébergement : <strong>GitHub Pages</strong> (GitHub Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, USA). Crédits photos : © Aeconomia 2026.
+  </div>
+  <div class="fb-legal-links">
+    <a href="#">Mentions légales</a>
+    <a href="#">Politique de confidentialité</a>
+    <a href="#">Conditions générales</a>
+    <a href="#">Gestion des cookies</a>
+    <a href="#">RGPD</a>
+    <a href="#">Réclamation</a>
+  </div>
+</div>
 <div class="fb">
-  <div class="fb-legal">EURL · RCS Orléans 909 326 613 · COBSP · ORIAS n°22002183 · ACPR · © 2026 Aeconomia</div>
-  <div class="fb-badges"><span class="fb-badge">ORIAS ✓</span><span class="fb-badge">COBSP ✓</span><span class="fb-badge">ACPR ✓</span></div>
+  <div class="fb-legal">© 2026 Aeconomia · Tous droits réservés</div>
+  <div class="fb-badges"><span class="fb-badge">ORIAS ✓</span><span class="fb-badge">COBSP ✓</span><span class="fb-badge">ACPR ✓</span><span class="fb-badge">RGPD ✓</span></div>
 </div>
 </footer>
 <script>
@@ -1650,42 +1671,57 @@ document.querySelectorAll('[data-t]').forEach(function(el){if(!el.closest('.sg')
   ];
   var bd=document.getElementById('passBackdrop');
   if(!bd)return;
-  var P={no:document.getElementById('passNo'),photo:document.getElementById('passPhoto'),photoNo:document.getElementById('passPhotoNo'),prenom:document.getElementById('passPrenom'),nom:document.getElementById('passNom'),role:document.getElementById('passRole'),exp:document.getElementById('passExp'),join:document.getElementById('passJoin'),city:document.getElementById('passCity'),sign:document.getElementById('passSign'),spe:document.getElementById('passSpe'),bio:document.getElementById('passBio'),film:document.getElementById('passFilm'),music:document.getElementById('passMusic'),mentor:document.getElementById('passMentor'),tel:document.getElementById('passTel'),li:document.getElementById('passLi'),code:document.getElementById('passCode')};
+  var P={no:document.getElementById('passNo'),photo:document.getElementById('passPhoto'),photoNo:document.getElementById('passPhotoNo'),prenom:document.getElementById('passPrenom'),nom:document.getElementById('passNom'),role:document.getElementById('passRole'),exp:document.getElementById('passExp'),join:document.getElementById('passJoin'),city:document.getElementById('passCity'),sign:document.getElementById('passSign'),spe:document.getElementById('passSpe'),bio:document.getElementById('passBio'),film:document.getElementById('passFilm'),music:document.getElementById('passMusic'),passion:document.getElementById('passPassion'),tel:document.getElementById('passTel'),li:document.getElementById('passLi'),code:document.getElementById('passCode')};
   window.openPass=function(i){
-    var d=TEAM[i];if(!d)return;
-    var n=('0'+(i+1)).slice(-2);
-    P.no.textContent='N° '+n+' / 08';
-    P.photo.src=d.photo;P.photo.alt=d.prenom+' '+d.nom;
-    P.photoNo.textContent='AEC-0'+n;
-    P.prenom.textContent=d.prenom.toUpperCase();
-    P.nom.textContent=(d.nom||'').toUpperCase()||d.prenom.toUpperCase();
-    P.role.textContent=d.role;
-    P.exp.textContent=d.exp;P.join.textContent=d.join;
-    P.city.textContent=d.city;P.sign.textContent=d.sign;
-    P.spe.textContent=d.spe;P.bio.textContent=d.bio;
-    P.film.textContent=d.film;P.music.textContent=d.music;P.mentor.textContent=d.mentor;
-    P.tel.href=d.tel&&d.tel!=='#'?'tel:'+d.tel:'#';
-    P.li.href=d.li||'#';
-    P.code.textContent=d.code;
-    bd.classList.add('open');
-    document.body.classList.add('pass-locked');
-  };
-  window.closePass=function(){
-    bd.classList.remove('open');
-    document.body.classList.remove('pass-locked');
-  };
-  bd.addEventListener('click',function(e){if(e.target===bd)closePass();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&bd.classList.contains('open'))closePass();});
-  // Parallax on photo
-  var card=document.getElementById('passCard'),photoImg=document.querySelector('.pass-photo-frame img');
-  card.addEventListener('mousemove',function(e){
-    if(!bd.classList.contains('open'))return;
-    var r=card.getBoundingClientRect();
-    var x=((e.clientX-r.left)/r.width-.5)*7;
-    var y=((e.clientY-r.top)/r.height-.5)*7;
-    if(photoImg)photoImg.style.transform='translate('+x+'px,'+y+'px) scale(1.04)';
-  });
-  card.addEventListener('mouseleave',function(){if(photoImg)photoImg.style.transform='';});
-})();
+   var TEAM=[
+    {prenom:'Dimitri',nom:'Toulon',role:'Fondateur · Directeur',photo:BASE+'dimitriphoto.jpg',
+     exp:'5 ans',join:'Janvier 2022',city:'Orléans',sign:'Esprit stratège',
+     spe:'Primo-accédant · Investissement locatif · Militaires',
+     bio:"Avant Aeconomia, Dimitri a fait ses armes dans le courtage traditionnel puis en ligne. En janvier 2022, il monte son cabinet à Orléans avec une idée simple : refaire du courtage un métier humain. Passionné de finance comportementale et de café torréfié localement.",
+     film:'Inception',music:'Daft Punk',passion:'Café de spécialité',
+     tel:'0769457572',li:'https://linkedin.com/in/dimitri-toulon-969746184/',code:'AEC·22·001'},
+    {prenom:'Raphaël',nom:'Nicq',role:'Courtier senior',photo:BASE+'RAPAHEL.jpg',
+     exp:'7 ans',join:'Mars 2022',city:'Tours',sign:'Le négociateur',
+     spe:'Résidence principale · Renégociation · TNS',
+     bio:"Ancien chargé d'affaires pro en banque, Raphaël connaît les banques de l'intérieur. Il rejoint Aeconomia dès les premiers mois pour apporter son flair du montage complexe. Amateur de jazz manouche et de balades en forêt de Sologne.",
+     film:'Le Parrain',music:'The Weeknd',passion:'Jazz manouche',
+     tel:'0637179128',li:'https://linkedin.com/in/raphael-nicq-1643b4136/',code:'AEC·22·002'},
+    {prenom:'Delphine',nom:'Dechartre',role:'Courtière',photo:BASE+'photodedelphine.jpg',
+     exp:'4 ans',join:'Juin 2022',city:'Orléans',sign:"Sens de l'écoute",
+     spe:'Famille · Rachat de soulte · Primo-accédant',
+     bio:"Delphine a commencé dans l'accompagnement social avant de se reconvertir dans le courtage. Cette sensibilité humaine fait toute la différence sur les dossiers familiaux et les situations délicates (divorce, succession). Lectrice compulsive de polars nordiques.",
+     film:'Amélie',music:'Beyoncé',passion:'Polars nordiques',
+     tel:'0607908233',li:'https://linkedin.com/in/delphine-dechartre-6141b5134/',code:'AEC·22·003'},
+    {prenom:'Robin',nom:'Villette',role:'Courtier',photo:BASE+'photoderobin-2.jpg',
+     exp:'3 ans',join:'Septembre 2023',city:'Blois',sign:'Le solveur',
+     spe:'Dossiers complexes · Investissement · Secundo-accédant',
+     bio:"Rien ne l'arrête : plus le dossier est compliqué, plus Robin s'y intéresse. Issu d'un parcours en gestion de patrimoine, il excelle sur les montages en SCI et l'investissement locatif. Fan d'astronomie et de randonnée en montagne.",
+     film:'Interstellar',music:'Stromae',passion:'Astronomie',
+     tel:'0686250034',li:'https://linkedin.com/in/robin-villette-37aa771b5/',code:'AEC·23·004'},
+    {prenom:'Gabriel',nom:'Despeisse',role:'Courtier',photo:BASE+'gabriel.jpg',
+     exp:'3 ans',join:'Janvier 2023',city:'Ingré',sign:'Spontanéité',
+     spe:'Urgences · Primo & Secundo-accédant · Orléans / Bourges / Paris',
+     bio:"Gabriel a grandi à Ingré, il connaît chaque agence bancaire du Loiret et au-delà. Sa spécialité : débloquer les dossiers urgents qui semblent perdus. Couvre Orléans, Bourges et Paris. Joueur de rugby le week-end, disponible pour ses clients le reste du temps.",
+     film:'Le Loup de Wall Street',music:'Angèle',passion:'Rugby',
+     tel:'0613164040',li:'https://linkedin.com/in/gabriel-despeisse-699855264/',code:'AEC·23·005'},
+    {prenom:'Matteo',nom:'Martolini',role:'Courtier',photo:BASE+'matteo.jpg',
+     exp:'3 ans',join:'Mars 2023',city:'Orléans',sign:'Fibre investisseur',
+     spe:'Investissement locatif · Libéral · LMNP',
+     bio:"Passionné d'immobilier depuis ses études de gestion, Matteo a géré son propre patrimoine avant de conseiller celui des autres. Expert LMNP et SCI à l'IS, il accompagne les profils entrepreneurs et indépendants. Collectionneur de montres vintage.",
+     film:'Scarface',music:'Jul',passion:'Montres vintage',
+     tel:'0601499492',li:'#',code:'AEC·23·006'},
+    {prenom:'Adrien',nom:'Meneghini',role:'Courtier',photo:BASE+'Adrien%20.jpg',
+     exp:'4 ans',join:'Avril 2023',city:'Orléans',sign:'Le méthodique',
+     spe:'Résidence principale · Assurance · Fonctionnaire',
+     bio:"Ancien conseiller bancaire spécialisé fonction publique, Adrien maîtrise les statuts particuliers (fonctionnaires, militaires) et les conditions CASDEN/MGEN. Rigoureux, pédagogue, il explique tout, même ce qu'on n'a pas osé demander. Fan de course à pied longue distance.",
+     film:'Le Comte de Monte-Cristo',music:'Kendrick Lamar',passion:'Course à pied',
+     tel:'0686238440',li:'#',code:'AEC·23·007'},
+    {prenom:'Marie',nom:'',role:'Courtière',photo:BASE+'mariephoto.jpg',
+     exp:'2 ans',join:'Septembre 2024',city:'Orléans',sign:'Nouvelle promesse',
+     spe:'Famille · Primo-accédant · Rachat de soulte',
+     bio:"Dernière arrivée, Marie a rejoint Aeconomia en sortie d'école de commerce après un stage décisif chez nous. Sa jeunesse est un atout : elle parle la langue des primo-accédants de moins de 35 ans. Voyageuse, elle a vécu 6 mois au Japon.",
+     film:"Le Fabuleux Destin d'Amélie Poulain",music:'Clara Luciani',passion:'Voyages au Japon',
+     tel:'#',li:'#',code:'AEC·24·008'}
+  ];
   
 </script></body></html>
