@@ -489,24 +489,62 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .stc.full{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:0;}
 
 
-/* ██ REVIEWS ██ */
-.rev-hd{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;}
-.score-g{display:flex;gap:.62rem;}
-.sbdg{background:var(--white);border-radius:12px;padding:.62rem .9rem;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.8);text-align:center;}
-.sbdg-n{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:-.8px;color:var(--ob);line-height:1;}
-.sbdg-p{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;color:var(--muted);letter-spacing:.04em;margin-top:.13rem;}
-.rev-track{overflow:hidden;border-radius:17px;margin-top:1.4rem;}
-.rev-inner{display:inline-flex;gap:.8rem;animation:ticker 42s linear infinite;}
-.rev-inner:hover{animation-play-state:paused;}
-.rev-card{flex-shrink:0;width:285px;background:var(--white);border-radius:17px;padding:1.1rem;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.8);transition:transform .25s,box-shadow .25s;}
-.rev-card:hover{transform:scale(1.022);box-shadow:var(--clay-h);}
-.rev-stars{color:#F5A623;font-size:.68rem;letter-spacing:1.5px;margin-bottom:.42rem;}
-.rev-text{font-size:.68rem;color:var(--ob2);line-height:1.68;font-style:italic;margin-bottom:.55rem;}
-.rev-auth{display:flex;align-items:center;gap:.42rem;}
-.rev-av{width:23px;height:23px;border-radius:50%;background:var(--beige3);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;color:var(--sage2);flex-shrink:0;}
-.rev-name{font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:700;color:var(--ob);}
-.rev-pl{font-size:.53rem;color:var(--muted);}
+/* ══ AVIS — ORBITE INTERACTIVE (style Miro) ══ */
+.rxw{position:relative;padding:1rem 0 1rem;}
+.rxw-stage{position:relative;height:560px;display:flex;align-items:center;justify-content:center;perspective:1800px;overflow:hidden;}
+.rxw-stage::before{content:'';position:absolute;left:50%;top:50%;width:780px;height:780px;border-radius:50%;border:1.2px dashed rgba(176,187,168,.34);transform:translate(-50%,-50%);animation:abxOrb 60s linear infinite;pointer-events:none;}
+.rxw-stage::after{content:'';position:absolute;left:50%;top:50%;width:560px;height:560px;border-radius:50%;border:1.2px dashed rgba(176,187,168,.22);transform:translate(-50%,-50%);animation:abxOrb 80s linear infinite reverse;pointer-events:none;}
 
+/* CENTER — phone hub */
+.rxw-hub{position:relative;z-index:5;width:240px;height:480px;background:linear-gradient(155deg,#1a1a17,var(--ob));border-radius:42px;padding:9px;box-shadow:0 32px 70px rgba(21,20,18,.42),inset 0 1px 0 rgba(255,255,255,.1);animation:abxFloat 6s ease-in-out infinite;}
+.rxw-hub::before{content:'';position:absolute;left:9px;right:9px;top:9px;bottom:9px;border-radius:33px;border:1px solid rgba(255,255,255,.06);pointer-events:none;z-index:3;}
+.rxw-hub-screen{width:100%;height:100%;border-radius:34px;background:linear-gradient(165deg,var(--white) 0%,var(--beige4) 50%,#dfe6dc 100%);overflow:hidden;position:relative;padding:2rem 1.4rem;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.rxw-hub-notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:75px;height:22px;background:var(--ob);border-radius:0 0 16px 16px;z-index:2;}
+.rxw-hub-stars{color:#F5A623;font-size:1.05rem;letter-spacing:2.5px;margin-top:1.6rem;margin-bottom:.6rem;filter:drop-shadow(0 2px 6px rgba(245,166,35,.32));}
+.rxw-hub-num{font-family:'Space Grotesk',sans-serif;font-size:3.4rem;font-weight:800;letter-spacing:-2.4px;line-height:.85;color:var(--ob);margin-bottom:.45rem;}
+.rxw-hub-num span{font-size:.45em;color:#7a8674;font-weight:600;}
+.rxw-hub-lbl{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:-.3px;line-height:1.2;color:var(--ob);margin-bottom:.45rem;}
+.rxw-hub-lbl em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;color:#7a8674;font-weight:800;}
+.rxw-hub-sub{font-size:.6rem;color:var(--muted);line-height:1.55;}
+.rxw-hub-divider{width:42px;height:1.5px;background:rgba(176,187,168,.5);margin:.95rem 0;border-radius:2px;}
+.rxw-hub-platforms{display:flex;flex-direction:column;gap:.4rem;width:100%;}
+.rxw-hub-pf{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.72);padding:.45rem .65rem;border-radius:11px;border:1px solid rgba(21,20,18,.04);font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:700;}
+.rxw-hub-pf-l{color:var(--ob2);display:flex;align-items:center;gap:.4rem;}
+.rxw-hub-pf-l::before{content:'';width:14px;height:14px;border-radius:4px;background:#b0bba8;}
+.rxw-hub-pf-v{color:#7a8674;}
+.rxw-hub-foot{margin-top:auto;display:inline-flex;align-items:center;gap:.4rem;font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;color:var(--muted);}
+.rxw-hub-foot::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 6px var(--lime);animation:pl 1.8s infinite;}
+
+/* SATELLITE CARDS */
+.rxw-card{position:absolute;width:280px;background:var(--white);border-radius:18px;padding:1.1rem 1.15rem;box-shadow:var(--clay);border:1px solid rgba(255,255,255,.85);transition:transform 1s cubic-bezier(.22,1,.36,1),opacity .85s cubic-bezier(.22,1,.36,1),filter .85s,box-shadow .5s;will-change:transform,opacity;cursor:pointer;z-index:3;}
+.rxw-card[data-rel="0-l"]{transform:translate(-340px,-180px) rotate(-6deg) scale(.94);opacity:.72;}
+.rxw-card[data-rel="1-l"]{transform:translate(-380px,40px) rotate(-3deg) scale(.96);opacity:.85;}
+.rxw-card[data-rel="2-l"]{transform:translate(-330px,200px) rotate(-7deg) scale(.92);opacity:.65;}
+.rxw-card[data-rel="0-r"]{transform:translate(340px,-180px) rotate(6deg) scale(.94);opacity:.72;}
+.rxw-card[data-rel="1-r"]{transform:translate(380px,40px) rotate(3deg) scale(.96);opacity:.85;}
+.rxw-card[data-rel="2-r"]{transform:translate(330px,200px) rotate(7deg) scale(.92);opacity:.65;}
+.rxw-card[data-rel="hidden"]{transform:scale(.4);opacity:0;pointer-events:none;}
+.rxw-card:hover{transform:translateY(-4px) scale(1.02) rotate(0);opacity:1;box-shadow:var(--clay-h);z-index:6;}
+.rxw-card-tag{display:inline-flex;align-items:center;gap:.32rem;font-family:'Space Grotesk',sans-serif;font-size:.52rem;font-weight:700;letter-spacing:.05em;color:#7a8674;background:rgba(176,187,168,.16);border:1px solid rgba(176,187,168,.34);border-radius:50px;padding:3px 9px;margin-bottom:.5rem;}
+.rxw-card-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--lime);}
+.rxw-card-stars{color:#F5A623;font-size:.7rem;letter-spacing:1.6px;margin-bottom:.45rem;}
+.rxw-card-q{font-size:.7rem;color:var(--ob2);line-height:1.62;margin-bottom:.7rem;font-style:italic;}
+.rxw-card-a{display:flex;align-items:center;gap:.5rem;}
+.rxw-card-av{width:30px;height:30px;border-radius:50%;background:var(--beige3);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:800;color:#7a8674;flex-shrink:0;border:1.5px solid var(--white);box-shadow:var(--clay-sm);}
+.rxw-card-n{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:800;color:var(--ob);}
+.rxw-card-p{font-size:.55rem;color:var(--muted);margin-top:.1rem;}
+
+/* dots */
+.rxw-dots{display:flex;justify-content:center;gap:.4rem;margin-top:1rem;}
+.rxw-dot{width:24px;height:5px;border-radius:50px;background:var(--border2);border:none;cursor:pointer;padding:0;transition:all .3s;}
+.rxw-dot.active{background:var(--ob);width:42px;}
+
+@media(max-width:1100px){
+  .rxw-stage{height:auto;padding:1rem 0;flex-direction:column;gap:1.5rem;}
+  .rxw-stage::before,.rxw-stage::after{display:none;}
+  .rxw-card{position:relative;transform:none!important;opacity:1!important;width:100%;max-width:340px;}
+  .rxw-card[data-rel="hidden"]{display:none;}
+}
 
 
 /* ██ SOLUTIONS ██ */
@@ -607,60 +645,67 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 }
 
 
-/* ══ TEAM — ARC CAROUSEL FUTURISTE ══ */
-.arc-wrap{position:relative;padding:1rem 0 1rem;}
-.arc-stage{position:relative;height:560px;overflow:hidden;perspective:2200px;perspective-origin:50% 30%;}
-.arc-stage::before{content:'';position:absolute;left:50%;top:55%;width:120%;height:120%;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center,rgba(162,181,168,.12),transparent 55%);pointer-events:none;z-index:0;}
-.arc-track{position:absolute;inset:0;transform-style:preserve-3d;}
-.arc-card{position:absolute;left:50%;top:46%;width:190px;height:265px;margin-left:-95px;margin-top:-135px;border-radius:22px;overflow:hidden;cursor:pointer;background:var(--white);box-shadow:0 18px 50px rgba(170,153,126,.28),0 0 0 6px var(--white),inset 0 1px 0 rgba(255,255,255,.5);transform-style:preserve-3d;transition:transform 1s cubic-bezier(.22,1,.36,1),opacity .7s cubic-bezier(.22,1,.36,1),filter .7s,box-shadow .5s;will-change:transform,opacity;}
-.arc-card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%;transition:transform 1.2s cubic-bezier(.22,1,.36,1),filter .7s;}
-.arc-card-tag{position:absolute;top:10px;left:10px;font-family:'Space Grotesk',sans-serif;font-size:.46rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(247,244,239,.92);color:var(--ob);padding:4px 9px;border-radius:50px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.6);opacity:0;transition:opacity .5s;}
-.arc-card-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.85) 0%,rgba(10,10,8,.3) 30%,transparent 55%);opacity:0;transition:opacity .55s;pointer-events:none;}
-.arc-card-name{position:absolute;left:0;right:0;bottom:14px;text-align:center;color:var(--bg);opacity:0;transform:translateY(8px);transition:opacity .5s cubic-bezier(.22,1,.36,1) .15s,transform .5s cubic-bezier(.22,1,.36,1) .15s;padding:0 12px;}
-.arc-card-name-t{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;letter-spacing:-.4px;line-height:1;}
-.arc-card-name-r{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);margin-top:.32rem;}
-.arc-card.is-center{box-shadow:0 30px 70px rgba(170,153,126,.42),0 0 0 7px var(--white),0 0 0 9px rgba(188,212,26,.5),inset 0 1px 0 rgba(255,255,255,.6);}
-.arc-card.is-center .arc-card-tag,.arc-card.is-center .arc-card-grad,.arc-card.is-center .arc-card-name{opacity:1;transform:translateY(0);}
-.arc-card.is-center .arc-card-img{transform:scale(1.06);}
+/* ══ TEAM — HOLO GALLERY (refonte 3D) ══ */
+.tx-wrap{position:relative;padding:1.5rem 0 .5rem;}
+.tx-stage{position:relative;height:600px;overflow:hidden;perspective:2400px;perspective-origin:50% 45%;}
+.tx-stage::before{content:'';position:absolute;left:50%;bottom:8%;width:520px;height:80px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(21,20,18,.18),transparent 65%);filter:blur(20px);pointer-events:none;z-index:1;}
+.tx-stage::after{content:'';position:absolute;left:50%;top:42%;width:140%;height:110%;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center,rgba(176,187,168,.14),transparent 50%);pointer-events:none;z-index:0;}
+.tx-track{position:absolute;inset:0;transform-style:preserve-3d;}
 
-/* names rail visible below — for non-center cards */
-.arc-rail{position:relative;margin-top:-2.5rem;text-align:center;z-index:5;pointer-events:none;}
-.arc-rail-name{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;letter-spacing:-1.1px;color:var(--ob);line-height:1;transition:opacity .45s cubic-bezier(.22,1,.36,1);min-height:2.2rem;}
-.arc-rail-name b{font-weight:800;}
-.arc-rail-name em{font-style:normal;color:var(--sage2);font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;}
-.arc-rail-role{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.55rem;display:inline-flex;align-items:center;gap:.5rem;transition:opacity .4s .1s;}
-.arc-rail-role::before,.arc-rail-role::after{content:'';width:18px;height:1.5px;background:var(--lime);border-radius:2px;}
-.arc-swap .arc-rail-name,.arc-swap .arc-rail-role{opacity:0;}
+.tx-card{position:absolute;left:50%;top:48%;width:230px;height:325px;margin-left:-115px;margin-top:-162px;border-radius:26px;overflow:hidden;cursor:pointer;background:var(--white);box-shadow:0 20px 50px rgba(170,153,126,.28),0 0 0 7px var(--white),inset 0 1px 0 rgba(255,255,255,.5);transform-style:preserve-3d;transition:transform 1.05s cubic-bezier(.22,1,.36,1),opacity .8s cubic-bezier(.22,1,.36,1),box-shadow .5s;will-change:transform,opacity;}
+.tx-card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 16%;transition:transform 1.3s cubic-bezier(.22,1,.36,1);}
+.tx-card-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.88) 0%,rgba(10,10,8,.42) 28%,transparent 55%);pointer-events:none;z-index:1;}
+.tx-card-tag{position:absolute;top:13px;left:13px;font-family:'Space Grotesk',sans-serif;font-size:.46rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;background:rgba(247,244,239,.94);color:var(--ob);padding:5px 11px;border-radius:50px;backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.6);z-index:3;display:inline-flex;align-items:center;gap:.32rem;}
+.tx-card-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:#b0bba8;}
+.tx-card-name{position:absolute;left:0;right:0;bottom:18px;text-align:center;color:var(--bg);z-index:3;padding:0 14px;}
+.tx-card-fn{font-family:'Space Grotesk',sans-serif;font-size:1.35rem;font-weight:800;letter-spacing:-.7px;line-height:.95;color:var(--bg);text-shadow:0 2px 10px rgba(0,0,0,.4);}
+.tx-card-ln{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:500;font-size:.78rem;color:rgba(247,244,239,.92);margin-top:.18rem;text-shadow:0 1px 6px rgba(0,0,0,.4);}
+.tx-card-role{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#b0bba8;margin-top:.45rem;display:inline-flex;align-items:center;gap:.45rem;}
+.tx-card-role::before,.tx-card-role::after{content:'';width:14px;height:1.5px;background:rgba(176,187,168,.6);border-radius:2px;}
 
-/* navigation ARROWS */
-.arc-nav{position:absolute;top:38%;width:54px;height:54px;border-radius:50%;background:var(--white);border:1.5px solid var(--border2);box-shadow:var(--clay);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:1.4rem;color:var(--ob);cursor:pointer;z-index:25;transition:all .3s cubic-bezier(.22,1,.36,1);user-select:none;font-weight:300;line-height:1;padding-bottom:3px;}
-.arc-nav:hover{background:var(--ob);color:var(--lime);border-color:var(--ob);transform:scale(1.12);box-shadow:0 14px 38px rgba(21,20,18,.32);}
-.arc-prev{left:1%;}.arc-next{right:1%;}
+/* Center card prominence */
+.tx-card.is-center{box-shadow:0 36px 72px rgba(170,153,126,.42),0 0 0 7px var(--white),0 0 0 10px rgba(176,187,168,.5),inset 0 1px 0 rgba(255,255,255,.5);}
+.tx-card.is-center .tx-card-img{transform:scale(1.05);}
 
-/* It's free annotation + CTA */
-.arc-bottom{display:flex;justify-content:center;align-items:center;gap:1.5rem;margin-top:1.4rem;flex-wrap:wrap;}
-.arc-handwritten{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:500;font-size:.95rem;color:var(--muted2);position:relative;padding-right:1.8rem;}
-.arc-handwritten::after{content:'↗';position:absolute;right:0;top:50%;transform:translateY(-55%) rotate(28deg);font-size:1.1rem;color:var(--sage2);}
-.arc-cta{font-family:'Space Grotesk',sans-serif;font-size:.84rem;font-weight:700;background:var(--ob);color:var(--bg);border-radius:50px;padding:14px 26px;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;box-shadow:0 8px 22px rgba(21,20,18,.22);transition:all .3s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;}
-.arc-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(188,212,26,.32) 50%,transparent 70%);transform:translateX(-100%);transition:transform .85s;}
-.arc-cta:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 14px 32px rgba(21,20,18,.32);}
-.arc-cta:hover::after{transform:translateX(110%);}
+/* Side cards readability */
+.tx-card-fn,.tx-card-ln,.tx-card-role,.tx-card-tag{transition:opacity .5s;}
 
-/* dots */
-.arc-dots{display:flex;justify-content:center;gap:.4rem;margin-top:1.2rem;}
-.arc-dot{width:24px;height:5px;border-radius:50px;background:var(--border2);border:none;cursor:pointer;padding:0;transition:all .3s;}
-.arc-dot.active{background:var(--ob);width:42px;}
+/* Nav arrows */
+.tx-nav{position:absolute;top:48%;transform:translateY(-50%);width:58px;height:58px;border-radius:50%;background:var(--white);border:1.5px solid var(--border2);box-shadow:var(--clay);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:1.5rem;color:var(--ob);cursor:pointer;z-index:25;transition:all .35s cubic-bezier(.22,1,.36,1);user-select:none;font-weight:300;line-height:1;padding-bottom:3px;}
+.tx-nav:hover{background:var(--ob);color:#b0bba8;border-color:var(--ob);transform:translateY(-50%) scale(1.1);box-shadow:0 16px 40px rgba(21,20,18,.34);}
+.tx-prev{left:1.5%;}.tx-next{right:1.5%;}
+
+/* Below stage — counter + auto-progress */
+.tx-bottom{display:flex;justify-content:center;align-items:center;gap:1.4rem;margin-top:1.4rem;flex-wrap:wrap;}
+.tx-counter{display:inline-flex;align-items:center;gap:.7rem;font-family:'Space Grotesk',sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.09em;color:var(--muted);}
+.tx-counter-bar{width:64px;height:1.5px;background:var(--border2);border-radius:2px;position:relative;overflow:hidden;}
+.tx-counter-bar::after{content:'';position:absolute;left:0;top:0;height:100%;width:0;background:#b0bba8;border-radius:2px;animation:txFill 4s linear infinite;}
+@keyframes txFill{0%{width:0;}100%{width:100%;}}
+.tx-counter-bar.paused::after{animation-play-state:paused;}
+.tx-counter-num{font-size:.85rem;color:var(--ob);letter-spacing:-.2px;font-weight:800;}
+
+.tx-cta{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:700;background:var(--ob);color:var(--bg);border-radius:50px;padding:13px 22px;display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;box-shadow:0 8px 20px rgba(21,20,18,.22);transition:all .3s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;}
+.tx-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(176,187,168,.3) 50%,transparent 70%);transform:translateX(-100%);transition:transform .85s;}
+.tx-cta:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 14px 32px rgba(21,20,18,.32);}
+.tx-cta:hover::after{transform:translateX(110%);}
+
+.tx-dots{display:flex;justify-content:center;gap:.42rem;margin-top:.85rem;flex-wrap:wrap;}
+.tx-dot{width:24px;height:5px;border-radius:50px;background:var(--border2);border:none;cursor:pointer;padding:0;transition:all .3s;}
+.tx-dot.active{background:#b0bba8;width:46px;}
 
 @media(max-width:760px){
-  .arc-stage{height:480px;}
-  .arc-card{width:160px;height:225px;margin-left:-80px;margin-top:-115px;}
-  .arc-rail-name{font-size:1.3rem;}
+  .tx-stage{height:500px;}
+  .tx-card{width:185px;height:265px;margin-left:-92px;margin-top:-132px;}
+  .tx-card-fn{font-size:1.1rem;}
+  .tx-card-ln{font-size:.66rem;}
 }
 @media(max-width:480px){
-  .arc-stage{height:420px;}
-  .arc-card{width:130px;height:185px;margin-left:-65px;margin-top:-95px;}
+  .tx-stage{height:430px;}
+  .tx-card{width:155px;height:220px;margin-left:-77px;margin-top:-110px;}
+  .tx-nav{width:44px;height:44px;font-size:1.15rem;}
+  .tx-card-fn{font-size:.95rem;}
+  .tx-card-ln{font-size:.58rem;}
 }
-
   
   
 /* ══ SOLUTIONS — INTERACTIVE SHOWCASE ══ */
@@ -799,99 +844,108 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 }
 @media(max-width:560px){.cta-lime{padding:1.6rem;}.cta-lime-h{font-size:1.85rem;}}
 
-/* ══ ABOUT BENTO — présentation Aeconomia (style brainwave) ══ */
-.abx{padding:5rem 2.5rem;max-width:1280px;margin:0 auto;position:relative;z-index:1;}
+/* ══ ABOUT BENTO — DA Aeconomia stricte ══ */
+.abx{padding:4rem 2.5rem;max-width:1280px;margin:0 auto;position:relative;z-index:1;}
 .abx-hd{text-align:center;margin-bottom:2.5rem;}
 .abx-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:130px;gap:.85rem;}
-.abx-c{background:var(--white);border-radius:22px;border:1px solid rgba(255,255,255,.92);box-shadow:var(--clay);padding:1.4rem;position:relative;overflow:hidden;transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s;display:flex;flex-direction:column;justify-content:space-between;}
+.abx-c{background:var(--white);border-radius:22px;border:1px solid rgba(255,255,255,.92);box-shadow:var(--clay);padding:1.5rem;position:relative;overflow:hidden;transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .55s;display:flex;flex-direction:column;justify-content:space-between;}
 .abx-c:hover{transform:translateY(-5px);box-shadow:var(--clay-h);}
-.abx-c.dk{background:var(--ob);color:var(--bg);border-color:rgba(255,255,255,.06);}
-.abx-c.lime{background:linear-gradient(135deg,#dfe8a4 0%,var(--lime) 100%);border-color:rgba(188,212,26,.5);}
-.abx-c.beige{background:linear-gradient(135deg,var(--beige4),var(--beige3));border-color:rgba(190,173,147,.3);}
-.abx-c.sage{background:linear-gradient(135deg,#dfe8e0 0%,#a2b5a8 100%);border-color:rgba(117,132,124,.3);}
 
 /* CARD 1 — experts orbital */
-.abx-experts{grid-column:span 4;grid-row:span 2;position:relative;}
-.abx-experts-num{font-family:'Space Grotesk',sans-serif;font-size:3rem;font-weight:800;letter-spacing:-2px;line-height:.9;color:var(--ob);position:relative;z-index:2;}
-.abx-experts-l{font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:600;color:var(--muted);margin-top:.25rem;letter-spacing:.04em;text-transform:uppercase;position:relative;z-index:2;}
+.abx-experts{grid-column:span 4;grid-row:span 2;background:var(--white);}
+.abx-experts-num{font-family:'Space Grotesk',sans-serif;font-size:3.4rem;font-weight:800;letter-spacing:-2.4px;line-height:.88;color:var(--ob);position:relative;z-index:2;}
+.abx-experts-num span{color:#b0bba8;font-size:.5em;font-weight:700;}
+.abx-experts-l{font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:700;color:var(--muted);margin-top:.32rem;letter-spacing:.13em;text-transform:uppercase;position:relative;z-index:2;}
 .abx-orbits{position:absolute;top:50%;right:-30px;transform:translateY(-50%);width:280px;height:280px;}
-.abx-orbits::before,.abx-orbits::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;border:1.2px dashed rgba(21,20,18,.1);animation:abxOrb 28s linear infinite;}
+.abx-orbits::before,.abx-orbits::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;border:1.2px dashed rgba(176,187,168,.42);animation:abxOrb 28s linear infinite;}
 .abx-orbits::before{width:160px;height:160px;}
 .abx-orbits::after{width:240px;height:240px;animation-direction:reverse;animation-duration:38s;}
 @keyframes abxOrb{to{transform:translate(-50%,-50%) rotate(360deg);}}
-.abx-orb-av{position:absolute;width:42px;height:42px;border-radius:50%;overflow:hidden;border:2.5px solid var(--white);box-shadow:var(--clay-sm);animation:abxFloat 5s ease-in-out infinite;}
+.abx-orb-av{position:absolute;width:46px;height:46px;border-radius:50%;overflow:hidden;border:3px solid var(--white);box-shadow:var(--clay-sm);animation:abxFloat 5s ease-in-out infinite;background:var(--beige3);}
 .abx-orb-av img{width:100%;height:100%;object-fit:cover;}
-.abx-orb-av.a1{top:8%;right:34%;animation-delay:0s;}
-.abx-orb-av.a2{top:38%;right:8%;animation-delay:.6s;}
+.abx-orb-av.a1{top:10%;right:32%;animation-delay:0s;}
+.abx-orb-av.a2{top:38%;right:6%;animation-delay:.6s;}
 .abx-orb-av.a3{bottom:14%;right:30%;animation-delay:1.2s;}
 .abx-orb-av.a4{top:48%;right:60%;animation-delay:1.8s;}
-.abx-orb-av.a5{top:18%;right:68%;animation-delay:2.4s;width:36px;height:36px;}
-.abx-orb-plus{position:absolute;bottom:14%;left:14%;width:38px;height:38px;border-radius:50%;background:var(--white);box-shadow:var(--clay-sm);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:300;color:var(--ob);animation:abxFloat 4s ease-in-out infinite .8s;}
+.abx-orb-av.a5{top:18%;right:68%;animation-delay:2.4s;width:38px;height:38px;}
+.abx-orb-plus{position:absolute;bottom:1.4rem;left:1.5rem;width:42px;height:42px;border-radius:50%;background:var(--white);box-shadow:var(--clay-sm);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:300;color:var(--ob);border:1px solid var(--border);animation:abxFloat 4s ease-in-out infinite .8s;z-index:3;}
 @keyframes abxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
-/* CARD 2 — Photo cabinet (avec play overlay) */
+/* CARD 2 — Photo cabinet */
 .abx-photo{grid-column:span 4;grid-row:span 2;padding:0;overflow:hidden;position:relative;cursor:pointer;}
 .abx-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.22,1,.36,1);}
 .abx-photo:hover img{transform:scale(1.08);}
 .abx-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(21,20,18,.6) 0%,transparent 50%);pointer-events:none;z-index:1;}
-.abx-photo-tag{position:absolute;top:14px;left:14px;z-index:2;font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(247,244,239,.92);color:var(--ob);padding:5px 11px;border-radius:50px;backdrop-filter:blur(10px);}
+.abx-photo-tag{position:absolute;top:14px;left:14px;z-index:2;font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(247,244,239,.95);color:var(--ob);padding:5px 11px;border-radius:50px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.8);}
 .abx-photo-info{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;color:var(--bg);}
 .abx-photo-t{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:-.4px;line-height:1.15;}
-.abx-photo-s{font-size:.68rem;color:rgba(247,244,239,.85);margin-top:.2rem;}
+.abx-photo-s{font-size:.66rem;color:rgba(247,244,239,.85);margin-top:.22rem;}
 
-/* CARD 3 — Why us (big text dark) */
-.abx-why{grid-column:span 4;grid-row:span 2;align-items:flex-start;justify-content:center;}
-.abx-why-eye{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--sage2);display:inline-flex;align-items:center;gap:.4rem;margin-bottom:.7rem;}
-.abx-why-eye::before{content:'';width:14px;height:2px;background:var(--lime);border-radius:2px;}
-.abx-why-h{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3.4rem);font-weight:800;letter-spacing:-2.2px;line-height:.92;}
-.abx-why-h em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
+/* CARD 3 — Why us (light beige) */
+.abx-why{grid-column:span 4;grid-row:span 2;background:linear-gradient(135deg,var(--white),var(--beige4));align-items:flex-start;justify-content:center;border-color:rgba(190,173,147,.22);}
+.abx-why-eye{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#7a8674;display:inline-flex;align-items:center;gap:.4rem;margin-bottom:.7rem;}
+.abx-why-eye::before{content:'';width:14px;height:2px;background:#b0bba8;border-radius:2px;}
+.abx-why-h{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4vw,3.4rem);font-weight:800;letter-spacing:-2.2px;line-height:.92;color:var(--ob);}
+.abx-why-h em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:#7a8674;}
 .abx-why-p{font-size:.74rem;color:var(--muted2);line-height:1.65;margin-top:.85rem;}
 
-/* CARD 4 — Stat 93% gradient */
-.abx-stat{grid-column:span 3;grid-row:span 2;justify-content:flex-end;background:linear-gradient(135deg,#e8f0d4 0%,#fbe2d1 60%,#f5b5a8 100%);border-color:rgba(188,212,26,.32);}
-.abx-stat-tag{position:absolute;top:14px;left:14px;font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.7);padding:4px 10px;border-radius:50px;color:var(--ob);}
-.abx-stat-n{font-family:'Space Grotesk',sans-serif;font-size:4.2rem;font-weight:800;letter-spacing:-3px;line-height:.85;color:var(--ob);}
-.abx-stat-n em{font-style:normal;font-size:.4em;}
-.abx-stat-l{font-family:'Space Grotesk',sans-serif;font-size:.66rem;font-weight:700;color:var(--ob);margin-top:.4rem;letter-spacing:-.1px;}
-.abx-stat-s{font-size:.6rem;color:rgba(21,20,18,.6);margin-top:.2rem;line-height:1.45;}
+/* CARD 4 — Stat 5/5 (sage soft) */
+.abx-stat{grid-column:span 3;grid-row:span 2;justify-content:flex-end;background:linear-gradient(155deg,var(--white) 0%,#e8ede5 60%,#b0bba8 130%);border-color:rgba(176,187,168,.4);position:relative;}
+.abx-stat::before{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.6),transparent 70%);pointer-events:none;}
+.abx-stat-tag{position:absolute;top:14px;left:14px;font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.85);padding:4px 11px;border-radius:50px;color:var(--ob);border:1px solid rgba(255,255,255,.8);}
+.abx-stat-stars{color:#F5A623;font-size:.78rem;letter-spacing:1.5px;margin-bottom:.55rem;display:block;filter:drop-shadow(0 1px 3px rgba(245,166,35,.25));}
+.abx-stat-n{font-family:'Space Grotesk',sans-serif;font-size:4rem;font-weight:800;letter-spacing:-3px;line-height:.85;color:var(--ob);}
+.abx-stat-n em{font-style:normal;font-size:.4em;color:#7a8674;}
+.abx-stat-l{font-family:'Space Grotesk',sans-serif;font-size:.66rem;font-weight:700;color:var(--ob);margin-top:.4rem;}
+.abx-stat-s{font-size:.58rem;color:rgba(21,20,18,.55);margin-top:.2rem;line-height:1.45;}
 
-/* CARD 5 — Conseil avec icon central */
-.abx-conseil{grid-column:span 3;grid-row:span 2;background:linear-gradient(135deg,#fce6cb 0%,#f4b4a3 100%);border-color:rgba(244,180,163,.35);justify-content:center;align-items:center;text-align:center;}
-.abx-conseil-icon{width:64px;height:64px;border-radius:18px;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;font-size:1.65rem;margin-bottom:.8rem;box-shadow:var(--clay-sm);}
-.abx-conseil-corners{position:absolute;}
-.abx-conseil-tl,.abx-conseil-tr{position:absolute;top:14px;width:18px;height:18px;border:2px solid rgba(21,20,18,.2);}
+/* CARD 5 — Conseil personnalisé (beige) */
+.abx-conseil{grid-column:span 3;grid-row:span 2;background:linear-gradient(135deg,var(--beige4) 0%,var(--beige3) 100%);border-color:rgba(190,173,147,.32);justify-content:center;align-items:center;text-align:center;position:relative;}
+.abx-conseil-tl,.abx-conseil-tr{position:absolute;top:14px;width:18px;height:18px;border:2px solid rgba(21,20,18,.18);}
 .abx-conseil-tl{left:14px;border-right:none;border-bottom:none;border-radius:4px 0 0 0;}
 .abx-conseil-tr{right:14px;border-left:none;border-bottom:none;border-radius:0 4px 0 0;}
+.abx-conseil-icon{width:64px;height:64px;border-radius:18px;background:var(--white);display:flex;align-items:center;justify-content:center;font-size:1.65rem;margin-bottom:.85rem;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.8);}
 .abx-conseil-t{font-family:'Space Grotesk',sans-serif;font-size:.96rem;font-weight:700;letter-spacing:-.4px;line-height:1.2;color:var(--ob);}
-.abx-conseil-dots{display:flex;justify-content:center;gap:.32rem;margin-top:.8rem;}
-.abx-conseil-dots span{width:5px;height:5px;border-radius:50%;background:rgba(21,20,18,.25);}
-.abx-conseil-dots span.on{background:var(--ob);width:18px;border-radius:3px;}
+.abx-conseil-dots{display:flex;justify-content:center;gap:.32rem;margin-top:.85rem;}
+.abx-conseil-dots span{width:5px;height:5px;border-radius:50%;background:rgba(21,20,18,.22);}
+.abx-conseil-dots span.on{background:#b0bba8;width:22px;border-radius:3px;}
 
-/* CARD 6 — Platform features mockup avec phone */
-.abx-mock{grid-column:span 6;grid-row:span 2;background:linear-gradient(135deg,var(--white) 0%,var(--beige4) 100%);overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:1.4rem;align-items:center;padding:1.8rem 1.6rem 1.8rem 1.8rem;}
+/* CARD 6 — Phone mockup (refined) */
+.abx-mock{grid-column:span 6;grid-row:span 2;background:linear-gradient(135deg,var(--white) 0%,var(--beige4) 100%);overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:1.6rem;align-items:center;padding:1.8rem 1.6rem 1.8rem 2rem;}
 .abx-mock-l{position:relative;z-index:2;min-width:0;}
-.abx-mock-eye{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;letter-spacing:.05em;color:var(--muted);margin-bottom:.55rem;font-style:italic;}
-.abx-mock-h{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.1rem,1.9vw,1.4rem);font-weight:700;letter-spacing:-.7px;line-height:1.1;color:var(--ob);margin-bottom:1rem;}
-.abx-mock-h em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
-.abx-mock-feat{display:flex;flex-direction:column;gap:.42rem;}
-.abx-mock-feat div{display:flex;align-items:center;gap:.5rem;font-size:.7rem;color:var(--ob2);font-weight:500;}
-.abx-mock-feat div::before{content:'✓';width:18px;height:18px;border-radius:50%;background:var(--lime);color:var(--ob);font-weight:900;font-size:.6rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.abx-phone{position:relative;width:165px;height:330px;background:var(--ob);border-radius:32px;padding:7px;box-shadow:0 22px 50px rgba(21,20,18,.35),inset 0 1px 0 rgba(255,255,255,.1);flex-shrink:0;animation:abxFloat 5s ease-in-out infinite;}
-.abx-phone-screen{width:100%;height:100%;border-radius:25px;background:linear-gradient(160deg,#fbe6dc 0%,#fce8d9 50%,#f9d4be 100%);overflow:hidden;position:relative;padding:1rem .85rem;display:flex;flex-direction:column;gap:.55rem;}
-.abx-phone-notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:54px;height:14px;background:var(--ob);border-radius:0 0 12px 12px;}
-.abx-phone-greet{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;color:var(--muted);margin-top:1.4rem;}
-.abx-phone-name{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:-.5px;color:var(--ob);margin-bottom:.4rem;}
-.abx-phone-row{background:rgba(255,255,255,.7);border-radius:12px;padding:.55rem .65rem;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(21,20,18,.04);}
-.abx-phone-row-l{display:flex;align-items:center;gap:.45rem;font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:600;color:var(--ob2);}
-.abx-phone-row-l::before{content:'';width:18px;height:18px;border-radius:6px;background:rgba(188,212,26,.3);}
-.abx-phone-row-v{font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:700;color:var(--sage2);}
+.abx-mock-eye{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#7a8674;margin-bottom:.6rem;display:inline-flex;align-items:center;gap:.4rem;}
+.abx-mock-eye::before{content:'';width:14px;height:2px;background:#b0bba8;border-radius:2px;}
+.abx-mock-h{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.15rem,2vw,1.5rem);font-weight:700;letter-spacing:-.8px;line-height:1.1;color:var(--ob);margin-bottom:1.1rem;}
+.abx-mock-h em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:#7a8674;}
+.abx-mock-feat{display:flex;flex-direction:column;gap:.5rem;}
+.abx-mock-feat div{display:flex;align-items:center;gap:.55rem;font-size:.72rem;color:var(--ob2);font-weight:500;}
+.abx-mock-feat div::before{content:'✓';width:18px;height:18px;border-radius:50%;background:#b0bba8;color:var(--ob);font-weight:900;font-size:.6rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 6px rgba(176,187,168,.45);}
 
-/* CARD 7 — CTA strip full width */
-.abx-cta{grid-column:span 12;grid-row:span 1;background:var(--ob);color:var(--bg);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding:1.4rem 1.8rem;}
+/* PHONE — refined */
+.abx-phone{position:relative;width:175px;height:355px;background:linear-gradient(155deg,#1a1a17,var(--ob));border-radius:38px;padding:8px;box-shadow:0 28px 60px rgba(21,20,18,.4),0 8px 16px rgba(21,20,18,.2),inset 0 1px 0 rgba(255,255,255,.1),inset 0 0 0 1px rgba(255,255,255,.04);flex-shrink:0;animation:abxFloat 5.5s ease-in-out infinite;}
+.abx-phone::before{content:'';position:absolute;left:8px;right:8px;top:8px;bottom:8px;border-radius:30px;border:1px solid rgba(255,255,255,.08);pointer-events:none;z-index:3;}
+.abx-phone-screen{width:100%;height:100%;border-radius:30px;background:linear-gradient(165deg,var(--white) 0%,var(--beige4) 50%,#e0e6dc 100%);overflow:hidden;position:relative;padding:1.3rem 1rem 1rem;display:flex;flex-direction:column;}
+.abx-phone-notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:60px;height:18px;background:var(--ob);border-radius:0 0 14px 14px;z-index:2;}
+.abx-phone-time{position:absolute;top:14px;left:18px;font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:700;color:var(--ob);}
+.abx-phone-icons{position:absolute;top:14px;right:18px;display:flex;gap:3px;align-items:center;}
+.abx-phone-icons span{display:block;width:3px;height:3px;border-radius:50%;background:var(--ob);}
+.abx-phone-icons span:nth-child(2){width:9px;height:5px;border-radius:1px;}
+.abx-phone-icons span:nth-child(3){width:13px;height:6px;border-radius:1.5px;border:1px solid var(--ob);background:transparent;}
+.abx-phone-greet{font-family:'Plus Jakarta Sans',sans-serif;font-size:.55rem;font-weight:500;color:var(--muted);margin-top:1.5rem;}
+.abx-phone-name{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:800;letter-spacing:-.6px;color:var(--ob);margin-bottom:.7rem;line-height:1;}
+.abx-phone-card{background:rgba(255,255,255,.85);border-radius:13px;padding:.55rem .65rem;display:flex;justify-content:space-between;align-items:center;border:1px solid rgba(21,20,18,.06);margin-bottom:.4rem;backdrop-filter:blur(8px);}
+.abx-phone-card-l{display:flex;align-items:center;gap:.45rem;font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:600;color:var(--ob2);}
+.abx-phone-ico{width:20px;height:20px;border-radius:6px;background:#b0bba8;display:flex;align-items:center;justify-content:center;font-size:.62rem;flex-shrink:0;}
+.abx-phone-card-v{font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:800;color:#7a8674;background:rgba(176,187,168,.18);padding:2px 7px;border-radius:50px;}
+.abx-phone-foot{margin-top:auto;padding-top:.55rem;display:flex;align-items:center;gap:.4rem;font-family:'Space Grotesk',sans-serif;font-size:.46rem;font-weight:700;color:var(--muted);}
+.abx-phone-foot::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 6px var(--lime);animation:pl 2s infinite;}
+
+/* CARD 7 — CTA strip dark */
+.abx-cta{grid-column:span 12;grid-row:span 1;background:var(--ob);color:var(--bg);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding:1.4rem 1.8rem;border-color:rgba(255,255,255,.06);}
 .abx-cta-t{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;letter-spacing:-.4px;color:var(--bg);}
-.abx-cta-t em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--lime);}
-.abx-cta-btn{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:700;background:var(--lime);color:var(--ob);padding:11px 22px;border-radius:50px;display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;transition:all .3s;}
-.abx-cta-btn:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 10px 26px rgba(188,212,26,.5);}
+.abx-cta-t em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:#b0bba8;}
+.abx-cta-btn{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:700;background:#b0bba8;color:var(--ob);padding:11px 22px;border-radius:50px;display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;transition:all .3s;}
+.abx-cta-btn:hover{transform:translateY(-2px) scale(1.04);box-shadow:0 10px 26px rgba(176,187,168,.5);background:#bcc7b4;}
 
 @media(max-width:1100px){
   .abx-grid{grid-template-columns:repeat(6,1fr);grid-auto-rows:140px;}
@@ -906,7 +960,6 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .abx-experts,.abx-photo,.abx-why,.abx-stat,.abx-conseil,.abx-mock,.abx-cta{grid-column:span 1;min-height:200px;}
   .abx-mock{grid-template-columns:1fr;justify-items:center;}
 }
-  
 </style></head><body>
 <div class="hb1"></div><div class="hb2"></div>
 <nav id="mn">
@@ -1004,6 +1057,107 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 </section>
 <div class="divider"></div>
 
+  <!-- ══ ABOUT BENTO — présentation Aeconomia ══ -->
+<section class="abx">
+  <div class="abx-hd rv">
+    <div class="tag" style="justify-content:center">Présentation</div>
+    <h2 class="h2">Aeconomia, en un coup d'œil.</h2>
+    <p style="font-size:.78rem;color:var(--muted2);margin-top:.55rem;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.7">8 experts, 3 000+ clients, un cabinet à Orléans qui couvre toute la région Centre. <em style="font-style:italic;color:var(--sage2);font-weight:700">Le local, c'est notre force.</em></p>
+  </div>
+
+  <div class="abx-grid st">
+
+    <!-- 1. EXPERTS ORBITAL -->
+    <div class="abx-c abx-experts rv">
+      <div>
+        <div class="abx-experts-num">8<span style="font-size:.4em;color:var(--sage2)">+</span></div>
+        <div class="abx-experts-l">Courtiers experts</div>
+      </div>
+      <div class="abx-orbits">
+        <div class="abx-orb-av a1"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt=""/></div>
+        <div class="abx-orb-av a2"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt=""/></div>
+        <div class="abx-orb-av a3"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt=""/></div>
+        <div class="abx-orb-av a4"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt=""/></div>
+        <div class="abx-orb-av a5"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt=""/></div>
+      </div>
+      <div class="abx-orb-plus">+</div>
+    </div>
+
+    <!-- 2. PHOTO CABINET -->
+    <a href="apropos.html" class="abx-c abx-photo rv" style="text-decoration:none;color:inherit">
+      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodelexterieur.jpg" alt="Cabinet Aeconomia"/>
+      <div class="abx-photo-tag">📍 Notre cabinet</div>
+      <div class="abx-photo-info">
+        <div class="abx-photo-t">22 rue de la République</div>
+        <div class="abx-photo-s">45000 Orléans · Cabinet local</div>
+      </div>
+    </a>
+
+    <!-- 3. WHY US -->
+    <div class="abx-c abx-why rv">
+      <div class="abx-why-eye">Pourquoi nous</div>
+      <div class="abx-why-h">Pourquoi<br/><em>Aeconomia ?</em></div>
+      <div class="abx-why-p">Local, indépendant, humain. Le meilleur des deux mondes : la proximité d'un courtier de quartier, l'efficacité d'un cabinet digital.</div>
+    </div>
+
+    <!-- 4. STAT 93% (5/5 plutôt) -->
+   <div class="abx-c abx-stat rv">
+  <div class="abx-stat-tag">★ Excellence</div>
+  <div>
+    <span class="abx-stat-stars">★★★★★</span>
+    <div class="abx-stat-n">5<em>/5</em></div>
+    <div class="abx-stat-l">Note moyenne</div>
+    <div class="abx-stat-s">Sur 906+ avis Google, Pages Jaunes & Immodvisor</div>
+  </div>
+</div>
+    
+
+    <!-- 5. CONSEIL -->
+    <div class="abx-c abx-conseil rv">
+      <div class="abx-conseil-tl"></div>
+      <div class="abx-conseil-tr"></div>
+      <div>
+        <div class="abx-conseil-icon">🤝</div>
+        <div class="abx-conseil-t">Conseil personnalisé</div>
+        <div class="abx-conseil-dots"><span></span><span class="on"></span><span></span><span></span></div>
+      </div>
+    </div>
+
+    <!-- 6. MOCKUP PHONE -->
+    <div class="abx-c abx-mock rv">
+      <div class="abx-mock-l">
+        <div class="abx-mock-eye">Notre approche en 3 mots</div>
+        <h3 class="abx-mock-h">Une équipe<br/><em>à votre service.</em></h3>
+        <div class="abx-mock-feat">
+          <div>Courtier dédié unique</div>
+          <div>Réponse sous 24h</div>
+          <div>Suivi jusqu'aux clés</div>
+        </div>
+      </div>
+      <div class="abx-phone">
+       <div class="abx-phone-screen">
+    <div class="abx-phone-notch"></div>
+    <div class="abx-phone-time">09:42</div>
+    <div class="abx-phone-icons"><span></span><span></span><span></span></div>
+    <div class="abx-phone-greet">Bonjour 👋</div>
+    <div class="abx-phone-name">Marie</div>
+    <div class="abx-phone-card"><div class="abx-phone-card-l"><div class="abx-phone-ico">📋</div>Étude offerte</div><div class="abx-phone-card-v">Validée</div></div>
+    <div class="abx-phone-card"><div class="abx-phone-card-l"><div class="abx-phone-ico">🏦</div>Banque trouvée</div><div class="abx-phone-card-v">3,12 %</div></div>
+    <div class="abx-phone-card"><div class="abx-phone-card-l"><div class="abx-phone-ico">📅</div>RDV notaire</div><div class="abx-phone-card-v">14 mai</div></div>
+    <div class="abx-phone-foot">Suivi en temps réel</div>
+    </div>
+      </div>
+    </div>
+
+    <!-- 7. CTA STRIP -->
+    <a href="contact.html" class="abx-c abx-cta rv" style="text-decoration:none">
+      <div class="abx-cta-t">Une équipe locale, des résultats <em>concrets.</em></div>
+      <span class="abx-cta-btn">Rencontrer l'équipe →</span>
+    </a>
+
+  </div>
+</section>
+  
 <!-- ══ 3. WHY — dark bento avec formule ══ -->
 <section class="wrap">
   <div class="rv" style="margin-bottom:2rem">
@@ -1213,109 +1367,153 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 </section>
 
 
-<!-- ══ 8. AVIS ══ -->
-<section class="wrap" style="padding-bottom:2rem">
+<!-- ══ 8. AVIS — ORBITE INTERACTIVE ══ -->
+<section class="wrap" id="rxwSec" style="padding-bottom:2rem">
   <div class="rev-hd rv">
-    <div><div class="tag">Avis clients vérifiés</div><h2 class="h2">Les meilleurs courtiers<br/><em>du Loiret.</em></h2><p style="font-size:.76rem;color:var(--muted2);margin-top:.38rem">Et ce sont nos clients qui le disent.</p></div>
-    <div class="score-g">
-      <div class="sbdg"><div class="sbdg-n">5/5</div><div class="sbdg-p">★★★★★ Google</div></div>
-      <div class="sbdg"><div class="sbdg-n">4.9/5</div><div class="sbdg-p">Trustpilot</div></div>
-      <div class="sbdg"><div class="sbdg-n">4.9/5</div><div class="sbdg-p">Immodvisor</div></div>
+    <div>
+      <div class="tag">Avis clients vérifiés</div>
+      <h2 class="h2">Les meilleurs courtiers<br/><em>du Loiret.</em></h2>
+      <p style="font-size:.76rem;color:var(--muted2);margin-top:.4rem">Et ce sont nos clients qui le disent. Cliquez sur un avis pour le mettre en avant.</p>
     </div>
   </div>
-  <div class="rev-track rv" style="transition-delay:.1s">
-    <div class="rev-inner">
-      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">« Dimitri a été à l'écoute, clair dans ses explications et très réactif. Il a su analyser ma situation et m'accompagner à chaque étape. Je recommande vivement ! »</div><div class="rev-auth"><div class="rev-av">J</div><div><div class="rev-name">Joannin M.</div><div class="rev-pl">Google · déc. 2025</div></div></div></div>
-      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">« Grâce à Romain, nous venons d'obtenir notre prêt pour notre premier achat. Son accompagnement a été extrêmement précieux du début à la fin. »</div><div class="rev-auth"><div class="rev-av">T</div><div><div class="rev-name">Tom & Sarah</div><div class="rev-pl">Google · déc. 2025</div></div></div></div>
-      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">« Adrien a été d'un professionnalisme remarquable. Carré du début jusqu'à la fin. Toujours sérieux, à l'écoute, réactif, disponible et de bon conseil. »</div><div class="rev-auth"><div class="rev-av">V</div><div><div class="rev-name">Vincent D.</div><div class="rev-pl">Google · déc. 2025</div></div></div></div>
-      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">« Parfaitement renseignée et accompagnée dans mes démarches. Réponse très rapide. Je recommande Aeconomia sans hésitation ! »</div><div class="rev-auth"><div class="rev-av">C</div><div><div class="rev-name">Caroline O.</div><div class="rev-pl">Trustpilot · déc. 2025</div></div></div></div>
-      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">« Matteo nous a chaleureusement accompagnés. Très réactif, conseils pertinents et avisés. Très bon taux obtenu ! »</div><div class="rev-auth"><div class="rev-av">R</div><div><div class="rev-name">RPZ</div><div class="rev-pl">Google · nov. 2025</div></div></div></div>
-      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">« Robin : très professionnel, à l'écoute et réactif. Mon expérience a été simple et rassurante du début à la fin. »</div><div class="rev-auth"><div class="rev-av">W</div><div><div class="rev-name">Westry C.</div><div class="rev-pl">Google · nov. 2025</div></div></div></div>
-      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">« Gabriel nous a accompagnés malgré la difficulté et l'urgence. Grâce à sa réactivité nous avons pu finaliser notre projet. »</div><div class="rev-auth"><div class="rev-av">C</div><div><div class="rev-name">Corentin L.</div><div class="rev-pl">Google · déc. 2025</div></div></div></div>
-      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">« Dimitri a été à l'écoute, clair dans ses explications et très réactif. Je recommande vivement son agence ! »</div><div class="rev-auth"><div class="rev-av">J</div><div><div class="rev-name">Joannin M.</div><div class="rev-pl">Google · déc. 2025</div></div></div></div>
+
+  <div class="rxw rv" style="transition-delay:.1s">
+    <div class="rxw-stage">
+      <!-- HUB phone -->
+      <div class="rxw-hub">
+        <div class="rxw-hub-screen">
+          <div class="rxw-hub-notch"></div>
+          <div class="rxw-hub-stars">★★★★★</div>
+          <div class="rxw-hub-num">5<span>/5</span></div>
+          <div class="rxw-hub-lbl">906+ clients<br/><em>nous font confiance.</em></div>
+          <div class="rxw-hub-divider"></div>
+          <div class="rxw-hub-platforms">
+            <div class="rxw-hub-pf"><div class="rxw-hub-pf-l">Google</div><div class="rxw-hub-pf-v">5.0</div></div>
+            <div class="rxw-hub-pf"><div class="rxw-hub-pf-l">Pages Jaunes</div><div class="rxw-hub-pf-v">5.0</div></div>
+            <div class="rxw-hub-pf"><div class="rxw-hub-pf-l">Immodvisor</div><div class="rxw-hub-pf-v">4.9</div></div>
+          </div>
+          <div class="rxw-hub-foot">Mis à jour quotidiennement</div>
+        </div>
+      </div>
+
+      <!-- SATELLITE CARDS -->
+      <article class="rxw-card" data-i="0">
+        <div class="rxw-card-tag">Crédit immobilier</div>
+        <div class="rxw-card-stars">★★★★★</div>
+        <div class="rxw-card-q">« Dimitri a été à l'écoute, clair dans ses explications et très réactif. Il a su analyser ma situation et m'accompagner à chaque étape. »</div>
+        <div class="rxw-card-a"><div class="rxw-card-av">J</div><div><div class="rxw-card-n">Joannin M.</div><div class="rxw-card-p">Google · déc. 2025</div></div></div>
+      </article>
+      <article class="rxw-card" data-i="1">
+        <div class="rxw-card-tag">Primo-accédant</div>
+        <div class="rxw-card-stars">★★★★★</div>
+        <div class="rxw-card-q">« Grâce à Romain, nous venons d'obtenir notre prêt pour notre premier achat. Son accompagnement a été extrêmement précieux. »</div>
+        <div class="rxw-card-a"><div class="rxw-card-av">T</div><div><div class="rxw-card-n">Tom & Sarah</div><div class="rxw-card-p">Google · déc. 2025</div></div></div>
+      </article>
+      <article class="rxw-card" data-i="2">
+        <div class="rxw-card-tag">Investissement</div>
+        <div class="rxw-card-stars">★★★★★</div>
+        <div class="rxw-card-q">« Adrien a été d'un professionnalisme remarquable. Carré du début à la fin. Toujours sérieux, à l'écoute, réactif et de bon conseil. »</div>
+        <div class="rxw-card-a"><div class="rxw-card-av">V</div><div><div class="rxw-card-n">Vincent D.</div><div class="rxw-card-p">Google · déc. 2025</div></div></div>
+      </article>
+      <article class="rxw-card" data-i="3">
+        <div class="rxw-card-tag">Renégociation</div>
+        <div class="rxw-card-stars">★★★★★</div>
+        <div class="rxw-card-q">« Parfaitement renseignée et accompagnée dans mes démarches. Réponse très rapide. Je recommande Aeconomia sans hésitation ! »</div>
+        <div class="rxw-card-a"><div class="rxw-card-av">C</div><div><div class="rxw-card-n">Caroline O.</div><div class="rxw-card-p">Trustpilot · déc. 2025</div></div></div>
+      </article>
+      <article class="rxw-card" data-i="4">
+        <div class="rxw-card-tag">Crédit immobilier</div>
+        <div class="rxw-card-stars">★★★★★</div>
+        <div class="rxw-card-q">« Matteo nous a chaleureusement accompagnés. Très réactif, conseils pertinents et avisés. Très bon taux obtenu ! »</div>
+        <div class="rxw-card-a"><div class="rxw-card-av">R</div><div><div class="rxw-card-n">RPZ</div><div class="rxw-card-p">Google · nov. 2025</div></div></div>
+      </article>
+      <article class="rxw-card" data-i="5">
+        <div class="rxw-card-tag">Rachat de soulte</div>
+        <div class="rxw-card-stars">★★★★★</div>
+        <div class="rxw-card-q">« Gabriel nous a accompagnés malgré la difficulté et l'urgence. Grâce à sa réactivité nous avons pu finaliser notre projet. »</div>
+        <div class="rxw-card-a"><div class="rxw-card-av">C</div><div><div class="rxw-card-n">Corentin L.</div><div class="rxw-card-p">Google · déc. 2025</div></div></div>
+      </article>
     </div>
+    <div class="rxw-dots" id="rxwDots"></div>
   </div>
 </section>
 <div class="divider"></div>
 
-<!-- ══ 9. ÉQUIPE — COVERFLOW 3D ══ -->
 <section class="wrap" id="teamSec">
-  <div class="rv" style="text-align:center;margin-bottom:2rem">
+  <div class="rv" style="text-align:center;margin-bottom:2.2rem">
     <div class="tag" style="justify-content:center">Notre équipe</div>
     <h2 class="h2">Des experts qui prennent<br/><em>vos projets à cœur.</em></h2>
-    <p style="font-size:.78rem;color:var(--muted2);margin-top:.55rem;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.7">8 courtiers locaux. Cliquez sur une photo pour la mettre au centre — ou laissez les flèches faire le travail.</p>
+    <p style="font-size:.78rem;color:var(--muted2);margin-top:.55rem;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.7">8 courtiers locaux à votre service. <em style="font-style:italic;color:#7a8674;font-weight:700">Cliquez sur une photo</em> pour la mettre au centre — ou laissez les flèches défiler.</p>
   </div>
 
-  <div class="arc-wrap rv" id="arcWrap">
-    <button class="arc-nav arc-prev" type="button" aria-label="Précédent">‹</button>
-    <button class="arc-nav arc-next" type="button" aria-label="Suivant">›</button>
+  <div class="tx-wrap rv" id="txWrap">
+    <button class="tx-nav tx-prev" type="button" aria-label="Précédent">‹</button>
+    <button class="tx-nav tx-next" type="button" aria-label="Suivant">›</button>
 
-    <div class="arc-stage">
-      <div class="arc-track" id="arcTrack">
-        <article class="arc-card" data-i="0" data-name="Dimitri" data-last="Toulon" data-role="Directeur · Fondateur">
-          <img class="arc-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt="Dimitri Toulon" loading="lazy"/>
-          <div class="arc-card-tag">01 · Fondateur</div>
-          <div class="arc-card-grad"></div>
-          <div class="arc-card-name"><div class="arc-card-name-t">Dimitri</div><div class="arc-card-name-r">Directeur</div></div>
+    <div class="tx-stage">
+      <div class="tx-track" id="txTrack">
+        <article class="tx-card" data-i="0">
+          <img class="tx-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt="Dimitri Toulon" loading="lazy"/>
+          <div class="tx-card-grad"></div>
+          <div class="tx-card-tag">01 · Fondateur</div>
+          <div class="tx-card-name"><div class="tx-card-fn">Dimitri</div><div class="tx-card-ln">Toulon</div><div class="tx-card-role">Directeur</div></div>
         </article>
-        <article class="arc-card" data-i="1" data-name="Raphaël" data-last="Nicq" data-role="Courtier senior">
-          <img class="arc-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt="Raphaël Nicq" loading="lazy"/>
-          <div class="arc-card-tag">02 · Senior</div>
-          <div class="arc-card-grad"></div>
-          <div class="arc-card-name"><div class="arc-card-name-t">Raphaël</div><div class="arc-card-name-r">Courtier</div></div>
+        <article class="tx-card" data-i="1">
+          <img class="tx-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt="Raphaël Nicq" loading="lazy"/>
+          <div class="tx-card-grad"></div>
+          <div class="tx-card-tag">02 · Senior</div>
+          <div class="tx-card-name"><div class="tx-card-fn">Raphaël</div><div class="tx-card-ln">Nicq</div><div class="tx-card-role">Courtier</div></div>
         </article>
-        <article class="arc-card" data-i="2" data-name="Delphine" data-last="Dechartre" data-role="Courtière">
-          <img class="arc-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt="Delphine Dechartre" loading="lazy"/>
-          <div class="arc-card-tag">03 · Courtière</div>
-          <div class="arc-card-grad"></div>
-          <div class="arc-card-name"><div class="arc-card-name-t">Delphine</div><div class="arc-card-name-r">Courtière</div></div>
+        <article class="tx-card" data-i="2">
+          <img class="tx-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt="Delphine Dechartre" loading="lazy"/>
+          <div class="tx-card-grad"></div>
+          <div class="tx-card-tag">03 · Courtière</div>
+          <div class="tx-card-name"><div class="tx-card-fn">Delphine</div><div class="tx-card-ln">Dechartre</div><div class="tx-card-role">Courtière</div></div>
         </article>
-        <article class="arc-card" data-i="3" data-name="Robin" data-last="Villette" data-role="Courtier">
-          <img class="arc-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt="Robin Villette" loading="lazy"/>
-          <div class="arc-card-tag">04 · Courtier</div>
-          <div class="arc-card-grad"></div>
-          <div class="arc-card-name"><div class="arc-card-name-t">Robin</div><div class="arc-card-name-r">Courtier</div></div>
+        <article class="tx-card" data-i="3">
+          <img class="tx-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt="Robin Villette" loading="lazy"/>
+          <div class="tx-card-grad"></div>
+          <div class="tx-card-tag">04 · Courtier</div>
+          <div class="tx-card-name"><div class="tx-card-fn">Robin</div><div class="tx-card-ln">Villette</div><div class="tx-card-role">Courtier</div></div>
         </article>
-        <article class="arc-card" data-i="4" data-name="Gabriel" data-last="Despeisse" data-role="Courtier">
-          <img class="arc-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt="Gabriel Despeisse" loading="lazy"/>
-          <div class="arc-card-tag">05 · Courtier</div>
-          <div class="arc-card-grad"></div>
-          <div class="arc-card-name"><div class="arc-card-name-t">Gabriel</div><div class="arc-card-name-r">Courtier</div></div>
+        <article class="tx-card" data-i="4">
+          <img class="tx-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt="Gabriel Despeisse" loading="lazy"/>
+          <div class="tx-card-grad"></div>
+          <div class="tx-card-tag">05 · Courtier</div>
+          <div class="tx-card-name"><div class="tx-card-fn">Gabriel</div><div class="tx-card-ln">Despeisse</div><div class="tx-card-role">Courtier</div></div>
         </article>
-        <article class="arc-card" data-i="5" data-name="Matteo" data-last="Martolini" data-role="Courtier">
-          <img class="arc-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/matteo.jpg" alt="Matteo Martolini" loading="lazy"/>
-          <div class="arc-card-tag">06 · Courtier</div>
-          <div class="arc-card-grad"></div>
-          <div class="arc-card-name"><div class="arc-card-name-t">Matteo</div><div class="arc-card-name-r">Courtier</div></div>
+        <article class="tx-card" data-i="5">
+          <img class="tx-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/matteo.jpg" alt="Matteo Martolini" loading="lazy"/>
+          <div class="tx-card-grad"></div>
+          <div class="tx-card-tag">06 · Courtier</div>
+          <div class="tx-card-name"><div class="tx-card-fn">Matteo</div><div class="tx-card-ln">Martolini</div><div class="tx-card-role">Courtier</div></div>
         </article>
-        <article class="arc-card" data-i="6" data-name="Adrien" data-last="Meneghini" data-role="Courtier">
-          <img class="arc-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Adrien%20.jpg" alt="Adrien Meneghini" loading="lazy"/>
-          <div class="arc-card-tag">07 · Courtier</div>
-          <div class="arc-card-grad"></div>
-          <div class="arc-card-name"><div class="arc-card-name-t">Adrien</div><div class="arc-card-name-r">Courtier</div></div>
+        <article class="tx-card" data-i="6">
+          <img class="tx-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Adrien%20.jpg" alt="Adrien Meneghini" loading="lazy"/>
+          <div class="tx-card-grad"></div>
+          <div class="tx-card-tag">07 · Courtier</div>
+          <div class="tx-card-name"><div class="tx-card-fn">Adrien</div><div class="tx-card-ln">Meneghini</div><div class="tx-card-role">Courtier</div></div>
         </article>
-        <article class="arc-card" data-i="7" data-name="Marie" data-last="" data-role="Courtière">
-          <img class="arc-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/mariephoto.jpg" alt="Marie" loading="lazy"/>
-          <div class="arc-card-tag">08 · Courtière</div>
-          <div class="arc-card-grad"></div>
-          <div class="arc-card-name"><div class="arc-card-name-t">Marie</div><div class="arc-card-name-r">Courtière</div></div>
+        <article class="tx-card" data-i="7">
+          <img class="tx-card-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/mariephoto.jpg" alt="Marie" loading="lazy"/>
+          <div class="tx-card-grad"></div>
+          <div class="tx-card-tag">08 · Courtière</div>
+          <div class="tx-card-name"><div class="tx-card-fn">Marie</div><div class="tx-card-ln">&nbsp;</div><div class="tx-card-role">Courtière</div></div>
         </article>
       </div>
     </div>
 
-    <div class="arc-rail">
-      <div class="arc-rail-name" id="arcN"><b>Dimitri</b> <em>Toulon</em></div>
-      <div class="arc-rail-role" id="arcR">Directeur · Fondateur</div>
+    <div class="tx-bottom">
+      <div class="tx-counter">
+        <span class="tx-counter-num" id="txNum">01 / 08</span>
+        <div class="tx-counter-bar" id="txBar"></div>
+      </div>
+      <a href="contact.html" class="tx-cta">Prendre RDV avec un courtier <span>→</span></a>
     </div>
-
-    <div class="arc-bottom">
-      <span class="arc-handwritten">C'est gratuit, sans engagement</span>
-      <a href="contact.html" class="arc-cta">Prendre RDV avec un courtier <span>→</span></a>
-    </div>
-
-    <div class="arc-dots" id="arcDots"></div>
+    <div class="tx-dots" id="txDots"></div>
   </div>
 </section>
+
 <div class="divider"></div>
 
 <!-- ══ 10. SOLUTIONS — INTERACTIVE SHOWCASE ══ -->
@@ -1384,101 +1582,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 </a>
 </section>
 
-  <!-- ══ ABOUT BENTO — présentation Aeconomia ══ -->
-<section class="abx">
-  <div class="abx-hd rv">
-    <div class="tag" style="justify-content:center">Présentation</div>
-    <h2 class="h2">Aeconomia, en un coup d'œil.</h2>
-    <p style="font-size:.78rem;color:var(--muted2);margin-top:.55rem;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.7">8 experts, 3 000+ clients, un cabinet à Orléans qui couvre toute la région Centre. <em style="font-style:italic;color:var(--sage2);font-weight:700">Le local, c'est notre force.</em></p>
-  </div>
 
-  <div class="abx-grid st">
-
-    <!-- 1. EXPERTS ORBITAL -->
-    <div class="abx-c abx-experts rv">
-      <div>
-        <div class="abx-experts-num">8<span style="font-size:.4em;color:var(--sage2)">+</span></div>
-        <div class="abx-experts-l">Courtiers experts</div>
-      </div>
-      <div class="abx-orbits">
-        <div class="abx-orb-av a1"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt=""/></div>
-        <div class="abx-orb-av a2"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt=""/></div>
-        <div class="abx-orb-av a3"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt=""/></div>
-        <div class="abx-orb-av a4"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt=""/></div>
-        <div class="abx-orb-av a5"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt=""/></div>
-      </div>
-      <div class="abx-orb-plus">+</div>
-    </div>
-
-    <!-- 2. PHOTO CABINET -->
-    <a href="apropos.html" class="abx-c abx-photo rv" style="text-decoration:none;color:inherit">
-      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodelexterieur.jpg" alt="Cabinet Aeconomia"/>
-      <div class="abx-photo-tag">📍 Notre cabinet</div>
-      <div class="abx-photo-info">
-        <div class="abx-photo-t">22 rue de la République</div>
-        <div class="abx-photo-s">45000 Orléans · Cabinet local</div>
-      </div>
-    </a>
-
-    <!-- 3. WHY US -->
-    <div class="abx-c abx-why rv">
-      <div class="abx-why-eye">Pourquoi nous</div>
-      <div class="abx-why-h">Pourquoi<br/><em>Aeconomia ?</em></div>
-      <div class="abx-why-p">Local, indépendant, humain. Le meilleur des deux mondes : la proximité d'un courtier de quartier, l'efficacité d'un cabinet digital.</div>
-    </div>
-
-    <!-- 4. STAT 93% (5/5 plutôt) -->
-    <div class="abx-c abx-stat rv">
-      <div class="abx-stat-tag">#avis</div>
-      <div>
-        <div class="abx-stat-n">5<em>/5</em></div>
-        <div class="abx-stat-l">Note moyenne</div>
-        <div class="abx-stat-s">Sur 750+ avis Google, Pages Jaunes & Immodvisor</div>
-      </div>
-    </div>
-
-    <!-- 5. CONSEIL -->
-    <div class="abx-c abx-conseil rv">
-      <div class="abx-conseil-tl"></div>
-      <div class="abx-conseil-tr"></div>
-      <div>
-        <div class="abx-conseil-icon">🤝</div>
-        <div class="abx-conseil-t">Conseil personnalisé</div>
-        <div class="abx-conseil-dots"><span></span><span class="on"></span><span></span><span></span></div>
-      </div>
-    </div>
-
-    <!-- 6. MOCKUP PHONE -->
-    <div class="abx-c abx-mock rv">
-      <div class="abx-mock-l">
-        <div class="abx-mock-eye">Notre approche en 3 mots</div>
-        <h3 class="abx-mock-h">Une équipe<br/><em>à votre service.</em></h3>
-        <div class="abx-mock-feat">
-          <div>Courtier dédié unique</div>
-          <div>Réponse sous 24h</div>
-          <div>Suivi jusqu'aux clés</div>
-        </div>
-      </div>
-      <div class="abx-phone">
-        <div class="abx-phone-screen">
-          <div class="abx-phone-notch"></div>
-          <div class="abx-phone-greet">Bonjour 👋</div>
-          <div class="abx-phone-name">Marie</div>
-          <div class="abx-phone-row"><div class="abx-phone-row-l">Étude offerte</div><div class="abx-phone-row-v">Validée</div></div>
-          <div class="abx-phone-row"><div class="abx-phone-row-l">Banque trouvée</div><div class="abx-phone-row-v">3,12 %</div></div>
-          <div class="abx-phone-row"><div class="abx-phone-row-l">RDV notaire</div><div class="abx-phone-row-v">14 mai</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7. CTA STRIP -->
-    <a href="contact.html" class="abx-c abx-cta rv" style="text-decoration:none">
-      <div class="abx-cta-t">Une équipe locale, des résultats <em>concrets.</em></div>
-      <span class="abx-cta-btn">Rencontrer l'équipe →</span>
-    </a>
-
-  </div>
-</section>
   
 <footer>
 <div class="fi">
@@ -1688,16 +1792,15 @@ calcAll();
 })();
 
 
-/* ══ TEAM ARC CAROUSEL ══ */
+/* ══ TEAM HOLO GALLERY ══ */
 (function(){
-  var track=document.getElementById('arcTrack');
+  var track=document.getElementById('txTrack');
   if(!track)return;
-  var cards=track.querySelectorAll('.arc-card');
+  var cards=track.querySelectorAll('.tx-card');
   var total=cards.length,idx=0,auto=null,paused=false;
-  var dotsWrap=document.getElementById('arcDots'),wrap=document.getElementById('arcWrap');
-  var nameEl=document.getElementById('arcN'),roleEl=document.getElementById('arcR'),rail=wrap.querySelector('.arc-rail');
-  for(var i=0;i<total;i++){var d=document.createElement('button');d.className='arc-dot';d.dataset.i=i;dotsWrap.appendChild(d);}
-  var dots=dotsWrap.querySelectorAll('.arc-dot');
+  var dotsW=document.getElementById('txDots'),numEl=document.getElementById('txNum'),bar=document.getElementById('txBar'),wrap=document.getElementById('txWrap');
+  for(var i=0;i<total;i++){var d=document.createElement('button');d.className='tx-dot';d.dataset.i=i;dotsW.appendChild(d);}
+  var dots=dotsW.querySelectorAll('.tx-dot');
 
   function render(){
     cards.forEach(function(c,i){
@@ -1705,45 +1808,38 @@ calcAll();
       if(diff>total/2)diff-=total;
       else if(diff<-total/2)diff+=total;
       var abs=Math.abs(diff);
-      // ARC math: x spread + y curve down at edges + z depth + rotateY
-      var x=diff*145;
-      var y=abs*abs*14; // parabolic — courbe vers le bas aux extrêmes
-      var z=-abs*120;
-      var rotY=-diff*22;
-      var scale=abs===0?1.04:Math.max(.55,1-abs*.09);
+      var x=diff*168;
+      var y=abs*abs*16;
+      var z=-abs*150;
+      var rotY=-diff*24;
+      var scale=abs===0?1.06:Math.max(.55,1-abs*.1);
       var op=abs>3?0:Math.max(0,1-abs*.22);
       c.style.transform='translate3d('+x+'px,'+y+'px,'+z+'px) rotateY('+rotY+'deg) scale('+scale+')';
       c.style.opacity=op;
       c.style.zIndex=20-abs;
-      c.style.filter=abs===0?'saturate(1.05)':'saturate(.78) brightness(.94)';
       c.classList.toggle('is-center',abs===0);
     });
     dots.forEach(function(d,i){d.classList.toggle('active',i===idx);});
-    var c=cards[idx];
-    rail.classList.add('arc-swap');
-    setTimeout(function(){
-      nameEl.innerHTML='<b>'+c.dataset.name+'</b> <em>'+c.dataset.last+'</em>';
-      roleEl.textContent=c.dataset.role;
-      rail.classList.remove('arc-swap');
-    },200);
+    if(numEl)numEl.textContent=('0'+(idx+1)).slice(-2)+' / '+('0'+total).slice(-2);
+    if(bar){bar.classList.remove('paused');void bar.offsetWidth;bar.querySelector('::after');}
+    // restart bar animation
+    if(bar){var nb=bar.cloneNode(true);bar.parentNode.replaceChild(nb,bar);bar=nb;}
   }
   function go(n){idx=(n+total)%total;render();}
   function tick(){if(!paused)go(idx+1);}
-  function startAuto(){if(auto)clearInterval(auto);auto=setInterval(tick,3800);}
-  document.querySelector('.arc-prev').addEventListener('click',function(){go(idx-1);paused=false;startAuto();});
-  document.querySelector('.arc-next').addEventListener('click',function(){go(idx+1);paused=false;startAuto();});
+  function startAuto(){if(auto)clearInterval(auto);auto=setInterval(tick,4000);if(bar)bar.classList.remove('paused');}
+  document.querySelector('.tx-prev').addEventListener('click',function(){go(idx-1);paused=false;startAuto();});
+  document.querySelector('.tx-next').addEventListener('click',function(){go(idx+1);paused=false;startAuto();});
   cards.forEach(function(c){c.addEventListener('click',function(){
     var i=+c.dataset.i;
-    if(i===idx){paused=true;clearInterval(auto);return;}// click on center stops
+    if(i===idx){paused=true;clearInterval(auto);if(bar)bar.classList.add('paused');return;}
     go(i);paused=false;startAuto();
   });});
   dots.forEach(function(d){d.addEventListener('click',function(){go(+d.dataset.i);paused=false;startAuto();});});
-  // touch
   var sx=0,dx=0;
   track.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;dx=0;},{passive:true});
   track.addEventListener('touchmove',function(e){dx=e.touches[0].clientX-sx;},{passive:true});
   track.addEventListener('touchend',function(){if(Math.abs(dx)>40){go(idx+(dx<0?1:-1));paused=false;startAuto();}});
-  // keyboard
   document.addEventListener('keydown',function(e){
     var r=wrap.getBoundingClientRect();
     if(r.bottom<0||r.top>window.innerHeight)return;
@@ -1793,5 +1889,39 @@ calcAll();
   var wrap=document.querySelector('.solX-wrap');
   if(wrap){wrap.addEventListener('mouseenter',function(){paused=true;});wrap.addEventListener('mouseleave',function(){paused=false;});}
   render(0);stage.classList.add('is-in');startAuto();
+})();
+
+
+  /* ══ AVIS ORBITE ══ */
+(function(){
+  var stage=document.querySelector('.rxw-stage');
+  if(!stage)return;
+  var cards=stage.querySelectorAll('.rxw-card');
+  var total=cards.length,offset=0,auto=null,paused=false;
+  var dotsW=document.getElementById('rxwDots');
+  for(var i=0;i<total;i++){var d=document.createElement('button');d.className='rxw-dot';d.dataset.i=i;dotsW.appendChild(d);}
+  var dots=dotsW.querySelectorAll('.rxw-dot');
+  function render(){
+    cards.forEach(function(c,i){
+      var diff=(i-offset+total)%total;
+      var rel='hidden';
+      if(diff===0)rel='1-l';
+      else if(diff===1)rel='0-l';
+      else if(diff===2)rel='2-l';
+      else if(diff===3)rel='1-r';
+      else if(diff===4)rel='0-r';
+      else if(diff===5)rel='2-r';
+      c.setAttribute('data-rel',rel);
+    });
+    dots.forEach(function(d,i){d.classList.toggle('active',i===offset);});
+  }
+  function go(n){offset=(n+total)%total;render();}
+  function tick(){if(!paused)go(offset+1);}
+  function startAuto(){if(auto)clearInterval(auto);auto=setInterval(tick,4500);}
+  cards.forEach(function(c){c.addEventListener('click',function(){go(+c.dataset.i);paused=false;startAuto();});});
+  dots.forEach(function(d){d.addEventListener('click',function(){go(+d.dataset.i);paused=false;startAuto();});});
+  stage.addEventListener('mouseenter',function(){paused=true;});
+  stage.addEventListener('mouseleave',function(){paused=false;});
+  render();startAuto();
 })();
 </script></body></html>
