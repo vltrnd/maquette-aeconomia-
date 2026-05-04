@@ -606,45 +606,66 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .tlx-finale{margin-top:3rem;padding:2rem 1.2rem;}
 }
 
-/* ══ TEAM — MAGAZINE CARDS ══ */
-.tm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.95rem;perspective:1400px;}
-.tm{position:relative;aspect-ratio:3/4.15;border-radius:20px;overflow:hidden;cursor:pointer;background:var(--ob);box-shadow:var(--clay-sm);transform-style:preserve-3d;will-change:transform;transition:box-shadow .5s cubic-bezier(.22,1,.36,1);}
-.tm:hover{box-shadow:0 24px 60px rgba(21,20,18,.28),0 0 0 1px rgba(188,212,26,.25),0 0 80px rgba(188,212,26,.15);}
-.tm-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%;transition:transform 1.5s cubic-bezier(.22,1,.36,1),filter .6s;filter:grayscale(.2) saturate(1) contrast(1);z-index:1;}
-.tm:hover .tm-img{transform:scale(1.12);filter:grayscale(0) saturate(1.12) contrast(1.03);}
-.tm-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.96) 0%,rgba(10,10,8,.85) 15%,rgba(10,10,8,.45) 38%,rgba(10,10,8,.05) 60%,transparent 75%);z-index:2;pointer-events:none;transition:opacity .4s;}
-.tm:hover .tm-grad{background:linear-gradient(to top,rgba(10,10,8,.97) 0%,rgba(10,10,8,.88) 22%,rgba(10,10,8,.55) 48%,rgba(10,10,8,.08) 68%,transparent 82%);}
-.tm-shine{position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.18) 50%,transparent 65%);transform:translateX(-110%) skewX(-10deg);transition:transform 1.3s cubic-bezier(.22,1,.36,1);z-index:3;pointer-events:none;mix-blend-mode:overlay;}
-.tm:hover .tm-shine{transform:translateX(110%) skewX(-10deg);}
-.tm-tag{position:absolute;top:12px;left:12px;z-index:5;font-family:'Space Grotesk',sans-serif;font-size:.48rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;background:rgba(247,244,239,.16);color:var(--bg);padding:5px 11px;border-radius:50px;backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%);border:1px solid rgba(255,255,255,.22);display:inline-flex;align-items:center;gap:.32rem;}
-.tm-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);}
-.tm-body{position:absolute;left:0;right:0;bottom:0;padding:1.05rem;z-index:6;color:var(--bg);display:flex;flex-direction:column;}
-.tm-role{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:rgba(247,244,239,.65);margin-bottom:.32rem;transition:color .4s,transform .5s cubic-bezier(.22,1,.36,1);}
-.tm:hover .tm-role{color:var(--lime);transform:translateY(-2px);}
-.tm-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(1rem,1.5vw,1.25rem);font-weight:700;letter-spacing:-.8px;line-height:.94;color:var(--bg);transition:transform .55s cubic-bezier(.22,1,.36,1);}
-.tm:hover .tm-name{transform:translateY(-3px);}
-.tm-line{height:2px;width:0;background:linear-gradient(90deg,var(--lime),transparent);border-radius:2px;margin:.6rem 0 0;transition:width .7s cubic-bezier(.22,1,.36,1) .1s;}
-.tm:hover .tm-line{width:60%;}
-.tm-extra{max-height:0;overflow:hidden;opacity:0;transition:max-height .65s cubic-bezier(.22,1,.36,1),opacity .45s,margin-top .5s;margin-top:0;}
-.tm:hover .tm-extra{max-height:260px;opacity:1;margin-top:.75rem;transition:max-height .7s cubic-bezier(.22,1,.36,1),opacity .5s .15s,margin-top .5s;}
-.tm-specs{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.55rem;transform:translateY(14px);opacity:0;transition:transform .55s cubic-bezier(.22,1,.36,1) .15s,opacity .45s .15s;}
-.tm:hover .tm-specs{transform:translateY(0);opacity:1;}
-.tm-specs span{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;background:rgba(247,244,239,.14);border:1px solid rgba(247,244,239,.24);border-radius:50px;padding:3px 10px;color:rgba(247,244,239,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);letter-spacing:.02em;white-space:nowrap;}
-.tm-meta{display:flex;gap:.85rem;font-family:'Space Grotesk',sans-serif;font-size:.56rem;color:rgba(247,244,239,.66);margin-bottom:.7rem;transform:translateY(14px);opacity:0;transition:transform .55s cubic-bezier(.22,1,.36,1) .22s,opacity .45s .22s;}
-.tm:hover .tm-meta{transform:translateY(0);opacity:1;}
-.tm-meta span{display:inline-flex;align-items:center;gap:.3rem;white-space:nowrap;font-weight:500;}
-.tm-meta i{font-size:.7rem;font-style:normal;opacity:.9;}
-.tm-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:.4rem;font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:700;background:var(--lime);color:var(--ob);padding:7px 13px;border-radius:9px;text-decoration:none;transform:translateY(14px);opacity:0;transition:transform .55s cubic-bezier(.22,1,.36,1) .3s,opacity .45s .3s,background .2s,box-shadow .22s;align-self:flex-start;}
-.tm:hover .tm-cta{transform:translateY(0);opacity:1;}
-.tm-cta:hover{background:#d8ee28;box-shadow:0 6px 22px rgba(188,212,26,.42);}
-.tm-cta span{font-size:.72rem;transition:transform .22s;}
-.tm-cta:hover span{transform:translateX(3px);}
-.tm::after{content:'';position:absolute;inset:0;border-radius:20px;box-shadow:inset 0 0 0 1px rgba(188,212,26,0);transition:box-shadow .5s;pointer-events:none;z-index:7;}
-.tm:hover::after{box-shadow:inset 0 0 0 1px rgba(188,212,26,.35),inset 0 0 40px rgba(188,212,26,.06);}
-@media(max-width:900px){.tm-grid{grid-template-columns:repeat(3,1fr);gap:.7rem;}}
-@media(max-width:640px){.tm-grid{grid-template-columns:repeat(2,1fr);gap:.6rem;}.tm{aspect-ratio:3/4.3;}}
-@media(hover:none){.tm-extra{max-height:none;opacity:1;margin-top:.6rem;}.tm-specs,.tm-meta,.tm-cta{transform:none;opacity:1;}.tm-line{width:45%;}.tm-img{filter:grayscale(0) saturate(1.1);}}
 
+/* ══ TEAM — COVERFLOW 3D ══ */
+.cf-wrap{position:relative;padding:1rem 0 .5rem;}
+.cf-stage{position:relative;height:520px;perspective:2000px;perspective-origin:50% 50%;overflow:hidden;}
+.cf-track{position:absolute;inset:0;transform-style:preserve-3d;}
+.cf-card{position:absolute;top:50%;left:50%;width:300px;height:430px;margin:-215px 0 0 -150px;border-radius:24px;overflow:hidden;cursor:pointer;background:var(--ob);box-shadow:var(--clay);transform-style:preserve-3d;transition:transform .85s cubic-bezier(.22,1,.36,1),opacity .55s ease,filter .55s ease,box-shadow .4s;will-change:transform,opacity;}
+.cf-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:saturate(1.05) contrast(1.02);}
+.cf-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.95) 0%,rgba(10,10,8,.7) 22%,rgba(10,10,8,.15) 50%,transparent 70%);pointer-events:none;}
+.cf-tag{position:absolute;top:14px;left:14px;font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.11em;text-transform:uppercase;background:rgba(247,244,239,.18);color:var(--bg);padding:5px 12px;border-radius:50px;backdrop-filter:blur(14px) saturate(180%);-webkit-backdrop-filter:blur(14px) saturate(180%);border:1px solid rgba(255,255,255,.22);display:inline-flex;align-items:center;gap:.36rem;}
+.cf-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);}
+.cf-body{position:absolute;left:0;right:0;bottom:0;padding:1.2rem 1.25rem;color:var(--bg);}
+.cf-role{font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);margin-bottom:.42rem;}
+.cf-name{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:-1px;line-height:.96;color:var(--bg);}
+.cf-name span{display:block;font-weight:500;color:rgba(247,244,239,.88);font-size:1.05rem;margin-top:.22rem;letter-spacing:-.5px;}
+
+/* positions coverflow */
+.cf-card[data-rel='0']{transform:translate3d(0,0,0) rotateY(0) scale(1);opacity:1;z-index:10;box-shadow:0 30px 70px rgba(21,20,18,.32),0 0 0 1.5px rgba(188,212,26,.28),0 0 50px rgba(188,212,26,.18);}
+.cf-card[data-rel='-1']{transform:translate3d(-220px,0,-260px) rotateY(28deg) scale(.92);opacity:.78;z-index:9;filter:saturate(.85);}
+.cf-card[data-rel='1']{transform:translate3d(220px,0,-260px) rotateY(-28deg) scale(.92);opacity:.78;z-index:9;filter:saturate(.85);}
+.cf-card[data-rel='-2']{transform:translate3d(380px,0,-520px) rotateY(38deg) scale(.78);opacity:.42;z-index:8;filter:saturate(.6) blur(1px);}
+.cf-card[data-rel='2']{transform:translate3d(-380px,0,-520px) rotateY(-38deg) scale(.78);opacity:.42;z-index:8;filter:saturate(.6) blur(1px);}
+.cf-card[data-rel='hidden']{transform:translate3d(0,0,-900px) rotateY(0) scale(.4);opacity:0;z-index:1;pointer-events:none;}
+.cf-card[data-rel='-1']:hover,.cf-card[data-rel='1']:hover{filter:saturate(1);opacity:.95;}
+
+/* flèches nav */
+.cf-nav{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;background:var(--white);border:1.5px solid var(--border2);box-shadow:var(--clay);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:1.4rem;color:var(--ob);cursor:pointer;z-index:20;transition:all .3s cubic-bezier(.22,1,.36,1);user-select:none;font-weight:300;line-height:1;padding-bottom:3px;}
+.cf-nav:hover{background:var(--ob);color:var(--lime);border-color:var(--ob);transform:translateY(-50%) scale(1.1);box-shadow:0 14px 36px rgba(21,20,18,.3);}
+.cf-prev{left:2%;}
+.cf-next{right:2%;}
+
+/* dots & meta */
+.cf-meta{margin-top:1.2rem;text-align:center;font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--muted);display:flex;justify-content:center;align-items:center;gap:.7rem;}
+.cf-meta-num{font-size:.82rem;color:var(--ob);letter-spacing:-.2px;}
+.cf-meta-bar{width:36px;height:1px;background:var(--border2);}
+.cf-dots{display:flex;justify-content:center;gap:.4rem;margin-top:1rem;flex-wrap:wrap;}
+.cf-dot{width:24px;height:6px;border-radius:50px;background:var(--border2);border:none;cursor:pointer;padding:0;transition:all .3s cubic-bezier(.22,1,.36,1);}
+.cf-dot.active{background:var(--ob);width:42px;}
+.cf-dot:hover:not(.active){background:var(--muted);}
+
+@media(max-width:900px){
+  .cf-stage{height:460px;}
+  .cf-card{width:240px;height:340px;margin:-170px 0 0 -120px;}
+  .cf-card[data-rel='-1']{transform:translate3d(-160px,0,-200px) rotateY(28deg) scale(.88);}
+  .cf-card[data-rel='1']{transform:translate3d(160px,0,-200px) rotateY(-28deg) scale(.88);}
+  .cf-card[data-rel='-2']{transform:translate3d(-280px,0,-420px) rotateY(38deg) scale(.7);}
+  .cf-card[data-rel='2']{transform:translate3d(280px,0,-420px) rotateY(-38deg) scale(.7);}
+}
+@media(max-width:560px){
+  .cf-stage{height:400px;}
+  .cf-card{width:200px;height:280px;margin:-140px 0 0 -100px;}
+  .cf-card[data-rel='-1']{transform:translate3d(-130px,0,-180px) rotateY(28deg) scale(.85);}
+  .cf-card[data-rel='1']{transform:translate3d(130px,0,-180px) rotateY(-28deg) scale(.85);}
+  .cf-card[data-rel='-2'],.cf-card[data-rel='2']{opacity:0;}
+  .cf-name{font-size:1.15rem;}
+  .cf-name span{font-size:.9rem;}
+  .cf-nav{width:42px;height:42px;font-size:1.1rem;}
+}
+
+  
+  
 /* ══ SOLUTIONS — INTERACTIVE SHOWCASE ══ */
 .solX-wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:1rem;align-items:stretch;}
 .solX-stage{position:relative;overflow:hidden;background:var(--ob);color:var(--bg);border-radius:26px;padding:2.3rem;min-height:500px;display:flex;flex-direction:column;gap:1.2rem;box-shadow:var(--clay-dark);}
@@ -753,6 +774,34 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .tb-cards{grid-template-columns:1fr;gap:.6rem;}
   .tb-card{min-height:auto;padding:1rem;}
 }
+
+  /* ══ CTA LIME — final ══ */
+.cta-lime{display:grid;grid-template-columns:1.4fr 1fr;gap:1.6rem;align-items:stretch;background:var(--lime);border-radius:28px;padding:2.8rem;position:relative;overflow:hidden;text-decoration:none;color:var(--ob);box-shadow:0 22px 60px rgba(188,212,26,.32),0 6px 18px rgba(21,20,18,.08);transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s cubic-bezier(.22,1,.36,1);}
+.cta-lime:hover{transform:translateY(-6px);box-shadow:0 32px 80px rgba(188,212,26,.45),0 10px 26px rgba(21,20,18,.14);}
+.cta-lime-bg{position:absolute;top:-30%;right:-10%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.45),transparent 65%);pointer-events:none;animation:blob 14s ease-in-out infinite;z-index:0;}
+.cta-lime::after{content:'';position:absolute;bottom:-40%;left:10%;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(21,20,18,.06),transparent 70%);pointer-events:none;z-index:0;}
+.cta-lime-left{position:relative;z-index:2;}
+.cta-lime-eyebrow{font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.45rem;background:rgba(21,20,18,.09);padding:6px 14px;border-radius:50px;margin-bottom:1.1rem;}
+.cta-lime-eyebrow span{width:6px;height:6px;border-radius:50%;background:var(--ob);animation:pl 2s infinite;}
+.cta-lime-h{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.85rem,4vw,2.95rem);font-weight:700;letter-spacing:-2px;line-height:.95;color:var(--ob);margin-bottom:.85rem;}
+.cta-lime-h em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--ob);position:relative;display:inline-block;}
+.cta-lime-h em::after{content:'';position:absolute;left:0;right:0;bottom:3px;height:7px;background:rgba(21,20,18,.13);border-radius:4px;z-index:-1;}
+.cta-lime-sub{font-size:.86rem;color:rgba(21,20,18,.78);line-height:1.65;margin-bottom:1.4rem;max-width:480px;}
+.cta-lime-sub strong{color:var(--ob);font-weight:800;}
+.cta-lime-meta{display:flex;gap:1.6rem;flex-wrap:wrap;}
+.cta-lime-mi{display:flex;flex-direction:column;}
+.cta-lime-mn{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;letter-spacing:-1px;color:var(--ob);line-height:1;}
+.cta-lime-ml{font-family:'Space Grotesk',sans-serif;font-size:.55rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(21,20,18,.58);margin-top:.35rem;}
+.cta-lime-right{position:relative;z-index:2;background:rgba(21,20,18,.05);border:1.5px solid rgba(21,20,18,.18);border-radius:22px;padding:1.7rem;display:flex;flex-direction:column;justify-content:space-between;gap:1rem;transition:background .35s,border-color .35s;}
+.cta-lime:hover .cta-lime-right{background:rgba(21,20,18,.09);border-color:rgba(21,20,18,.3);}
+.cta-lime-rcap{font-family:'Space Grotesk',sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:-.6px;line-height:1.18;color:var(--ob);}
+.cta-lime-rsub{font-size:.74rem;color:rgba(21,20,18,.66);line-height:1.6;}
+.cta-lime-arrow{align-self:flex-end;width:64px;height:64px;border-radius:18px;background:var(--ob);color:var(--lime);display:flex;align-items:center;justify-content:center;font-size:1.7rem;font-weight:700;box-shadow:0 10px 26px rgba(21,20,18,.32),inset 0 1px 0 rgba(255,255,255,.1);transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s;}
+.cta-lime-arrow span{display:inline-block;transition:transform .45s cubic-bezier(.22,1,.36,1);line-height:1;}
+.cta-lime:hover .cta-lime-arrow{transform:rotate(45deg) scale(1.08);box-shadow:0 16px 36px rgba(21,20,18,.42);}
+.cta-lime:hover .cta-lime-arrow span{transform:rotate(-45deg);}
+@media(max-width:880px){.cta-lime{grid-template-columns:1fr;padding:2rem;}.cta-lime-arrow{width:54px;height:54px;font-size:1.4rem;}}
+@media(max-width:560px){.cta-lime{padding:1.6rem;}.cta-lime-meta{gap:1.1rem;}.cta-lime-mn{font-size:1.15rem;}}
   
 /* RESP */
 @media(max-width:1060px){
@@ -1098,145 +1147,34 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 </section>
 <div class="divider"></div>
 
-<!-- ══ 9. ÉQUIPE — MAGAZINE CARDS ══ -->
+<!-- ══ 9. ÉQUIPE — COVERFLOW 3D ══ -->
 <section class="wrap" id="teamSec">
-  <div class="rv" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:2.2rem">
+  <div class="rv" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:2rem">
     <div>
       <div class="tag">Notre équipe</div>
       <h2 class="h2">Des experts locaux<br/><em>à votre service.</em></h2>
-      <p style="font-size:.74rem;color:var(--muted);margin-top:.4rem">Survolez un profil — les détails viennent à vous ↗</p>
+      <p style="font-size:.74rem;color:var(--muted);margin-top:.4rem">Faites défiler avec les flèches — cliquez sur une photo pour la mettre au centre ↗</p>
     </div>
     <a href="apropos.html" class="btn-s">Rencontrer l'équipe →</a>
   </div>
 
-  <div class="tm-grid st">
-    <article class="tm rv" data-idx="0">
-      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt="Dimitri Toulon" loading="lazy"/>
-      <div class="tm-grad"></div><div class="tm-shine"></div>
-      <div class="tm-tag">01 · Directeur</div>
-      <div class="tm-body">
-        <div class="tm-role">Directeur · Fondateur</div>
-        <div class="tm-name">Dimitri<br/>Toulon</div>
-        <div class="tm-line"></div>
-        <div class="tm-extra">
-          <div class="tm-specs"><span>Primo-accédant</span><span>Invest. locatif</span><span>Militaires</span></div>
-          <div class="tm-meta"><span><i>🎬</i>Inception</span><span><i>🎵</i>Daft Punk</span></div>
-          <a href="contact.html" class="tm-cta">Contacter Dimitri <span>→</span></a>
-        </div>
+  <div class="cf-wrap rv" id="cfWrap">
+    <button class="cf-nav cf-prev" aria-label="Précédent" type="button">‹</button>
+    <button class="cf-nav cf-next" aria-label="Suivant" type="button">›</button>
+    <div class="cf-stage">
+      <div class="cf-track" id="cfTrack">
+        <article class="cf-card" data-i="0"><img class="cf-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt="Dimitri Toulon" loading="lazy"/><div class="cf-grad"></div><div class="cf-tag">01 · Directeur</div><div class="cf-body"><div class="cf-role">Directeur · Fondateur</div><div class="cf-name">Dimitri<span>Toulon</span></div></div></article>
+        <article class="cf-card" data-i="1"><img class="cf-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt="Raphaël Nicq" loading="lazy"/><div class="cf-grad"></div><div class="cf-tag">02 · Courtier</div><div class="cf-body"><div class="cf-role">Courtier senior</div><div class="cf-name">Raphaël<span>Nicq</span></div></div></article>
+        <article class="cf-card" data-i="2"><img class="cf-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt="Delphine Dechartre" loading="lazy"/><div class="cf-grad"></div><div class="cf-tag">03 · Courtière</div><div class="cf-body"><div class="cf-role">Courtière</div><div class="cf-name">Delphine<span>Dechartre</span></div></div></article>
+        <article class="cf-card" data-i="3"><img class="cf-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt="Robin Villette" loading="lazy"/><div class="cf-grad"></div><div class="cf-tag">04 · Courtier</div><div class="cf-body"><div class="cf-role">Courtier</div><div class="cf-name">Robin<span>Villette</span></div></div></article>
+        <article class="cf-card" data-i="4"><img class="cf-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt="Gabriel Despeisse" loading="lazy"/><div class="cf-grad"></div><div class="cf-tag">05 · Courtier</div><div class="cf-body"><div class="cf-role">Courtier</div><div class="cf-name">Gabriel<span>Despeisse</span></div></div></article>
+        <article class="cf-card" data-i="5"><img class="cf-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/matteo.jpg" alt="Matteo Martolini" loading="lazy"/><div class="cf-grad"></div><div class="cf-tag">06 · Courtier</div><div class="cf-body"><div class="cf-role">Courtier</div><div class="cf-name">Matteo<span>Martolini</span></div></div></article>
+        <article class="cf-card" data-i="6"><img class="cf-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Adrien%20.jpg" alt="Adrien Meneghini" loading="lazy"/><div class="cf-grad"></div><div class="cf-tag">07 · Courtier</div><div class="cf-body"><div class="cf-role">Courtier</div><div class="cf-name">Adrien<span>Meneghini</span></div></div></article>
+        <article class="cf-card" data-i="7"><img class="cf-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/mariephoto.jpg" alt="Marie" loading="lazy"/><div class="cf-grad"></div><div class="cf-tag">08 · Courtière</div><div class="cf-body"><div class="cf-role">Courtière</div><div class="cf-name">Marie</div></div></article>
       </div>
-    </article>
-
-    <article class="tm rv" data-idx="1">
-      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt="Raphaël Nicq" loading="lazy"/>
-      <div class="tm-grad"></div><div class="tm-shine"></div>
-      <div class="tm-tag">02 · Courtier</div>
-      <div class="tm-body">
-        <div class="tm-role">Courtier senior</div>
-        <div class="tm-name">Raphaël<br/>Nicq</div>
-        <div class="tm-line"></div>
-        <div class="tm-extra">
-          <div class="tm-specs"><span>Résidence principale</span><span>Renégociation</span><span>TNS</span></div>
-          <div class="tm-meta"><span><i>🎬</i>Le Parrain</span><span><i>🎵</i>The Weeknd</span></div>
-          <a href="contact.html" class="tm-cta">Contacter Raphaël <span>→</span></a>
-        </div>
-      </div>
-    </article>
-
-    <article class="tm rv" data-idx="2">
-      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt="Delphine Dechartre" loading="lazy"/>
-      <div class="tm-grad"></div><div class="tm-shine"></div>
-      <div class="tm-tag">03 · Courtière</div>
-      <div class="tm-body">
-        <div class="tm-role">Courtière</div>
-        <div class="tm-name">Delphine<br/>Dechartre</div>
-        <div class="tm-line"></div>
-        <div class="tm-extra">
-          <div class="tm-specs"><span>Famille</span><span>Rachat de soulte</span><span>Primo-accédant</span></div>
-          <div class="tm-meta"><span><i>🎬</i>Amélie</span><span><i>🎵</i>Beyoncé</span></div>
-          <a href="contact.html" class="tm-cta">Contacter Delphine <span>→</span></a>
-        </div>
-      </div>
-    </article>
-
-    <article class="tm rv" data-idx="3">
-      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt="Robin Villette" loading="lazy"/>
-      <div class="tm-grad"></div><div class="tm-shine"></div>
-      <div class="tm-tag">04 · Courtier</div>
-      <div class="tm-body">
-        <div class="tm-role">Courtier</div>
-        <div class="tm-name">Robin<br/>Villette</div>
-        <div class="tm-line"></div>
-        <div class="tm-extra">
-          <div class="tm-specs"><span>Dossiers complexes</span><span>Investissement</span><span>Secundo</span></div>
-          <div class="tm-meta"><span><i>🎬</i>Interstellar</span><span><i>🎵</i>Stromae</span></div>
-          <a href="contact.html" class="tm-cta">Contacter Robin <span>→</span></a>
-        </div>
-      </div>
-    </article>
-
-    <article class="tm rv" data-idx="4">
-      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt="Gabriel Despeisse" loading="lazy"/>
-      <div class="tm-grad"></div><div class="tm-shine"></div>
-      <div class="tm-tag">05 · Courtier</div>
-      <div class="tm-body">
-        <div class="tm-role">Courtier</div>
-        <div class="tm-name">Gabriel<br/>Despeisse</div>
-        <div class="tm-line"></div>
-        <div class="tm-extra">
-          <div class="tm-specs"><span>Urgences</span><span>Primo-accédant</span><span>Orléans</span></div>
-          <div class="tm-meta"><span><i>🎬</i>Intouchables</span><span><i>🎵</i>Angèle</span></div>
-          <a href="contact.html" class="tm-cta">Contacter Gabriel <span>→</span></a>
-        </div>
-      </div>
-    </article>
-
-    <article class="tm rv" data-idx="5">
-      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/matteo.jpg" alt="Matteo Martolini" loading="lazy"/>
-      <div class="tm-grad"></div><div class="tm-shine"></div>
-      <div class="tm-tag">06 · Courtier</div>
-      <div class="tm-body">
-        <div class="tm-role">Courtier</div>
-        <div class="tm-name">Matteo<br/>Martolini</div>
-        <div class="tm-line"></div>
-        <div class="tm-extra">
-          <div class="tm-specs"><span>Invest. locatif</span><span>Libéral</span><span>LMNP</span></div>
-          <div class="tm-meta"><span><i>🎬</i>Scarface</span><span><i>🎵</i>Jul</span></div>
-          <a href="contact.html" class="tm-cta">Contacter Matteo <span>→</span></a>
-        </div>
-      </div>
-    </article>
-
-    <article class="tm rv" data-idx="6">
-      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Adrien%20.jpg" alt="Adrien Meneghini" loading="lazy"/>
-      <div class="tm-grad"></div><div class="tm-shine"></div>
-      <div class="tm-tag">07 · Courtier</div>
-      <div class="tm-body">
-        <div class="tm-role">Courtier</div>
-        <div class="tm-name">Adrien<br/>Meneghini</div>
-        <div class="tm-line"></div>
-        <div class="tm-extra">
-          <div class="tm-specs"><span>Résidence principale</span><span>Assurance</span><span>Fonctionnaire</span></div>
-          <div class="tm-meta"><span><i>🎬</i>Monte-Cristo</span><span><i>🎵</i>Kendrick</span></div>
-          <a href="contact.html" class="tm-cta">Contacter Adrien <span>→</span></a>
-        </div>
-      </div>
-    </article>
-
-    <article class="tm rv" data-idx="7">
-      <img class="tm-img" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/mariephoto.jpg" alt="Marie" loading="lazy"/>
-      <div class="tm-grad"></div><div class="tm-shine"></div>
-      <div class="tm-tag">08 · Courtière</div>
-      <div class="tm-body">
-        <div class="tm-role">Courtière</div>
-        <div class="tm-name">Marie</div>
-        <div class="tm-line"></div>
-        <div class="tm-extra">
-          <div class="tm-specs"><span>Famille</span><span>Primo-accédant</span><span>Rachat soulte</span></div>
-          <div class="tm-meta"><span><i>🎬</i>Amélie Poulain</span><span><i>🎵</i>Clara Luciani</span></div>
-          <a href="contact.html" class="tm-cta">Contacter Marie <span>→</span></a>
-        </div>
-      </div>
-    </article>
+    </div>
+    <div class="cf-meta"><span class="cf-meta-bar"></span><span class="cf-meta-num" id="cfNum">01 / 08</span><span class="cf-meta-bar"></span></div>
+    <div class="cf-dots" id="cfDots"></div>
   </div>
 </section>
 <div class="divider"></div>
@@ -1291,19 +1229,29 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   </div>
 </section>
 
-<!-- ══ 11. CTA FINAL ══ -->
+<!-- ══ 11. CTA FINAL — LIME ══ -->
 <section class="wrap" style="padding-bottom:4rem">
-  <div class="cta-banner rv">
-    <div>
-      <h3 class="cta-h3">Prêt à concrétiser<br/>votre projet ?</h3>
-      <p class="cta-sub">Premier RDV gratuit, sans engagement. Accord de principe le jour même. 3 000+ clients nous font confiance.</p>
+  <a href="contact.html" class="cta-lime rv" aria-label="Démarrer mon projet avec Aeconomia">
+    <div class="cta-lime-bg"></div>
+    <div class="cta-lime-left">
+      <div class="cta-lime-eyebrow"><span></span>Prêt à concrétiser ?</div>
+      <h3 class="cta-lime-h">Discutons de<br/><em>votre projet.</em></h3>
+      <p class="cta-lime-sub">Premier RDV <strong>gratuit</strong>, sans engagement. Accord de principe le jour même. <strong>3 000+ clients</strong> nous font confiance.</p>
+      <div class="cta-lime-meta">
+        <div class="cta-lime-mi"><span class="cta-lime-mn">5/5</span><span class="cta-lime-ml">★★★★★ · 750+ avis</span></div>
+        <div class="cta-lime-mi"><span class="cta-lime-mn">3,05%</span><span class="cta-lime-ml">Taux dès mai 2026</span></div>
+        <div class="cta-lime-mi"><span class="cta-lime-mn">48h</span><span class="cta-lime-ml">Pour votre RDV</span></div>
+      </div>
     </div>
-    <div class="cta-btns">
-      <a href="simulation.html" class="btn-light">Simuler mon projet →</a>
-      <a href="contact.html" class="btn-ghost">Prendre rendez-vous</a>
+    <div class="cta-lime-right">
+      <div class="cta-lime-rcap">Le meilleur taux,<br/>les meilleures conditions.</div>
+      <p class="cta-lime-rsub">On négocie pour vous auprès de 20+ banques partenaires.</p>
+      <div class="cta-lime-arrow"><span>↗</span></div>
     </div>
-  </div>
+  </a>
 </section>
+
+  
 <footer>
 <div class="fi">
   <div>
@@ -1512,33 +1460,47 @@ calcAll();
 })();
 
 
-  /* ══ TEAM MAGNETIC TILT ══ */
+/* ══ TEAM COVERFLOW ══ */
 (function(){
-  if(matchMedia('(hover:none)').matches)return;
-  var cards=document.querySelectorAll('.tm');
-  cards.forEach(function(card,i){
-    var raf=null,tx=0,ty=0,cx=0,cy=0;
-    function move(e){
-      var r=card.getBoundingClientRect();
-      cx=((e.clientX-r.left)/r.width-.5)*2;
-      cy=((e.clientY-r.top)/r.height-.5)*2;
-      if(!raf)raf=requestAnimationFrame(apply);
-    }
-    function apply(){
-      raf=null;
-      var rx=cy*-7,ry=cx*7;
-      card.style.transform='perspective(1200px) rotateX('+rx+'deg) rotateY('+ry+'deg) translateY(-6px) scale(1.015)';
-      var img=card.querySelector('.tm-img');
-      if(img)img.style.transformOrigin=(50+cx*15)+'% '+(18+cy*10)+'%';
-    }
-    function reset(){
-      card.style.transform='';
-      var img=card.querySelector('.tm-img');
-      if(img)img.style.transformOrigin='center 18%';
-    }
-    card.addEventListener('mousemove',move);
-    card.addEventListener('mouseleave',reset);
+  var track=document.getElementById('cfTrack');
+  if(!track)return;
+  var cards=track.querySelectorAll('.cf-card');
+  var total=cards.length,idx=0,auto=null,paused=false;
+  var dotsWrap=document.getElementById('cfDots'),numEl=document.getElementById('cfNum'),wrap=document.getElementById('cfWrap');
+  for(var i=0;i<total;i++){var d=document.createElement('button');d.className='cf-dot';d.dataset.i=i;d.setAttribute('aria-label','Aller à la carte '+(i+1));dotsWrap.appendChild(d);}
+  var dots=dotsWrap.querySelectorAll('.cf-dot');
+  function render(){
+    cards.forEach(function(c,i){
+      var diff=i-idx;
+      if(diff>total/2)diff-=total;
+      else if(diff<-total/2)diff+=total;
+      var rel=Math.abs(diff)<=2?String(diff):'hidden';
+      c.setAttribute('data-rel',rel);
+    });
+    dots.forEach(function(d,i){d.classList.toggle('active',i===idx);});
+    if(numEl)numEl.textContent=('0'+(idx+1)).slice(-2)+' / '+('0'+total).slice(-2);
+  }
+  function go(n){idx=(n+total)%total;render();}
+  function tick(){if(!paused)go(idx+1);}
+  function startAuto(){if(auto)clearInterval(auto);auto=setInterval(tick,4500);}
+  function resume(){paused=false;startAuto();}
+  document.querySelector('.cf-prev').addEventListener('click',function(){go(idx-1);resume();});
+  document.querySelector('.cf-next').addEventListener('click',function(){go(idx+1);resume();});
+  cards.forEach(function(c){c.addEventListener('click',function(){var i=+c.dataset.i;if(i===idx){paused=true;return;}go(i);resume();});});
+  dots.forEach(function(d){d.addEventListener('click',function(){go(+d.dataset.i);resume();});});
+  wrap.addEventListener('mouseenter',function(){paused=true;});
+  wrap.addEventListener('mouseleave',function(){paused=false;});
+  var sx=0,dx=0;
+  track.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;dx=0;},{passive:true});
+  track.addEventListener('touchmove',function(e){dx=e.touches[0].clientX-sx;},{passive:true});
+  track.addEventListener('touchend',function(){if(Math.abs(dx)>40){go(idx+(dx<0?1:-1));resume();}});
+  document.addEventListener('keydown',function(e){
+    var r=wrap.getBoundingClientRect();
+    if(r.bottom<0||r.top>window.innerHeight)return;
+    if(e.key==='ArrowLeft'){go(idx-1);resume();}
+    if(e.key==='ArrowRight'){go(idx+1);resume();}
   });
+  render();startAuto();
 })();
 
   /* ══ SOLUTIONS INTERACTIVE SHOWCASE ══ */
