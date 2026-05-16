@@ -436,44 +436,43 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .banks-track{display:inline-flex;gap:.55rem;animation:ticker 28s linear infinite;white-space:nowrap;}
 .banks-track:hover{animation-play-state:paused;}
 /* ── BANKS LOGOS ── */
-.banks-track{display:inline-flex;gap:.5rem;animation:ticker 32s linear infinite;white-space:nowrap;align-items:center;}
+.banks-track{display:inline-flex;gap:.5rem;animation:ticker 42s linear infinite;white-space:nowrap;align-items:center;will-change:transform;}
 .banks-track:hover{animation-play-state:paused;}
+@keyframes ticker{
+  0%{transform:translate3d(0,0,0);}
+  100%{transform:translate3d(-50%,0,0);}
+}
 .blogo{
-  background:var(--white);
-  border:1.5px solid var(--border2);
-  border-radius:16px;
-  box-shadow:var(--clay-sm);
+  background:transparent;
+  border:none;
+  box-shadow:none;
   width:148px;height:72px;
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;flex-shrink:0;
-  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,border-color .3s;
+  transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .3s;
   padding:6px;
 }
 .blogo img{
   max-width:100%;max-height:100%;width:auto;height:auto;
   object-fit:contain;
-  transform:scale(1.65);              /* recadre le blanc autour des logos */
-  filter:grayscale(.15);opacity:.92;
-  transition:transform .35s cubic-bezier(.22,1,.36,1),filter .3s,opacity .3s;
+  transform:scale(1.65);
+  opacity:.7;
+  filter:grayscale(.15);
+  transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .3s,filter .3s;
   pointer-events:none;user-select:none;
-}
-.blogo:hover{
-  transform:translateY(-4px);
-  box-shadow:var(--clay-h);
-  border-color:rgba(162,181,168,.35);
 }
 .blogo:hover img{
   transform:scale(1.75);
-  filter:grayscale(0);opacity:1;
+  opacity:1;
+  filter:grayscale(0);
 }
-/* logos trop "petits" dans leur cadre → on pousse plus fort */
 .blogo.zoom-l img{transform:scale(2);}
 .blogo.zoom-l:hover img{transform:scale(2.1);}
 .blogo.zoom-s img{transform:scale(1.35);}
 .blogo.zoom-s:hover img{transform:scale(1.45);}
 
 @media(max-width:640px){
-  .blogo{width:118px;height:60px;border-radius:13px;}
+  .blogo{width:118px;height:60px;}
 }
   
 /* ██ SIM PREVIEW ██ */
