@@ -412,21 +412,131 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .sc-l{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);}
 .sc.dk .sc-l{color:rgba(247,244,239,.36);}
 
-/* ██ WHY — redesign dark bento avec formule ██ */
-.why-dark{background:var(--ob);border-radius:24px;padding:2.8rem;position:relative;overflow:hidden;}
-.why-dark::after{content:'';position:absolute;bottom:-60px;left:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(188,212,26,.05),transparent 70%);pointer-events:none;}
-.why-formula{display:flex;align-items:center;justify-content:center;gap:.65rem;flex-wrap:wrap;margin-bottom:2.2rem;text-align:center;}
-.wf-pill{font-family:'Space Grotesk',sans-serif;font-size:clamp(.75rem,1.5vw,1.1rem);font-weight:700;color:var(--bg);padding:.35rem 1.1rem;border-radius:50px;background:rgba(255,255,255,.09);border:1.5px solid rgba(255,255,255,.13);}
-.wf-op{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:300;color:rgba(255,255,255,.2);}
-.wf-res{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(.75rem,1.5vw,1.1rem);font-weight:800;font-style:italic;color:var(--lime);padding:.35rem 1.1rem;border-radius:50px;background:rgba(188,212,26,.1);border:1.5px solid rgba(188,212,26,.25);}
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;}
-.wc{background:rgba(255,255,255,.055);border-radius:18px;border:1px solid rgba(255,255,255,.08);padding:1.4rem;transition:background .25s,transform .25s;}
-.wc:hover{background:rgba(255,255,255,.09);transform:translateY(-3px);}
-.wc-icon{width:42px;height:42px;border-radius:11px;background:rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:.85rem;}
-.wc-t{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:-.2px;line-height:1.15;color:var(--bg);margin-bottom:.52rem;}
-.wc-bls{display:flex;flex-direction:column;gap:.35rem;margin-top:.45rem;}
-.wc-bl{font-size:.68rem;color:rgba(247,244,239,.42);display:flex;align-items:flex-start;gap:.45rem;line-height:1.44;}
-.wc-bl::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:.29rem;}
+/* ══ FLIP CARDS — scroll-driven ══ */
+.flip{position:relative;background:var(--bg);}
+.flip-track{position:relative;height:340vh;}
+.flip-stage{
+  position:sticky;top:0;height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;padding:2.5rem 1.5rem;
+  perspective:2200px;
+}
+/* halos décor */
+.flip-stage::before{content:'';position:absolute;top:10%;right:-10%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.14),transparent 65%);animation:blob 18s ease-in-out infinite;pointer-events:none;}
+.flip-stage::after{content:'';position:absolute;bottom:-10%;left:-10%;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(188,212,26,.1),transparent 70%);animation:blob 22s ease-in-out infinite reverse;pointer-events:none;}
+
+/* HEADER */
+.flip-hd{position:relative;z-index:3;text-align:center;margin-bottom:2.2rem;max-width:700px;}
+.flip-h2-wrap{position:relative;display:inline-block;}
+.flip-h2{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(1.8rem,3.4vw,2.8rem);
+  font-weight:800;letter-spacing:-1.5px;line-height:1;
+  transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1);
+}
+.flip-h2 em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);}
+.flip-h2.t2{position:absolute;inset:0;opacity:0;transform:translateY(18px);}
+.flip-stage.swapped .flip-h2.t1{opacity:0;transform:translateY(-18px);}
+.flip-stage.swapped .flip-h2.t2{opacity:1;transform:translateY(0);}
+.flip-sub{font-family:'Space Grotesk',sans-serif;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.9rem;}
+
+/* CARDS */
+.flip-cards{
+  position:relative;z-index:2;
+  display:flex;gap:0;
+  transform-style:preserve-3d;
+}
+.flip-card{
+  position:relative;
+  width:clamp(150px,21vw,250px);
+  aspect-ratio:1/2;
+  transform-style:preserve-3d;
+  will-change:transform,box-shadow;
+  transition:box-shadow .3s;
+}
+.flip-card-inner{
+  position:absolute;inset:0;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.flip-card-front,.flip-card-back{
+  position:absolute;inset:0;
+  -webkit-backface-visibility:hidden;backface-visibility:hidden;
+  border-radius:20px;overflow:hidden;
+}
+.flip-card-front{
+  background-image:url('https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photogroupe-2.jpg');
+  background-size:300% 100%;
+  background-repeat:no-repeat;
+}
+.flip-card[data-i="0"] .flip-card-front{background-position:left center;}
+.flip-card[data-i="1"] .flip-card-front{background-position:center center;}
+.flip-card[data-i="2"] .flip-card-front{background-position:right center;}
+
+/* BACK */
+.flip-card-back{
+  transform:rotateY(180deg);
+  background:linear-gradient(160deg,var(--ob) 0%,#1f1d1a 100%);
+  color:var(--bg);
+  padding:1.4rem 1.25rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+  border:1px solid rgba(255,255,255,.06);
+}
+.flip-card-back::before{
+  content:'';position:absolute;top:0;left:-50%;width:150%;height:3px;
+  background:linear-gradient(90deg,transparent,var(--lime),transparent);
+  opacity:.7;
+}
+.flip-back-top{display:flex;justify-content:space-between;align-items:flex-start;}
+.flip-back-num{font-family:'Space Grotesk',sans-serif;font-size:.56rem;font-weight:700;letter-spacing:.15em;color:rgba(255,255,255,.32);}
+.flip-back-ico{
+  width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(188,212,26,.22),rgba(188,212,26,.08));
+  border:1px solid rgba(188,212,26,.32);
+  display:flex;align-items:center;justify-content:center;font-size:1.25rem;
+  box-shadow:0 8px 18px rgba(188,212,26,.15);
+}
+.flip-back-mid{margin-top:1rem;flex:1;display:flex;flex-direction:column;justify-content:center;}
+.flip-back-t{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(.85rem,1.2vw,1.1rem);
+  font-weight:800;letter-spacing:-.4px;line-height:1.15;
+  color:var(--bg);margin-bottom:.95rem;
+}
+.flip-back-t em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--lime);}
+.flip-back-list{display:flex;flex-direction:column;gap:.5rem;}
+.flip-back-li{
+  font-size:clamp(.6rem,.78vw,.74rem);
+  color:rgba(255,255,255,.78);line-height:1.45;
+  display:flex;align-items:flex-start;gap:.5rem;
+}
+.flip-back-li::before{
+  content:'✓';width:16px;height:16px;border-radius:50%;
+  background:var(--lime);color:var(--ob);
+  font-weight:900;font-size:.6rem;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.05rem;
+  box-shadow:0 2px 6px rgba(188,212,26,.4);
+}
+.flip-back-foot{
+  margin-top:1rem;padding-top:.85rem;
+  border-top:1px dashed rgba(255,255,255,.13);
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);text-align:center;
+}
+
+/* PROGRESS BAR + HINT */
+.flip-progress{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);width:200px;height:3px;background:rgba(21,20,18,.1);border-radius:3px;overflow:hidden;z-index:3;}
+.flip-progress-fill{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--lime),var(--sage2));border-radius:3px;box-shadow:0 0 8px rgba(188,212,26,.5);transition:width .12s linear;}
+.flip-hint{position:absolute;bottom:2.6rem;left:50%;transform:translateX(-50%);font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);opacity:.55;z-index:3;animation:flipBounce 2.2s ease-in-out infinite;}
+.flip-stage.swapped .flip-hint{opacity:0;}
+@keyframes flipBounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(5px);}}
+
+@media(max-width:760px){
+  .flip-track{height:280vh;}
+  .flip-card{width:clamp(105px,28vw,170px);}
+  .flip-back-li{font-size:.58rem;}
+}
 
 /* ██ BANKS MARQUEE ██ */
 .banks-wrap{overflow:hidden;padding:.3rem 0;position:relative;z-index:1;}
@@ -1558,31 +1668,96 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   </div>
 </section>
   
-<!-- ══ 3. WHY — dark bento avec formule ══ -->
-<section class="wrap">
-  <div class="rv" style="margin-bottom:2rem">
-    <div class="tag">Pourquoi nous choisir</div>
-    <h2 class="h2">Un courtier ne coûte pas,<br/><em>il rapporte.</em></h2>
-  </div>
-  <div class="why-dark rv" style="transition-delay:.05s">
-    <div class="why-formula">
-      <div class="wf-pill">Transparence</div>
-      <div class="wf-op">+</div>
-      <div class="wf-pill">Implication</div>
-      <div class="wf-op">=</div>
-      <div class="wf-res">Succès garanti !</div>
-    </div>
-    <div class="why-grid">
-      <div class="wc"><div class="wc-icon">⏰</div><div class="wc-t">Vous n'avez pas le temps, nous si.</div><div class="wc-bls"><div class="wc-bl">Ouvert de 8h à 20h en semaine</div><div class="wc-bl">Rendez-vous en 2 jours seulement</div><div class="wc-bl">Accord de principe immédiat</div><div class="wc-bl">Retour des banques sous 7-10 jours</div></div></div>
-      <div class="wc"><div class="wc-icon">💰</div><div class="wc-t">Une réelle économie, sinon rien.</div><div class="wc-bls"><div class="wc-bl">Taux négociés via conventions bancaires</div><div class="wc-bl">Négociation de tous les coûts</div><div class="wc-bl">Avec ou sans apport</div><div class="wc-bl">Assurance emprunteur optimisée</div></div></div>
-      <div class="wc"><div class="wc-icon">🤝</div><div class="wc-t">Pas de stress, on s'occupe de tout.</div><div class="wc-bls"><div class="wc-bl">Transparence à chaque étape</div><div class="wc-bl">Un interlocuteur unique et dédié</div><div class="wc-bl">Accompagnement jusqu'au notaire</div><div class="wc-bl">Gestion de l'appel de fonds</div></div></div>
+<!-- ══ 3. WHY — FLIP CARDS scroll animation ══ -->
+<section class="flip" id="flip">
+  <div class="flip-track">
+    <div class="flip-stage" id="flipStage">
+      <div class="flip-hd">
+        <div class="tag" style="justify-content:center">Pourquoi nous choisir</div>
+        <div class="flip-h2-wrap">
+          <h2 class="flip-h2 t1">Un courtier ne coûte pas,<br/><em>il rapporte.</em></h2>
+          <h2 class="flip-h2 t2">Voici concrètement<br/><em>ce qu'il fait.</em></h2>
+        </div>
+        <div class="flip-sub">Scrollez pour découvrir les 3 piliers</div>
+      </div>
+
+      <div class="flip-cards" id="flipCards">
+
+        <div class="flip-card" data-i="0">
+          <div class="flip-card-inner">
+            <div class="flip-card-front"></div>
+            <div class="flip-card-back">
+              <div class="flip-back-top">
+                <span class="flip-back-num">01 · TEMPS</span>
+                <div class="flip-back-ico">⏰</div>
+              </div>
+              <div class="flip-back-mid">
+                <div class="flip-back-t">Vous n'avez pas<br/>le temps, <em>nous si.</em></div>
+                <div class="flip-back-list">
+                  <div class="flip-back-li">Ouvert de 8h à 20h en semaine</div>
+                  <div class="flip-back-li">Rendez-vous en 2 jours seulement</div>
+                  <div class="flip-back-li">Accord de principe immédiat</div>
+                  <div class="flip-back-li">Retour des banques sous 7-10 jours</div>
+                </div>
+              </div>
+              <div class="flip-back-foot">Pilier 01 / 03</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" data-i="1">
+          <div class="flip-card-inner">
+            <div class="flip-card-front"></div>
+            <div class="flip-card-back">
+              <div class="flip-back-top">
+                <span class="flip-back-num">02 · ÉCONOMIE</span>
+                <div class="flip-back-ico">💰</div>
+              </div>
+              <div class="flip-back-mid">
+                <div class="flip-back-t">Une réelle économie,<br/><em>sinon rien.</em></div>
+                <div class="flip-back-list">
+                  <div class="flip-back-li">Taux négociés via conventions bancaires</div>
+                  <div class="flip-back-li">Négociation de tous les coûts</div>
+                  <div class="flip-back-li">Avec ou sans apport</div>
+                  <div class="flip-back-li">Assurance emprunteur optimisée</div>
+                </div>
+              </div>
+              <div class="flip-back-foot">Pilier 02 / 03</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" data-i="2">
+          <div class="flip-card-inner">
+            <div class="flip-card-front"></div>
+            <div class="flip-card-back">
+              <div class="flip-back-top">
+                <span class="flip-back-num">03 · SÉRÉNITÉ</span>
+                <div class="flip-back-ico">🤝</div>
+              </div>
+              <div class="flip-back-mid">
+                <div class="flip-back-t">Pas de stress,<br/><em>on s'occupe de tout.</em></div>
+                <div class="flip-back-list">
+                  <div class="flip-back-li">Transparence à chaque étape</div>
+                  <div class="flip-back-li">Un interlocuteur unique et dédié</div>
+                  <div class="flip-back-li">Accompagnement jusqu'au notaire</div>
+                  <div class="flip-back-li">Gestion de l'appel de fonds</div>
+                </div>
+              </div>
+              <div class="flip-back-foot">Pilier 03 / 03</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="flip-hint">↓ Scroll</div>
+      <div class="flip-progress"><div class="flip-progress-fill" id="flipProgress"></div></div>
     </div>
   </div>
 </section>
-<div class="divider"></div>
-
   <div class="divider"></div>
-
+  
 <!-- ══ 4. BANQUES PARTENAIRES ══ -->
 <section class="wrap" style="padding-top:3rem;padding-bottom:3rem">
   <div class="rv" style="margin-bottom:1.8rem;text-align:center">
@@ -2471,5 +2646,75 @@ calcAll();
   stage.addEventListener('mouseenter',function(){paused=true;});
   stage.addEventListener('mouseleave',function(){paused=false;});
   render();startAuto();
+
+/* ══ FLIP CARDS scroll animation ══ */
+(function(){
+  var track = document.querySelector('.flip-track');
+  if(!track) return;
+  var stage = document.getElementById('flipStage');
+  var cards = document.querySelectorAll('.flip-card');
+  var inners = document.querySelectorAll('.flip-card-inner');
+  var progress = document.getElementById('flipProgress');
+  var raf = null;
+
+  function ease(t){ return t<.5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2; }
+
+  function update(){
+    raf = null;
+    var rect = track.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var totalH = rect.height - vh;
+    var p = Math.max(0, Math.min(1, -rect.top / totalH));
+
+    // Phases (timeline) :
+    // 0.00 - 0.12  → image unifiée (hold)
+    // 0.12 - 0.42  → séparation des 3 cartes
+    // 0.42 - 0.55  → hold cartes séparées
+    // 0.55 - 0.88  → flip 180°
+    // 0.88 - 1.00  → hold final
+    var sep = ease(Math.max(0, Math.min(1, (p - 0.12) / 0.30)));
+    var flip = ease(Math.max(0, Math.min(1, (p - 0.55) / 0.33)));
+
+    // Responsive amplitudes
+    var w = window.innerWidth;
+    var SEP_X = w > 1100 ? 230 : w > 760 ? 170 : w > 480 ? 95 : 55;
+    var TILT  = w > 760 ? 11 : 7;
+    var LIFT  = w > 760 ? 28 : 16;
+
+    cards.forEach(function(c, i){
+      var off = i - 1; // -1, 0, 1
+      var tx = off * SEP_X * sep;
+      // middle card monte un peu plus
+      var ty = (i === 1 ? -LIFT * 1.4 * sep : -LIFT * sep);
+      var rot = off * TILT * sep;
+      c.style.transform = 'translate3d(' + tx + 'px,' + ty + 'px,0) rotate(' + rot + 'deg)';
+      // shadow scale avec la séparation
+      if(sep > 0.02){
+        var s = sep;
+        c.style.boxShadow = '0 ' + (18*s) + 'px ' + (50*s) + 'px rgba(21,20,18,' + (0.35*s) + '),0 ' + (6*s) + 'px ' + (14*s) + 'px rgba(21,20,18,' + (0.18*s) + ')';
+      } else {
+        c.style.boxShadow = 'none';
+      }
+    });
+
+    inners.forEach(function(inner){
+      inner.style.transform = 'rotateY(' + (flip * 180) + 'deg)';
+    });
+
+    // Title swap au milieu du flip
+    if(flip > 0.45) stage.classList.add('swapped');
+    else stage.classList.remove('swapped');
+
+    // Progress bar
+    if(progress) progress.style.width = (p * 100) + '%';
+  }
+
+  function onScroll(){ if(!raf) raf = requestAnimationFrame(update); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  window.addEventListener('load', update);
+  update();
+})();
+  
 })();
 </script></body></html>
