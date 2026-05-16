@@ -607,6 +607,111 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .ai-bq{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:600;background:var(--beige3);border:1px solid var(--border2);border-radius:8px;padding:6px 9px;cursor:pointer;transition:all .2s;color:var(--ob2);text-align:left;}
 .ai-bq:hover{background:var(--beige4);border-color:var(--sage);color:var(--sage2);}
 
+  /* ══ VIDEO PRESENTATION — premium ══ */
+.vp{position:relative;}
+.vp-wrap{
+  background:linear-gradient(135deg,var(--white) 0%,var(--beige4) 100%);
+  border-radius:32px;padding:2.5rem 2.8rem;
+  box-shadow:var(--clay);border:1px solid rgba(255,255,255,.9);
+  display:grid;grid-template-columns:.8fr 1.2fr;gap:2.6rem;align-items:center;
+  position:relative;overflow:hidden;
+}
+.vp-wrap::before{content:'';position:absolute;top:-80px;left:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.18),transparent 65%);pointer-events:none;animation:blob 18s ease-in-out infinite;z-index:0;}
+.vp-wrap::after{content:'';position:absolute;bottom:-70px;right:-50px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(188,212,26,.14),transparent 70%);pointer-events:none;animation:blob 14s ease-in-out infinite reverse;z-index:0;}
+
+.vp-left{position:relative;z-index:2;}
+.vp-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.54rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--sage2);
+  background:rgba(162,181,168,.13);border:1px solid rgba(162,181,168,.28);
+  border-radius:50px;padding:6px 14px;margin-bottom:1.1rem;
+}
+.vp-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);animation:pl 2s infinite;}
+
+.vp-h{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(1.65rem,3.2vw,2.6rem);
+  font-weight:800;letter-spacing:-1.6px;line-height:1;
+  margin-bottom:.95rem;color:var(--ob);
+}
+.vp-h em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);display:block;}
+
+.vp-p{font-size:.84rem;color:var(--muted2);line-height:1.78;margin-bottom:1.3rem;max-width:400px;}
+.vp-p strong{color:var(--ob);font-weight:800;}
+
+.vp-bullets{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.4rem;}
+.vp-b{display:flex;align-items:flex-start;gap:.65rem;font-size:.74rem;color:var(--ob2);line-height:1.55;font-weight:500;}
+.vp-b::before{
+  content:'✓';width:20px;height:20px;border-radius:50%;
+  background:linear-gradient(135deg,var(--lime),#a8c215);color:var(--ob);
+  font-weight:900;font-size:.66rem;
+  display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.05rem;
+  box-shadow:0 4px 10px rgba(188,212,26,.42),inset 0 1px 0 rgba(255,255,255,.4);
+}
+
+.vp-meta{display:flex;align-items:center;gap:1.2rem;padding-top:1rem;border-top:1px dashed rgba(21,20,18,.14);}
+.vp-meta-i{display:flex;flex-direction:column;}
+.vp-meta-n{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:800;letter-spacing:-.8px;color:var(--ob);line-height:1;}
+.vp-meta-l{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.25rem;}
+.vp-meta-sep{width:1px;height:36px;background:var(--border2);}
+
+/* PLAYER — cinema frame */
+.vp-player{
+  position:relative;z-index:2;
+  border-radius:22px;overflow:hidden;
+  aspect-ratio:16/9;
+  background:linear-gradient(155deg,#1a1a17,var(--ob));
+  border:8px solid var(--white);
+  box-shadow:0 30px 70px rgba(21,20,18,.36),0 10px 22px rgba(21,20,18,.18),inset 0 1px 0 rgba(255,255,255,.1);
+  transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .55s;
+}
+.vp-player:hover{transform:translateY(-4px) scale(1.012);box-shadow:0 42px 90px rgba(21,20,18,.45),0 14px 30px rgba(21,20,18,.22);}
+.vp-player video{width:100%;height:100%;display:block;object-fit:cover;}
+
+.vp-player-tag{
+  position:absolute;top:14px;left:14px;z-index:3;
+  background:rgba(21,20,18,.88);backdrop-filter:blur(14px);
+  padding:6px 13px;border-radius:50px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.52rem;font-weight:700;letter-spacing:.09em;color:var(--bg);text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:.4rem;
+  border:1px solid rgba(255,255,255,.14);
+}
+.vp-player-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:#e74c3c;box-shadow:0 0 10px rgba(231,76,60,.8);animation:pl 1.5s infinite;}
+
+/* Badge floating "01:23" duration */
+.vp-player-dur{
+  position:absolute;bottom:14px;right:14px;z-index:3;
+  background:rgba(21,20,18,.88);backdrop-filter:blur(14px);
+  padding:5px 11px;border-radius:8px;
+  font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:700;color:var(--bg);
+  border:1px solid rgba(255,255,255,.14);
+  letter-spacing:.05em;
+}
+
+/* Decorative floating chip */
+.vp-float-chip{
+  position:absolute;z-index:4;
+  background:var(--white);border-radius:14px;
+  box-shadow:0 14px 34px rgba(21,20,18,.18),inset 0 1px 0 rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,.95);
+  padding:.55rem .85rem;display:inline-flex;align-items:center;gap:.55rem;
+  animation:float 5.5s ease-in-out infinite;
+}
+.vp-float-chip.top{top:-14px;right:30px;animation-delay:.3s;}
+.vp-float-chip.bot{bottom:-14px;left:30px;animation-delay:1.4s;}
+.vp-float-chip-ico{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,rgba(188,212,26,.25),rgba(188,212,26,.1));display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+.vp-float-chip-l{font-family:'Space Grotesk',sans-serif;font-size:.46rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1;margin-bottom:2px;}
+.vp-float-chip-v{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:800;color:var(--ob);line-height:1;}
+
+@media(max-width:900px){
+  .vp-wrap{grid-template-columns:1fr;gap:1.6rem;padding:1.6rem;}
+  .vp-p{max-width:none;}
+  .vp-float-chip{display:none;}
+  .vp-h{font-size:1.8rem;}
+}
 
 /* ══ PARCOURS v4 — DESIGN FOU ══ */
 .parq{position:relative;padding:5rem 2.5rem;max-width:1180px;margin:0 auto;z-index:1;}
@@ -1389,6 +1494,60 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
   </div>
 </section>
+
+<!-- ══ VIDEO PRESENTATION ══ -->
+<section class="wrap vp" style="padding-top:2rem;padding-bottom:3rem">
+  <div class="vp-wrap rv">
+    <!-- LEFT — texte -->
+    <div class="vp-left">
+      <div class="vp-eyebrow">Aeconomia en vidéo</div>
+      <h2 class="vp-h">1 minute pour<br/><em>tout comprendre.</em></h2>
+      <p class="vp-p">Découvrez qui nous sommes, comment on travaille, et pourquoi <strong>3 000+ clients</strong> nous ont fait confiance depuis 2022.</p>
+      <div class="vp-bullets">
+        <div class="vp-b">Qui est Aeconomia et pourquoi on existe</div>
+        <div class="vp-b">Comment on obtient les meilleurs taux</div>
+        <div class="vp-b">Ce qui nous rend uniques sur le marché</div>
+      </div>
+      <div class="vp-meta">
+        <div class="vp-meta-i">
+          <div class="vp-meta-n">8</div>
+          <div class="vp-meta-l">Experts</div>
+        </div>
+        <div class="vp-meta-sep"></div>
+        <div class="vp-meta-i">
+          <div class="vp-meta-n">3 000+</div>
+          <div class="vp-meta-l">Clients</div>
+        </div>
+        <div class="vp-meta-sep"></div>
+        <div class="vp-meta-i">
+          <div class="vp-meta-n">5/5</div>
+          <div class="vp-meta-l">Note</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT — vidéo cinéma -->
+    <div class="vp-player">
+      <span class="vp-player-tag">À propos</span>
+      <span class="vp-player-dur">01:23</span>
+      <video controls muted loop playsinline preload="metadata"
+             poster="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/pausevideo.png">
+        <source src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Aeconomia_V3_Musique_A%20(2).mp4" type="video/mp4"/>
+        Votre navigateur ne supporte pas la vidéo.
+      </video>
+
+      <!-- Chips flottants décoratifs -->
+      <div class="vp-float-chip top">
+        <div class="vp-float-chip-ico">⚡</div>
+        <div><div class="vp-float-chip-l">Présentation</div><div class="vp-float-chip-v">1 minute</div></div>
+      </div>
+      <div class="vp-float-chip bot">
+        <div class="vp-float-chip-ico">⭐</div>
+        <div><div class="vp-float-chip-l">Noté</div><div class="vp-float-chip-v">5/5</div></div>
+      </div>
+    </div>
+  </div>
+</section>
   
 <!-- ══ 3. WHY — dark bento avec formule ══ -->
 <section class="wrap">
@@ -1489,8 +1648,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 
 
-<!-- ══ 7. PARCOURS — STEPPED SHOWCASE ══ -->
-<!-- ══ 7. PARCOURS — STEPPED SHOWCASE v3 ══ -->
+
 <!-- ══ 7. PARCOURS v4 — DESIGN FOU ══ -->
 <section class="parq" id="parq">
   <div class="parq-hd rv">
@@ -2040,6 +2198,8 @@ calcAll();
 
   
 })();
+
+  
 
 /* ══ PARCOURS v4 — DESIGN FOU ══ */
 (function(){
