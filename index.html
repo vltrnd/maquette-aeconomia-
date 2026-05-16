@@ -660,7 +660,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 /* PLAYER — cinema frame */
 .vp-player{
   position:relative;z-index:2;
-  border-radius:22px;overflow:hidden;
+  border-radius:22px;
   aspect-ratio:16/9;
   background:linear-gradient(155deg,#1a1a17,var(--ob));
   border:8px solid var(--white);
@@ -693,26 +693,34 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 /* Decorative floating chip */
 .vp-float-chip{
-  position:absolute;z-index:4;
+  position:absolute;z-index:5;
   background:var(--white);border-radius:14px;
-  box-shadow:0 14px 34px rgba(21,20,18,.18),inset 0 1px 0 rgba(255,255,255,.9);
+  box-shadow:0 18px 40px rgba(21,20,18,.22),0 4px 12px rgba(21,20,18,.08),inset 0 1px 0 rgba(255,255,255,.95);
   border:1px solid rgba(255,255,255,.95);
-  padding:.55rem .85rem;display:inline-flex;align-items:center;gap:.55rem;
+  padding:.6rem .9rem;display:inline-flex;align-items:center;gap:.55rem;
+  font-family:'Space Grotesk',sans-serif;
+  backdrop-filter:blur(14px);
   animation:float 5.5s ease-in-out infinite;
 }
-.vp-float-chip.top{top:-14px;right:30px;animation-delay:.3s;}
-.vp-float-chip.bot{bottom:-14px;left:30px;animation-delay:1.4s;}
+.vp-float-chip.top{
+  top:1.6rem;   /* juste au-dessus du bord top du player */
+  right:1.4rem; /* aligné avec le bord droit du player + un peu */
+  animation-delay:.3s;
+}
+.vp-float-chip.bot{
+  bottom:1.6rem;
+  /* le player commence après la colonne gauche : on positionne sur le tiers droit */
+  left:auto;right:calc(100% - 60%);
+  animation-delay:1.4s;
+}
 .vp-float-chip-ico{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,rgba(188,212,26,.25),rgba(188,212,26,.1));display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
 .vp-float-chip-l{font-family:'Space Grotesk',sans-serif;font-size:.46rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1;margin-bottom:2px;}
 .vp-float-chip-v{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:800;color:var(--ob);line-height:1;}
 
 @media(max-width:900px){
-  .vp-wrap{grid-template-columns:1fr;gap:1.6rem;padding:1.6rem;}
-  .vp-p{max-width:none;}
-  .vp-float-chip{display:none;}
-  .vp-h{font-size:1.8rem;}
+  .vp-float-chip.top{top:.8rem;right:.8rem;}
+  .vp-float-chip.bot{bottom:.8rem;right:auto;left:.8rem;}
 }
-
 /* ══ PARCOURS v4 — DESIGN FOU ══ */
 .parq{position:relative;padding:5rem 2.5rem;max-width:1180px;margin:0 auto;z-index:1;}
 .parq-hd{text-align:center;margin-bottom:3rem;}
@@ -1528,26 +1536,25 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       </div>
     </div>
 
-    <!-- RIGHT — vidéo cinéma -->
-    <div class="vp-player">
-      <span class="vp-player-tag">À propos</span>
-      <span class="vp-player-dur">01:23</span>
-      <video controls muted loop playsinline preload="metadata"
-             poster="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/pausevideo.png">
-        <source src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Aeconomia_V3_Musique_A%20(2).mp4" type="video/mp4"/>
-        Votre navigateur ne supporte pas la vidéo.
-      </video>
+  <!-- RIGHT — vidéo cinéma -->
+<div class="vp-player">
+  <span class="vp-player-dur">01:23</span>
+  <video controls muted loop playsinline preload="metadata"
+         poster="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/pausevideo.png">
+    <source src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Aeconomia_V3_Musique_A%20(2).mp4" type="video/mp4"/>
+    Votre navigateur ne supporte pas la vidéo.
+  </video>
+</div>
 
-      <!-- Chips flottants décoratifs -->
-      <div class="vp-float-chip top">
-        <div class="vp-float-chip-ico">⚡</div>
-        <div><div class="vp-float-chip-l">Présentation</div><div class="vp-float-chip-v">1 minute</div></div>
-      </div>
-      <div class="vp-float-chip bot">
-        <div class="vp-float-chip-ico">⭐</div>
-        <div><div class="vp-float-chip-l">Noté</div><div class="vp-float-chip-v">5/5</div></div>
-      </div>
-    </div>
+<!-- Chips flottants — HORS du .vp-player pour pouvoir déborder -->
+<div class="vp-float-chip top">
+  <div class="vp-float-chip-ico">⚡</div>
+  <div><div class="vp-float-chip-l">Présentation</div><div class="vp-float-chip-v">1 minute</div></div>
+</div>
+<div class="vp-float-chip bot">
+  <div class="vp-float-chip-ico">⭐</div>
+  <div><div class="vp-float-chip-l">Noté</div><div class="vp-float-chip-v">5/5</div></div>
+</div>
   </div>
 </section>
   
