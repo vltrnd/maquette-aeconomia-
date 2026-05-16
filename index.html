@@ -606,7 +606,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .ai-bbtns{display:flex;flex-direction:column;gap:.3rem;}
 .ai-bq{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:600;background:var(--beige3);border:1px solid var(--border2);border-radius:8px;padding:6px 9px;cursor:pointer;transition:all .2s;color:var(--ob2);text-align:left;}
 .ai-bq:hover{background:var(--beige4);border-color:var(--sage);color:var(--sage2);}
-}
+
 
 /* ══ PARCOURS v4 — DESIGN FOU ══ */
 .parq{position:relative;padding:5rem 2.5rem;max-width:1180px;margin:0 auto;z-index:1;}
@@ -784,8 +784,108 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 /* ── RIGHT : SCÈNE SANS FOND ── */
 .parq-scene{
   position:relative;width:100%;aspect-ratio:1382/1082;
- 
+  display:flex;align-items:center;justify-content:center;
+  perspective:1400px;
+}
+/* DÉCO FLOTTANTE — points en grille subtile */
+.parq-scene::before{
+  content:'';position:absolute;inset:8% 4%;z-index:0;pointer-events:none;
+  background-image:radial-gradient(rgba(21,20,18,.13) 1.2px,transparent 1.2px);
+  background-size:26px 26px;
+  mask:radial-gradient(ellipse at center,black 25%,transparent 70%);
+  -webkit-mask:radial-gradient(ellipse at center,black 25%,transparent 70%);
+  opacity:.4;animation:parqGridShift 18s ease-in-out infinite;
+}
+@keyframes parqGridShift{0%,100%{transform:translate(0,0);opacity:.4;}50%{transform:translate(8px,-6px);opacity:.55;}}
 
+/* BLOB lumière derrière l'image */
+.parq-scene::after{
+  content:'';position:absolute;left:50%;top:50%;width:80%;height:80%;
+  border-radius:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(188,212,26,.16),rgba(162,181,168,.08) 40%,transparent 70%);
+  filter:blur(40px);z-index:0;
+  animation:parqGlow 6s ease-in-out infinite;pointer-events:none;
+}
+@keyframes parqGlow{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.85;}50%{transform:translate(-50%,-50%) scale(1.12);opacity:1;}}
+
+/* IMAGE PNG — flotte librement */
+.parq-scene-bg{
+  position:relative;z-index:2;
+  width:92%;height:92%;
+  object-fit:contain;
+  filter:drop-shadow(0 36px 50px rgba(21,20,18,.32)) drop-shadow(0 10px 18px rgba(21,20,18,.18));
+  will-change:transform,opacity,filter;
+  animation:
+    parqBgIn 1.4s cubic-bezier(.22,1,.36,1) both,
+    parqBgFloat 7s ease-in-out 1.4s infinite;
+  transform-style:preserve-3d;
+}
+@keyframes parqBgIn{
+  0%{
+    opacity:0;
+    transform:translate3d(0,12%,0) scale(.62) rotate(-6deg);
+    filter:drop-shadow(0 36px 50px rgba(21,20,18,.32)) blur(18px) saturate(.4) brightness(1.2);
+  }
+  40%{
+    opacity:1;
+    filter:drop-shadow(0 36px 50px rgba(21,20,18,.32)) blur(4px) saturate(.9) brightness(1.05);
+  }
+  70%{
+    transform:translate3d(0,-1.5%,0) scale(1.04) rotate(.8deg);
+    filter:drop-shadow(0 36px 50px rgba(21,20,18,.32)) blur(0) saturate(1) brightness(1);
+  }
+  100%{
+    opacity:1;
+    transform:translate3d(0,0,0) scale(1) rotate(0);
+    filter:drop-shadow(0 36px 50px rgba(21,20,18,.32)) blur(0) saturate(1) brightness(1);
+  }
+}
+@keyframes parqBgFloat{
+  0%,100%{transform:translate3d(0,0,0) rotate(0);}
+  50%{transform:translate3d(0,-8px,0) rotate(.6deg);}
+}
+
+/* BADGES FLOTTANTS */
+.parq-fbadge{
+  position:absolute;z-index:3;
+  background:var(--white);border-radius:14px;
+  box-shadow:0 14px 36px rgba(21,20,18,.18),0 4px 10px rgba(21,20,18,.06),inset 0 1px 0 rgba(255,255,255,.9);
+  border:1px solid rgba(255,255,255,.95);
+  padding:.6rem .85rem;display:inline-flex;align-items:center;gap:.55rem;
+  font-family:'Space Grotesk',sans-serif;
+  animation:parqFloatBadge 5.5s ease-in-out infinite,parqBadgeIn 1s cubic-bezier(.22,1,.36,1) .5s both;
+  backdrop-filter:blur(14px);
+}
+.parq-fbadge.b-tl{top:6%;left:0;animation-delay:0s,.4s;}
+.parq-fbadge.b-br{bottom:8%;right:-2%;animation-delay:1.4s,.7s;}
+.parq-fbadge-ico{
+  width:28px;height:28px;border-radius:9px;
+  background:linear-gradient(135deg,rgba(188,212,26,.25),rgba(188,212,26,.1));
+  display:flex;align-items:center;justify-content:center;font-size:.88rem;flex-shrink:0;
+}
+.parq-fbadge-l{font-size:.48rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1;margin-bottom:3px;}
+.parq-fbadge-v{font-size:.74rem;font-weight:800;color:var(--ob);line-height:1;letter-spacing:-.3px;}
+@keyframes parqFloatBadge{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+@keyframes parqBadgeIn{from{opacity:0;transform:scale(.6) translateY(20px);}to{opacity:1;transform:scale(1) translateY(0);}}
+
+/* fade-in cascade pour la colonne gauche */
+.parq-fade{animation:parqFadeIn .8s cubic-bezier(.22,1,.36,1) both;}
+.parq-left .parq-fade:nth-child(1){animation-delay:.05s;}
+.parq-left .parq-fade:nth-child(2){animation-delay:.12s;}
+.parq-left .parq-fade:nth-child(3){animation-delay:.19s;}
+.parq-left .parq-fade:nth-child(4){animation-delay:.26s;}
+.parq-left .parq-fade:nth-child(5){animation-delay:.33s;}
+.parq-left .parq-fade:nth-child(6){animation-delay:.40s;}
+@keyframes parqFadeIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:900px){
+  .parq{padding:3.5rem 1.2rem;}
+  .parq-stage{grid-template-columns:1fr;gap:1.8rem;}
+  .parq-scene{aspect-ratio:4/3;order:-1;}
+  .parq-fbadge.b-tl{top:2%;}
+  .parq-fbadge.b-br{bottom:2%;right:0;}
+  .parq-bignum{font-size:4rem;}
+}
   
 /* ══ TEAM — HOLO GALLERY v2 ══ */
 .tx-wrap{position:relative;padding:.8rem 0 .3rem;}
@@ -1313,7 +1413,25 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 </section>
 <div class="divider"></div>
 
-<div class="banks-track">
+  <div class="divider"></div>
+
+<!-- ══ 4. BANQUES PARTENAIRES ══ -->
+<section class="wrap" style="padding-top:3rem;padding-bottom:3rem">
+  <div class="rv" style="margin-bottom:1.8rem;text-align:center">
+    <div class="tag" style="justify-content:center">Partenaires bancaires</div>
+    <h2 class="h2" style="text-align:center">Nous travaillons avec<br/><em>toutes les banques.</em></h2>
+    <p style="font-size:.8rem;color:var(--muted2);line-height:1.72;max-width:480px;margin:.65rem auto 0;text-align:center">20+ banques en compétition pour vous obtenir le meilleur taux. Grâce à nos conventions directes, vous bénéficiez d'une dérogation tarifaire.</p>
+  </div>
+
+  <div class="banks-label rv" style="transition-delay:.03s">
+    <div class="banks-label-line"></div>
+    <div class="banks-label-txt">Ils nous font <em>confiance</em></div>
+    <div class="banks-label-line"></div>
+  </div>
+
+  <div class="banks-wrap rv" style="transition-delay:.05s">
+    <div class="banks-track">
+
   <div class="blogo zoom-l"><img src="ca.png" alt="Crédit Agricole" loading="lazy"/></div>
   <div class="blogo"><img src="caisse d'epargne.png" alt="Caisse d'Épargne" loading="lazy"/></div>
   <div class="blogo"><img src="bnp paribas.png" alt="BNP Paribas" loading="lazy"/></div>
@@ -1336,7 +1454,9 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   <div class="blogo"><img src="0orange bank.png" alt="" loading="lazy"/></div>
   <div class="blogo zoom-l"><img src="credit foncier.png" alt="" loading="lazy"/></div>
   <div class="blogo zoom-l"><img src="ccf.png" alt="" loading="lazy"/></div>
-</div>
+ </div>
+  </div>
+</section>
 <div class="divider"></div>
 
 <!-- ══ 5. SIMULATEUR PREVIEW ══ -->
@@ -1622,7 +1742,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 </section>
 <div class="divider"></div>
 
-<<section class="wrap" id="teamSec" style="padding-top:2.5rem;padding-bottom:2.5rem"
+<section class="wrap" id="teamSec" style="padding-top:2.5rem;padding-bottom:2.5rem"
 <div class="rv" style="text-align:center;margin-bottom:1.4rem">
   <div class="tag" style="justify-content:center">Notre équipe</div>
   <h2 class="h2">Des experts qui prennent<br/><em>vos projets à cœur.</em></h2>
