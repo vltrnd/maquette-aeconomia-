@@ -606,158 +606,196 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .ai-bbtns{display:flex;flex-direction:column;gap:.3rem;}
 .ai-bq{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:600;background:var(--beige3);border:1px solid var(--border2);border-radius:8px;padding:6px 9px;cursor:pointer;transition:all .2s;color:var(--ob2);text-align:left;}
 .ai-bq:hover{background:var(--beige4);border-color:var(--sage);color:var(--sage2);}
+}
 
-
-  /* ══ PARCOURS — STEPPED SHOWCASE ══ */
+/* ══ PARCOURS v3 — VERTICAL STEPPER ══ */
 .parq{position:relative;padding:5rem 2.5rem;max-width:1280px;margin:0 auto;z-index:1;}
-.parq-hd{text-align:center;margin-bottom:2.6rem;}
+.parq-hd{text-align:center;margin-bottom:3rem;}
 .parq-sub{font-family:'Space Grotesk',sans-serif;font-size:.66rem;color:var(--muted);margin-top:.9rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;display:inline-flex;align-items:center;gap:.6rem;background:var(--white);padding:8px 18px;border-radius:50px;box-shadow:var(--clay-sm);border:1px solid rgba(255,255,255,.85);}
 .parq-sub::before,.parq-sub::after{content:'';width:18px;height:1.5px;background:var(--lime);border-radius:2px;}
 
-/* STEPPER */
-.parq-stepper{display:flex;justify-content:center;align-items:center;gap:0;margin-bottom:2rem;position:relative;flex-wrap:wrap;}
-.parq-step-btn{position:relative;display:flex;align-items:center;gap:.7rem;background:transparent;border:none;cursor:pointer;padding:.6rem 1.1rem;font-family:'Space Grotesk',sans-serif;color:var(--muted);transition:color .35s;}
-.parq-step-btn-num{
-  width:44px;height:44px;border-radius:50%;background:var(--white);
-  border:2px solid var(--border2);box-shadow:var(--clay-sm);
-  display:flex;align-items:center;justify-content:center;
-  font-size:.85rem;font-weight:800;color:var(--muted);
-  transition:all .45s cubic-bezier(.22,1,.36,1);
-  flex-shrink:0;position:relative;
-}
-.parq-step-btn-num::before{
-  content:'';position:absolute;inset:-5px;border-radius:50%;
-  border:2px solid var(--lime);opacity:0;transform:scale(.7);
-  transition:opacity .35s,transform .45s cubic-bezier(.22,1,.36,1);
-}
-.parq-step-btn-lbl{font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:left;line-height:1.2;display:flex;flex-direction:column;gap:.15rem;}
-.parq-step-btn-lbl span{font-family:'Plus Jakarta Sans',sans-serif;font-size:.54rem;font-weight:500;color:var(--muted);text-transform:none;letter-spacing:0;}
-.parq-step-link{width:54px;height:2px;background:var(--border2);border-radius:2px;position:relative;overflow:hidden;flex-shrink:0;}
-.parq-step-link::after{content:'';position:absolute;left:0;top:0;height:100%;width:0;background:var(--lime);box-shadow:0 0 10px rgba(188,212,26,.5);transition:width .6s cubic-bezier(.22,1,.36,1);}
-.parq-step-btn.is-done .parq-step-btn-num,
-.parq-step-btn.is-active .parq-step-btn-num{color:var(--ob);border-color:var(--ob);}
-.parq-step-btn.is-active{color:var(--ob);}
-.parq-step-btn.is-active .parq-step-btn-num{background:var(--lime);border-color:var(--lime);transform:scale(1.08);box-shadow:0 0 0 5px rgba(188,212,26,.2),var(--clay);}
-.parq-step-btn.is-active .parq-step-btn-num::before{opacity:.5;transform:scale(1);animation:parqPulse 1.8s ease-out infinite;}
-.parq-step-btn.is-done .parq-step-btn-num{background:var(--ob);color:var(--lime);border-color:var(--ob);}
-.parq-step-btn.is-done .parq-step-btn-num::after{content:'✓';position:absolute;font-size:1rem;font-weight:900;color:var(--lime);}
-.parq-step-btn.is-done .parq-step-btn-num span{opacity:0;}
-.parq-step-btn.is-done + .parq-step-link::after,
-.parq-step-btn.is-active + .parq-step-link::after{width:100%;}
-@keyframes parqPulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.6);opacity:0}}
-
 /* STAGE — bloc principal */
 .parq-stage{
-  position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:2.5rem;
-  background:var(--white);border-radius:28px;
-  padding:2.5rem;
+  position:relative;display:grid;
+  grid-template-columns:1fr 1.05fr;gap:2.8rem;
+  background:var(--white);border-radius:32px;
+  padding:3rem;
   box-shadow:var(--clay);border:1px solid rgba(255,255,255,.85);
-  overflow:hidden;align-items:center;min-height:520px;
+  overflow:hidden;
 }
-.parq-stage::before{content:'';position:absolute;top:-80px;right:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(188,212,26,.1),transparent 65%);pointer-events:none;animation:blob 14s ease-in-out infinite;z-index:0;}
-.parq-stage::after{content:'';position:absolute;bottom:-50px;left:-30px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.08),transparent 70%);pointer-events:none;animation:blob 18s ease-in-out infinite reverse;z-index:0;}
+.parq-stage::before{content:'';position:absolute;top:-100px;right:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(188,212,26,.1),transparent 65%);pointer-events:none;animation:blob 14s ease-in-out infinite;z-index:0;}
+.parq-stage::after{content:'';position:absolute;bottom:-60px;left:-40px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(162,181,168,.08),transparent 70%);pointer-events:none;animation:blob 18s ease-in-out infinite reverse;z-index:0;}
 
-/* LEFT — TEXTE */
-.parq-text{position:relative;z-index:2;}
-.parq-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Grotesk',sans-serif;font-size:.56rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--sage2);background:rgba(162,181,168,.11);border:1px solid rgba(162,181,168,.25);border-radius:50px;padding:6px 14px;margin-bottom:1.2rem;}
+/* ── LEFT : TEXTE + STEPPER VERTICAL ── */
+.parq-left{position:relative;z-index:2;display:flex;flex-direction:column;}
+.parq-bignum{
+  font-family:'Space Grotesk',sans-serif;font-weight:800;
+  font-size:clamp(4rem,7vw,6rem);letter-spacing:-4px;line-height:.78;
+  background:linear-gradient(135deg,var(--ob) 0%,var(--sage2) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:1rem;opacity:.22;
+}
+.parq-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:'Space Grotesk',sans-serif;font-size:.56rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--sage2);background:rgba(162,181,168,.11);border:1px solid rgba(162,181,168,.25);border-radius:50px;padding:6px 14px;margin-bottom:1.1rem;width:fit-content;}
 .parq-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);animation:pl 2s infinite;}
-.parq-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,3.4vw,2.8rem);font-weight:800;letter-spacing:-1.7px;line-height:1;margin-bottom:1rem;color:var(--ob);}
+.parq-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.9rem,3.4vw,2.9rem);font-weight:800;letter-spacing:-1.7px;line-height:1;margin-bottom:1rem;color:var(--ob);}
 .parq-title em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--sage2);display:block;}
 .parq-desc{font-size:.86rem;color:var(--muted2);line-height:1.75;margin-bottom:1.4rem;max-width:460px;}
 .parq-desc strong{color:var(--ob);font-weight:800;}
-.parq-chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.parq-chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.8rem;}
 .parq-chip{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:700;padding:6px 14px;border-radius:50px;background:var(--beige4);border:1px solid var(--border2);color:var(--ob2);box-shadow:var(--clay-sm);}
 .parq-chip.lime{background:rgba(188,212,26,.13);border-color:rgba(188,212,26,.4);color:var(--sage2);}
-.parq-ctas{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.4rem;}
 
-/* RIGHT — SCÈNE */
+/* STEPPER VERTICAL */
+.parq-vstepper{
+  position:relative;display:flex;flex-direction:column;gap:0;
+  margin:.6rem 0 1.5rem;padding:1rem 0;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+.parq-vstep{
+  position:relative;display:flex;align-items:center;gap:1rem;
+  padding:.85rem 0;cursor:pointer;background:transparent;border:none;text-align:left;
+  font-family:'Plus Jakarta Sans',sans-serif;color:var(--muted);
+  transition:color .35s;
+}
+/* ligne verticale entre les ronds */
+.parq-vstep::before{
+  content:'';position:absolute;left:14px;top:100%;width:2px;height:0;
+  background:var(--border2);transition:height .5s cubic-bezier(.22,1,.36,1),background .4s;
+  z-index:0;
+}
+.parq-vstep:not(:last-child)::before{height:calc(100% - 28px);top:calc(100% - 50%);}
+/* Actually use a separate trick: line from this step's dot to next dot */
+.parq-vstep::before{
+  content:'';position:absolute;left:14px;top:50%;width:2px;height:calc(100% - 0px);
+  background:var(--border2);z-index:0;
+}
+.parq-vstep:last-child::before{display:none;}
+.parq-vstep.is-active::before,.parq-vstep.is-done::before{background:linear-gradient(to bottom,var(--lime),var(--sage2));box-shadow:0 0 12px rgba(188,212,26,.4);}
+
+.parq-vstep-dot{
+  position:relative;z-index:1;flex-shrink:0;
+  width:30px;height:30px;border-radius:50%;
+  background:var(--white);border:2px solid var(--border2);
+  box-shadow:var(--clay-sm);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:800;color:var(--muted);
+  transition:all .45s cubic-bezier(.22,1,.36,1);
+}
+.parq-vstep-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:.15rem;}
+.parq-vstep-t{font-family:'Space Grotesk',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:-.3px;color:var(--ob2);line-height:1.15;transition:color .35s;}
+.parq-vstep-s{font-family:'Space Grotesk',sans-serif;font-size:.58rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);}
+.parq-vstep-arrow{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:transparent;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--muted);opacity:0;transform:translateX(-6px);transition:all .35s cubic-bezier(.22,1,.36,1);}
+
+.parq-vstep:hover .parq-vstep-t{color:var(--ob);}
+.parq-vstep:hover .parq-vstep-dot{border-color:var(--sage);transform:scale(1.1);}
+
+.parq-vstep.is-active .parq-vstep-dot{
+  background:var(--lime);border-color:var(--lime);color:var(--ob);
+  transform:scale(1.18);
+  box-shadow:0 0 0 6px rgba(188,212,26,.22),var(--clay);
+}
+.parq-vstep.is-active .parq-vstep-dot::after{
+  content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--lime);opacity:.5;animation:parqPulse 1.8s ease-out infinite;
+}
+.parq-vstep.is-active .parq-vstep-t{color:var(--ob);font-weight:800;}
+.parq-vstep.is-active .parq-vstep-arrow{opacity:1;transform:translateX(0);color:var(--sage2);}
+
+.parq-vstep.is-done .parq-vstep-dot{background:var(--ob);border-color:var(--ob);color:transparent;}
+.parq-vstep.is-done .parq-vstep-dot::before{content:'✓';position:absolute;color:var(--lime);font-size:.78rem;font-weight:900;}
+.parq-vstep.is-done .parq-vstep-t{color:var(--ob2);}
+
+@keyframes parqPulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.7);opacity:0}}
+
+.parq-ctas{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:auto;padding-top:.5rem;}
+
+/* ── RIGHT : SCÈNE ── */
 .parq-scene{
   position:relative;width:100%;aspect-ratio:1382/1082;
-  border-radius:22px;overflow:hidden;
-  background:linear-gradient(135deg,var(--beige4),var(--beige3));
-  box-shadow:0 24px 60px rgba(21,20,18,.16),0 8px 20px rgba(21,20,18,.06);
-  isolation:isolate;z-index:1;
+  border-radius:26px;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(188,212,26,.13), transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(162,181,168,.18), transparent 55%),
+    linear-gradient(135deg, var(--beige4) 0%, #f3eee3 50%, #e8e2d4 100%);
+  box-shadow:
+    0 28px 70px rgba(21,20,18,.18),
+    0 10px 24px rgba(21,20,18,.06),
+    inset 0 1px 0 rgba(255,255,255,.7);
+  isolation:isolate;z-index:1;align-self:center;
 }
-.parq-scene-bg,.parq-scene-obj{
-  position:absolute;will-change:transform,opacity;
+/* pattern dots subtil */
+.parq-scene::before{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background-image:radial-gradient(rgba(21,20,18,.07) 1.2px, transparent 1.2px);
+  background-size:22px 22px;background-position:0 0;
+  mask:radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask:radial-gradient(ellipse at center, black 30%, transparent 75%);
+  opacity:.5;
 }
+/* blob décoratif animé */
+.parq-scene::after{
+  content:'';position:absolute;width:240px;height:240px;border-radius:50%;
+  top:8%;left:6%;z-index:1;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,255,255,.5),transparent 65%);
+  filter:blur(20px);animation:blob 11s ease-in-out infinite;
+}
+/* CORNER BADGES décoratifs */
+.parq-scene-badge{
+  position:absolute;z-index:4;
+  background:var(--white);border-radius:14px;
+  box-shadow:var(--clay);border:1px solid rgba(255,255,255,.9);
+  padding:.55rem .85rem;display:flex;align-items:center;gap:.5rem;
+  font-family:'Space Grotesk',sans-serif;
+  animation:float 5.5s ease-in-out infinite;
+  pointer-events:none;
+}
+.parq-scene-badge.b-tl{top:18px;left:18px;animation-delay:0s;}
+.parq-scene-badge.b-br{bottom:18px;right:18px;animation-delay:1.2s;}
+.parq-scene-badge-ico{width:24px;height:24px;border-radius:7px;background:rgba(188,212,26,.18);display:flex;align-items:center;justify-content:center;font-size:.78rem;flex-shrink:0;}
+.parq-scene-badge-l{font-size:.5rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);line-height:1;margin-bottom:2px;}
+.parq-scene-badge-v{font-size:.7rem;font-weight:800;color:var(--ob);line-height:1;}
+
+/* L'IMAGE PNG TRANSPARENTE */
 .parq-scene-bg{
-  inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
-  z-index:1;
+  position:absolute;inset:5% 5%;z-index:3;
+  width:90%;height:90%;
+  object-fit:contain;
+  filter:drop-shadow(0 30px 40px rgba(21,20,18,.28));
+  will-change:transform,opacity,filter;
   animation:parqBgIn 1.3s cubic-bezier(.22,1,.36,1) both;
 }
 
-}
-.parq-scene::after{
-  content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:radial-gradient(ellipse at center,transparent 55%,rgba(21,20,18,.2) 100%);
-}
 @keyframes parqBgIn{
   0%{
     opacity:0;
-    transform:scale(1.28) translateY(6%);
-    filter:saturate(.6) blur(14px);
-    clip-path:inset(8% 8% 8% 8% round 22px);
+    transform:scale(1.32) translateY(8%) rotate(-2deg);
+    filter:drop-shadow(0 30px 40px rgba(21,20,18,.28)) blur(16px) saturate(.5);
   }
-  55%{
+  50%{
     opacity:1;
-    filter:saturate(.95) blur(2px);
+    filter:drop-shadow(0 30px 40px rgba(21,20,18,.28)) blur(3px) saturate(.95);
   }
   100%{
     opacity:1;
-    transform:scale(1) translateY(0);
-    filter:saturate(1) blur(0);
-    clip-path:inset(0 0 0 0 round 22px);
+    transform:scale(1) translateY(0) rotate(0);
+    filter:drop-shadow(0 30px 40px rgba(21,20,18,.28)) blur(0) saturate(1);
   }
 }
-/* TEXTE — animation appear */
-.parq-text > *{animation:parqTextIn .8s cubic-bezier(.22,1,.36,1) both;}
-.parq-text > *:nth-child(1){animation-delay:.05s;}
-.parq-text > *:nth-child(2){animation-delay:.13s;}
-.parq-text > *:nth-child(3){animation-delay:.21s;}
-.parq-text > *:nth-child(4){animation-delay:.29s;}
-.parq-text > *:nth-child(5){animation-delay:.37s;}
+
+/* TEXTE — cascade in */
+.parq-left > .parq-fade{animation:parqTextIn .8s cubic-bezier(.22,1,.36,1) both;}
+.parq-left > .parq-fade:nth-of-type(1){animation-delay:.05s;}
+.parq-left > .parq-fade:nth-of-type(2){animation-delay:.13s;}
+.parq-left > .parq-fade:nth-of-type(3){animation-delay:.21s;}
+.parq-left > .parq-fade:nth-of-type(4){animation-delay:.29s;}
 @keyframes parqTextIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-
-/* BADGE numéro géant filigrane */
-.parq-bignum{
-  position:absolute;right:1.5rem;top:1.2rem;z-index:1;
-  font-family:'Space Grotesk',sans-serif;font-weight:800;
-  font-size:clamp(5rem,9vw,8rem);letter-spacing:-6px;line-height:.8;
-  color:rgba(162,181,168,.09);pointer-events:none;user-select:none;
-}
-
-/* NAV — arrows + auto progress */
-.parq-nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;}
-.parq-arrows{display:flex;gap:.55rem;}
-.parq-arrow{
-  width:48px;height:48px;border-radius:50%;
-  background:var(--white);border:1.5px solid var(--border2);box-shadow:var(--clay-sm);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Space Grotesk',sans-serif;font-size:1.3rem;color:var(--ob);cursor:pointer;
-  transition:all .35s cubic-bezier(.22,1,.36,1);user-select:none;line-height:1;font-weight:300;padding-bottom:2px;
-}
-.parq-arrow:hover{background:var(--ob);color:var(--lime);border-color:var(--ob);transform:scale(1.08);box-shadow:0 14px 34px rgba(21,20,18,.28);}
-.parq-arrow:disabled{opacity:.35;cursor:not-allowed;pointer-events:none;}
-.parq-progress{flex:1;max-width:340px;height:3px;background:var(--border2);border-radius:3px;overflow:hidden;position:relative;}
-.parq-progress-fill{position:absolute;left:0;top:0;height:100%;width:0;background:linear-gradient(90deg,var(--lime),var(--sage2));border-radius:3px;box-shadow:0 0 10px rgba(188,212,26,.5);transition:width 5s linear;}
-.parq-progress.paused .parq-progress-fill{transition:none;}
-.parq-counter{font-family:'Space Grotesk',sans-serif;font-size:.68rem;font-weight:700;color:var(--muted);letter-spacing:.06em;}
-.parq-counter span{color:var(--ob);font-size:.85rem;font-weight:800;letter-spacing:-.2px;}
 
 @media(max-width:900px){
   .parq{padding:3.5rem 1.2rem;}
-  .parq-stage{grid-template-columns:1fr;gap:1.6rem;padding:1.6rem;min-height:auto;}
-  .parq-scene{aspect-ratio:4/3;}
-  .parq-step-btn-lbl{display:none;}
-  .parq-step-btn{padding:.4rem .5rem;}
-  .parq-step-link{width:30px;}
-  .parq-bignum{font-size:5rem;top:.8rem;right:.8rem;}
+  .parq-stage{grid-template-columns:1fr;gap:1.8rem;padding:1.8rem;}
+  .parq-scene{aspect-ratio:4/3;order:-1;}
+  .parq-bignum{font-size:3.5rem;}
 }
-@media(max-width:560px){
-  .parq-step-link{display:none;}
-  .parq-stepper{gap:.4rem;}
-}
+
   
 /* ══ TEAM — HOLO GALLERY v2 ══ */
 .tx-wrap{position:relative;padding:.8rem 0 .3rem;}
@@ -1342,6 +1380,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 
 <!-- ══ 7. PARCOURS — STEPPED SHOWCASE ══ -->
+<!-- ══ 7. PARCOURS — STEPPED SHOWCASE v3 ══ -->
 <section class="parq" id="parq">
   <div class="parq-hd rv">
     <div class="tag" style="justify-content:center">Votre parcours</div>
@@ -1349,64 +1388,77 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
     <div class="parq-sub">4 étapes · 1 interlocuteur unique · ~6 à 8 semaines</div>
   </div>
 
-  <!-- STEPPER -->
-  <div class="parq-stepper rv" id="parqStepper">
-    <button class="parq-step-btn is-active" data-idx="0" type="button">
-      <div class="parq-step-btn-num"><span>01</span></div>
-      <div class="parq-step-btn-lbl">Étape 01<span>Jour J</span></div>
-    </button>
-    <div class="parq-step-link"></div>
-    <button class="parq-step-btn" data-idx="1" type="button">
-      <div class="parq-step-btn-num"><span>02</span></div>
-      <div class="parq-step-btn-lbl">Étape 02<span>J+3 à J+7</span></div>
-    </button>
-    <div class="parq-step-link"></div>
-    <button class="parq-step-btn" data-idx="2" type="button">
-      <div class="parq-step-btn-num"><span>03</span></div>
-      <div class="parq-step-btn-lbl">Étape 03<span>J+10 à J+20</span></div>
-    </button>
-    <div class="parq-step-link"></div>
-    <button class="parq-step-btn" data-idx="3" type="button">
-      <div class="parq-step-btn-num"><span>04</span></div>
-      <div class="parq-step-btn-lbl">Étape 04<span>J+45 à J+55</span></div>
-    </button>
-  </div>
-
-  <!-- STAGE -->
   <div class="parq-stage rv" id="parqStage">
-    <div class="parq-bignum" id="parqBignum">01</div>
 
-    <!-- LEFT TEXTE -->
-    <div class="parq-text" id="parqText">
-      <div class="parq-eyebrow" id="parqEyebrow">Étape 01 · Jour J</div>
-      <h3 class="parq-title" id="parqTitle">Étudiez votre <em>capacité.</em></h3>
-      <p class="parq-desc" id="parqDesc">Analyse approfondie <strong>gratuite</strong>. Accord de solvabilité immédiat pour rassurer les vendeurs et verrouiller votre offre.</p>
-      <div class="parq-chips" id="parqChips">
+    <!-- LEFT -->
+    <div class="parq-left">
+      <div class="parq-bignum parq-fade" id="parqBignum">01</div>
+      <div class="parq-fade">
+        <div class="parq-eyebrow" id="parqEyebrow">Étape 01 · Jour J</div>
+        <h3 class="parq-title" id="parqTitle">Étudiez votre <em>capacité.</em></h3>
+      </div>
+      <p class="parq-desc parq-fade" id="parqDesc">Analyse approfondie <strong>gratuite</strong>. Accord de solvabilité immédiat pour rassurer les vendeurs et verrouiller votre offre.</p>
+      <div class="parq-chips parq-fade" id="parqChips">
         <span class="parq-chip lime">● Gratuit</span>
         <span class="parq-chip">Sans engagement</span>
         <span class="parq-chip">RDV en 48h</span>
       </div>
-      <div class="parq-ctas" id="parqCtas">
-        <a href="contact.html" class="btn-p">Démarrer →</a>
+
+      <!-- STEPPER VERTICAL -->
+      <div class="parq-vstepper" id="parqStepper">
+        <button class="parq-vstep is-active" data-idx="0" type="button">
+          <div class="parq-vstep-dot">01</div>
+          <div class="parq-vstep-info">
+            <div class="parq-vstep-t">Étudiez votre capacité</div>
+            <div class="parq-vstep-s">Jour J · Gratuit</div>
+          </div>
+          <div class="parq-vstep-arrow">→</div>
+        </button>
+        <button class="parq-vstep" data-idx="1" type="button">
+          <div class="parq-vstep-dot">02</div>
+          <div class="parq-vstep-info">
+            <div class="parq-vstep-t">Montage du dossier</div>
+            <div class="parq-vstep-s">J+3 à J+7</div>
+          </div>
+          <div class="parq-vstep-arrow">→</div>
+        </button>
+        <button class="parq-vstep" data-idx="2" type="button">
+          <div class="parq-vstep-dot">03</div>
+          <div class="parq-vstep-info">
+            <div class="parq-vstep-t">Négociation optimale</div>
+            <div class="parq-vstep-s">J+10 à J+20</div>
+          </div>
+          <div class="parq-vstep-arrow">→</div>
+        </button>
+        <button class="parq-vstep" data-idx="3" type="button">
+          <div class="parq-vstep-dot">04</div>
+          <div class="parq-vstep-info">
+            <div class="parq-vstep-t">Remise des clés</div>
+            <div class="parq-vstep-s">J+45 à J+55</div>
+          </div>
+          <div class="parq-vstep-arrow">→</div>
+        </button>
+      </div>
+
+      <div class="parq-ctas">
+        <a href="contact.html" class="btn-p">Démarrer mon projet →</a>
         <a href="simulation.html" class="btn-s">Simuler d'abord</a>
       </div>
     </div>
 
     <!-- RIGHT SCÈNE -->
     <div class="parq-scene" id="parqScene">
-      <img class="parq-scene-bg" id="parqBg" src="Sans titre-3.png" alt=""/>
-     
+      <div class="parq-scene-badge b-tl">
+        <div class="parq-scene-badge-ico">⚡</div>
+        <div><div class="parq-scene-badge-l">Étape</div><div class="parq-scene-badge-v" id="parqBadgeNum">01 / 04</div></div>
+      </div>
+      <div class="parq-scene-badge b-br">
+        <div class="parq-scene-badge-ico">⏱</div>
+        <div><div class="parq-scene-badge-l">Délai</div><div class="parq-scene-badge-v" id="parqBadgeTime">Jour J</div></div>
+      </div>
+      <img class="parq-scene-bg" id="parqBg" src="fond-1.png" alt=""/>
     </div>
-  </div>
 
-  <!-- NAV -->
-  <div class="parq-nav rv">
-    <div class="parq-arrows">
-      <button class="parq-arrow" id="parqPrev" type="button" aria-label="Étape précédente">‹</button>
-      <button class="parq-arrow" id="parqNext" type="button" aria-label="Étape suivante">›</button>
-    </div>
-    <div class="parq-progress" id="parqProgress"><div class="parq-progress-fill" id="parqProgressFill"></div></div>
-    <div class="parq-counter"><span id="parqCounter">01</span> / 04</div>
   </div>
 </section>
 <div class="divider"></div>
@@ -1871,101 +1923,77 @@ calcAll();
   
 })();
 
-/* ══ PARCOURS — STEPPED SHOWCASE ══ */
+/* ══ PARCOURS v3 — VERTICAL STEPPER ══ */
 (function(){
   var stage=document.getElementById('parqStage');
   if(!stage)return;
 
   var STEPS=[
     {
-      num:'01', eyebrow:'Étape 01 · Jour J',
+      num:'01', time:'Jour J', eyebrow:'Étape 01 · Jour J',
       title:'Étudiez votre <em>capacité.</em>',
       desc:'Analyse approfondie <strong>gratuite</strong>. Accord de solvabilité immédiat pour rassurer les vendeurs et verrouiller votre offre.',
       chips:[{c:'lime',t:'● Gratuit'},{t:'Sans engagement'},{t:'RDV en 48h'}],
-      bg:'Sans titre-3.png', obj:'TOTAL.png'
+      bg:'fond-1.png'
     },
     {
-      num:'02', eyebrow:'Étape 02 · J+3 à J+7',
+      num:'02', time:'J+3 à J+7', eyebrow:'Étape 02 · J+3 à J+7',
       title:'Montage du <em>dossier.</em>',
       desc:'Documents vérifiés, cohérence validée, profil optimisé. Notre expertise fait la différence — là où <strong>80% des dossiers bloquent</strong>.',
       chips:[{c:'lime',t:'● Dossier béton'},{t:'Vérifications'},{t:'Optimisation profil'}],
-      bg:'Fond .png', obj:'obet.png'
+      bg:'fond-2.png'
     },
     {
-      num:'03', eyebrow:'Étape 03 · J+10 à J+20',
+      num:'03', time:'J+10 à J+20', eyebrow:'Étape 03 · J+10 à J+20',
       title:'Négociation <em>optimale.</em>',
       desc:'Toutes les banques mises en concurrence. Vous choisissez la meilleure offre, en connaissance de cause. <strong>Transparence totale</strong> sur les conditions.',
       chips:[{c:'lime',t:'● 20+ banques'},{t:'Dérogation tarifaire'},{t:'Taux négociés'}],
-      bg:'fond.png', obj:'objet.png'
+      bg:'fond-3.png'
     },
     {
-      num:'04', eyebrow:'Étape 04 · J+45 à J+55',
+      num:'04', time:'J+45 à J+55', eyebrow:'Étape 04 · J+45 à J+55',
       title:'Remise des <em>clés.</em>',
       desc:'Accompagnement jusqu\'au notaire. Gestion de l\'appel de fonds. De A jusqu\'aux clés, <strong>littéralement</strong>.',
       chips:[{c:'lime',t:'● Place aux cartons'},{t:'Notaire'},{t:'Appel de fonds'}],
-      bg:'contratobjet.png', obj:'porte clés.png'
+      bg:'fond-4.png'
     }
   ];
 
-  var btns=document.querySelectorAll('#parqStepper .parq-step-btn');
-  var elText=document.getElementById('parqText');
+  var btns=document.querySelectorAll('#parqStepper .parq-vstep');
+  var fades=stage.querySelectorAll('.parq-fade');
   var elEyebrow=document.getElementById('parqEyebrow');
   var elTitle=document.getElementById('parqTitle');
   var elDesc=document.getElementById('parqDesc');
   var elChips=document.getElementById('parqChips');
   var elBg=document.getElementById('parqBg');
-  var elObj=document.getElementById('parqObj');
   var elBignum=document.getElementById('parqBignum');
-  var elCounter=document.getElementById('parqCounter');
-  var elProgressFill=document.getElementById('parqProgressFill');
-  var elProgress=document.getElementById('parqProgress');
-  var btnPrev=document.getElementById('parqPrev');
-  var btnNext=document.getElementById('parqNext');
+  var elBadgeNum=document.getElementById('parqBadgeNum');
+  var elBadgeTime=document.getElementById('parqBadgeTime');
 
   var cur=0, auto=null, paused=false, AUTO_MS=5000;
 
-  // PRELOAD images
-  STEPS.forEach(function(s){var a=new Image();a.src=s.bg;var b=new Image();b.src=s.obj;});
+  // PRELOAD
+  STEPS.forEach(function(s){var a=new Image();a.src=s.bg;});
 
   function render(i, animate){
     var s=STEPS[i];
-    // STEPPER state
     btns.forEach(function(b,k){
       b.classList.toggle('is-active', k===i);
       b.classList.toggle('is-done', k<i);
     });
-    // Bignum + counter
     elBignum.textContent=s.num;
-    elCounter.textContent=s.num;
-    // Texte
+    elBadgeNum.textContent=s.num+' / 04';
+    elBadgeTime.textContent=s.time;
     elEyebrow.innerHTML=s.eyebrow;
     elTitle.innerHTML=s.title;
     elDesc.innerHTML=s.desc;
     elChips.innerHTML=s.chips.map(function(c){return '<span class="parq-chip '+(c.c||'')+'">'+c.t+'</span>';}).join('');
-    // Images — swap puis relance les keyframes
-elBg.src=s.bg;
+    elBg.src=s.bg;
 
-if(animate){
-  // restart text & scene animations
-  [elText, elBg].forEach(function(el){
-    el.style.animation='none';
-    void el.offsetWidth;
-    el.style.animation='';
-  });
-
+    if(animate){
+      fades.forEach(function(el){el.style.animation='none';void el.offsetWidth;el.style.animation='';});
+      elBg.style.animation='none';void elBg.offsetWidth;elBg.style.animation='';
     }
-
-    // arrows
-    btnPrev.disabled=(i===0);
-    btnNext.disabled=(i===STEPS.length-1);
-
-    // progress bar reset & restart
-    elProgress.classList.add('paused');
-    elProgressFill.style.width='0%';
-    void elProgressFill.offsetWidth;
-    elProgress.classList.remove('paused');
-    if(!paused) elProgressFill.style.width='100%';
-
     cur=i;
   }
 
@@ -1975,8 +2003,6 @@ if(animate){
     render(n, true);
     restartAuto();
   }
-  function next(){ go((cur+1) % STEPS.length); }
-  function prev(){ go((cur-1+STEPS.length) % STEPS.length); }
 
   function restartAuto(){
     if(auto) clearTimeout(auto);
@@ -1984,39 +2010,18 @@ if(animate){
     auto=setTimeout(function(){ go((cur+1)%STEPS.length); }, AUTO_MS);
   }
 
-  btns.forEach(function(b){
-    b.addEventListener('click', function(){ go(+b.dataset.idx); });
-  });
-  btnNext.addEventListener('click', next);
-  btnPrev.addEventListener('click', prev);
+  btns.forEach(function(b){b.addEventListener('click', function(){ go(+b.dataset.idx); });});
+  stage.addEventListener('mouseenter', function(){ paused=true; if(auto)clearTimeout(auto); });
+  stage.addEventListener('mouseleave', function(){ paused=false; restartAuto(); });
 
-  // pause auto au hover
-  stage.addEventListener('mouseenter', function(){ paused=true; if(auto)clearTimeout(auto); elProgress.classList.add('paused'); });
-  stage.addEventListener('mouseleave', function(){ paused=false; restartAuto(); elProgress.classList.remove('paused'); elProgressFill.style.width='100%'; });
-
-  // keyboard
-  document.addEventListener('keydown', function(e){
-    var r=stage.getBoundingClientRect();
-    if(r.bottom<0 || r.top>window.innerHeight) return;
-    if(e.key==='ArrowLeft') prev();
-    if(e.key==='ArrowRight') next();
-  });
-
-  // INIT — démarrage uniquement quand la section entre dans le viewport
+  // INIT au scroll
   var started=false;
   var io=new IntersectionObserver(function(es){
     es.forEach(function(e){
-      if(e.isIntersecting && !started){
-        started=true;
-        // forcer animation initiale
-        render(0, true);
-        restartAuto();
-      }
+      if(e.isIntersecting && !started){started=true;render(0,true);restartAuto();}
     });
-  },{threshold:.2});
+  },{threshold:.25});
   io.observe(stage);
-
-  // initial paint (sans auto tant que pas visible)
   render(0, false);
 })();
 
