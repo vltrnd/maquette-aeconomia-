@@ -414,7 +414,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 /* ══ FLIP CARDS — scroll-driven ══ */
 .flip{position:relative;background:var(--bg);}
-.flip-track{position:relative;height:340vh;}
+.flip-track{position:relative;height:240vh;}
 .flip-stage{
   position:sticky;top:0;height:100vh;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -448,11 +448,19 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 }
 .flip-card{
   position:relative;
-  width:clamp(150px,21vw,250px);
+  width:clamp(155px,20vw,240px);
   aspect-ratio:1/2;
+  /* PLAQUE SOMBRE derrière → supprime le flash blanc au moment du flip (90°) */
+  background:linear-gradient(160deg,#1c1a17,var(--ob));
+  border-radius:20px;
   transform-style:preserve-3d;
-  will-change:transform,box-shadow;
-  transition:box-shadow .3s;
+  will-change:transform;
+}
+.flip-card::after{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  box-shadow:0 30px 60px rgba(21,20,18,.4),0 10px 22px rgba(21,20,18,.22);
+  opacity:var(--sep,0);transition:opacity .3s;
+  transform:translateZ(-1px);pointer-events:none;
 }
 .flip-card-inner{
   position:absolute;inset:0;
@@ -462,9 +470,11 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .flip-card-front,.flip-card-back{
   position:absolute;inset:0;
   -webkit-backface-visibility:hidden;backface-visibility:hidden;
+  -webkit-transform:translateZ(0);
   border-radius:20px;overflow:hidden;
 }
 .flip-card-front{
+  background-color:#1c1a17;
   background-image:url('https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photogroupe-2.jpg');
   background-size:300% 100%;
   background-repeat:no-repeat;
@@ -473,57 +483,87 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .flip-card[data-i="1"] .flip-card-front{background-position:center center;}
 .flip-card[data-i="2"] .flip-card-front{background-position:right center;}
 
-/* BACK */
+/* ── BACK — redesign hiérarchisé ── */
 .flip-card-back{
   transform:rotateY(180deg);
-  background:linear-gradient(160deg,var(--ob) 0%,#1f1d1a 100%);
+  background:linear-gradient(165deg,#1f1d19 0%,var(--ob) 55%,#100f0d 100%);
   color:var(--bg);
-  padding:1.4rem 1.25rem;
-  display:flex;flex-direction:column;justify-content:space-between;
-  border:1px solid rgba(255,255,255,.06);
+  padding:1.5rem 1.35rem 1.25rem;
+  display:flex;flex-direction:column;
+  border:1px solid rgba(255,255,255,.07);
 }
 .flip-card-back::before{
-  content:'';position:absolute;top:0;left:-50%;width:150%;height:3px;
-  background:linear-gradient(90deg,transparent,var(--lime),transparent);
-  opacity:.7;
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;z-index:3;
+  background:linear-gradient(90deg,transparent,var(--lime),transparent);opacity:.85;
 }
-.flip-back-top{display:flex;justify-content:space-between;align-items:flex-start;}
-.flip-back-num{font-family:'Space Grotesk',sans-serif;font-size:.56rem;font-weight:700;letter-spacing:.15em;color:rgba(255,255,255,.32);}
+/* halo lime décoratif */
+.flip-card-back > .flip-back-top::after{
+  content:'';position:absolute;top:-12%;right:-18%;width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle,rgba(188,212,26,.16),transparent 65%);pointer-events:none;z-index:0;
+}
+.flip-back-top{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:.85rem;margin-bottom:1rem;}
 .flip-back-ico{
-  width:44px;height:44px;border-radius:12px;
-  background:linear-gradient(135deg,rgba(188,212,26,.22),rgba(188,212,26,.08));
-  border:1px solid rgba(188,212,26,.32);
-  display:flex;align-items:center;justify-content:center;font-size:1.25rem;
-  box-shadow:0 8px 18px rgba(188,212,26,.15);
+  position:relative;z-index:2;
+  width:50px;height:50px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(188,212,26,.3),rgba(188,212,26,.08));
+  border:1px solid rgba(188,212,26,.42);
+  display:flex;align-items:center;justify-content:center;font-size:1.45rem;
+  box-shadow:0 10px 24px rgba(188,212,26,.22);
 }
-.flip-back-mid{margin-top:1rem;flex:1;display:flex;flex-direction:column;justify-content:center;}
+.flip-back-num{
+  position:relative;z-index:2;
+  font-family:'Space Grotesk',sans-serif;font-size:.54rem;font-weight:700;
+  letter-spacing:.18em;color:var(--lime);
+  display:inline-flex;align-items:center;gap:.45rem;
+}
+.flip-back-num::before{content:'';width:16px;height:2px;background:var(--lime);border-radius:2px;}
+.flip-back-mid{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;}
 .flip-back-t{
   font-family:'Space Grotesk',sans-serif;
-  font-size:clamp(.85rem,1.2vw,1.1rem);
-  font-weight:800;letter-spacing:-.4px;line-height:1.15;
-  color:var(--bg);margin-bottom:.95rem;
+  font-size:clamp(.92rem,1.25vw,1.18rem);
+  font-weight:800;letter-spacing:-.5px;line-height:1.12;
+  color:var(--white);margin-bottom:1rem;padding-bottom:1rem;
+  border-bottom:1px solid rgba(255,255,255,.1);
 }
 .flip-back-t em{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:800;color:var(--lime);}
-.flip-back-list{display:flex;flex-direction:column;gap:.5rem;}
+.flip-back-list{display:flex;flex-direction:column;gap:.62rem;}
 .flip-back-li{
-  font-size:clamp(.6rem,.78vw,.74rem);
-  color:rgba(255,255,255,.78);line-height:1.45;
-  display:flex;align-items:flex-start;gap:.5rem;
+  font-size:clamp(.62rem,.78vw,.75rem);
+  color:rgba(247,244,239,.82);line-height:1.4;font-weight:500;
+  display:flex;align-items:flex-start;gap:.55rem;
 }
 .flip-back-li::before{
-  content:'✓';width:16px;height:16px;border-radius:50%;
-  background:var(--lime);color:var(--ob);
-  font-weight:900;font-size:.6rem;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.05rem;
-  box-shadow:0 2px 6px rgba(188,212,26,.4);
+  content:'✓';width:17px;height:17px;border-radius:50%;
+  background:var(--lime);color:var(--ob);font-weight:900;font-size:.6rem;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.02rem;
+  box-shadow:0 3px 8px rgba(188,212,26,.4);
 }
 .flip-back-foot{
-  margin-top:1rem;padding-top:.85rem;
-  border-top:1px dashed rgba(255,255,255,.13);
+  position:relative;z-index:2;
+  margin-top:auto;padding-top:1rem;
   font-family:'Space Grotesk',sans-serif;
-  font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.4);text-align:center;
+  font-size:.5rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(247,244,239,.4);
+  display:flex;align-items:center;gap:.6rem;white-space:nowrap;
 }
+.flip-back-foot::before,.flip-back-foot::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.1);}
+
+/* ── ENTRÉE TEXTE VERSO — cascade au flip ── */
+.js-on .flip-card-back .flip-back-ico,
+.js-on .flip-card-back .flip-back-num,
+.js-on .flip-card-back .flip-back-t,
+.js-on .flip-card-back .flip-back-li,
+.js-on .flip-card-back .flip-back-foot{opacity:0;}
+.flip-card.is-revealed .flip-back-ico{animation:flipPop .6s cubic-bezier(.34,1.56,.64,1) .06s both;}
+.flip-card.is-revealed .flip-back-num{animation:flipUp .5s cubic-bezier(.22,1,.36,1) .16s both;}
+.flip-card.is-revealed .flip-back-t{animation:flipUp .55s cubic-bezier(.22,1,.36,1) .24s both;}
+.flip-card.is-revealed .flip-back-li:nth-child(1){animation:flipUp .5s cubic-bezier(.22,1,.36,1) .34s both;}
+.flip-card.is-revealed .flip-back-li:nth-child(2){animation:flipUp .5s cubic-bezier(.22,1,.36,1) .42s both;}
+.flip-card.is-revealed .flip-back-li:nth-child(3){animation:flipUp .5s cubic-bezier(.22,1,.36,1) .50s both;}
+.flip-card.is-revealed .flip-back-li:nth-child(4){animation:flipUp .5s cubic-bezier(.22,1,.36,1) .58s both;}
+.flip-card.is-revealed .flip-back-foot{animation:flipUp .5s cubic-bezier(.22,1,.36,1) .66s both;}
+@keyframes flipUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@keyframes flipPop{from{opacity:0;transform:scale(.4) rotate(-18deg);}to{opacity:1;transform:scale(1) rotate(0);}}
 
 /* PROGRESS BAR + HINT */
 .flip-progress{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);width:200px;height:3px;background:rgba(21,20,18,.1);border-radius:3px;overflow:hidden;z-index:3;}
@@ -533,7 +573,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 @keyframes flipBounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(5px);}}
 
 @media(max-width:760px){
-  .flip-track{height:280vh;}
+  .flip-track{height:200vh;}
   .flip-card{width:clamp(105px,28vw,170px);}
   .flip-back-li{font-size:.58rem;}
 }
@@ -2667,78 +2707,73 @@ calcAll();
   function startAuto(){if(auto)clearInterval(auto);auto=setInterval(tick,4500);}
   cards.forEach(function(c){c.addEventListener('click',function(){var i=+c.dataset.i;if(i===idx){paused=true;clearInterval(auto);return;}go(i);paused=false;startAuto();});});
   dots.forEach(function(d){d.addEventListener('click',function(){go(+d.dataset.i);paused=false;startAuto();});});
+  
   stage.addEventListener('mouseenter',function(){paused=true;});
   stage.addEventListener('mouseleave',function(){paused=false;});
   render();startAuto();
+})();
 
-/* ══ FLIP CARDS scroll animation ══ */
+/* ══ FLIP CARDS scroll animation v2 ══ */
 (function(){
-  var track = document.querySelector('.flip-track');
-  if(!track) return;
-  var stage = document.getElementById('flipStage');
-  var cards = document.querySelectorAll('.flip-card');
-  var inners = document.querySelectorAll('.flip-card-inner');
-  var progress = document.getElementById('flipProgress');
-  var raf = null;
+  var track=document.querySelector('.flip-track');
+  if(!track)return;
+  var stage=document.getElementById('flipStage');
+  var cards=document.querySelectorAll('.flip-card');
+  var inners=document.querySelectorAll('.flip-card-inner');
+  var progress=document.getElementById('flipProgress');
+  var raf=null;
 
-  function ease(t){ return t<.5 ? 2*t*t : 1 - Math.pow(-2*t+2,2)/2; }
+  function clamp(v){return Math.max(0,Math.min(1,v));}
+  function ease(t){return t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;}
+
+  // préchargement image (évite l'apparition lente)
+  var pre=new Image();
+  pre.src='https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photogroupe-2.jpg';
 
   function update(){
-    raf = null;
-    var rect = track.getBoundingClientRect();
-    var vh = window.innerHeight;
-    var totalH = rect.height - vh;
-    var p = Math.max(0, Math.min(1, -rect.top / totalH));
+    raf=null;
+    var rect=track.getBoundingClientRect();
+    var vh=window.innerHeight;
+    var totalH=rect.height-vh;
+    var p=clamp(-rect.top/totalH);
 
-    // Phases (timeline) :
-    // 0.00 - 0.12  → image unifiée (hold)
-    // 0.12 - 0.42  → séparation des 3 cartes
-    // 0.42 - 0.55  → hold cartes séparées
-    // 0.55 - 0.88  → flip 180°
-    // 0.88 - 1.00  → hold final
-    var sep = ease(Math.max(0, Math.min(1, (p - 0.12) / 0.30)));
-    var flip = ease(Math.max(0, Math.min(1, (p - 0.55) / 0.33)));
+    // Timeline resserrée : séparation douce puis flip
+    var sep=ease(clamp((p-0.08)/0.34));
+    var flip=ease(clamp((p-0.52)/0.38));
 
-    // Responsive amplitudes
-    var w = window.innerWidth;
-    var SEP_X = w > 1100 ? 230 : w > 760 ? 170 : w > 480 ? 95 : 55;
-    var TILT  = w > 760 ? 11 : 7;
-    var LIFT  = w > 760 ? 28 : 16;
+    var w=window.innerWidth;
+    var SEP_X=w>1100?46:w>760?38:w>480?26:18; // ← cartes proches comme la photo
+    var TILT =w>760?7:5;
+    var SEP_Y=w>760?16:9;
+    var rOut=20, rIn=20*sep; // coins intérieurs : 0 (image unie) → 20 (séparées)
 
-    cards.forEach(function(c, i){
-      var off = i - 1; // -1, 0, 1
-      var tx = off * SEP_X * sep;
-      // middle card monte un peu plus
-      var ty = (i === 1 ? -LIFT * 1.4 * sep : -LIFT * sep);
-      var rot = off * TILT * sep;
-      c.style.transform = 'translate3d(' + tx + 'px,' + ty + 'px,0) rotate(' + rot + 'deg)';
-      // shadow scale avec la séparation
-      if(sep > 0.02){
-        var s = sep;
-        c.style.boxShadow = '0 ' + (18*s) + 'px ' + (50*s) + 'px rgba(21,20,18,' + (0.35*s) + '),0 ' + (6*s) + 'px ' + (14*s) + 'px rgba(21,20,18,' + (0.18*s) + ')';
-      } else {
-        c.style.boxShadow = 'none';
-      }
+    cards.forEach(function(c,i){
+      var off=i-1;
+      var tx=off*SEP_X*sep;
+      var ty=(i===1? -SEP_Y*sep : -SEP_Y*0.35*sep);
+      var rot=off*TILT*sep;
+      c.style.transform='translate3d('+tx+'px,'+ty+'px,0) rotate('+rot+'deg)';
+      c.style.setProperty('--sep', sep.toFixed(3));
+      var radius = i===0 ? rOut+'px '+rIn+'px '+rIn+'px '+rOut+'px'
+                 : i===2 ? rIn+'px '+rOut+'px '+rOut+'px '+rIn+'px'
+                 : rIn+'px';
+      c.style.borderRadius=radius;
+      var fr=c.querySelector('.flip-card-front'), bk=c.querySelector('.flip-card-back');
+      if(fr)fr.style.borderRadius=radius;
+      if(bk)bk.style.borderRadius=radius;
+      if(flip>0.82)c.classList.add('is-revealed'); else c.classList.remove('is-revealed');
     });
 
-    inners.forEach(function(inner){
-      inner.style.transform = 'rotateY(' + (flip * 180) + 'deg)';
-    });
+    inners.forEach(function(inner){inner.style.transform='rotateY('+(flip*180)+'deg)';});
 
-    // Title swap au milieu du flip
-    if(flip > 0.45) stage.classList.add('swapped');
-    else stage.classList.remove('swapped');
-
-    // Progress bar
-    if(progress) progress.style.width = (p * 100) + '%';
+    if(flip>0.45)stage.classList.add('swapped'); else stage.classList.remove('swapped');
+    if(progress)progress.style.width=(p*100)+'%';
   }
 
-  function onScroll(){ if(!raf) raf = requestAnimationFrame(update); }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', onScroll);
-  window.addEventListener('load', update);
+  function onScroll(){if(!raf)raf=requestAnimationFrame(update);}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  window.addEventListener('load',update);
   update();
-})();
-  
 })();
 </script></body></html>
