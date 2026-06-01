@@ -1149,81 +1149,294 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   .parq-fbadge.b-br{bottom:2%;right:0;}
   .parq-bignum{font-size:4rem;}
 }
-  
-/* ══ TEAM — HOLO GALLERY v2 ══ */
-.tx-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 1180px; /* Aligné sur ton .wrap global */
-  margin: 0 auto;
-  overflow: hidden;
+/* ══ TEAM GALLERY — effet profondeur 3D ══ */
 
-  /* Le fameux fondu progressif sur les extrémités gauche et droite */
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
-}.tx-stage {
-  position: relative;
-  width: 100%;
-  padding: 3rem 0; /* Donne de l'espace en haut/bas pour ne pas couper la 3D */
-  
-  /* Active la vraie 3D pour le carrousel */
-  perspective: 1200px; 
-  transform-style: preserve-3d;
-}
-.tx-stage::before{content:'';position:absolute;left:50%;bottom:6%;width:480px;height:60px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(21,20,18,.18),transparent 65%);filter:blur(18px);pointer-events:none;z-index:1;}
-.tx-stage::after{content:'';position:absolute;left:50%;top:50%;width:130%;height:120%;transform:translate(-50%,-50%);background:radial-gradient(ellipse at center,rgba(176,187,168,.13),transparent 50%);pointer-events:none;z-index:0;}
-.tx-track {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem; /* Ajuste l'espace entre tes courtiers comme sur la photo */
-  transform-style: preserve-3d;
-  will-change: transform;
+.teamHero-gallery{
+  position:relative;
+  z-index:2;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:0;
+  margin:2.8rem auto 2.2rem;
+  min-height:330px;
+  perspective:1400px;
+  transform-style:preserve-3d;
 }
 
-.tx-card{position:absolute;left:50%;top:50%;width:230px;height:325px;margin-left:-115px;margin-top:-162px;border-radius:26px;overflow:hidden;cursor:pointer;background:var(--white);box-shadow:0 20px 50px rgba(170,153,126,.28),0 0 0 7px var(--white),inset 0 1px 0 rgba(255,255,255,.5);transform-style:preserve-3d;transition:transform 1.05s cubic-bezier(.22,1,.36,1),opacity .8s cubic-bezier(.22,1,.36,1),box-shadow .55s;will-change:transform,opacity;}
-.tx-card::before{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(105deg,transparent 0%,rgba(255,255,255,.62) 50%,transparent 100%);transition:left 1.1s cubic-bezier(.22,1,.36,1);pointer-events:none;z-index:4;mix-blend-mode:overlay;border-radius:26px;}
-.tx-card:hover::before{left:160%;}
-.tx-card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 16%;transition:transform 1.3s cubic-bezier(.22,1,.36,1);}
-.tx-card-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,8,.88) 0%,rgba(10,10,8,.42) 28%,transparent 55%);pointer-events:none;z-index:1;}
-.tx-card-name{position:absolute;left:0;right:0;bottom:18px;text-align:center;color:var(--bg);z-index:3;padding:0 14px;}
-.tx-card-fn{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:800;letter-spacing:-.7px;line-height:.95;color:var(--bg);text-shadow:0 2px 10px rgba(0,0,0,.4);}
-.tx-card-ln{font-family:'Plus Jakarta Sans',sans-serif;font-style:italic;font-weight:500;font-size:.8rem;color:rgba(247,244,239,.92);margin-top:.18rem;text-shadow:0 1px 6px rgba(0,0,0,.4);}
-.tx-card-role{font-family:'Space Grotesk',sans-serif;font-size:.5rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#b0bba8;margin-top:.45rem;display:inline-flex;align-items:center;gap:.45rem;}
-.tx-card-role::before,.tx-card-role::after{content:'';width:14px;height:1.5px;background:rgba(176,187,168,.6);border-radius:2px;}
-.tx-card.is-center{box-shadow:0 36px 72px rgba(170,153,126,.42),0 0 0 7px var(--white),0 0 0 10px rgba(176,187,168,.5),inset 0 1px 0 rgba(255,255,255,.5);}
-.tx-card.is-center .tx-card-img{transform:scale(1.05);}
-.tx-card.is-center::before{animation:txShine 2.6s cubic-bezier(.22,1,.36,1) .35s;}
-@keyframes txShine{0%{left:-120%;}55%{left:160%;}100%{left:160%;}}
-
-.tx-nav{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;background:var(--white);border:1.5px solid var(--border2);box-shadow:var(--clay);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:1.4rem;color:var(--ob);cursor:pointer;z-index:25;transition:all .35s cubic-bezier(.22,1,.36,1);user-select:none;font-weight:300;line-height:1;padding-bottom:3px;}
-.tx-nav:hover{background:var(--ob);color:#b0bba8;border-color:var(--ob);transform:translateY(-50%) scale(1.1);box-shadow:0 16px 40px rgba(21,20,18,.34);}
-.tx-prev{left:1.5%;}.tx-next{right:1.5%;}
-
-.tx-bottom{display:flex;justify-content:center;align-items:center;gap:1.2rem;margin-top:.85rem;flex-wrap:wrap;}
-.tx-counter{display:inline-flex;align-items:center;gap:.65rem;font-family:'Space Grotesk',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--muted);}
-.tx-counter-num{font-size:.85rem;color:var(--ob);letter-spacing:-.2px;font-weight:800;}
-.tx-counter-bar{width:64px;height:1.5px;background:var(--border2);border-radius:2px;position:relative;overflow:hidden;}
-.tx-counter-bar::after{content:'';position:absolute;left:0;top:0;height:100%;width:0;background:#b0bba8;border-radius:2px;animation:txFill 4s linear infinite;}
-@keyframes txFill{0%{width:0;}100%{width:100%;}}
-.tx-cta{font-family:'Space Grotesk',sans-serif;font-size:.74rem;font-weight:700;background:var(--ob);color:var(--bg);border-radius:50px;padding:11px 20px;display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;box-shadow:0 8px 20px rgba(21,20,18,.22);transition:all .3s cubic-bezier(.22,1,.36,1);position:relative;overflow:hidden;}
-.tx-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(176,187,168,.32) 50%,transparent 70%);transform:translateX(-100%);transition:transform .85s;}
-.tx-cta:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 14px 32px rgba(21,20,18,.32);}
-.tx-cta:hover::after{transform:translateX(110%);}
-.tx-dots{display:flex;justify-content:center;gap:.4rem;margin-top:.7rem;flex-wrap:wrap;}
-.tx-dot{width:22px;height:4px;border-radius:50px;background:var(--border2);border:none;cursor:pointer;padding:0;transition:all .3s;}
-.tx-dot.active{background:#b0bba8;width:38px;}
-
-@media(max-width:760px){
-  .tx-stage{height:380px;}
-  .tx-card{width:180px;height:255px;margin-left:-90px;margin-top:-127px;}
-  .tx-card-fn{font-size:1.1rem;}.tx-card-ln{font-size:.66rem;}
+/* Base des cartes */
+.teamHero-card{
+  position:relative;
+  width:155px;
+  height:260px;
+  border-radius:24px;
+  overflow:hidden;
+  background:var(--white);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:
+    0 26px 55px rgba(21,20,18,.20),
+    0 8px 18px rgba(170,153,126,.22),
+    inset 0 1px 0 rgba(255,255,255,.8);
+  transition:
+    transform .55s cubic-bezier(.22,1,.36,1),
+    filter .55s cubic-bezier(.22,1,.36,1),
+    opacity .55s cubic-bezier(.22,1,.36,1),
+    box-shadow .55s cubic-bezier(.22,1,.36,1);
+  transform-style:preserve-3d;
+  will-change:transform;
 }
-@media(max-width:480px){
-  .tx-stage{height:330px;}
-  .tx-card{width:150px;height:215px;margin-left:-75px;margin-top:-107px;}
-  .tx-nav{width:42px;height:42px;font-size:1.15rem;}
-  .tx-card-fn{font-size:.95rem;}.tx-card-ln{font-size:.58rem;}
+
+/* Image */
+.teamHero-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.06);
+  transition:transform .65s cubic-bezier(.22,1,.36,1);
+}
+
+/* Dégradé bas */
+.teamHero-card::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(to top, rgba(21,20,18,.78) 0%, rgba(21,20,18,.34) 32%, transparent 64%);
+  pointer-events:none;
+  z-index:1;
+}
+
+/* Texte dans les cartes */
+.teamHero-card-info{
+  position:absolute;
+  z-index:2;
+  left:.8rem;
+  right:.8rem;
+  bottom:.8rem;
+  color:#fff;
+}
+
+.teamHero-card-info span{
+  display:inline-flex;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.45rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--lime);
+  margin-bottom:.32rem;
+}
+
+.teamHero-card-info strong{
+  display:block;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.74rem;
+  font-weight:800;
+  line-height:1.08;
+  letter-spacing:-.35px;
+}
+
+.teamHero-card-info small{
+  display:block;
+  font-size:.52rem;
+  color:rgba(255,255,255,.72);
+  margin-top:.16rem;
+}
+
+/* ══ Positions 3D — profondeur ══ */
+
+/* Carte 1 : très à gauche, reculée */
+.teamHero-card:nth-child(1){
+  z-index:1;
+  transform:
+    translateX(92px)
+    translateZ(-260px)
+    rotateY(38deg)
+    rotateZ(-4deg)
+    scale(.76);
+  opacity:.48;
+  filter:blur(.7px) saturate(.75);
+}
+
+/* Carte 2 */
+.teamHero-card:nth-child(2){
+  z-index:2;
+  transform:
+    translateX(58px)
+    translateZ(-180px)
+    rotateY(30deg)
+    rotateZ(-3deg)
+    scale(.84);
+  opacity:.62;
+  filter:blur(.45px) saturate(.82);
+}
+
+/* Carte 3 */
+.teamHero-card:nth-child(3){
+  z-index:3;
+  transform:
+    translateX(26px)
+    translateZ(-95px)
+    rotateY(20deg)
+    rotateZ(-2deg)
+    scale(.93);
+  opacity:.78;
+  filter:saturate(.9);
+}
+
+/* Carte 4 : proche centre gauche */
+.teamHero-card:nth-child(4){
+  z-index:4;
+  transform:
+    translateX(8px)
+    translateZ(20px)
+    rotateY(9deg)
+    rotateZ(-1deg)
+    scale(1.02);
+  opacity:.96;
+  filter:saturate(1);
+}
+
+/* Carte 5 : carte centrale principale */
+.teamHero-card:nth-child(5){
+  z-index:8;
+  transform:
+    translateZ(120px)
+    rotateY(0deg)
+    rotateZ(0deg)
+    scale(1.13);
+  opacity:1;
+  filter:saturate(1.04) contrast(1.03);
+  box-shadow:
+    0 38px 80px rgba(21,20,18,.32),
+    0 16px 34px rgba(170,153,126,.28),
+    0 0 0 5px rgba(255,255,255,.55);
+}
+
+/* Carte 6 : proche centre droite */
+.teamHero-card:nth-child(6){
+  z-index:4;
+  transform:
+    translateX(-8px)
+    translateZ(20px)
+    rotateY(-9deg)
+    rotateZ(1deg)
+    scale(1.02);
+  opacity:.96;
+  filter:saturate(1);
+}
+
+/* Carte 7 */
+.teamHero-card:nth-child(7){
+  z-index:3;
+  transform:
+    translateX(-26px)
+    translateZ(-95px)
+    rotateY(-20deg)
+    rotateZ(2deg)
+    scale(.93);
+  opacity:.78;
+  filter:saturate(.9);
+}
+
+/* Carte 8 : très à droite, reculée */
+.teamHero-card:nth-child(8){
+  z-index:2;
+  transform:
+    translateX(-58px)
+    translateZ(-180px)
+    rotateY(-30deg)
+    rotateZ(3deg)
+    scale(.84);
+  opacity:.62;
+  filter:blur(.45px) saturate(.82);
+}
+
+/* Hover : la carte passe devant */
+.teamHero-card:hover{
+  z-index:20;
+  transform:
+    translateY(-18px)
+    translateZ(190px)
+    rotateY(0deg)
+    rotateZ(0deg)
+    scale(1.18);
+  opacity:1;
+  filter:saturate(1.08) contrast(1.04);
+  box-shadow:
+    0 46px 90px rgba(21,20,18,.38),
+    0 18px 40px rgba(170,153,126,.32),
+    0 0 0 6px rgba(255,255,255,.65);
+}
+
+.teamHero-card:hover img{
+  transform:scale(1.13);
+}
+
+/* Petit effet de profondeur au survol de la zone */
+.teamHero-gallery:hover .teamHero-card:not(:hover){
+  filter:blur(.8px) saturate(.72);
+  opacity:.58;
+}
+
+/* Responsive */
+@media(max-width:1100px){
+  .teamHero-gallery{
+    justify-content:flex-start;
+    overflow-x:auto;
+    overflow-y:hidden;
+    min-height:310px;
+    padding:1.4rem 1rem 2rem;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    perspective:none;
+  }
+
+  .teamHero-card,
+  .teamHero-card:nth-child(n){
+    flex:0 0 155px;
+    transform:none;
+    opacity:1;
+    filter:none;
+    scroll-snap-align:center;
+  }
+
+  .teamHero-card:hover{
+    transform:translateY(-8px) scale(1.04);
+  }
+
+  .teamHero-gallery:hover .teamHero-card:not(:hover){
+    filter:none;
+    opacity:1;
+  }
+}
+
+  .teamHero-gallery::before{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:760px;
+  height:260px;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(ellipse, rgba(162,181,168,.22), transparent 68%);
+  filter:blur(18px);
+  opacity:.75;
+  pointer-events:none;
+  z-index:0;
+}
+
+@media(max-width:640px){
+  .teamHero-gallery{
+    min-height:285px;
+  }
+
+  .teamHero-card,
+  .teamHero-card:nth-child(n){
+    width:145px;
+    height:235px;
+    flex-basis:145px;
+  }
 }
   
   
