@@ -924,5 +924,26 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   },{passive:true});
   update();
 })();
+
+  /* ─── PRÉCHARGEMENT IMAGES SECOND BLOC ─── */
+(function(){
+  var refs=[
+    'https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/logotype_noir_recadre.png',
+    'https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/ca.png',
+    'https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/caisse%20d%27epargne.png',
+    'https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/bnp%20paribas.png',
+    'https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/societe%20generale.png',
+    'https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/vraimentbonlogo.png',
+    'https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/banque%20postale_.png',
+    'https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/banque%20pop.png',
+    'https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/0orange%20bank.png',
+    'https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/credit%20foncier.png',
+    'https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/ccf.png'
+  ];
+  refs.forEach(function(src){
+    var img=new Image();
+    img.src=src;
+  });
+})();
 </script>
 </body></html>
