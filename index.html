@@ -12,7 +12,6 @@
   --bg:#F7F4EF;--white:#FAFAF8;--ob:#151412;--ob2:#2A2824;
   --sage2:#75847c;--lime:#bcd41a;--muted:#8A8680;
   --sky:'Space Grotesk',sans-serif;--body:'Plus Jakarta Sans',sans-serif;
-  --mono:ui-monospace,'SF Mono','Menlo',Consolas,monospace;
 }
 html{-webkit-text-size-adjust:100%;}
 body{font-family:var(--body);background:var(--bg);color:var(--ob);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
@@ -26,23 +25,24 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   overflow:hidden;background:#EFE7D9;clip-path:inset(0 0 0 0);will-change:clip-path;
   transition:clip-path 1.25s cubic-bezier(.83,0,.17,1);}
 .intro.fade{opacity:0;transition:opacity .45s ease;}
-/* fond mesh animé */
 .intro-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
 .mesh{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:177.78vh;min-width:100vw;height:56.25vw;min-height:100vh;border:0;
-  /* recolorisation → blanc / beige clair */
   filter:grayscale(1) brightness(1.5) contrast(.86) sepia(.16) saturate(1.15);}
 .intro-bg::after{content:'';position:absolute;inset:0;
   background:linear-gradient(160deg,rgba(250,248,243,.5),rgba(237,232,223,.58));}
-/* prompt machine à écrire */
-.intro-type{position:relative;z-index:2;display:inline-flex;align-items:center;
-  font-family:var(--mono);font-weight:500;color:var(--ob);
-  font-size:clamp(1.7rem,5vw,3.4rem);letter-spacing:-1px;
-  transition:opacity .35s ease;}
-.tw-slash{color:var(--sage2);margin-right:.05em;}
-.tw-caret{display:inline-block;width:.58ch;height:1.05em;margin-left:.06em;background:var(--ob);
-  transform:translateY(.07em);animation:blink 1s steps(1) infinite;}
-@keyframes blink{0%,50%{opacity:1}51%,100%{opacity:0}}
+
+/* PROMPT roll (machine à sous) */
+.intro-type{position:relative;z-index:2;display:inline-flex;align-items:baseline;
+  font-family:var(--sky);font-weight:700;color:var(--ob);
+  font-size:clamp(1.9rem,5.5vw,3.6rem);letter-spacing:-1.5px;transition:opacity .35s ease;}
+.roll-slash{color:var(--sage2);margin-right:.1em;}
+.roll-win{position:relative;display:inline-block;height:1.18em;width:8.6em;overflow:hidden;text-align:left;}
+.roll-word{position:absolute;left:0;top:0;line-height:1.18em;white-space:nowrap;
+  transition:transform .62s cubic-bezier(.66,0,.2,1),opacity .5s ease;}
+.roll-word.enter{transform:translateY(-118%);opacity:0;}
+.roll-word.show{transform:translateY(0);opacity:1;}
+.roll-word.leave{transform:translateY(118%);opacity:0;}
 
 /* ════════ HERO ════════ */
 .hero{position:relative;min-height:100vh;overflow:hidden;background:#1b1916;}
@@ -158,11 +158,11 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 <!-- ═══════ INTRO (chargement) ═══════ -->
 <div class="intro" id="intro">
   <div class="intro-bg">
-    <iframe class="mesh" src="https://v1.cloan.me/view/0.7621610746952705"
+    <iframe class="mesh" src="https://meshbg-lhaemysyr-chasedavis-projects.vercel.app/embed/0.38847574225243164"
             title="" tabindex="-1" scrolling="no" frameborder="0" loading="eager"></iframe>
   </div>
   <div class="intro-type" id="introType">
-    <span class="tw-slash">/</span><span class="tw-word" id="twWord"></span><span class="tw-caret"></span>
+    <span class="roll-slash">/</span><span class="roll-win" id="rollWin"></span>
   </div>
 </div>
 
@@ -228,27 +228,25 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 function openMenu(){document.getElementById('mm').classList.add('open');document.body.style.overflow='hidden';}
 function closeMenu(){document.getElementById('mm').classList.remove('open');document.body.style.overflow='';}
 
-/* ─── PROMPT MACHINE À ÉCRIRE ─── */
+/* ─── ROLL « machine à sous » (le mot vient du haut) ─── */
 (function(){
-  var el=document.getElementById('twWord');
-  if(!el)return;
+  var win=document.getElementById('rollWin'); if(!win)return;
   var words=['aeconomia','transparent','humain','professionnel'];
-  var wi=0,ci=0,del=false,stop=false;
-  function tick(){
+  var i=0, cur=null, stop=false, iv=null;
+  function make(txt,cls){var s=document.createElement('span');s.className='roll-word '+cls;s.textContent=txt;win.appendChild(s);return s;}
+  cur=make(words[0],'show'); // 1er mot déjà en place
+  function step(){
     if(stop)return;
-    var w=words[wi];
-    if(!del){
-      ci++; el.textContent=w.slice(0,ci);
-      if(ci===w.length){del=true;return setTimeout(tick,950);}
-      setTimeout(tick,72);
-    }else{
-      ci--; el.textContent=w.slice(0,ci);
-      if(ci<=0){del=false;wi=(wi+1)%words.length;return setTimeout(tick,240);}
-      setTimeout(tick,38);
-    }
+    i=(i+1)%words.length;
+    var el=make(words[i],'enter');
+    void el.offsetWidth;                 // reflow
+    el.classList.remove('enter');el.classList.add('show'); // descend depuis le haut
+    if(cur){var old=cur;old.classList.remove('show');old.classList.add('leave'); // sort par le bas
+      setTimeout(function(){if(old&&old.parentNode)old.remove();},700);}
+    cur=el;
   }
-  tick();
-  window.__twStop=function(){stop=true;};
+  iv=setInterval(step,1700);
+  window.__rollStop=function(){stop=true;if(iv)clearInterval(iv);};
 })();
 
 /* ─── INTRO → TUILE ─── */
@@ -257,12 +255,12 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
       hero=document.getElementById('hero'),done=false;
   document.body.style.overflow='hidden';
 
-  function cleanup(){intro.style.display='none';document.body.style.overflow='';if(window.__twStop)window.__twStop();}
+  function cleanup(){intro.style.display='none';document.body.style.overflow='';if(window.__rollStop)window.__rollStop();}
 
   function finish(){
     if(done)return;done=true;
     hero.classList.add('go');
-    type.style.opacity='0'; /* le prompt s'efface */
+    type.style.opacity='0';
     var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
     var tile=document.querySelector('.tilewrap');
     var ok=tile&&getComputedStyle(tile).display!=='none'&&window.innerWidth>760;
@@ -273,9 +271,8 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     intro.style.clipPath='inset('+top+'px '+right+'px '+bot+'px '+left+'px)';
     setTimeout(function(){intro.classList.add('fade');setTimeout(cleanup,480);},1320);
   }
-  /* laisse le temps de lire ~2 mots avant la rétractation */
-  window.addEventListener('load',function(){setTimeout(finish,3400);});
-  setTimeout(finish,6000); /* filet de sécurité */
+  window.addEventListener('load',function(){setTimeout(finish,3600);});
+  setTimeout(finish,6200); /* filet de sécurité */
 })();
 </script>
 </body></html>
