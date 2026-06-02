@@ -129,11 +129,8 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .hero-field:focus-within{border-color:rgba(188,212,26,.5);box-shadow:0 0 0 4px rgba(188,212,26,.14);}
 .hero-field input{flex:1;min-width:0;background:transparent;border:none;outline:none;color:#fff;font-family:var(--body);font-size:.92rem;padding:11px 16px;}
 .hero-field input::placeholder{color:rgba(255,255,255,.62);}
-.hero-field a{background:var(--ob);color:#fff;font-family:var(--sky);font-weight:700;font-size:.82
-
-
-  rem;padding:13px 22px;border-radius:10px;white-space:nowrap;transition:background .25s,transform .25s;}
-.hero-field a
+.hero-field a{background:var(--ob);color:#fff;font-family:var(--sky);font-weight:700;font-size:.82rem;padding:13px 22px;border-radius:10px;white-space:nowrap;transition:background .25s,transform .25s;}
+.hero-field a:hover{background:#000;transform:translateY(-1px);}
 /* TUILE = vidéo Aeconomia 16:9 arrondie (ratio réel de la vidéo 640×360) */
 .tilewrap{position:absolute;z-index:4;right:5%;top:32%;width:clamp(340px,42vw,560px);aspect-ratio:16/9;}
 .tile{position:absolute;inset:0;overflow:hidden;border-radius:22px;background:#000;
@@ -714,8 +711,8 @@ var hit=e.target.closest('a,button,input,.burger,.tile,.hero-review,.rate-badge,
 ring.classList.toggle('big',!!hit);dot.classList.toggle('lock',!!hit);
 });
 (function loop(){
-dx+=(tx-dx).38;dy+=(ty-dy).38;   // point rapide
-rx+=(tx-rx).16;ry+=(ty-ry).16;   // anneau en retard (élégant)
+dx+=(tx-dx)*.38;dy+=(ty-dy)*.38;   // point rapide
+rx+=(tx-rx)*.16;ry+=(ty-ry)*.16;   // anneau en retard (élégant)  // anneau en retard (élégant)
 dot.style.transform='translate3d('+dx+'px,'+dy+'px,0) translate(-50%,-50%)'+(dot.classList.contains('lock')?' scale(0)':'');
 ring.style.transform='translate3d('+rx+'px,'+ry+'px,0) translate(-50%,-50%)';
 requestAnimationFrame(loop);
