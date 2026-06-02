@@ -5,13 +5,14 @@
 <meta name="description" content="1er cabinet de courtage local et indépendant du Loiret. 3000+ clients, 750 avis 5 étoiles."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet"/>
-<link rel="preload" as="image" href="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/1fbfb762-bc26-46eb-8ce8-a2d4d2441a3e.png" fetchpriority="high"/>
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/giving-keys-realtor-shows-apartment-young-couple.jpg" fetchpriority="high"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --bg:#F7F4EF;--white:#FAFAF8;--cream:#F4EFE6;--ob:#151412;--ob2:#2A2824;
   --sage2:#75847c;--lime:#bcd41a;--muted:#8A8680;
   --sky:'Space Grotesk',sans-serif;--body:'Plus Jakarta Sans',sans-serif;
+  --tile-ratio:16/9; /* ← RATIO VIDÉO : passe à 9/16 (vertical) ou 1/1 (carré) si besoin */
 }
 html{-webkit-text-size-adjust:100%;}
 body{font-family:var(--body);background:var(--bg);color:var(--ob);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
@@ -66,8 +67,9 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 
 /* ════════ HERO ════════ */
 .hero{position:relative;min-height:100vh;overflow:hidden;background:#1b1916;}
-.hero-bg{position:absolute;inset:0;z-index:0;}
-.hero-bg img{width:100%;height:100%;object-fit:cover;}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+/* image plus haute que le cadre → marge pour le parallax sans bord visible */
+.hero-bg img{position:absolute;left:0;top:-20%;width:100%;height:140%;object-fit:cover;will-change:transform;}
 .hero-bg::after{content:'';position:absolute;inset:0;background:
   linear-gradient(90deg,rgba(20,19,16,.74) 0%,rgba(20,19,16,.36) 46%,rgba(20,19,16,.12) 72%),
   linear-gradient(180deg,rgba(20,19,16,.34),transparent 26%,rgba(20,19,16,.54) 100%);}
@@ -82,9 +84,9 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   animation:navIn .8s cubic-bezier(.22,1,.36,1) .9s both;}
 .nav-logo{display:flex;align-items:center;margin-right:1rem;transition:opacity .25s;}
 .nav-logo:hover{opacity:.7;}
-.nav-logo img{height:23px;width:auto;}
+.nav-logo img{height:26px;width:auto;object-fit:contain;display:block;}
 .nav-logo .logo-text{font-size:1.05rem;color:var(--ob);}
-.nl{position:relative;font-family:var(--sky);font-size:.85rem;font-weight:500;color:var(--ob2);padding:10px 15px 12px;transition:color .25s;}
+.nl{position:relative;font-family:var(--sky);font-size:.85rem;font-weight:500;color:var(--ob2);padding:10px 15px 12px;transition:color .25s;white-space:nowrap;}
 .nl::after{content:'';position:absolute;left:15px;right:15px;bottom:7px;height:2px;border-radius:2px;background:var(--lime);
   transform:scaleX(0);transform-origin:left;transition:transform .32s cubic-bezier(.22,1,.36,1);}
 .nl:hover{color:var(--ob);}.nl:hover::after{transform:scaleX(1);}
@@ -125,11 +127,11 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .hero-field:focus-within{border-color:rgba(188,212,26,.5);box-shadow:0 0 0 4px rgba(188,212,26,.14);}
 .hero-field input{flex:1;min-width:0;background:transparent;border:none;outline:none;color:#fff;font-family:var(--body);font-size:.92rem;padding:11px 16px;}
 .hero-field input::placeholder{color:rgba(255,255,255,.62);}
-.hero-field a{background:var(--ob);color:#fff;font-family:var(--sky);font-weight:700;font-size:.82rem;padding:13px 22px;border-radius:10px;white-space:nowrap;transition:background .25s,transform .25s;}
+.hero-field a{background:var(--ob);color:#fff;font-family:var(--sky);font-weight:700;font-size:.82rem;padding:13px 22px;border-radius:10px;white-space:nowrap;transition:background .25s,transform .25s;display:flex;align-items:center;}
 .hero-field a:hover{background:#000;transform:translateY(-1px);}
 
-/* TUILE = vidéo Aeconomia 4:3 arrondie */
-.tilewrap{position:absolute;z-index:4;right:5%;top:30%;width:clamp(320px,40vw,560px);aspect-ratio:4/3;}
+/* TUILE = vidéo Aeconomia arrondie */
+.tilewrap{position:absolute;z-index:4;right:5%;top:30%;width:clamp(320px,40vw,560px);aspect-ratio:var(--tile-ratio);}
 .tile{position:absolute;inset:0;overflow:hidden;border-radius:22px;background:#000;
   box-shadow:0 34px 80px rgba(0,0,0,.4);transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .55s;}
 .tile:hover{transform:scale(1.015);box-shadow:0 44px 96px rgba(0,0,0,.5);}
@@ -149,25 +151,32 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 @keyframes plPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.8);opacity:0}}
 .tile-cap{font-family:var(--sky);font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5);}
 
-/* labels autour de la tuile */
-.lab{position:absolute;color:#fff;font-family:var(--sky);text-shadow:0 1px 14px rgba(0,0,0,.5);}
-.lab .k{font-size:.62rem;font-weight:600;letter-spacing:.05em;color:rgba(255,255,255,.78);text-transform:uppercase;margin-bottom:.28rem;}
-.lab .v{font-size:1.1rem;font-weight:800;letter-spacing:-.4px;}
-.lab.taux{top:-52px;left:2px;}
-.lab.save{bottom:-86px;left:2px;}
-.lab.save .v{font-size:clamp(1.7rem,2.4vw,2.3rem);color:#fff;letter-spacing:-1.2px;}
-.lab.save .v em{font-style:normal;color:var(--lime);}
-.lab.save .sub{font-family:var(--sky);font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-top:.24rem;}
+/* ════════ BADGE TAUX (redesign premium) ════════ */
+.taux-badge{position:absolute;z-index:6;top:-30px;left:-20px;display:inline-flex;align-items:center;gap:.7rem;
+  padding:11px 16px 11px 13px;border-radius:16px;
+  background:linear-gradient(135deg,rgba(28,27,23,.82),rgba(28,27,23,.62));
+  border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 18px 40px rgba(0,0,0,.38);transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s;}
+.taux-badge:hover{transform:translateY(-3px);box-shadow:0 24px 52px rgba(0,0,0,.46);}
+.taux-led{position:relative;width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(188,212,26,.18);flex:none;}
+.taux-led::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--lime);animation:tauxPulse 1.9s ease-out infinite;}
+@keyframes tauxPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(3.4);opacity:0}}
+.taux-body{display:flex;flex-direction:column;line-height:1;}
+.taux-k{font-family:var(--sky);font-size:.56rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:.34rem;}
+.taux-v{font-family:var(--sky);font-weight:700;font-size:1.55rem;letter-spacing:-1px;color:#fff;display:flex;align-items:baseline;gap:.12em;}
+.taux-v span{font-size:.95rem;font-weight:600;color:var(--lime);}
+.taux-tag{align-self:flex-start;margin-left:.2rem;display:inline-flex;align-items:center;gap:.25rem;
+  font-family:var(--sky);font-size:.55rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ob);
+  background:var(--lime);padding:5px 9px;border-radius:50px;}
 
 /* révélation hero */
-.hero-review,.hero-eyebrow,.hero-h1,.hero-bottom,.lab{opacity:0;transform:translateY(24px);
+.hero-review,.hero-eyebrow,.hero-h1,.hero-bottom,.taux-badge{opacity:0;transform:translateY(24px);
   transition:opacity 1s cubic-bezier(.22,1,.36,1),transform 1s cubic-bezier(.22,1,.36,1);}
 .hero.go .hero-review{opacity:1;transform:none;transition-delay:0s;}
 .hero.go .hero-eyebrow{opacity:1;transform:none;transition-delay:.1s;}
 .hero.go .hero-h1{opacity:1;transform:none;transition-delay:.2s;}
 .hero.go .hero-bottom{opacity:1;transform:none;transition-delay:.36s;}
-.hero.go .lab.taux{opacity:1;transform:none;transition-delay:.58s;}
-.hero.go .lab.save{opacity:1;transform:none;transition-delay:.68s;}
+.hero.go .taux-badge{opacity:1;transform:none;transition-delay:.58s;}
 
 /* menu mobile */
 .mm{position:fixed;inset:0;z-index:1600;display:flex;flex-direction:column;justify-content:center;
@@ -190,17 +199,66 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .mm-foot .tel{font-family:var(--sky);font-weight:700;font-size:1.05rem;}
 .mm-foot .cta{font-family:var(--sky);font-weight:700;background:var(--ob);color:#fff;border-radius:14px;padding:16px;text-align:center;}
 
+/* ════════ FOOTER ════════ */
+.ft{position:relative;overflow:hidden;background:#EFE8DB;color:var(--ob);padding:clamp(3.5rem,7vw,6rem) 3vw 2rem;}
+.ft-bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.ft-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7;}
+/* voile beige/blanc → rendu clair façon arrière-plan */
+.ft-bg::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(247,244,239,.78),rgba(240,233,220,.86));}
+.ft-inner{position:relative;z-index:2;max-width:1240px;margin:0 auto;}
+.ft-top{display:flex;flex-wrap:wrap;gap:3rem 2.5rem;justify-content:space-between;align-items:flex-start;
+  padding-bottom:2.6rem;border-bottom:1px solid rgba(21,20,18,.12);}
+.ft-brand{max-width:340px;}
+.ft-brand img{height:30px;width:auto;object-fit:contain;margin-bottom:1rem;}
+.ft-brand p{font-size:.92rem;line-height:1.55;color:var(--ob2);}
+/* liens menu = Space Grotesk MEDIUM, avec slash */
+.ft-nav{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:.45rem;}
+.ft-nav .ft-cap{font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;}
+.ft-nav a{font-family:var(--sky);font-weight:500;font-size:1.2rem;letter-spacing:-.4px;color:var(--ob);
+  display:inline-flex;align-items:center;gap:.5rem;width:max-content;transition:color .25s,transform .3s cubic-bezier(.22,1,.36,1);}
+.ft-nav a .sl{color:var(--lime);font-weight:500;}
+.ft-nav a:hover{color:var(--sage2);transform:translateX(4px);}
+.ft-contact{display:flex;flex-direction:column;gap:.5rem;font-size:.9rem;line-height:1.5;color:var(--ob2);max-width:240px;}
+.ft-contact .ft-cap{font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;}
+.ft-contact a{transition:color .25s;}
+.ft-contact a:hover{color:var(--ob);}
+.ft-socials{display:flex;gap:.6rem;margin-top:.6rem;}
+.ft-socials a{width:40px;height:40px;border-radius:11px;border:1px solid rgba(21,20,18,.16);
+  display:flex;align-items:center;justify-content:center;color:var(--ob);
+  transition:background .3s,color .3s,transform .3s cubic-bezier(.22,1,.36,1),border-color .3s;}
+.ft-socials a:hover{background:var(--ob);color:#fff;border-color:var(--ob);transform:translateY(-3px);}
+.ft-socials svg{width:18px;height:18px;}
+.ft-legal{padding-top:2rem;font-size:.72rem;line-height:1.7;color:var(--muted);}
+.ft-legal b{color:var(--ob2);font-weight:700;}
+.ft-legal a{color:var(--ob2);text-decoration:underline;text-underline-offset:2px;}
+.ft-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:center;
+  margin-top:1.8rem;padding-top:1.4rem;border-top:1px solid rgba(21,20,18,.1);
+  font-family:var(--sky);font-size:.72rem;font-weight:500;letter-spacing:.02em;color:var(--ob2);}
+.ft-bottom .dot{color:var(--lime);}
+
 /* responsive */
-@media(max-width:1150px){.lab,.hero-review{position:absolute;}}
-@media(max-width:900px){.tilewrap{right:4%;top:34%;width:46vw;}}
+@media(max-width:1150px){.hero-review{position:absolute;}}
+@media(max-width:900px){.tilewrap{right:4%;top:33%;width:46vw;}.taux-badge{top:-26px;left:-14px;}}
 @media(max-width:760px){
   .nav{top:12px;left:12px;right:12px;transform:none;animation:none;justify-content:space-between;padding:8px 8px 8px 16px;}
   .nl,.nav-tel{display:none;}.burger{display:flex;}
-  .tilewrap,.lab{display:none;}
+  .tilewrap,.taux-badge{display:none;}
   .hero-review{top:13%;left:1.4rem;}
-  .hero-eyebrow{top:26%;left:1.4rem;}
-  .hero-h1{top:calc(26% + 1.4rem);left:1.4rem;letter-spacing:-1.6px;}
-  .hero-bottom{left:1.4rem;right:1.4rem;max-width:none;bottom:7%;}
+  .hero-eyebrow{top:27%;left:1.4rem;}
+  .hero-h1{top:calc(27% + 1.4rem);left:1.4rem;right:1.4rem;max-width:none;letter-spacing:-1.6px;}
+  .hero-bottom{left:1.4rem;right:1.4rem;max-width:none;bottom:6%;}
+  .ft-top{gap:2.2rem;}
+  .ft-nav a{font-size:1.1rem;}
+}
+@media(max-width:480px){
+  .hero-field{flex-direction:column;gap:6px;}
+  .hero-field a{justify-content:center;}
+  .hero-bottom p{margin-bottom:1rem;}
+  .ft-bottom{flex-direction:column;align-items:flex-start;}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-bg img{transform:none!important;}
 }
 </style></head>
 <body>
@@ -230,7 +288,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 <!-- ═══════ NAV ═══════ -->
 <nav class="nav">
   <a href="index.html" class="nav-logo">
-    <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/logotype_noir_1000px.png" alt="Aeconomia" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+    <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/logotype_noir_recadre.png" alt="Aeconomia" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
     <span class="logo-text" style="display:none">aeconom<i>i</i>a.</span>
   </a>
   <a href="index.html" class="nl active">Accueil</a>
@@ -244,7 +302,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 
 <!-- ═══════ HERO ═══════ -->
 <header class="hero" id="hero">
-  <div class="hero-bg"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/1fbfb762-bc26-46eb-8ce8-a2d4d2441a3e.png" alt="Aeconomia"/></div>
+  <div class="hero-bg"><img id="heroBg" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/imagedefondheader.png" alt="Aeconomia"/></div>
   <div class="hero-grid"></div>
 
   <!-- badge avis premium -->
@@ -284,8 +342,16 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
         <span class="tile-cap">Aeconomia · 1 min</span>
       </div>
     </div>
-    <div class="lab taux"><div class="k">Taux dès</div><div class="v">3,05 %</div></div>
-    <div class="lab save"><div class="k">Jusqu'à</div><div class="v">24 000 <em>€</em></div><div class="sub">d'économies réalisées</div></div>
+
+    <!-- TAUX redesigné -->
+    <div class="taux-badge">
+      <span class="taux-led"></span>
+      <div class="taux-body">
+        <div class="taux-k">Taux dès</div>
+        <div class="taux-v">3,05<span>%</span></div>
+      </div>
+      <div class="taux-tag">↗ actualisé</div>
+    </div>
   </div>
 </header>
 
@@ -303,10 +369,84 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   </div>
 </div>
 
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="ft">
+  <div class="ft-bg">
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="https://aeconomia.fr/wp-content/uploads/2026/06/abstract-particle-wave-clean-background-2026-01-28-02-42-50-utc.mp4" type="video/mp4"/>
+    </video>
+  </div>
+  <div class="ft-inner">
+    <div class="ft-top">
+
+      <div class="ft-brand">
+        <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/logotype_noir_recadre.png" alt="Aeconomia"/>
+        <p>1er cabinet de courtage local et indépendant du Loiret. Votre prêt immobilier négocié, simplifié et optimisé — sans frais d'avance.</p>
+      </div>
+
+      <nav class="ft-nav">
+        <div class="ft-cap">Navigation</div>
+        <a href="index.html"><span class="sl">/</span> Accueil</a>
+        <a href="apropos.html"><span class="sl">/</span> À propos</a>
+        <a href="simulation.html"><span class="sl">/</span> Simulation</a>
+        <a href="ressources.html"><span class="sl">/</span> Ressources</a>
+        <a href="contact.html"><span class="sl">/</span> Contact</a>
+      </nav>
+
+      <div class="ft-contact">
+        <div class="ft-cap">Cabinet</div>
+        <span>12 rue de la République<br/>45000 Orléans</span>
+        <a href="tel:0279414243">02.79.41.42.43</a>
+        <a href="mailto:contact@aeconomia.fr">contact@aeconomia.fr</a>
+        <div class="ft-socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C21.4 8.75 22 11.1 22 14.1V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21h-4z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5h1.65V3.6c-.8-.1-1.6-.15-2.4-.15-2.4 0-4.05 1.46-4.05 4.14V9.9H7.5V13h2.75v8z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 0 0-1.75-1.76C19.3 5.2 12 5.2 12 5.2s-7.3 0-8.85.34A2.5 2.5 0 0 0 1.4 7.3C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 0 0 1.75 1.76C4.7 18.8 12 18.8 12 18.8s7.3 0 8.85-.34a2.5 2.5 0 0 0 1.75-1.76C23 15.2 23 12 23 12zM9.75 15.05v-6.1L15.5 12z"/></svg></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ft-legal">
+      <b>Aeconomia</b> — SAS au capital de 10 000 € · RCS Orléans 000&nbsp;000&nbsp;000 · Siège social : 12 rue de la République, 45000 Orléans.<br/>
+      Intermédiaire en Opérations de Banque et en Services de Paiement (IOBSP), courtier immatriculé à l'ORIAS sous le n°&nbsp;00&nbsp;000&nbsp;000 (<a href="https://www.orias.fr" target="_blank" rel="noopener">www.orias.fr</a>).
+      Activité soumise au contrôle de l'Autorité de Contrôle Prudentiel et de Résolution (ACPR) — 4 Place de Budapest, CS 92459, 75436 Paris Cedex 09.<br/>
+      Médiateur de la consommation : Médiation de l'Assurance et des Opérations de Banque, BP&nbsp;3, 75441 Paris Cedex 09.
+      <b>« Aucun versement, de quelque nature que ce soit, ne peut être exigé d'un particulier avant l'obtention d'un ou plusieurs prêts d'argent. »</b> (art. L.322-2 du Code de la consommation).
+      <br/><i>Les numéros ORIAS, RCS et le capital ci-dessus sont des champs à compléter avec vos informations officielles.</i>
+    </div>
+
+    <div class="ft-bottom">
+      <span>© <span id="ftYear">2026</span> Aeconomia <span class="dot">·</span> Tous droits réservés</span>
+      <span><a href="mentions-legales.html">Mentions légales</a> <span class="dot">·</span> <a href="cgv.html">CGV</a> <span class="dot">·</span> <a href="confidentialite.html">Confidentialité</a></span>
+    </div>
+  </div>
+</footer>
+
 <script>
 /* ─── MENU MOBILE ─── */
 function openMenu(){document.getElementById('mm').classList.add('open');document.body.style.overflow='hidden';}
 function closeMenu(){document.getElementById('mm').classList.remove('open');document.body.style.overflow='';}
+
+/* ─── ANNÉE FOOTER ─── */
+document.getElementById('ftYear').textContent=new Date().getFullYear();
+
+/* ─── PARALLAX IMAGE HEADER ─── */
+(function(){
+  var img=document.getElementById('heroBg');
+  if(!img||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var ticking=false;
+  function update(){
+    var y=window.scrollY||window.pageYOffset;
+    img.style.transform='translate3d(0,'+(y*0.28)+'px,0)';
+    ticking=false;
+  }
+  addEventListener('scroll',function(){
+    if(!ticking){requestAnimationFrame(update);ticking=true;}
+  },{passive:true});
+  update();
+})();
 
 /* ─── CURSEUR NÉGATIF v2 ─── */
 (function(){
@@ -319,7 +459,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   addEventListener('mousedown',function(){ring.classList.add('click');});
   addEventListener('mouseup',function(){ring.classList.remove('click');});
   document.addEventListener('mouseover',function(e){
-    var hit=e.target.closest('a,button,input,.burger,.tile,.hero-review,.lab');
+    var hit=e.target.closest('a,button,input,.burger,.tile,.hero-review,.taux-badge');
     ring.classList.toggle('big',!!hit);dot.classList.toggle('lock',!!hit);
   });
   (function loop(){
