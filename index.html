@@ -20,41 +20,32 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .logo-text{font-family:var(--body);font-weight:800;letter-spacing:-.4px;line-height:1;}
 .logo-text i{font-style:italic;}
 
-/* ════════ MESH GRADIENT ANIMÉ + GRAIN (beige / blanc cassé) ════════ */
-.mesh{position:absolute;inset:0;overflow:hidden;background:#ECE3D4;}
-.mesh .blob{position:absolute;border-radius:50%;filter:blur(var(--bl,72px));will-change:transform;}
-.mesh .b1{width:62%;height:62%;left:-10%;top:-14%;background:radial-gradient(circle,#FCF9F3,rgba(252,249,243,0) 70%);animation:mA 17s ease-in-out infinite;}
-.mesh .b2{width:58%;height:58%;right:-12%;top:-8%;background:radial-gradient(circle,#E7DCC7,rgba(231,220,199,0) 70%);animation:mB 21s ease-in-out infinite;}
-.mesh .b3{width:66%;height:66%;left:34%;top:44%;background:radial-gradient(circle,#F3ECDE,rgba(243,236,222,0) 70%);animation:mC 19s ease-in-out infinite;}
-.mesh .b4{width:54%;height:54%;left:4%;top:54%;background:radial-gradient(circle,#DCCFB8,rgba(220,207,184,0) 72%);animation:mD 24s ease-in-out infinite;}
-.mesh .grain{position:absolute;inset:-40%;pointer-events:none;opacity:.55;mix-blend-mode:soft-light;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.9'/%3E%3C/svg%3E");
-  background-size:170px 170px;animation:grainShift 5.5s steps(6) infinite;}
-@keyframes mA{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(16%,12%) scale(1.12)}}
-@keyframes mB{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-14%,14%) scale(1.1)}}
-@keyframes mC{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-12%,-12%) scale(1.14)}}
-@keyframes mD{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(12%,-10%) scale(1.08)}}
-@keyframes grainShift{0%{transform:translate(0,0)}16%{transform:translate(-6%,4%)}33%{transform:translate(5%,-6%)}50%{transform:translate(-4%,6%)}66%{transform:translate(6%,2%)}83%{transform:translate(-5%,-4%)}100%{transform:translate(0,0)}}
-
 /* ════════ INTRO (chargement) ════════ */
 .intro{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;
   overflow:hidden;background:#ECE3D4;clip-path:inset(0 0 0 0);will-change:clip-path;
   transition:clip-path 1s cubic-bezier(.83,0,.17,1);}
 .intro.fade{opacity:0;transition:opacity .4s ease;}
-.intro-bg{position:absolute;inset:0;z-index:0;}
+.intro-bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7;}  /* ← vidéo 70% */
+.intro-bg::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(60% 50% at 50% 50%,rgba(247,244,239,.18),rgba(236,227,212,.42));} /* lisibilité douce */
 
-/* PROMPT roll */
-.intro-type{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.05em;
+/* PROMPT roll — slash figé, mots alignés à gauche */
+.intro-type{position:relative;z-index:2;display:inline-flex;align-items:center;gap:.04em;
   font-family:var(--sky);font-weight:500;color:var(--ob);
-  font-size:clamp(2rem,5.5vw,3.6rem);letter-spacing:-1px;transition:opacity .3s ease;}
+  font-size:clamp(2rem,5.5vw,3.6rem);letter-spacing:-1px;
+  opacity:0;transform:translateY(8px);animation:typeIn .7s cubic-bezier(.16,1,.3,1) .15s forwards;
+  transition:opacity .35s ease;}
+@keyframes typeIn{to{opacity:1;transform:none;}}
 .roll-slash{color:var(--ob);line-height:1.06em;}
-.roll-win{position:relative;display:inline-block;overflow:hidden;height:1.06em;line-height:1.06em;vertical-align:middle;}
-.roll-size{visibility:hidden;white-space:nowrap;}
+.roll-win{position:relative;display:inline-block;overflow:hidden;height:1.06em;line-height:1.06em;
+  vertical-align:middle;text-align:left;}
+.roll-size{visibility:hidden;white-space:nowrap;}            /* fige la largeur = mot le plus long */
 .roll-word{position:absolute;left:0;top:0;line-height:1.06em;white-space:nowrap;
-  transition:transform .32s cubic-bezier(.5,0,.1,1),opacity .26s ease;}
-.roll-word.enter{transform:translateY(-115%);opacity:0;}
-.roll-word.show{transform:translateY(0);opacity:1;}
-.roll-word.leave{transform:translateY(115%);opacity:0;}
+  transition:transform .46s cubic-bezier(.16,1,.3,1),opacity .34s ease,filter .34s ease;}
+.roll-word.enter{transform:translateY(-118%);opacity:0;filter:blur(3px);}
+.roll-word.show{transform:translateY(0);opacity:1;filter:blur(0);}
+.roll-word.leave{transform:translateY(118%);opacity:0;filter:blur(3px);}
 
 /* ════════ HERO ════════ */
 .hero{position:relative;min-height:100vh;overflow:hidden;background:#1b1916;}
@@ -107,8 +98,8 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .tilewrap{position:absolute;z-index:4;right:6%;top:30%;
   width:clamp(300px,39vw,560px);height:clamp(320px,48vh,560px);}
 .tile{position:absolute;inset:0;overflow:hidden;background:#ECE3D4;box-shadow:0 34px 80px rgba(0,0,0,.32);}
-.tile .mesh{--bl:30px;}
-.tile-logo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40%;height:auto;opacity:.24;z-index:2;}
+.tile .bgvid{opacity:.78;}
+.tile-logo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40%;height:auto;opacity:.26;z-index:2;}
 .lab{position:absolute;color:#fff;font-family:var(--sky);text-shadow:0 1px 14px rgba(0,0,0,.5);}
 .lab .k{font-size:.62rem;font-weight:600;letter-spacing:.05em;color:rgba(255,255,255,.78);text-transform:uppercase;margin-bottom:.28rem;}
 .lab .v{font-size:1.1rem;font-weight:800;letter-spacing:-.4px;}
@@ -162,23 +153,19 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   .hero-h1{top:calc(24% + 1.4rem);left:1.4rem;letter-spacing:-1.6px;}
   .hero-bottom{left:1.4rem;right:1.4rem;max-width:none;bottom:7%;}
 }
-@media(prefers-reduced-motion:reduce){
-  .mesh .blob,.mesh .grain{animation:none;}
-}
 </style></head>
 <body>
 
 <!-- ═══════ INTRO (chargement) ═══════ -->
 <div class="intro" id="intro">
   <div class="intro-bg">
-    <div class="mesh">
-      <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span>
-      <span class="grain"></span>
-    </div>
+    <video class="bgvid" autoplay muted loop playsinline preload="auto">
+      <source src="https://aeconomia.fr/wp-content/uploads/2026/06/abstract-particle-wave-clean-background-2026-01-28-02-42-50-utc.mp4" type="video/mp4"/>
+    </video>
   </div>
   <div class="intro-type" id="introType">
     <span class="roll-slash">/</span>
-    <span class="roll-win" id="rollWin"><span class="roll-size" id="rollSize"></span></span>
+    <span class="roll-win" id="rollWin"><span class="roll-size" id="rollSize">professionnel</span></span>
   </div>
 </div>
 
@@ -215,10 +202,9 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 
   <div class="tilewrap">
     <div class="tile">
-      <div class="mesh">
-        <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span>
-        <span class="grain"></span>
-      </div>
+      <video class="bgvid" autoplay muted loop playsinline preload="auto">
+        <source src="https://aeconomia.fr/wp-content/uploads/2026/06/abstract-particle-wave-clean-background-2026-01-28-02-42-50-utc.mp4" type="video/mp4"/>
+      </video>
       <img class="tile-logo" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/logotype_noir_1000px.png" alt=""/>
     </div>
     <div class="lab taux"><div class="k">Taux dès</div><div class="v">3,05 %</div></div>
@@ -246,31 +232,29 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 function openMenu(){document.getElementById('mm').classList.add('open');document.body.style.overflow='hidden';}
 function closeMenu(){document.getElementById('mm').classList.remove('open');document.body.style.overflow='';}
 
-/* ─── ROLL rapide (mot qui vient du haut) ─── */
+/* ─── ROLL (slash figé, mots alignés à gauche) ─── */
 (function(){
-  var win=document.getElementById('rollWin'),sizeEl=document.getElementById('rollSize');
+  var win=document.getElementById('rollWin');
   if(!win)return;
   var words=['aeconomia','transparent','humain','professionnel'];
   var i=0,cur=null,stop=false,iv=null;
   function make(t,c){var s=document.createElement('span');s.className='roll-word '+c;s.textContent=t;win.appendChild(s);return s;}
-  sizeEl.textContent=words[0];
   cur=make(words[0],'show');
   function step(){
     if(stop)return;
     i=(i+1)%words.length;
-    sizeEl.textContent=words[i];               // la largeur suit le mot → slash collé + centré
     var el=make(words[i],'enter');
     void el.offsetWidth;
     el.classList.remove('enter');el.classList.add('show');
     if(cur){var old=cur;old.classList.remove('show');old.classList.add('leave');
-      setTimeout(function(){if(old&&old.parentNode)old.remove();},380);}
+      setTimeout(function(){if(old&&old.parentNode)old.remove();},520);}
     cur=el;
   }
-  iv=setInterval(step,820);                     // ← cadence rapide
+  iv=setInterval(step,820);
   window.__rollStop=function(){stop=true;if(iv)clearInterval(iv);};
 })();
 
-/* ─── INTRO → TUILE (rapide) ─── */
+/* ─── INTRO → TUILE ─── */
 (function(){
   var intro=document.getElementById('intro'),type=document.getElementById('introType'),
       hero=document.getElementById('hero'),done=false;
@@ -289,7 +273,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     intro.style.clipPath='inset('+top+'px '+right+'px '+bot+'px '+left+'px)';
     setTimeout(function(){intro.classList.add('fade');setTimeout(cleanup,440);},1050);
   }
-  window.addEventListener('load',function(){setTimeout(finish,2300);}); /* ← plus rapide */
+  window.addEventListener('load',function(){setTimeout(finish,2400);});
   setTimeout(finish,5000);
 })();
 </script>
