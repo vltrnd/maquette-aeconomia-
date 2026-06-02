@@ -908,5 +908,21 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     }
   }
 })();
+
+  /* ─── PARALLAX IMAGE HEADER ─── */
+(function(){
+  var img=document.getElementById('heroBg');
+  if(!img||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var ticking=false;
+  function update(){
+    var y=window.scrollY||window.pageYOffset;
+    img.style.transform='translate3d(0,'+(y*0.28)+'px,0)';
+    ticking=false;
+  }
+  addEventListener('scroll',function(){
+    if(!ticking){requestAnimationFrame(update);ticking=true;}
+  },{passive:true});
+  update();
+})();
 </script>
 </body></html>
