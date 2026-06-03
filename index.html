@@ -1122,24 +1122,6 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 })();
 
 
-/* ─── PARALLAX VIDÉO CTA ─── */
-(function(){
-  var sec=document.getElementById('vcta');if(!sec)return;
-  var bg=sec.querySelector('.vcta-bg');
-  if(!bg||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  var ticking=false;
-  function update(){
-    ticking=false;
-    var r=sec.getBoundingClientRect();
-    if(r.bottom>0&&r.top<innerHeight){
-      var off=(r.top+r.height/2-innerHeight/2)*-0.10;
-      bg.style.transform='translate3d(0,'+off.toFixed(1)+'px,0)';
-    }
-  }
-  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
-  addEventListener('resize',update);
-  update();
-})();
 
 
 /* ─── CHIFFRES CLÉS + RÉVÉLATIONS + SCROLL ÉPINGLÉ ─── */
@@ -1358,6 +1340,26 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     read();
   });
 })();
+
+  /* ─── PARALLAX VIDÉO CTA ─── */
+(function(){
+  var sec=document.getElementById('vcta');if(!sec)return;
+  var bg=sec.querySelector('.vcta-bg');
+  if(!bg||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var r=sec.getBoundingClientRect();
+    if(r.bottom>0&&r.top<innerHeight){
+      var off=(r.top+r.height/2-innerHeight/2)*-0.10;
+      bg.style.transform='translate3d(0,'+off.toFixed(1)+'px,0)';
+    }
+  }
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
+  addEventListener('resize',update);
+  update();
+})();
+
 
 </script>
 </body></html>
