@@ -437,6 +437,8 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   .scard{transform:none!important;}
 }
 
+  
+
   /* ════════════════════════════════════════════════════════
    TAUX QUI BAISSE — graphe animé au scroll (rôle du courtier)
    ════════════════════════════════════════════════════════ */
@@ -654,8 +656,9 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 
 
   /* ════════ ÉQUIPE — scroll horizontal + glass (fond clair animé) ════════ */
-.team{position:relative;height:260vh;background:var(--bg);}
-.team-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:radial-gradient(115% 85% at 50% 10%,#FCF8F1,#EAE0CF 74%);}
+.team{position:relative;height:260vh;background:var(--bg);--gap:1.4vw;--r:30px;}
+.team-bg{position:absolute;top:0;bottom:0;left:var(--gap,1.4vw);right:var(--gap,1.4vw);z-index:0;overflow:hidden;border-radius:var(--r,30px);
+  background:radial-gradient(115% 85% at 50% 10%,#FCF8F1,#EAE0CF 74%);box-shadow:0 30px 80px rgba(80,66,48,.16);}
 .team-bg::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(68% 58% at 50% 14%,rgba(255,255,255,.65),transparent 55%),
              radial-gradient(120% 95% at 50% 102%,rgba(112,96,70,.26),transparent 60%);}
@@ -705,7 +708,8 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 @keyframes thint{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
 @media(max-width:1024px),(prefers-reduced-motion:reduce){
   .team{height:auto;}
-  .team-stick{position:static;height:auto;padding:clamp(3rem,9vw,5rem) 0;}
+  .team-stick{position:sticky;top:0;height:100vh;overflow:visible;z-index:1;display:flex;flex-direction:column;justify-content:center;}
+.team-head,.team-rail,.team-hint{position:relative;z-index:1;}
   .team-rail{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:1.6rem;}
   .team-track{transform:none!important;}
   .tcard{scroll-snap-align:center;}
@@ -1060,7 +1064,12 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
     </div>
     <div class="scard-media"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/remisedescles.png" alt="Remise des clés"/></div>
   </div>
-</article>
+
+
+    </article>
+
+  </div>
+</section>
 
   <!-- ═══════ TAUX QUI BAISSE — graphe animé au scroll ═══════ -->
 <section class="rate" id="rate">
@@ -1223,8 +1232,8 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 
  <!-- ═══════ ÉQUIPE — trombinoscope scroll horizontal ═══════ -->
 <section class="team" id="team">
-  <div class="team-bg"><i></i><i></i><i></i><i></i><span class="team-beam"></span></div>
   <div class="team-stick">
+    <div class="team-bg"><i></i><i></i><i></i><i></i><span class="team-beam"></span></div>
     <div class="team-head">
       <span class="team-eye">L'équipe</span>
       <h2 class="team-title">L'équipe qui <em>négocie pour vous.</em></h2>
@@ -1244,7 +1253,17 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
     <div class="team-hint">Scrollez pour rencontrer l'équipe</div>
   </div>
 </section>
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="foot">
+  <div class="foot-bg">
+    <video class="foot-vid" autoplay muted loop playsinline preload="auto">
+      <source src="https://aeconomia.fr/wp-content/uploads/2026/06/abstract-particle-wave-clean-background-2026-01-28-02-42-50-utc.mp4" type="video/mp4"/>
+    </video>
+  </div>
+
   <div class="foot-inner">
+    <!-- CTA principal -->
+    
     <!-- CTA principal -->
     <div class="foot-cta">
       <div class="foot-cta-k">Votre projet, maintenant</div>
@@ -1702,7 +1721,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 })();
 
 
-/* ─── ÉQUIPE : scroll vertical → défilement horizontal lissé (lerp) ─── */
+/* ─── ÉQUIPE : scroll horizontal lissé + fond arrondi qui s'élargit ─── */
 (function(){
   var sec=document.getElementById('team');if(!sec)return;
   var track=document.getElementById('teamTrack'),stick=sec.querySelector('.team-stick'),rail=sec.querySelector('.team-rail'),
@@ -1714,9 +1733,13 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     var p=total>0?clamp(-sec.getBoundingClientRect().top/total,0,1):0;tgtX=-p*maxX;
   }
   function loop(){
-    curX+=(tgtX-curX)*0.085;                       // lissage
+    curX+=(tgtX-curX)*0.085;
     if(Math.abs(tgtX-curX)<0.2)curX=tgtX;
     track.style.transform='translate3d('+curX.toFixed(2)+'px,0,0)';
+    var rect=sec.getBoundingClientRect(),tot=sec.offsetHeight-stick.clientHeight;
+    var ep=clamp((innerHeight-rect.top)/(innerHeight+tot*0.3),0,1);   /* 0 = arrive (étroit) · 1 = élargi */
+    sec.style.setProperty('--gap',((1-ep)*7+1.4).toFixed(2)+'vw');
+    sec.style.setProperty('--r',((1-ep)*26+28).toFixed(0)+'px');
     raf=requestAnimationFrame(loop);
   }
   function start(){if(raf||!desktop||reduce)return;raf=requestAnimationFrame(loop);}
@@ -1727,7 +1750,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   addEventListener('scroll',target,{passive:true});
   addEventListener('resize',function(){
     desktop=matchMedia('(min-width:1025px)').matches;reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-    target();if(!desktop||reduce){stop();track.style.transform='';}else start();
+    target();if(!desktop||reduce){stop();track.style.transform='';sec.style.setProperty('--gap','1.4vw');sec.style.setProperty('--r','30px');}else start();
   });
   target();
 })();
