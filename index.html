@@ -549,28 +549,33 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .bm-txt p{margin-top:1rem;font-size:1rem;line-height:1.55;color:var(--ob2);}
 
 
-  /* ════════ GLASS HERO — fond image + verre dynamique & réactif ════════ */
+ /* ════════ GLASS HERO — fond image parallax + verre dynamique & réactif ════════ */
 .gh{position:relative;overflow:hidden;isolation:isolate;
   min-height:clamp(620px,94vh,900px);display:flex;align-items:center;justify-content:center;
   padding:clamp(2rem,6vw,5rem) clamp(1.2rem,5vw,4rem);}
-.gh-bg{position:absolute;inset:0;z-index:0;
+.gh-bg{position:absolute;inset:-12% 0;z-index:0;will-change:transform;
   background:url("https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/96bbae0b-c6cc-4fe8-a616-e436bc50462a.png") center/cover no-repeat;}
-.gh-bg::after{content:"";position:absolute;inset:0;background:rgba(247,244,239,.18);}
+.gh-bg::after{content:"";position:absolute;inset:0;background:rgba(247,244,239,.16);}
 .gh-blobs{position:absolute;inset:0;z-index:1;pointer-events:none;}
-.gh-blobs i{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;will-change:transform;}
-.gh-blobs i:nth-child(1){width:420px;height:420px;left:2%;top:6%;background:#bcd41a;animation:ghbl1 15s ease-in-out infinite;}
-.gh-blobs i:nth-child(2){width:480px;height:480px;right:0;top:0;background:#8fb0e6;animation:ghbl2 18s ease-in-out infinite;}
-.gh-blobs i:nth-child(3){width:400px;height:400px;right:8%;bottom:2%;background:#c9a8ff;animation:ghbl3 17s ease-in-out infinite;}
-.gh-blobs i:nth-child(4){width:360px;height:360px;left:14%;bottom:0;background:#7fbf9a;animation:ghbl4 20s ease-in-out infinite;}
+.gh-blobs i{position:absolute;border-radius:50%;filter:blur(65px);opacity:.55;will-change:transform;}
+.gh-blobs i:nth-child(1){width:440px;height:440px;left:2%;top:6%;background:#e9dcc2;animation:ghbl1 16s ease-in-out infinite;}
+.gh-blobs i:nth-child(2){width:500px;height:500px;right:0;top:-2%;background:#f5eee1;animation:ghbl2 19s ease-in-out infinite;}
+.gh-blobs i:nth-child(3){width:420px;height:420px;right:8%;bottom:2%;background:#a8b4a9;animation:ghbl3 18s ease-in-out infinite;}
+.gh-blobs i:nth-child(4){width:380px;height:380px;left:14%;bottom:0;background:#e3d0a8;animation:ghbl4 21s ease-in-out infinite;}
 @keyframes ghbl1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,50px) scale(1.18)}}
 @keyframes ghbl2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-70px,60px) scale(1.12)}}
 @keyframes ghbl3{0%,100%{transform:translate(0,0) scale(1.05)}50%{transform:translate(-50px,-50px) scale(.9)}}
 @keyframes ghbl4{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(60px,-40px) scale(1.2)}}
+.gh-beam{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
+.gh-beam::before{content:"";position:absolute;top:-60%;left:-30%;width:42%;height:220%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55) 50%,transparent);
+  transform:rotate(12deg);filter:blur(16px);animation:ghbeam 9s ease-in-out infinite;}
+@keyframes ghbeam{0%{transform:translateX(-40%) rotate(12deg);opacity:0}42%,55%{opacity:.9}100%{transform:translateX(380%) rotate(12deg);opacity:0}}
 .gh-card{position:relative;z-index:2;width:min(1080px,100%);overflow:hidden;
   display:grid;grid-template-columns:.86fr 1.14fr;gap:clamp(1.4rem,3vw,2.8rem);align-items:center;
   padding:clamp(1.2rem,2.4vw,1.8rem);border-radius:34px;
   background:linear-gradient(140deg,rgba(255,255,255,.55),rgba(255,255,255,.22));
-  backdrop-filter:blur(34px) saturate(185%);-webkit-backdrop-filter:blur(34px) saturate(185%);
+  backdrop-filter:blur(34px) saturate(180%);-webkit-backdrop-filter:blur(34px) saturate(180%);
   border:1px solid rgba(255,255,255,.65);
   box-shadow:0 34px 90px rgba(55,48,38,.22),inset 0 1px 0 rgba(255,255,255,.85),inset 0 -1px 2px rgba(255,255,255,.3);
   transform:perspective(1200px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
@@ -592,8 +597,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.6);padding:7px 14px;border-radius:50px;}
 .gh-h{font-family:var(--sky);font-weight:700;font-size:clamp(2.3rem,4.6vw,4rem);line-height:1;
   letter-spacing:-2px;color:var(--ob);margin-top:1.2rem;}
-.gh-h em{font-style:normal;background:linear-gradient(95deg,#7d8e86,#7fa0d8 55%,#b79bff);
-  -webkit-background-clip:text;background-clip:text;color:transparent;}
+.gh-h em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
 .gh-p{margin-top:1.1rem;font-size:clamp(1rem,1.2vw,1.14rem);line-height:1.6;color:var(--ob2);max-width:40ch;}
 .gh-by{margin-top:1rem;font-family:var(--sky);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
 .gh-cta{margin-top:1.9rem;display:flex;align-items:center;gap:.7rem;}
@@ -607,7 +611,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   transition:transform .35s cubic-bezier(.22,1,.36,1),background .3s;}
 .gh-arrow:hover{transform:translateY(-2px) rotate(-12deg);background:rgba(255,255,255,.85);}
 @media(max-width:780px){.gh-card{grid-template-columns:1fr;}.gh-media{aspect-ratio:16/10;}}
-@media(prefers-reduced-motion:reduce){.gh-blobs i,.gh-sheen{animation:none;}.gh-card{transform:none;}}
+@media(prefers-reduced-motion:reduce){.gh-blobs i,.gh-sheen,.gh-beam::before{animation:none;}.gh-card,.gh-bg{transform:none;}}
 
 /* ════════ FOOTER — CTA + vidéo de chargement plus présente ════════ */
 .foot-vid{opacity:.85;}
@@ -1071,10 +1075,11 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 </section>
 
 
-    <!-- ═══════ GLASS HERO — verre dynamique ═══════ -->
+<!-- ═══════ GLASS HERO — verre dynamique ═══════ -->
 <section class="gh" id="glasshero">
   <div class="gh-bg"></div>
   <div class="gh-blobs"><i></i><i></i><i></i><i></i></div>
+  <span class="gh-beam"></span>
   <div class="gh-card" id="ghCard">
     <span class="gh-sheen"></span>
     <span class="gh-glow"></span>
@@ -1551,21 +1556,32 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 })();
 
 
-  /* ─── GLASS HERO : inclinaison + lumière qui suit le curseur ─── */
+/* ─── GLASS HERO : parallax du fond + inclinaison & lumière au survol ─── */
 (function(){
-  var card=document.getElementById('ghCard');if(!card)return;
-  if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
-  var glow=card.querySelector('.gh-glow');
-  card.addEventListener('pointermove',function(e){
-    var r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
-    card.style.setProperty('--ry',((x-.5)*9).toFixed(2)+'deg');
-    card.style.setProperty('--rx',((y-.5)*-7).toFixed(2)+'deg');
-    if(glow){glow.style.setProperty('--mx',(x*100).toFixed(1)+'%');glow.style.setProperty('--my',(y*100).toFixed(1)+'%');glow.style.opacity='1';}
-  });
-  card.addEventListener('pointerleave',function(){
-    card.style.setProperty('--rx','0deg');card.style.setProperty('--ry','0deg');
-    if(glow)glow.style.opacity='0';
-  });
+  var sec=document.getElementById('glasshero');if(!sec)return;
+  var card=document.getElementById('ghCard'),bg=sec.querySelector('.gh-bg'),
+      glow=card?card.querySelector('.gh-glow'):null,
+      fine=matchMedia('(hover:hover) and (pointer:fine)').matches,
+      reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,ticking=false;
+  if(bg&&!reduce){
+    var upd=function(){ticking=false;var r=sec.getBoundingClientRect();
+      if(r.bottom>0&&r.top<innerHeight)
+        bg.style.transform='translateY('+((r.top+r.height/2-innerHeight/2)*0.1).toFixed(1)+'px)';};
+    addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});
+    addEventListener('resize',upd);upd();
+  }
+  if(card&&fine){
+    card.addEventListener('pointermove',function(e){
+      var r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      card.style.setProperty('--ry',((x-.5)*9).toFixed(2)+'deg');
+      card.style.setProperty('--rx',((y-.5)*-7).toFixed(2)+'deg');
+      if(glow){glow.style.setProperty('--mx',(x*100).toFixed(1)+'%');glow.style.setProperty('--my',(y*100).toFixed(1)+'%');glow.style.opacity='1';}
+    });
+    card.addEventListener('pointerleave',function(){
+      card.style.setProperty('--rx','0deg');card.style.setProperty('--ry','0deg');
+      if(glow)glow.style.opacity='0';
+    });
+  }
 })();
 
 </script>
