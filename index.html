@@ -67,7 +67,8 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .load-row .num{font-variant-numeric:tabular-nums;}
 
 /* ════════ HERO ════════ */
-.hero{position:relative;min-height:100vh;overflow:hidden;background:#1b1916;}
+.hero{position:relative;min-height:100vh;overflow:hidden;background:#1b1916;border-radius:0 0 clamp(28px,3.5vw,48px) clamp(28px,3.5vw,48px);}
+  
 .hero-bg{position:absolute;inset:0;z-index:0;}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:62% center;}
 /* dégradé renforcé à gauche + bas : l'image est claire, le texte blanc doit rester lisible */
@@ -497,12 +498,6 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 /* effet de lumière : halo marque + vignette + grille fine */
   /* 2ᵉ vidéo uniquement : calque blanc au lieu du noir (réglable .05–.20) */
 /* ── 2ᵉ vidéo : voile blanc renforcé + texte foncé ── */
-#vcta2::after{background:rgba(255,255,255,.46);}
-#vcta2 .vcta-k{color:var(--ob2);}
-#vcta2 .vcta-h{color:var(--ob);text-shadow:0 1px 22px rgba(255,255,255,.6);}
-#vcta2 .vcta-h em{color:var(--sage2);}
-#vcta2 .vcta-p{color:var(--ob);}
-#vcta2 .vcta-btn.ghost{color:var(--ob);background:rgba(20,19,16,.06);border-color:rgba(21,20,18,.22);}
 .vcta-light{position:absolute;inset:0;z-index:2;pointer-events:none;
   background:
     radial-gradient(58% 52% at 50% 30%,rgba(188,212,26,.15),transparent 62%),
@@ -612,6 +607,49 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .gh-arrow:hover{transform:translateY(-2px) rotate(-12deg);background:rgba(255,255,255,.85);}
 @media(max-width:780px){.gh-card{grid-template-columns:1fr;}.gh-media{aspect-ratio:16/10;}}
 @media(prefers-reduced-motion:reduce){.gh-blobs i,.gh-sheen,.gh-beam::before{animation:none;}.gh-card,.gh-bg{transform:none;}}
+
+
+  /* ════════ BLOC INSTAGRAM — feed @aeconomia.courtage ════════ */
+.ig{position:relative;z-index:2;background:var(--bg);padding:clamp(3.5rem,8vw,7rem) clamp(1.4rem,5vw,4.5rem);}
+.ig-head{text-align:center;max-width:760px;margin:0 auto clamp(2.4rem,5vw,3.6rem);}
+.ig-eye{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.64rem;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--sage2);
+  background:#fff;border:1px solid rgba(21,20,18,.08);padding:8px 16px;border-radius:50px;box-shadow:0 6px 18px rgba(20,19,16,.06);}
+.ig-title{font-family:var(--sky);font-weight:700;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.02;letter-spacing:-2px;color:var(--ob);margin-top:1.3rem;}
+.ig-title em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
+.ig-sub{margin:1.1rem auto 0;max-width:48ch;font-size:clamp(1rem,1.3vw,1.14rem);line-height:1.6;color:var(--ob2);}
+.ig-wrap{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(1.6rem,3.5vw,3rem);max-width:1180px;margin:0 auto;align-items:start;}
+.ig-card{position:sticky;top:100px;background:var(--cream);border-radius:28px;padding:clamp(1.6rem,2.5vw,2.4rem);
+  box-shadow:0 30px 70px rgba(20,19,16,.14),inset 0 2px 0 rgba(255,255,255,.6);border:1px solid rgba(21,20,18,.05);}
+.ig-prof{display:flex;align-items:center;gap:1.1rem;}
+.ig-ava{width:84px;height:84px;border-radius:50%;flex:none;padding:3px;background:conic-gradient(from 210deg,var(--lime),#7fbf9a,var(--sage2),var(--lime));}
+.ig-ava span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:50%;background:#fff;overflow:hidden;}
+.ig-ava img{width:64%;height:auto;}
+.ig-id .name{font-family:var(--sky);font-weight:700;font-size:1.12rem;letter-spacing:-.4px;color:var(--ob);display:flex;align-items:center;gap:.35rem;}
+.ig-id .name svg{width:16px;height:16px;fill:#3897f0;}
+.ig-id .at{font-family:var(--body);font-size:.9rem;color:var(--sage2);font-weight:600;}
+.ig-stats{display:flex;gap:1.4rem;margin:1.5rem 0;padding:1.1rem 0;border-top:1px solid rgba(21,20,18,.1);border-bottom:1px solid rgba(21,20,18,.1);}
+.ig-stat b{display:block;font-family:var(--sky);font-weight:700;font-size:1.2rem;color:var(--ob);font-variant-numeric:tabular-nums;}
+.ig-stat span{font-size:.74rem;color:var(--muted);font-weight:500;}
+.ig-bio{font-size:.92rem;line-height:1.6;color:var(--ob2);}
+.ig-bio b{color:var(--ob);}
+.ig-follow{margin-top:1.5rem;display:flex;align-items:center;justify-content:center;gap:.5rem;width:100%;
+  font-family:var(--sky);font-weight:700;font-size:.95rem;color:#fff;padding:15px;border-radius:14px;background:var(--ob);
+  box-shadow:0 12px 30px rgba(21,20,18,.28);transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s;}
+.ig-follow:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(21,20,18,.4);}
+.ig-follow svg{width:18px;height:18px;fill:currentColor;}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.5rem,1vw,.85rem);}
+.ig-post{position:relative;aspect-ratio:1/1;border-radius:18px;overflow:hidden;background:#e8e1d5;box-shadow:0 14px 34px rgba(20,19,16,.12);}
+.ig-post img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,1,.36,1);}
+.ig-post:hover img{transform:scale(1.09);}
+.ig-post::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,19,16,.55),transparent 55%);opacity:0;transition:opacity .35s;}
+.ig-post:hover::before{opacity:1;}
+.ig-post .meta{position:absolute;left:14px;bottom:12px;display:flex;gap:1rem;color:#fff;font-family:var(--sky);font-weight:600;font-size:.82rem;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s;}
+.ig-post:hover .meta{opacity:1;transform:none;}
+.ig-post .meta span{display:inline-flex;align-items:center;gap:.32rem;}
+.ig-post .ig-mark{position:absolute;top:12px;right:12px;width:26px;height:26px;color:#fff;opacity:0;transition:opacity .35s;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));}
+.ig-post:hover .ig-mark{opacity:.95;}
+@media(max-width:880px){.ig-wrap{grid-template-columns:1fr;}.ig-card{position:static;}}
 
 /* ════════ FOOTER — CTA + vidéo de chargement plus présente ════════ */
 .foot-vid{opacity:.85;}
@@ -1036,25 +1074,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 
 
 
-  <!-- ═══════ CTA VIDÉO 2 — fond vidéo en parallax ═══════ -->
-<section class="vcta" id="vcta2">
-  <div class="vcta-bg">
-    <video muted loop playsinline preload="auto">
-      <source src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/deuxiemeimagedegond.mp4" type="video/mp4"/>
-    </video>
-  </div>
-  <div class="vcta-light"></div>
-  <div class="vcta-beam"></div>
-  <div class="vcta-inner">
-    <div class="vcta-k">Un accompagnement 100 % humain</div>
-    <h2 class="vcta-h">À vos côtés,<br/><em>jusqu'à la signature.</em></h2>
-    <p class="vcta-p">Un courtier dédié, disponible et local. On s'occupe des banques, des relances et de la paperasse — vous gardez l'esprit tranquille.</p>
-    <div class="vcta-btns">
-      <a href="contact.html" class="vcta-btn primary">Prendre rendez-vous →</a>
-      <a href="apropos.html" class="vcta-btn ghost">Qui sommes-nous ?</a>
-    </div>
-  </div>
-</section>
+
 
   <!-- ═══════ CTA VIDÉO 3 — fond vidéo en parallax ═══════ -->
 <section class="vcta" id="vcta3">
@@ -1074,6 +1094,46 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   </div>
 </section>
 
+    <!-- ═══════ INSTAGRAM — @aeconomia.courtage ═══════ -->
+<section class="ig" id="insta">
+  <div class="ig-head">
+    <span class="ig-eye">📸 Instagram · @aeconomia.courtage</span>
+    <h2 class="ig-title">Suivez les coulisses du <em>courtage.</em></h2>
+    <p class="ig-sub">Taux du moment, conseils, projets clients et vie de l'agence — on partage tout sur notre feed. Rejoignez la communauté.</p>
+  </div>
+  <div class="ig-wrap">
+    <div class="ig-card">
+      <div class="ig-prof">
+        <div class="ig-ava"><span><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/logotype_noir_1000px.png" alt="aeconomia"/></span></div>
+        <div class="ig-id">
+          <div class="name">aeconomia <svg viewBox="0 0 24 24"><path d="M23 12l-2.4-2.8.3-3.7-3.6-.8L15.4 1.6 12 3 8.6 1.6 6.7 4.7l-3.6.8.3 3.7L1 12l2.4 2.8-.3 3.7 3.6.8 1.9 3.1L12 21l3.4 1.4 1.9-3.1 3.6-.8-.3-3.7L23 12zm-12.9 4.2l-3.8-3.8 1.4-1.4 2.4 2.4 5.6-5.6 1.4 1.4-7 7z"/></svg></div>
+          <div class="at">@aeconomia.courtage</div>
+        </div>
+      </div>
+      <div class="ig-stats">
+        <div class="ig-stat"><b>186</b><span>publications</span></div>
+        <div class="ig-stat"><b>2 940</b><span>abonnés</span></div>
+        <div class="ig-stat"><b>312</b><span>abonnements</span></div>
+      </div>
+      <p class="ig-bio"><b>Aeconomia — Courtier en prêt immobilier 🏡</b><br/>Orléans &amp; Loiret · 0 € de frais d'avance<br/>On négocie, vous emménagez 🔑</p>
+      <a href="https://www.instagram.com/aeconomia.courtage" target="_blank" rel="noopener" class="ig-follow">
+        <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.41-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
+        Suivre @aeconomia.courtage
+      </a>
+    </div>
+    <div class="ig-grid">
+      <div class="ig-post"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/giving-keys-realtor-shows-apartment-young-couple.jpg" alt=""/><svg class="ig-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.5-2.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg><div class="meta"><span>♥ 214</span><span>💬 12</span></div></div>
+      <div class="ig-post"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/rdv%20courtier%20.png" alt=""/><svg class="ig-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.5-2.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg><div class="meta"><span>♥ 178</span><span>💬 9</span></div></div>
+      <div class="ig-post"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/coupledemenagement.png" alt=""/><svg class="ig-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.5-2.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg><div class="meta"><span>♥ 305</span><span>💬 21</span></div></div>
+      <div class="ig-post"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photomiseensituation1.jpg" alt=""/><svg class="ig-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.5-2.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg><div class="meta"><span>♥ 142</span><span>💬 6</span></div></div>
+      <div class="ig-post"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/negociation.png" alt=""/><svg class="ig-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.5-2.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg><div class="meta"><span>♥ 261</span><span>💬 18</span></div></div>
+      <div class="ig-post"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photomiseensituation2.jpg" alt=""/><svg class="ig-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.5-2.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg><div class="meta"><span>♥ 198</span><span>💬 11</span></div></div>
+      <div class="ig-post"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/image1cartes.png" alt=""/><svg class="ig-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.5-2.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg><div class="meta"><span>♥ 233</span><span>💬 14</span></div></div>
+      <div class="ig-post"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/rdvbanque.png" alt=""/><svg class="ig-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.5-2.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg><div class="meta"><span>♥ 167</span><span>💬 8</span></div></div>
+      <div class="ig-post"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/remisedescles.png" alt=""/><svg class="ig-mark" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm5.5-2.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg><div class="meta"><span>♥ 348</span><span>💬 27</span></div></div>
+    </div>
+  </div>
+</section>
 
 <!-- ═══════ GLASS HERO — verre dynamique ═══════ -->
 <section class="gh" id="glasshero">
@@ -1512,26 +1572,6 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 })();
 
 
-  /* ─── VIDÉO CTA 2 : démarrage anticipé (≈1 écran avant) + parallax ─── */
-(function(){
-  var sec=document.getElementById('vcta2');if(!sec)return;
-  var bg=sec.querySelector('.vcta-bg'),vid=sec.querySelector('video'),
-      reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,ticking=false;
-  if(vid&&'IntersectionObserver' in window){
-    var m=Math.round(innerHeight);
-    new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting){var p=vid.play();if(p&&p.catch)p.catch(function(){});}
-      else vid.pause();
-    });},{rootMargin:m+'px 0px '+m+'px 0px'}).observe(sec);
-  }else if(vid&&vid.play){vid.play();}
-  if(bg&&!reduce){
-    var update=function(){ticking=false;var r=sec.getBoundingClientRect();
-      if(r.bottom>0&&r.top<innerHeight)
-        bg.style.transform='translate3d(0,'+((r.top+r.height/2-innerHeight/2)*-0.10).toFixed(1)+'px,0)';};
-    addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
-    addEventListener('resize',update);update();
-  }
-})();
 
   
 /* ─── VIDÉO CTA 3 : démarrage anticipé + parallax ─── */
