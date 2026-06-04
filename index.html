@@ -586,6 +586,24 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .broker.reduced{height:auto;}
 .broker.reduced .broker-stick{display:none;}
 .broker.reduced .broker-mobile{display:block;padding:clamp(2.6rem,8vw,4.4rem) 6vw clamp(1rem,4vw,2rem);}
+
+
+  /* ── CARTES ÉTAPES : typo repensée + gestion image ── */
+.scard-text{max-width:48ch;}
+.scard-step{display:inline-flex;align-items:center;gap:.65rem;
+  font-family:var(--sky);font-size:.68rem;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--sage2);}
+.scard-step::before{content:"";width:26px;height:2px;background:var(--lime);border-radius:2px;}
+.scard-h{font-family:var(--sky);font-weight:700;font-size:clamp(2.2rem,3.9vw,3.5rem);
+  line-height:1.03;letter-spacing:-1.6px;color:var(--ob);margin-top:1.35rem;}
+.scard-h em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
+.scard-k{display:inline-block;font-family:var(--sky);font-size:.66rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--sage2);
+  margin-top:2.2rem;padding-top:1.5rem;border-top:1px solid rgba(21,20,18,.13);}
+.scard-p{font-family:var(--body);font-size:clamp(1.06rem,1.2vw,1.2rem);line-height:1.75;
+  color:var(--ob2);margin-top:1rem;max-width:42ch;}
+.scard-media:has(img){background:#e8e1d5;}
+.scard-media:has(img)::after{background:linear-gradient(to top,rgba(20,19,16,.16),transparent 42%);}
 </style></head>
 <body>
 
@@ -829,21 +847,21 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   </div>
 
   <div class="steps-stack">
-
+    
     <article class="scard">
-      <div class="scard-in">
-        <div class="scard-text">
-          <div class="scard-step">Étape 1</div>
-          <h3 class="scard-h">Le premier<br/>rendez-vous</h3>
-          <div class="scard-k">On fait connaissance</div>
-          <p class="scard-p">On étudie votre projet, votre capacité d'emprunt et vos envies. Gratuit, sans engagement, en agence ou en visio.</p>
-        </div>
-        <div class="scard-media">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/></svg>
-        </div>
-      </div>
-    </article>
-
+    <div class="scard-in">
+      <div class="scard-text">
+        <div class="scard-step">Étape 01</div>
+        <h3 class="scard-h">Le premier<br/><em>rendez-vous.</em></h3>
+      <div class="scard-k">On fait connaissance</div>
+      <p class="scard-p">On étudie votre projet, votre capacité d'emprunt et vos envies. Gratuit, sans engagement — en agence ou en visio.</p>
+    </div>
+    <div class="scard-media">
+      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/image1cartes.png" alt="Premier rendez-vous avec un courtier Aeconomia"/>
+    </div>
+  </div>
+</article>
+    
     <article class="scard">
       <div class="scard-in">
         <div class="scard-text">
