@@ -651,6 +651,57 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .ig-post:hover .ig-mark{opacity:.95;}
 @media(max-width:880px){.ig-wrap{grid-template-columns:1fr;}.ig-card{position:static;}}
 
+
+
+  /* ════════ ÉQUIPE — trombinoscope scroll horizontal + glass ════════ */
+.team{position:relative;height:260vh;background:#0f0d0b;}
+.team-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:radial-gradient(120% 90% at 50% 0%,#221d16,#0f0d0b 70%);}
+.team-bg i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;will-change:transform;}
+.team-bg i:nth-child(1){width:520px;height:520px;left:-4%;top:8%;background:#75847c;animation:tbl1 19s ease-in-out infinite;}
+.team-bg i:nth-child(2){width:480px;height:480px;right:-2%;top:0;background:#bcd41a;opacity:.22;animation:tbl2 22s ease-in-out infinite;}
+.team-bg i:nth-child(3){width:560px;height:560px;right:18%;bottom:-6%;background:#caa86a;opacity:.3;animation:tbl3 24s ease-in-out infinite;}
+@keyframes tbl1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(90px,60px) scale(1.15)}}
+@keyframes tbl2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-80px,50px) scale(1.1)}}
+@keyframes tbl3{0%,100%{transform:translate(0,0) scale(1.05)}50%{transform:translate(-60px,-50px) scale(.92)}}
+.team-stick{position:sticky;top:0;height:100vh;overflow:hidden;z-index:1;display:flex;flex-direction:column;justify-content:center;}
+.team-head{padding:0 clamp(1.4rem,5vw,4rem);margin-bottom:clamp(1.6rem,4vh,2.6rem);max-width:760px;}
+.team-eye{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.64rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--lime);}
+.team-eye::before{content:"";width:24px;height:2px;background:var(--lime);border-radius:2px;}
+.team-title{font-family:var(--sky);font-weight:700;font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.04;letter-spacing:-1.8px;color:#fff;margin-top:1rem;}
+.team-title em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--lime);}
+.team-rail{overflow:hidden;padding:clamp(.5rem,2vh,1.4rem) clamp(1.4rem,5vw,4rem);}
+.team-track{display:flex;gap:clamp(1rem,1.6vw,1.6rem);width:max-content;will-change:transform;}
+.tcard{flex:none;width:clamp(232px,21vw,290px);border-radius:28px;padding:11px;
+  background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.05));
+  backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);
+  border:1px solid rgba(255,255,255,.22);box-shadow:0 30px 70px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.4);
+  transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s;}
+.tcard:hover{transform:translateY(-10px);box-shadow:0 46px 96px rgba(0,0,0,.55);}
+.tcard-photo{position:relative;aspect-ratio:3/4;border-radius:20px;overflow:hidden;background:#2a2620;}
+.tcard-photo img{width:100%;height:100%;object-fit:cover;transition:transform .65s cubic-bezier(.22,1,.36,1);}
+.tcard:hover .tcard-photo img{transform:scale(1.07);}
+.tcard-tag{position:absolute;left:9px;right:9px;bottom:9px;padding:10px 14px;border-radius:15px;
+  background:rgba(18,16,13,.42);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.25);}
+.tcard-name{display:block;font-family:var(--sky);font-weight:700;font-size:1.12rem;letter-spacing:-.3px;color:#fff;}
+.tcard-role{display:block;font-family:var(--sky);font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78);margin-top:.25rem;}
+.tcard.more .tcard-photo{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,rgba(188,212,26,.3),rgba(255,255,255,.04));}
+.tcard-more-in{text-align:center;padding:1.4rem;}
+.tcard-more-in b{display:block;font-family:var(--sky);font-weight:700;font-size:1.3rem;color:#fff;letter-spacing:-.5px;line-height:1.15;}
+.tcard-more-in span{display:inline-flex;margin-top:1.1rem;width:54px;height:54px;border-radius:50%;align-items:center;justify-content:center;background:var(--lime);color:var(--ob);font-size:1.4rem;transition:transform .3s;}
+.tcard.more:hover .tcard-more-in span{transform:translateX(4px);}
+.team-hint{position:absolute;bottom:clamp(1.4rem,4vh,2.6rem);left:clamp(1.4rem,5vw,4rem);font-family:var(--sky);font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:.6rem;}
+.team-hint::after{content:"→";font-size:1rem;animation:thint 1.6s ease-in-out infinite;}
+@keyframes thint{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+@media(max-width:1024px),(prefers-reduced-motion:reduce){
+  .team{height:auto;}
+  .team-stick{position:static;height:auto;padding:clamp(3rem,9vw,5rem) 0;}
+  .team-rail{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:1.6rem;}
+  .team-track{transform:none!important;}
+  .tcard{scroll-snap-align:center;}
+  .team-hint{display:none;}
+}
+
 /* ════════ FOOTER — CTA + vidéo de chargement plus présente ════════ */
 .foot-vid{opacity:.85;}
 .foot-bg::after{background:linear-gradient(180deg,rgba(247,244,239,.58),rgba(236,227,212,.74));}
@@ -1158,7 +1209,31 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
     </div>
   </div>
 </section>
-  
+
+
+    <!-- ═══════ ÉQUIPE — trombinoscope scroll horizontal ═══════ -->
+<section class="team" id="team">
+  <div class="team-bg"><i></i><i></i><i></i></div>
+  <div class="team-stick">
+    <div class="team-head">
+      <span class="team-eye">L'équipe</span>
+      <h2 class="team-title">L'équipe qui <em>négocie pour vous.</em></h2>
+    </div>
+    <div class="team-rail">
+      <div class="team-track" id="teamTrack">
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt="Dimitri"/><div class="tcard-tag"><span class="tcard-name">Dimitri</span><span class="tcard-role">Fondateur · Stratégie</span></div></div></article>
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/mariephoto.jpg" alt="Marie"/><div class="tcard-tag"><span class="tcard-name">Marie</span><span class="tcard-role">Courtière · Primo-accédants</span></div></div></article>
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt="Robin"/><div class="tcard-tag"><span class="tcard-name">Robin</span><span class="tcard-role">Courtier · Invest. locatif</span></div></div></article>
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt="Gabriel"/><div class="tcard-tag"><span class="tcard-name">Gabriel</span><span class="tcard-role">Courtier · Renégociation</span></div></div></article>
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/matteo.jpg" alt="Matteo"/><div class="tcard-tag"><span class="tcard-name">Matteo</span><span class="tcard-role">Courtier · Pro &amp; SCI</span></div></div></article>
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Adrien%20.jpg" alt="Adrien"/><div class="tcard-tag"><span class="tcard-name">Adrien</span><span class="tcard-role">Courtier · Travaux</span></div></div></article>
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt="Raphaël"/><div class="tcard-tag"><span class="tcard-name">Raphaël</span><span class="tcard-role">Courtier · Résidence 2nde</span></div></div></article>
+        <a href="apropos.html" class="tcard more"><div class="tcard-photo"><div class="tcard-more-in"><b>Toute<br/>l'équipe</b><span>→</span></div></div></a>
+      </div>
+    </div>
+    <div class="team-hint">Scrollez pour rencontrer l'équipe</div>
+  </div>
+</section>
 <!-- ═══════ FOOTER ═══════ -->
 <footer class="foot">
   <div class="foot-bg">
@@ -1622,6 +1697,25 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
       if(glow)glow.style.opacity='0';
     });
   }
+})();
+
+
+  /* ─── ÉQUIPE : scroll vertical → défilement horizontal ─── */
+(function(){
+  var sec=document.getElementById('team');if(!sec)return;
+  var track=document.getElementById('teamTrack'),stick=sec.querySelector('.team-stick'),rail=sec.querySelector('.team-rail'),
+      desktop=matchMedia('(min-width:1025px)').matches,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,ticking=false;
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function render(){ticking=false;
+    if(!desktop||reduce){track.style.transform='';return;}
+    var maxX=Math.max(0,track.scrollWidth-rail.clientWidth),total=sec.offsetHeight-stick.clientHeight;
+    var p=total>0?clamp(-sec.getBoundingClientRect().top/total,0,1):0;
+    track.style.transform='translate3d('+(-p*maxX).toFixed(1)+'px,0,0)';
+  }
+  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(render);}}
+  render();
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',function(){desktop=matchMedia('(min-width:1025px)').matches;reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;render();});
 })();
 
 </script>
