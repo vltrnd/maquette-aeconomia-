@@ -740,65 +740,69 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   .team-hint,.team-beam{display:none;}
 }
 
-/* ════════ AVIS — preuve sociale ════════ */
-/* ════════ AVIS — roue d'avis en arc, pinnée + pilotée au scroll ════════ */
-.rev{position:relative;z-index:2;height:300vh;background:radial-gradient(120% 60% at 50% 0%,#FFFFFF,#F1ECE1 70%);}
-.rev-pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;}
-.rev-head{position:relative;z-index:6;text-align:center;padding:clamp(1.6rem,3.4vw,2.6rem) 1.4rem 0;}
-.rev-eye{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.7rem;font-weight:700;letter-spacing:.1em;color:#F5A623;}
-.rev-title{font-family:var(--sky);font-weight:700;font-size:clamp(1.7rem,3.6vw,2.7rem);letter-spacing:-1.4px;color:var(--ob);margin-top:.4rem;}
+/* ════════ AVIS — orbite clients (dans le tél) + cartes en éventail (photo 1) ════════ */
+.rev{position:relative;z-index:2;overflow:hidden;border-bottom:1px solid rgba(21,20,18,.07);
+  background:radial-gradient(120% 80% at 50% 0%,#FFFFFF,#F1ECE1 75%);
+  padding:clamp(2.6rem,5vw,3.8rem) clamp(1rem,4vw,2rem) clamp(2.6rem,5vw,4rem);}
+.rev-head{position:relative;z-index:6;text-align:center;max-width:840px;margin:0 auto;}
+.rev-eye{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.72rem;font-weight:700;letter-spacing:.1em;color:#F5A623;}
+.rev-title{font-family:var(--sky);font-weight:700;font-size:clamp(2rem,4.4vw,3.3rem);letter-spacing:-1.6px;color:var(--ob);margin-top:.5rem;}
 .rev-title em{font-style:normal;color:var(--sage2);}
-.rev-logos{display:flex;align-items:center;justify-content:center;gap:clamp(1.2rem,3vw,2.2rem);margin-top:.9rem;}
-.rev-logos img{height:clamp(17px,2vw,22px);width:auto;object-fit:contain;opacity:.8;filter:grayscale(.25);}
-.rev-stage{position:relative;flex:1;}
-.rev-wheel{position:absolute;inset:0;z-index:2;}
-.rev-chip{position:absolute;left:0;top:0;width:clamp(158px,15vw,196px);text-align:left;cursor:pointer;
-  background:rgba(255,255,255,.95);border:1px solid rgba(21,20,18,.07);border-radius:16px;padding:.7rem .8rem .75rem;
-  box-shadow:0 16px 34px rgba(40,33,24,.13);will-change:transform,opacity;font:inherit;color:inherit;}
-.rev-chip .rc-st{color:#F5A623;font-size:.62rem;letter-spacing:1px;}
-.rev-chip .rc-tx{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
-  font-size:.74rem;line-height:1.38;color:var(--ob2);margin:.3rem 0 .45rem;}
-.rev-chip .rc-by{display:block;font-family:var(--sky);font-size:.64rem;color:var(--muted);}
-.rev-chip .rc-by b{color:var(--ob);font-weight:700;}
-.rev-chip.active{border-color:rgba(188,212,26,.7);box-shadow:0 20px 44px rgba(40,33,24,.2),0 0 0 2px rgba(188,212,26,.5);}
-.rev-phone{position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);z-index:5;
-  width:clamp(240px,26vw,286px);aspect-ratio:9/19.2;
-  background:linear-gradient(150deg,#23211d,#34312b);border-radius:46px;padding:10px;
-  box-shadow:0 50px 90px rgba(40,33,24,.36),0 14px 30px rgba(40,33,24,.24),inset 0 0 0 2px rgba(255,255,255,.06);}
-.rev-screen{position:relative;width:100%;height:100%;border-radius:37px;overflow:hidden;
-  background:radial-gradient(120% 80% at 50% 0%,#FFFFFF,#F4EFE6);display:flex;align-items:center;justify-content:center;}
-.rev-screen::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);
-  width:100px;height:27px;border-radius:16px;background:#1b1916;z-index:4;}
-.rev-disp{padding:clamp(1.3rem,2vw,1.7rem);text-align:center;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s;}
-.rev-disp.show{opacity:1;transform:none;}
-.rd-src{height:22px;width:auto;margin:0 auto .9rem;opacity:.95;}
-.rd-st{color:#F5A623;font-size:.95rem;letter-spacing:2px;}
-.rd-tx{font-family:var(--sky);font-weight:600;font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.4;letter-spacing:-.3px;color:var(--ob);margin:.9rem 0 1.3rem;}
-.rd-by{display:inline-flex;align-items:center;gap:.6rem;}
-.rd-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(150deg,var(--sage2),#5e6b63);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--sky);font-weight:700;}
-.rd-by span:last-child{display:flex;flex-direction:column;line-height:1.2;text-align:left;}
-.rd-by b{font-family:var(--sky);font-size:.92rem;color:var(--ob);}
-.rd-by i{font-style:normal;font-size:.74rem;color:var(--muted);}
-.rev-hint{position:absolute;left:50%;bottom:clamp(1.2rem,3vh,2.2rem);transform:translateX(-50%);z-index:6;
-  font-family:var(--sky);font-size:.64rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(21,20,18,.45);
-  display:flex;align-items:center;gap:.5rem;white-space:nowrap;}
-.rev-hint::before{content:"";width:18px;height:18px;border:2px solid rgba(21,20,18,.3);border-top-color:transparent;border-radius:50%;animation:revspin 1.4s linear infinite;}
-@keyframes revspin{to{transform:rotate(360deg);}}
+.rev-logos{display:flex;align-items:center;justify-content:center;gap:clamp(1.4rem,4vw,2.6rem);margin-top:1.1rem;}
+.rev-logos img{height:clamp(18px,2.2vw,24px);width:auto;object-fit:contain;opacity:.85;filter:grayscale(.2);}
+.rev-stage{position:relative;max-width:1240px;margin:clamp(1.6rem,3vw,2.4rem) auto 0;height:clamp(640px,70vw,780px);}
+.rev-phone{position:absolute;left:50%;top:0;transform:translateX(-50%);z-index:3;
+  width:clamp(284px,30vw,340px);aspect-ratio:9/19;
+  background:linear-gradient(150deg,#23211d,#34312b);border-radius:50px;padding:11px;
+  box-shadow:0 54px 100px rgba(40,33,24,.34),0 14px 30px rgba(40,33,24,.22),inset 0 0 0 2px rgba(255,255,255,.06);}
+.rev-screen{position:relative;width:100%;height:100%;border-radius:40px;overflow:hidden;
+  background:radial-gradient(120% 70% at 50% 0%,#FFFFFF,#F6F1E8);}
+.rev-screen::before{content:"";position:absolute;top:13px;left:50%;transform:translateX(-50%);
+  width:104px;height:28px;border-radius:16px;background:#1b1916;z-index:5;}
+.rev-statusbar{position:absolute;top:18px;left:24px;right:24px;display:flex;justify-content:space-between;
+  font-family:var(--sky);font-size:.72rem;font-weight:600;color:var(--ob);z-index:4;opacity:.85;}
+.rev-orbit{position:absolute;left:0;right:0;top:18%;bottom:0;}
+.rev-orbit .ring{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);border-radius:50%;border:1.4px solid rgba(21,20,18,.12);}
+.rev-orbit .r1{width:48%;aspect-ratio:1;}
+.rev-orbit .r2{width:84%;aspect-ratio:1;}
+.rev-spin{position:absolute;left:50%;top:42%;width:84%;aspect-ratio:1;transform:translate(-50%,-50%);
+  animation:orbit 46s linear infinite;}
+.rev-av{position:absolute;border-radius:50%;object-fit:cover;border:3px solid #fff;background:#e6ddcd;
+  box-shadow:0 8px 16px rgba(40,33,24,.18);transform:translate(-50%,-50%);animation:orbitR 46s linear infinite;}
+.rev-av.s{width:34px;height:34px;}.rev-av.m{width:46px;height:46px;}.rev-av.l{width:56px;height:56px;}
+@keyframes orbit{to{transform:translate(-50%,-50%) rotate(360deg);}}
+@keyframes orbitR{to{transform:translate(-50%,-50%) rotate(-360deg);}}
+.rev-cap{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:64%;text-align:center;z-index:2;
+  font-family:var(--sky);font-weight:600;font-size:clamp(1rem,1.5vw,1.24rem);line-height:1.24;letter-spacing:-.4px;color:var(--ob);}
+.rev-cap b{display:block;font-weight:700;font-size:1.25em;margin:.12em 0;}
+.rev-cap .st{display:block;color:#F5A623;font-size:.78em;letter-spacing:2px;margin-top:.45em;}
+.rev-caro{position:absolute;inset:0;}
+.rev-card{position:absolute;left:50%;top:0;width:clamp(212px,19vw,236px);text-align:left;cursor:pointer;
+  background:#fff;border:1px solid rgba(21,20,18,.06);border-radius:18px;padding:1rem 1.1rem 1.05rem;
+  box-shadow:0 26px 50px rgba(40,33,24,.15);font:inherit;color:inherit;will-change:transform,opacity;}
+.rev-card .cat{font-family:var(--sky);font-size:.72rem;font-weight:600;color:var(--sage2);}
+.rev-card .tx{font-size:.85rem;line-height:1.5;color:var(--ob2);margin:.55rem 0 .9rem;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
+.rev-card .by{display:flex;align-items:center;gap:.5rem;}
+.rev-card .by img{width:32px;height:32px;border-radius:50%;object-fit:cover;}
+.rev-card .by b{font-family:var(--sky);font-size:.82rem;font-weight:700;color:var(--ob);}
+.rev-card .by span{font-size:.7rem;color:var(--muted);}
+.rev-card.active{box-shadow:0 32px 62px rgba(40,33,24,.24),0 0 0 2px rgba(188,212,26,.55);}
+.rev-bar{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);width:200px;height:5px;border-radius:5px;background:rgba(21,20,18,.1);z-index:7;overflow:hidden;}
+.rev-bar i{position:absolute;top:0;height:100%;width:34%;border-radius:5px;background:var(--sage2);}
+.rev-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:7;
+  font-family:var(--sky);font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(21,20,18,.4);}
 .rev-stack{display:none;}
 @media(max-width:980px){
-  .rev{height:auto;background:radial-gradient(120% 50% at 50% 0%,#FFFFFF,#F1ECE1 70%);}
-  .rev-pin{position:static;height:auto;overflow:visible;padding-bottom:clamp(2.4rem,8vw,4rem);}
   .rev-stage{display:none;}
-  .rev-stack{display:flex;flex-direction:column;gap:1rem;max-width:560px;margin:2rem auto 0;padding:0 1.4rem;}
-  .rcm{background:#fff;border:1px solid rgba(21,20,18,.07);border-radius:18px;padding:1.2rem 1.3rem;box-shadow:0 16px 36px rgba(40,33,24,.1);}
-  .rcm-top{display:flex;align-items:center;justify-content:space-between;}
-  .rcm-top span{color:#F5A623;font-size:.85rem;letter-spacing:1px;}.rcm-top img{height:16px;opacity:.8;}
-  .rcm p{font-size:.92rem;line-height:1.55;color:var(--ob2);margin:.7rem 0 .9rem;}
-  .rcm-by{display:flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.8rem;color:var(--muted);}
-  .rcm-by b{color:var(--ob);}
-  .rcm-by .rd-av{width:30px;height:30px;font-size:.8rem;}
+  .rev-stack{display:flex;flex-direction:column;gap:1rem;max-width:560px;margin:1.6rem auto 0;}
+  .rcm{background:#fff;border:1px solid rgba(21,20,18,.07);border-radius:18px;padding:1.1rem 1.2rem;box-shadow:0 14px 32px rgba(40,33,24,.1);}
+  .rcm .cat{font-family:var(--sky);font-size:.72rem;font-weight:600;color:var(--sage2);}
+  .rcm p{font-size:.9rem;line-height:1.5;color:var(--ob2);margin:.5rem 0 .8rem;}
+  .rcm .by{display:flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.8rem;color:var(--muted);}
+  .rcm .by img{width:30px;height:30px;border-radius:50%;}.rcm .by b{color:var(--ob);}
 }
-@media(prefers-reduced-motion:reduce){.rev-hint::before{animation:none;}}
+@media(prefers-reduced-motion:reduce){.rev-spin,.rev-av{animation:none;}}
   
 /* ════════ FOOTER — CTA + vidéo de chargement plus présente ════════ */
 .foot-vid{opacity:.85;}
@@ -1016,25 +1020,43 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 </section>
 
 
-  <!-- ═══════ AVIS — preuve sociale ═══════ -->
-<!-- ═══════ AVIS — roue d'avis en arc (pinnée) ═══════ -->
+ <!-- ═══════ AVIS — orbite clients (dans le tél) + cartes en éventail ═══════ -->
 <section class="rev" id="reviews">
-  <div class="rev-pin">
-    <div class="rev-head">
-      <span class="rev-eye">★★★★★ · Avis vérifiés</span>
-      <h2 class="rev-title">Ils nous ont fait <em>confiance.</em></h2>
-      <div class="rev-logos">
-        <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/google.png" alt="Google"/>
-        <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/solocal.png" alt="Solocal"/>
-        <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/immodivsor.png" alt="Immodvisor"/>
-      </div>
-    </div>
-    <div class="rev-stage" id="revStage">
-      <div class="rev-wheel" id="revWheel"></div>
-      <div class="rev-phone"><div class="rev-screen"><div class="rev-disp" id="revDisp"></div></div></div>
-      <div class="rev-hint">Scrollez — cliquez un avis pour le figer</div>
+  <div class="rev-head">
+    <span class="rev-eye">★★★★★ · Avis vérifiés</span>
+    <h2 class="rev-title">Ils nous ont fait <em>confiance.</em></h2>
+    <div class="rev-logos">
+      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/google.png" alt="Google"/>
+      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/solocal.png" alt="Solocal"/>
+      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/immodivsor.png" alt="Immodvisor"/>
     </div>
   </div>
+
+  <div class="rev-stage" id="revStage">
+    <div class="rev-phone">
+      <div class="rev-screen">
+        <div class="rev-statusbar"><span>9:41</span><span>5G ▮▮</span></div>
+        <div class="rev-orbit">
+          <span class="ring r1"></span><span class="ring r2"></span>
+          <div class="rev-spin">
+            <img class="rev-av m" style="left:50%;top:2%"  src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt=""/>
+            <img class="rev-av s" style="left:90%;top:24%" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/matteo.jpg" alt=""/>
+            <img class="rev-av l" style="left:96%;top:62%" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/mariephoto.jpg" alt=""/>
+            <img class="rev-av s" style="left:64%;top:92%" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt=""/>
+            <img class="rev-av m" style="left:18%;top:88%" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt=""/>
+            <img class="rev-av s" style="left:2%;top:50%"  src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt=""/>
+            <img class="rev-av s" style="left:8%;top:18%"  src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt=""/>
+          </div>
+          <div class="rev-cap">Plus de<b>1 100 clients</b>nous font confiance<span class="st">★★★★★</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev-caro" id="revCaro"></div>
+    <div class="rev-bar"><i id="revBarFill"></i></div>
+    <div class="rev-hint">Survolez ou cliquez un avis pour le figer</div>
+  </div>
+
   <div class="rev-stack" id="revStack"></div>
 </section>
 
@@ -1856,86 +1878,83 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   addEventListener('scroll',function(){if(!vid.muted)set(true);},{passive:true});
 })();
   
-/* ─── AVIS : roue en arc, pinnée (scroll = tourne · clic = fige · idle spin) ─── */
+/* ─── AVIS : orbite clients + éventail rotatif (auto · survol/clic = fige) ─── */
 (function(){
   var sec=document.getElementById('reviews');if(!sec)return;
-  var wheel=document.getElementById('revWheel'),stage=document.getElementById('revStage'),disp=document.getElementById('revDisp');
+  var caro=document.getElementById('revCaro'),stage=document.getElementById('revStage'),bar=document.getElementById('revBarFill');
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,desktop=matchMedia('(min-width:981px)').matches;
-  var G="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/",L={g:G+"google.png",s:G+"solocal.png",i:G+"immodivsor.png"};
+  var G="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/",AV={g:"gabriel",s:"mariephoto",i:"matteo"};
   var D=[
-    ["Accompagnement au top du début à la fin. Taux bien en dessous de ma banque !","Marie L.","Orléans","g"],
-    ["Très réactifs et de bon conseil. Dossier accepté en 3 semaines.","Thomas B.","Olivet","s"],
-    ["Zéro stress, ils gèrent tout. Je recommande les yeux fermés.","Sophie M.","Saran","i"],
-    ["Plus de 12 000 € économisés sur le coût total. Merci à toute l'équipe.","Karim D.","Fleury","g"],
-    ["Premier achat réussi grâce à eux. Pédagogues et efficaces.","Antoine P.","Chécy","i"],
-    ["Une équipe humaine et toujours dispo. On se sent vraiment accompagné.","Julie R.","Orléans","g"],
-    ["Meilleur taux + assurance déléguée. Du grand pro.","Nadia K.","Ingré","s"],
-    ["Rapide, transparent, aucun frais caché. Parfait.","Lucas V.","St-Jean","g"],
-    ["Ils ont décroché un oui là où ma banque disait non.","Hugo M.","La Source","i"],
-    ["Conseils clairs, suivi nickel, je recommande vivement.","Camille T.","Olivet","g"],
-    ["Notre projet a abouti malgré un dossier compliqué. Bravo !","Inès F.","Orléans","g"],
-    ["Disponibles le soir et le week-end, ça change tout.","Paul G.","Meung","s"],
-    ["Du premier RDV à la signature : un vrai accompagnement.","Léa V.","Saran","g"],
-    ["Économie d'argent ET de temps. Foncez.","Mehdi A.","Fleury","i"],
-    ["Très pro, à l'écoute, et de vrais experts du crédit.","Claire D.","Olivet","g"],
-    ["On a eu notre maison grâce à eux. Merci infiniment.","Romain P.","Chécy","g"],
-    ["Taux excellent et zéro paperasse de mon côté.","Sarah B.","Orléans","s"],
-    ["Réponse en 24h, dossier bouclé en un temps record.","Kevin L.","Ingré","i"],
-    ["Ils m'ont évité de grosses erreurs. Merci pour les conseils.","Émilie R.","St-Jean","g"],
-    ["Service impeccable, je recommande à tous mes proches.","Yanis M.","La Source","g"],
-    ["Négociation au top, on a gagné 0,4 pt sur le taux.","Aurélie C.","Olivet","i"],
-    ["Accompagnement humain et ultra compétent.","Damien S.","Orléans","g"],
-    ["Première acquisition sereine grâce à leur équipe.","Manon T.","Fleury","s"],
-    ["Le meilleur courtier d'Orléans, sans hésiter.","Nicolas B.","Saran","g"],
-    ["Très satisfait, du sérieux et de la transparence.","Olivia K.","Meung","g"],
-    ["Ils ont sauvé mon financement à la dernière minute.","Bastien D.","Chécy","i"],
-    ["Suivi parfait et toujours de bonne humeur. Top !","Chloé M.","Orléans","g"],
-    ["Rachat de prêt réussi, mensualités bien allégées.","Franck V.","Ingré","s"]
+    ["Prêt immo","Accompagnement au top du début à la fin. Taux bien en dessous de ma banque !","Marie L.","Orléans","g"],
+    ["Rachat","Très réactifs et de bon conseil. Dossier accepté en 3 semaines.","Thomas B.","Olivet","s"],
+    ["Prêt immo","Zéro stress, ils gèrent tout. Je recommande les yeux fermés.","Sophie M.","Saran","i"],
+    ["Investissement","Plus de 12 000 € économisés sur le coût total. Merci à toute l'équipe.","Karim D.","Fleury","g"],
+    ["Primo-accédant","Premier achat réussi grâce à eux. Pédagogues et efficaces.","Antoine P.","Chécy","i"],
+    ["Prêt immo","Une équipe humaine et toujours dispo. On se sent vraiment accompagné.","Julie R.","Orléans","g"],
+    ["Assurance","Meilleur taux + assurance déléguée. Du grand pro.","Nadia K.","Ingré","s"],
+    ["Renégociation","Rapide, transparent, aucun frais caché. Parfait.","Lucas V.","St-Jean","g"],
+    ["Prêt immo","Ils ont décroché un oui là où ma banque disait non.","Hugo M.","La Source","i"],
+    ["Rachat","Conseils clairs, suivi nickel, je recommande vivement.","Camille T.","Olivet","g"],
+    ["Prêt immo","Notre projet a abouti malgré un dossier compliqué. Bravo !","Inès F.","Orléans","g"],
+    ["Prêt immo","Disponibles le soir et le week-end, ça change tout.","Paul G.","Meung","s"],
+    ["Primo-accédant","Du premier RDV à la signature : un vrai accompagnement.","Léa V.","Saran","g"],
+    ["Investissement","Économie d'argent ET de temps. Foncez.","Mehdi A.","Fleury","i"],
+    ["Prêt immo","Très pro, à l'écoute, de vrais experts du crédit.","Claire D.","Olivet","g"],
+    ["Prêt immo","On a eu notre maison grâce à eux. Merci infiniment.","Romain P.","Chécy","g"],
+    ["Rachat","Taux excellent et zéro paperasse de mon côté.","Sarah B.","Orléans","s"],
+    ["Prêt immo","Réponse en 24h, dossier bouclé en un temps record.","Kevin L.","Ingré","i"],
+    ["Renégociation","Ils m'ont évité de grosses erreurs. Merci pour les conseils.","Émilie R.","St-Jean","g"],
+    ["Prêt immo","Service impeccable, je recommande à tous mes proches.","Yanis M.","La Source","g"],
+    ["Assurance","Négociation au top, on a gagné 0,4 pt sur le taux.","Aurélie C.","Olivet","i"],
+    ["Prêt immo","Accompagnement humain et ultra compétent.","Damien S.","Orléans","g"],
+    ["Primo-accédant","Première acquisition sereine grâce à leur équipe.","Manon T.","Fleury","s"],
+    ["Prêt immo","Le meilleur courtier d'Orléans, sans hésiter.","Nicolas B.","Saran","g"],
+    ["Prêt immo","Très satisfait, du sérieux et de la transparence.","Olivia K.","Meung","g"],
+    ["Investissement","Ils ont sauvé mon financement à la dernière minute.","Bastien D.","Chécy","i"],
+    ["Prêt immo","Suivi parfait et toujours de bonne humeur. Top !","Chloé M.","Orléans","g"],
+    ["Rachat","Rachat de prêt réussi, mensualités bien allégées.","Franck V.","Ingré","s"]
   ];
-  var chips=D.map(function(d,i){
-    var el=document.createElement('button');el.type='button';el.className='rev-chip';
-    el.innerHTML='<span class="rc-st">★★★★★</span><span class="rc-tx">'+d[0]+'</span><span class="rc-by"><b>'+d[1]+'</b> · '+d[2]+'</span>';
-    el.addEventListener('click',function(){paused=true;idleOn=false;target=i*step;});
-    wheel.appendChild(el);return el;
+  var cards=D.map(function(d,i){
+    var el=document.createElement('button');el.type='button';el.className='rev-card';
+    el.innerHTML='<span class="cat">['+d[0]+']</span><p class="tx">'+d[1]+'</p>'+
+      '<div class="by"><img src="'+G+AV[d[4]]+'.jpg" alt=""/><div><b>'+d[2]+'</b> · <span>'+d[3]+'</span></div></div>';
+    el.addEventListener('mouseenter',function(){hover=true;});
+    el.addEventListener('mouseleave',function(){hover=false;});
+    el.addEventListener('click',function(){clicked=(clicked===i?-1:i);});
+    caro.appendChild(el);return el;
   });
-  var N=chips.length,step=360/N,rot=0,target=0,paused=false,idleOn=true,lastY=window.scrollY,raf=null,active=-1;
-  addEventListener('scroll',function(){
-    var y=window.scrollY,d=y-lastY;lastY=y;
-    var r=sec.getBoundingClientRect();
-    if(r.bottom>0&&r.top<innerHeight){target+=d*0.20;paused=false;idleOn=true;}
+  var N=cards.length,SP=212,total=N*SP,scroll=0,hover=false,clicked=-1,raf=null;
+  var VIS=660,K=0.00028;
+  addEventListener('wheel',function(e){
+    var r=sec.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){scroll+=e.deltaY*0.25;}
   },{passive:true});
-  function setActive(i){
-    if(i===active)return;active=i;var d=D[i];
-    disp.innerHTML='<img class="rd-src" src="'+L[d[3]]+'" alt=""/><div class="rd-st">★★★★★</div>'+
-      '<p class="rd-tx">« '+d[0]+' »</p><div class="rd-by"><span class="rd-av">'+d[1][0]+'</span>'+
-      '<span><b>'+d[1]+'</b><i>'+d[2]+'</i></span></div>';
-    disp.classList.remove('show');void disp.offsetWidth;disp.classList.add('show');
-    chips.forEach(function(c,k){c.classList.toggle('active',k===i);});
-  }
   function frame(){
-    if(idleOn&&!paused)target+=0.05;
-    rot+=(target-rot)*0.09;
-    var w=stage.clientWidth,h=stage.clientHeight,cx=w/2,cy=h*0.66,R=Math.min(w*0.44,cy-24);
-    var best=1e9,bi=0;
+    var spd=(hover||clicked>=0)?0:0.55;
+    if(clicked>=0){var tcur=((clicked*SP-scroll)%total+total)%total;if(tcur>total/2)tcur-=total;scroll+=tcur*0.12;}
+    else scroll+=spd;
+    var w=stage.clientWidth,h=stage.clientHeight,cx=w/2;
+    var phoneH=Math.min(340,Math.max(284,w*0.30))*19/9;
+    var apexY=phoneH*0.60;
     for(var i=0;i<N;i++){
-      var deg=i*step-rot;deg=((deg+180)%360+360)%360-180;
-      var ad=Math.abs(deg);if(ad<best){best=ad;bi=i;}
-      var a=deg*Math.PI/180,x=cx+R*Math.sin(a),y=cy-R*Math.cos(a),ch=chips[i];
-      if(ad>90){ch.style.opacity=0;ch.style.pointerEvents='none';
-        ch.style.transform='translate(-50%,-50%) translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) scale(.6)';continue;}
-      var t=1-ad/90;
-      ch.style.opacity=(0.1+0.9*t).toFixed(3);ch.style.pointerEvents='auto';ch.style.zIndex=Math.round(100-ad);
-      ch.style.transform='translate(-50%,-50%) translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) rotate('+(deg*0.2).toFixed(2)+'deg) scale('+(0.76+0.24*t).toFixed(3)+')';
+      var px=((i*SP-scroll)%total+total)%total;if(px>total/2)px-=total;
+      var c=cards[i],ad=Math.abs(px);
+      if(ad>VIS){c.style.opacity=0;c.style.pointerEvents='none';continue;}
+      var y=apexY+K*px*px,rotd=px*0.011,t=1-ad/VIS;
+      c.style.opacity=Math.min(1,(VIS-ad)/240).toFixed(3);
+      c.style.pointerEvents='auto';c.style.zIndex=Math.round(6-ad/VIS*5);
+      c.style.transform='translate(-50%,0) translate('+px.toFixed(1)+'px,'+y.toFixed(1)+'px) rotate('+rotd.toFixed(2)+'deg) scale('+(0.9+0.1*t).toFixed(3)+')';
+      c.classList.toggle('active',i===clicked||(clicked<0&&ad<SP/2));
     }
-    setActive(bi);raf=requestAnimationFrame(frame);
+    var prog=((scroll%total)+total)%total/total;
+    if(bar)bar.style.left=(prog*66)+'%';
+    raf=requestAnimationFrame(frame);
   }
-  function start(){if(raf||!desktop||reduce)return;lastY=window.scrollY;raf=requestAnimationFrame(frame);}
+  function start(){if(raf||!desktop||reduce)return;raf=requestAnimationFrame(frame);}
   function stop(){if(raf){cancelAnimationFrame(raf);raf=null;}}
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?start():stop();});},{rootMargin:'200px'}).observe(sec);}else start();
   addEventListener('resize',function(){desktop=matchMedia('(min-width:981px)').matches;if(!desktop||reduce)stop();else start();});
   var st=document.getElementById('revStack');
-  if(st)st.innerHTML=D.slice(0,6).map(function(d){return '<div class="rcm"><div class="rcm-top"><span>★★★★★</span><img src="'+L[d[3]]+'" alt=""/></div><p>« '+d[0]+' »</p><div class="rcm-by"><span class="rd-av">'+d[1][0]+'</span><b>'+d[1]+'</b> · '+d[2]+'</div></div>';}).join('');
-  setActive(0);
+  if(st)st.innerHTML=D.slice(0,6).map(function(d){return '<div class="rcm"><span class="cat">['+d[0]+']</span><p>'+d[1]+'</p><div class="by"><img src="'+G+AV[d[4]]+'.jpg" alt=""/><b>'+d[2]+'</b> · '+d[3]+'</div></div>';}).join('');
 })();
 
   
