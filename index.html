@@ -740,7 +740,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   .team-hint,.team-beam{display:none;}
 }
 
-/* ════════ AVIS — orbite clients (dans le tél) + cartes en éventail (photo 1) ════════ */
+/* ════════ AVIS — orbite clients (dans le tél) + éventail penché ════════ */
 .rev{position:relative;z-index:2;overflow:hidden;border-bottom:1px solid rgba(21,20,18,.07);
   background:radial-gradient(120% 80% at 50% 0%,#FFFFFF,#F1ECE1 75%);
   padding:clamp(2.6rem,5vw,3.8rem) clamp(1rem,4vw,2rem) clamp(2.6rem,5vw,4rem);}
@@ -750,7 +750,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .rev-title em{font-style:normal;color:var(--sage2);}
 .rev-logos{display:flex;align-items:center;justify-content:center;gap:clamp(1.4rem,4vw,2.6rem);margin-top:1.1rem;}
 .rev-logos img{height:clamp(18px,2.2vw,24px);width:auto;object-fit:contain;opacity:.85;filter:grayscale(.2);}
-.rev-stage{position:relative;max-width:1240px;margin:clamp(1.6rem,3vw,2.4rem) auto 0;height:clamp(640px,70vw,780px);}
+.rev-stage{position:relative;max-width:1280px;margin:clamp(1.4rem,2.6vw,2rem) auto 0;height:clamp(660px,72vw,800px);}
 .rev-phone{position:absolute;left:50%;top:0;transform:translateX(-50%);z-index:3;
   width:clamp(284px,30vw,340px);aspect-ratio:9/19;
   background:linear-gradient(150deg,#23211d,#34312b);border-radius:50px;padding:11px;
@@ -761,35 +761,39 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   width:104px;height:28px;border-radius:16px;background:#1b1916;z-index:5;}
 .rev-statusbar{position:absolute;top:18px;left:24px;right:24px;display:flex;justify-content:space-between;
   font-family:var(--sky);font-size:.72rem;font-weight:600;color:var(--ob);z-index:4;opacity:.85;}
-.rev-orbit{position:absolute;left:0;right:0;top:18%;bottom:0;}
-.rev-orbit .ring{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);border-radius:50%;border:1.4px solid rgba(21,20,18,.12);}
+.rev-orbit .ring{position:absolute;left:50%;top:33%;transform:translate(-50%,-50%);border-radius:50%;border:1.4px solid rgba(21,20,18,.12);}
 .rev-orbit .r1{width:48%;aspect-ratio:1;}
 .rev-orbit .r2{width:84%;aspect-ratio:1;}
-.rev-spin{position:absolute;left:50%;top:42%;width:84%;aspect-ratio:1;transform:translate(-50%,-50%);
-  animation:orbit 46s linear infinite;}
-.rev-av{position:absolute;border-radius:50%;object-fit:cover;border:3px solid #fff;background:#e6ddcd;
-  box-shadow:0 8px 16px rgba(40,33,24,.18);transform:translate(-50%,-50%);animation:orbitR 46s linear infinite;}
-.rev-av.s{width:34px;height:34px;}.rev-av.m{width:46px;height:46px;}.rev-av.l{width:56px;height:56px;}
+.rev-spin{position:absolute;left:50%;top:33%;width:84%;aspect-ratio:1;transform:translate(-50%,-50%);animation:orbit 50s linear infinite;}
+.rev-av{position:absolute;display:flex;align-items:center;justify-content:center;border-radius:50%;
+  font-family:var(--sky);font-weight:700;color:#fff;border:3px solid #fff;background:#9aa6a0;
+  box-shadow:0 8px 16px rgba(40,33,24,.18);transform:translate(-50%,-50%);animation:orbitR 50s linear infinite;}
+.rev-av.s{width:34px;height:34px;font-size:.8rem;}.rev-av.m{width:46px;height:46px;font-size:1rem;}.rev-av.l{width:56px;height:56px;font-size:1.2rem;}
+.rev-av.a{background:linear-gradient(150deg,#8aa0b0,#6f8493);}
+.rev-av.b{background:linear-gradient(150deg,#a7b58f,#7d9166);}
+.rev-av.c{background:linear-gradient(150deg,#cdb98c,#b59a63);}
+.rev-av.d{background:linear-gradient(150deg,#b0a394,#8d7e6e);}
 @keyframes orbit{to{transform:translate(-50%,-50%) rotate(360deg);}}
 @keyframes orbitR{to{transform:translate(-50%,-50%) rotate(-360deg);}}
-.rev-cap{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);width:64%;text-align:center;z-index:2;
+.rev-cap{position:absolute;left:50%;top:33%;transform:translate(-50%,-50%);width:64%;text-align:center;z-index:2;
   font-family:var(--sky);font-weight:600;font-size:clamp(1rem,1.5vw,1.24rem);line-height:1.24;letter-spacing:-.4px;color:var(--ob);}
 .rev-cap b{display:block;font-weight:700;font-size:1.25em;margin:.12em 0;}
 .rev-cap .st{display:block;color:#F5A623;font-size:.78em;letter-spacing:2px;margin-top:.45em;}
 .rev-caro{position:absolute;inset:0;}
-.rev-card{position:absolute;left:50%;top:0;width:clamp(212px,19vw,236px);text-align:left;cursor:pointer;
+.rev-card{position:absolute;left:50%;top:0;width:clamp(214px,19vw,238px);text-align:left;cursor:pointer;
   background:#fff;border:1px solid rgba(21,20,18,.06);border-radius:18px;padding:1rem 1.1rem 1.05rem;
-  box-shadow:0 26px 50px rgba(40,33,24,.15);font:inherit;color:inherit;will-change:transform,opacity;}
+  box-shadow:0 26px 52px rgba(40,33,24,.16);font:inherit;color:inherit;will-change:transform,opacity;transform-origin:50% 120%;}
 .rev-card .cat{font-family:var(--sky);font-size:.72rem;font-weight:600;color:var(--sage2);}
-.rev-card .tx{font-size:.85rem;line-height:1.5;color:var(--ob2);margin:.55rem 0 .9rem;
+.rev-card .tx{font-size:.86rem;line-height:1.5;color:var(--ob2);margin:.55rem 0 .9rem;
   display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
-.rev-card .by{display:flex;align-items:center;gap:.5rem;}
-.rev-card .by img{width:32px;height:32px;border-radius:50%;object-fit:cover;}
+.rev-card .by{display:flex;align-items:center;gap:.55rem;}
+.rev-ava{width:32px;height:32px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(150deg,var(--sage2),#5e6b63);color:#fff;font-family:var(--sky);font-weight:700;font-size:.82rem;}
 .rev-card .by b{font-family:var(--sky);font-size:.82rem;font-weight:700;color:var(--ob);}
 .rev-card .by span{font-size:.7rem;color:var(--muted);}
-.rev-card.active{box-shadow:0 32px 62px rgba(40,33,24,.24),0 0 0 2px rgba(188,212,26,.55);}
+.rev-card.active{box-shadow:0 36px 66px rgba(40,33,24,.26),0 0 0 2px rgba(188,212,26,.55);}
 .rev-bar{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);width:200px;height:5px;border-radius:5px;background:rgba(21,20,18,.1);z-index:7;overflow:hidden;}
-.rev-bar i{position:absolute;top:0;height:100%;width:34%;border-radius:5px;background:var(--sage2);}
+.rev-bar i{position:absolute;top:0;left:0;height:100%;width:30px;border-radius:5px;background:var(--sage2);transition:transform .5s cubic-bezier(.22,1,.36,1);}
 .rev-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:7;
   font-family:var(--sky);font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(21,20,18,.4);}
 .rev-stack{display:none;}
@@ -800,7 +804,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   .rcm .cat{font-family:var(--sky);font-size:.72rem;font-weight:600;color:var(--sage2);}
   .rcm p{font-size:.9rem;line-height:1.5;color:var(--ob2);margin:.5rem 0 .8rem;}
   .rcm .by{display:flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.8rem;color:var(--muted);}
-  .rcm .by img{width:30px;height:30px;border-radius:50%;}.rcm .by b{color:var(--ob);}
+  .rcm .by b{color:var(--ob);}
 }
 @media(prefers-reduced-motion:reduce){.rev-spin,.rev-av{animation:none;}}
   
@@ -1020,7 +1024,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 </section>
 
 
- <!-- ═══════ AVIS — orbite clients (dans le tél) + cartes en éventail ═══════ -->
+<!-- ═══════ AVIS — orbite clients (dans le tél) + éventail penché ═══════ -->
 <section class="rev" id="reviews">
   <div class="rev-head">
     <span class="rev-eye">★★★★★ · Avis vérifiés</span>
@@ -1039,13 +1043,13 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
         <div class="rev-orbit">
           <span class="ring r1"></span><span class="ring r2"></span>
           <div class="rev-spin">
-            <img class="rev-av m" style="left:50%;top:2%"  src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt=""/>
-            <img class="rev-av s" style="left:90%;top:24%" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/matteo.jpg" alt=""/>
-            <img class="rev-av l" style="left:96%;top:62%" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/mariephoto.jpg" alt=""/>
-            <img class="rev-av s" style="left:64%;top:92%" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt=""/>
-            <img class="rev-av m" style="left:18%;top:88%" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt=""/>
-            <img class="rev-av s" style="left:2%;top:50%"  src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt=""/>
-            <img class="rev-av s" style="left:8%;top:18%"  src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt=""/>
+            <span class="rev-av m a" style="left:50%;top:2%">M</span>
+            <span class="rev-av s c" style="left:90%;top:24%">K</span>
+            <span class="rev-av l b" style="left:96%;top:62%">S</span>
+            <span class="rev-av s d" style="left:64%;top:92%">J</span>
+            <span class="rev-av m c" style="left:18%;top:88%">L</span>
+            <span class="rev-av s a" style="left:2%;top:50%">A</span>
+            <span class="rev-av s b" style="left:8%;top:18%">T</span>
           </div>
           <div class="rev-cap">Plus de<b>1 100 clients</b>nous font confiance<span class="st">★★★★★</span></div>
         </div>
@@ -1054,12 +1058,11 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 
     <div class="rev-caro" id="revCaro"></div>
     <div class="rev-bar"><i id="revBarFill"></i></div>
-    <div class="rev-hint">Survolez ou cliquez un avis pour le figer</div>
+    <div class="rev-hint">3 s par avis · survolez ou cliquez pour figer</div>
   </div>
 
   <div class="rev-stack" id="revStack"></div>
 </section>
-
   
 <!-- ═══════ POURQUOI UN COURTIER (scroll épinglé) ═══════ -->
 <section class="broker" id="broker">
@@ -1878,85 +1881,85 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   addEventListener('scroll',function(){if(!vid.muted)set(true);},{passive:true});
 })();
   
-/* ─── AVIS : orbite clients + éventail rotatif (auto · survol/clic = fige) ─── */
+/* ─── AVIS : éventail penché · 3 s (droite→centre) · scroll défile · survol/clic = fige ─── */
 (function(){
   var sec=document.getElementById('reviews');if(!sec)return;
   var caro=document.getElementById('revCaro'),stage=document.getElementById('revStage'),bar=document.getElementById('revBarFill');
   var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,desktop=matchMedia('(min-width:981px)').matches;
-  var G="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/",AV={g:"gabriel",s:"mariephoto",i:"matteo"};
   var D=[
-    ["Prêt immo","Accompagnement au top du début à la fin. Taux bien en dessous de ma banque !","Marie L.","Orléans","g"],
-    ["Rachat","Très réactifs et de bon conseil. Dossier accepté en 3 semaines.","Thomas B.","Olivet","s"],
-    ["Prêt immo","Zéro stress, ils gèrent tout. Je recommande les yeux fermés.","Sophie M.","Saran","i"],
-    ["Investissement","Plus de 12 000 € économisés sur le coût total. Merci à toute l'équipe.","Karim D.","Fleury","g"],
-    ["Primo-accédant","Premier achat réussi grâce à eux. Pédagogues et efficaces.","Antoine P.","Chécy","i"],
-    ["Prêt immo","Une équipe humaine et toujours dispo. On se sent vraiment accompagné.","Julie R.","Orléans","g"],
-    ["Assurance","Meilleur taux + assurance déléguée. Du grand pro.","Nadia K.","Ingré","s"],
-    ["Renégociation","Rapide, transparent, aucun frais caché. Parfait.","Lucas V.","St-Jean","g"],
-    ["Prêt immo","Ils ont décroché un oui là où ma banque disait non.","Hugo M.","La Source","i"],
-    ["Rachat","Conseils clairs, suivi nickel, je recommande vivement.","Camille T.","Olivet","g"],
-    ["Prêt immo","Notre projet a abouti malgré un dossier compliqué. Bravo !","Inès F.","Orléans","g"],
-    ["Prêt immo","Disponibles le soir et le week-end, ça change tout.","Paul G.","Meung","s"],
-    ["Primo-accédant","Du premier RDV à la signature : un vrai accompagnement.","Léa V.","Saran","g"],
-    ["Investissement","Économie d'argent ET de temps. Foncez.","Mehdi A.","Fleury","i"],
-    ["Prêt immo","Très pro, à l'écoute, de vrais experts du crédit.","Claire D.","Olivet","g"],
-    ["Prêt immo","On a eu notre maison grâce à eux. Merci infiniment.","Romain P.","Chécy","g"],
-    ["Rachat","Taux excellent et zéro paperasse de mon côté.","Sarah B.","Orléans","s"],
-    ["Prêt immo","Réponse en 24h, dossier bouclé en un temps record.","Kevin L.","Ingré","i"],
-    ["Renégociation","Ils m'ont évité de grosses erreurs. Merci pour les conseils.","Émilie R.","St-Jean","g"],
-    ["Prêt immo","Service impeccable, je recommande à tous mes proches.","Yanis M.","La Source","g"],
-    ["Assurance","Négociation au top, on a gagné 0,4 pt sur le taux.","Aurélie C.","Olivet","i"],
-    ["Prêt immo","Accompagnement humain et ultra compétent.","Damien S.","Orléans","g"],
-    ["Primo-accédant","Première acquisition sereine grâce à leur équipe.","Manon T.","Fleury","s"],
-    ["Prêt immo","Le meilleur courtier d'Orléans, sans hésiter.","Nicolas B.","Saran","g"],
-    ["Prêt immo","Très satisfait, du sérieux et de la transparence.","Olivia K.","Meung","g"],
-    ["Investissement","Ils ont sauvé mon financement à la dernière minute.","Bastien D.","Chécy","i"],
-    ["Prêt immo","Suivi parfait et toujours de bonne humeur. Top !","Chloé M.","Orléans","g"],
-    ["Rachat","Rachat de prêt réussi, mensualités bien allégées.","Franck V.","Ingré","s"]
+    ["Prêt immo","Accompagnement au top du début à la fin. Taux bien en dessous de ma banque !","Marie L.","Orléans"],
+    ["Rachat","Très réactifs et de bon conseil. Dossier accepté en 3 semaines.","Thomas B.","Olivet"],
+    ["Prêt immo","Zéro stress, ils gèrent tout. Je recommande les yeux fermés.","Sophie M.","Saran"],
+    ["Investissement","Plus de 12 000 € économisés sur le coût total. Merci à toute l'équipe.","Karim D.","Fleury"],
+    ["Primo-accédant","Premier achat réussi grâce à eux. Pédagogues et efficaces.","Antoine P.","Chécy"],
+    ["Prêt immo","Une équipe humaine et toujours dispo. On se sent vraiment accompagné.","Julie R.","Orléans"],
+    ["Assurance","Meilleur taux + assurance déléguée. Du grand pro.","Nadia K.","Ingré"],
+    ["Renégociation","Rapide, transparent, aucun frais caché. Parfait.","Lucas V.","St-Jean"],
+    ["Prêt immo","Ils ont décroché un oui là où ma banque disait non.","Hugo M.","La Source"],
+    ["Rachat","Conseils clairs, suivi nickel, je recommande vivement.","Camille T.","Olivet"],
+    ["Prêt immo","Notre projet a abouti malgré un dossier compliqué. Bravo !","Inès F.","Orléans"],
+    ["Prêt immo","Disponibles le soir et le week-end, ça change tout.","Paul G.","Meung"],
+    ["Primo-accédant","Du premier RDV à la signature : un vrai accompagnement.","Léa V.","Saran"],
+    ["Investissement","Économie d'argent ET de temps. Foncez.","Mehdi A.","Fleury"],
+    ["Prêt immo","Très pro, à l'écoute, de vrais experts du crédit.","Claire D.","Olivet"],
+    ["Prêt immo","On a eu notre maison grâce à eux. Merci infiniment.","Romain P.","Chécy"],
+    ["Rachat","Taux excellent et zéro paperasse de mon côté.","Sarah B.","Orléans"],
+    ["Prêt immo","Réponse en 24h, dossier bouclé en un temps record.","Kevin L.","Ingré"],
+    ["Renégociation","Ils m'ont évité de grosses erreurs. Merci pour les conseils.","Émilie R.","St-Jean"],
+    ["Prêt immo","Service impeccable, je recommande à tous mes proches.","Yanis M.","La Source"],
+    ["Assurance","Négociation au top, on a gagné 0,4 pt sur le taux.","Aurélie C.","Olivet"],
+    ["Prêt immo","Accompagnement humain et ultra compétent.","Damien S.","Orléans"],
+    ["Primo-accédant","Première acquisition sereine grâce à leur équipe.","Manon T.","Fleury"],
+    ["Prêt immo","Le meilleur courtier d'Orléans, sans hésiter.","Nicolas B.","Saran"],
+    ["Prêt immo","Très satisfait, du sérieux et de la transparence.","Olivia K.","Meung"],
+    ["Investissement","Ils ont sauvé mon financement à la dernière minute.","Bastien D.","Chécy"],
+    ["Prêt immo","Suivi parfait et toujours de bonne humeur. Top !","Chloé M.","Orléans"],
+    ["Rachat","Rachat de prêt réussi, mensualités bien allégées.","Franck V.","Ingré"]
   ];
   var cards=D.map(function(d,i){
     var el=document.createElement('button');el.type='button';el.className='rev-card';
     el.innerHTML='<span class="cat">['+d[0]+']</span><p class="tx">'+d[1]+'</p>'+
-      '<div class="by"><img src="'+G+AV[d[4]]+'.jpg" alt=""/><div><b>'+d[2]+'</b> · <span>'+d[3]+'</span></div></div>';
+      '<div class="by"><span class="rev-ava">'+d[2][0]+'</span><div><b>'+d[2]+'</b> · <span>'+d[3]+'</span></div></div>';
     el.addEventListener('mouseenter',function(){hover=true;});
     el.addEventListener('mouseleave',function(){hover=false;});
-    el.addEventListener('click',function(){clicked=(clicked===i?-1:i);});
+    el.addEventListener('click',function(){hold=(hold===i?-1:i);});
     caro.appendChild(el);return el;
   });
-  var N=cards.length,SP=212,total=N*SP,scroll=0,hover=false,clicked=-1,raf=null;
-  var VIS=660,K=0.00028;
-  addEventListener('wheel',function(e){
-    var r=sec.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){scroll+=e.deltaY*0.25;}
+  var N=cards.length,STEP=11,WIN=38,rot=0,target=0,hover=false,hold=-1,lastStep=0,lastY=window.scrollY,raf=null;
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  addEventListener('scroll',function(){
+    var y=window.scrollY,d=y-lastY;lastY=y;
+    var r=sec.getBoundingClientRect();
+    if(r.bottom>0&&r.top<innerHeight){target+=d*0.10;lastStep=performance.now();hold=-1;}
   },{passive:true});
-  function frame(){
-    var spd=(hover||clicked>=0)?0:0.55;
-    if(clicked>=0){var tcur=((clicked*SP-scroll)%total+total)%total;if(tcur>total/2)tcur-=total;scroll+=tcur*0.12;}
-    else scroll+=spd;
-    var w=stage.clientWidth,h=stage.clientHeight,cx=w/2;
-    var phoneH=Math.min(340,Math.max(284,w*0.30))*19/9;
-    var apexY=phoneH*0.60;
+  function frame(now){
+    var paused=hover||hold>=0;
+    if(!paused&&now-lastStep>=3000){target+=STEP;lastStep=now;}  /* 3 s : droite → centre */
+    if(hold>=0)target=hold*STEP;
+    rot+=(target-rot)*0.075;
+    var w=stage.clientWidth,cx=w/2,pw=Math.min(340,Math.max(284,w*0.30)),ph=pw*19/9;
+    var apexY=ph*0.60,R=Math.min(w*0.62,860),best=1e9,bi=0;
     for(var i=0;i<N;i++){
-      var px=((i*SP-scroll)%total+total)%total;if(px>total/2)px-=total;
-      var c=cards[i],ad=Math.abs(px);
-      if(ad>VIS){c.style.opacity=0;c.style.pointerEvents='none';continue;}
-      var y=apexY+K*px*px,rotd=px*0.011,t=1-ad/VIS;
-      c.style.opacity=Math.min(1,(VIS-ad)/240).toFixed(3);
-      c.style.pointerEvents='auto';c.style.zIndex=Math.round(6-ad/VIS*5);
-      c.style.transform='translate(-50%,0) translate('+px.toFixed(1)+'px,'+y.toFixed(1)+'px) rotate('+rotd.toFixed(2)+'deg) scale('+(0.9+0.1*t).toFixed(3)+')';
-      c.classList.toggle('active',i===clicked||(clicked<0&&ad<SP/2));
+      var th=i*STEP-rot;th=((th+180)%360+360)%360-180;
+      var ad=Math.abs(th);if(ad<best){best=ad;bi=i;}
+      var c=cards[i];
+      if(ad>WIN){c.style.opacity=0;c.style.pointerEvents='none';continue;}
+      var rad=th*Math.PI/180,x=cx+R*Math.sin(rad),y=apexY+R*(1-Math.cos(rad)),t=1-ad/WIN;
+      c.style.opacity=clamp((WIN-ad)/14,0,1).toFixed(3);
+      c.style.pointerEvents='auto';c.style.zIndex=Math.round(50-ad);
+      c.style.transform='translate(-50%,-50%) translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) rotate('+(th*0.92).toFixed(2)+'deg) scale('+(0.84+0.16*t).toFixed(3)+')';
+      c.classList.toggle('active',ad<STEP/2);
     }
-    var prog=((scroll%total)+total)%total/total;
-    if(bar)bar.style.left=(prog*66)+'%';
+    if(bar)bar.style.transform='translateX('+((bi/(N-1))*170).toFixed(1)+'px)';
     raf=requestAnimationFrame(frame);
   }
-  function start(){if(raf||!desktop||reduce)return;raf=requestAnimationFrame(frame);}
+  function start(){if(raf||!desktop||reduce)return;lastStep=performance.now();lastY=window.scrollY;raf=requestAnimationFrame(frame);}
   function stop(){if(raf){cancelAnimationFrame(raf);raf=null;}}
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?start():stop();});},{rootMargin:'200px'}).observe(sec);}else start();
   addEventListener('resize',function(){desktop=matchMedia('(min-width:981px)').matches;if(!desktop||reduce)stop();else start();});
   var st=document.getElementById('revStack');
-  if(st)st.innerHTML=D.slice(0,6).map(function(d){return '<div class="rcm"><span class="cat">['+d[0]+']</span><p>'+d[1]+'</p><div class="by"><img src="'+G+AV[d[4]]+'.jpg" alt=""/><b>'+d[2]+'</b> · '+d[3]+'</div></div>';}).join('');
+  if(st)st.innerHTML=D.slice(0,6).map(function(d){return '<div class="rcm"><span class="cat">['+d[0]+']</span><p>'+d[1]+'</p><div class="by"><span class="rev-ava">'+d[2][0]+'</span><b>'+d[2]+'</b> · '+d[3]+'</div></div>';}).join('');
 })();
-
   
 </script>
 </body></html>
