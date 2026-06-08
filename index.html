@@ -42,7 +42,10 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .intro-bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
 .bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7;}
 .intro-bg::after{content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(62% 52% at 50% 46%,rgba(247,244,239,.14),rgba(236,227,212,.46));}
+  background:
+    radial-gradient(55% 45% at 50% 36%,rgba(255,255,255,.6),transparent 70%),
+    radial-gradient(120% 95% at 50% 64%,transparent 42%,rgba(236,227,212,.55)),
+    rgba(255,255,255,.4);}
 .intro-inner{position:relative;z-index:2;display:inline-flex;flex-direction:column;align-items:stretch;gap:2.1rem;
   opacity:0;transform:translateY(10px);animation:introIn .8s cubic-bezier(.16,1,.3,1) .2s forwards;}
 .intro-inner.hide{opacity:0;transform:translateY(-6px);transition:opacity .4s ease,transform .4s ease;}
@@ -79,33 +82,10 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
   background-size:50% 33.33%;}
 
-
-/* NAV — verre dépoli, réactif + lumière */
+/* NAV — pilule blanche */
 .nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:1400;display:flex;align-items:center;gap:.2rem;
-  padding:8px 8px 8px 18px;border-radius:18px;
-  background:linear-gradient(135deg,rgba(255,255,255,.5),rgba(255,255,255,.22));
-  backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);
-  border:1px solid rgba(255,255,255,.5);
-  box-shadow:0 14px 40px rgba(20,19,16,.22),inset 0 1px 0 rgba(255,255,255,.75),inset 0 -1px 1px rgba(255,255,255,.3);
+  background:var(--white);border-radius:15px;padding:8px 8px 8px 18px;box-shadow:0 12px 34px rgba(20,19,16,.18);
   animation:navIn .8s cubic-bezier(.22,1,.36,1) .9s both;}
-/* reflet animé qui balaie */
-.nav::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;
-  background:linear-gradient(115deg,transparent 36%,rgba(255,255,255,.6) 50%,transparent 64%);
-  background-size:250% 100%;animation:navSheen 7s ease-in-out infinite;mix-blend-mode:overlay;}
-@keyframes navSheen{0%{background-position:165% 0}55%,100%{background-position:-65% 0}}
-/* lueur lime qui suit le curseur */
-.nav::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;opacity:0;transition:opacity .3s;
-  background:radial-gradient(130px 130px at var(--mx,50%) var(--my,50%),rgba(188,212,26,.28),transparent 62%);}
-.nav:hover::after{opacity:1;}
-/* pastille en verre qui glisse sous le lien survolé */
-.nav-ind{position:absolute;top:6px;bottom:6px;left:0;width:0;z-index:0;border-radius:12px;pointer-events:none;opacity:0;
-  background:linear-gradient(135deg,rgba(255,255,255,.6),rgba(255,255,255,.3));border:1px solid rgba(255,255,255,.6);
-  box-shadow:0 6px 16px rgba(20,19,16,.14),inset 0 1px 0 rgba(255,255,255,.85);
-  transition:transform .42s cubic-bezier(.22,1,.36,1),width .42s cubic-bezier(.22,1,.36,1),opacity .3s;}
-.nav.ind-on .nav-ind{opacity:1;}
-/* contenu au-dessus des effets + on remplace le soulignement par la pastille */
-.nav-logo,.nl,.nav-tel,.burger{position:relative;z-index:1;}
-.nl::after{display:none;}
   
 /* RECADRAGE LOGO : on masque le vide haut/bas du PNG via un cadre + un léger débord */
 .nav-logo-clip{display:block;height:22px;overflow:hidden;}
@@ -137,14 +117,15 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .hr-stars{color:#F5A623;font-size:.7rem;letter-spacing:1.5px;}
 .hr-sub{font-family:var(--sky);font-size:.62rem;font-weight:600;color:rgba(255,255,255,.88);margin-top:.18rem;}
 .hr-sub b{font-weight:800;}
-
+.hr-big{font-family:var(--sky);font-weight:700;font-size:1.6rem;line-height:1;letter-spacing:-1px;color:#fff;}
 /* CONTENU */
 .hero-eyebrow{position:absolute;z-index:5;top:30%;left:3vw;font-family:var(--sky);font-size:.64rem;font-weight:600;
   letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.85);}
-.hero-h1{position:absolute;z-index:5;top:calc(30% + 1.7rem);left:3vw;color:var(--white);max-width:15ch;
+.hero-h1{position:absolute;z-index:5;top:calc(30% + 1.7rem);left:3vw;color:var(--white);width:fit-content;
   font-family:var(--sky);font-size:clamp(2.5rem,6.4vw,5.6rem);font-weight:700;letter-spacing:-3px;line-height:.94;
   text-shadow:0 2px 40px rgba(0,0,0,.34);}
-.hero-h1 em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--cream);}
+.hero-h1 .l1{display:block;}
+.hero-h1 .l2{display:block;text-align:right;font-size:.74em;font-weight:800;color:var(--cream);}
 .hero-bottom{position:absolute;z-index:5;left:3vw;bottom:8.5%;max-width:470px;color:var(--white);}
 .hero-bottom p{font-size:clamp(.95rem,1.4vw,1.15rem);line-height:1.5;color:rgba(255,255,255,.92);margin-bottom:1.4rem;}
 .hero-field{display:flex;background:rgba(20,19,16,.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
@@ -154,12 +135,17 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .hero-field input::placeholder{color:rgba(255,255,255,.62);}
 .hero-field a{background:var(--ob);color:#fff;font-family:var(--sky);font-weight:700;font-size:.82rem;padding:13px 22px;border-radius:10px;white-space:nowrap;transition:background .25s,transform .25s;}
 .hero-field a:hover{background:#000;transform:translateY(-1px);}
-
+.hero-cta2{display:flex;flex-wrap:wrap;gap:.7rem;}
+.hcta{font-family:var(--sky);font-weight:700;font-size:.92rem;padding:14px 24px;border-radius:12px;display:inline-flex;align-items:center;gap:.5rem;transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,background .3s;}
+.hcta.primary{background:var(--lime);color:var(--ob);}
+.hcta.primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(188,212,26,.5);}
+.hcta.ghost{background:rgba(250,250,248,.12);color:#fff;border:1px solid rgba(255,255,255,.32);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.hcta.ghost:hover{transform:translateY(-2px);background:rgba(250,250,248,.22);}
 /* TUILE = vidéo Aeconomia 16:9 arrondie (ratio réel de la vidéo 640×360) */
 .tilewrap{position:absolute;z-index:4;right:5%;top:32%;width:clamp(340px,42vw,560px);aspect-ratio:16/9;}
 .tile{position:absolute;inset:0;overflow:hidden;border-radius:22px;background:#000;
   box-shadow:0 34px 80px rgba(0,0,0,.4);transition:transform .55s cubic-bezier(.22,1,.36,1),box-shadow .55s;}
-.tile:hover{transform:scale(1.015);box-shadow:0 44px 96px rgba(0,0,0,.5);}
+.tile:hover{transform:scale(1.06) translateY(-8px);box-shadow:0 60px 120px rgba(0,0,0,.55);}
 .tile .bgvid{opacity:1;}
 .tile::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:22px;
   background:linear-gradient(to top,rgba(20,19,16,.6),transparent 55%);}
@@ -175,6 +161,10 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .tile-play::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid rgba(250,250,248,.7);animation:plPulse 2s ease-out infinite;}
 @keyframes plPulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.8);opacity:0}}
 .tile-cap{font-family:var(--sky);font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5);}
+  .tile-sound{position:absolute;z-index:6;top:14px;right:14px;width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.4);background:rgba(20,19,16,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  color:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .25s,transform .25s;}
+.tile-sound:hover{background:rgba(20,19,16,.72);transform:scale(1.08);}
 
 /* ════════ BADGE TAUX — indicateur "taux du jour" premium ════════ */
 .rate-badge{position:absolute;z-index:6;top:-20px;left:-18px;display:inline-flex;align-items:center;gap:.8rem;
@@ -345,10 +335,11 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .trust.in .tstat:nth-child(3){transition-delay:.16s;}
 .trust.in .tstat:nth-child(4){transition-delay:.24s;}
 .tstat+.tstat::before{content:"";position:absolute;left:0;top:16%;height:68%;width:1px;background:rgba(21,20,18,.1);}
-.tstat-num{font-family:var(--sky);font-weight:700;font-size:clamp(2.1rem,4.6vw,3.3rem);letter-spacing:-1.6px;
+.tstat-num{font-family:var(--sky);font-weight:700;font-size:clamp(2.6rem,5.4vw,4.2rem);letter-spacing:-2px;
   line-height:1;color:var(--ob);display:flex;align-items:baseline;justify-content:center;font-variant-numeric:tabular-nums;}
-.tstat-num .u{color:var(--lime);margin-left:.04em;}
-.tstat-lab{font-family:var(--body);font-size:clamp(.78rem,1.2vw,.9rem);font-weight:500;color:var(--ob2);margin-top:.65rem;}
+.tstat::after{content:"";position:absolute;left:50%;bottom:-8px;width:34px;height:3px;border-radius:3px;background:var(--lime);
+  transform:translateX(-50%) scaleX(0);transform-origin:center;transition:transform .6s cubic-bezier(.22,1,.36,1) .35s;}
+.trust.in .tstat::after{transform:translateX(-50%) scaleX(1);}
 
 .logos{max-width:1240px;margin:clamp(2.6rem,4.4vw,3.6rem) auto 0;}
 .logos-cap{text-align:center;font-family:var(--sky);font-size:.6rem;font-weight:600;letter-spacing:.2em;
@@ -360,10 +351,8 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   animation:logosScroll 42s linear infinite;}
 .logos-mask:hover .logos-track{animation-play-state:paused;}
 @keyframes logosScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.blogo{flex:none;display:flex;align-items:center;justify-content:center;height:38px;}
-.blogo img{height:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.5;
-  transition:filter .3s,opacity .3s,transform .3s;}
-.blogo.zoom-l{height:52px;}
+.blogo{flex:none;display:flex;align-items:center;justify-content:center;height:52px;}
+.blogo.zoom-l{height:68px;}
 .blogo:hover img{filter:grayscale(0);opacity:1;transform:scale(1.05);}
 
 /* ════════════════════════════════════════════════════════
@@ -703,14 +692,15 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .team-eye::before{content:"";width:24px;height:2px;background:var(--lime);border-radius:2px;}
 .team-title{font-family:var(--sky);font-weight:700;font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.04;letter-spacing:-1.8px;color:var(--ob);margin-top:1rem;}
 .team-title em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
-.team-rail{overflow:hidden;padding:clamp(.6rem,2vh,1.6rem) clamp(1.4rem,5vw,4rem);}
-.team-track{display:flex;gap:clamp(1rem,1.6vw,1.6rem);width:max-content;will-change:transform;}
+.team-rail{perspective:1700px;}
+.team-track{transform-style:preserve-3d;}
 .tcard{flex:none;width:clamp(232px,21vw,290px);border-radius:28px;padding:13px;
   background:linear-gradient(160deg,rgba(255,255,255,.6),rgba(255,255,255,.26));
   backdrop-filter:blur(28px) saturate(165%);-webkit-backdrop-filter:blur(28px) saturate(165%);
   border:1px solid rgba(255,255,255,.78);box-shadow:0 32px 66px rgba(82,68,48,.24),inset 0 1px 0 rgba(255,255,255,.9);
   transition:transform .45s cubic-bezier(.22,1,.36,1),box-shadow .45s;}
-.tcard:hover{transform:translateY(-12px);box-shadow:0 50px 96px rgba(82,68,48,.34);}
+.tcard{transition:box-shadow .45s,opacity .35s;}
+.tcard:hover{box-shadow:0 50px 96px rgba(82,68,48,.34);z-index:3;}
 .tcard-photo{position:relative;aspect-ratio:3/4;border-radius:19px;overflow:hidden;background:#e6ddcd;}
 .tcard-photo img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1);}
 .tcard:hover .tcard-photo img{transform:scale(1.07);}
@@ -737,6 +727,32 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   .team-hint,.team-beam{display:none;}
 }
 
+  /* ════════Les avis ════════ */
+.rev{position:relative;z-index:2;background:#fff;padding:clamp(3rem,6vw,5rem) 0 clamp(3.4rem,6vw,5.4rem);overflow:hidden;border-bottom:1px solid rgba(21,20,18,.07);}
+.rev-head{text-align:center;max-width:760px;margin:0 auto clamp(2rem,4vw,3rem);padding:0 1.4rem;}
+.rev-eye{font-family:var(--sky);font-size:.74rem;font-weight:700;letter-spacing:.14em;color:#F5A623;}
+.rev-title{font-family:var(--sky);font-weight:700;font-size:clamp(2rem,4.4vw,3.4rem);letter-spacing:-1.8px;color:var(--ob);margin-top:.7rem;}
+.rev-title em{font-style:normal;color:var(--sage2);}
+.rev-logos{display:flex;align-items:center;justify-content:center;gap:clamp(1.6rem,4vw,3rem);margin-top:1.6rem;}
+.rev-logos img{height:clamp(22px,3vw,30px);width:auto;object-fit:contain;opacity:.9;}
+.rev-rows{display:flex;flex-direction:column;gap:clamp(.9rem,1.6vw,1.4rem);}
+.rev-mask{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
+.rev-track{display:flex;gap:clamp(.9rem,1.4vw,1.3rem);width:max-content;animation:revScroll 50s linear infinite;}
+.rev-track.rev-rev{animation-direction:reverse;animation-duration:62s;}
+.rev-mask:hover .rev-track{animation-play-state:paused;}
+@keyframes revScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.rcard{flex:none;width:clamp(280px,26vw,340px);background:var(--cream);border:1px solid rgba(21,20,18,.06);border-radius:20px;padding:1.3rem 1.4rem;box-shadow:0 14px 34px rgba(20,19,16,.08);}
+.rcard-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem;}
+.rcard-stars{color:#F5A623;font-size:.82rem;letter-spacing:1px;}
+.rcard-src{height:17px;width:auto;opacity:.7;}
+.rcard-txt{font-family:var(--body);font-size:.92rem;line-height:1.55;color:var(--ob2);}
+.rcard-by{display:flex;align-items:center;gap:.6rem;margin-top:1rem;}
+.rcard-ava{width:34px;height:34px;border-radius:50%;background:var(--sage2);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--sky);font-weight:700;font-size:.85rem;flex:none;}
+.rcard-by span{display:flex;flex-direction:column;line-height:1.2;}
+.rcard-by b{font-family:var(--sky);font-size:.86rem;color:var(--ob);}
+.rcard-by i{font-style:normal;font-size:.72rem;color:var(--muted);}
+@media(prefers-reduced-motion:reduce){.rev-track{animation:none;}}
+  
 /* ════════ FOOTER — CTA + vidéo de chargement plus présente ════════ */
 .foot-vid{opacity:.85;}
 .foot-bg::after{background:linear-gradient(180deg,rgba(247,244,239,.58),rgba(236,227,212,.74));}
@@ -841,28 +857,22 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   <div class="hero-grid"></div>
 
   <!-- badge avis premium -->
-  <div class="hero-review">
-    <div class="hr-avs">
-      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt=""/>
-      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt=""/>
-      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photodedelphine.jpg" alt=""/>
-      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt=""/>
-    </div>
-    <div class="hr-txt">
-      <div class="hr-stars">★★★★★</div>
-      <div class="hr-sub"><b>5/5</b> · 906 avis vérifiés</div>
-    </div>
+ <div class="hero-review">
+  <span class="hr-big">+1 100</span>
+  <div class="hr-txt">
+    <div class="hr-stars">★★★★★</div>
+    <div class="hr-sub">avis clients vérifiés · <b>5/5</b></div>
   </div>
+</div>
 
   <div class="hero-eyebrow">Courtage indépendant · Orléans</div>
-  <h1 class="hero-h1">Votre prêt immo,<br/><em>simplifié &amp; optimisé.</em></h1>
-
+<h1 class="hero-h1"><span class="l1">Votre prêt immo,</span><span class="l2">simplifié &amp; optimisé.</span></h1>
   <div class="hero-bottom">
     <p>Courtier local et indépendant. 0 € d'avance, un interlocuteur unique, et votre dossier négocié auprès de 20+ banques.</p>
-    <div class="hero-field">
-      <input type="text" placeholder="Votre ville de projet…"/>
-      <a href="simulation.html">Voir mon éligibilité</a>
-    </div>
+    <div class="hero-cta2">
+  <a href="simulation.html" class="hcta primary">Faire ma simulation →</a>
+  <a href="contact.html" class="hcta ghost">Nous contacter</a>
+</div>
   </div>
 
   <div class="tilewrap">
@@ -873,6 +883,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
       </video>
       <span class="tile-shine"></span>
       <div class="tile-meta">
+        <button class="tile-sound" id="tileSound" aria-label="Activer le son">🔇</button>
         <span class="tile-play">▶</span>
         <span class="tile-cap">Aeconomia · 1 min</span>
       </div>
@@ -882,8 +893,8 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
     <div class="rate-badge">
       <span class="rate-pulse"></span>
       <div class="rate-info">
-        <span class="rate-label">Taux dès</span>
-        <span class="rate-value">3,05<span class="rate-pct">%</span></span>
+          <span class="rate-label">À partir de</span>
+    <span class="rate-value">3,10<span class="rate-pct">%</span></span>
       </div>
       <span class="rate-div"></span>
       <span class="rate-term">sur<br/><b>20 ans</b></span>
@@ -900,10 +911,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
       <div class="tstat-num"><span class="stat-num" data-to="3000" data-fmt="thousand">0</span><span class="u">+</span></div>
       <div class="tstat-lab">Clients accompagnés</div>
     </div>
-    <div class="tstat">
-      <div class="tstat-num"><span class="stat-num" data-to="906">0</span></div>
-      <div class="tstat-lab">Avis vérifiés · 5/5</div>
-    </div>
+  <div class="tstat-num"><span class="stat-num" data-to="1100" data-fmt="thousand">0</span><span class="u">+</span></div>
     <div class="tstat">
       <div class="tstat-num"><span class="stat-num" data-to="20">0</span><span class="u">+</span></div>
       <div class="tstat-lab">Banques partenaires</div>
@@ -945,6 +953,48 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   </div>
 </section>
 
+
+   <!-- ═══════ ÉQUIPE — trombinoscope scroll horizontal ═══════ -->
+<section class="team" id="team">
+  <div class="team-stick">
+    <div class="team-bg"><i></i><i></i><i></i><i></i><span class="team-beam"></span></div>
+    <div class="team-head">
+      <span class="team-eye">L'équipe</span>
+      <h2 class="team-title">L'équipe qui <em>négocie pour vous.</em></h2>
+    </div>
+    <div class="team-rail">
+      <div class="team-track" id="teamTrack">
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt="Dimitri"/><div class="tcard-tag"><span class="tcard-name">Dimitri</span><span class="tcard-role">Fondateur · Stratégie</span></div></div></article>
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/mariephoto.jpg" alt="Marie"/><div class="tcard-tag"><span class="tcard-name">Marie</span><span class="tcard-role">Courtière · Primo-accédants</span></div></div></article>
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt="Robin"/><div class="tcard-tag"><span class="tcard-name">Robin</span><span class="tcard-role">Courtier · Invest. locatif</span></div></div></article>
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt="Gabriel"/><div class="tcard-tag"><span class="tcard-name">Gabriel</span><span class="tcard-role">Courtier · Renégociation</span></div></div></article>
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/matteo.jpg" alt="Matteo"/><div class="tcard-tag"><span class="tcard-name">Matteo</span><span class="tcard-role">Courtier · Pro &amp; SCI</span></div></div></article>
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Adrien%20.jpg" alt="Adrien"/><div class="tcard-tag"><span class="tcard-name">Adrien</span><span class="tcard-role">Courtier · Travaux</span></div></div></article>
+        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt="Raphaël"/><div class="tcard-tag"><span class="tcard-name">Raphaël</span><span class="tcard-role">Courtier · Résidence 2nde</span></div></div></article>
+        <a href="apropos.html" class="tcard more"><div class="tcard-photo"><div class="tcard-more-in"><b>Toute<br/>l'équipe</b><span>→</span></div></div></a>
+      </div>
+    </div>
+    <div class="team-hint">Scrollez pour rencontrer l'équipe</div>
+  </div>
+</section>
+
+
+  <!-- ═══════ AVIS — preuve sociale ═══════ -->
+<section class="rev" id="reviews">
+  <div class="rev-head">
+    <div class="rev-eye">★★★★★ · Avis vérifiés</div>
+    <h2 class="rev-title">Plus de <em>1 000 avis</em> 5 étoiles.</h2>
+    <div class="rev-logos">
+      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/google.png" alt="Google"/>
+      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/solocal.png" alt="Solocal"/>
+      <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/immodivsor.png" alt="Immodvisor"/>
+    </div>
+  </div>
+  <div class="rev-rows">
+    <div class="rev-mask"><div class="rev-track" id="revA"></div></div>
+    <div class="rev-mask"><div class="rev-track rev-rev" id="revB"></div></div>
+  </div>
+</section>
 <!-- ═══════ POURQUOI UN COURTIER (scroll épinglé) ═══════ -->
 <section class="broker" id="broker">
   <div class="broker-stick">
@@ -1251,29 +1301,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 </section>
 
 
- <!-- ═══════ ÉQUIPE — trombinoscope scroll horizontal ═══════ -->
-<section class="team" id="team">
-  <div class="team-stick">
-    <div class="team-bg"><i></i><i></i><i></i><i></i><span class="team-beam"></span></div>
-    <div class="team-head">
-      <span class="team-eye">L'équipe</span>
-      <h2 class="team-title">L'équipe qui <em>négocie pour vous.</em></h2>
-    </div>
-    <div class="team-rail">
-      <div class="team-track" id="teamTrack">
-        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/dimitriphoto.jpg" alt="Dimitri"/><div class="tcard-tag"><span class="tcard-name">Dimitri</span><span class="tcard-role">Fondateur · Stratégie</span></div></div></article>
-        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/mariephoto.jpg" alt="Marie"/><div class="tcard-tag"><span class="tcard-name">Marie</span><span class="tcard-role">Courtière · Primo-accédants</span></div></div></article>
-        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/photoderobin-2.jpg" alt="Robin"/><div class="tcard-tag"><span class="tcard-name">Robin</span><span class="tcard-role">Courtier · Invest. locatif</span></div></div></article>
-        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/gabriel.jpg" alt="Gabriel"/><div class="tcard-tag"><span class="tcard-name">Gabriel</span><span class="tcard-role">Courtier · Renégociation</span></div></div></article>
-        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/matteo.jpg" alt="Matteo"/><div class="tcard-tag"><span class="tcard-name">Matteo</span><span class="tcard-role">Courtier · Pro &amp; SCI</span></div></div></article>
-        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/Adrien%20.jpg" alt="Adrien"/><div class="tcard-tag"><span class="tcard-name">Adrien</span><span class="tcard-role">Courtier · Travaux</span></div></div></article>
-        <article class="tcard"><div class="tcard-photo"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/RAPAHEL.jpg" alt="Raphaël"/><div class="tcard-tag"><span class="tcard-name">Raphaël</span><span class="tcard-role">Courtier · Résidence 2nde</span></div></div></article>
-        <a href="apropos.html" class="tcard more"><div class="tcard-photo"><div class="tcard-more-in"><b>Toute<br/>l'équipe</b><span>→</span></div></div></a>
-      </div>
-    </div>
-    <div class="team-hint">Scrollez pour rencontrer l'équipe</div>
-  </div>
-</section>
+
 <!-- ═══════ FOOTER ═══════ -->
 <footer class="foot">
   <div class="foot-bg">
@@ -1742,10 +1770,11 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 })();
 
 
-/* ─── ÉQUIPE : scroll horizontal lissé + fond arrondi qui s'élargit ─── */
+/* ─── ÉQUIPE : scroll lissé + coverflow focus + fond qui s'élargit ─── */
 (function(){
   var sec=document.getElementById('team');if(!sec)return;
   var track=document.getElementById('teamTrack'),stick=sec.querySelector('.team-stick'),rail=sec.querySelector('.team-rail'),
+      cards=[].slice.call(track.querySelectorAll('.tcard')),
       desktop=matchMedia('(min-width:1025px)').matches,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,
       curX=0,tgtX=0,raf=null;
   function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
@@ -1754,51 +1783,65 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     var p=total>0?clamp(-sec.getBoundingClientRect().top/total,0,1):0;tgtX=-p*maxX;
   }
   function loop(){
-    curX+=(tgtX-curX)*0.085;
-    if(Math.abs(tgtX-curX)<0.2)curX=tgtX;
+    curX+=(tgtX-curX)*0.09;if(Math.abs(tgtX-curX)<0.2)curX=tgtX;
     track.style.transform='translate3d('+curX.toFixed(2)+'px,0,0)';
+    var vcx=innerWidth/2;
+    for(var i=0;i<cards.length;i++){
+      var r=cards[i].getBoundingClientRect(),d=((r.left+r.width/2)-vcx)/innerWidth;     /* -0.5 … 0.5 */
+      var ad=Math.abs(d),sc=clamp(1.05-ad*0.34,0.8,1.05),ry=clamp(-d*26,-26,26),tz=-ad*180;
+      cards[i].style.transform='translateZ('+tz.toFixed(0)+'px) rotateY('+ry.toFixed(1)+'deg) scale('+sc.toFixed(3)+')';
+      cards[i].style.opacity=clamp(1.08-ad*0.85,0.35,1).toFixed(2);
+    }
     var rect=sec.getBoundingClientRect(),tot=sec.offsetHeight-stick.clientHeight;
-    var ep=clamp((innerHeight-rect.top)/(innerHeight+tot*0.3),0,1);   /* 0 = arrive (étroit) · 1 = élargi */
+    var ep=clamp((innerHeight-rect.top)/(innerHeight+tot*0.3),0,1);
     sec.style.setProperty('--gap',((1-ep)*7+1.4).toFixed(2)+'vw');
     sec.style.setProperty('--r',((1-ep)*26+28).toFixed(0)+'px');
     raf=requestAnimationFrame(loop);
   }
   function start(){if(raf||!desktop||reduce)return;raf=requestAnimationFrame(loop);}
   function stop(){if(raf){cancelAnimationFrame(raf);raf=null;}}
-  if('IntersectionObserver' in window){
-    new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?start():stop();});},{rootMargin:'300px'}).observe(sec);
-  }else start();
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?start():stop();});},{rootMargin:'300px'}).observe(sec);}else start();
   addEventListener('scroll',target,{passive:true});
-  addEventListener('resize',function(){
-    desktop=matchMedia('(min-width:1025px)').matches;reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-    target();if(!desktop||reduce){stop();track.style.transform='';sec.style.setProperty('--gap','1.4vw');sec.style.setProperty('--r','30px');}else start();
-  });
+  addEventListener('resize',function(){desktop=matchMedia('(min-width:1025px)').matches;reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;target();if(!desktop||reduce){stop();track.style.transform='';cards.forEach(function(c){c.style.transform='';c.style.opacity='';});}else start();});
   target();
 })();
 
-
-  /* ─── NAV VERRE : pastille qui glisse + lueur curseur ─── */
+/* ─── VIDÉO HERO : son on/off + coupe au scroll ─── */
 (function(){
-  var nav=document.querySelector('.nav');if(!nav)return;
-  var ind=document.createElement('span');ind.className='nav-ind';nav.appendChild(ind);
-  var links=[].slice.call(nav.querySelectorAll('.nl'));
-  function move(el){
-    var nr=nav.getBoundingClientRect(),r=el.getBoundingClientRect();
-    ind.style.width=r.width+'px';
-    ind.style.transform='translateX('+(r.left-nr.left)+'px)';
-    nav.classList.add('ind-on');
-  }
-  function reset(){var a=nav.querySelector('.nl.active');a?move(a):nav.classList.remove('ind-on');}
-  links.forEach(function(l){l.addEventListener('mouseenter',function(){move(l);});});
-  nav.addEventListener('mouseleave',reset);
-  nav.addEventListener('pointermove',function(e){
-    var r=nav.getBoundingClientRect();
-    nav.style.setProperty('--mx',(e.clientX-r.left)+'px');
-    nav.style.setProperty('--my',(e.clientY-r.top)+'px');
-  });
-  reset();addEventListener('resize',reset);
+  var tile=document.getElementById('tile');if(!tile)return;
+  var vid=tile.querySelector('video'),btn=document.getElementById('tileSound');if(!vid||!btn)return;
+  function set(m){vid.muted=m;btn.textContent=m?'🔇':'🔊';btn.setAttribute('aria-label',m?'Activer le son':'Couper le son');}
+  set(true);
+  btn.addEventListener('click',function(e){e.preventDefault();
+    if(vid.muted){vid.muted=false;var p=vid.play();if(p&&p.catch)p.catch(function(){});set(false);}else set(true);});
+  addEventListener('scroll',function(){if(!vid.muted)set(true);},{passive:true});
 })();
-
+/* ─── AVIS : génération + duplication des cartes ─── */
+(function(){
+  var G="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/",
+      L={g:G+"google.png",s:G+"solocal.png",i:G+"immodivsor.png"};
+  var A=[
+    ["Accompagnement au top du début à la fin. Taux bien en dessous de ma banque !","Marie L.","Orléans","g"],
+    ["Très réactifs et de bon conseil. Dossier accepté en 3 semaines.","Thomas B.","Olivet","s"],
+    ["Zéro stress, ils gèrent tout. Je recommande les yeux fermés.","Sophie M.","Saran","i"],
+    ["Plus de 12 000 € économisés sur le coût total. Merci à toute l'équipe.","Karim D.","Fleury","g"],
+    ["Premier achat réussi grâce à eux. Pédagogues et efficaces.","Antoine P.","Chécy","i"]
+  ];
+  var B=[
+    ["Une équipe humaine et toujours dispo. On se sent vraiment accompagné.","Julie R.","Orléans","g"],
+    ["Meilleur taux + assurance déléguée. Du grand pro.","Nadia K.","Ingré","s"],
+    ["Rapide, transparent, aucun frais caché. Parfait.","Lucas V.","St-Jean","g"],
+    ["Ils ont décroché un oui là où ma banque disait non.","Hugo M.","La Source","i"],
+    ["Conseils clairs, suivi nickel, je recommande vivement.","Camille T.","Olivet","g"]
+  ];
+  function card(d){var s=d[3];
+    return '<div class="rcard"><div class="rcard-top"><span class="rcard-stars">★★★★★</span><img class="rcard-src" src="'+L[s]+'" alt=""/></div>'+
+      '<p class="rcard-txt">« '+d[0]+' »</p><div class="rcard-by"><span class="rcard-ava">'+d[1][0]+'</span>'+
+      '<span><b>'+d[1]+'</b><i>'+d[2]+'</i></span></div></div>';}
+  function fill(id,arr){var el=document.getElementById(id);if(!el)return;
+    var h=arr.map(card).join('');el.innerHTML=h+h;}   /* x2 pour la boucle -50% */
+  fill('revA',A);fill('revB',B);
+})();
 </script>
 </body></html>
          
