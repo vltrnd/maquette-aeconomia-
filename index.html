@@ -1944,7 +1944,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
       var ad=Math.abs(th);if(ad<best){best=ad;bi=i;}
       var c=cards[i];
       if(ad>WIN){c.style.opacity=0;c.style.pointerEvents='none';continue;}
-      var rad=th*Math.PI/180,x=cx+R*Math.sin(rad),y=apexY+R*(1-Math.cos(rad)),t=1-ad/WIN;
+           var rad=th*Math.PI/180,x=R*Math.sin(rad),y=apexY+R*(1-Math.cos(rad)),t=1-ad/WIN;
       c.style.opacity=clamp((WIN-ad)/14,0,1).toFixed(3);
       c.style.pointerEvents='auto';c.style.zIndex=Math.round(50-ad);
       c.style.transform='translate(-50%,-50%) translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) rotate('+(th*0.92).toFixed(2)+'deg) scale('+(0.84+0.16*t).toFixed(3)+')';
