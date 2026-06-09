@@ -1049,102 +1049,172 @@ body.pass-locked{overflow:hidden;}
 
 
   
-  /* ════════════════════════════════════════════════════════
-   BLOC 1 — SEUL vs AECONOMIA (comparatif "un courtier rapporte")
+/* ════════════════════════════════════════════════════════
+   COMPARATIF — Seul vs Aeconomia (verre · compact · 1 écran)
    ════════════════════════════════════════════════════════ */
-.vs{position:relative;z-index:2;overflow:hidden;border-top:1px solid rgba(21,20,18,.05);
-  background:radial-gradient(125% 100% at 50% -10%,#FFFFFF,#F1ECE1 74%);
-  padding:clamp(3.4rem,6.5vw,6rem) clamp(1.2rem,5vw,4.5rem) clamp(3rem,5vw,5rem);}
-.vs-glow{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
-.vs-glow i{position:absolute;border-radius:50%;filter:blur(90px);}
-.vs-glow i:nth-child(1){width:560px;height:560px;left:-6%;top:-14%;background:rgba(255,255,255,.85);opacity:.7;}
-.vs-glow i:nth-child(2){width:520px;height:520px;right:-5%;bottom:-22%;background:rgba(244,233,214,.9);opacity:.55;}
+.vsx{position:relative;z-index:2;overflow:hidden;border-top:1px solid rgba(21,20,18,.05);
+  background:radial-gradient(125% 100% at 50% -8%,#FFFFFF,#F0EADF 78%);
+  min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  gap:clamp(1.2rem,2.4vw,1.9rem);padding:clamp(2.4rem,5vw,3.6rem) clamp(1.1rem,5vw,4rem);}
 
-.vs-head{position:relative;z-index:1;text-align:center;max-width:820px;margin:0 auto clamp(1.8rem,3.6vw,2.8rem);}
-.vs-eye{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.64rem;font-weight:600;
-  letter-spacing:.26em;text-transform:uppercase;color:var(--sage2);}
-.vs-eye::before{content:"";width:24px;height:2px;background:var(--lime);border-radius:2px;}
-.vs-title{font-family:var(--sky);font-weight:700;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.04;
-  letter-spacing:-1.8px;color:var(--ob);margin-top:.9rem;}
-.vs-title em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
-.vs-sub{margin:1.05rem auto 0;max-width:54ch;font-size:clamp(1rem,1.3vw,1.14rem);line-height:1.62;color:var(--ob2);}
-.vs-sub b{color:var(--ob);font-weight:700;}
-
-.vs-board{position:relative;z-index:1;max-width:1060px;margin:0 auto;display:flex;flex-direction:column;}
-/* rail premium continu derrière la colonne Aeconomia (NEUTRE : blanc only) */
-.vs-rail{position:absolute;top:0;bottom:0;right:0;width:34%;z-index:0;border-radius:24px;pointer-events:none;overflow:hidden;
-  background:linear-gradient(165deg,rgba(255,255,255,.94),rgba(255,255,255,.64));
-  border:1px solid rgba(255,255,255,.9);
-  box-shadow:0 40px 90px rgba(80,66,48,.16),inset 0 1px 0 rgba(255,255,255,1);}
-.vs-rail::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;
-  background:linear-gradient(90deg,transparent,var(--lime),transparent);}
-.vs-rail::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.55) 50%,transparent 60%);
-  background-size:250% 100%;animation:vsSheen 8.5s ease-in-out infinite;mix-blend-mode:overlay;}
-@keyframes vsSheen{0%{background-position:165% 0}55%,100%{background-position:-65% 0}}
-
-.vs-row{position:relative;z-index:1;display:grid;grid-template-columns:1fr 32% 34%;align-items:stretch;
-  opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);}
-.vs.in .vs-row{opacity:1;transform:none;}
-.vs-cell{display:flex;align-items:center;gap:.62rem;min-height:62px;
-  padding:clamp(.85rem,1.4vw,1.12rem) clamp(.75rem,1.4vw,1.3rem);border-bottom:1px solid rgba(21,20,18,.08);}
-.vs-row:last-child .vs-cell{border-bottom:0;}
-.vs-crit{justify-content:flex-end;text-align:right;
-  font-family:var(--sky);font-size:.8rem;font-weight:600;letter-spacing:.01em;color:var(--ob2);}
-.vs-seul{color:var(--muted);font-size:.86rem;line-height:1.34;}
-.vs-pro{color:var(--ob);font-size:.9rem;line-height:1.34;font-weight:600;border-bottom-color:rgba(188,212,26,.18);}
-.vs-cell .ic{flex:none;display:flex;align-items:center;justify-content:center;border-radius:50%;}
-.vs-seul .ic{width:20px;height:20px;background:rgba(21,20,18,.06);color:rgba(21,20,18,.42);font-size:.66rem;}
-.vs-pro .ic{width:22px;height:22px;background:var(--lime);color:var(--ob);font-size:.72rem;font-weight:800;
-  box-shadow:0 4px 11px rgba(188,212,26,.5);}
+/* halos d'ambiance (nourrissent le verre) */
+.vsx-amb{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.vsx-amb i{position:absolute;border-radius:50%;filter:blur(90px);}
+.vsx-amb i:nth-child(1){width:540px;height:540px;left:-8%;top:-18%;background:rgba(255,255,255,.9);opacity:.7;}
+.vsx-amb i:nth-child(2){width:430px;height:430px;right:-6%;top:-8%;background:rgba(188,212,26,.16);opacity:.7;}
+.vsx-amb i:nth-child(3){width:560px;height:560px;right:6%;bottom:-26%;background:rgba(244,233,214,.92);opacity:.6;}
 
 /* en-tête */
-.vs-row.head .vs-cell{min-height:0;align-items:flex-end;padding-bottom:.85rem;border-bottom:1px solid rgba(21,20,18,.14);}
-.vs-row.head .vs-pro{border-bottom-color:rgba(188,212,26,.5);}
-.vs-h{font-family:var(--sky);font-weight:700;letter-spacing:-.3px;line-height:1.15;}
-.vs-h.seul{color:var(--ob2);font-size:.96rem;}
-.vs-h.pro{color:var(--ob);font-size:1.04rem;display:inline-flex;align-items:center;gap:.55rem;flex-wrap:wrap;}
-.vs-badge{font-family:var(--sky);font-size:.5rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ob);background:var(--lime);padding:4px 9px;border-radius:50px;box-shadow:0 4px 12px rgba(188,212,26,.55);}
+.vsx-head{position:relative;z-index:1;text-align:center;max-width:760px;}
+.vsx-eye{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.62rem;font-weight:600;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--sage2);}
+.vsx-eye::before{content:"";width:22px;height:2px;background:var(--lime);border-radius:2px;}
+.vsx-title{font-family:var(--sky);font-weight:700;font-size:clamp(1.8rem,3.9vw,2.9rem);line-height:1.05;
+  letter-spacing:-1.6px;color:var(--ob);margin-top:.7rem;}
+.vsx-title em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
+.vsx-sub{margin:.8rem auto 0;max-width:58ch;font-size:clamp(.9rem,1.2vw,1.04rem);line-height:1.55;color:var(--ob2);}
+.vsx-sub b{color:var(--ob);font-weight:700;}
 
-/* punchline + cta */
-.vs-foot{position:relative;z-index:1;max-width:1060px;margin:clamp(1.5rem,3vw,2.2rem) auto 0;
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.6rem;
-  padding:clamp(1.15rem,2vw,1.5rem) clamp(1.3rem,2.6vw,2rem);border-radius:20px;
-  background:linear-gradient(135deg,rgba(188,212,26,.18),rgba(255,255,255,.5));
-  border:1px solid rgba(188,212,26,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.85);}
-.vs-foot p{font-family:var(--sky);font-size:clamp(.96rem,1.4vw,1.14rem);font-weight:600;color:var(--ob);line-height:1.4;max-width:46ch;}
-.vs-foot p b{color:#5a6e00;}
-.vs-cta{position:relative;overflow:hidden;flex:none;display:inline-flex;align-items:center;gap:.7rem;
-  font-family:var(--sky);font-weight:700;font-size:.96rem;color:#fff;background:var(--ob);
-  padding:15px 24px;border-radius:50px;box-shadow:0 14px 32px rgba(21,20,18,.28);
+/* carte verre */
+.vsx-card{position:relative;z-index:1;width:min(1000px,100%);
+  --g:minmax(0,1.45fr) minmax(140px,.92fr) minmax(168px,1.04fr);
+  border-radius:26px;padding:clamp(.45rem,1vw,.8rem) clamp(.55rem,1.3vw,1.05rem) clamp(.6rem,1vw,.9rem);
+  background:linear-gradient(160deg,rgba(255,255,255,.78),rgba(255,255,255,.5));
+  backdrop-filter:blur(30px) saturate(165%);-webkit-backdrop-filter:blur(30px) saturate(165%);
+  border:1px solid rgba(255,255,255,.85);
+  box-shadow:0 40px 100px rgba(80,66,48,.18),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 2px rgba(255,255,255,.4);}
+
+/* rail lumineux derrière la colonne Aeconomia (placé en JS) */
+.vsx-spot{position:absolute;top:8px;bottom:8px;left:0;width:0;z-index:0;border-radius:18px;pointer-events:none;overflow:hidden;
+  background:linear-gradient(170deg,rgba(255,255,255,.94),rgba(247,250,233,.74));
+  border:1px solid rgba(188,212,26,.42);
+  box-shadow:0 22px 50px rgba(120,140,30,.16),inset 0 1px 0 rgba(255,255,255,1);
+  opacity:0;transition:opacity .5s ease;}
+.vsx-spot.ready{opacity:1;}
+.vsx-spot::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg,transparent,var(--lime),transparent);}
+.vsx-spot::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.6) 50%,transparent 60%);
+  background-size:250% 100%;animation:vsxSheen 8s ease-in-out infinite;mix-blend-mode:overlay;}
+@keyframes vsxSheen{0%{background-position:165% 0}55%,100%{background-position:-65% 0}}
+
+/* en-tête de colonnes */
+.vsx-cols{position:relative;z-index:2;display:grid;grid-template-columns:var(--g);align-items:end;
+  border-bottom:1px solid rgba(21,20,18,.1);}
+.vsx-cols>*{padding:.4rem clamp(.5rem,1vw,.9rem) .7rem;}
+.vsx-cols .c1{font-family:var(--sky);font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+.vsx-col{display:flex;flex-direction:column;gap:.3rem;}
+.vsx-col.seul .k{font-family:var(--sky);font-size:.74rem;font-weight:600;color:var(--ob2);line-height:1.15;}
+.vsx-col.pro{align-items:flex-start;}
+.vsx-col.pro .brand{font-family:var(--body);font-weight:800;font-size:1.02rem;letter-spacing:-.4px;color:var(--ob);}
+.vsx-col.pro .brand i{font-style:normal;color:var(--lime);}
+.vsx-reco{display:inline-flex;align-items:center;font-family:var(--sky);font-size:.48rem;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ob);background:var(--lime);
+  padding:3px 9px;border-radius:50px;box-shadow:0 4px 12px rgba(188,212,26,.5);}
+
+/* lignes */
+.vsx-rows{position:relative;z-index:2;}
+.vsx-row{position:relative;display:grid;grid-template-columns:var(--g);align-items:stretch;border-radius:12px;
+  opacity:0;transform:translateY(14px);transition:background .25s;}
+.vsx.in .vsx-row{opacity:1;transform:none;
+  transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1),background .25s;}
+.vsx-row+.vsx-row::before{content:"";position:absolute;left:clamp(.5rem,1vw,.9rem);right:clamp(.5rem,1vw,.9rem);top:0;height:1px;background:rgba(21,20,18,.07);}
+.vsx-row:hover{background:rgba(255,255,255,.32);}
+.vsx.in .vsx-row:nth-child(1){transition-delay:.05s}.vsx.in .vsx-row:nth-child(2){transition-delay:.10s}
+.vsx.in .vsx-row:nth-child(3){transition-delay:.15s}.vsx.in .vsx-row:nth-child(4){transition-delay:.20s}
+.vsx.in .vsx-row:nth-child(5){transition-delay:.25s}.vsx.in .vsx-row:nth-child(6){transition-delay:.30s}
+.vsx.in .vsx-row:nth-child(7){transition-delay:.35s}
+
+.vsx-cell{display:flex;align-items:center;gap:.6rem;min-height:clamp(52px,7vh,66px);padding:.5rem clamp(.5rem,1vw,.9rem);}
+
+/* critère + bulle */
+.vsx-crit{position:relative;cursor:help;}
+.vsx-ico{flex:none;width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.02rem;
+  background:linear-gradient(160deg,rgba(255,255,255,.88),rgba(237,232,223,.7));border:1px solid rgba(21,20,18,.06);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);}
+.vsx-clbl{font-family:var(--sky);font-size:.85rem;font-weight:600;letter-spacing:-.1px;color:var(--ob);line-height:1.2;transition:color .25s;}
+.vsx-crit:hover .vsx-clbl,.vsx-crit:focus-visible .vsx-clbl{color:var(--sage2);}
+.vsx-i{flex:none;width:15px;height:15px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--sky);font-size:.55rem;font-weight:800;font-style:italic;color:var(--sage2);
+  background:rgba(117,132,124,.14);border:1px solid rgba(117,132,124,.28);transition:background .25s,color .25s,border-color .25s;}
+.vsx-crit:hover .vsx-i,.vsx-crit:focus-visible .vsx-i{background:var(--lime);color:var(--ob);border-color:transparent;}
+
+.vsx-tip{position:absolute;left:.2rem;bottom:calc(100% + 13px);width:min(290px,74vw);z-index:30;
+  font-family:var(--body);font-size:.76rem;line-height:1.5;font-weight:500;color:#fff;
+  background:linear-gradient(165deg,rgba(30,28,24,.96),rgba(20,19,16,.96));
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:.72rem .85rem;
+  box-shadow:0 20px 44px rgba(20,19,16,.36);
+  opacity:0;transform:translateY(7px) scale(.97);transform-origin:left bottom;pointer-events:none;
+  transition:opacity .28s cubic-bezier(.22,1,.36,1),transform .28s cubic-bezier(.22,1,.36,1);}
+.vsx-tip b{color:var(--lime);font-weight:700;}
+.vsx-tip::before{content:"";position:absolute;left:26px;top:100%;width:14px;height:14px;background:inherit;
+  border-right:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);transform:translateY(-7px) rotate(45deg);}
+.vsx-crit:hover .vsx-tip,.vsx-crit:focus-visible .vsx-tip,.vsx-crit:focus .vsx-tip{opacity:1;transform:translateY(0) scale(1);}
+
+/* colonne "seul" */
+.vsx-seul{color:var(--muted);}
+.vsx-seul .t{font-size:.81rem;line-height:1.3;}
+.vsx-no{flex:none;position:relative;width:20px;height:20px;border-radius:50%;background:rgba(21,20,18,.05);border:1px solid rgba(21,20,18,.09);}
+.vsx-no::before,.vsx-no::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:1.7px;border-radius:2px;background:rgba(21,20,18,.34);}
+.vsx-no::before{transform:translate(-50%,-50%) rotate(45deg);}
+.vsx-no::after{transform:translate(-50%,-50%) rotate(-45deg);}
+
+/* colonne Aeconomia (sur le rail) */
+.vsx-pro{color:var(--ob);}
+.vsx-pro .t{font-size:.85rem;font-weight:600;line-height:1.3;}
+.vsx-ck{flex:none;position:relative;width:23px;height:23px;border-radius:50%;background:var(--lime);
+  box-shadow:0 4px 12px rgba(188,212,26,.5);transform:scale(.4);opacity:0;}
+.vsx-ck::after{content:"";position:absolute;left:8px;top:5px;width:5px;height:10px;border:2px solid var(--ob);border-top:0;border-left:0;transform:rotate(45deg);}
+.vsx.in .vsx-ck{transform:scale(1);opacity:1;transition:transform .55s cubic-bezier(.34,1.56,.64,1),opacity .4s;}
+.vsx.in .vsx-row:nth-child(1) .vsx-ck{transition-delay:.20s}.vsx.in .vsx-row:nth-child(2) .vsx-ck{transition-delay:.27s}
+.vsx.in .vsx-row:nth-child(3) .vsx-ck{transition-delay:.34s}.vsx.in .vsx-row:nth-child(4) .vsx-ck{transition-delay:.41s}
+.vsx.in .vsx-row:nth-child(5) .vsx-ck{transition-delay:.48s}.vsx.in .vsx-row:nth-child(6) .vsx-ck{transition-delay:.55s}
+.vsx.in .vsx-row:nth-child(7) .vsx-ck{transition-delay:.62s}
+.vsx-row:hover .vsx-ck{transform:scale(1.1);transition:transform .25s;}
+
+/* pied : chips + CTA */
+.vsx-foot{position:relative;z-index:1;width:min(1000px,100%);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:.9rem 1.4rem;padding:clamp(.9rem,1.7vw,1.3rem) clamp(1.1rem,2.4vw,1.7rem);border-radius:18px;
+  background:linear-gradient(135deg,rgba(188,212,26,.16),rgba(255,255,255,.5));
+  border:1px solid rgba(188,212,26,.4);box-shadow:inset 0 1px 0 rgba(255,255,255,.85);}
+.vsx-chips{display:flex;flex-wrap:wrap;gap:.5rem;}
+.vsx-chip{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sky);font-size:.74rem;font-weight:600;color:var(--ob2);
+  background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.85);padding:7px 13px;border-radius:50px;box-shadow:0 6px 16px rgba(80,66,48,.08);}
+.vsx-chip b{color:#5a6e00;font-weight:800;}
+.vsx-cta{position:relative;overflow:hidden;flex:none;display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sky);font-weight:700;
+  font-size:.94rem;color:#fff;background:var(--ob);padding:14px 24px;border-radius:50px;box-shadow:0 14px 32px rgba(21,20,18,.28);
   transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;}
-.vs-cta::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(188,212,26,.55) 50%,transparent 65%);transform:translateX(-120%) skewX(-12deg);transition:transform .9s cubic-bezier(.22,1,.36,1);}
-.vs-cta:hover::before{transform:translateX(120%) skewX(-12deg);}
-.vs-cta:hover{transform:translateY(-3px);box-shadow:0 20px 46px rgba(21,20,18,.4),0 0 0 3px rgba(188,212,26,.4);}
-.vs-cta i{font-style:normal;transition:transform .35s;}.vs-cta:hover i{transform:translateX(5px);}
+.vsx-cta::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(188,212,26,.55) 50%,transparent 65%);transform:translateX(-120%) skewX(-12deg);transition:transform .9s cubic-bezier(.22,1,.36,1);}
+.vsx-cta:hover::before{transform:translateX(120%) skewX(-12deg);}
+.vsx-cta:hover{transform:translateY(-3px);box-shadow:0 20px 46px rgba(21,20,18,.4),0 0 0 3px rgba(188,212,26,.4);}
+.vsx-cta i{font-style:normal;transition:transform .35s;}.vsx-cta:hover i{transform:translateX(5px);}
 
+/* ── MOBILE : colonnes empilées ── */
 @media(max-width:760px){
-  .vs-rail{display:none;}
-  .vs-board{gap:.85rem;}
-  .vs-row{grid-template-columns:1fr 1fr;grid-template-areas:"crit crit" "seul pro";
-    border:1px solid rgba(21,20,18,.08);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.55);}
-  .vs-row.head{display:none;}
-  .vs-cell{min-height:0;border-bottom:0;}
-  .vs-crit{grid-area:crit;justify-content:flex-start;text-align:left;color:var(--ob);font-weight:700;font-size:.82rem;
-    background:rgba(21,20,18,.035);border-bottom:1px solid rgba(21,20,18,.07);padding:.7rem .95rem;}
-  .vs-seul{grid-area:seul;position:relative;padding-top:1.75rem;align-items:flex-start;border-right:1px solid rgba(21,20,18,.07);}
-  .vs-pro{grid-area:pro;position:relative;padding-top:1.75rem;align-items:flex-start;
-    background:linear-gradient(160deg,rgba(188,212,26,.12),rgba(255,255,255,.35));}
-  .vs-seul::before,.vs-pro::before{position:absolute;top:.5rem;left:.95rem;font-family:var(--sky);
-    font-size:.5rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;}
-  .vs-seul::before{content:"Seul";color:var(--muted);}
-  .vs-pro::before{content:"Aeconomia";color:#6a7e00;}
-  .vs-foot{flex-direction:column;align-items:flex-start;text-align:left;}
-  .vs-cta{align-self:stretch;justify-content:center;}
+  .vsx{min-height:0;}
+  .vsx-card{--g:1fr;padding:.35rem .45rem .55rem;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border:0;box-shadow:none;}
+  .vsx-spot,.vsx-cols{display:none;}
+  .vsx-rows{display:flex;flex-direction:column;gap:.7rem;}
+  .vsx-row{grid-template-columns:1fr 1fr;grid-template-areas:"crit crit" "seul pro";border:1px solid rgba(21,20,18,.08);border-radius:16px;overflow:hidden;
+    background:linear-gradient(160deg,rgba(255,255,255,.72),rgba(255,255,255,.5));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 16px 38px rgba(80,66,48,.1);}
+  .vsx-row+.vsx-row::before{display:none;}
+  .vsx-crit{grid-area:crit;background:rgba(21,20,18,.035);border-bottom:1px solid rgba(21,20,18,.07);min-height:0;padding:.7rem .9rem;}
+  .vsx-seul{grid-area:seul;border-right:1px solid rgba(21,20,18,.07);}
+  .vsx-pro{grid-area:pro;background:linear-gradient(160deg,rgba(188,212,26,.14),rgba(255,255,255,.3));}
+  .vsx-seul,.vsx-pro{position:relative;align-items:flex-start;padding-top:1.7rem;min-height:0;}
+  .vsx-seul::before,.vsx-pro::before{position:absolute;top:.5rem;left:.9rem;font-family:var(--sky);font-size:.48rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;}
+  .vsx-seul::before{content:"Seul";color:var(--muted);}
+  .vsx-pro::before{content:"Aeconomia";color:#6a7e00;}
+  .vsx-tip{left:auto;right:.2rem;}.vsx-tip::before{left:auto;right:26px;}
+  .vsx-foot{flex-direction:column;align-items:stretch;text-align:center;}
+  .vsx-chips{justify-content:center;}.vsx-cta{justify-content:center;}
 }
-@media(prefers-reduced-motion:reduce){.vs-rail::after{animation:none;}.vs-row{opacity:1;transform:none;}}
-
+@media(prefers-reduced-motion:reduce){
+  .vsx-spot::after{animation:none;}
+  .vsx-row{opacity:1;transform:none;}
+  .vsx-ck{opacity:1;transform:none;}
+}
   /* ════════════════════════════════════════════════════════
    BLOC 2 — AECONOMIA vs UN COURTIER CLASSIQUE (scorecard ✓/✕)
    ════════════════════════════════════════════════════════ */
@@ -1565,96 +1635,101 @@ body.pass-locked{overflow:hidden;}
   </div>
 </div>
 
-  <!-- ═══════ POURQUOI UN COURTIER — Seul vs Aeconomia ═══════ -->
-<section class="vs" id="vs">
-  <div class="vs-glow"><i></i><i></i></div>
-  <div class="vs-head">
-    <span class="vs-eye">Courtier ou seul ?</span>
-    <h2 class="vs-title">Un courtier ne vous coûte pas.<br/><em>Il vous rapporte.</em></h2>
-    <p class="vs-sub">Ce que donne votre banque, seul, face à un courtier qui négocie pour vous. <b>Et le coût d'Aeconomia ? Il est déjà compris dans les milliers d'euros qu'on vous fait économiser.</b></p>
+<!-- ═══════ COURTIER OU SEUL ? — comparatif (1 écran) ═══════ -->
+<section class="vsx" id="vs">
+  <div class="vsx-amb" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <div class="vsx-head">
+    <span class="vsx-eye">Courtier ou seul ?</span>
+    <h2 class="vsx-title">Un courtier ne vous coûte pas.<br/><em>Il vous rapporte.</em></h2>
+    <p class="vsx-sub">Votre banque seul·e, face à un courtier qui négocie pour vous. <b>Le coût d'Aeconomia ? Déjà compris dans ce qu'on vous fait économiser.</b></p>
   </div>
 
-  <div class="vs-board" id="vsBoard">
-    <div class="vs-rail" id="vsRail"></div>
+  <div class="vsx-card">
+    <div class="vsx-spot" aria-hidden="true"></div>
 
-    <div class="vs-row head">
-      <div class="vs-cell vs-crit"></div>
-      <div class="vs-cell vs-seul"><span class="vs-h seul">Seul, face à votre banque</span></div>
-      <div class="vs-cell vs-pro"><span class="vs-h pro">Avec Aeconomia <span class="vs-badge">Recommandé</span></span></div>
+    <div class="vsx-cols">
+      <div class="c1">Le critère</div>
+      <div class="vsx-col seul"><span class="k">Seul, face<br/>à votre banque</span></div>
+      <div class="vsx-col pro"><span class="brand">/aeconomia<i>.</i></span><span class="vsx-reco">Recommandé</span></div>
     </div>
 
-    <div class="vs-row">
-      <div class="vs-cell vs-crit">Banques consultées</div>
-      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>1 seule : la vôtre</span></div>
-      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>20+ banques en concurrence</span></div>
-    </div>
-    <div class="vs-row">
-      <div class="vs-cell vs-crit">Le taux obtenu</div>
-      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>celui qu'on veut bien vous donner</span></div>
-      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>le meilleur du marché, négocié</span></div>
-    </div>
-    <div class="vs-row">
-      <div class="vs-cell vs-crit">Pouvoir de négociation</div>
-      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>vous, seul, sans repère</span></div>
-      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>un expert qui négocie tous les jours</span></div>
-    </div>
-    <div class="vs-row">
-      <div class="vs-cell vs-crit">Connaissance des banques</div>
-      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>vous découvrez en direct</span></div>
-      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>on sait laquelle dira oui à votre profil</span></div>
-    </div>
-    <div class="vs-row">
-      <div class="vs-cell vs-crit">L'assurance emprunteur</div>
-      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>au tarif de la banque</span></div>
-      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>au prix fournisseur, jusqu'à −50 %</span></div>
-    </div>
-    <div class="vs-row">
-      <div class="vs-cell vs-crit">Montage du dossier</div>
-      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>à vous de tout constituer</span></div>
-      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>on bâtit un dossier qui convainc</span></div>
-    </div>
-    <div class="vs-row">
-      <div class="vs-cell vs-crit">Démarches &amp; rendez-vous</div>
-      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>vous courez partout</span></div>
-      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>on s'occupe de tout</span></div>
-    </div>
-    <div class="vs-row">
-      <div class="vs-cell vs-crit">Temps passé</div>
-      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>des semaines de paperasse</span></div>
-      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>quelques heures, de votre côté</span></div>
-    </div>
-    <div class="vs-row">
-      <div class="vs-cell vs-crit">Risque de refus</div>
-      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>élevé si le dossier est mal ficelé</span></div>
-      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>on cible les banques qui acceptent</span></div>
-    </div>
-    <div class="vs-row">
-      <div class="vs-cell vs-crit">Dossier complexe</div>
-      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>souvent un mur</span></div>
-      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>on sait débloquer les situations</span></div>
-    </div>
-    <div class="vs-row">
-      <div class="vs-cell vs-crit">Suivi jusqu'à la signature</div>
-      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>vous gérez seul les imprévus</span></div>
-      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>accompagné jusqu'à la remise des clés</span></div>
-    </div>
-    <div class="vs-row">
-      <div class="vs-cell vs-crit">Si les taux baissent après</div>
-      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>à vous de tout refaire</span></div>
-      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>1ʳᵉ renégociation offerte, à vie</span></div>
-    </div>
-    <div class="vs-row">
-      <div class="vs-cell vs-crit">Ce que ça vous coûte</div>
-      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>votre temps, et souvent plus cher</span></div>
-      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>0 € tant que le crédit n'est pas signé</span></div>
+    <div class="vsx-rows">
+      <div class="vsx-row">
+        <div class="vsx-cell vsx-crit" tabindex="0">
+          <span class="vsx-ico">🏦</span><span class="vsx-clbl">Banques consultées</span><span class="vsx-i" aria-hidden="true">i</span>
+          <span class="vsx-tip" role="tooltip">La mise en concurrence, c'est <b>le</b> levier qui fait baisser votre taux. Seul, vous n'avez qu'une seule offre — à prendre ou à laisser.</span>
+        </div>
+        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">1 seule : la vôtre</span></div>
+        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">20+ banques en concurrence</span></div>
+      </div>
+
+      <div class="vsx-row">
+        <div class="vsx-cell vsx-crit" tabindex="0">
+          <span class="vsx-ico">📉</span><span class="vsx-clbl">Le taux décroché</span><span class="vsx-i" aria-hidden="true">i</span>
+          <span class="vsx-tip" role="tooltip">Quelques dixièmes de point négociés, et c'est <b>plusieurs milliers d'euros</b> d'intérêts en moins sur la durée.</span>
+        </div>
+        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">celui qu'on veut bien vous donner</span></div>
+        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">le meilleur du marché, négocié</span></div>
+      </div>
+
+      <div class="vsx-row">
+        <div class="vsx-cell vsx-crit" tabindex="0">
+          <span class="vsx-ico">🛡️</span><span class="vsx-clbl">L'assurance emprunteur</span><span class="vsx-i" aria-hidden="true">i</span>
+          <span class="vsx-tip" role="tooltip">Elle peut peser jusqu'à <b>un tiers</b> du coût d'un crédit. En direct fournisseur, elle est souvent 2× moins chère.</span>
+        </div>
+        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">au tarif de la banque</span></div>
+        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">prix fournisseur, jusqu'à −50 %</span></div>
+      </div>
+
+      <div class="vsx-row">
+        <div class="vsx-cell vsx-crit" tabindex="0">
+          <span class="vsx-ico">📂</span><span class="vsx-clbl">Le montage du dossier</span><span class="vsx-i" aria-hidden="true">i</span>
+          <span class="vsx-tip" role="tooltip">Un dossier clair et argumenté <b>rassure le banquier</b> et débloque de meilleures conditions. On sait ce qu'ils veulent voir.</span>
+        </div>
+        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">à vous de tout constituer</span></div>
+        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">un dossier béton, monté pour vous</span></div>
+      </div>
+
+      <div class="vsx-row">
+        <div class="vsx-cell vsx-crit" tabindex="0">
+          <span class="vsx-ico">⏳</span><span class="vsx-clbl">Votre temps</span><span class="vsx-i" aria-hidden="true">i</span>
+          <span class="vsx-tip" role="tooltip">Pièces, relances, rendez-vous, allers-retours : on absorbe <b>toute la charge</b>. De votre côté, l'essentiel et rien d'autre.</span>
+        </div>
+        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">des semaines de paperasse</span></div>
+        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">quelques heures, c'est tout</span></div>
+      </div>
+
+      <div class="vsx-row">
+        <div class="vsx-cell vsx-crit" tabindex="0">
+          <span class="vsx-ico">🧩</span><span class="vsx-clbl">Dossier atypique ou refusé</span><span class="vsx-i" aria-hidden="true">i</span>
+          <span class="vsx-tip" role="tooltip">Indépendant, CDD, peu d'apport, déjà refusé… On cible précisément les banques qui <b>disent oui</b> à votre profil.</span>
+        </div>
+        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">souvent un mur</span></div>
+        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">on sait débloquer la situation</span></div>
+      </div>
+
+      <div class="vsx-row">
+        <div class="vsx-cell vsx-crit" tabindex="0">
+          <span class="vsx-ico">🧾</span><span class="vsx-clbl">Ce que ça vous coûte</span><span class="vsx-i" aria-hidden="true">i</span>
+          <span class="vsx-tip" role="tooltip">Notre rémunération ne tombe <b>que si votre crédit aboutit</b> — et elle est déjà couverte par ce qu'on vous fait gagner.</span>
+        </div>
+        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">votre temps, et souvent plus cher</span></div>
+        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">0 € tant que vous n'avez pas signé</span></div>
+      </div>
     </div>
   </div>
 
-  <div class="vs-foot">
-    <p>Un accompagnement complet qui <b>se rembourse tout seul</b> — et bien au-delà.</p>
-    <a href="simulation.html" class="vs-cta"><span>Calculer mon économie</span><i>→</i></a>
+  <div class="vsx-foot">
+    <div class="vsx-chips">
+      <span class="vsx-chip"><b>0 €</b> tant que vous ne signez pas</span>
+      <span class="vsx-chip"><b>1ʳᵉ</b> renégociation offerte, à vie</span>
+    </div>
+    <a href="simulation.html" class="vsx-cta"><span>Calculer mon économie</span><i>→</i></a>
   </div>
 </section>
+
+  
 <!-- ═══════ AVIS — orbite clients (dans le tél) + éventail penché ═══════ -->
 <section class="rev" id="reviews">
   <div class="rev-head">
@@ -2729,16 +2804,33 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   if(st)st.innerHTML=D.slice(0,6).map(function(d){return '<div class="rcm"><span class="cat">['+d[0]+']</span><p>'+d[1]+'</p><div class="by"><span class="rev-ava">'+d[2][0]+'</span><b>'+d[2]+'</b> · '+d[3]+'</div></div>';}).join('');
 })();
   
-/* ─── BLOC 1 : révélation en cascade des lignes du comparatif ─── */
+
+/* ─── COMPARATIF Seul vs Aeconomia : rail Aeconomia + révélation ─── */
 (function(){
-  var sec=document.getElementById('vs');if(!sec)return;
-  var rows=[].slice.call(sec.querySelectorAll('.vs-row'));
-  function reveal(){rows.forEach(function(r,i){r.style.transitionDelay=(i*0.045)+'s';});sec.classList.add('in');}
+  var sec=document.getElementById('vs');if(!sec||!sec.classList.contains('vsx'))return;
+  var card=sec.querySelector('.vsx-card'),spot=sec.querySelector('.vsx-spot'),probe=sec.querySelector('.vsx-col.pro');
+  function place(){
+    if(!card||!spot||!probe)return;
+    if(getComputedStyle(spot).display==='none'){spot.classList.remove('ready');return;}
+    var c=card.getBoundingClientRect(),p=probe.getBoundingClientRect();
+    if(p.width<=0)return;
+    spot.style.left=(p.left-c.left)+'px';
+    spot.style.width=p.width+'px';
+    spot.classList.add('ready');
+  }
+  place();
+  addEventListener('resize',place,{passive:true});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(place);
+  setTimeout(place,300);
+
   if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){reveal();io.disconnect();}});},{threshold:.18});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){sec.classList.add('in');place();io.disconnect();}
+    });},{threshold:.16});
     io.observe(sec);
-  }else reveal();
+  }else sec.classList.add('in');
 })();
+
 
   /* ─── BLOC 2 : révélation + tampons ✓ qui s'impriment un à un ─── */
 (function(){
