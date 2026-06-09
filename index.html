@@ -1485,66 +1485,69 @@ a.ftr-contact-row:hover{color:var(--ob);}
 
 
 
-  /* ═══════════════════════════════════════════════════════════════
-   ✦ DESIGN SYSTEM — HARMONISATION & TRANSITIONS
-   Couche unique : tokens + cohérence boutons / titres / cadres.
+/* ═══════════════════════════════════════════════════════════════
+   ✦ HARMONISATION v2 — remplace INTÉGRALEMENT la couche précédente
    ═══════════════════════════════════════════════════════════════ */
 :root{
-  --r-btn:14px;                          /* TOUS les boutons d'action */
-  --r-card:22px;                         /* cartes / encarts */
-  --r-frame:clamp(26px,3vw,44px);        /* grands cadres "passe-partout" */
-  --gap-frame:clamp(16px,2.6vw,38px);    /* respiration autour des cadres */
-  --fs-eyebrow:.66rem;  --ls-eyebrow:.2em;
-  --fs-h2:clamp(2rem,4.2vw,3.2rem);      /* titres de section standard */
-  --fs-h2-xl:clamp(2.4rem,5.4vw,4.4rem); /* titres "display" plein cadre */
+  --r-btn:14px; --r-card:22px;
+  --r-frame:clamp(22px,2.2vw,32px);
+  --fs-eyebrow:.66rem; --ls-eyebrow:.2em;
+  --fs-h2:clamp(2rem,4.2vw,3.2rem);
+  --fs-h2-xl:clamp(2.4rem,5.4vw,4.4rem);
+  --canvas:#F7F4EF;                         /* LE fond unique de la page */
 }
 
-/* ── 1 · BOUTONS : un seul rayon, un seul gabarit ──────────────── */
+/* ── 1 · UN SEUL FOND — zéro couture entre les blocs ───────────── */
+body{background:var(--canvas);}
+.trust,.icx,.broker,.team,.vsx,.rev,.edge,.steps,.rate,.ig,.ctaband{
+  background:var(--canvas)!important;
+}
+.rate-stage{background:transparent!important;}   /* son dégradé interne créait une marche */
+.trust,.rev{border-bottom:0!important;}          /* on enlève les liserés de jonction */
+.team{border-top:0!important;}
+/* (les "glows" flous restent : ils donnent de la vie SANS créer de coupure) */
+
+/* ── 2 · VIDÉOS PARALLAX + GLASS HERO : pleine largeur, AUCUN radius ─ */
+.vcta,.gh,.steps-hero{margin:0!important;border-radius:0!important;box-shadow:none!important;}
+.scard{border-radius:30px!important;}            /* rayon d'origine des cartes étapes */
+
+/* ── 3 · HEADER : cadre arrondi sur fond clair (DESKTOP only) ──── */
+@media(min-width:1101px){
+  .hero{
+    margin:clamp(14px,1.5vw,22px);
+    border-radius:var(--r-frame)!important;
+    min-height:calc(100svh - clamp(28px,3vw,44px));
+  }
+}
+@media(max-width:1100px){                        /* tél / tablette : plein écran, sans radius */
+  .hero{margin:0!important;border-radius:0!important;}
+}
+
+/* ── 4 · BOUTONS : un seul rayon / gabarit ─────────────────────── */
 .hcta,.hero-field a,.rate-cta,.gh-btn,.edge-cta,.vsx-cta,.vcta-btn,.fbtn,.ig-follow,.ig-linkedin{
   border-radius:var(--r-btn)!important;
 }
-.hcta,.rate-cta,.gh-btn,.edge-cta,.vsx-cta,.vcta-btn,.fbtn{
-  font-size:.94rem!important;padding:15px 26px!important;
-}
-/* (la flèche ronde du bandeau lime et le bouton-flèche glass restent ronds : ce sont des icônes) */
+.hcta,.rate-cta,.gh-btn,.edge-cta,.vsx-cta,.vcta-btn,.fbtn{font-size:.94rem!important;padding:15px 26px!important;}
+.rate-badge{border-radius:var(--r-card)!important;}
 
-/* ── 2 · EYEBROWS : même taille / graisse / interlettre ────────── */
+/* ── 5 · EYEBROWS + TITRES : échelle unique ────────────────────── */
 .trust-eyebrow,.rate-eyebrow,.vsx-eye,.edge-eye,.team-eye,.ig-eye,.steps-eyebrow,
 .icx-eye,.vcta-k,.gh-k,.bpanel-k,.bm-k,.foot-cta-k,.scard-step,.scard-k,.rbonus-tag{
   font-size:var(--fs-eyebrow)!important;letter-spacing:var(--ls-eyebrow)!important;font-weight:600!important;
 }
-
-/* ── 3 · TITRES : deux tailles seulement (standard / display) ──── */
 .rate-title,.vsx-title,.edge-title,.team-title,.ig-title,.gh-h,.icx-title,.rev-title{
   font-size:var(--fs-h2)!important;letter-spacing:-1.6px!important;line-height:1.06!important;
 }
 .steps-title,.vcta-h,.foot-cta h2,.ctaband-h{
   font-size:var(--fs-h2-xl)!important;letter-spacing:-2.2px!important;line-height:1.0!important;
 }
-/* l'emphase italique reste identique partout (Plus Jakarta italic 800) */
-
-/* ── 4 · TRANSITIONS : canevas clair continu + cadres arrondis ─── */
-body{background:var(--bg);}                 /* le "blanc clair" continu */
-
-/* les blocs média deviennent des cadres flottants (passe-partout) */
-.gh,.vcta{
-  margin:var(--gap-frame);
-  border-radius:var(--r-frame);
-  box-shadow:0 36px 90px rgba(40,33,24,.20),inset 0 0 0 1px rgba(255,255,255,.10);
-}
-.steps-hero{
-  margin:var(--gap-frame) var(--gap-frame) 0;
-  border-radius:var(--r-frame);
-  box-shadow:0 30px 70px rgba(40,33,24,.16);
-}
-/* cartes & hero reprennent le même rayon → cohérence des arrondis */
-.scard{border-radius:var(--r-frame)!important;}
-.hero{border-radius:0 0 var(--r-frame) var(--r-frame)!important;}
-.rate-badge{border-radius:var(--r-card)!important;}
-
-/* ── 5 · Mobile : on resserre le passe-partout ─────────────────── */
-@media(max-width:760px){ :root{--gap-frame:12px;--r-frame:24px;} }
 </style></head>
+
+
+
+
+
+  
 <body>
 
 <div class="cur" id="cur"></div>
