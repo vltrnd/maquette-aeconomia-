@@ -251,68 +251,158 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .mm-foot .cta{font-family:var(--sky);font-weight:700;background:var(--ob);color:#fff;border-radius:14px;padding:16px;text-align:center;}
 
 /* ════════════════════════════════════════════════════════
-   FOOTER — reprend la vidéo du chargement (beige & blanc, 70%)
+   FOOTER — vidéo VIVE (100%) + cadre verre "tech"
    ════════════════════════════════════════════════════════ */
-.foot{position:relative;overflow:hidden;background:#ECE3D4;color:var(--ob);isolation:isolate;}
-.foot-bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
-.foot-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7;}
-.foot-bg::after{content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(75% 70% at 50% 38%,rgba(247,244,239,.12),rgba(236,227,212,.5));}
-.foot-inner{position:relative;z-index:2;}
+.ftr{position:relative;overflow:hidden;isolation:isolate;color:var(--ob);
+  background:radial-gradient(120% 120% at 50% 0%,#F3ECDD,#E7DCC9 70%,#E0D4BE);
+  padding:clamp(1.1rem,3vw,2.6rem) clamp(.9rem,3.4vw,2.6rem) clamp(1.1rem,3vw,2.4rem);}
+.ftr-bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.ftr-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;}
+.ftr::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;z-index:3;
+  background:linear-gradient(90deg,transparent,rgba(188,212,26,.9),transparent);}
+.ftr-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;}
 
-/* rangée principale : logo · menu · accroche (calque de la photo) */
-.foot-main{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem;
-  padding:clamp(3.2rem,7vw,6rem) clamp(1.6rem,5vw,4.5rem) clamp(2.4rem,4vw,3.4rem);}
-.foot-logo{display:inline-flex;align-items:center;justify-self:start;transition:opacity .25s;}
-.foot-logo:hover{opacity:.65;}
-.foot-logo-clip{display:block;height:30px;overflow:hidden;}
-.foot-logo-clip img{display:block;height:35.4px;width:auto;margin-top:-3px;}
+/* CADRE VERRE — translucide, blur fort */
+.ftr-card{position:relative;overflow:hidden;border-radius:clamp(24px,3vw,38px);
+  padding:clamp(1.9rem,3.4vw,3.4rem) clamp(1.5rem,3.2vw,3rem) clamp(1.5rem,2.4vw,2.2rem);
+  background:linear-gradient(160deg,rgba(255,255,255,.5),rgba(248,244,236,.34));
+  backdrop-filter:blur(38px) saturate(165%);-webkit-backdrop-filter:blur(38px) saturate(165%);
+  border:1px solid rgba(255,255,255,.6);
+  box-shadow:0 50px 120px rgba(60,50,36,.26),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 2px rgba(255,255,255,.4);
+  opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);}
+.ftr.in .ftr-card{opacity:1;transform:none;}
 
-/* MENU : SEULS éléments en Space Grotesk Medium, avec slash devant */
-.foot-nav{justify-self:center;display:flex;flex-direction:column;align-items:center;gap:1.15rem;}
-.foot-nav a{position:relative;font-family:var(--sky);font-weight:500;font-size:.92rem;letter-spacing:.02em;
-  color:var(--ob2);white-space:nowrap;transition:color .28s,transform .28s cubic-bezier(.22,1,.36,1);}
-.foot-nav a::before{content:"/";margin-right:.32em;color:var(--ob);opacity:.45;transition:color .28s,opacity .28s;}
-.foot-nav a::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:2px;border-radius:2px;background:var(--lime);
-  transform:scaleX(0);transform-origin:center;transition:transform .3s cubic-bezier(.22,1,.36,1);}
-.foot-nav a:hover{color:var(--ob);transform:translateY(-1px);}
-.foot-nav a:hover::before{color:var(--lime);opacity:1;}
-.foot-nav a:hover::after{transform:scaleX(1);}
+/* couches tech (sous le contenu) */
+.ftr-grid{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.55;
+  background-image:linear-gradient(rgba(21,20,18,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(21,20,18,.05) 1px,transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask:radial-gradient(125% 100% at 50% 0,#000,transparent 80%);mask:radial-gradient(125% 100% at 50% 0,#000,transparent 80%);
+  animation:ftrDrift 26s linear infinite;}
+@keyframes ftrDrift{to{background-position:44px 44px;}}
+.ftr-scan{position:absolute;left:0;right:0;top:-150px;height:150px;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(188,212,26,.16),transparent 72%);border-top:1px solid rgba(188,212,26,.55);
+  animation:ftrScan 7.5s cubic-bezier(.6,0,.4,1) infinite;}
+@keyframes ftrScan{0%{top:-150px;opacity:0}8%{opacity:.9}92%{opacity:.9}100%{top:100%;opacity:0}}
+.ftr-glow{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(340px 340px at var(--mx,50%) var(--my,50%),rgba(188,212,26,.16),transparent 60%);}
+.ftr-card:hover .ftr-glow{opacity:1;}
+.ftr-sheen{position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(115deg,transparent 42%,rgba(255,255,255,.45) 50%,transparent 58%);
+  background-size:280% 100%;animation:ftrSheen 9s ease-in-out infinite;mix-blend-mode:overlay;}
+@keyframes ftrSheen{0%{background-position:175% 0}55%,100%{background-position:-75% 0}}
 
-/* ACCROCHE droite (équivalent "More Power") — police corps, pas Space Grotesk */
-.foot-claim{justify-self:end;text-align:right;font-family:var(--body);font-weight:800;
-  font-size:clamp(2.2rem,4.4vw,3.6rem);line-height:.96;letter-spacing:-1.6px;color:var(--ob);}
-.foot-claim em{font-style:italic;font-weight:800;}
+.ftr-head,.ftr-nav,.ftr-sep,.ftr-legal,.ftr-bar{position:relative;z-index:1;}
 
-/* bandeau contact + réseaux */
-.foot-strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.2rem 2rem;
-  padding:1.6rem clamp(1.6rem,5vw,4.5rem);border-top:1px solid rgba(21,20,18,.1);}
-.foot-contact{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem 1.4rem;
-  font-family:var(--body);font-size:.85rem;font-weight:500;color:var(--ob2);}
-.foot-contact a{transition:color .25s;}
-.foot-contact a:hover{color:var(--ob);}
-.foot-contact .sep{width:4px;height:4px;border-radius:50%;background:rgba(21,20,18,.28);}
-.foot-social{display:flex;align-items:center;gap:.6rem;}
-.foot-social a{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;
-  color:var(--ob);background:rgba(250,250,248,.55);border:1px solid rgba(21,20,18,.1);
+/* HEAD : marque | panneau contact */
+.ftr-head{display:grid;grid-template-columns:1.25fr .9fr;gap:clamp(2rem,4vw,3.4rem);align-items:start;
+  padding-bottom:clamp(1.8rem,3vw,2.6rem);margin-bottom:clamp(1.7rem,3vw,2.4rem);border-bottom:1px solid rgba(21,20,18,.1);}
+.ftr-head>*{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);}
+.ftr.in .ftr-head>*{opacity:1;transform:none;}
+.ftr.in .ftr-aside{transition-delay:.1s;}
+
+/* marque (logo 50%) */
+.ftr-logo{display:inline-flex;align-items:center;height:34px;margin-bottom:1.2rem;}
+.ftr-logo img{height:34px;width:auto;opacity:.5;transition:opacity .35s,transform .35s cubic-bezier(.22,1,.36,1);}
+.ftr-logo:hover img{opacity:1;transform:translateY(-1px);}
+.ftr-claim{font-family:var(--body);font-weight:800;font-size:clamp(1.5rem,2.3vw,2.1rem);line-height:1.05;letter-spacing:-1.2px;color:var(--ob);max-width:15ch;}
+.ftr-claim em{font-style:italic;font-weight:800;color:var(--sage2);}
+.ftr-desc{margin-top:1rem;max-width:46ch;font-size:.9rem;line-height:1.62;color:var(--ob2);}
+.ftr-desc b{color:var(--ob);font-weight:700;}
+.ftr-social{display:flex;gap:.55rem;margin-top:1.4rem;}
+.ftr-social a{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;color:var(--ob);
+  background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.72);
   transition:background .26s,color .26s,transform .26s cubic-bezier(.22,1,.36,1),box-shadow .26s;}
-.foot-social a:hover{background:var(--ob);color:#fff;transform:translateY(-2px);box-shadow:0 8px 20px rgba(20,19,16,.28);}
-.foot-social svg{width:17px;height:17px;fill:currentColor;}
+.ftr-social a:hover{background:var(--ob);color:#fff;transform:translateY(-3px);box-shadow:0 10px 24px rgba(20,19,16,.32);}
+.ftr-social svg{width:18px;height:18px;fill:currentColor;}
 
-/* mentions légales courtage */
-.foot-legal{padding:1.5rem clamp(1.6rem,5vw,4.5rem) 2.4rem;border-top:1px solid rgba(21,20,18,.1);
-  font-family:var(--body);}
-.foot-legal p{font-size:.71rem;line-height:1.7;color:var(--muted);max-width:none;margin-bottom:.7rem;}
-.foot-legal p.warn{color:var(--ob2);font-weight:600;}
-.foot-legal a{color:var(--ob2);text-decoration:underline;text-underline-offset:2px;transition:color .25s;}
-.foot-legal a:hover{color:var(--ob);}
-.foot-legal-bottom{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;margin-top:1rem;
-  font-size:.72rem;color:var(--ob2);}
-.foot-legal-bottom a{text-decoration:none;color:var(--ob2);}
-.foot-legal-bottom a:hover{color:var(--ob);}
-.foot-legal-bottom .dot{opacity:.4;}
-.foot-legal-bottom .copy{margin-left:auto;color:var(--muted);}
+/* panneau contact */
+.ftr-aside{display:flex;flex-direction:column;gap:.85rem;padding:clamp(1.1rem,2vw,1.5rem);border-radius:18px;
+  background:linear-gradient(160deg,rgba(255,255,255,.5),rgba(255,255,255,.26));border:1px solid rgba(255,255,255,.6);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 18px 40px rgba(60,50,36,.1);}
+.ftr-status{display:flex;align-items:center;gap:.6rem;}
+.ftr-dot{flex:none;width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 rgba(188,212,26,.6);animation:ftrPulse 2.2s ease-out infinite;}
+@keyframes ftrPulse{0%{box-shadow:0 0 0 0 rgba(188,212,26,.55)}70%{box-shadow:0 0 0 9px rgba(188,212,26,0)}100%{box-shadow:0 0 0 0 rgba(188,212,26,0)}}
+.ftr-status b{font-family:var(--sky);font-size:.82rem;font-weight:700;color:var(--ob);display:block;line-height:1.2;}
+.ftr-status span{font-family:var(--sky);font-size:.66rem;font-weight:600;color:var(--ob2);font-variant-numeric:tabular-nums;letter-spacing:.02em;}
+.ftr-call{display:flex;align-items:center;gap:.7rem;padding-top:.7rem;border-top:1px solid rgba(21,20,18,.08);transition:transform .3s cubic-bezier(.22,1,.36,1);}
+.ftr-call:hover{transform:translateX(2px);}
+.ftr-call .ic{flex:none;width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1rem;
+  background:var(--lime);box-shadow:0 8px 18px rgba(188,212,26,.4);}
+.ftr-call small{display:block;font-family:var(--sky);font-size:.58rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.ftr-call b{font-family:var(--sky);font-size:1.18rem;font-weight:700;color:var(--ob);letter-spacing:-.4px;}
+.ftr-mini{display:flex;align-items:center;gap:.55rem;font-size:.82rem;color:var(--ob2);transition:color .25s;}
+.ftr-mini:hover{color:var(--ob);}
+.ftr-mini .i{flex:none;opacity:.7;}
 
+/* NAV : 3 colonnes LARGES (zéro retour à la ligne) */
+.ftr-nav{display:grid;grid-template-columns:.82fr 1fr 1.3fr;gap:clamp(1.6rem,3vw,3rem);}
+.ftr-col{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);}
+.ftr.in .ftr-col{opacity:1;transform:none;}
+.ftr.in .ftr-col:nth-child(1){transition-delay:.14s}.ftr.in .ftr-col:nth-child(2){transition-delay:.22s}.ftr.in .ftr-col:nth-child(3){transition-delay:.3s}
+.ftr-col h3{font-family:var(--sky);font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ob);display:flex;align-items:center;gap:.55rem;margin-bottom:1.15rem;}
+.ftr-col h3 .hx{font-size:.56rem;color:var(--sage2);font-variant-numeric:tabular-nums;letter-spacing:.08em;
+  background:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.7);border-radius:6px;padding:2px 5px;}
+.ftr-list{display:flex;flex-direction:column;gap:.7rem;}
+.ftr-list.zones-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem 1.1rem;}
+.ftr-link{position:relative;width:fit-content;white-space:nowrap;font-family:var(--body);font-size:.89rem;font-weight:500;color:var(--ob2);
+  transition:color .25s,transform .25s cubic-bezier(.22,1,.36,1);}
+.ftr-link::after{content:"";position:absolute;left:0;right:100%;bottom:-3px;height:1.5px;border-radius:2px;background:var(--lime);transition:right .3s cubic-bezier(.22,1,.36,1);}
+.ftr-link:hover{color:var(--ob);transform:translateX(3px);}
+.ftr-link:hover::after{right:0;}
+
+/* colonne NAVIGATION (pages du menu) — distincte : numérotée, plus forte */
+.ftr-col.primary .ftr-list{counter-reset:nav;gap:.55rem;}
+.ftr-col.primary .ftr-link{counter-increment:nav;font-family:var(--sky);font-weight:600;font-size:.98rem;color:var(--ob);
+  display:inline-flex;align-items:center;gap:.65rem;padding:.15rem 0;}
+.ftr-col.primary .ftr-link::before{content:counter(nav,decimal-leading-zero);flex:none;
+  width:24px;height:24px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--sky);font-size:.6rem;font-weight:700;letter-spacing:.04em;color:var(--sage2);font-variant-numeric:tabular-nums;
+  background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.72);transition:background .25s,color .25s,box-shadow .25s;}
+.ftr-col.primary .ftr-link::after{display:none;}
+.ftr-col.primary .ftr-link:hover{transform:translateX(4px);}
+.ftr-col.primary .ftr-link:hover::before{background:var(--lime);color:var(--ob);box-shadow:0 6px 14px rgba(188,212,26,.45);}
+
+/* séparateur */
+.ftr-sep{height:1px;margin:clamp(1.7rem,3vw,2.4rem) 0 clamp(1.2rem,2.4vw,1.8rem);background:linear-gradient(90deg,transparent,rgba(21,20,18,.16),transparent);}
+
+/* légal */
+.ftr-legal{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem 2rem;}
+.ftr-lblock h4{font-family:var(--sky);font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--sage2);margin-bottom:.5rem;display:flex;align-items:center;gap:.45rem;}
+.ftr-lblock h4::before{content:"";width:12px;height:2px;background:rgba(117,132,124,.7);border-radius:2px;}
+.ftr-lblock p{font-size:.72rem;line-height:1.62;color:var(--muted);}
+.ftr-lblock strong{color:var(--ob2);font-weight:700;}
+.ftr-lblock a{color:var(--ob2);text-decoration:underline;text-underline-offset:2px;transition:color .25s;}
+.ftr-lblock a:hover{color:var(--ob);}
+.ftr-warn{grid-column:1/-1;font-size:.69rem;line-height:1.6;color:var(--ob2);
+  background:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.6);border-radius:13px;padding:.8rem 1rem;}
+.ftr-warn b{font-weight:700;color:var(--ob);}
+
+/* barre */
+.ftr-bar{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem 1.1rem;margin-top:clamp(1.2rem,2.2vw,1.8rem);
+  padding-top:1.1rem;border-top:1px solid rgba(21,20,18,.1);font-size:.74rem;color:var(--ob2);}
+.ftr-bar a,.ftr-bar .cookie{transition:color .25s;}
+.ftr-bar a:hover,.ftr-bar .cookie:hover{color:var(--ob);}
+.ftr-bar .dot{opacity:.4;}
+.ftr-bar .cookie{cursor:pointer;background:none;border:0;font:inherit;color:var(--ob2);text-decoration:underline;text-underline-offset:2px;}
+.ftr-bar .copy{margin-left:auto;color:var(--muted);}
+
+@media(max-width:980px){
+  .ftr-head{grid-template-columns:1fr;}
+  .ftr-nav{grid-template-columns:1fr 1fr;}
+  .ftr-col.zones{grid-column:1/-1;}
+}
+@media(max-width:600px){
+  .ftr-nav{grid-template-columns:1fr;}
+  .ftr-list.zones-grid{grid-template-columns:1fr 1fr;}
+  .ftr-legal{grid-template-columns:1fr;}
+  .ftr-bar .copy{margin-left:0;width:100%;}
+}
+@media(prefers-reduced-motion:reduce){
+  .ftr-grid,.ftr-scan,.ftr-sheen,.ftr-dot{animation:none;}
+  .ftr-card,.ftr-head>*,.ftr-col{opacity:1;transform:none;}
+}
 /* ════════ RESPONSIVE ════════ */
 @media(max-width:1280px){
   .tilewrap{right:4%;width:clamp(320px,40vw,500px);}
@@ -2300,75 +2390,85 @@ body{background:var(--canvas);}
   </div>
 
   <div class="ftr-inner">
-    <div class="ftr-card">
+    <div class="ftr-card" id="ftrCard">
+      <span class="ftr-grid" aria-hidden="true"></span>
+      <span class="ftr-scan" aria-hidden="true"></span>
+      <span class="ftr-glow" aria-hidden="true"></span>
       <span class="ftr-sheen" aria-hidden="true"></span>
 
-      <div class="ftr-top">
-        <!-- marque -->
+      <!-- HEAD -->
+      <div class="ftr-head">
         <div class="ftr-brand">
           <a href="index.html" class="ftr-logo" aria-label="aeconomia — accueil">
             <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/logotype_noir_1000px.png" alt="aeconomia"/>
           </a>
           <h2 class="ftr-claim">Le prêt immo <em>simplifié &amp; optimisé.</em></h2>
-          <p class="ftr-desc">Cabinet de courtage en prêt immobilier, leader indépendant à Orléans et en région Centre. Depuis 2022, on simplifie et on optimise votre projet : proximité, réactivité et expertise. <b>3000+ clients</b> accompagnés · <b>750 avis 5/5</b>.</p>
+          <p class="ftr-desc">Cabinet de courtage en prêt immobilier, leader indépendant à Orléans et en région Centre. Depuis 2022, on simplifie et on optimise votre projet : proximité, réactivité et expertise. <b>3000+ clients</b> · <b>750 avis 5/5</b>.</p>
           <div class="ftr-social">
-            <a href="https://www.instagram.com/aeconomia.fr" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" role="img"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.41-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg>
-            </a>
-            <a href="https://www.facebook.com/aeconomia" target="_blank" rel="noopener" aria-label="Facebook">
-              <svg viewBox="0 0 24 24" role="img"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6 4.39 10.97 10.13 11.87v-8.4H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.4C19.61 23.04 24 18.07 24 12.07z"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/company/aeconomia" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" role="img"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-            </a>
+            <a href="https://www.instagram.com/aeconomia.fr" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" role="img"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.41-11.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44z"/></svg></a>
+            <a href="https://www.facebook.com/aeconomia" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" role="img"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6 4.39 10.97 10.13 11.87v-8.4H7.08v-3.47h3.05V9.43c0-3.01 1.79-4.67 4.53-4.67 1.31 0 2.69.24 2.69.24v2.95h-1.51c-1.49 0-1.96.93-1.96 1.87v2.25h3.33l-.53 3.47h-2.8v8.4C19.61 23.04 24 18.07 24 12.07z"/></svg></a>
+            <a href="https://www.linkedin.com/company/aeconomia" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" role="img"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
           </div>
         </div>
 
-        <!-- colonnes -->
-        <div class="ftr-links">
-          <nav class="ftr-col" aria-label="Accès rapide">
-            <h3>Accès rapide</h3>
-            <div class="ftr-list">
-              <a class="ftr-link" href="index.html">Accueil</a>
-              <a class="ftr-link" href="#avantages">Avantages</a>
-              <a class="ftr-link" href="#orleans">Orléans Is The New Paris</a>
-              <a class="ftr-link" href="simulation.html">Calculer ma capacité d'emprunt</a>
-              <a class="ftr-link" href="#recrutement">Devenir courtier</a>
-              <a class="ftr-link" href="#faq">FAQ</a>
-              <a class="ftr-link" href="ressources.html">Dernières actualités immo</a>
-            </div>
-          </nav>
-
-          <nav class="ftr-col" aria-label="Zones d'intervention">
-            <h3>Zones d'intervention</h3>
-            <div class="ftr-list zones">
-              <a class="ftr-link" href="#">Courtier à Orléans</a>
-              <a class="ftr-link" href="#">Courtier à Tours</a>
-              <a class="ftr-link" href="#">Courtier à Blois</a>
-              <a class="ftr-link" href="#">Courtier à Chartres</a>
-              <a class="ftr-link" href="#">Courtier à Montargis</a>
-              <a class="ftr-link" href="#">Courtier à Châteaudun</a>
-              <a class="ftr-link" href="#">Courtier à Paris</a>
-              <a class="ftr-link" href="#">Courtier à Paris 13</a>
-              <a class="ftr-link" href="#">Courtier à Paris 15</a>
-              <a class="ftr-link" href="#">Courtier à Paris 16</a>
-            </div>
-          </nav>
-
-          <div class="ftr-col">
-            <h3>Contactez-nous</h3>
-            <div class="ftr-contact">
-              <a class="ftr-contact-row row" href="tel:0279414243"><span class="ic">📞</span><span class="tel">02.79.41.42.43</span></a>
-              <a class="ftr-contact-row row" href="mailto:contact@aeconomia.fr"><span class="ic">✉️</span><span>contact@aeconomia.fr</span></a>
-              <span class="row"><span class="ic">📍</span><span>22 rue de la République,<br/>45000 Orléans</span></span>
-            </div>
+        <div class="ftr-aside">
+          <div class="ftr-status">
+            <span class="ftr-dot"></span>
+            <div><b>Un courtier vous répond</b><span>Orléans · <span id="ftrClock">--:--</span> · réponse sous 24 h</span></div>
           </div>
+          <a class="ftr-call" href="tel:0279414243">
+            <span class="ic">📞</span>
+            <span><small>Appel gratuit</small><b>02.79.41.42.43</b></span>
+          </a>
+          <a class="ftr-mini" href="mailto:contact@aeconomia.fr"><span class="i">✉️</span>contact@aeconomia.fr</a>
+          <span class="ftr-mini"><span class="i">📍</span>22 rue de la République, 45000 Orléans</span>
         </div>
+      </div>
+
+      <!-- NAV -->
+      <div class="ftr-nav">
+        <nav class="ftr-col primary" aria-label="Navigation">
+          <h3><span class="hx">01</span> Navigation</h3>
+          <div class="ftr-list">
+            <a class="ftr-link" href="index.html">Accueil</a>
+            <a class="ftr-link" href="apropos.html">À propos</a>
+            <a class="ftr-link" href="simulation.html">Simulation</a>
+            <a class="ftr-link" href="ressources.html">Ressources</a>
+            <a class="ftr-link" href="contact.html">Contact</a>
+          </div>
+        </nav>
+
+        <nav class="ftr-col" aria-label="Explorer">
+          <h3><span class="hx">02</span> Explorer</h3>
+          <div class="ftr-list">
+            <a class="ftr-link" href="#avantages">Avantages</a>
+            <a class="ftr-link" href="#orleans">Orléans Is The New Paris</a>
+            <a class="ftr-link" href="simulation.html">Capacité d'emprunt</a>
+            <a class="ftr-link" href="#recrutement">Devenir courtier</a>
+            <a class="ftr-link" href="#faq">FAQ</a>
+            <a class="ftr-link" href="ressources.html">Actualités immo</a>
+          </div>
+        </nav>
+
+        <nav class="ftr-col zones" aria-label="Zones d'intervention">
+          <h3><span class="hx">03</span> Zones d'intervention</h3>
+          <div class="ftr-list zones-grid">
+            <a class="ftr-link" href="#">Orléans</a>
+            <a class="ftr-link" href="#">Tours</a>
+            <a class="ftr-link" href="#">Blois</a>
+            <a class="ftr-link" href="#">Chartres</a>
+            <a class="ftr-link" href="#">Montargis</a>
+            <a class="ftr-link" href="#">Châteaudun</a>
+            <a class="ftr-link" href="#">Paris</a>
+            <a class="ftr-link" href="#">Paris 13</a>
+            <a class="ftr-link" href="#">Paris 15</a>
+            <a class="ftr-link" href="#">Paris 16</a>
+          </div>
+        </nav>
       </div>
 
       <div class="ftr-sep"></div>
 
-      <!-- légal -->
       <div class="ftr-legal">
         <div class="ftr-lblock">
           <h4>La société</h4>
@@ -2376,7 +2476,7 @@ body{background:var(--canvas);}
         </div>
         <div class="ftr-lblock">
           <h4>Activité réglementée</h4>
-          <p>Courtier en Opérations de Banque et Services de Paiement (COBSP). Immatriculation ORIAS n° 22 002 183, vérifiable sur <a href="https://www.orias.fr" target="_blank" rel="noopener">orias.fr</a>. Sous le contrôle de l'ACPR — 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.</p>
+          <p>Courtier en Opérations de Banque et Services de Paiement (COBSP). ORIAS n° 22 002 183, vérifiable sur <a href="https://www.orias.fr" target="_blank" rel="noopener">orias.fr</a>. Sous le contrôle de l'ACPR — 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.</p>
         </div>
         <div class="ftr-lblock">
           <h4>Médiateur de la consommation</h4>
@@ -2385,7 +2485,6 @@ body{background:var(--canvas);}
         <p class="ftr-warn"><b>Un crédit vous engage et doit être remboursé.</b> Vérifiez vos capacités de remboursement avant de vous engager. Aucun versement, de quelque nature que ce soit, ne peut être exigé d'un particulier avant l'obtention d'un ou plusieurs prêts d'argent.</p>
       </div>
 
-      <!-- barre du bas -->
       <div class="ftr-bar">
         <a href="mentions-legales.html">Mentions légales</a><span class="dot">·</span>
         <a href="confidentialite.html">Politique de confidentialité</a><span class="dot">·</span>
@@ -3124,8 +3223,40 @@ addEventListener('load',function(){
     if(typeof window.openCookies==='function')window.openCookies();
     else location.href='cookies.html';
   });
+
 })();
 
+
+  /* ─── FOOTER : reveal · vidéo · lueur curseur · horloge live · cookies ─── */
+(function(){
+  var sec=document.getElementById('footer');if(!sec)return;
+  var card=document.getElementById('ftrCard'),vid=sec.querySelector('.ftr-vid');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){var p=vid&&vid.play();if(p&&p.catch)p.catch(function(){});}
+      else if(vid)vid.pause();
+    });},{rootMargin:'200px'}).observe(sec);
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){sec.classList.add('in');io.disconnect();}
+    });},{threshold:.12});
+    io.observe(sec);
+  }else sec.classList.add('in');
+
+  if(card&&matchMedia('(hover:hover) and (pointer:fine)').matches){
+    card.addEventListener('pointermove',function(e){var r=card.getBoundingClientRect();
+      card.style.setProperty('--mx',(e.clientX-r.left)+'px');card.style.setProperty('--my',(e.clientY-r.top)+'px');});
+  }
+
+  var clk=document.getElementById('ftrClock');
+  function tick(){if(!clk)return;var o={hour:'2-digit',minute:'2-digit'};
+    try{o.timeZone='Europe/Paris';clk.textContent=new Date().toLocaleTimeString('fr-FR',o);}
+    catch(e){clk.textContent=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});}}
+  tick();setInterval(tick,20000);
+
+  var ck=document.getElementById('ftrCookie');
+  if(ck)ck.addEventListener('click',function(){
+    if(typeof window.openCookies==='function')window.openCookies();else location.href='cookies.html';});
+})();
   
 </script>
 </body></html>
