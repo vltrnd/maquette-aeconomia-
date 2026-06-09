@@ -2152,7 +2152,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
      tel:'0769457572',li:'https://linkedin.com/in/dimitri-toulon-969746184/',code:'AEC·22·001'},
 
     /* ⭐ DELPHINE — ses 2 vraies images (N&B au repos → couleur au survol) */
-    {prenom:'Delphine',nom:'Dechartre',role:'Courtière',bw:'delphineavecsurvol.jpg',color:'delphinesanssurvol.jpg',
+       {prenom:'Delphine',nom:'Dechartre',role:'Courtière',bw:'delphineavecsurvol.jpg',color:'delphinesanssurvol.jpg',idphoto:'delphinecarteidentité.jpg',
      exp:'4 ans',join:'Juin 2022',city:'Orléans',sign:"Sens de l'écoute",
      spe:'Famille · Rachat de soulte · Primo-accédant',
      bio:"Delphine a commencé dans l'accompagnement social avant de se reconvertir dans le courtage. Cette sensibilité humaine fait toute la différence sur les dossiers familiaux.",
@@ -2233,7 +2233,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     var d=TEAM[i];if(!d||!bd)return;
     var n=('0'+(i+1)).slice(-2),tot=('0'+TEAM.length).slice(-2);
     set('passNo','N° '+n+' / '+tot);
-    var ph=document.getElementById('passPhoto');ph.src=enc(d.color);ph.alt=d.prenom+(d.nom?' '+d.nom:'');
+      var ph=document.getElementById('passPhoto');ph.src=enc(d.idphoto||d.color);ph.alt=d.prenom+(d.nom?' '+d.nom:'');
     set('passPhotoNo','AEC-0'+n);
     set('passPrenom',d.prenom.toUpperCase());
     set('passNom',(d.nom||d.prenom).toUpperCase());
