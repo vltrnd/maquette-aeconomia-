@@ -706,11 +706,10 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 @media(max-width:880px){.ig-wrap{grid-template-columns:1fr;}.ig-card{position:static;}}
 
 
-
-/* ════════ ÉQUIPE — mur de courtiers (2 marquees, glass, infini) ════════ */
+/* ════════ ÉQUIPE — galerie portraits (négatif + carte d'identité) ════════ */
 .team{position:relative;z-index:2;overflow:hidden;border-top:1px solid rgba(21,20,18,.05);
   background:radial-gradient(125% 80% at 50% 0%,#FCF8F1,#EBE1D0 82%);
-  padding:clamp(3rem,6vw,5rem) 0 clamp(3.4rem,6vw,5.6rem);}
+  padding:clamp(3.4rem,6vw,5.4rem) 0 clamp(3.6rem,6vw,5.8rem);}
 .team-glow{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
 .team-glow i{position:absolute;border-radius:50%;filter:blur(85px);}
 .team-glow i:nth-child(1){width:520px;height:520px;left:-4%;top:0;background:#a8b6ab;opacity:.5;animation:tg1 22s ease-in-out infinite;}
@@ -724,38 +723,173 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.5) 50%,transparent);
   transform:rotate(14deg);filter:blur(26px);animation:tbeam 13s ease-in-out infinite;}
 @keyframes tbeam{0%{transform:translateX(-30%) rotate(14deg);opacity:0}45%,60%{opacity:.8}100%{transform:translateX(440%) rotate(14deg);opacity:0}}
-.team-head{position:relative;z-index:2;text-align:center;max-width:760px;margin:0 auto clamp(1.8rem,3.6vw,2.7rem);padding:0 1.4rem;}
+
+.team-head{position:relative;z-index:2;text-align:center;max-width:820px;margin:0 auto clamp(1.8rem,3.4vw,2.6rem);padding:0 1.4rem;}
 .team-eye{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.64rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--sage2);}
 .team-eye::before{content:"";width:24px;height:2px;background:var(--lime);border-radius:2px;}
 .team-title{font-family:var(--sky);font-weight:700;font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.04;letter-spacing:-1.8px;color:var(--ob);margin-top:.9rem;}
 .team-title em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
-.team-sub{margin:.9rem auto 0;max-width:46ch;font-size:clamp(.96rem,1.2vw,1.1rem);line-height:1.55;color:var(--ob2);}
-.team-rows{position:relative;z-index:2;display:flex;flex-direction:column;gap:clamp(1rem,1.5vw,1.4rem);}
-.team-mask{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
-.team-track{display:flex;gap:clamp(1rem,1.4vw,1.4rem);width:max-content;animation:teamScroll 64s linear infinite;}
-.team-track.rev{animation-direction:reverse;animation-duration:78s;}
+.team-sub{margin:.9rem auto 0;max-width:48ch;font-size:clamp(.96rem,1.2vw,1.1rem);line-height:1.55;color:var(--ob2);}
+
+.team-rows{position:relative;z-index:2;}
+.team-mask{overflow:hidden;
+  -webkit-mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+          mask:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
+.team-track{display:flex;gap:clamp(1.1rem,1.6vw,1.7rem);width:max-content;
+  padding:clamp(1.6rem,2.6vw,2.4rem) clamp(1rem,4vw,3rem) clamp(2.4rem,3.4vw,3.1rem);
+  animation:teamScroll 78s linear infinite;will-change:transform;}
 .team-mask:hover .team-track{animation-play-state:paused;}
 @keyframes teamScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.tmember{flex:none;width:clamp(214px,19vw,250px);border-radius:24px;padding:11px;text-align:left;
-  background:linear-gradient(160deg,rgba(255,255,255,.62),rgba(255,255,255,.28));
-  backdrop-filter:blur(26px) saturate(165%);-webkit-backdrop-filter:blur(26px) saturate(165%);
-  border:1px solid rgba(255,255,255,.78);box-shadow:0 26px 56px rgba(82,68,48,.2),inset 0 1px 0 rgba(255,255,255,.9);
-  transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s;}
-.tmember:hover{transform:translateY(-8px);box-shadow:0 42px 84px rgba(82,68,48,.3);}
-.tmember-photo{position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;background:#e6ddcd;}
-.tmember-photo img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1);}
-.tmember:hover .tmember-photo img{transform:scale(1.06);}
-.tmember-tag{position:absolute;left:8px;right:8px;bottom:8px;padding:9px 12px;border-radius:13px;
-  background:rgba(18,16,13,.4);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,.26);box-shadow:inset 0 1px 0 rgba(255,255,255,.3);}
-.tmember-name{display:block;font-family:var(--sky);font-weight:700;font-size:1.04rem;letter-spacing:-.3px;color:#fff;}
-.tmember-role{display:block;font-family:var(--sky);font-size:.58rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.84);margin-top:.2rem;}
-.tmember.more{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,rgba(188,212,26,.5),rgba(255,255,255,.4));}
-.tmember.more .more-in{text-align:center;padding:1.2rem;}
-.tmember.more b{display:block;font-family:var(--sky);font-weight:700;font-size:1.25rem;color:var(--ob);letter-spacing:-.5px;line-height:1.15;}
-.tmember.more span{display:inline-flex;margin-top:1rem;width:50px;height:50px;border-radius:50%;align-items:center;justify-content:center;background:var(--ob);color:#fff;font-size:1.3rem;transition:transform .3s;}
-.tmember.more:hover span{transform:translateX(4px);}
+
+.team-hint{position:relative;z-index:2;text-align:center;margin-top:clamp(.8rem,1.6vw,1.4rem);
+  font-family:var(--sky);font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(21,20,18,.42);}
+
+/* ── carte portrait ── */
+.tcard{flex:none;position:relative;display:block;width:clamp(258px,23vw,326px);
+  border:0;padding:0;margin:0;background:none;cursor:pointer;font:inherit;text-align:left;
+  transition:transform .55s cubic-bezier(.22,1,.36,1),filter .5s;}
+.team-track:hover .tcard{filter:saturate(.9) brightness(.97);}
+.team-track .tcard:hover{filter:none;transform:translateY(-9px);z-index:3;}
+.tcard-ph{position:relative;aspect-ratio:4/5;border-radius:22px;overflow:hidden;background:#e6ddcd;
+  box-shadow:0 16px 36px rgba(82,68,48,.22),inset 0 1px 0 rgba(255,255,255,.5);
+  transition:box-shadow .55s cubic-bezier(.22,1,.36,1);}
+.tcard:hover .tcard-ph{box-shadow:0 28px 56px rgba(82,68,48,.34);}
+/* deux calques : N&B (base) → couleur (survol) */
+.tcard-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;
+  transition:opacity .65s cubic-bezier(.22,1,.36,1),transform 1.1s cubic-bezier(.22,1,.36,1);}
+.tcard-bw{z-index:1;}
+.tcard-bw.mono{filter:grayscale(1) contrast(1.02) brightness(.99);}
+.tcard-co{z-index:2;opacity:0;}
+.tcard:hover .tcard-co{opacity:1;}
+.tcard:hover .tcard-bw{opacity:0;}
+.tcard:hover .tcard-ph img{transform:scale(1.05);}
+/* effet de lumière en bas */
+.tcard-light{position:absolute;left:0;right:0;bottom:0;height:60%;z-index:3;pointer-events:none;
+  background:
+    radial-gradient(140% 108% at 50% 132%,rgba(255,255,255,1),rgba(255,255,255,.55) 32%,transparent 64%),
+    linear-gradient(to top,rgba(255,255,255,.62),rgba(255,255,255,.12) 40%,transparent 74%);
+  opacity:.94;transition:opacity .55s;}
+.tcard:hover .tcard-light{opacity:1;}
+/* nom en NÉGATIF */
+.tcard-name{position:absolute;left:0;right:0;bottom:0;z-index:4;pointer-events:none;
+  padding:0 clamp(15px,1.5vw,22px) clamp(13px,1.5vw,19px);
+  font-family:var(--sky);font-weight:700;letter-spacing:-1.2px;line-height:.92;text-transform:lowercase;
+  font-size:clamp(1.55rem,2.5vw,2.15rem);color:#fff;mix-blend-mode:difference;
+  transform:translateY(5px);transition:transform .6s cubic-bezier(.22,1,.36,1);}
+.tcard:hover .tcard-name{transform:translateY(0);}
+/* rôle (apparaît au survol) */
+.tcard-role{position:absolute;left:clamp(13px,1.3vw,18px);top:clamp(13px,1.3vw,17px);z-index:4;
+  font-family:var(--sky);font-size:.55rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#fff;
+  background:rgba(18,16,13,.42);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.24);padding:6px 11px;border-radius:50px;
+  opacity:0;transform:translateY(-6px);transition:opacity .45s,transform .45s cubic-bezier(.22,1,.36,1);}
+.tcard:hover .tcard-role{opacity:1;transform:none;}
+/* bouton "voir la fiche" (lime, toujours lisible sur la lumière) */
+.tcard-plus{position:absolute;right:clamp(11px,1.1vw,15px);bottom:clamp(11px,1.1vw,15px);z-index:5;
+  width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--lime);color:var(--ob);font-size:1.05rem;font-weight:700;line-height:1;
+  box-shadow:0 8px 22px rgba(120,140,10,.5),inset 0 1px 0 rgba(255,255,255,.45);
+  opacity:0;transform:scale(.5) rotate(-30deg);transition:opacity .4s,transform .45s cubic-bezier(.34,1.56,.64,1);}
+.tcard:hover .tcard-plus{opacity:1;transform:scale(1) rotate(0);}
+/* carte "toute l'équipe" */
+.tcard.more .tcard-ph{display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,rgba(188,212,26,.55),rgba(255,255,255,.5));}
+.tcard.more .more-in{position:relative;z-index:4;text-align:center;padding:1.4rem;}
+.tcard.more b{display:block;font-family:var(--sky);font-weight:700;font-size:1.4rem;color:var(--ob);letter-spacing:-.5px;line-height:1.12;}
+.tcard.more .more-go{display:inline-flex;margin-top:1.1rem;width:54px;height:54px;border-radius:50%;align-items:center;justify-content:center;background:var(--ob);color:#fff;font-size:1.4rem;transition:transform .35s;}
+.tcard.more:hover .more-go{transform:translateX(5px);}
+
 @media(prefers-reduced-motion:reduce){.team-track,.team-glow i,.team-beam::before{animation:none;}}
+@media(hover:none){
+  .team-mask{overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;}
+  .team-track{animation:none;}
+  .tcard{scroll-snap-align:center;}
+  .team-track .tcard:hover{transform:none;}
+  .tcard-co{opacity:1;}.tcard-bw{opacity:0;}
+  .tcard-role,.tcard-plus,.tcard-name{opacity:1;transform:none;}
+}
+@media(max-width:600px){.tcard{width:74vw;max-width:300px;}}
+
+/* ════════ CARTE D'IDENTITÉ — modal "passeport" ════════ */
+@keyframes pl{0%,100%{box-shadow:0 0 0 0 rgba(188,212,26,.45)}70%{box-shadow:0 0 0 8px rgba(188,212,26,0)}}
+.pass-backdrop{position:fixed;inset:0;background:rgba(21,20,18,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:9000;display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .4s cubic-bezier(.22,1,.36,1);}
+.pass-backdrop.open{opacity:1;pointer-events:auto;}
+body.pass-locked{overflow:hidden;}
+.pass{position:relative;max-width:720px;width:100%;max-height:92vh;overflow-y:auto;background:linear-gradient(135deg,#FAF6EB 0%,#F4EFE0 100%);border-radius:22px;padding:0;box-shadow:0 32px 80px rgba(21,20,18,.4);transform:scale(.92) translateY(24px);opacity:0;transition:transform .5s cubic-bezier(.22,1,.36,1),opacity .4s;}
+.pass-backdrop.open .pass{transform:scale(1) translateY(0);opacity:1;}
+.pass::-webkit-scrollbar{width:6px;}
+.pass::-webkit-scrollbar-thumb{background:rgba(21,20,18,.18);border-radius:3px;}
+.pass-strip{height:18px;background:repeating-linear-gradient(45deg,rgba(188,212,26,.38) 0 8px,rgba(162,181,168,.22) 8px 16px);border-bottom:1px dashed rgba(21,20,18,.18);border-radius:22px 22px 0 0;position:relative;overflow:hidden;}
+.pass-strip::before{content:'AECONOMIA · CERTIFIED · AECONOMIA · CERTIFIED · AECONOMIA · CERTIFIED · AECONOMIA ·';position:absolute;inset:0;display:flex;align-items:center;font-family:var(--sky);font-size:.48rem;font-weight:700;letter-spacing:.22em;color:rgba(21,20,18,.35);padding:0 1.5rem;white-space:nowrap;}
+.pass-head{padding:1.2rem 1.8rem .6rem;display:flex;justify-content:space-between;align-items:center;gap:.8rem;border-bottom:1px dashed rgba(21,20,18,.15);}
+.pass-hl{font-family:var(--sky);font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ob2);display:flex;align-items:center;gap:.55rem;}
+.pass-hl b{color:var(--sage2);font-weight:800;letter-spacing:.13em;}
+.pass-hr{font-family:var(--sky);font-size:.5rem;font-weight:600;letter-spacing:.1em;color:var(--muted);display:inline-flex;align-items:center;gap:.4rem;text-transform:uppercase;}
+.pass-hr::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:pl 2s infinite;}
+.pass-close{position:absolute;top:32px;right:18px;width:36px;height:36px;border-radius:50%;background:var(--ob);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;z-index:5;transition:transform .3s cubic-bezier(.22,1,.36,1),background .25s;box-shadow:0 4px 16px rgba(21,20,18,.35);}
+.pass-close:hover{transform:rotate(90deg) scale(1.08);background:var(--sage2);}
+.pass-main{padding:1.6rem 1.8rem;display:grid;grid-template-columns:170px 1fr;gap:1.5rem;align-items:flex-start;}
+.pass-photo-frame{width:100%;aspect-ratio:3/4;border-radius:12px;overflow:hidden;border:4px solid var(--white);box-shadow:0 14px 32px rgba(21,20,18,.22);background:#EDE8DF;}
+.pass-photo-frame img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s cubic-bezier(.22,1,.36,1);}
+.pass-photo-no{margin-top:.55rem;font-family:var(--sky);font-size:.5rem;font-weight:700;letter-spacing:.14em;text-align:center;color:var(--muted);text-transform:uppercase;}
+.pass-idBody{position:relative;}
+.pass-id-top{display:flex;align-items:flex-end;gap:.9rem;flex-wrap:wrap;margin-bottom:.95rem;padding-bottom:.95rem;border-bottom:1px dashed rgba(21,20,18,.15);}
+.pass-id-prenom{font-family:var(--sky);font-size:.56rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem;}
+.pass-id-prenom b{color:var(--sage2);}
+.pass-id-nom{font-family:var(--sky);font-size:1.9rem;font-weight:700;letter-spacing:-1.2px;line-height:.98;color:var(--ob);}
+.pass-id-role{font-family:var(--body);font-style:italic;font-size:.78rem;color:var(--sage2);font-weight:700;margin-top:.35rem;}
+.pass-stamp{position:absolute;top:-8px;right:0;width:85px;height:85px;border-radius:50%;border:3px solid rgba(188,212,26,.7);color:#6a7e00;background:rgba(188,212,26,.09);display:flex;align-items:center;justify-content:center;font-family:var(--sky);font-size:.52rem;font-weight:800;letter-spacing:.09em;text-align:center;line-height:1.06;text-transform:uppercase;transform:rotate(-14deg);opacity:.92;}
+.pass-fields{display:grid;grid-template-columns:1fr 1fr;gap:.75rem .95rem;margin-bottom:.85rem;}
+.pass-field{display:flex;flex-direction:column;gap:.14rem;}
+.pass-field.full{grid-column:1 / -1;}
+.pass-field-l{font-family:var(--sky);font-size:.48rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);}
+.pass-field-v{font-family:var(--sky);font-size:.82rem;font-weight:700;letter-spacing:-.2px;color:var(--ob);line-height:1.2;}
+.pass-section{padding:1rem 1.8rem;border-top:1px dashed rgba(21,20,18,.15);}
+.pass-sec-l{font-family:var(--sky);font-size:.52rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;}
+.pass-sec-l::before{content:'';width:14px;height:2px;background:var(--lime);border-radius:2px;}
+.pass-bio{font-family:var(--body);font-size:.8rem;color:var(--ob2);line-height:1.72;font-style:italic;}
+.pass-favs{padding:1rem 1.8rem;border-top:1px dashed rgba(21,20,18,.15);display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;}
+.pass-fav{background:rgba(255,255,255,.65);border:1px solid rgba(21,20,18,.08);border-radius:12px;padding:.8rem;display:flex;flex-direction:column;gap:.22rem;transition:all .3s;}
+.pass-fav:hover{background:var(--white);transform:translateY(-2px);box-shadow:0 6px 18px rgba(170,153,126,.2);border-color:rgba(188,212,26,.4);}
+.pass-fav-l{font-family:var(--sky);font-size:.47rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:.38rem;}
+.pass-fav-v{font-family:var(--sky);font-size:.78rem;font-weight:700;letter-spacing:-.2px;color:var(--ob);margin-top:.16rem;line-height:1.2;}
+.pass-foot{padding:1.15rem 1.8rem 1.6rem;border-top:1px dashed rgba(21,20,18,.15);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+.pass-barcode{display:flex;align-items:center;gap:.7rem;}
+.pass-barcode-bars{display:flex;gap:2px;align-items:flex-end;height:28px;flex-shrink:0;}
+.pass-barcode-bars span{display:block;width:2px;background:var(--ob);}
+.pass-barcode-bars span:nth-child(2){width:3px;height:70%;}
+.pass-barcode-bars span:nth-child(3){height:100%;}
+.pass-barcode-bars span:nth-child(4){height:55%;}
+.pass-barcode-bars span:nth-child(5){height:90%;width:3px;}
+.pass-barcode-bars span:nth-child(6){height:100%;}
+.pass-barcode-bars span:nth-child(7){height:70%;width:3px;}
+.pass-barcode-bars span:nth-child(8){height:100%;}
+.pass-barcode-bars span:nth-child(9){height:60%;}
+.pass-barcode-bars span:nth-child(10){height:95%;width:3px;}
+.pass-barcode-bars span:nth-child(11){height:100%;}
+.pass-barcode-bars span:nth-child(12){height:70%;}
+.pass-barcode-bars span:nth-child(13){height:85%;width:3px;}
+.pass-barcode-num{font-family:var(--sky);font-size:.58rem;font-weight:700;letter-spacing:.15em;color:var(--ob2);}
+.pass-ctas{display:flex;gap:.5rem;}
+.pass-cta{font-family:var(--sky);font-size:.68rem;font-weight:700;padding:11px 16px;border-radius:10px;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;transition:all .25s;}
+.pass-cta.p{background:var(--ob);color:var(--white);}
+.pass-cta.p:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(21,20,18,.3);}
+.pass-cta.s{background:rgba(255,255,255,.75);color:var(--ob);border:1px solid rgba(21,20,18,.14);}
+.pass-cta.s:hover{background:var(--white);transform:translateY(-2px);}
+@media(max-width:680px){
+  .pass-main{grid-template-columns:1fr;padding:1.3rem;}
+  .pass-photo{width:150px;margin:0 auto;}
+  .pass-stamp{top:-6px;right:-8px;width:68px;height:68px;font-size:.45rem;}
+  .pass-id-nom{font-size:1.55rem;}
+  .pass-favs{grid-template-columns:1fr;padding:.9rem 1.3rem;}
+  .pass-foot{padding:1rem 1.3rem 1.3rem;}
+  .pass-section{padding:.9rem 1.3rem;}
+  .pass-head{padding:1rem 1.3rem .55rem;}
+  .pass-close{top:24px;right:12px;}
+  .pass-fields{grid-template-columns:1fr;}
+}
+
+  
 /* ════════ AVIS — orbite clients (dans le tél) + éventail penché ════════ */
 .rev{position:relative;z-index:2;overflow:hidden;border-bottom:1px solid rgba(21,20,18,.07);
   background:radial-gradient(120% 80% at 50% 0%,#FFFFFF,#F1ECE1 75%);
@@ -1045,7 +1179,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   </div>
 </section>
 
-<!-- ═══════ ÉQUIPE — mur de courtiers ═══════ -->
+<!-- ═══════ ÉQUIPE — galerie portraits (négatif + carte d'identité) ═══════ -->
 <section class="team" id="team">
   <div class="team-glow"><i></i><i></i><i></i></div>
   <span class="team-beam"></span>
@@ -1055,10 +1189,64 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
     <p class="team-sub">Une équipe locale, experte et disponible — un interlocuteur unique du premier rendez-vous à la remise des clés.</p>
   </div>
   <div class="team-rows">
-    <div class="team-mask"><div class="team-track" id="trackA"></div></div>
-    <div class="team-mask"><div class="team-track rev" id="trackB"></div></div>
+    <div class="team-mask"><div class="team-track" id="teamTrack"></div></div>
   </div>
+  <div class="team-hint">Survolez pour révéler · cliquez pour la fiche</div>
 </section>
+
+<!-- ═══════ CARTE D'IDENTITÉ (modal partagé) ═══════ -->
+<div class="pass-backdrop" id="passBackdrop">
+  <div class="pass" id="passCard">
+    <div class="pass-strip"></div>
+    <button class="pass-close" onclick="closePass()" aria-label="Fermer">✕</button>
+    <div class="pass-head">
+      <div class="pass-hl">Fiche technique · <b id="passNo">N° 001 / 08</b></div>
+      <div class="pass-hr">Aeconomia · Orléans</div>
+    </div>
+    <div class="pass-main">
+      <div class="pass-photo">
+        <div class="pass-photo-frame"><img id="passPhoto" src="" alt=""/></div>
+        <div class="pass-photo-no">ID <span id="passPhotoNo">AEC-001</span></div>
+      </div>
+      <div class="pass-idBody">
+        <div class="pass-id-top">
+          <div>
+            <div class="pass-id-prenom">Prénom · <b id="passPrenom"></b></div>
+            <div class="pass-id-nom" id="passNom"></div>
+            <div class="pass-id-role" id="passRole"></div>
+          </div>
+          <div class="pass-stamp">Certifié<br/>Aeconomia</div>
+        </div>
+        <div class="pass-fields">
+          <div class="pass-field"><div class="pass-field-l">Dans le métier depuis</div><div class="pass-field-v" id="passExp"></div></div>
+          <div class="pass-field"><div class="pass-field-l">Rejoint Aeconomia</div><div class="pass-field-v" id="passJoin"></div></div>
+          <div class="pass-field"><div class="pass-field-l">Ville d'origine</div><div class="pass-field-v" id="passCity"></div></div>
+          <div class="pass-field"><div class="pass-field-l">Signe distinctif</div><div class="pass-field-v" id="passSign"></div></div>
+          <div class="pass-field full"><div class="pass-field-l">Spécialités</div><div class="pass-field-v" id="passSpe"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="pass-section">
+      <div class="pass-sec-l">Parcours</div>
+      <div class="pass-bio" id="passBio"></div>
+    </div>
+    <div class="pass-favs">
+      <div class="pass-fav"><div class="pass-fav-l">🎬 Film culte</div><div class="pass-fav-v" id="passFilm"></div></div>
+      <div class="pass-fav"><div class="pass-fav-l">🎵 Musique</div><div class="pass-fav-v" id="passMusic"></div></div>
+      <div class="pass-fav"><div class="pass-fav-l">❤️ Passion</div><div class="pass-fav-v" id="passPassion"></div></div>
+    </div>
+    <div class="pass-foot">
+      <div class="pass-barcode">
+        <div class="pass-barcode-bars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="pass-barcode-num" id="passCode">AEC·22·001</div>
+      </div>
+      <div class="pass-ctas">
+        <a class="pass-cta s" id="passTel" href="#">📞 Appeler</a>
+        <a class="pass-cta p" id="passLi" href="#" target="_blank">in LinkedIn →</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════ AVIS — orbite clients (dans le tél) + éventail penché ═══════ -->
 <section class="rev" id="reviews">
@@ -1880,28 +2068,130 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 })();
 
 
-/* ─── ÉQUIPE : mur de courtiers (marquees infinies) ─── */
+/* ─── ÉQUIPE : galerie portraits + carte d'identité ─── */
 (function(){
-  var a=document.getElementById('trackA'),b=document.getElementById('trackB');if(!a||!b)return;
-  var G="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/";
-  var M=[
-    ["Dimitri","Fondateur · Stratégie","dimitriphoto.jpg"],
-    ["Marie","Courtière · Primo-accédants","mariephoto.jpg"],
-    ["Robin","Courtier · Invest. locatif","photoderobin-2.jpg"],
-    ["Gabriel","Courtier · Renégociation","gabriel.jpg"],
-    ["Matteo","Courtier · Pro & SCI","matteo.jpg"],
-    ["Adrien","Courtier · Travaux","Adrien .jpg"],
-    ["Raphaël","Courtier · Résidence 2nde","RAPAHEL.jpg"]
+  var BASE="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/";
+  function enc(f){return BASE+encodeURIComponent(f);}
+
+  /* bw = photo N&B (repos) · color = photo couleur (survol).
+     bw:null  => la couleur est passée en N&B via CSS, et repasse en couleur au survol. */
+  var TEAM=[
+    {prenom:'Dimitri',nom:'Toulon',role:'Fondateur · Directeur',color:'dimitriphoto.jpg',bw:null,
+     exp:'5 ans',join:'Janvier 2022',city:'Orléans',sign:'Esprit stratège',
+     spe:'Primo-accédant · Investissement locatif · Militaires',
+     bio:"Avant Aeconomia, Dimitri a fait ses armes dans le courtage traditionnel puis en ligne. En janvier 2022, il monte son cabinet à Orléans avec une idée simple : refaire du courtage un métier humain.",
+     film:'Inception',music:'Daft Punk',passion:'Café de spécialité',
+     tel:'0769457572',li:'https://linkedin.com/in/dimitri-toulon-969746184/',code:'AEC·22·001'},
+
+    /* ⭐ DELPHINE — ses 2 vraies images (N&B au repos → couleur au survol) */
+    {prenom:'Delphine',nom:'Dechartre',role:'Courtière',bw:'delphineavecsurvol.jpg',color:'delphinesanssurvol.jpg',
+     exp:'4 ans',join:'Juin 2022',city:'Orléans',sign:"Sens de l'écoute",
+     spe:'Famille · Rachat de soulte · Primo-accédant',
+     bio:"Delphine a commencé dans l'accompagnement social avant de se reconvertir dans le courtage. Cette sensibilité humaine fait toute la différence sur les dossiers familiaux.",
+     film:'Amélie',music:'Beyoncé',passion:'Polars nordiques',
+     tel:'0607908233',li:'https://linkedin.com/in/delphine-dechartre-6141b5134/',code:'AEC·22·003'},
+
+    {prenom:'Raphaël',nom:'Nicq',role:'Courtier senior',color:'RAPAHEL.jpg',bw:null,
+     exp:'7 ans',join:'Mars 2022',city:'Orléans',sign:'Le négociateur',
+     spe:'Résidence principale · Renégociation · TNS',
+     bio:"Ancien chargé d'affaires pro en banque, Raphaël connaît les banques de l'intérieur. Il rejoint Aeconomia dès les premiers mois pour apporter son flair du montage complexe.",
+     film:'Le Parrain',music:'The Weeknd',passion:'Jazz manouche',
+     tel:'0637179128',li:'https://linkedin.com/in/raphael-nicq-1643b4136/',code:'AEC·22·002'},
+    {prenom:'Robin',nom:'Villette',role:'Courtier',color:'photoderobin-2.jpg',bw:null,
+     exp:'3 ans',join:'Septembre 2023',city:'Blois',sign:'Le solveur',
+     spe:'Dossiers complexes · Investissement · Secundo-accédant',
+     bio:"Rien ne l'arrête : plus le dossier est compliqué, plus Robin s'y intéresse. Issu d'un parcours en gestion de patrimoine, il excelle sur les montages en SCI et l'investissement locatif.",
+     film:'Interstellar',music:'Stromae',passion:'Astronomie',
+     tel:'0686250034',li:'https://linkedin.com/in/robin-villette-37aa771b5/',code:'AEC·23·004'},
+    {prenom:'Gabriel',nom:'Despeisse',role:'Courtier',color:'gabriel.jpg',bw:null,
+     exp:'3 ans',join:'Janvier 2023',city:'Ingré',sign:'Spontanéité',
+     spe:'Urgences · Primo & Secundo-accédant · Orléans / Bourges / Paris',
+     bio:"Gabriel a grandi à Ingré, il connaît chaque agence bancaire du Loiret et au-delà. Sa spécialité : débloquer les dossiers urgents qui semblent perdus.",
+     film:'Le Loup de Wall Street',music:'Angèle',passion:'Football',
+     tel:'0613164040',li:'https://linkedin.com/in/gabriel-despeisse-699855264/',code:'AEC·23·005'},
+    {prenom:'Matteo',nom:'Martolini',role:'Courtier',color:'matteo.jpg',bw:null,
+     exp:'3 ans',join:'Mars 2023',city:'Orléans',sign:'Fibre investisseur',
+     spe:'Investissement locatif · Libéral · LMNP',
+     bio:"Passionné d'immobilier depuis ses études de gestion, Matteo a géré son propre patrimoine avant de conseiller celui des autres. Expert LMNP et SCI à l'IS.",
+     film:'Scarface',music:'Jul',passion:'Montres vintage',
+     tel:'0601499492',li:'#',code:'AEC·23·006'},
+    {prenom:'Adrien',nom:'Meneghini',role:'Courtier',color:'Adrien .jpg',bw:null,
+     exp:'4 ans',join:'Avril 2023',city:'Orléans',sign:'Le méthodique',
+     spe:'Résidence principale · Assurance · Fonctionnaire',
+     bio:"Ancien conseiller bancaire spécialisé fonction publique, Adrien maîtrise les statuts particuliers (fonctionnaires, militaires) et les conditions CASDEN/MGEN.",
+     film:'Le Comte de Monte-Cristo',music:'Kendrick Lamar',passion:'Course à pied',
+     tel:'0686238440',li:'#',code:'AEC·23·007'},
+    {prenom:'Marie',nom:'',role:'Courtière',color:'mariephoto.jpg',bw:null,
+     exp:'2 ans',join:'Septembre 2024',city:'Orléans',sign:'Nouvelle promesse',
+     spe:'Famille · Primo-accédant · Rachat de soulte',
+     bio:"Dernière arrivée, Marie a rejoint Aeconomia en sortie d'école de commerce. Sa jeunesse est un atout : elle parle la langue des primo-accédants de moins de 35 ans.",
+     film:"Le Fabuleux Destin d'Amélie Poulain",music:'Clara Luciani',passion:'Voyages au Japon',
+     tel:'#',li:'#',code:'AEC·24·008'}
   ];
-  function card(m){return '<article class="tmember"><div class="tmember-photo"><img src="'+G+encodeURIComponent(m[2])+'" alt="'+m[0]+'"/>'+
-    '<div class="tmember-tag"><span class="tmember-name">'+m[0]+'</span><span class="tmember-role">'+m[1]+'</span></div></div></article>';}
-  function more(){return '<a href="apropos.html" class="tmember more"><div class="more-in"><b>Toute<br/>l\'équipe</b><span>→</span></div></a>';}
-  var r1=[M[0],M[1],M[2],M[3]].map(card).join('')+more();
-  var r2=[M[4],M[5],M[6],M[1]].map(card).join('')+more();
-  a.innerHTML=r1+r1;b.innerHTML=r2+r2;   /* x2 = boucle infinie */
+
+  /* ── construction des cartes ── */
+  var track=document.getElementById('teamTrack');
+  function card(m,i){
+    var bwSrc=enc(m.bw||m.color),coSrc=enc(m.color),mono=m.bw?'':' mono';
+    return '<button class="tcard" type="button" data-i="'+i+'" aria-label="Voir la fiche de '+m.prenom+'">'
+      +'<div class="tcard-ph">'
+      +'<img class="tcard-bw'+mono+'" src="'+bwSrc+'" alt="'+m.prenom+(m.nom?' '+m.nom:'')+'" loading="lazy"/>'
+      +'<img class="tcard-co" src="'+coSrc+'" alt="" aria-hidden="true" loading="lazy"/>'
+      +'<span class="tcard-light"></span>'
+      +'<span class="tcard-role">'+m.role+'</span>'
+      +'<span class="tcard-name">/'+m.prenom.toLowerCase()+'.</span>'
+      +'<span class="tcard-plus" aria-hidden="true">↗</span>'
+      +'</div></button>';
+  }
+  function moreCard(){
+    return '<a class="tcard more" href="apropos.html" aria-label="Voir toute l\'équipe">'
+      +'<div class="tcard-ph"><span class="more-in"><b>Toute<br/>l\'équipe</b>'
+      +'<span class="more-go">→</span></span></div></a>';
+  }
+  if(track){
+    var html=TEAM.map(card).join('')+moreCard();
+    track.innerHTML=html+html;   /* x2 = boucle infinie */
+    track.addEventListener('click',function(e){
+      var c=e.target.closest('.tcard');
+      if(!c||c.classList.contains('more'))return;
+      openPass(+c.getAttribute('data-i'));
+    });
+  }
+
+  /* ── carte d'identité (modal) ── */
+  var bd=document.getElementById('passBackdrop');
+  function set(id,v){var el=document.getElementById(id);if(el)el.textContent=v;}
+  function openPass(i){
+    var d=TEAM[i];if(!d||!bd)return;
+    var n=('0'+(i+1)).slice(-2),tot=('0'+TEAM.length).slice(-2);
+    set('passNo','N° '+n+' / '+tot);
+    var ph=document.getElementById('passPhoto');ph.src=enc(d.color);ph.alt=d.prenom+(d.nom?' '+d.nom:'');
+    set('passPhotoNo','AEC-0'+n);
+    set('passPrenom',d.prenom.toUpperCase());
+    set('passNom',(d.nom||d.prenom).toUpperCase());
+    set('passRole',d.role);set('passExp',d.exp);set('passJoin',d.join);
+    set('passCity',d.city);set('passSign',d.sign);set('passSpe',d.spe);set('passBio',d.bio);
+    set('passFilm',d.film);set('passMusic',d.music);set('passPassion',d.passion||'');
+    var tel=document.getElementById('passTel');tel.href=(d.tel&&d.tel!=='#')?'tel:'+d.tel:'#';
+    var li=document.getElementById('passLi');li.href=d.li||'#';
+    set('passCode',d.code);
+    bd.classList.add('open');document.body.classList.add('pass-locked');
+  }
+  function closePass(){if(bd){bd.classList.remove('open');document.body.classList.remove('pass-locked');}}
+  window.openPass=openPass;window.closePass=closePass;
+  if(bd){
+    bd.addEventListener('click',function(e){if(e.target===bd)closePass();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&bd.classList.contains('open'))closePass();});
+    var pcard=document.getElementById('passCard'),pimg=bd.querySelector('.pass-photo-frame img');
+    pcard.addEventListener('mousemove',function(e){
+      if(!bd.classList.contains('open'))return;
+      var r=pcard.getBoundingClientRect();
+      var x=((e.clientX-r.left)/r.width-.5)*7,y=((e.clientY-r.top)/r.height-.5)*7;
+      if(pimg)pimg.style.transform='translate('+x+'px,'+y+'px) scale(1.04)';
+    });
+    pcard.addEventListener('mouseleave',function(){if(pimg)pimg.style.transform='';});
+  }
 })();
-
-
   
 
 /* ─── VIDÉO HERO : son on/off + coupe au scroll ─── */
