@@ -37,7 +37,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 /* ════════ ÉCRAN DE CHARGEMENT ════════ */
 .intro{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;
   overflow:hidden;background:#ECE3D4;clip-path:inset(0 0 0 0);will-change:clip-path;
-  transition:clip-path 1.05s cubic-bezier(.83,0,.17,1);}
+  transition:clip-path .85s cubic-bezier(.83,0,.17,1);}
 .intro.fade{opacity:0;transition:opacity .5s ease;}
 .intro-bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
 .bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7;}
@@ -62,11 +62,11 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .roll-word.enter{transform:translateY(116%) scale(.9);opacity:0;filter:blur(7px);}
 .roll-word.show {transform:translateY(0)     scale(1); opacity:1;filter:blur(0);}
 .roll-word.leave{transform:translateY(-116%) scale(.9);opacity:0;filter:blur(7px);}
-.roll-dot{font-style:normal;color:var(--lime);margin-left:.015em;text-shadow:0 0 16px rgba(188,212,26,.6);}
+.roll-dot{font-style:normal;color:var(--ob);margin-left:.015em;}
 
 /* ligne de scan tech à chaque changement de mot */
 .roll-win::after{content:'';position:absolute;left:0;right:0;top:-30%;height:30%;pointer-events:none;opacity:0;
-  background:linear-gradient(180deg,transparent,rgba(188,212,26,.55),transparent);}
+  background:linear-gradient(180deg,  background:linear-gradient(180deg,transparent,rgba(255,255,255,.6),transparent);}
 .roll-win.scan::after{animation:rollScan .6s cubic-bezier(.4,0,.2,1);}
 @keyframes rollScan{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(420%)}}
 
@@ -74,7 +74,8 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .roll-word.brand.show{animation:brandPop .72s cubic-bezier(.22,1.35,.36,1) both;}
 @keyframes brandPop{0%{transform:translateY(116%) scale(.9);opacity:0;filter:blur(7px)}
   55%{transform:translateY(0) scale(1.05);opacity:1;filter:blur(0)}100%{transform:translateY(0) scale(1)}}
-.roll-word.brand .roll-dot{animation:dotPulse 1.5s ease-in-out infinite;}
+.roll-word.brand .roll-dot{animation:dotPulse 1.6s ease-in-out infinite;}
+@keyframes dotPulse{0%,100%{opacity:.78}50%{opacity:1}}
 @keyframes dotPulse{0%,100%{text-shadow:0 0 12px rgba(188,212,26,.5)}50%{text-shadow:0 0 22px rgba(188,212,26,.95)}}
 
 /* ── Barre ── */
@@ -84,7 +85,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .load-bar i{position:absolute;left:0;top:0;height:100%;width:0;border-radius:3px;
   background:linear-gradient(90deg,var(--ob),var(--ob2));box-shadow:0 0 12px rgba(21,20,18,.22);}
 .load-bar i::after{content:'';position:absolute;inset:0;border-radius:3px;
-  background:linear-gradient(90deg,transparent,rgba(188,212,26,.85),transparent);
+   background:linear-gradient(90deg,transparent,rgba(255,255,255,.92),transparent);
   mix-blend-mode:screen;animation:loadSheen 1.1s linear infinite;}
 @keyframes loadSheen{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 .load-row{display:flex;justify-content:space-between;align-items:center;font-family:var(--sky);font-size:.56rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ob2);}
@@ -1492,13 +1493,12 @@ body.pass-locked{overflow:hidden;}
 /* la flèche brutaliste : boîte + ombre dure + trait épais */
 .ctaband-arrow{position:relative;flex:none;justify-self:end;width:clamp(96px,11vw,150px);aspect-ratio:1;
   border-radius:clamp(20px,2.4vw,30px);border:3px solid var(--ob);background:transparent;
-  display:flex;align-items:center;justify-content:center;box-shadow:6px 6px 0 var(--ob);
+  display:flex;align-items:center;justify-content:center;
   transition:background .4s cubic-bezier(.22,1,.36,1),box-shadow .4s cubic-bezier(.22,1,.36,1),transform .4s cubic-bezier(.22,1,.36,1);}
 .ctaband-arrow svg{width:56%;height:56%;}
 .ctaband-arrow path{fill:none;stroke:var(--ob);stroke-width:12;stroke-linecap:round;stroke-linejoin:round;
   transition:stroke .4s;}
-.ctaband-box:hover .ctaband-arrow{background:var(--ob);box-shadow:2px 2px 0 var(--ob);transform:translate(4px,4px);}
-.ctaband-box:hover .ctaband-arrow path{stroke:var(--lime);}
+.ctaband-box:hover .ctaband-arrow{background:var(--ob);transform:scale(1.06);box-shadow:0 16px 34px rgba(21,20,18,.26);}
 
 @media(max-width:900px){
   .ctaband-box{grid-template-columns:1fr auto;grid-template-areas:"h h" "sub arrow";row-gap:clamp(1.6rem,4vw,2.4rem);}
@@ -1672,6 +1672,29 @@ body{
   font-size:var(--fs-h2)!important;letter-spacing:-1.6px!important;line-height:1.06!important;}
 .steps-title,.vcta-h,.foot-cta h2,.ctaband-h{
   font-size:var(--fs-h2-xl)!important;letter-spacing:-2.2px!important;line-height:1.0!important;}
+
+
+
+  /* ════════ TITRES → 2 LIGNES MAX (surcharge HARMONISATION) ════════ */
+.steps-title{font-size:clamp(1.45rem,2.5vw,2.05rem)!important;line-height:1.12!important;letter-spacing:-1.1px!important;text-wrap:balance;max-width:40ch;margin-left:auto;margin-right:auto;}
+.rate-title{font-size:clamp(1.4rem,2.2vw,1.72rem)!important;line-height:1.18!important;letter-spacing:-.7px!important;text-wrap:balance;}
+#vcta3 .vcta-h{font-size:clamp(1.8rem,3.6vw,2.9rem)!important;line-height:1.08!important;letter-spacing:-1.5px!important;text-wrap:balance;max-width:32ch;margin-left:auto;margin-right:auto;}
+
+/* ════════ LUMIÈRE QUI BALAIE LES CARTES D'ÉTAPES (subtil / tech) ════════ */
+.scard-in{position:relative;z-index:2;}
+.scard::after{content:"";position:absolute;top:-25%;left:0;width:42%;height:150%;z-index:3;pointer-events:none;
+  background:linear-gradient(105deg,transparent 0,rgba(255,255,255,.28) 40%,rgba(255,255,255,.85) 50%,rgba(255,255,255,.28) 60%,transparent 100%);
+  mix-blend-mode:overlay;opacity:0;transform:translateX(-200%) rotate(3deg);
+  animation:scardSweep 7.5s cubic-bezier(.45,0,.25,1) infinite;}
+.scard:nth-of-type(2)::after{animation-delay:1.9s;}
+.scard:nth-of-type(3)::after{animation-delay:3.8s;}
+.scard:nth-of-type(4)::after{animation-delay:5.7s;}
+@keyframes scardSweep{
+  0%{transform:translateX(-200%) rotate(3deg);opacity:0;}
+  9%{opacity:.5;} 24%{opacity:.5;}
+  40%{transform:translateX(360%) rotate(3deg);opacity:0;}
+  100%{transform:translateX(360%) rotate(3deg);opacity:0;}}
+@media (prefers-reduced-motion:reduce){.scard::after{display:none;}}
 </style></head>
 
 
@@ -2178,7 +2201,7 @@ body{
     </div>
     <div class="steps-hero-inner">
       <div class="steps-eyebrow">Comment ça se passe</div>
-      <h2 class="steps-title">Nous somme à vos côtés de votre première question<br/><em>à votre remise des clés.</em></h2>
+           <h2 class="steps-title">Nous sommes à vos côtés de votre première question <em>à votre remise des clés.</em></h2>
       <p class="steps-sub">Pas de paperasse, pas de mauvaise surprise. On vous guide à chaque étape, il ne vous reste que les bonnes décisions à prendre.</p>
     </div>
   </div>
@@ -2248,7 +2271,7 @@ body{
       <div class="rate-wrap">
         <div class="rate-text">
           <div class="rate-eyebrow">Ce qu'un courtier vous rapporte</div>
-          <h2 class="rate-title">Quelques dixièmes de taux,<br/><em>c'est des milliers d'euros pour vous.</em></h2>
+                   <h2 class="rate-title">Quelques dixièmes de taux, <em>c'est des milliers d'euros pour vous.</em></h2>
           <p class="rate-desc">Chaque dixième de point négocié, c'est de l'argent qui reste dans votre poche. Voilà ce qu'avoir un courtier change, concrètement.</p>
           <div class="rate-bonus">
             <div class="rbonus"><span class="rbonus-tag">Bonus exclusif Aeconomia</span><b>Assurance au prix fournisseur</b><p>On vous fait accéder aux tarifs d'assurance emprunteur en direct, souvent 2× moins chers que ceux de la banque. </p></div>
@@ -2331,7 +2354,7 @@ body{
   <div class="vcta-beam"></div>
   <div class="vcta-inner">
     <div class="vcta-k">L'esprit tranquille</div>
-    <h2 class="vcta-h">Concentrez-vous sur l'essentiel,<br/><em>nous, on s'occupe du reste.</em></h2>
+        <h2 class="vcta-h">Concentrez-vous sur l'essentiel, <em>nous, on s'occupe du reste.</em></h2>
     <div class="vcta-btns">
       <a href="simulation.html" class="vcta-btn primary">Démarrer mon projet →</a>
     </div>
@@ -2594,7 +2617,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   if(vid){vid.removeAttribute('autoplay');try{vid.pause();}catch(e){}}   // la vidéo attend son top départ
   document.body.style.overflow='hidden';
 
-  /* 1 ── MOTS ──────────────────────────────────────── */
+    /* 1 ── MOTS ──────────────────────────────────────── */
   var WORDS=['simple','rapide','transparent'], FINAL='aeconomia', cur=null;
   function build(word,brand){
     var s=document.createElement('span');
@@ -2604,27 +2627,38 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   }
   function swap(word,brand){
     var el=build(word,brand);
-    void el.offsetWidth;                         // commit l'état "enter"
+    void el.offsetWidth;
     el.classList.remove('enter');el.classList.add('show');
     win.classList.remove('scan');void win.offsetWidth;win.classList.add('scan');
     if(cur){var old=cur;old.classList.remove('show');old.classList.add('leave');
-      setTimeout(function(){old.parentNode&&old.remove();},720);}
+      setTimeout(function(){old.parentNode&&old.remove();},620);}
     cur=el;
   }
   swap(WORDS[0],false);
   var wi=0,rolling=true,iv=setInterval(function(){
     if(!rolling)return;
     wi=(wi+1)%WORDS.length;swap(WORDS[wi],false);
-  },950);
-  function lockFinal(cb){                         // fige "aeconomia." (terminal)
+  },560);
+  function lockFinal(cb){                         // fige « aeconomia. »
     rolling=false;if(iv)clearInterval(iv);
     if(cur&&cur.classList.contains('brand')){cb&&cb();return;}
     swap(FINAL,true);
-    setTimeout(function(){cb&&cb();},480);
+    setTimeout(function(){cb&&cb();},340);
   }
 
+  /* 1b ── PRÉCHARGEMENT DE TOUTES LES PHOTOS DU SITE ── */
+  (function preloadAll(){
+    try{
+      var seen={};
+      document.querySelectorAll('img').forEach(function(im){
+        var u=im.getAttribute('src')||im.getAttribute('data-src');
+        if(u&&/^https?:/.test(u)&&!seen[u]){seen[u]=1;var p=new Image();p.src=u;}
+      });
+    }catch(e){}
+  })();
+
   /* 2 ── BARRE ─────────────────────────────────────── */
-  var dur=2150,t0=performance.now(),barDone=false;
+  var dur=1200,t0=performance.now(),barDone=false;
   (function lp(now){
     var p=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-p,3);
     if(fill)fill.style.width=(e*100)+'%';
@@ -2638,26 +2672,33 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   function playTile(){if(!vid)return;try{vid.currentTime=0;}catch(e){}var pr=vid.play();if(pr&&pr.catch)pr.catch(function(){});}
   function finish(){
     if(done)return;done=true;
-    lockFinal(function(){                         // 1) on se fige sur aeconomia.
-      hero.classList.add('go');inner.classList.add('hide');
+    lockFinal(function(){                         // 1) on se fige sur « aeconomia. »
+      hero.classList.add('go');
       var tw=document.querySelector('.tilewrap');
       var ok=tw&&getComputedStyle(tw).display!=='none'&&window.innerWidth>1100;
+      if(fill)fill.parentNode.parentNode.classList.add('hide'); // la barre s'efface, le mot reste
 
       if(reduce||!ok){                            // fallback mobile / mouvement réduit
-        intro.classList.add('fade');if(tile)tile.classList.add('reveal');
-        setTimeout(cleanup,500);
-        setTimeout(playTile,760);                 // poster d'abord, vidéo ensuite
+        setTimeout(function(){
+          if(tile)tile.classList.add('reveal');playTile();
+          inner.classList.add('hide');intro.classList.add('fade');
+          setTimeout(cleanup,520);
+        },430);
         return;
       }
 
-      var r=tw.getBoundingClientRect();           // 2) l'intro se referme PILE sur le cadre
-      var top=Math.max(0,r.top),left=Math.max(0,r.left),
-          right=Math.max(0,innerWidth-r.right),bot=Math.max(0,innerHeight-r.bottom);
-      intro.style.clipPath='inset('+top+'px '+right+'px '+bot+'px '+left+'px round 22px)';
-
-      setTimeout(function(){intro.classList.add('fade');if(tile)tile.classList.add('reveal');},1080); // cadre OK → POSTER
-      setTimeout(cleanup,1600);
-      setTimeout(playTile,1880);                  // 3) ← la vidéo démarre une fois le poster affiché
+      /* 2) « aeconomia. » TIENT net pendant que la boîte commence à se refermer */
+      setTimeout(function(){
+        var r=tw.getBoundingClientRect();         // 3) l'intro se referme PILE sur le cadre tuile
+        var top=Math.max(0,r.top),left=Math.max(0,r.left),
+            right=Math.max(0,innerWidth-r.right),bot=Math.max(0,innerHeight-r.bottom);
+        intro.style.clipPath='inset('+top+'px '+right+'px '+bot+'px '+left+'px round 22px)';
+        if(tile)tile.classList.add('reveal');     // le poster est prêt dessous
+        playTile();                               // 4) ← la VIDÉO se lance dès le début de la fermeture
+        setTimeout(function(){inner.classList.add('hide');},430); // le mot se dissout en douceur (aucun cut)
+        setTimeout(function(){intro.classList.add('fade');},700);
+        setTimeout(cleanup,980);
+      },450);                                      // ← temps de lecture du mot avant tout mouvement
     });
   }
 
@@ -2666,10 +2707,9 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   function gate(){if(barDone&&loaded)finish();}
   addEventListener('load',function(){loaded=true;gate();});
   gate();
-  setTimeout(finish,5200);                        // garde-fou : ne jamais rester bloqué
-})();
+  setTimeout(finish,2900);                        // garde-fou : total ≤ ~3 s
 
-
+ 
 
 
 /* ─── CHIFFRES CLÉS + RÉVÉLATIONS + SCROLL ÉPINGLÉ ─── */
