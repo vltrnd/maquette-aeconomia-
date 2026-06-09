@@ -1576,7 +1576,7 @@ a.ftr-contact-row:hover{color:var(--ob);}
 
 
 /* ═══════════════════════════════════════════════════════════════
-   ✦ HARMONISATION v2 — remplace INTÉGRALEMENT la couche précédente
+   ✦ HARMONISATION v3 — remplace INTÉGRALEMENT la v2
    ═══════════════════════════════════════════════════════════════ */
 :root{
   --r-btn:14px; --r-card:22px;
@@ -1584,53 +1584,52 @@ a.ftr-contact-row:hover{color:var(--ob);}
   --fs-eyebrow:.66rem; --ls-eyebrow:.2em;
   --fs-h2:clamp(2rem,4.2vw,3.2rem);
   --fs-h2-xl:clamp(2.4rem,5.4vw,4.4rem);
-  --canvas:#F7F4EF;                         /* LE fond unique de la page */
+  --canvas:#F7F4EF;
 }
 
-/* ── 1 · UN SEUL FOND — zéro couture entre les blocs ───────────── */
-body{background:var(--canvas);}
-.trust,.icx,.broker,.team,.vsx,.rev,.edge,.steps,.rate,.ig,.ctaband{
-  background:var(--canvas)!important;
+/* ── 1 · UN SEUL CANEVAS + LIGNES (comme le header) sur TOUTE la page ─ */
+body{
+  background-color:var(--canvas);
+  background-image:
+    linear-gradient(rgba(21,20,18,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(21,20,18,.04) 1px,transparent 1px);
+  background-size:clamp(150px,18vw,260px) clamp(150px,18vw,260px);
 }
-.rate-stage{background:transparent!important;}   /* son dégradé interne créait une marche */
-.trust,.rev{border-bottom:0!important;}          /* on enlève les liserés de jonction */
-.team{border-top:0!important;}
-/* (les "glows" flous restent : ils donnent de la vie SANS créer de coupure) */
+/* les blocs clairs deviennent TRANSPARENTS → le même fond+lignes traverse tout */
+.trust,.icx,.broker,.team,.vsx,.rev,.edge,.steps,.rate,.rate-stage,.ig,.ctaband{
+  background:transparent!important;
+}
+.trust,.rev{border-bottom:0!important;} .team{border-top:0!important;}
+/* on coupe les halos/faisceaux par-bloc : c'étaient EUX les "nuances" différentes */
+.trust-glow,.team-glow,.team-beam,.vsx-amb,.edge-glow,.steps-glow,.steps-beam,.rate-glow{display:none!important;}
+.broker-grid{display:none!important;}                 /* évite la double grille */
 
-/* ── 2 · VIDÉOS PARALLAX + GLASS HERO : pleine largeur, AUCUN radius ─ */
+/* ── 2 · SECTIONS IMAGE/VIDÉO : pleine largeur, sans radius ──────── */
 .vcta,.gh,.steps-hero{margin:0!important;border-radius:0!important;box-shadow:none!important;}
-.scard{border-radius:30px!important;}            /* rayon d'origine des cartes étapes */
+.scard{border-radius:30px!important;}
+/* le glass-hero (image) se fond dans le canevas en haut et en bas */
+.gh{position:relative;}
+.gh::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,var(--canvas),transparent 14%,transparent 86%,var(--canvas));}
 
-/* ── 3 · HEADER : cadre arrondi sur fond clair (DESKTOP only) ──── */
+/* ── 3 · HEADER : cadre arrondi sur fond clair (DESKTOP only) ─────── */
 @media(min-width:1101px){
-  .hero{
-    margin:clamp(14px,1.5vw,22px);
-    border-radius:var(--r-frame)!important;
-    min-height:calc(100svh - clamp(28px,3vw,44px));
-  }
+  .hero{margin:clamp(14px,1.5vw,22px);border-radius:var(--r-frame)!important;
+    min-height:calc(100svh - clamp(28px,3vw,44px));}
 }
-@media(max-width:1100px){                        /* tél / tablette : plein écran, sans radius */
-  .hero{margin:0!important;border-radius:0!important;}
-}
+@media(max-width:1100px){ .hero{margin:0!important;border-radius:0!important;} }
 
-/* ── 4 · BOUTONS : un seul rayon / gabarit ─────────────────────── */
-.hcta,.hero-field a,.rate-cta,.gh-btn,.edge-cta,.vsx-cta,.vcta-btn,.fbtn,.ig-follow,.ig-linkedin{
-  border-radius:var(--r-btn)!important;
-}
+/* ── 4 · BOUTONS / EYEBROWS / TITRES (inchangé) ──────────────────── */
+.hcta,.hero-field a,.rate-cta,.gh-btn,.edge-cta,.vsx-cta,.vcta-btn,.fbtn,.ig-follow,.ig-linkedin{border-radius:var(--r-btn)!important;}
 .hcta,.rate-cta,.gh-btn,.edge-cta,.vsx-cta,.vcta-btn,.fbtn{font-size:.94rem!important;padding:15px 26px!important;}
 .rate-badge{border-radius:var(--r-card)!important;}
-
-/* ── 5 · EYEBROWS + TITRES : échelle unique ────────────────────── */
 .trust-eyebrow,.rate-eyebrow,.vsx-eye,.edge-eye,.team-eye,.ig-eye,.steps-eyebrow,
 .icx-eye,.vcta-k,.gh-k,.bpanel-k,.bm-k,.foot-cta-k,.scard-step,.scard-k,.rbonus-tag{
-  font-size:var(--fs-eyebrow)!important;letter-spacing:var(--ls-eyebrow)!important;font-weight:600!important;
-}
+  font-size:var(--fs-eyebrow)!important;letter-spacing:var(--ls-eyebrow)!important;font-weight:600!important;}
 .rate-title,.vsx-title,.edge-title,.team-title,.ig-title,.gh-h,.icx-title,.rev-title{
-  font-size:var(--fs-h2)!important;letter-spacing:-1.6px!important;line-height:1.06!important;
-}
+  font-size:var(--fs-h2)!important;letter-spacing:-1.6px!important;line-height:1.06!important;}
 .steps-title,.vcta-h,.foot-cta h2,.ctaband-h{
-  font-size:var(--fs-h2-xl)!important;letter-spacing:-2.2px!important;line-height:1.0!important;
-}
+  font-size:var(--fs-h2-xl)!important;letter-spacing:-2.2px!important;line-height:1.0!important;}
 </style></head>
 
 
