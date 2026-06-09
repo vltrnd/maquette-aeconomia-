@@ -800,11 +800,11 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   opacity:.94;transition:opacity .55s;}
 .tcard:hover .tcard-light{opacity:1;}
 /* nom en NÉGATIF */
-.tcard-name{position:absolute;left:0;right:0;bottom:0;z-index:4;pointer-events:none;
-  padding:0 clamp(15px,1.5vw,22px) clamp(13px,1.5vw,19px);
-  font-family:var(--sky);font-weight:700;letter-spacing:-1.2px;line-height:.92;text-transform:lowercase;
-  font-size:clamp(1.55rem,2.5vw,2.15rem);color:#fff;mix-blend-mode:difference;
-  transform:translateY(5px);transition:transform .6s cubic-bezier(.22,1,.36,1);}
+/* nom en NÉGATIF — centré, au niveau du buste, visible en permanence */
+.tcard-name{position:absolute;left:0;right:0;top:66%;z-index:4;pointer-events:none;
+  padding:0 12px;text-align:center;
+  font-family:var(--sky);font-weight:700;letter-spacing:-1px;line-height:.95;text-transform:lowercase;
+  font-size:clamp(1.55rem,2.6vw,2.2rem);color:#fff;mix-blend-mode:difference;}
 .tcard:hover .tcard-name{transform:translateY(0);}
 /* rôle (apparaît au survol) */
 .tcard-role{position:absolute;left:clamp(13px,1.3vw,18px);top:clamp(13px,1.3vw,17px);z-index:4;
