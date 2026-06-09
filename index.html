@@ -1027,6 +1027,188 @@ body.pass-locked{overflow:hidden;}
 .broker.reduced .broker-mobile{display:block;padding:clamp(2.6rem,8vw,4.4rem) 6vw clamp(1rem,4vw,2rem);}
 
 
+
+  /* ════════════════════════════════════════════════════════
+   BLOC 1 — SEUL vs AECONOMIA (comparatif "un courtier rapporte")
+   ════════════════════════════════════════════════════════ */
+.vs{position:relative;z-index:2;overflow:hidden;border-top:1px solid rgba(21,20,18,.05);
+  background:radial-gradient(125% 100% at 50% -10%,#FFFFFF,#F1ECE1 74%);
+  padding:clamp(3.4rem,6.5vw,6rem) clamp(1.2rem,5vw,4.5rem) clamp(3rem,5vw,5rem);}
+.vs-glow{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.vs-glow i{position:absolute;border-radius:50%;filter:blur(90px);}
+.vs-glow i:nth-child(1){width:560px;height:560px;left:-6%;top:-14%;background:rgba(255,255,255,.85);opacity:.7;}
+.vs-glow i:nth-child(2){width:520px;height:520px;right:-5%;bottom:-22%;background:rgba(244,233,214,.9);opacity:.55;}
+
+.vs-head{position:relative;z-index:1;text-align:center;max-width:820px;margin:0 auto clamp(1.8rem,3.6vw,2.8rem);}
+.vs-eye{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.64rem;font-weight:600;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--sage2);}
+.vs-eye::before{content:"";width:24px;height:2px;background:var(--lime);border-radius:2px;}
+.vs-title{font-family:var(--sky);font-weight:700;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.04;
+  letter-spacing:-1.8px;color:var(--ob);margin-top:.9rem;}
+.vs-title em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
+.vs-sub{margin:1.05rem auto 0;max-width:54ch;font-size:clamp(1rem,1.3vw,1.14rem);line-height:1.62;color:var(--ob2);}
+.vs-sub b{color:var(--ob);font-weight:700;}
+
+.vs-board{position:relative;z-index:1;max-width:1060px;margin:0 auto;display:flex;flex-direction:column;}
+/* rail premium continu derrière la colonne Aeconomia (NEUTRE : blanc only) */
+.vs-rail{position:absolute;top:0;bottom:0;right:0;width:34%;z-index:0;border-radius:24px;pointer-events:none;overflow:hidden;
+  background:linear-gradient(165deg,rgba(255,255,255,.94),rgba(255,255,255,.64));
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 40px 90px rgba(80,66,48,.16),inset 0 1px 0 rgba(255,255,255,1);}
+.vs-rail::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg,transparent,var(--lime),transparent);}
+.vs-rail::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.55) 50%,transparent 60%);
+  background-size:250% 100%;animation:vsSheen 8.5s ease-in-out infinite;mix-blend-mode:overlay;}
+@keyframes vsSheen{0%{background-position:165% 0}55%,100%{background-position:-65% 0}}
+
+.vs-row{position:relative;z-index:1;display:grid;grid-template-columns:1fr 32% 34%;align-items:stretch;
+  opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);}
+.vs.in .vs-row{opacity:1;transform:none;}
+.vs-cell{display:flex;align-items:center;gap:.62rem;min-height:62px;
+  padding:clamp(.85rem,1.4vw,1.12rem) clamp(.75rem,1.4vw,1.3rem);border-bottom:1px solid rgba(21,20,18,.08);}
+.vs-row:last-child .vs-cell{border-bottom:0;}
+.vs-crit{justify-content:flex-end;text-align:right;
+  font-family:var(--sky);font-size:.8rem;font-weight:600;letter-spacing:.01em;color:var(--ob2);}
+.vs-seul{color:var(--muted);font-size:.86rem;line-height:1.34;}
+.vs-pro{color:var(--ob);font-size:.9rem;line-height:1.34;font-weight:600;border-bottom-color:rgba(188,212,26,.18);}
+.vs-cell .ic{flex:none;display:flex;align-items:center;justify-content:center;border-radius:50%;}
+.vs-seul .ic{width:20px;height:20px;background:rgba(21,20,18,.06);color:rgba(21,20,18,.42);font-size:.66rem;}
+.vs-pro .ic{width:22px;height:22px;background:var(--lime);color:var(--ob);font-size:.72rem;font-weight:800;
+  box-shadow:0 4px 11px rgba(188,212,26,.5);}
+
+/* en-tête */
+.vs-row.head .vs-cell{min-height:0;align-items:flex-end;padding-bottom:.85rem;border-bottom:1px solid rgba(21,20,18,.14);}
+.vs-row.head .vs-pro{border-bottom-color:rgba(188,212,26,.5);}
+.vs-h{font-family:var(--sky);font-weight:700;letter-spacing:-.3px;line-height:1.15;}
+.vs-h.seul{color:var(--ob2);font-size:.96rem;}
+.vs-h.pro{color:var(--ob);font-size:1.04rem;display:inline-flex;align-items:center;gap:.55rem;flex-wrap:wrap;}
+.vs-badge{font-family:var(--sky);font-size:.5rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ob);background:var(--lime);padding:4px 9px;border-radius:50px;box-shadow:0 4px 12px rgba(188,212,26,.55);}
+
+/* punchline + cta */
+.vs-foot{position:relative;z-index:1;max-width:1060px;margin:clamp(1.5rem,3vw,2.2rem) auto 0;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.6rem;
+  padding:clamp(1.15rem,2vw,1.5rem) clamp(1.3rem,2.6vw,2rem);border-radius:20px;
+  background:linear-gradient(135deg,rgba(188,212,26,.18),rgba(255,255,255,.5));
+  border:1px solid rgba(188,212,26,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.85);}
+.vs-foot p{font-family:var(--sky);font-size:clamp(.96rem,1.4vw,1.14rem);font-weight:600;color:var(--ob);line-height:1.4;max-width:46ch;}
+.vs-foot p b{color:#5a6e00;}
+.vs-cta{position:relative;overflow:hidden;flex:none;display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--sky);font-weight:700;font-size:.96rem;color:#fff;background:var(--ob);
+  padding:15px 24px;border-radius:50px;box-shadow:0 14px 32px rgba(21,20,18,.28);
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;}
+.vs-cta::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(188,212,26,.55) 50%,transparent 65%);transform:translateX(-120%) skewX(-12deg);transition:transform .9s cubic-bezier(.22,1,.36,1);}
+.vs-cta:hover::before{transform:translateX(120%) skewX(-12deg);}
+.vs-cta:hover{transform:translateY(-3px);box-shadow:0 20px 46px rgba(21,20,18,.4),0 0 0 3px rgba(188,212,26,.4);}
+.vs-cta i{font-style:normal;transition:transform .35s;}.vs-cta:hover i{transform:translateX(5px);}
+
+@media(max-width:760px){
+  .vs-rail{display:none;}
+  .vs-board{gap:.85rem;}
+  .vs-row{grid-template-columns:1fr 1fr;grid-template-areas:"crit crit" "seul pro";
+    border:1px solid rgba(21,20,18,.08);border-radius:16px;overflow:hidden;background:rgba(255,255,255,.55);}
+  .vs-row.head{display:none;}
+  .vs-cell{min-height:0;border-bottom:0;}
+  .vs-crit{grid-area:crit;justify-content:flex-start;text-align:left;color:var(--ob);font-weight:700;font-size:.82rem;
+    background:rgba(21,20,18,.035);border-bottom:1px solid rgba(21,20,18,.07);padding:.7rem .95rem;}
+  .vs-seul{grid-area:seul;position:relative;padding-top:1.75rem;align-items:flex-start;border-right:1px solid rgba(21,20,18,.07);}
+  .vs-pro{grid-area:pro;position:relative;padding-top:1.75rem;align-items:flex-start;
+    background:linear-gradient(160deg,rgba(188,212,26,.12),rgba(255,255,255,.35));}
+  .vs-seul::before,.vs-pro::before{position:absolute;top:.5rem;left:.95rem;font-family:var(--sky);
+    font-size:.5rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;}
+  .vs-seul::before{content:"Seul";color:var(--muted);}
+  .vs-pro::before{content:"Aeconomia";color:#6a7e00;}
+  .vs-foot{flex-direction:column;align-items:flex-start;text-align:left;}
+  .vs-cta{align-self:stretch;justify-content:center;}
+}
+@media(prefers-reduced-motion:reduce){.vs-rail::after{animation:none;}.vs-row{opacity:1;transform:none;}}
+
+  /* ════════════════════════════════════════════════════════
+   BLOC 2 — AECONOMIA vs UN COURTIER CLASSIQUE (scorecard ✓/✕)
+   ════════════════════════════════════════════════════════ */
+.edge{position:relative;z-index:2;overflow:hidden;background:var(--cream);
+  padding:clamp(3.4rem,6.5vw,6rem) clamp(1.2rem,5vw,4.5rem) clamp(3.6rem,6vw,6rem);}
+.edge-glow{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.edge-glow i{position:absolute;border-radius:50%;filter:blur(90px);}
+.edge-glow i:nth-child(1){width:540px;height:540px;left:-5%;top:-10%;background:rgba(255,255,255,.8);opacity:.65;}
+.edge-glow i:nth-child(2){width:520px;height:520px;right:-4%;bottom:-18%;background:rgba(255,251,244,.92);opacity:.6;}
+
+.edge-head{position:relative;z-index:1;text-align:center;max-width:820px;margin:0 auto clamp(1.9rem,3.6vw,2.8rem);}
+.edge-eye{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.64rem;font-weight:600;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--sage2);
+  background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);padding:7px 15px;border-radius:50px;
+  box-shadow:0 6px 18px rgba(80,66,48,.08);}
+.edge-eye::before{content:"✦";color:var(--lime);font-size:.8rem;}
+.edge-title{font-family:var(--sky);font-weight:700;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.04;
+  letter-spacing:-1.8px;color:var(--ob);margin-top:1.05rem;}
+.edge-title em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
+.edge-sub{margin:1.05rem auto 0;max-width:52ch;font-size:clamp(1rem,1.3vw,1.14rem);line-height:1.62;color:var(--ob2);}
+
+.edge-card{position:relative;z-index:1;max-width:1000px;margin:0 auto;border-radius:30px;overflow:hidden;
+  background:linear-gradient(160deg,rgba(255,255,255,.82),rgba(255,255,255,.52));
+  backdrop-filter:blur(30px) saturate(160%);-webkit-backdrop-filter:blur(30px) saturate(160%);
+  border:1px solid rgba(255,255,255,.82);
+  box-shadow:0 44px 110px rgba(80,66,48,.18),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 2px rgba(255,255,255,.4);}
+.edge-thead,.edge-row{display:grid;grid-template-columns:1fr 104px 124px;gap:.5rem;
+  padding:clamp(.95rem,1.7vw,1.2rem) clamp(1.1rem,2.6vw,1.9rem);}
+.edge-thead{align-items:end;padding-top:clamp(1.2rem,2.2vw,1.7rem);border-bottom:1px solid rgba(21,20,18,.12);}
+.edge-thead .hlbl{font-family:var(--sky);text-align:center;line-height:1.12;}
+.edge-thead .hlbl.classic{color:var(--muted);font-size:.62rem;font-weight:600;letter-spacing:.04em;}
+.edge-thead .hlbl.classic b{display:block;font-size:.84rem;font-weight:700;color:var(--ob2);letter-spacing:-.2px;text-transform:none;}
+.edge-thead .hlbl.aec{color:var(--ob);font-size:.62rem;font-weight:600;}
+.edge-thead .hlbl.aec b{display:inline-block;font-size:1rem;font-weight:700;color:var(--ob);letter-spacing:-.4px;
+  border-bottom:2px solid var(--lime);padding-bottom:2px;margin-top:2px;}
+.edge-thead .htitle{font-family:var(--sky);font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);align-self:end;}
+
+.edge-row{align-items:center;border-bottom:1px solid rgba(21,20,18,.07);}
+.edge-row:last-child{border-bottom:0;}
+.edge-info .t{font-family:var(--sky);font-weight:700;font-size:clamp(.98rem,1.3vw,1.1rem);color:var(--ob);
+  letter-spacing:-.3px;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
+.edge-info .d{font-size:.83rem;line-height:1.45;color:var(--ob2);margin-top:.28rem;max-width:54ch;}
+.edge-excl{font-family:var(--sky);font-size:.48rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+  color:#5a6e00;background:rgba(188,212,26,.2);border:1px solid rgba(188,212,26,.5);padding:3px 8px;border-radius:50px;}
+.edge-mark{justify-self:center;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.98rem;line-height:1;}
+.edge-mark.no{background:rgba(21,20,18,.05);color:rgba(21,20,18,.3);border:1px solid rgba(21,20,18,.08);}
+.edge-mark.mid{background:rgba(21,20,18,.05);color:var(--muted);border:1px solid rgba(21,20,18,.08);font-weight:700;}
+.edge-mark.yes{background:var(--lime);color:var(--ob);font-weight:800;box-shadow:0 6px 16px rgba(188,212,26,.5);
+  transform:scale(.4);opacity:0;transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .4s;}
+.edge.in .edge-mark.yes{transform:scale(1);opacity:1;}
+
+.edge-row{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);}
+.edge.in .edge-row{opacity:1;transform:none;}
+
+.edge-foot{position:relative;z-index:1;max-width:1000px;margin:clamp(1.6rem,3vw,2.2rem) auto 0;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.6rem;}
+.edge-chips{display:flex;flex-wrap:wrap;gap:.55rem;}
+.edge-chip{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sky);font-size:.72rem;font-weight:600;
+  color:var(--ob2);background:rgba(255,255,255,.7);border:1px solid rgba(21,20,18,.08);padding:8px 14px;border-radius:50px;
+  box-shadow:0 6px 16px rgba(80,66,48,.07);}
+.edge-chip b{color:var(--ob);font-weight:700;}
+.edge-cta{position:relative;overflow:hidden;flex:none;display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--sky);font-weight:700;font-size:.96rem;color:var(--ob);background:var(--lime);
+  padding:15px 24px;border-radius:50px;box-shadow:0 14px 32px rgba(188,212,26,.45);
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;}
+.edge-cta:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(188,212,26,.6);}
+.edge-cta i{font-style:normal;transition:transform .35s;}.edge-cta:hover i{transform:translateX(5px);}
+
+@media(max-width:680px){
+  .edge-thead{display:none;}
+  .edge-row{grid-template-columns:1fr 1fr;grid-template-areas:"info info" "m1 m2";gap:.7rem .8rem;
+    padding-top:1.1rem;padding-bottom:1.1rem;}
+  .edge-info{grid-area:info;}
+  .edge-mark:nth-of-type(2){grid-area:m1;}
+  .edge-mark:nth-of-type(3){grid-area:m2;}
+  .edge-mark{justify-self:stretch;width:auto;height:auto;border-radius:13px;padding:.55rem;flex-direction:column;gap:.25rem;}
+  .edge-mark::before{font-family:var(--sky);font-size:.5rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;}
+  .edge-mark.no::before,.edge-mark.mid::before{content:"Classique";color:var(--muted);}
+  .edge-mark.yes::before{content:"Aeconomia";color:#5a6e00;}
+  .edge-foot{flex-direction:column;align-items:stretch;text-align:center;}
+  .edge-cta{justify-content:center;}
+}
+@media(prefers-reduced-motion:reduce){.edge-row,.edge-mark.yes{opacity:1!important;transform:none!important;}}
+
   /* ── CARTES ÉTAPES : typo repensée + gestion image ── */
 .scard-text{max-width:48ch;}
 .scard-step{display:inline-flex;align-items:center;gap:.65rem;
@@ -1354,6 +1536,96 @@ body.pass-locked{overflow:hidden;}
   </div>
 </div>
 
+  <!-- ═══════ POURQUOI UN COURTIER — Seul vs Aeconomia ═══════ -->
+<section class="vs" id="vs">
+  <div class="vs-glow"><i></i><i></i></div>
+  <div class="vs-head">
+    <span class="vs-eye">Courtier ou seul ?</span>
+    <h2 class="vs-title">Un courtier ne vous coûte pas.<br/><em>Il vous rapporte.</em></h2>
+    <p class="vs-sub">Ce que donne votre banque, seul, face à un courtier qui négocie pour vous. <b>Et le coût d'Aeconomia ? Il est déjà compris dans les milliers d'euros qu'on vous fait économiser.</b></p>
+  </div>
+
+  <div class="vs-board" id="vsBoard">
+    <div class="vs-rail" id="vsRail"></div>
+
+    <div class="vs-row head">
+      <div class="vs-cell vs-crit"></div>
+      <div class="vs-cell vs-seul"><span class="vs-h seul">Seul, face à votre banque</span></div>
+      <div class="vs-cell vs-pro"><span class="vs-h pro">Avec Aeconomia <span class="vs-badge">Recommandé</span></span></div>
+    </div>
+
+    <div class="vs-row">
+      <div class="vs-cell vs-crit">Banques consultées</div>
+      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>1 seule : la vôtre</span></div>
+      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>20+ banques en concurrence</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-crit">Le taux obtenu</div>
+      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>celui qu'on veut bien vous donner</span></div>
+      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>le meilleur du marché, négocié</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-crit">Pouvoir de négociation</div>
+      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>vous, seul, sans repère</span></div>
+      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>un expert qui négocie tous les jours</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-crit">Connaissance des banques</div>
+      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>vous découvrez en direct</span></div>
+      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>on sait laquelle dira oui à votre profil</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-crit">L'assurance emprunteur</div>
+      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>au tarif de la banque</span></div>
+      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>au prix fournisseur, jusqu'à −50 %</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-crit">Montage du dossier</div>
+      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>à vous de tout constituer</span></div>
+      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>on bâtit un dossier qui convainc</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-crit">Démarches &amp; rendez-vous</div>
+      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>vous courez partout</span></div>
+      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>on s'occupe de tout</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-crit">Temps passé</div>
+      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>des semaines de paperasse</span></div>
+      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>quelques heures, de votre côté</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-crit">Risque de refus</div>
+      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>élevé si le dossier est mal ficelé</span></div>
+      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>on cible les banques qui acceptent</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-crit">Dossier complexe</div>
+      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>souvent un mur</span></div>
+      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>on sait débloquer les situations</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-crit">Suivi jusqu'à la signature</div>
+      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>vous gérez seul les imprévus</span></div>
+      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>accompagné jusqu'à la remise des clés</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-crit">Si les taux baissent après</div>
+      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>à vous de tout refaire</span></div>
+      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>1ʳᵉ renégociation offerte, à vie</span></div>
+    </div>
+    <div class="vs-row">
+      <div class="vs-cell vs-crit">Ce que ça vous coûte</div>
+      <div class="vs-cell vs-seul"><span class="ic">✕</span><span>votre temps, et souvent plus cher</span></div>
+      <div class="vs-cell vs-pro"><span class="ic">✓</span><span>0 € tant que le crédit n'est pas signé</span></div>
+    </div>
+  </div>
+
+  <div class="vs-foot">
+    <p>Un accompagnement complet qui <b>se rembourse tout seul</b> — et bien au-delà.</p>
+    <a href="simulation.html" class="vs-cta"><span>Calculer mon économie</span><i>→</i></a>
+  </div>
+</section>
 <!-- ═══════ AVIS — orbite clients (dans le tél) + éventail penché ═══════ -->
 <section class="rev" id="reviews">
   <div class="rev-head">
@@ -1395,7 +1667,68 @@ body.pass-locked{overflow:hidden;}
 </section>
   
 
+<!-- ═══════ L'AVANTAGE AECONOMIA — vs un courtier classique ═══════ -->
+<section class="edge" id="edge">
+  <div class="edge-glow"><i></i><i></i></div>
+  <div class="edge-head">
+    <span class="edge-eye">La différence Aeconomia</span>
+    <h2 class="edge-title">Ce que les autres<br/>n'ont <em>pas.</em></h2>
+    <p class="edge-sub">Local, humain, transparent. Voilà ce qui nous sépare d'un courtier classique ou d'une plateforme en ligne.</p>
+  </div>
 
+  <div class="edge-card" id="edgeCard">
+    <div class="edge-thead">
+      <div class="htitle">L'avantage</div>
+      <div class="hlbl classic">Un courtier<b>classique</b></div>
+      <div class="hlbl aec"><b>Aeconomia</b></div>
+    </div>
+
+    <div class="edge-row">
+      <div class="edge-info"><div class="t">0 € de frais d'avance</div><div class="d">Vous ne payez que si votre crédit aboutit. Le sans-risque total.</div></div>
+      <div class="edge-mark mid">–</div>
+      <div class="edge-mark yes">✓</div>
+    </div>
+    <div class="edge-row">
+      <div class="edge-info"><div class="t">Assurance au prix fournisseur <span class="edge-excl">Exclusif</span></div><div class="d">Les tarifs en direct, souvent 2× moins chers que la banque — jusqu'à −50 %.</div></div>
+      <div class="edge-mark no">✕</div>
+      <div class="edge-mark yes">✓</div>
+    </div>
+    <div class="edge-row">
+      <div class="edge-info"><div class="t">1ʳᵉ renégociation offerte, à vie <span class="edge-excl">Exclusif</span></div><div class="d">Si les taux baissent d'au moins 1 %, on refait votre prêt. Offert, sans limite de durée.</div></div>
+      <div class="edge-mark no">✕</div>
+      <div class="edge-mark yes">✓</div>
+    </div>
+    <div class="edge-row">
+      <div class="edge-info"><div class="t">Un seul interlocuteur</div><div class="d">Le même expert du premier rendez-vous à la remise des clés. Jamais un call center.</div></div>
+      <div class="edge-mark no">✕</div>
+      <div class="edge-mark yes">✓</div>
+    </div>
+    <div class="edge-row">
+      <div class="edge-info"><div class="t">Une équipe locale 📍</div><div class="d">Des courtiers près de chez vous, en région Centre. On connaît vos banques et votre marché.</div></div>
+      <div class="edge-mark no">✕</div>
+      <div class="edge-mark yes">✓</div>
+    </div>
+    <div class="edge-row">
+      <div class="edge-info"><div class="t">20+ banques en concurrence</div><div class="d">Le vrai levier d'économie : on fait jouer la concurrence pour faire baisser votre taux.</div></div>
+      <div class="edge-mark mid">–</div>
+      <div class="edge-mark yes">✓</div>
+    </div>
+    <div class="edge-row">
+      <div class="edge-info"><div class="t">Disponible quand vous l'êtes</div><div class="d">Joignables le soir et le week-end, pas seulement aux horaires de bureau.</div></div>
+      <div class="edge-mark no">✕</div>
+      <div class="edge-mark yes">✓</div>
+    </div>
+  </div>
+
+  <div class="edge-foot">
+    <div class="edge-chips">
+      <span class="edge-chip">📍 <b>Local</b> · région Centre</span>
+      <span class="edge-chip"><b>0 €</b> d'avance</span>
+      <span class="edge-chip"><b>1</b> interlocuteur, du début à la fin</span>
+    </div>
+    <a href="contact.html" class="edge-cta"><span>Parler à un courtier local</span><i>→</i></a>
+  </div>
+</section>
   <!-- ═══════ ÉTAPES — parallax + cartes empilées ═══════ -->
 <section class="steps" id="steps">
 
@@ -2362,6 +2695,31 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   var st=document.getElementById('revStack');
   if(st)st.innerHTML=D.slice(0,6).map(function(d){return '<div class="rcm"><span class="cat">['+d[0]+']</span><p>'+d[1]+'</p><div class="by"><span class="rev-ava">'+d[2][0]+'</span><b>'+d[2]+'</b> · '+d[3]+'</div></div>';}).join('');
 })();
+  
+/* ─── BLOC 1 : révélation en cascade des lignes du comparatif ─── */
+(function(){
+  var sec=document.getElementById('vs');if(!sec)return;
+  var rows=[].slice.call(sec.querySelectorAll('.vs-row'));
+  function reveal(){rows.forEach(function(r,i){r.style.transitionDelay=(i*0.045)+'s';});sec.classList.add('in');}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){reveal();io.disconnect();}});},{threshold:.18});
+    io.observe(sec);
+  }else reveal();
+})();
+
+  /* ─── BLOC 2 : révélation + tampons ✓ qui s'impriment un à un ─── */
+(function(){
+  var sec=document.getElementById('edge');if(!sec)return;
+  var rows=[].slice.call(sec.querySelectorAll('.edge-row'));
+  function reveal(){rows.forEach(function(r,i){r.style.transitionDelay=(i*0.06)+'s';
+    var y=r.querySelector('.edge-mark.yes');if(y)y.style.transitionDelay=(0.18+i*0.08)+'s';});sec.classList.add('in');}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){reveal();io.disconnect();}});},{threshold:.16});
+    io.observe(sec);
+  }else reveal();
+})();
+
+  
 
 
   /* ─── CARTES ÉTAPES : lueur blanche qui suit le curseur ─── */
