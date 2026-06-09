@@ -1482,6 +1482,68 @@ a.ftr-contact-row:hover{color:var(--ob);}
   .ftr-bar .copy{margin-left:0;width:100%;}
 }
 @media(prefers-reduced-motion:reduce){.ftr-sheen{animation:none;}}
+
+
+
+  /* ═══════════════════════════════════════════════════════════════
+   ✦ DESIGN SYSTEM — HARMONISATION & TRANSITIONS
+   Couche unique : tokens + cohérence boutons / titres / cadres.
+   ═══════════════════════════════════════════════════════════════ */
+:root{
+  --r-btn:14px;                          /* TOUS les boutons d'action */
+  --r-card:22px;                         /* cartes / encarts */
+  --r-frame:clamp(26px,3vw,44px);        /* grands cadres "passe-partout" */
+  --gap-frame:clamp(16px,2.6vw,38px);    /* respiration autour des cadres */
+  --fs-eyebrow:.66rem;  --ls-eyebrow:.2em;
+  --fs-h2:clamp(2rem,4.2vw,3.2rem);      /* titres de section standard */
+  --fs-h2-xl:clamp(2.4rem,5.4vw,4.4rem); /* titres "display" plein cadre */
+}
+
+/* ── 1 · BOUTONS : un seul rayon, un seul gabarit ──────────────── */
+.hcta,.hero-field a,.rate-cta,.gh-btn,.edge-cta,.vsx-cta,.vcta-btn,.fbtn,.ig-follow,.ig-linkedin{
+  border-radius:var(--r-btn)!important;
+}
+.hcta,.rate-cta,.gh-btn,.edge-cta,.vsx-cta,.vcta-btn,.fbtn{
+  font-size:.94rem!important;padding:15px 26px!important;
+}
+/* (la flèche ronde du bandeau lime et le bouton-flèche glass restent ronds : ce sont des icônes) */
+
+/* ── 2 · EYEBROWS : même taille / graisse / interlettre ────────── */
+.trust-eyebrow,.rate-eyebrow,.vsx-eye,.edge-eye,.team-eye,.ig-eye,.steps-eyebrow,
+.icx-eye,.vcta-k,.gh-k,.bpanel-k,.bm-k,.foot-cta-k,.scard-step,.scard-k,.rbonus-tag{
+  font-size:var(--fs-eyebrow)!important;letter-spacing:var(--ls-eyebrow)!important;font-weight:600!important;
+}
+
+/* ── 3 · TITRES : deux tailles seulement (standard / display) ──── */
+.rate-title,.vsx-title,.edge-title,.team-title,.ig-title,.gh-h,.icx-title,.rev-title{
+  font-size:var(--fs-h2)!important;letter-spacing:-1.6px!important;line-height:1.06!important;
+}
+.steps-title,.vcta-h,.foot-cta h2,.ctaband-h{
+  font-size:var(--fs-h2-xl)!important;letter-spacing:-2.2px!important;line-height:1.0!important;
+}
+/* l'emphase italique reste identique partout (Plus Jakarta italic 800) */
+
+/* ── 4 · TRANSITIONS : canevas clair continu + cadres arrondis ─── */
+body{background:var(--bg);}                 /* le "blanc clair" continu */
+
+/* les blocs média deviennent des cadres flottants (passe-partout) */
+.gh,.vcta{
+  margin:var(--gap-frame);
+  border-radius:var(--r-frame);
+  box-shadow:0 36px 90px rgba(40,33,24,.20),inset 0 0 0 1px rgba(255,255,255,.10);
+}
+.steps-hero{
+  margin:var(--gap-frame) var(--gap-frame) 0;
+  border-radius:var(--r-frame);
+  box-shadow:0 30px 70px rgba(40,33,24,.16);
+}
+/* cartes & hero reprennent le même rayon → cohérence des arrondis */
+.scard{border-radius:var(--r-frame)!important;}
+.hero{border-radius:0 0 var(--r-frame) var(--r-frame)!important;}
+.rate-badge{border-radius:var(--r-card)!important;}
+
+/* ── 5 · Mobile : on resserre le passe-partout ─────────────────── */
+@media(max-width:760px){ :root{--gap-frame:12px;--r-frame:24px;} }
 </style></head>
 <body>
 
@@ -2200,7 +2262,7 @@ a.ftr-contact-row:hover{color:var(--ob);}
     </div>
     <div class="gh-text">
       <span class="gh-k">● Simulateur · 2 min</span>
-      <h2 class="gh-h">Découvrez ce que vous <em>capacité</em>pouvez emprunter.</h2>
+      <h2 class="gh-h">Découvrez ce que vous <em>pouvez emprunter.</em> </h2>
       <p class="gh-p">En 2 minutes et sans engagement, obtenez une estimation de votre budget et un premier accord de principe. Ce document rassure les vendeurs et accélère votre achat immobilier. Un courtier local vous rappelle ensuite pour affiner.</p>
       <div class="gh-by">— sans frais d'avance —</div>
       <div class="gh-cta">
