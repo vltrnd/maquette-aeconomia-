@@ -431,9 +431,11 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .steps-stack{position:relative;z-index:3;margin-top:-9vh;
   padding:0 clamp(1rem,4vw,3.5rem) clamp(5rem,14vh,12rem);}
 .scard{position:sticky;top:clamp(92px,12vh,140px);width:100%;max-width:1120px;margin:0 auto;
-  border-radius:30px;background:var(--cream);overflow:hidden;
-  box-shadow:0 34px 90px rgba(20,19,16,.20),inset 0 2px 0 rgba(255,255,255,.5);
-  transform-origin:50% 0;will-change:transform;}
+  border-radius:30px;overflow:hidden;transform-origin:50% 0;will-change:transform;
+  background:linear-gradient(150deg,rgba(255,255,255,.58),rgba(255,255,255,.2));
+  backdrop-filter:blur(34px) saturate(180%);-webkit-backdrop-filter:blur(34px) saturate(180%);
+  border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 44px 110px rgba(60,50,36,.22),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 2px rgba(255,255,255,.4);}
 .scard+.scard{margin-top:clamp(2.4rem,8vh,7rem);}
 .scard-in{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.6rem,3vw,3rem);
   align-items:center;min-height:clamp(380px,54vh,540px);padding:clamp(2rem,4vw,4.2rem);}
@@ -852,22 +854,35 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   color:var(--ob2);margin-top:1rem;max-width:42ch;}
 .scard-media:has(img){background:#e8e1d5;}
 .scard-media:has(img)::after{background:linear-gradient(to top,rgba(20,19,16,.16),transparent 42%);}
-  .scard::before{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;pointer-events:none;
-  background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.5) 50%,transparent 60%);
+/* reflet spéculaire qui balaie */
+.scard::before{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.55) 50%,transparent 62%);
   background-size:250% 100%;animation:scardSheen 8s ease-in-out infinite;mix-blend-mode:overlay;}
 @keyframes scardSheen{0%{background-position:165% 0}55%,100%{background-position:-65% 0}}
+/* lueur blanche qui suit le curseur */
+.scard::after{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(260px 260px at var(--mx,50%) var(--my,50%),rgba(255,255,255,.6),transparent 60%);mix-blend-mode:overlay;}
+.scard:hover::after{opacity:1;}
 .scard-in{position:relative;z-index:2;}
-/* halos lumineux animés derrière les cartes (le verre les capte) */
+.scard-media{border:1px solid rgba(255,255,255,.6);box-shadow:0 16px 40px rgba(55,48,38,.18);}
+/* lumière NEUTRE derrière les cartes — que du blanc/beige, AUCUNE couleur */
+.steps{background:radial-gradient(130% 90% at 50% 0%,#FCF8F1,#EAE0CF 88%);}
 .steps-glow{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
 .steps-glow i{position:absolute;border-radius:50%;filter:blur(90px);}
-.steps-glow i:nth-child(1){width:560px;height:560px;left:-6%;top:14%;background:#a8b6ab;opacity:.5;animation:sg1 24s ease-in-out infinite;}
-.steps-glow i:nth-child(2){width:480px;height:480px;right:-4%;top:30%;background:#bcd41a;opacity:.18;animation:sg2 28s ease-in-out infinite;}
-.steps-glow i:nth-child(3){width:600px;height:600px;left:28%;bottom:4%;background:#cbb486;opacity:.5;animation:sg3 30s ease-in-out infinite;}
-.steps-glow i:nth-child(4){width:420px;height:420px;right:18%;bottom:20%;background:#8d8275;opacity:.3;animation:sg1 26s ease-in-out infinite;}
-@keyframes sg1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,50px) scale(1.14)}}
+.steps-glow i:nth-child(1){width:620px;height:620px;left:-4%;top:8%;background:rgba(255,255,255,.85);opacity:.7;animation:sg1 24s ease-in-out infinite;}
+.steps-glow i:nth-child(2){width:520px;height:520px;right:-2%;top:30%;background:rgba(255,251,244,.9);opacity:.6;animation:sg2 28s ease-in-out infinite;}
+.steps-glow i:nth-child(3){width:680px;height:680px;left:32%;bottom:-6%;background:rgba(255,255,255,.7);opacity:.6;animation:sg3 30s ease-in-out infinite;}
+.steps-glow i:nth-child(4){width:460px;height:460px;right:16%;bottom:18%;background:rgba(244,233,214,.9);opacity:.5;animation:sg1 26s ease-in-out infinite;}
+@keyframes sg1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,50px) scale(1.16)}}
 @keyframes sg2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-70px,60px) scale(1.1)}}
-@keyframes sg3{0%,100%{transform:translate(0,0) scale(1.05)}50%{transform:translate(-60px,-50px) scale(.9)}}
-@media(prefers-reduced-motion:reduce){.scard::before,.steps-glow i{animation:none;}}
+@keyframes sg3{0%,100%{transform:translate(0,0) scale(1.06)}50%{transform:translate(-60px,-50px) scale(.9)}}
+/* faisceau de lumière qui balaie la section */
+.steps-beam{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.steps-beam::before{content:"";position:absolute;top:-30%;left:-25%;width:34%;height:220%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.6) 50%,transparent);
+  transform:rotate(12deg);filter:blur(30px);animation:stepsBeam 11s ease-in-out infinite;}
+@keyframes stepsBeam{0%{transform:translateX(-20%) rotate(12deg);opacity:0}45%,60%{opacity:.85}100%{transform:translateX(360%) rotate(12deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){.scard::before,.scard::after,.steps-glow i,.steps-beam::before{animation:none;}}
 </style></head>
 <body>
 
@@ -1139,7 +1154,9 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   <!-- ═══════ ÉTAPES — parallax + cartes empilées ═══════ -->
 <section class="steps" id="steps">
 
+  
   <div class="steps-glow"><i></i><i></i><i></i><i></i></div>
+  <span class="steps-beam"></span>
   <div class="steps-hero">
     
     <div class="steps-hero-bg">
@@ -1954,7 +1971,19 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   var st=document.getElementById('revStack');
   if(st)st.innerHTML=D.slice(0,6).map(function(d){return '<div class="rcm"><span class="cat">['+d[0]+']</span><p>'+d[1]+'</p><div class="by"><span class="rev-ava">'+d[2][0]+'</span><b>'+d[2]+'</b> · '+d[3]+'</div></div>';}).join('');
 })();
-  
+
+
+  /* ─── CARTES ÉTAPES : lueur blanche qui suit le curseur ─── */
+(function(){
+  if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  document.querySelectorAll('.scard').forEach(function(c){
+    c.addEventListener('pointermove',function(e){
+      var r=c.getBoundingClientRect();
+      c.style.setProperty('--mx',(e.clientX-r.left)+'px');
+      c.style.setProperty('--my',(e.clientY-r.top)+'px');
+    });
+  });
+})();
 </script>
 </body></html>
          
