@@ -465,56 +465,82 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 
   
 
-  /* ════════════════════════════════════════════════════════
-   TAUX QUI BAISSE — graphe animé au scroll (rôle du courtier)
-   ════════════════════════════════════════════════════════ */
+ /* ════════ TAUX → ÉCONOMIE (verre + CTA + bonus) ════════ */
 .rate{position:relative;z-index:2;background:var(--cream);}
 .rate-track{position:relative;height:300vh;}
 .rate-stage{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center;
-  background:linear-gradient(180deg,#F4EEE0,#EFE7D6);}
-.rate-wrap{width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(1.4rem,5vw,4.5rem);
-  display:grid;grid-template-columns:1fr 1.08fr;gap:clamp(2rem,5vw,5rem);align-items:center;}
-
-.rate-eyebrow{font-family:var(--sky);font-size:.64rem;font-weight:600;letter-spacing:.26em;
-  text-transform:uppercase;color:var(--sage2);}
-.rate-title{font-family:var(--sky);font-weight:700;font-size:clamp(2.1rem,4vw,3.5rem);
-  line-height:1.02;letter-spacing:-2px;color:var(--ob);margin-top:1.2rem;}
+  background:radial-gradient(125% 95% at 50% 0%,#FBF7EF,#EAE0CF 90%);}
+.rate-glow{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.rate-glow i{position:absolute;border-radius:50%;filter:blur(90px);}
+.rate-glow i:nth-child(1){width:560px;height:560px;left:-5%;top:4%;background:rgba(255,255,255,.85);opacity:.6;animation:rgf 24s ease-in-out infinite;}
+.rate-glow i:nth-child(2){width:500px;height:500px;right:-3%;bottom:-6%;background:rgba(244,233,214,.92);opacity:.55;animation:rgf2 28s ease-in-out infinite;}
+@keyframes rgf{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,50px) scale(1.14)}}
+@keyframes rgf2{0%,100%{transform:translate(0,0) scale(1.05)}50%{transform:translate(-60px,-40px) scale(.92)}}
+.rate-wrap{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 clamp(1.4rem,5vw,4.5rem);
+  display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;}
+.rate-eyebrow{font-family:var(--sky);font-size:.64rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--sage2);}
+.rate-title{font-family:var(--sky);font-weight:700;font-size:clamp(2.1rem,4vw,3.4rem);line-height:1.02;letter-spacing:-2px;color:var(--ob);margin-top:1.1rem;}
 .rate-title em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
-.rate-kicker{font-family:var(--sky);font-size:.62rem;font-weight:600;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--ob2);margin-top:2rem;}
-.rate-desc{font-size:clamp(1rem,1.3vw,1.14rem);line-height:1.62;color:var(--ob2);margin-top:1.1rem;max-width:42ch;}
-.rate-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.8rem;}
-.rate-tag{font-family:var(--sky);font-size:.72rem;font-weight:600;letter-spacing:.02em;color:var(--ob);
-  background:rgba(255,255,255,.7);border:1px solid rgba(21,20,18,.1);border-radius:50px;padding:8px 14px;}
-.rate-tag b{color:var(--sage2);}
-
-.rate-card{position:relative;background:linear-gradient(168deg,#FCFAF4,#F4ECDC);
-  border:1px solid rgba(21,20,18,.07);border-radius:26px;padding:clamp(1.4rem,2.4vw,2.2rem);
-  box-shadow:0 40px 90px rgba(20,19,16,.16),inset 0 1px 0 rgba(255,255,255,.8);}
-.rate-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.4rem;}
-.rate-tabs{display:flex;gap:1.2rem;}
-.rate-tabs span{font-family:var(--sky);font-size:.86rem;font-weight:600;color:var(--muted);}
-.rate-tabs span.on{color:var(--ob);}
-.rate-legend{display:flex;align-items:center;gap:.4rem;font-family:var(--sky);font-size:.64rem;font-weight:600;
-  letter-spacing:.04em;color:var(--ob2);}
-.rate-legend i{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px rgba(188,212,26,.2);}
-.rate-figure{display:flex;align-items:baseline;gap:.5rem;margin:.2rem 0 1.1rem;}
-.rate-figure .big{font-family:var(--sky);font-weight:700;font-size:clamp(2.6rem,5vw,4rem);
-  letter-spacing:-2px;color:var(--ob);font-variant-numeric:tabular-nums;line-height:1;}
-.rate-figure .unit{font-family:var(--sky);font-weight:600;font-size:1.1rem;color:var(--ob2);}
-.rate-figure .delta{margin-left:auto;align-self:center;font-family:var(--sky);font-size:.74rem;font-weight:700;
-  color:#586a16;background:rgba(188,212,26,.2);border:1px solid rgba(188,212,26,.45);
-  border-radius:50px;padding:6px 12px;font-variant-numeric:tabular-nums;}
-.rate-svg{width:100%;height:auto;aspect-ratio:600/340;display:block;overflow:visible;}
+.rate-desc{font-size:clamp(1rem,1.3vw,1.12rem);line-height:1.6;color:var(--ob2);margin-top:1rem;max-width:44ch;}
+.rate-bonus{display:flex;flex-direction:column;gap:.7rem;margin-top:1.6rem;}
+.rbonus{position:relative;padding:.95rem 1.1rem;border-radius:16px;
+  background:linear-gradient(150deg,rgba(255,255,255,.6),rgba(255,255,255,.3));
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  border:1px solid rgba(255,255,255,.72);box-shadow:0 14px 34px rgba(80,66,48,.1),inset 0 1px 0 rgba(255,255,255,.9);
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;}
+.rbonus:hover{transform:translateY(-3px);box-shadow:0 22px 48px rgba(80,66,48,.16);}
+.rbonus-tag{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sky);font-size:.54rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#6a7e00;}
+.rbonus-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px rgba(188,212,26,.7);}
+.rbonus b{display:block;font-family:var(--sky);font-weight:700;font-size:.95rem;color:var(--ob);margin:.32rem 0 .26rem;letter-spacing:-.3px;}
+.rbonus p{font-size:.8rem;line-height:1.5;color:var(--ob2);}
+.rate-cta{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:.8rem;margin-top:1.7rem;
+  font-family:var(--sky);font-weight:700;font-size:1rem;color:#fff;background:var(--ob);
+  padding:17px 28px;border-radius:50px;box-shadow:0 16px 38px rgba(21,20,18,.3);
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;}
+.rate-cta::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(188,212,26,.55) 50%,transparent 65%);transform:translateX(-120%) skewX(-12deg);transition:transform .9s cubic-bezier(.22,1,.36,1);}
+.rate-cta:hover::before{transform:translateX(120%) skewX(-12deg);}
+.rate-cta:hover{transform:translateY(-3px);box-shadow:0 22px 52px rgba(21,20,18,.42),0 0 0 3px rgba(188,212,26,.45);}
+.rate-cta i{font-style:normal;transition:transform .35s;}
+.rate-cta:hover i{transform:translateX(5px);}
+.rate-card{position:relative;border-radius:28px;padding:clamp(1.5rem,2.4vw,2.1rem);overflow:hidden;
+  background:linear-gradient(150deg,rgba(255,255,255,.6),rgba(255,255,255,.28));
+  backdrop-filter:blur(34px) saturate(170%);-webkit-backdrop-filter:blur(34px) saturate(170%);
+  border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 44px 110px rgba(60,50,36,.2),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 2px rgba(255,255,255,.4);}
+.rate-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.7rem;}
+.rate-leg{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--sky);font-size:.66rem;font-weight:600;color:var(--ob2);}
+.rate-leg i{width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 3px rgba(188,212,26,.2);}
+.rate-live{display:inline-flex;align-items:center;gap:.35rem;font-family:var(--sky);font-size:.56rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#cf3b3b;}
+.rate-live::before{content:"";width:6px;height:6px;border-radius:50%;background:#cf3b3b;animation:rlive 1.5s infinite;}
+@keyframes rlive{0%,100%{opacity:1}50%{opacity:.25}}
+.rate-figs{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-bottom:.3rem;}
+.rate-now{font-family:var(--sky);font-weight:700;font-size:clamp(2.4rem,4.6vw,3.3rem);letter-spacing:-2px;color:var(--ob);font-variant-numeric:tabular-nums;line-height:1;}
+.rate-unit{font-family:var(--sky);font-weight:600;font-size:1.1rem;color:var(--ob2);margin-left:1px;}
+.rate-mens{font-family:var(--sky);color:var(--ob2);}
+.rate-mens b{font-weight:700;font-size:1.12rem;color:var(--ob);font-variant-numeric:tabular-nums;}
+.rate-mens span{font-size:.78rem;}
+.rate-delta{margin-left:auto;font-family:var(--sky);font-size:.76rem;font-weight:700;color:#586a16;
+  background:rgba(188,212,26,.2);border:1px solid rgba(188,212,26,.45);border-radius:50px;padding:6px 13px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.rate-svg{width:100%;height:auto;aspect-ratio:600/300;display:block;overflow:visible;margin:.2rem 0 0;}
 .rate-svg text{font-family:var(--sky);}
-.rate-dot-glow{filter:drop-shadow(0 0 9px rgba(188,212,26,.85));}
-
-@media (max-width:1024px),(prefers-reduced-motion:reduce){
+.rate-dot-glow{filter:drop-shadow(0 0 9px rgba(188,212,26,.9));}
+.rate-axis{display:flex;justify-content:space-between;font-family:var(--sky);font-size:.6rem;font-weight:600;letter-spacing:.03em;color:var(--muted);margin-top:.1rem;}
+.rate-axis b{color:var(--ob);}
+.rate-eco{position:relative;margin-top:1.1rem;padding:1.15rem 1.35rem;border-radius:18px;overflow:hidden;
+  background:linear-gradient(135deg,rgba(188,212,26,.18),rgba(255,255,255,.42));
+  border:1px solid rgba(188,212,26,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.85);}
+.rate-eco::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.5) 50%,transparent 60%);background-size:250% 100%;animation:rEcoSheen 7s ease-in-out infinite;mix-blend-mode:overlay;pointer-events:none;}
+@keyframes rEcoSheen{0%{background-position:160% 0}55%,100%{background-position:-60% 0}}
+.rate-eco-l{position:relative;font-family:var(--sky);font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5a6e00;}
+.rate-eco-n{position:relative;font-family:var(--sky);font-weight:700;font-size:clamp(2.2rem,4.6vw,3rem);letter-spacing:-1.6px;color:var(--ob);font-variant-numeric:tabular-nums;line-height:1.05;margin:.12rem 0;}
+.rate-eco-s{position:relative;font-size:.74rem;color:var(--ob2);}
+.rate-foot{font-size:.62rem;color:var(--muted);margin-top:.85rem;line-height:1.45;}
+@media (max-width:1024px){
   .rate-track{height:auto;}
   .rate-stage{position:static;height:auto;overflow:visible;padding:clamp(3rem,9vw,5rem) 0;}
-  .rate-wrap{grid-template-columns:1fr;gap:2.2rem;}
+  .rate-wrap{grid-template-columns:1fr;gap:2.4rem;}
 }
-
+@media(prefers-reduced-motion:reduce){.rate-glow i,.rate-eco::before{animation:none;}}
   /* ════════ CTA VIDÉO — fond vidéo parallax + calque noir 20% + lumière ════════ */
 .vcta{position:relative;z-index:2;overflow:hidden;isolation:isolate;
   min-height:clamp(460px,84vh,860px);display:flex;align-items:center;justify-content:center;background:#0d0c0a;}
@@ -1226,56 +1252,61 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   </div>
 </section>
 
-  <!-- ═══════ TAUX QUI BAISSE — graphe animé au scroll ═══════ -->
+ <!-- ═══════ TAUX → ÉCONOMIE ═══════ -->
 <section class="rate" id="rate">
   <div class="rate-track">
     <div class="rate-stage">
+      <div class="rate-glow"><i></i><i></i></div>
       <div class="rate-wrap">
         <div class="rate-text">
           <div class="rate-eyebrow">Le rôle du courtier</div>
-          <h2 class="rate-title">Votre taux,<br/><em>tiré vers le bas.</em></h2>
-          <div class="rate-kicker">Moins d'intérêts, plus d'économies</div>
-          <p class="rate-desc">Plus on négocie, plus votre taux descend. À chaque étape — banque, assurance, frais — on grappille des points qui allègent vos mensualités et le coût total de votre crédit.</p>
-          <div class="rate-tags">
-            <span class="rate-tag">20+ banques <b>en concurrence</b></span>
-            <span class="rate-tag">Assurance <b>déléguée</b></span>
-            <span class="rate-tag">Frais <b>négociés</b></span>
+          <h2 class="rate-title">Votre taux baisse,<br/><em>vos économies montent.</em></h2>
+          <p class="rate-desc">Chaque dixième de point négocié, c'est de l'argent qui reste dans votre poche. Voilà ce que ça change, concrètement.</p>
+          <div class="rate-bonus">
+            <div class="rbonus"><span class="rbonus-tag">Bonus exclusif Aeconomia</span><b>Assurance au prix fournisseur</b><p>Accès direct aux tarifs fournisseur de l'assurance emprunteur — souvent 2× moins cher que la banque.</p></div>
+            <div class="rbonus"><span class="rbonus-tag">Bonus exclusif Aeconomia</span><b>1ʳᵉ renégociation offerte</b><p>Sans limite de durée, quelle que soit la banque choisie, si les taux baissent d'au moins 1 % par la suite.</p></div>
           </div>
+          <a href="simulation.html" class="rate-cta"><span>Calculez votre économie</span><i>→</i></a>
         </div>
 
         <div class="rate-card">
           <div class="rate-card-top">
-            <div class="rate-tabs"><span class="on">Taux</span><span>Mensualité</span></div>
-            <div class="rate-legend"><i></i> Taux sur 20 ans</div>
+            <span class="rate-leg"><i></i> Mensualité sur 20 ans</span>
+            <span class="rate-live">Taux du jour</span>
           </div>
-          <div class="rate-figure">
-            <span class="big" id="rateNow">4,15</span><span class="unit">%</span>
-            <span class="delta" id="rateDelta">−0,00 pt</span>
+          <div class="rate-figs">
+            <span class="rate-now" id="rateNow">4,15</span><span class="rate-unit">%</span>
+            <span class="rate-mens"><b id="rateMens">1 534 €</b><span>/mois</span></span>
+            <span class="rate-delta" id="rateDelta">−0 €/mois</span>
           </div>
-          <svg class="rate-svg" viewBox="0 0 600 340">
+          <svg class="rate-svg" viewBox="0 0 600 300">
             <defs>
               <linearGradient id="rateFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#bcd41a" stop-opacity=".30"/>
+                <stop offset="0" stop-color="#bcd41a" stop-opacity=".28"/>
                 <stop offset="1" stop-color="#bcd41a" stop-opacity="0"/>
               </linearGradient>
-              <clipPath id="rateClip"><rect id="rateClipRect" x="0" y="0" width="0" height="340"/></clipPath>
+              <clipPath id="rateClip"><rect id="rateClipRect" x="0" y="0" width="0" height="300"/></clipPath>
             </defs>
             <g id="rateGrid"></g>
             <g clip-path="url(#rateClip)">
               <path id="rateArea" d="" fill="url(#rateFill)"/>
               <path id="rateLine" d="" fill="none" stroke="#151412" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
             </g>
-            <line id="rateVLine" x1="0" y1="34" x2="0" y2="294" stroke="rgba(21,20,18,.22)" stroke-width="1" stroke-dasharray="3 4" style="opacity:0"/>
             <circle id="rateDot" class="rate-dot-glow" r="6.5" fill="#bcd41a" stroke="#fff" stroke-width="3" style="opacity:0"/>
-            <g id="rateXLabels"></g>
           </svg>
+          <div class="rate-axis"><span>Taux marché · <b>4,15 %</b></span><span>Avec Aeconomia · <b>3,05 %</b></span></div>
+          <div class="rate-eco">
+            <div class="rate-eco-l">Économie estimée sur 20 ans</div>
+            <div class="rate-eco-n" id="rateEco">0 €</div>
+            <div class="rate-eco-s">soit 240 mensualités allégées · sur le coût des intérêts</div>
+          </div>
+          <div class="rate-foot">Base de calcul : 250 000 € empruntés sur 20 ans (240 mensualités). Hors assurance emprunteur — encore négociable via le bonus n°1.</div>
         </div>
 
       </div>
     </div>
   </div>
 </section>
-
 
   <!-- ═══════ CTA VIDÉO — fond vidéo en parallax ═══════ -->
 <section class="vcta" id="vcta">
@@ -1711,27 +1742,25 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 })();
 
 
-/* ─── TAUX QUI BAISSE : le graphe se dessine et descend au scroll ─── */
+/* ─── TAUX → ÉCONOMIE : le taux descend, l'économie monte au scroll ─── */
 (function(){
   var sec=document.getElementById('rate');if(!sec)return;
   var track=sec.querySelector('.rate-track'),
-      lineEl=document.getElementById('rateLine'),
-      areaEl=document.getElementById('rateArea'),
-      clipRect=document.getElementById('rateClipRect'),
-      dot=document.getElementById('rateDot'),
-      vline=document.getElementById('rateVLine'),
+      lineEl=document.getElementById('rateLine'),areaEl=document.getElementById('rateArea'),
+      clipRect=document.getElementById('rateClipRect'),dot=document.getElementById('rateDot'),
       gridEl=document.getElementById('rateGrid'),
-      xEl=document.getElementById('rateXLabels'),
-      numEl=document.getElementById('rateNow'),
-      deltaEl=document.getElementById('rateDelta'),
+      nowEl=document.getElementById('rateNow'),mensEl=document.getElementById('rateMens'),
+      deltaEl=document.getElementById('rateDelta'),ecoEl=document.getElementById('rateEco'),
       reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,
-      desktop=matchMedia('(min-width:1025px)').matches,
-      ticking=false;
-  var data=[4.15,3.85,3.55,3.30,3.05],labels=['Marché','1ʳᵉ offre','Négo','Assurance','Aeconomia'],N=data.length;
-  var VBW=600,VBH=340,lp=18,rp=18,tp=34,bp=46,pw=VBW-lp-rp,ph=VBH-tp-bp,baseY=tp+ph,yMax=4.30,yMin=2.90;
+      desktop=matchMedia('(min-width:1025px)').matches,ticking=false;
+  var RATES=[4.15,4.05,3.95,3.85,3.75,3.65,3.55,3.45,3.35,3.25,3.15,3.05];
+  var MENS=[1534,1521,1508,1495,1482,1469,1456,1443,1430,1417,1405,1392];
+  var REF=1534,N=RATES.length;
+  var VBW=600,VBH=300,lp=16,rp=16,tp=22,bp=30,pw=VBW-lp-rp,ph=VBH-tp-bp,baseY=tp+ph,yMax=4.22,yMin=3.0;
   function cl(v,a,b){return Math.max(a,Math.min(b,v));}
   function xOf(i){return lp+i/(N-1)*pw;}
   function yOf(r){return tp+(yMax-r)/(yMax-yMin)*ph;}
+  function fmt(n){return Math.round(n).toLocaleString('fr-FR');}
   function smooth(pts){var d='M'+pts[0][0].toFixed(1)+' '+pts[0][1].toFixed(1);
     for(var i=0;i<pts.length-1;i++){var p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;
       d+=' C'+(p1[0]+(p2[0]-p0[0])/6).toFixed(1)+' '+(p1[1]+(p2[1]-p0[1])/6).toFixed(1)+' '+
@@ -1739,17 +1768,14 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
         p2[0].toFixed(1)+' '+p2[1].toFixed(1);}
     return d;}
   function build(){
-    var pts=data.map(function(r,i){return [xOf(i),yOf(r)];}),lineD=smooth(pts);
+    var pts=RATES.map(function(r,i){return [xOf(i),yOf(r)];}),lineD=smooth(pts);
     lineEl.setAttribute('d',lineD);
     areaEl.setAttribute('d',lineD+' L'+xOf(N-1).toFixed(1)+' '+baseY+' L'+xOf(0).toFixed(1)+' '+baseY+' Z');
     clipRect.setAttribute('height',VBH);
     var g='';[4.0,3.5,3.0].forEach(function(r){var y=yOf(r);
       g+='<line x1="'+lp+'" y1="'+y.toFixed(1)+'" x2="'+(lp+pw)+'" y2="'+y.toFixed(1)+'" stroke="rgba(21,20,18,.08)" stroke-width="1"/>'+
-         '<text x="'+(lp+2)+'" y="'+(y-6).toFixed(1)+'" font-size="11" font-weight="600" letter-spacing="1" fill="rgba(21,20,18,.32)">'+r.toFixed(1).replace('.',',')+'%</text>';});
+         '<text x="'+(lp+2)+'" y="'+(y-6).toFixed(1)+'" font-size="11" font-weight="600" letter-spacing="1" fill="rgba(21,20,18,.3)">'+r.toFixed(1).replace('.',',')+' %</text>';});
     gridEl.innerHTML=g;
-    var xl='';labels.forEach(function(t,i){var x=xOf(i),a=i===0?'start':(i===N-1?'end':'middle');
-      xl+='<text x="'+x.toFixed(1)+'" y="'+(VBH-15)+'" text-anchor="'+a+'" font-size="12" font-weight="600" letter-spacing="1" fill="rgba(21,20,18,.5)">'+t+'</text>';});
-    xEl.innerHTML=xl;
   }
   function yAtX(x){var len=lineEl.getTotalLength(),lo=0,hi=len,pt;
     for(var k=0;k<18;k++){var m=(lo+hi)/2;pt=lineEl.getPointAtLength(m);if(pt.x<x)lo=m;else hi=m;}
@@ -1758,11 +1784,15 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     clipRect.setAttribute('width',(lp+pw*p+0.5).toFixed(1));
     var x=lp+pw*p,y=yAtX(x);
     dot.setAttribute('cx',x.toFixed(1));dot.setAttribute('cy',y.toFixed(1));
-    vline.setAttribute('x1',x.toFixed(1));vline.setAttribute('x2',x.toFixed(1));
-    dot.style.opacity=p>0.002?1:0;vline.style.opacity=p>0.02?1:0;
-    var f=p*(N-1),i=Math.min(N-2,Math.floor(f)),fr=f-i,v=p>=1?data[N-1]:data[i]+(data[i+1]-data[i])*fr;
-    if(numEl)numEl.textContent=v.toFixed(2).replace('.',',');
-    if(deltaEl)deltaEl.textContent='−'+(data[0]-v).toFixed(2).replace('.',',')+' pt';
+    dot.style.opacity=p>0.004?1:0;
+    var f=p*(N-1),i=Math.min(N-2,Math.floor(f)),fr=f-i;
+    var rate=p>=1?RATES[N-1]:RATES[i]+(RATES[i+1]-RATES[i])*fr;
+    var mens=p>=1?MENS[N-1]:MENS[i]+(MENS[i+1]-MENS[i])*fr;
+    var ecoM=REF-mens,ecoT=ecoM*240;
+    if(nowEl)nowEl.textContent=rate.toFixed(2).replace('.',',');
+    if(mensEl)mensEl.textContent=fmt(mens)+' €';
+    if(deltaEl)deltaEl.textContent='−'+fmt(ecoM)+' €/mois';
+    if(ecoEl)ecoEl.textContent=fmt(ecoT)+' €';
   }
   function read(){ticking=false;
     if(reduce||!desktop){draw(1);return;}
@@ -1772,11 +1802,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(read);}}
   build();read();
   addEventListener('scroll',onScroll,{passive:true});
-  addEventListener('resize',function(){
-    desktop=matchMedia('(min-width:1025px)').matches;
-    reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-    read();
-  });
+  addEventListener('resize',function(){desktop=matchMedia('(min-width:1025px)').matches;reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;read();});
 })();
 
 /* ─── VIDÉO CTA : démarrage anticipé (≈1 écran avant) + parallax ─── */
