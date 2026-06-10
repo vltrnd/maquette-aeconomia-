@@ -98,7 +98,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   .roll-word.enter,.roll-word.leave{transform:none;filter:none;}
   .roll-word.brand.show{animation:none;}
   .roll-win.scan::after,.load-bar i::after,.roll-word.brand .roll-dot{animation:none;}
-}
+
 
 /* ════════ HERO ════════ */
 .hero{position:relative;min-height:100vh;overflow:hidden;background:#1b1916;border-radius:0 0 clamp(28px,3.5vw,48px) clamp(28px,3.5vw,48px);}
@@ -1192,7 +1192,7 @@ body.pass-locked{overflow:hidden;}
   background:radial-gradient(120% 100% at 50% 0,rgba(20,19,16,.11),transparent 70%);filter:blur(5px);transform:rotate(2.5deg);}
 .icx-pin{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:30px;height:30px;z-index:3;}
 .icx-pin::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;
-  background:radial-gradient(circle at 38% 30%,#dcef27a,var(--lime) 48%,#8a9d12 100%);
+  background:radial-gradient(circle at 38% 30%,#dcef27a,var(--lime) 48%,#d2e37e 100%);
   box-shadow:0 6px 13px rgba(80,90,20,.45),inset 0 1px 2px rgba(255,255,255,.8);}
 .icx-pin::after{content:"";position:absolute;left:50%;top:17px;width:2.5px;height:15px;transform:translateX(-50%) rotate(3deg);
   background:linear-gradient(#a8adb3,#70757b);border-radius:0 0 2px 2px;}
@@ -2650,7 +2650,23 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 })();
 
 
-  /* 1 ── MOTS ──────────────────────────────────────── */
+
+/* ─── ÉCRAN DE CHARGEMENT : mots + barre + relais vers la tuile ─── */
+(function(){
+  var intro=document.getElementById('intro'),
+      inner=document.getElementById('introInner'),
+      hero =document.getElementById('hero'),
+      tile =document.getElementById('tile'),
+      win  =document.getElementById('rollWin'),
+      fill =document.getElementById('loadFill'),
+      num  =document.getElementById('loadNum');
+  if(!intro)return;
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var vid=tile?tile.querySelector('video'):null;
+  if(vid){vid.removeAttribute('autoplay');try{vid.pause();}catch(e){}}
+  document.body.style.overflow='hidden';
+
+  /* 1 ── MOTS ── */
   var WORDS=['simple','rapide','transparent'], FINAL='aeconomia', cur=null;
   function build(word,brand){
     var s=document.createElement('span');
@@ -2672,14 +2688,14 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     if(!rolling)return;
     wi=(wi+1)%WORDS.length;swap(WORDS[wi],false);
   },560);
-  function lockFinal(cb){                         // fige « aeconomia. »
+  function lockFinal(cb){
     rolling=false;if(iv)clearInterval(iv);
     if(cur&&cur.classList.contains('brand')){cb&&cb();return;}
     swap(FINAL,true);
     setTimeout(function(){cb&&cb();},340);
   }
 
-  /* 1b ── PRÉCHARGEMENT DE TOUTES LES PHOTOS DU SITE ── */
+  /* 1b ── PRÉCHARGEMENT DE TOUTES LES PHOTOS ── */
   (function preloadAll(){
     try{
       var seen={};
@@ -2690,7 +2706,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     }catch(e){}
   })();
 
-  /* 2 ── BARRE ─────────────────────────────────────── */
+  /* 2 ── BARRE ── */
   var dur=1200,t0=performance.now(),barDone=false;
   (function lp(now){
     var p=Math.min(1,(now-t0)/dur),e=1-Math.pow(1-p,3);
@@ -2699,19 +2715,18 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     if(p<1)requestAnimationFrame(lp);else{barDone=true;gate();}
   })(t0);
 
-  /* 3 ── RELAIS VERS LA TUILE ──────────────────────── */
+  /* 3 ── RELAIS VERS LA TUILE ── */
   var done=false;
   function cleanup(){intro.style.display='none';document.body.style.overflow='';if(iv)clearInterval(iv);}
   function playTile(){if(!vid)return;try{vid.currentTime=0;}catch(e){}var pr=vid.play();if(pr&&pr.catch)pr.catch(function(){});}
   function finish(){
     if(done)return;done=true;
-    lockFinal(function(){                         // 1) on se fige sur « aeconomia. »
+    lockFinal(function(){
       hero.classList.add('go');
       var tw=document.querySelector('.tilewrap');
       var ok=tw&&getComputedStyle(tw).display!=='none'&&window.innerWidth>1100;
-      if(fill)fill.parentNode.parentNode.classList.add('hide'); // la barre s'efface, le mot reste
-
-      if(reduce||!ok){                            // fallback mobile / mouvement réduit
+      if(fill)fill.parentNode.parentNode.classList.add('hide');
+      if(reduce||!ok){
         setTimeout(function(){
           if(tile)tile.classList.add('reveal');playTile();
           inner.classList.add('hide');intro.classList.add('fade');
@@ -2719,30 +2734,28 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
         },430);
         return;
       }
-
-      /* 2) « aeconomia. » TIENT net pendant que la boîte commence à se refermer */
       setTimeout(function(){
-        var r=tw.getBoundingClientRect();         // 3) l'intro se referme PILE sur le cadre tuile
+        var r=tw.getBoundingClientRect();
         var top=Math.max(0,r.top),left=Math.max(0,r.left),
             right=Math.max(0,innerWidth-r.right),bot=Math.max(0,innerHeight-r.bottom);
         intro.style.clipPath='inset('+top+'px '+right+'px '+bot+'px '+left+'px round 22px)';
-        if(tile)tile.classList.add('reveal');     // le poster est prêt dessous
-        playTile();                               // 4) ← la VIDÉO se lance dès le début de la fermeture
-        setTimeout(function(){inner.classList.add('hide');},430); // le mot se dissout en douceur (aucun cut)
+        if(tile)tile.classList.add('reveal');
+        playTile();
+        setTimeout(function(){inner.classList.add('hide');},430);
         setTimeout(function(){intro.classList.add('fade');},700);
         setTimeout(cleanup,980);
-      },450);                                      // ← temps de lecture du mot avant tout mouvement
+      },450);
     });
   }
 
-  /* 4 ── DÉCLENCHEMENT (page chargée + barre finie) ── */
+  /* 4 ── DÉCLENCHEMENT ── */
   var loaded=(document.readyState==='complete');
   function gate(){if(barDone&&loaded)finish();}
   addEventListener('load',function(){loaded=true;gate();});
   gate();
-    gate();
-  setTimeout(finish,2900);                        // garde-fou : total ≤ ~3 s
+  setTimeout(finish,2900);
 })();
+
 
 /* ─── CHIFFRES CLÉS + RÉVÉLATIONS + SCROLL ÉPINGLÉ ─── */
 (function(){
@@ -3200,7 +3213,6 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   var B="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/";
   var GOOG='<svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.07H2.18a11 11 0 0 0 0 9.86l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>';
 
-  /* ── plateformes : logo · note · nb d'avis · ⚠️ mettez vos VRAIS chiffres ── */
   var PLATS=[
     {logo:'google.png',cls:'',rate:'5,0',count:'768'},
     {logo:'solocal.png',cls:'',rate:'4,9',count:'214'},
@@ -3213,7 +3225,6 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
       '<div class="rev-plat-count"><b>'+p.count+'</b> avis</div></div>';
   }).join('');
 
-  /* ── avis [texte ~95-120 car, prénom + initiale, plateforme] · ⚠️ remplacez par vos VRAIS avis ── */
   var D=[
     ["Accompagnement parfait du début à la fin. Taux bien en dessous de ma banque, je recommande à 100 %.","Marie L.","Google"],
     ["Très réactifs et de très bon conseil. Dossier monté et accepté en 3 semaines, sans aucun frais. Merci !","Thomas B.","Google"],
@@ -3256,9 +3267,8 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     var paused=hover||hold>=0;
     if(!paused&&now-lastStep>=3000){target+=STEP;lastStep=now;}
     if(hold>=0)target=hold*STEP;
-        rot+=(target-rot)*0.08;
+    rot+=(target-rot)*0.08;
     var w=stage.clientWidth,h=stage.clientHeight;
-    /* éventail "jeu de cartes" : centre devant · côtés écartés, inclinés, plus bas */
     var GAPX=Math.min(160,w*0.13),ROT=10,ARC=18,FANY=h*0.72,best=1e9,bi=0;
     for(var i=0;i<N;i++){
       var th=i*STEP-rot;th=((th+180)%360+360)%360-180;
@@ -3271,6 +3281,19 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
       c.style.transform='translate(-50%,-50%) translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) rotate('+(ROT*p).toFixed(2)+'deg) scale('+(0.84+0.16*t).toFixed(3)+')';
       c.classList.toggle('active',ad<STEP/2);
     }
+    raf=requestAnimationFrame(frame);
+  }
+  function start(){if(raf||!desktop||reduce)return;lastStep=performance.now();lastY=window.scrollY;raf=requestAnimationFrame(frame);}
+  function stop(){if(raf){cancelAnimationFrame(raf);raf=null;}}
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?start():stop();});},{rootMargin:'200px'}).observe(stage);}else start();
+  addEventListener('resize',function(){desktop=matchMedia('(min-width:981px)').matches;if(!desktop||reduce)stop();else start();});
+  var st=document.getElementById('revStack');
+  if(st)st.innerHTML=D.slice(0,6).map(function(d){return '<div class="rcm"><div class="top"><span class="stars">★★★★★</span><span class="src">via '+d[2]+'</span></div><p>'+d[0]+'</p><div class="by"><span class="rev-ava">'+d[1][0]+'</span><b>'+d[1]+'</b></div></div>';}).join('');
+})();
+
+
+  
+
 
 
 /* ─── COMPARATIF Seul vs Aeconomia : rail Aeconomia + révélation ─── */
