@@ -2908,8 +2908,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   });
 })();
 
-
-/* ─── ÉTAPES : parallax du fond + empilement/scale des cartes ─── */
+/* ─── ÉTAPES : GRAND parallax du fond + empilement/scale des cartes ─── */
 (function(){
   var sec=document.getElementById('steps');if(!sec)return;
   var bg=document.getElementById('stepsBg'),
@@ -2922,14 +2921,14 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     ticking=false;
     if(bg&&hero&&!reduce){
       var hr=hero.getBoundingClientRect();
-      if(hr.bottom>0&&hr.top<innerHeight)bg.style.transform='translate3d(0,'+(hr.top*-0.14)+'px,0)';
+      if(hr.bottom>0&&hr.top<innerHeight)bg.style.transform='translate3d(0,'+(hr.top*-0.22).toFixed(1)+'px,0)';  /* ← grand parallax */
     }
     if(reduce)return;
     var vh=innerHeight;
     for(var i=0;i<cards.length;i++){
       var r=cards[i].getBoundingClientRect(),d=r.top-stick,s,rot=0;
-      if(d>0){var p=1-Math.min(1,d/(vh*0.7));s=0.9+0.1*p;rot=(1-p)*2.4*((i%2)?-1:1);}  // arrive : grossit + léger angle
-      else{var back=0,nx=cards[i+1];                                                     // posée : recule quand la suivante passe
+      if(d>0){var p=1-Math.min(1,d/(vh*0.7));s=0.9+0.1*p;rot=(1-p)*2.4*((i%2)?-1:1);}
+      else{var back=0,nx=cards[i+1];
         if(nx){var nd=nx.getBoundingClientRect().top-stick;back=1-Math.min(1,Math.max(0,nd)/(vh*0.7));}
         s=1-0.06*back;}
       cards[i].style.transform='scale('+s.toFixed(4)+')'+(rot?(' rotate('+rot.toFixed(2)+'deg)'):'');
