@@ -37,7 +37,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 /* ════════ ÉCRAN DE CHARGEMENT ════════ */
 .intro{position:fixed;inset:0;z-index:3000;display:flex;align-items:center;justify-content:center;
   overflow:hidden;background:#ECE3D4;clip-path:inset(0 0 0 0);will-change:clip-path;
-  transition:clip-path .85s cubic-bezier(.83,0,.17,1);}
+   transition:clip-path .85s cubic-bezier(.83,0,.17,1);}
 .intro.fade{opacity:0;transition:opacity .5s ease;}
 .intro-bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
 .bgvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7;}
@@ -76,6 +76,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   55%{transform:translateY(0) scale(1.05);opacity:1;filter:blur(0)}100%{transform:translateY(0) scale(1)}}
 .roll-word.brand .roll-dot{animation:dotPulse 1.6s ease-in-out infinite;}
 @keyframes dotPulse{0%,100%{opacity:.78}50%{opacity:1}}
+}
 
 
 /* ── Barre ── */
@@ -85,7 +86,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .load-bar i{position:absolute;left:0;top:0;height:100%;width:0;border-radius:3px;
   background:linear-gradient(90deg,var(--ob),var(--ob2));box-shadow:0 0 12px rgba(21,20,18,.22);}
 .load-bar i::after{content:'';position:absolute;inset:0;border-radius:3px;
-   background:linear-gradient(90deg,transparent,rgba(255,255,255,.92),transparent);
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.92),transparent);
   mix-blend-mode:screen;animation:loadSheen 1.1s linear infinite;}
 @keyframes loadSheen{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 .load-row{display:flex;justify-content:space-between;align-items:center;font-family:var(--sky);font-size:.56rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ob2);}
@@ -1888,16 +1889,24 @@ body{
 
 
   
-  <!-- ═══════ POURQUOI UN COURTIER (scroll épinglé) ═══════ -->
+<!-- ═══════ POURQUOI UN COURTIER (scroll épinglé) ═══════ -->
 <section class="broker" id="broker">
   <div class="broker-stick">
     <div class="broker-grid"></div>
 
     <div class="broker-rail left">
-          <div class="broker-strip" id="bstripL">
+      <div class="broker-strip" id="bstripL">
         <div class="btile"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/etape1-rencontre-1.jpg" alt="Rendez-vous avec votre courtier" loading="lazy" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/rdv%20courtier%20.png'"/></div>
         <div class="btile"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/etape2-negociation-1.jpg" alt="Négociation auprès des banques" loading="lazy" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/rdvbanque.png'"/></div>
         <div class="btile"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/etape3-cles-1.jpg" alt="Remise des clés" loading="lazy" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/coupledemenagement.png'"/></div>
+      </div>
+    </div>
+
+    <div class="broker-rail right" aria-hidden="true">
+      <div class="broker-strip" id="bstripR">
+        <div class="btile"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/etape3-cles-2.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/coupledemenagement.png'"/></div>
+        <div class="btile"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/etape2-negociation-2.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/rdvbanque.png'"/></div>
+        <div class="btile"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/etape1-rencontre-2.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/rdv%20courtier%20.png'"/></div>
       </div>
     </div>
 
@@ -1921,13 +1930,6 @@ body{
         <a href="contact.html" class="blink">Démarrer mon projet →</a>
       </article>
     </div>
-
-
-          <div class="broker-strip" id="bstripR">
-        <div class="btile"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/etape3-cles-2.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/coupledemenagement.png'"/></div>
-        <div class="btile"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/etape2-negociation-2.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/rdvbanque.png'"/></div>
-        <div class="btile"><img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/etape1-rencontre-2.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/rdv%20courtier%20.png'"/></div>
-      </div>
 
     <div class="broker-dots"><i class="on"></i><i></i><i></i></div>
   </div>
@@ -2643,23 +2645,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 })();
 
 
-/* ─── ÉCRAN DE CHARGEMENT : mots + barre + relais vers la tuile ─── */
-(function(){
-  var intro=document.getElementById('intro'),
-      inner=document.getElementById('introInner'),
-      hero =document.getElementById('hero'),
-      tile =document.getElementById('tile'),
-      win  =document.getElementById('rollWin'),
-      fill =document.getElementById('loadFill'),
-      num  =document.getElementById('loadNum');
-  if(!intro)return;
-
-  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var vid=tile?tile.querySelector('video'):null;
-  if(vid){vid.removeAttribute('autoplay');try{vid.pause();}catch(e){}}   // la vidéo attend son top départ
-  document.body.style.overflow='hidden';
-
-    /* 1 ── MOTS ──────────────────────────────────────── */
+  /* 1 ── MOTS ──────────────────────────────────────── */
   var WORDS=['simple','rapide','transparent'], FINAL='aeconomia', cur=null;
   function build(word,brand){
     var s=document.createElement('span');
@@ -2744,15 +2730,12 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     });
   }
 
-   /* 4 ── DÉCLENCHEMENT (page chargée + barre finie) ── */
+  /* 4 ── DÉCLENCHEMENT (page chargée + barre finie) ── */
   var loaded=(document.readyState==='complete');
   function gate(){if(barDone&&loaded)finish();}
   addEventListener('load',function(){loaded=true;gate();});
   gate();
   setTimeout(finish,2900);                        // garde-fou : total ≤ ~3 s
-})();
-
- 
 
 
 /* ─── CHIFFRES CLÉS + RÉVÉLATIONS + SCROLL ÉPINGLÉ ─── */
