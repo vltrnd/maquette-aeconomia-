@@ -112,7 +112,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .hero-grid{position:absolute;inset:0;z-index:1;pointer-events:none;
   background-image:linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px);
   background-size:50% 33.33%;}
-/* ═══════ NAV — barre claire · radius des CTA · zéro vert sur l'actif ═══════ */
+/* ═══════ NAV — minimal · survol vert · page active sans marque ═══════ */
 .nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:1400;display:flex;align-items:center;gap:.2rem;
   background:linear-gradient(180deg,#FFFFFF,#F6F1E8);
   border-radius:20px;padding:8px 9px 8px 18px;
@@ -127,32 +127,22 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .nav-logo-clip img{height:17px;width:auto;max-width:150px;object-fit:contain;display:block;}
 .nav-logo .logo-text{font-size:.95rem;color:var(--ob);}
 
-/* LIENS — radius des CTA (14px) · trait lime qui grandit au survol */
-.nl{position:relative;font-family:var(--sky);font-size:.85rem;font-weight:600;color:var(--ob2);
-  padding:9px 15px;border-radius:var(--r-btn,14px);white-space:nowrap;
-  transition:color .3s,background .3s,transform .3s cubic-bezier(.22,1,.36,1);}
-.nl::after{content:"";position:absolute;left:15px;right:15px;bottom:5px;height:2px;border-radius:2px;
-  background:var(--lime);transform:scaleX(0);transform-origin:50%;opacity:0;
-  transition:transform .35s cubic-bezier(.22,1,.36,1),opacity .3s;}
-.nl:hover{color:var(--ob);transform:translateY(-1px);background:rgba(21,20,18,.045);}
-.nl:hover::after{transform:scaleX(1);opacity:1;}
+/* LIENS — survol = vert · page active = AUCUNE distinction */
+.nl{font-family:var(--sky);font-size:.85rem;font-weight:600;color:var(--ob2);
+  padding:9px 15px;border-radius:var(--r-btn,14px);white-space:nowrap;transition:color .25s;}
+.nl:hover{color:#7c9a0f;}
+.nl.active{color:var(--ob2);font-weight:600;}     /* la page active ressemble à un lien normal */
+.nl.active:hover{color:#7c9a0f;}
 
-/* PAGE ACTUELLE — pastille encre + point lime (aucun fond vert) */
-.nl.active{color:#fff;font-weight:700;background:var(--ob);
-  box-shadow:0 9px 20px -7px rgba(21,20,18,.55),inset 0 1px 0 rgba(255,255,255,.16);}
-.nl.active:hover{color:#fff;background:var(--ob);transform:translateY(-1px);}
-.nl.active::after{left:auto;right:9px;bottom:auto;top:8px;width:5px;height:5px;border-radius:50%;
-  background:var(--lime);opacity:1;transform:none;box-shadow:0 0 8px rgba(188,212,26,.85);}
-
-/* BOUTON TÉL — lime franc · radius des CTA */
+/* BOUTON TÉL — simple rectangle vert à radius · ni ombre ni lueur ni relief */
 .nav-tel{font-family:var(--sky);font-size:.85rem;font-weight:700;color:var(--ob);
-  background:linear-gradient(180deg,#cfe23f,#bcd41a);
+  background:var(--lime);
   padding:10px 18px;border-radius:var(--r-btn,14px);margin-left:.3rem;display:inline-flex;align-items:center;gap:.4rem;white-space:nowrap;
-  box-shadow:0 10px 22px -8px rgba(140,160,20,.7),inset 0 1px 0 rgba(255,255,255,.45);
-  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,filter .3s;}
-.nav-tel:hover{transform:translateY(-2px);filter:brightness(1.03);
-  box-shadow:0 16px 30px -8px rgba(140,160,20,.8),inset 0 1px 0 rgba(255,255,255,.55);}
-.nav-tel:active{transform:translateY(0);box-shadow:0 6px 14px -6px rgba(140,160,20,.7),inset 0 2px 5px rgba(120,140,40,.4);}
+  transition:background .2s;}
+.nav-tel:hover{background:#aec219;}                 /* léger fonçage au survol (pas une ombre/lueur) */
+
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px;margin-left:auto;}
+.burger span{display:block;width:22px;height:2px;background:var(--ob);border-radius:2px;}
 
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:10px;margin-left:auto;}
 .burger span{display:block;width:22px;height:2px;background:var(--ob);border-radius:2px;}
