@@ -1882,6 +1882,84 @@ body{
   .team-title .rw,.vsx-title .rw,.rev-title .rw,.edge-title .rw{
     opacity:1!important;transform:none!important;filter:none!important;transition:none!important;}
 }
+
+
+  /* ════════ FAQ — questions filtrables + accordéon ════════ */
+.faq{position:relative;z-index:2;background:transparent;padding:clamp(3.4rem,7vw,6.5rem) clamp(1.2rem,5vw,4.5rem);}
+.faq-wrap{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(2rem,4.5vw,4.5rem);align-items:start;}
+
+/* — gauche : titre + image (sticky) — */
+.faq-aside{position:sticky;top:clamp(90px,12vh,130px);}
+.faq-eye{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--sky);font-size:.66rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sage2);}
+.faq-eye::before{content:"";width:9px;height:9px;border-radius:50%;background:#F5A623;box-shadow:0 0 0 4px rgba(245,166,35,.18);}
+.faq-title{font-family:var(--sky);font-weight:700;font-size:clamp(2.1rem,4vw,3.2rem);line-height:1.04;letter-spacing:-1.6px;color:var(--ob);margin-top:1rem;}
+.faq-title em{font-style:normal;position:relative;white-space:nowrap;}
+.faq-title em::after{content:"";position:absolute;left:-.04em;right:-.04em;bottom:.07em;height:.32em;z-index:-1;
+  background:linear-gradient(90deg,rgba(188,212,26,.75),rgba(188,212,26,.35));border-radius:3px;transform:skewX(-6deg);}
+.faq-sub{margin-top:1.1rem;max-width:38ch;font-size:clamp(1rem,1.2vw,1.1rem);line-height:1.65;color:var(--ob2);}
+.faq-img{position:relative;margin-top:clamp(1.6rem,3vw,2.4rem);border-radius:24px;overflow:hidden;aspect-ratio:4/3;
+  background:linear-gradient(160deg,#eef0e6,#e1e5d2);border:1px solid rgba(255,255,255,.8);
+  box-shadow:0 30px 70px rgba(80,66,48,.2),inset 0 1px 0 rgba(255,255,255,.9);}
+.faq-img img{width:100%;height:100%;object-fit:cover;}
+
+/* — droite : filtre + accordéon — */
+.faq-filter{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:clamp(1.2rem,2vw,1.6rem);}
+.faq-chip{font-family:var(--sky);font-size:.82rem;font-weight:600;color:var(--ob2);cursor:pointer;padding:9px 16px;border-radius:50px;
+  border:1px solid rgba(21,20,18,.1);background:rgba(255,255,255,.55);
+  transition:background .25s,color .25s,border-color .25s,transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s;}
+.faq-chip:hover{transform:translateY(-1px);background:#fff;}
+.faq-chip.on{background:var(--lime);color:var(--ob);border-color:transparent;font-weight:700;box-shadow:0 8px 20px rgba(188,212,26,.4);}
+
+.faq-list{display:flex;flex-direction:column;gap:.7rem;}
+.faq-item{border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.8);
+  background:linear-gradient(160deg,rgba(255,255,255,.7),rgba(255,255,255,.42));
+  backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);
+  box-shadow:0 16px 38px rgba(80,66,48,.1),inset 0 1px 0 rgba(255,255,255,.9);
+  opacity:0;transform:translateY(14px);
+  transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1),box-shadow .35s,border-color .35s;}
+.faq.in .faq-item{opacity:1;transform:none;}
+.faq.in .faq-item:nth-child(2){transition-delay:.05s}.faq.in .faq-item:nth-child(3){transition-delay:.1s}
+.faq.in .faq-item:nth-child(4){transition-delay:.15s}.faq.in .faq-item:nth-child(5){transition-delay:.2s}
+.faq-item.open{border-color:rgba(188,212,26,.5);box-shadow:0 22px 50px rgba(80,66,48,.16);}
+
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;cursor:pointer;
+  background:none;border:0;text-align:left;font:inherit;color:var(--ob);padding:clamp(1rem,1.6vw,1.3rem) clamp(1.1rem,1.8vw,1.5rem);}
+.faq-qt{font-family:var(--sky);font-size:clamp(.98rem,1.2vw,1.08rem);font-weight:600;letter-spacing:-.2px;line-height:1.3;}
+.faq-ico{position:relative;flex:none;width:34px;height:34px;border-radius:50%;background:var(--ob);transition:background .3s;}
+.faq-ico::before,.faq-ico::after{content:"";position:absolute;left:50%;top:50%;border-radius:2px;background:#fff;
+  transition:transform .38s cubic-bezier(.22,1,.36,1),opacity .3s,background .3s;}
+.faq-ico::before{width:13px;height:2px;transform:translate(-50%,-50%);}
+.faq-ico::after{width:2px;height:13px;transform:translate(-50%,-50%);}
+.faq-item.open .faq-ico{background:var(--lime);}
+.faq-item.open .faq-ico::before,.faq-item.open .faq-ico::after{background:var(--ob);}
+.faq-item.open .faq-ico::after{transform:translate(-50%,-50%) scaleY(0);opacity:0;}   /* + → − */
+.faq-q:hover .faq-ico{filter:brightness(1.08);}
+
+/* accordéon : 0fr → 1fr (pur CSS, hauteur auto, aucun bug) */
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .42s cubic-bezier(.22,1,.36,1);}
+.faq-item.open .faq-a{grid-template-rows:1fr;}
+.faq-a-in{overflow:hidden;min-height:0;}
+.faq-a-in p{font-size:clamp(.9rem,1.05vw,.98rem);line-height:1.62;color:var(--ob2);max-width:62ch;
+  padding:0 clamp(1.1rem,1.8vw,1.5rem) clamp(1.1rem,1.7vw,1.4rem);}
+
+@media(max-width:880px){
+  .faq-wrap{grid-template-columns:1fr;gap:clamp(1.6rem,4vw,2.4rem);}
+  .faq-aside{position:static;}
+  .faq-img{aspect-ratio:16/9;max-height:300px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .faq-a{transition:none;}.faq-ico,.faq-ico::before,.faq-ico::after{transition:none;}.faq-item{opacity:1;transform:none;}
+}
+
+/* titre FAQ : révélation façon Apple (focus-pull mot à mot) */
+.faq-title .rw{display:inline-block;will-change:transform,opacity,filter;
+  opacity:0;transform:translateY(.6em) scale(.94);filter:blur(14px);
+  transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.22,1,.36,1);
+  transition-delay:calc(var(--i,0) * 52ms);}
+.faq-title.lit .rw{opacity:1;transform:none;filter:blur(0);}
+@media(prefers-reduced-motion:reduce){.faq-title .rw{opacity:1!important;transform:none!important;filter:none!important;}}
+
+  
 </style></head>
 
 
@@ -2648,6 +2726,24 @@ body{
         <a href="simulation.html" class="gh-btn">Faire ma simulation</a>
         <a href="simulation.html" class="gh-arrow" aria-label="Lancer">→</a>
       </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ═══════ FAQ — questions filtrables ═══════ -->
+<section class="faq" id="faq">
+  <div class="faq-wrap">
+    <div class="faq-aside">
+      <span class="faq-eye">FAQ · On répond à tout</span>
+      <h2 class="faq-title">Vos questions,<br/><em>nos réponses.</em></h2>
+      <p class="faq-sub">Les réponses aux questions qu'on nous pose le plus souvent. Filtrez par thème — et si la vôtre manque, appelez-nous, on adore expliquer.</p>
+      <div class="faq-img">
+        <img src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/pointd'interrogation.jpg" alt="Questions fréquentes" loading="lazy"/>
+      </div>
+    </div>
+    <div class="faq-main">
+      <div class="faq-filter" id="faqFilter"></div>
+      <div class="faq-list" id="faqList"></div>
     </div>
   </div>
 </section>
@@ -3707,6 +3803,87 @@ addEventListener('load',function(){
     if(!t.classList.contains('lit')){near(t)?t.classList.add('lit'):rest=true;}});
     if(!rest)removeEventListener('scroll',check);}
   addEventListener('scroll',check,{passive:true});check();
+})();
+
+
+  /* ─── FAQ : filtre par catégorie + accordéon + titre révélé ─── */
+(function(){
+  var sec=document.getElementById('faq'); if(!sec) return;
+
+  /* ⚠️ Tes questions ici — c = catégorie (une nouvelle catégorie crée automatiquement son filtre). */
+  var DATA=[
+    {c:"Capacité & budget", q:"Mon salaire est-il suffisant pour emprunter seul ?", a:"Il n'y a pas de salaire minimum universel : ce qui compte, c'est votre reste à vivre et votre taux d'endettement. On calcule gratuitement votre capacité réelle et on cible les banques les plus souples pour votre profil."},
+    {c:"Capacité & budget", q:"Puis-je emprunter sans apport personnel ?", a:"Oui, le financement à 110 % (prix + frais) existe encore, surtout pour les profils stables et les jeunes actifs. Un apport aide à négocier, mais ce n'est pas un prérequis absolu : on monte le dossier pour le valoriser."},
+    {c:"Capacité & budget", q:"Le taux d'endettement de 35 % est-il une limite absolue ?", a:"C'est la règle du HCSF, mais les banques gardent une marge de dérogation. Avec un bon reste à vivre ou du patrimoine, on peut parfois la dépasser — on sait à quelle porte frapper."},
+    {c:"Taux & coût", q:"Pouvez-vous vraiment obtenir un meilleur taux que ma banque ?", a:"Dans la grande majorité des cas, oui. On met 20+ banques en concurrence : quelques dixièmes de point négociés, c'est souvent plusieurs milliers d'euros d'intérêts en moins sur la durée."},
+    {c:"Taux & coût", q:"Combien coûte un courtier ?", a:"Rien tant que votre prêt n'est pas signé. Nos honoraires ne sont dus qu'une fois le crédit débloqué — et ils sont presque toujours couverts par ce qu'on vous fait économiser."},
+    {c:"Taux & coût", q:"Quelle durée de prêt choisir ?", a:"Plus la durée est longue, plus la mensualité baisse… mais plus le coût total monte. On simule plusieurs scénarios (15, 20, 25 ans) pour trouver l'équilibre entre mensualité confortable et coût maîtrisé."},
+    {c:"Dossier & accord", q:"Mon dossier est atypique (indépendant, CDD, peu d'apport) — est-ce possible ?", a:"C'est justement là qu'un courtier change tout. On sait quelles banques disent oui à votre profil et comment présenter votre dossier pour débloquer la situation."},
+    {c:"Dossier & accord", q:"Quels documents dois-je fournir ?", a:"Pièce d'identité, 3 derniers bulletins de salaire, 2 derniers avis d'imposition, relevés de compte et justificatif d'apport. On vous envoie une checklist claire et on assemble le dossier pour vous."},
+    {c:"Dossier & accord", q:"Un accord de principe garantit-il mon prêt ?", a:"Pas tout à fait : c'est un feu vert sous réserve de l'étude finale (assurance, garantie, pièces). On sécurise chaque étape jusqu'à l'offre éditée pour éviter les mauvaises surprises."},
+    {c:"Assurance & sécurité", q:"Suis-je obligé de prendre l'assurance de la banque ?", a:"Non. Vous êtes libre de choisir votre assurance emprunteur (délégation). En direct fournisseur, elle est souvent 2× moins chère à garanties équivalentes — on compare pour vous."},
+    {c:"Assurance & sécurité", q:"Puis-je changer d'assurance après la signature ?", a:"Oui, à tout moment grâce à la loi Lemoine, sans frais ni pénalité. C'est souvent là qu'on récupère plusieurs milliers d'euros."},
+    {c:"Assurance & sécurité", q:"Que se passe-t-il en cas de coup dur (maladie, accident) ?", a:"C'est le rôle de l'assurance emprunteur (garanties décès, invalidité, parfois perte d'emploi). On calibre les garanties selon votre situation pour que votre projet reste protégé."},
+    {c:"Aides & courtier", q:"Un courtier est-il vraiment utile ?", a:"Il vous fait gagner du temps, de l'argent et de la sérénité : banques mises en concurrence, dossier optimisé, un seul interlocuteur — et tout ça sans frais tant que vous n'avez pas signé."},
+    {c:"Aides & courtier", q:"Ai-je droit à des prêts aidés (PTZ, etc.) ?", a:"Peut-être : PTZ pour un premier achat, prêt Action Logement, prêts régionaux… On vérifie votre éligibilité et on les intègre à votre plan de financement."},
+    {c:"Aides & courtier", q:"Vais-je avoir un seul interlocuteur ?", a:"Oui. Le même courtier vous suit du premier rendez-vous à la remise des clés. Jamais de call center, jamais de dossier qui change de mains."},
+    {c:"Après le prêt", q:"Puis-je rembourser par anticipation ?", a:"Oui. Des indemnités peuvent s'appliquer (plafonnées à 6 mois d'intérêts ou 3 % du capital restant), mais on peut négocier leur suppression dès la signature — pensez-y."},
+    {c:"Après le prêt", q:"Puis-je réduire mes mensualités en cas de besoin ?", a:"Souvent oui : modulation des échéances à la baisse, ou report. La plupart des contrats le permettent. On choisit dès le départ une offre avec de la souplesse."},
+    {c:"Après le prêt", q:"Quand renégocier mon crédit ?", a:"Dès que l'écart de taux atteint environ 1 % et qu'il vous reste assez de capital et de durée. On surveille ça pour vous — et la 1ʳᵉ renégociation est offerte."}
+  ];
+
+  var CATS=['Tout']; DATA.forEach(function(d){if(CATS.indexOf(d.c)<0)CATS.push(d.c);});
+  var filterEl=sec.querySelector('#faqFilter'), listEl=sec.querySelector('#faqList');
+
+  filterEl.innerHTML=CATS.map(function(c,i){return '<button class="faq-chip'+(i===0?' on':'')+'" type="button" data-cat="'+c+'">'+c+'</button>';}).join('');
+  listEl.innerHTML=DATA.map(function(d){
+    return '<div class="faq-item" data-cat="'+d.c+'">'
+      +'<button class="faq-q" type="button" aria-expanded="false"><span class="faq-qt">'+d.q+'</span><span class="faq-ico" aria-hidden="true"></span></button>'
+      +'<div class="faq-a"><div class="faq-a-in"><p>'+d.a+'</p></div></div></div>';
+  }).join('');
+
+  var items=[].slice.call(listEl.querySelectorAll('.faq-item'));
+  function setExp(it,v){it.querySelector('.faq-q').setAttribute('aria-expanded',v?'true':'false');}
+  items.forEach(function(it){it.querySelector('.faq-q').addEventListener('click',function(){setExp(it,it.classList.toggle('open'));});});
+
+  filterEl.addEventListener('click',function(e){
+    var b=e.target.closest('.faq-chip'); if(!b)return;
+    [].forEach.call(filterEl.children,function(x){x.classList.toggle('on',x===b);});
+    var cat=b.getAttribute('data-cat'),first=null;
+    items.forEach(function(it){
+      var show=(cat==='Tout'||it.getAttribute('data-cat')===cat);
+      it.style.display=show?'':'none'; it.classList.remove('open'); setExp(it,false);
+      if(show&&!first)first=it;
+    });
+    if(first){first.classList.add('open');setExp(first,true);}
+  });
+
+  if(items[0]){items[0].classList.add('open');setExp(items[0],true);}   /* 1re ouverte */
+
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){sec.classList.add('in');io.disconnect();}});},{threshold:.12});
+    io.observe(sec);
+  }else sec.classList.add('in');
+
+  /* titre : révélation façon Apple (autonome) */
+  var title=sec.querySelector('.faq-title');
+  if(title && !title.dataset.split){
+    title.dataset.split='1'; var idx=0, frag=document.createDocumentFragment();
+    (function walk(src,dst){[].slice.call(src.childNodes).forEach(function(n){
+      if(n.nodeType===3){n.textContent.split(/(\s+)/).forEach(function(p){
+        if(!p)return; if(/^\s+$/.test(p)){dst.appendChild(document.createTextNode(' '));return;}
+        var w=document.createElement('span');w.className='rw';w.style.setProperty('--i',idx++);w.textContent=p;dst.appendChild(w);});
+      }else if(n.nodeType===1){if(n.tagName==='BR'){dst.appendChild(document.createElement('br'));return;}var cl=n.cloneNode(false);dst.appendChild(cl);walk(n,cl);}
+    });})(title,frag);
+    title.textContent=''; title.appendChild(frag);
+    var lit=function(){title.classList.add('lit');};
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches){lit();}
+    else{
+      if('IntersectionObserver' in window){var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){lit();io2.unobserve(title);}});},{threshold:.4});io2.observe(title);}
+      var chk=function(){var r=title.getBoundingClientRect();if(r.top<innerHeight*0.85&&r.bottom>innerHeight*0.05){lit();removeEventListener('scroll',chk);}};
+      addEventListener('scroll',chk,{passive:true});chk();
+    }
+  }
 })();
   
 </script>
