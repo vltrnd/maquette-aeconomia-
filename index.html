@@ -722,35 +722,21 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   .rate-wrap{grid-template-columns:1fr;gap:2.4rem;}
 }
 @media(prefers-reduced-motion:reduce){.rate-glow i,.rate-eco::before{animation:none;}}
-  /* ════════ CTA VIDÉO — fond vidéo parallax + calque noir 20% + lumière ════════ */
-.vcta{position:relative;z-index:2;overflow:hidden;isolation:isolate;
-  min-height:clamp(460px,84vh,860px);display:flex;align-items:center;justify-content:center;background:#0d0c0a;}
-.vcta-bg{position:absolute;inset:-16% 0;z-index:0;will-change:transform;}
+/* ════════ CTA VIDÉO — cadre qui s'élargit au scroll + parallax fort ════════ */
+.vcta{position:relative;z-index:2;background:transparent;overflow:visible;isolation:isolate;
+  min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;}
+.vcta-frame{position:relative;overflow:hidden;background:#0d0c0a;
+  width:var(--vw,86vw);height:var(--vh,80vh);border-radius:var(--vr,32px);
+  box-shadow:0 50px 120px rgba(20,19,16,.32);
+  display:flex;align-items:center;justify-content:center;
+  will-change:width,height,border-radius;}
+.vcta-bg{position:absolute;inset:-40% 0;z-index:0;will-change:transform;}
 .vcta-bg video{width:100%;height:100%;object-fit:cover;}
-  
-/* calque noir 20% */
-.vcta::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:rgba(0,0,0,.2);}
-/* effet de lumière : halo marque + vignette + grille fine */
-  /* 2ᵉ vidéo uniquement : calque blanc au lieu du noir (réglable .05–.20) */
-/* ── 2ᵉ vidéo : voile blanc renforcé + texte foncé ── */
-.vcta-light{position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:
-    radial-gradient(58% 52% at 50% 30%,rgba(188,212,26,.15),transparent 62%),
-    radial-gradient(95% 85% at 50% 50%,transparent 52%,rgba(6,6,5,.6)),
-    linear-gradient(180deg,rgba(6,6,5,.34),transparent 24%,transparent 62%,rgba(6,6,5,.5));}
-.vcta-light::before{content:"";position:absolute;inset:0;
-  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
-                   linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
-  background-size:50% 33.33%;}
-/* faisceau lumineux qui balaie */
-.vcta-beam{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;}
-.vcta-beam::before{content:"";position:absolute;top:-50%;left:-40%;width:50%;height:200%;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.12) 50%,transparent);
-  transform:rotate(10deg);filter:blur(8px);animation:vbeam 9s ease-in-out infinite;}
-@keyframes vbeam{0%{transform:translateX(0) rotate(10deg);opacity:0;}
-  42%,58%{opacity:.9;}100%{transform:translateX(360%) rotate(10deg);opacity:0;}}
+/* voile noir léger uniforme : lisibilité + unification */
+.vcta-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,7,6,.34),rgba(8,7,6,.46) 60%,rgba(8,7,6,.56));}
 /* texte */
-.vcta-inner{position:relative;z-index:3;text-align:center;color:#fff;max-width:920px;padding:clamp(4rem,9vw,7rem) 6vw;}
+.vcta-inner{position:relative;z-index:2;text-align:center;color:#fff;max-width:920px;padding:clamp(3rem,8vw,7rem) 6vw;}
 .vcta-k{font-family:var(--sky);font-size:.66rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:1.4rem;}
 .vcta-h{font-family:var(--body);font-weight:800;font-size:clamp(2.3rem,6vw,4.8rem);line-height:1.02;letter-spacing:-2.2px;text-shadow:0 2px 40px rgba(0,0,0,.45);}
 .vcta-h em{font-style:italic;font-weight:800;color:var(--cream);}
@@ -761,7 +747,8 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .vcta-btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(188,212,26,.5);}
 .vcta-btn.ghost{background:rgba(250,250,248,.1);color:#fff;border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(8px);}
 .vcta-btn.ghost:hover{transform:translateY(-2px);background:rgba(250,250,248,.2);}
-@media(prefers-reduced-motion:reduce){.vcta-bg{transform:none!important;}.vcta-beam{display:none;}}
+@media(max-width:760px){ .vcta{min-height:88vh;} .vcta-frame{--vw:92vw;--vh:74vh;} }
+@media(prefers-reduced-motion:reduce){ .vcta-frame{--vw:100vw!important;--vh:100vh!important;--vr:0px!important;} .vcta-bg{transform:none!important;} }
 
 /* version empilée (mobile + reduced-motion) */
 .broker-mobile{display:none;}
@@ -2474,44 +2461,47 @@ body{
   </div>
 </section>
 
-  <!-- ═══════ CTA VIDÉO — fond vidéo en parallax ═══════ -->
+
+
+
+
+
+<!-- ═══════ CTA VIDÉO 1 ═══════ -->
 <section class="vcta" id="vcta">
-  <div class="vcta-bg">
-    <video id="vctaVid" muted loop playsinline preload="auto">
-      <source src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/videodefond.mp4" type="video/mp4"/>
-    </video>
-  </div>
-  <div class="vcta-light"></div>
-  <div class="vcta-beam"></div>
-  <div class="vcta-inner">
-    <div class="vcta-k">Prêt à concrétiser votre projet ?</div>
-    <h2 class="vcta-h">Le bon taux,<br/><em>au bon moment.</em></h2>
-    <p class="vcta-p">Nos courtiers négocient pour vous auprès de 20+ banques partenaires — sans frais d'avance, avec un seul interlocuteur du début à la fin.</p>
-    <div class="vcta-btns">
-      <a href="simulation.html" class="vcta-btn primary">Lancer ma simulation →</a>
-      <a href="tel:0279414243" class="vcta-btn ghost">📞 02 79 41 42 43</a>
+  <div class="vcta-frame">
+    <div class="vcta-bg">
+      <video id="vctaVid" muted loop playsinline preload="auto">
+        <source src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/videodefond.mp4" type="video/mp4"/>
+      </video>
+    </div>
+    <div class="vcta-veil"></div>
+    <div class="vcta-inner">
+      <div class="vcta-k">Prêt à concrétiser votre projet ?</div>
+      <h2 class="vcta-h">Le bon taux,<br/><em>au bon moment.</em></h2>
+      <p class="vcta-p">Nos courtiers négocient pour vous auprès de 20+ banques partenaires — sans frais d'avance, avec un seul interlocuteur du début à la fin.</p>
+      <div class="vcta-btns">
+        <a href="simulation.html" class="vcta-btn primary">Lancer ma simulation →</a>
+        <a href="tel:0279414243" class="vcta-btn ghost">📞 02 79 41 42 43</a>
+      </div>
     </div>
   </div>
 </section>
 
-
-
-
-
-  <!-- ═══════ CTA VIDÉO 2 — fond vidéo en parallax ═══════ -->
+<!-- ═══════ CTA VIDÉO 2 ═══════ -->
 <section class="vcta" id="vcta3">
-  <div class="vcta-bg">
-    <video muted loop playsinline preload="auto">
-      <source src="https://aeconomia.fr/wp-content/uploads/2026/06/deuxiemevideodefondparralax.mp4" type="video/mp4"/>
-    </video>
-  </div>
-  <div class="vcta-light"></div>
-  <div class="vcta-beam"></div>
-  <div class="vcta-inner">
-    <div class="vcta-k">L'esprit tranquille</div>
-        <h2 class="vcta-h">Concentrez-vous sur l'essentiel, <em>nous, on s'occupe du reste.</em></h2>
-    <div class="vcta-btns">
-      <a href="simulation.html" class="vcta-btn primary">Démarrer mon projet →</a>
+  <div class="vcta-frame">
+    <div class="vcta-bg">
+      <video muted loop playsinline preload="auto">
+        <source src="https://aeconomia.fr/wp-content/uploads/2026/06/deuxiemevideodefondparralax.mp4" type="video/mp4"/>
+      </video>
+    </div>
+    <div class="vcta-veil"></div>
+    <div class="vcta-inner">
+      <div class="vcta-k">L'esprit tranquille</div>
+      <h2 class="vcta-h">Concentrez-vous sur l'essentiel, <em>nous, on s'occupe du reste.</em></h2>
+      <div class="vcta-btns">
+        <a href="simulation.html" class="vcta-btn primary">Démarrer mon projet →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -3092,50 +3082,52 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   addEventListener('resize',function(){desktop=matchMedia('(min-width:1025px)').matches;reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;read();});
 })();
 
-/* ─── VIDÉO CTA : démarrage anticipé (≈1 écran avant) + parallax ─── */
-(function(){
-  var sec=document.getElementById('vcta');if(!sec)return;
-  var bg=sec.querySelector('.vcta-bg'),vid=document.getElementById('vctaVid'),
-      reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,ticking=false;
-  if(vid&&'IntersectionObserver' in window){
-    var m=Math.round(innerHeight);
-    new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting){var p=vid.play();if(p&&p.catch)p.catch(function(){});}
-      else vid.pause();
-    });},{rootMargin:m+'px 0px '+m+'px 0px'}).observe(sec);
-  }else if(vid&&vid.play){vid.play();}
-  if(bg&&!reduce){
-    var update=function(){ticking=false;var r=sec.getBoundingClientRect();
-      if(r.bottom>0&&r.top<innerHeight)
-        bg.style.transform='translate3d(0,'+((r.top+r.height/2-innerHeight/2)*-0.10).toFixed(1)+'px,0)';};
-    addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
-    addEventListener('resize',update);update();
-  }
-})();
-
-
-
   
-/* ─── VIDÉO CTA 3 : démarrage anticipé + parallax ─── */
+/* ─── CTA VIDÉO : cadre qui s'élargit au scroll + parallax FORT ─── */
 (function(){
-  var sec=document.getElementById('vcta3');if(!sec)return;
-  var bg=sec.querySelector('.vcta-bg'),vid=sec.querySelector('video'),
-      reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,ticking=false;
-  if(vid&&'IntersectionObserver' in window){
-    var m=Math.round(innerHeight);
-    new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting){var p=vid.play();if(p&&p.catch)p.catch(function(){});}
-      else vid.pause();
-    });},{rootMargin:m+'px 0px '+m+'px 0px'}).observe(sec);
-  }else if(vid&&vid.play){vid.play();}
-  if(bg&&!reduce){
-    var update=function(){ticking=false;var r=sec.getBoundingClientRect();
-      if(r.bottom>0&&r.top<innerHeight)
-        bg.style.transform='translate3d(0,'+((r.top+r.height/2-innerHeight/2)*-0.10).toFixed(1)+'px,0)';};
-    addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
-    addEventListener('resize',update);update();
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function ease(t){return 1-Math.pow(1-t,3);}
+  function setup(sec){
+    var frame=sec.querySelector('.vcta-frame'),
+        bg=sec.querySelector('.vcta-bg'),
+        vid=sec.querySelector('video'),
+        reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,
+        ticking=false;
+    if(!frame)return;
+
+    if(reduce){ frame.style.width='100vw';frame.style.height='100vh';frame.style.borderRadius='0'; }
+    else{
+      var read=function(){
+        ticking=false;
+        var vh=innerHeight, r=sec.getBoundingClientRect(), c=r.top+r.height/2;
+        var small=innerWidth<=760, sw=small?92:86, sh=small?74:80;
+        var e=ease(clamp((vh-c)/(vh*0.5),0,1));          // 0 (entrée, marges) → 1 (centré, plein écran)
+        var H=sh+(100-sh)*e;
+        frame.style.width=(sw+(100-sw)*e).toFixed(2)+'vw';
+        frame.style.height=H.toFixed(2)+'vh';
+        frame.style.borderRadius=(32*(1-e)).toFixed(1)+'px';
+        if(bg){                                           // parallax FORT, borné aux marges du cadre
+          var maxShift=0.40*(H/100*vh)-14;
+          bg.style.transform='translate3d(0,'+clamp(((c-vh/2)/vh)*420,-maxShift,maxShift).toFixed(1)+'px,0)';
+        }
+      };
+      var onScroll=function(){if(!ticking){ticking=true;requestAnimationFrame(read);}};
+      read();
+      addEventListener('scroll',onScroll,{passive:true});
+      addEventListener('resize',read);
+    }
+
+    /* lecture vidéo selon visibilité (anticipée d'un écran) */
+    if(vid&&'IntersectionObserver' in window){
+      var m=Math.round(innerHeight);
+      new IntersectionObserver(function(es){es.forEach(function(x){
+        if(x.isIntersecting){var p=vid.play();if(p&&p.catch)p.catch(function(){});}else vid.pause();
+      });},{rootMargin:m+'px 0px '+m+'px 0px'}).observe(sec);
+    }else if(vid&&vid.play){vid.play();}
   }
+  ['vcta','vcta3'].forEach(function(id){var s=document.getElementById(id);if(s)setup(s);});
 })();
+  
 
 
 /* ─── GLASS HERO : parallax du fond + inclinaison & lumière au survol ─── */
