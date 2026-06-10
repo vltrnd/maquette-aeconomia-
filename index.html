@@ -75,9 +75,8 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 @keyframes brandPop{0%{transform:translateY(116%) scale(.9);opacity:0;filter:blur(7px)}
   55%{transform:translateY(0) scale(1.05);opacity:1;filter:blur(0)}100%{transform:translateY(0) scale(1)}}
 .roll-word.brand .roll-dot{animation:dotPulse 1.6s ease-in-out infinite;}
+.roll-word.brand .roll-dot{animation:dotPulse 1.6s ease-in-out infinite;}
 @keyframes dotPulse{0%,100%{opacity:.78}50%{opacity:1}}
-}
-
 
 /* ── Barre ── */
 .load{width:100%;display:flex;flex-direction:column;gap:.7rem;}
@@ -98,6 +97,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
   .roll-word.enter,.roll-word.leave{transform:none;filter:none;}
   .roll-word.brand.show{animation:none;}
   .roll-win.scan::after,.load-bar i::after,.roll-word.brand .roll-dot{animation:none;}
+}
 
 
 /* ════════ HERO ════════ */
