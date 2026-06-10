@@ -1421,7 +1421,10 @@ body.pass-locked{overflow:hidden;}
   background-image:url("https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/testfond1.png"),linear-gradient(140deg,#cdd3c6,#e7e0d2 60%,#d7dccb);}
 /* voile blanc → texte foncé + verre restent lisibles (baisse les .80/.84 si tu veux voir + l'image) */
 .vsx-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(255,255,255,.80),rgba(255,255,255,.64) 44%,rgba(247,243,236,.84));}
+  background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.30) 38%,rgba(247,243,236,.5));}
+/* l'image reste lisible derrière le titre (comme le header) */
+#vs .vsx-title{text-shadow:0 1px 22px rgba(255,255,255,.65);}
+#vs .vsx-sub{text-shadow:0 1px 16px rgba(255,255,255,.6);}
 /* faisceau de lumière qui balaie */
 .vsx-beam{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
 .vsx-beam::before{content:"";position:absolute;top:-60%;left:-30%;width:38%;height:220%;
@@ -1578,31 +1581,54 @@ body.pass-locked{overflow:hidden;}
 }
   
 /* ════════════════════════════════════════════════════════
-   CE QUE LES AUTRES N'ONT PAS — scorecard (verre · colonne Aeconomia)
+   CE QUE LES AUTRES N'ONT PAS — verre sur image (comme le header)
    ════════════════════════════════════════════════════════ */
-.edge{position:relative;z-index:2;overflow:hidden;background:var(--cream);
-  padding:clamp(3.4rem,6.5vw,6rem) clamp(1.2rem,5vw,4.5rem) clamp(3.6rem,6vw,6rem);}
-.edge-glow{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
-.edge-glow i{position:absolute;border-radius:50%;filter:blur(90px);}
-.edge-glow i:nth-child(1){width:540px;height:540px;left:-5%;top:-10%;background:rgba(255,255,255,.8);opacity:.65;}
-.edge-glow i:nth-child(2){width:520px;height:520px;right:-4%;bottom:-18%;background:rgba(255,251,244,.92);opacity:.6;}
-
-.edge-head{position:relative;z-index:1;text-align:center;max-width:820px;margin:0 auto clamp(1.9rem,3.6vw,2.8rem);}
+.edge{position:relative;z-index:2;overflow:hidden;isolation:isolate;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(3rem,6vw,5.5rem) clamp(1.1rem,5vw,4rem);}
+/* le RECTANGLE à radius (masque d'écrêtage) : image + verre dedans */
+.edge-frame{position:relative;z-index:1;width:min(1180px,100%);overflow:hidden;isolation:isolate;
+  border-radius:clamp(26px,3vw,40px);
+  background:linear-gradient(180deg,#ffffff,#f7f3ec);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 50px 120px rgba(80,66,48,.22),inset 0 1px 0 rgba(255,255,255,.95);
+  padding:clamp(1.8rem,3.4vw,3rem) clamp(1.1rem,2.6vw,2.4rem) clamp(1.6rem,3vw,2.4rem);}
+/* image de fond en PARALLAX, écrêtée par le radius du cadre */
+.edge-bg{position:absolute;inset:-16% 0 0;z-index:0;will-change:transform;background-position:center;background-size:cover;background-repeat:no-repeat;
+  background-image:url("https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/testfond2.png"),linear-gradient(140deg,#cdd3c6,#e7e0d2 60%,#d7dccb);}
+/* voile : image VISIBLE (comme le header) mais texte lisible */
+.edge-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.30) 38%,rgba(247,243,236,.5));}
+/* faisceau + reflet + lueur curseur */
+.edge-beam{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
+.edge-beam::before{content:"";position:absolute;top:-60%;left:-30%;width:38%;height:220%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55) 50%,transparent);
+  transform:rotate(12deg);filter:blur(16px);animation:edgeBeam 10s ease-in-out infinite;}
+@keyframes edgeBeam{0%{transform:translateX(-30%) rotate(12deg);opacity:0}42%,55%{opacity:.8}100%{transform:translateX(430%) rotate(12deg);opacity:0}}
+.edge-sheen{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.45) 50%,transparent 60%);
+  background-size:260% 100%;animation:edgeSheenF 10s ease-in-out infinite;mix-blend-mode:overlay;}
+@keyframes edgeSheenF{0%{background-position:170% 0}55%,100%{background-position:-70% 0}}
+.edge-cur{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(300px 300px at var(--mx,50%) var(--my,50%),rgba(255,255,255,.5),transparent 60%);mix-blend-mode:overlay;}
+.edge-frame:hover .edge-cur{opacity:1;}
+/* contenu au-dessus de l'image */
+.edge-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:clamp(1.3rem,2.4vw,1.9rem);}
+/* en-tête (lisible sur l'image via ombre douce) */
+.edge-head{position:relative;z-index:1;text-align:center;max-width:760px;}
 .edge-eye{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.64rem;font-weight:600;
-  letter-spacing:.26em;text-transform:uppercase;color:var(--sage2);
-  background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);padding:7px 15px;border-radius:50px;
-  box-shadow:0 6px 18px rgba(80,66,48,.08);}
+  letter-spacing:.26em;text-transform:uppercase;color:var(--sage2);}
 .edge-eye::before{content:"✦";color:var(--lime);font-size:.8rem;}
 .edge-title{font-family:var(--sky);font-weight:700;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.04;
-  letter-spacing:-1.8px;color:var(--ob);margin-top:1.05rem;}
+  letter-spacing:-1.8px;color:var(--ob);margin-top:.7rem;text-shadow:0 1px 22px rgba(255,255,255,.65);}
 .edge-title em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
-.edge-sub{margin:1.05rem auto 0;max-width:52ch;font-size:clamp(1rem,1.3vw,1.14rem);line-height:1.62;color:var(--ob2);}
-
-.edge-card{position:relative;z-index:1;max-width:1000px;margin:0 auto;border-radius:30px;overflow:hidden;
-  background:linear-gradient(160deg,rgba(255,255,255,.82),rgba(255,255,255,.52));
-  backdrop-filter:blur(30px) saturate(160%);-webkit-backdrop-filter:blur(30px) saturate(160%);
-  border:1px solid rgba(255,255,255,.82);
-  box-shadow:0 44px 110px rgba(80,66,48,.18),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 2px rgba(255,255,255,.4);}
+.edge-sub{margin:.8rem auto 0;max-width:54ch;font-size:clamp(1rem,1.3vw,1.12rem);line-height:1.6;color:var(--ob2);text-shadow:0 1px 16px rgba(255,255,255,.6);}
+/* carte verre (le tableau) — par-dessus l'image */
+.edge-card{position:relative;z-index:1;width:min(1000px,100%);border-radius:26px;overflow:hidden;
+  background:linear-gradient(160deg,rgba(255,255,255,.74),rgba(255,255,255,.46));
+  backdrop-filter:blur(32px) saturate(170%);-webkit-backdrop-filter:blur(32px) saturate(170%);
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:0 40px 100px rgba(80,66,48,.2),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 2px rgba(255,255,255,.4);}
 .edge-thead,.edge-row{display:grid;grid-template-columns:1fr 104px 124px;gap:.5rem;
   padding:clamp(.95rem,1.7vw,1.2rem) clamp(1.1rem,2.6vw,1.9rem);}
 .edge-thead{align-items:end;padding-top:clamp(1.2rem,2.2vw,1.7rem);border-bottom:1px solid rgba(21,20,18,.12);}
@@ -1613,7 +1639,6 @@ body.pass-locked{overflow:hidden;}
 .edge-thead .hlbl.aec b{display:inline-block;font-size:1rem;font-weight:700;color:var(--ob);letter-spacing:-.4px;
   border-bottom:2px solid var(--lime);padding-bottom:2px;margin-top:2px;}
 .edge-thead .htitle{font-family:var(--sky);font-size:.62rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);align-self:end;}
-
 .edge-row{align-items:center;border-bottom:1px solid rgba(21,20,18,.07);}
 .edge-row:last-child{border-bottom:0;}
 .edge-info .t{font-family:var(--sky);font-weight:700;font-size:clamp(.98rem,1.3vw,1.1rem);color:var(--ob);
@@ -1628,15 +1653,13 @@ body.pass-locked{overflow:hidden;}
 .edge-mark.yes{background:var(--lime);color:var(--ob);font-weight:800;box-shadow:0 6px 16px rgba(188,212,26,.5);
   transform:scale(.4);opacity:0;transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .4s;}
 .edge.in .edge-mark.yes{transform:scale(1);opacity:1;}
-
 .edge-row{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);}
 .edge.in .edge-row{opacity:1;transform:none;}
-
-.edge-foot{position:relative;z-index:1;max-width:1000px;margin:clamp(1.6rem,3vw,2.2rem) auto 0;
-  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.6rem;}
+/* pied : chips + CTA (sur le verre) */
+.edge-foot{position:relative;z-index:1;width:min(1000px,100%);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.6rem;}
 .edge-chips{display:flex;flex-wrap:wrap;gap:.55rem;}
 .edge-chip{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sky);font-size:.72rem;font-weight:600;
-  color:var(--ob2);background:rgba(255,255,255,.7);border:1px solid rgba(21,20,18,.08);padding:8px 14px;border-radius:50px;
+  color:var(--ob2);background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.85);padding:8px 14px;border-radius:50px;
   box-shadow:0 6px 16px rgba(80,66,48,.07);}
 .edge-chip b{color:var(--ob);font-weight:700;}
 .edge-cta{position:relative;overflow:hidden;flex:none;display:inline-flex;align-items:center;gap:.7rem;
@@ -1645,11 +1668,10 @@ body.pass-locked{overflow:hidden;}
   transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;}
 .edge-cta:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(188,212,26,.6);}
 .edge-cta i{font-style:normal;transition:transform .35s;}.edge-cta:hover i{transform:translateX(5px);}
-
 @media(max-width:680px){
+  .edge-frame{padding:clamp(1.1rem,4vw,1.8rem) clamp(.7rem,3vw,1.2rem) clamp(1.2rem,4vw,1.8rem);}
   .edge-thead{display:none;}
-  .edge-row{grid-template-columns:1fr 1fr;grid-template-areas:"info info" "m1 m2";gap:.7rem .8rem;
-    padding-top:1.1rem;padding-bottom:1.1rem;}
+  .edge-row{grid-template-columns:1fr 1fr;grid-template-areas:"info info" "m1 m2";gap:.7rem .8rem;padding-top:1.1rem;padding-bottom:1.1rem;}
   .edge-info{grid-area:info;}
   .edge-mark:nth-of-type(2){grid-area:m1;}
   .edge-mark:nth-of-type(3){grid-area:m2;}
@@ -1660,53 +1682,10 @@ body.pass-locked{overflow:hidden;}
   .edge-foot{flex-direction:column;align-items:stretch;text-align:center;}
   .edge-cta{justify-content:center;}
 }
-@media(prefers-reduced-motion:reduce){.edge-row,.edge-mark.yes{opacity:1!important;transform:none!important;}}
-  /* ── CARTES ÉTAPES : typo repensée + gestion image ── */
-.scard-text{max-width:48ch;}
-.scard-step{display:inline-flex;align-items:center;gap:.65rem;
-  font-family:var(--sky);font-size:.68rem;font-weight:600;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--sage2);}
-.scard-step::before{content:"";width:26px;height:2px;background:var(--lime);border-radius:2px;}
-.scard-h{font-family:var(--sky);font-weight:700;font-size:clamp(2.2rem,3.9vw,3.5rem);
-  line-height:1.03;letter-spacing:-1.6px;color:var(--ob);margin-top:1.35rem;}
-.scard-h em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
-.scard-k{display:inline-block;font-family:var(--sky);font-size:.66rem;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--sage2);
-  margin-top:2.2rem;padding-top:1.5rem;border-top:1px solid rgba(21,20,18,.13);}
-.scard-p{font-family:var(--body);font-size:clamp(1.06rem,1.2vw,1.2rem);line-height:1.75;
-  color:var(--ob2);margin-top:1rem;max-width:42ch;}
-.scard-media:has(img){background:#e8e1d5;}
-.scard-media:has(img)::after{background:linear-gradient(to top,rgba(20,19,16,.16),transparent 42%);}
-/* reflet spéculaire qui balaie */
-.scard::before{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;pointer-events:none;
-  background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.55) 50%,transparent 62%);
-  background-size:250% 100%;animation:scardSheen 8s ease-in-out infinite;mix-blend-mode:overlay;}
-@keyframes scardSheen{0%{background-position:165% 0}55%,100%{background-position:-65% 0}}
-/* lueur blanche qui suit le curseur */
-.scard::after{content:"";position:absolute;inset:0;z-index:1;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s;
-  background:radial-gradient(260px 260px at var(--mx,50%) var(--my,50%),rgba(255,255,255,.6),transparent 60%);mix-blend-mode:overlay;}
-.scard:hover::after{opacity:1;}
-.scard-in{position:relative;z-index:2;}
-.scard-media{border:1px solid rgba(255,255,255,.6);box-shadow:0 16px 40px rgba(55,48,38,.18);}
-/* lumière NEUTRE derrière les cartes — que du blanc/beige, AUCUNE couleur */
-.steps{background:radial-gradient(130% 90% at 50% 0%,#FCF8F1,#EAE0CF 88%);}
-.steps-glow{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
-.steps-glow i{position:absolute;border-radius:50%;filter:blur(90px);}
-.steps-glow i:nth-child(1){width:620px;height:620px;left:-4%;top:8%;background:rgba(255,255,255,.85);opacity:.7;animation:sg1 24s ease-in-out infinite;}
-.steps-glow i:nth-child(2){width:520px;height:520px;right:-2%;top:30%;background:rgba(255,251,244,.9);opacity:.6;animation:sg2 28s ease-in-out infinite;}
-.steps-glow i:nth-child(3){width:680px;height:680px;left:32%;bottom:-6%;background:rgba(255,255,255,.7);opacity:.6;animation:sg3 30s ease-in-out infinite;}
-.steps-glow i:nth-child(4){width:460px;height:460px;right:16%;bottom:18%;background:rgba(244,233,214,.9);opacity:.5;animation:sg1 26s ease-in-out infinite;}
-@keyframes sg1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,50px) scale(1.16)}}
-@keyframes sg2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-70px,60px) scale(1.1)}}
-@keyframes sg3{0%,100%{transform:translate(0,0) scale(1.06)}50%{transform:translate(-60px,-50px) scale(.9)}}
-/* faisceau de lumière qui balaie la section */
-.steps-beam{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
-.steps-beam::before{content:"";position:absolute;top:-30%;left:-25%;width:34%;height:220%;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.6) 50%,transparent);
-  transform:rotate(12deg);filter:blur(30px);animation:stepsBeam 11s ease-in-out infinite;}
-@keyframes stepsBeam{0%{transform:translateX(-20%) rotate(12deg);opacity:0}45%,60%{opacity:.85}100%{transform:translateX(360%) rotate(12deg);opacity:0}}
-@media(prefers-reduced-motion:reduce){.scard::before,.scard::after,.steps-glow i,.steps-beam::before{animation:none;}}
-
+@media(prefers-reduced-motion:reduce){
+  .edge-bg{transform:none!important;}.edge-beam::before,.edge-sheen{animation:none;}
+  .edge-row,.edge-mark.yes{opacity:1!important;transform:none!important;}
+}
 
   /* ════════════════════════════════════════════════════════
    CTA BANDEAU LIME — brutalism (flèche épaisse)
@@ -2482,67 +2461,75 @@ body{
 
   
 <section class="edge" id="edge">
-  <div class="edge-glow"><i></i><i></i></div>
-  <div class="edge-head">
-    <span class="edge-eye">La différence Aeconomia</span>
-    <h2 class="edge-title">Ce que les autres<br/>n'ont <em>pas.</em></h2>
-    <p class="edge-sub">Local, humain, transparent. Voilà ce qui nous sépare d'un courtier classique ou d'une plateforme en ligne.</p>
-  </div>
+  <div class="edge-frame">
+    <div class="edge-bg" id="edgeBg" aria-hidden="true"></div>
+    <div class="edge-veil" aria-hidden="true"></div>
+    <span class="edge-beam" aria-hidden="true"></span>
+    <span class="edge-sheen" aria-hidden="true"></span>
+    <span class="edge-cur" aria-hidden="true"></span>
 
-  <div class="edge-card" id="edgeCard">
-    <div class="edge-thead">
-      <div class="htitle">L'avantage</div>
-      <div class="hlbl classic">Un courtier<b>classique</b></div>
-      <div class="hlbl aec"><b>Aeconomia</b></div>
-    </div>
+    <div class="edge-inner">
+      <div class="edge-head">
+        <span class="edge-eye">La différence Aeconomia</span>
+        <h2 class="edge-title">Ce que les autres<br/>n'ont <em>pas.</em></h2>
+        <p class="edge-sub">Local, humain, transparent. Voilà ce qui nous sépare d'un courtier classique ou d'une plateforme en ligne.</p>
+      </div>
 
-    <div class="edge-row">
-      <div class="edge-info"><div class="t">0 € de frais d'avance</div><div class="d">Vous ne payez que si votre crédit aboutit. Le sans-risque total.</div></div>
-      <div class="edge-mark mid">–</div>
-      <div class="edge-mark yes">✓</div>
-    </div>
-    <div class="edge-row">
-      <div class="edge-info"><div class="t">Assurance au prix fournisseur <span class="edge-excl">Exclusif</span></div><div class="d">Les tarifs en direct, souvent 2× moins chers que la banque — jusqu'à −50 %.</div></div>
-      <div class="edge-mark no">✕</div>
-      <div class="edge-mark yes">✓</div>
-    </div>
-    <div class="edge-row">
-      <div class="edge-info"><div class="t">1ʳᵉ renégociation offerte, à vie <span class="edge-excl">Exclusif</span></div><div class="d">Si les taux baissent d'au moins 1 %, on refait votre prêt. Offert, sans limite de durée.</div></div>
-      <div class="edge-mark no">✕</div>
-      <div class="edge-mark yes">✓</div>
-    </div>
-    <div class="edge-row">
-      <div class="edge-info"><div class="t">Un seul interlocuteur</div><div class="d">Le même expert du premier rendez-vous à la remise des clés. Jamais un call center.</div></div>
-      <div class="edge-mark no">✕</div>
-      <div class="edge-mark yes">✓</div>
-    </div>
-    <div class="edge-row">
-      <div class="edge-info"><div class="t">Une équipe locale 📍</div><div class="d">Des courtiers près de chez vous, en région Centre. On connaît vos banques et votre marché.</div></div>
-      <div class="edge-mark no">✕</div>
-      <div class="edge-mark yes">✓</div>
-    </div>
-    <div class="edge-row">
-      <div class="edge-info"><div class="t">20+ banques en concurrence</div><div class="d">Le vrai levier d'économie : on fait jouer la concurrence pour faire baisser votre taux.</div></div>
-      <div class="edge-mark mid">–</div>
-      <div class="edge-mark yes">✓</div>
-    </div>
-    <div class="edge-row">
-      <div class="edge-info"><div class="t">Disponible quand vous l'êtes</div><div class="d">Joignables le soir et le week-end, pas seulement aux horaires de bureau.</div></div>
-      <div class="edge-mark no">✕</div>
-      <div class="edge-mark yes">✓</div>
-    </div>
-  </div>
+      <div class="edge-card" id="edgeCard">
+        <div class="edge-thead">
+          <div class="htitle">L'avantage</div>
+          <div class="hlbl classic">Un courtier<b>classique</b></div>
+          <div class="hlbl aec"><b>Aeconomia</b></div>
+        </div>
 
-  <div class="edge-foot">
-    <div class="edge-chips">
-      <span class="edge-chip">📍 <b>Local</b> · région Centre</span>
-      <span class="edge-chip"><b>0 €</b> d'avance</span>
-      <span class="edge-chip"><b>1</b> interlocuteur, du début à la fin</span>
+        <div class="edge-row">
+          <div class="edge-info"><div class="t">0 € de frais d'avance</div><div class="d">Vous ne payez que si votre crédit aboutit. Le sans-risque total.</div></div>
+          <div class="edge-mark mid">–</div>
+          <div class="edge-mark yes">✓</div>
+        </div>
+        <div class="edge-row">
+          <div class="edge-info"><div class="t">Assurance au prix fournisseur <span class="edge-excl">Exclusif</span></div><div class="d">Les tarifs en direct, souvent 2× moins chers que la banque — jusqu'à −50 %.</div></div>
+          <div class="edge-mark no">✕</div>
+          <div class="edge-mark yes">✓</div>
+        </div>
+        <div class="edge-row">
+          <div class="edge-info"><div class="t">1ʳᵉ renégociation offerte, à vie <span class="edge-excl">Exclusif</span></div><div class="d">Si les taux baissent d'au moins 1 %, on refait votre prêt. Offert, sans limite de durée.</div></div>
+          <div class="edge-mark no">✕</div>
+          <div class="edge-mark yes">✓</div>
+        </div>
+        <div class="edge-row">
+          <div class="edge-info"><div class="t">Un seul interlocuteur</div><div class="d">Le même expert du premier rendez-vous à la remise des clés. Jamais un call center.</div></div>
+          <div class="edge-mark no">✕</div>
+          <div class="edge-mark yes">✓</div>
+        </div>
+        <div class="edge-row">
+          <div class="edge-info"><div class="t">Une équipe locale 📍</div><div class="d">Des courtiers près de chez vous, en région Centre. On connaît vos banques et votre marché.</div></div>
+          <div class="edge-mark no">✕</div>
+          <div class="edge-mark yes">✓</div>
+        </div>
+        <div class="edge-row">
+          <div class="edge-info"><div class="t">20+ banques en concurrence</div><div class="d">Le vrai levier d'économie : on fait jouer la concurrence pour faire baisser votre taux.</div></div>
+          <div class="edge-mark mid">–</div>
+          <div class="edge-mark yes">✓</div>
+        </div>
+        <div class="edge-row">
+          <div class="edge-info"><div class="t">Disponible quand vous l'êtes</div><div class="d">Joignables le soir et le week-end, pas seulement aux horaires de bureau.</div></div>
+          <div class="edge-mark no">✕</div>
+          <div class="edge-mark yes">✓</div>
+        </div>
+      </div>
+
+      <div class="edge-foot">
+        <div class="edge-chips">
+          <span class="edge-chip">📍 <b>Local</b> · région Centre</span>
+          <span class="edge-chip"><b>0 €</b> d'avance</span>
+          <span class="edge-chip"><b>1</b> interlocuteur, du début à la fin</span>
+        </div>
+        <a href="contact.html" class="edge-cta"><span>Parler à un courtier local</span><i>→</i></a>
+      </div>
     </div>
-    <a href="contact.html" class="edge-cta"><span>Parler à un courtier local</span><i>→</i></a>
   </div>
 </section>
-  
   <!-- ═══════ ÉTAPES — parallax + cartes empilées ═══════ -->
 <section class="steps" id="steps">
 
@@ -3711,18 +3698,40 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   }
 })();
 
-/* ─── CE QUE LES AUTRES N'ONT PAS : révélation + tampons ✓ un à un ─── */
+/* ─── CE QUE LES AUTRES N'ONT PAS : verre sur image · révélation ✓ + parallax + lueur ─── */
 (function(){
   var sec=document.getElementById('edge');if(!sec)return;
-  var rows=[].slice.call(sec.querySelectorAll('.edge-row'));
+  var frame=sec.querySelector('.edge-frame'),
+      bg=sec.querySelector('.edge-bg'),
+      cur=sec.querySelector('.edge-cur'),
+      rows=[].slice.call(sec.querySelectorAll('.edge-row')),
+      fine=matchMedia('(hover:hover) and (pointer:fine)').matches,
+      reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,ticking=false;
+
   function reveal(){rows.forEach(function(r,i){r.style.transitionDelay=(i*0.06)+'s';
     var y=r.querySelector('.edge-mark.yes');if(y)y.style.transitionDelay=(0.18+i*0.08)+'s';});sec.classList.add('in');}
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){reveal();io.disconnect();}});},{threshold:.16});
     io.observe(sec);
   }else reveal();
+
+  if(bg&&!reduce){
+    var upd=function(){ticking=false;var r=sec.getBoundingClientRect();
+      if(r.bottom>0&&r.top<innerHeight)
+        bg.style.transform='translateY('+((r.top+r.height/2-innerHeight/2)*-0.12).toFixed(1)+'px)';};
+    addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});
+    addEventListener('resize',upd);upd();
+  }
+
+  if(frame&&cur&&fine){
+    frame.addEventListener('pointermove',function(e){var r=frame.getBoundingClientRect();
+      cur.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+      cur.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');});
+  }
 })();
 
+
+  
   /* ─── CARTES ÉTAPES : lueur blanche qui suit le curseur ─── */
 (function(){
   if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
