@@ -1150,7 +1150,12 @@ body.pass-locked{overflow:hidden;}
   .rcm .by b{color:var(--ob);}
 }
 @media(prefers-reduced-motion:reduce){.rev-spin,.rev-av,.rev-score-count::before{animation:none;}}
-  
+  /* ── AVIS : titre sur 2 lignes + éventail bien cadré ── */
+.rev-head{max-width:980px!important;}
+.rev-title{font-size:clamp(1.55rem,2.7vw,2.2rem)!important;letter-spacing:-1px!important;line-height:1.12!important;}
+.rev-stage{height:clamp(640px,60vw,820px)!important;}
+.rev-phone{width:clamp(258px,24vw,300px)!important;}
+.rev-card{transform-origin:50% 50%!important;}   /* rotation autour du centre = arc prévisible */
 
 
 /* ════════ RESPONSIVE — sections ajoutées ════════ */
@@ -3250,31 +3255,21 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     var paused=hover||hold>=0;
     if(!paused&&now-lastStep>=3000){target+=STEP;lastStep=now;}
     if(hold>=0)target=hold*STEP;
-    rot+=(target-rot)*0.075;
-    var w=stage.clientWidth,pw=Math.min(338,Math.max(284,w*0.30)),ph=pw*19/9;
-    /* éventail : carte centrale droite/devant · côtés écartés + inclinés */
-    var apexY=ph*0.66,Rx=Math.min(w*0.64,900),Ry=Rx*0.40,best=1e9,bi=0;
+        rot+=(target-rot)*0.08;
+    var w=stage.clientWidth,h=stage.clientHeight;
+    /* éventail "jeu de cartes" : centre devant · côtés écartés, inclinés, plus bas */
+    var GAPX=Math.min(160,w*0.13),ROT=10,ARC=18,FANY=h*0.72,best=1e9,bi=0;
     for(var i=0;i<N;i++){
       var th=i*STEP-rot;th=((th+180)%360+360)%360-180;
       var ad=Math.abs(th);if(ad<best){best=ad;bi=i;}
       var c=cards[i];
       if(ad>WIN){c.style.opacity=0;c.style.pointerEvents='none';continue;}
-      var rad=th*Math.PI/180,x=Rx*Math.sin(rad),y=apexY-Ry*(1-Math.cos(rad)),t=1-ad/WIN;
-      c.style.opacity=clamp((WIN-ad)/16,0,1).toFixed(3);
-      c.style.pointerEvents='auto';c.style.zIndex=Math.round(50-ad);
-      c.style.transform='translate(-50%,-50%) translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) rotate('+(th*1.15).toFixed(2)+'deg) scale('+(0.8+0.2*t).toFixed(3)+')';
+      var p=th/STEP,x=GAPX*p,y=FANY+ARC*p*p,t=1-ad/WIN;
+      c.style.opacity=clamp((WIN-ad)/24,0,1).toFixed(3);
+      c.style.pointerEvents='auto';c.style.zIndex=Math.round(60-ad);
+      c.style.transform='translate(-50%,-50%) translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) rotate('+(ROT*p).toFixed(2)+'deg) scale('+(0.84+0.16*t).toFixed(3)+')';
       c.classList.toggle('active',ad<STEP/2);
     }
-    raf=requestAnimationFrame(frame);
-  }
-  function start(){if(raf||!desktop||reduce)return;lastStep=performance.now();lastY=window.scrollY;raf=requestAnimationFrame(frame);}
-  function stop(){if(raf){cancelAnimationFrame(raf);raf=null;}}
-  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?start():stop();});},{rootMargin:'200px'}).observe(stage);}else start();
-  addEventListener('resize',function(){desktop=matchMedia('(min-width:981px)').matches;if(!desktop||reduce)stop();else start();});
-
-  var st=document.getElementById('revStack');
-  if(st)st.innerHTML=D.slice(0,6).map(function(d){return '<div class="rcm"><div class="top"><span class="stars">★★★★★</span><span class="src">via '+d[2]+'</span></div><p>'+d[0]+'</p><div class="by"><span class="rev-ava">'+d[1][0]+'</span><b>'+d[1]+'</b></div></div>';}).join('');
-})();
 
 
 /* ─── COMPARATIF Seul vs Aeconomia : rail Aeconomia + révélation ─── */
