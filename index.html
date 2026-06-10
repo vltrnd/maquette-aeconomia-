@@ -3850,34 +3850,41 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   ];
 
   /* Questions — "c" doit correspondre à un "k" ci-dessus */
-  var DATA=[
+   var DATA=[
     {c:"Budget", q:"Mon salaire est-il suffisant pour emprunter seul ?", a:"Il n'y a pas de minimum universel : ce qui compte, c'est votre reste à vivre et votre taux d'endettement. On calcule gratuitement votre capacité réelle et on cible les banques les plus souples."},
     {c:"Budget", q:"Puis-je emprunter sans apport personnel ?", a:"Oui, le financement à 110 % (prix + frais) existe encore, surtout pour les profils stables. Un apport aide à négocier, mais ce n'est pas obligatoire : on monte le dossier pour le valoriser."},
     {c:"Budget", q:"Le taux d'endettement de 35 % est-il une limite absolue ?", a:"C'est la règle du HCSF, mais les banques gardent une marge de dérogation. Avec un bon reste à vivre ou du patrimoine, on peut parfois la dépasser."},
     {c:"Budget", q:"Quels frais prévoir en plus du prix du bien ?", a:"Frais de notaire (≈ 7-8 % dans l'ancien, 2-3 % dans le neuf), garantie, frais de dossier et d'agence le cas échéant. On les chiffre précisément dès le départ, zéro surprise."},
     {c:"Budget", q:"Ai-je droit à des prêts aidés (PTZ, etc.) ?", a:"Peut-être : PTZ pour un premier achat, prêt Action Logement, prêts régionaux… On vérifie votre éligibilité et on les intègre à votre plan de financement."},
+    {c:"Budget", q:"Mes primes et revenus complémentaires comptent-ils ?", a:"Oui : primes régulières, heures supplémentaires, activité complémentaire avec de l'ancienneté… On présente l'ensemble de vos revenus pour maximiser votre capacité d'emprunt."},
 
     {c:"Taux & coût", q:"Pouvez-vous obtenir un meilleur taux que ma banque ?", a:"Dans la grande majorité des cas, oui. On met 20+ banques en concurrence : quelques dixièmes de point, c'est souvent plusieurs milliers d'euros d'intérêts en moins sur la durée."},
     {c:"Taux & coût", q:"Combien coûte un courtier ?", a:"Rien tant que votre prêt n'est pas signé. Nos honoraires ne sont dus qu'une fois le crédit débloqué — et ils sont presque toujours couverts par ce qu'on vous fait économiser."},
     {c:"Taux & coût", q:"Un courtier est-il vraiment utile ?", a:"Il vous fait gagner du temps, de l'argent et de la sérénité : banques mises en concurrence, dossier optimisé, et un seul interlocuteur du début à la fin — sans frais tant que vous n'avez pas signé."},
     {c:"Taux & coût", q:"Quelle durée de prêt choisir ?", a:"Plus c'est long, plus la mensualité baisse mais plus le coût total monte. On simule 15, 20 et 25 ans pour trouver l'équilibre entre mensualité confortable et coût maîtrisé."},
     {c:"Taux & coût", q:"Et si les taux baissent après mon prêt ?", a:"Vous pourrez renégocier ou faire racheter votre crédit. Chez Aeconomia, la 1ʳᵉ renégociation est même offerte si les taux baissent d'au moins 1 %."},
+    {c:"Taux & coût", q:"Taux fixe ou taux variable ?", a:"On privilégie quasi toujours le taux fixe : votre mensualité est connue et sécurisée sur toute la durée. Le variable ne se justifie que dans des cas précis, qu'on étudie avec vous."},
 
     {c:"Dossier", q:"Mon dossier est atypique (indépendant, CDD, peu d'apport) — possible ?", a:"C'est justement là qu'un courtier change tout. On sait quelles banques disent oui à votre profil et comment présenter votre dossier pour débloquer la situation."},
     {c:"Dossier", q:"Quels documents dois-je fournir ?", a:"Pièce d'identité, 3 derniers bulletins de salaire, 2 avis d'imposition, relevés de compte et justificatif d'apport. On vous envoie une checklist claire et on assemble le dossier pour vous."},
     {c:"Dossier", q:"Un accord de principe garantit-il mon prêt ?", a:"Pas tout à fait : c'est un feu vert sous réserve de l'étude finale (assurance, garantie, pièces). On sécurise chaque étape jusqu'à l'offre éditée."},
     {c:"Dossier", q:"Que faire si une banque me refuse ?", a:"Un refus n'est pas une fin : chaque banque a ses critères. On représente votre dossier ailleurs en corrigeant ce qui a coincé. Beaucoup obtiennent un oui après un premier non."},
     {c:"Dossier", q:"Combien de temps dure le processus ?", a:"Comptez 2 à 4 semaines pour l'accord de principe une fois le dossier complet, puis le délai légal jusqu'à la signature chez le notaire. On vous donne un calendrier clair dès le départ."},
+    {c:"Dossier", q:"Mon CDI / ma période d'essai posent-ils problème ?", a:"La plupart des banques demandent une période d'essai validée, mais certaines acceptent dès la titularisation, voire en CDD avec de l'ancienneté. On oriente votre dossier vers les bons interlocuteurs."},
 
     {c:"Assurance", q:"Suis-je obligé de prendre l'assurance de la banque ?", a:"Non. Vous êtes libre de choisir votre assurance emprunteur (délégation). En direct fournisseur, elle est souvent 2× moins chère à garanties équivalentes — on compare pour vous."},
     {c:"Assurance", q:"Puis-je changer d'assurance après la signature ?", a:"Oui, à tout moment grâce à la loi Lemoine, sans frais ni pénalité. C'est souvent là qu'on récupère plusieurs milliers d'euros."},
     {c:"Assurance", q:"Que se passe-t-il en cas de coup dur (maladie, accident) ?", a:"C'est le rôle de l'assurance emprunteur (décès, invalidité, parfois perte d'emploi). On calibre les garanties selon votre situation pour que votre projet reste protégé."},
     {c:"Assurance", q:"Combien d'épargne de précaution garder ?", a:"En général l'équivalent de 3 à 6 mois de charges. On évite de vider votre épargne dans l'apport, pour que vous gardiez un matelas de sécurité."},
+    {c:"Assurance", q:"Pourrai-je revendre facilement si besoin ?", a:"Oui, un bien bien choisi reste liquide. On vous conseille dès l'achat sur les critères qui préservent la revente : emplacement, DPE, état général."},
+    {c:"Assurance", q:"Que se passe-t-il en cas de séparation ?", a:"Plusieurs solutions existent : rachat de la part de l'autre (soulte), revente, ou maintien à deux. On anticipe ces cas et on vous oriente vers le notaire pour sécuriser la répartition."},
 
     {c:"Après l'achat", q:"Puis-je rembourser par anticipation ?", a:"Oui. Des indemnités peuvent s'appliquer (plafonnées à 6 mois d'intérêts ou 3 % du capital restant), mais on peut négocier leur suppression dès la signature."},
     {c:"Après l'achat", q:"Puis-je réduire mes mensualités en cas de besoin ?", a:"Souvent oui : modulation des échéances à la baisse, ou report. La plupart des offres le permettent — on choisit dès le départ un prêt avec de la souplesse."},
     {c:"Après l'achat", q:"Puis-je transférer mon prêt si je déménage ?", a:"Certains prêts sont transférables sur un nouveau bien. Si vous anticipez une revente, on intègre ce critère au choix de la banque."},
-    {c:"Après l'achat", q:"Quand renégocier mon crédit ?", a:"Dès que l'écart de taux atteint environ 1 % et qu'il vous reste assez de capital et de durée. On surveille ça pour vous — la 1ʳᵉ renégociation est offerte."}
+    {c:"Après l'achat", q:"Quand renégocier mon crédit ?", a:"Dès que l'écart de taux atteint environ 1 % et qu'il vous reste assez de capital et de durée. On surveille ça pour vous — la 1ʳᵉ renégociation est offerte."},
+    {c:"Après l'achat", q:"Dois-je penser à un futur investissement locatif ?", a:"Si votre situation le permet, oui : une fois le 1er prêt en cours, votre capacité peut rouvrir des portes. On fait le point avec vous le moment venu."},
+    {c:"Après l'achat", q:"Comment valoriser mon bien dans le temps ?", a:"Entretien régulier, travaux ciblés (rénovation énergétique en tête) et bon timing de revente. On reste disponible pour vous conseiller, même après l'achat."}
   ];
 
   var filterEl=sec.querySelector('#faqFilter'), listEl=sec.querySelector('#faqList');
