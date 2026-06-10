@@ -3149,7 +3149,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 })();
 
   
-/* ─── CTA VIDÉO : cadre qui s'élargit au scroll + parallax FORT ─── */
+/* ─── CTA VIDÉO : lecture vidéo (toujours) + cadre qui s'élargit (si présent) ─── */
 (function(){
   function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
   function ease(t){return 1-Math.pow(1-t,3);}
@@ -3159,37 +3159,43 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
         vid=sec.querySelector('video'),
         reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,
         ticking=false;
-    if(!frame)return;
 
-    if(reduce){ frame.style.width='100vw';frame.style.height='100vh';frame.style.borderRadius='0'; }
-    else{
-      var read=function(){
-        ticking=false;
-        var vh=innerHeight, r=sec.getBoundingClientRect(), c=r.top+r.height/2;
-        var small=innerWidth<=760, sw=small?92:86, sh=small?74:80;
-        var e=ease(clamp((vh-c)/(vh*0.5),0,1));          // 0 (entrée, marges) → 1 (centré, plein écran)
-        var H=sh+(100-sh)*e;
-        frame.style.width=(sw+(100-sw)*e).toFixed(2)+'vw';
-        frame.style.height=H.toFixed(2)+'vh';
-        frame.style.borderRadius=(32*(1-e)).toFixed(1)+'px';
-        if(bg){                                           // parallax FORT, borné aux marges du cadre
-          var maxShift=0.40*(H/100*vh)-14;
-          bg.style.transform='translate3d(0,'+clamp(((c-vh/2)/vh)*420,-maxShift,maxShift).toFixed(1)+'px,0)';
-        }
-      };
-      var onScroll=function(){if(!ticking){ticking=true;requestAnimationFrame(read);}};
-      read();
-      addEventListener('scroll',onScroll,{passive:true});
-      addEventListener('resize',read);
-    }
-
-    /* lecture vidéo selon visibilité (anticipée d'un écran) */
+    /* 1) LECTURE VIDÉO — d'abord, et SANS condition sur le cadre */
     if(vid&&'IntersectionObserver' in window){
       var m=Math.round(innerHeight);
       new IntersectionObserver(function(es){es.forEach(function(x){
         if(x.isIntersecting){var p=vid.play();if(p&&p.catch)p.catch(function(){});}else vid.pause();
       });},{rootMargin:m+'px 0px '+m+'px 0px'}).observe(sec);
     }else if(vid&&vid.play){vid.play();}
+
+    /* 2) parallax simple du fond — marche même sans cadre */
+    if(bg&&!reduce){
+      var par=function(){ticking=false;var r=sec.getBoundingClientRect();
+        if(r.bottom>0&&r.top<innerHeight)
+          bg.style.transform='translate3d(0,'+((r.top+r.height/2-innerHeight/2)*-0.10).toFixed(1)+'px,0)';};
+      // si un cadre existe, c'est lui qui pilotera le transform du bg (étape 3) → on saute ce parallax simple
+      if(!frame){addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(par);}},{passive:true});addEventListener('resize',par);par();}
+    }
+
+    /* 3) cadre qui s'élargit au scroll — UNIQUEMENT si .vcta-frame est présent */
+    if(!frame)return;
+    if(reduce){frame.style.width='100vw';frame.style.height='100vh';frame.style.borderRadius='0';return;}
+    var read=function(){
+      ticking=false;
+      var vh=innerHeight, r=sec.getBoundingClientRect(), c=r.top+r.height/2;
+      var small=innerWidth<=760, sw=small?92:86, sh=small?74:80;
+      var e=ease(clamp((vh-c)/(vh*0.5),0,1));
+      var H=sh+(100-sh)*e;
+      frame.style.width=(sw+(100-sw)*e).toFixed(2)+'vw';
+      frame.style.height=H.toFixed(2)+'vh';
+      frame.style.borderRadius=(32*(1-e)).toFixed(1)+'px';
+      if(bg){var maxShift=0.40*(H/100*vh)-14;
+        bg.style.transform='translate3d(0,'+clamp(((c-vh/2)/vh)*420,-maxShift,maxShift).toFixed(1)+'px,0)';}
+    };
+    var onScroll=function(){if(!ticking){ticking=true;requestAnimationFrame(read);}};
+    read();
+    addEventListener('scroll',onScroll,{passive:true});
+    addEventListener('resize',read);
   }
   ['vcta','vcta3'].forEach(function(id){var s=document.getElementById(id);if(s)setup(s);});
 })();
