@@ -578,22 +578,37 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;}
 .steps{position:relative;z-index:2;background:var(--bg);}
 
 /* — en-tête plein écran, image de fond en parallax — */
-.steps-hero{position:relative;height:clamp(440px,78vh,820px);overflow:hidden;
-  display:flex;align-items:center;justify-content:center;background:#E4A53C;}
-.steps-hero-bg{position:absolute;inset:-16% 0;z-index:0;will-change:transform;}
+/* — en-tête plein écran : GRAND parallax + voile noir + lumière — */
+.steps-hero{position:relative;height:clamp(560px,92vh,1000px);overflow:hidden;isolation:isolate;
+  display:flex;align-items:center;justify-content:center;background:#14110d;}
+/* image surdimensionnée → de la course pour le parallax */
+.steps-hero-bg{position:absolute;inset:-30% 0;z-index:0;will-change:transform;}
 .steps-hero-bg img{width:100%;height:100%;object-fit:cover;}
+/* VOILE NOIR uni (obscurcit l'image) + vignette */
 .steps-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(20,19,16,.22),rgba(20,19,16,.04) 38%,rgba(20,19,16,.34));}
-.steps-hero-inner{position:relative;z-index:2;text-align:center;color:#fff;max-width:1000px;padding:0 6vw;}
-.steps-eyebrow{font-family:var(--sky);font-size:.66rem;font-weight:600;letter-spacing:.28em;
-  text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:1.4rem;}
-.steps-title{font-family:var(--body);font-weight:800;font-size:clamp(2.4rem,6.2vw,5.2rem);
-  line-height:1.01;letter-spacing:-2.4px;text-shadow:0 2px 34px rgba(0,0,0,.28);}
+  background:
+    radial-gradient(125% 95% at 50% 42%,transparent 26%,rgba(8,7,6,.52) 100%),
+    linear-gradient(180deg,rgba(8,7,6,.5),rgba(8,7,6,.4) 45%,rgba(8,7,6,.64));}
+/* EFFET DE LUMIÈRE : halo central qui respire + faisceau qui balaie */
+.steps-hero-light{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;}
+.steps-hero-light::before{content:"";position:absolute;left:50%;top:47%;width:min(940px,92%);aspect-ratio:1;transform:translate(-50%,-50%);
+  background:radial-gradient(closest-side,rgba(210,227,126,.30),rgba(255,255,255,.10) 40%,transparent 70%);
+  filter:blur(6px);animation:shPulse 6s ease-in-out infinite;}
+.steps-hero-light::after{content:"";position:absolute;top:-45%;left:-30%;width:40%;height:200%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.16) 50%,transparent);
+  transform:rotate(12deg);filter:blur(16px);animation:shBeam 8.5s ease-in-out infinite;}
+@keyframes shPulse{0%,100%{opacity:.65;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}}
+@keyframes shBeam{0%{transform:translateX(-30%) rotate(12deg);opacity:0}42%,55%{opacity:.85}100%{transform:translateX(400%) rotate(12deg);opacity:0}}
+/* contenu */
+.steps-hero-inner{position:relative;z-index:3;text-align:center;color:#fff;max-width:1120px;padding:0 6vw;}
+.steps-eyebrow{font-family:var(--sky);font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:1.6rem;}
+.steps-title{font-family:var(--body);font-weight:800;line-height:1.08;letter-spacing:-1.6px;text-shadow:0 6px 44px rgba(0,0,0,.5);}
 .steps-title em{font-style:italic;font-weight:800;}
-.steps-sub{margin:1.5rem auto 0;max-width:46ch;font-size:clamp(1rem,1.4vw,1.18rem);
-  line-height:1.55;color:rgba(255,255,255,.92);}
-
-/* — la pile de cartes — */
+.steps-sub{margin:1.8rem auto 0;max-width:52ch;font-size:clamp(1.04rem,1.5vw,1.28rem);line-height:1.55;color:rgba(255,255,255,.92);}
+@media(prefers-reduced-motion:reduce){.steps-hero-light::before,.steps-hero-light::after{animation:none;}}
+  
+  
+  /* — la pile de cartes — */
 .steps-stack{position:relative;z-index:3;margin-top:-9vh;
   padding:0 clamp(1rem,4vw,3.5rem) clamp(5rem,14vh,12rem);}
 .scard{position:sticky;top:clamp(92px,12vh,140px);width:100%;max-width:1120px;margin:0 auto;
@@ -1722,7 +1737,9 @@ body{
 
 
   /* ════════ TITRES → 2 LIGNES MAX (surcharge HARMONISATION) ════════ */
-.steps-title{font-size:clamp(1.45rem,2.5vw,2.05rem)!important;line-height:1.12!important;letter-spacing:-1.1px!important;text-wrap:balance;max-width:40ch;margin-left:auto;margin-right:auto;}
+/* AVANT — .steps-title{font-size:clamp(1.45rem,2.5vw,2.05rem)!important; … }  ← à remplacer */
+.steps-title{font-size:clamp(2.2rem,4.6vw,3rem)!important;line-height:1.08!important;letter-spacing:-1.6px!important;
+  text-wrap:balance;max-width:min(1060px,92vw);margin-left:auto;margin-right:auto;}
 .rate-title{font-size:clamp(1.4rem,2.2vw,1.72rem)!important;line-height:1.18!important;letter-spacing:-.7px!important;text-wrap:balance;}
 #vcta3 .vcta-h{font-size:clamp(1.8rem,3.6vw,2.9rem)!important;line-height:1.08!important;letter-spacing:-1.5px!important;text-wrap:balance;max-width:32ch;margin-left:auto;margin-right:auto;}
 
@@ -2243,21 +2260,20 @@ body{
 <section class="steps" id="steps">
 
   
-  <div class="steps-glow"><i></i><i></i><i></i><i></i></div>
-  <span class="steps-beam"></span>
-  <div class="steps-hero">
-    
-    <div class="steps-hero-bg">
-      <img id="stepsBg" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/imagedefondmilieudusite.png" alt="photo de marie"/>
-    </div>
-    <div class="steps-hero-inner">
-      <div class="steps-eyebrow">Comment ça se passe</div>
-           <h2 class="steps-title">Nous sommes à vos côtés de votre première question <em>à votre remise des clés.</em></h2>
-      <p class="steps-sub">Pas de paperasse, pas de mauvaise surprise. On vous guide à chaque étape, il ne vous reste que les bonnes décisions à prendre.</p>
-    </div>
+<div class="steps-hero">
+  <div class="steps-hero-bg">
+    <img id="stepsBg" src="https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/imagedefondmilieudusite.png" alt=""/>
   </div>
-
+  <span class="steps-hero-light" aria-hidden="true"></span>
+  <div class="steps-hero-inner">
+    <div class="steps-eyebrow">Comment ça se passe</div>
+    <h2 class="steps-title">Nous sommes à vos côtés de votre première question <em>à votre remise des clés.</em></h2>
+    <p class="steps-sub">Pas de paperasse, pas de mauvaise surprise. On vous guide à chaque étape, il ne vous reste que les bonnes décisions à prendre.</p>
+  </div>
+</div>
   <div class="steps-stack">
+
+
     
     <article class="scard">
     <div class="scard-in">
