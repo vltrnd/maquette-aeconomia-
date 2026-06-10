@@ -1394,116 +1394,182 @@ body.pass-locked{overflow:hidden;}
   .vsx-row{opacity:1;transform:none;}
   .vsx-ck{opacity:1;transform:none;}
 }
+
+
 /* ════════════════════════════════════════════════════════
-   CE QUE LES AUTRES N'ONT PAS — comparatif verre + image parallax
+   COURTIER OU SEUL ? — verre sur image parallax (testfond1.png)
    ════════════════════════════════════════════════════════ */
-.edge{position:relative;z-index:2;overflow:hidden;isolation:isolate;
+.vsx{position:relative;z-index:2;overflow:hidden;isolation:isolate;
   display:flex;align-items:center;justify-content:center;
-  padding:clamp(3.6rem,7vw,6.5rem) clamp(1.1rem,5vw,4rem);}
-/* fond image en parallax (testfond1.png) + dégradé de secours */
-.edge-bg{position:absolute;inset:-14% 0;z-index:0;will-change:transform;background-position:center;background-size:cover;background-repeat:no-repeat;
+  padding:clamp(3.2rem,6vw,6rem) clamp(1.1rem,5vw,4rem);}
+/* le RECTANGLE à radius (masque d'écrêtage) : il contient l'image + le verre */
+.vsx-frame{position:relative;z-index:1;width:min(1180px,100%);overflow:hidden;isolation:isolate;
+  border-radius:clamp(26px,3vw,40px);
+  background:linear-gradient(180deg,#ffffff,#f7f3ec);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 50px 120px rgba(80,66,48,.22),inset 0 1px 0 rgba(255,255,255,.95);
+  padding:clamp(1.8rem,3.4vw,3rem) clamp(1.1rem,2.6vw,2.4rem) clamp(1.6rem,3vw,2.4rem);}
+/* image de fond en PARALLAX, écrêtée par le radius du cadre */
+.vsx-bg{position:absolute;inset:-16% 0 0;z-index:0;will-change:transform;background-position:center;background-size:cover;background-repeat:no-repeat;
   background-image:url("https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/testfond1.png"),linear-gradient(140deg,#cdd3c6,#e7e0d2 60%,#d7dccb);}
-.edge-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 28%,rgba(247,244,239,.10),rgba(20,19,16,.30));}
-/* fondu haut/bas vers le canevas du site */
-.edge-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,var(--canvas) 0,transparent 13%,transparent 85%,var(--canvas) 100%);}
+/* voile blanc → texte foncé + verre restent lisibles (baisse les .80/.84 si tu veux voir + l'image) */
+.vsx-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.80),rgba(255,255,255,.64) 44%,rgba(247,243,236,.84));}
 /* faisceau de lumière qui balaie */
-.edge-beam{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
-.edge-beam::before{content:"";position:absolute;top:-60%;left:-30%;width:40%;height:220%;
-  background:linear-gradient(100deg,transparent,rgba(255,255,255,.5) 50%,transparent);
-  transform:rotate(12deg);filter:blur(18px);animation:edgeBeam 9s ease-in-out infinite;}
-@keyframes edgeBeam{0%{transform:translateX(-30%) rotate(12deg);opacity:0}42%,55%{opacity:.85}100%{transform:translateX(420%) rotate(12deg);opacity:0}}
-/* la grande carte de verre */
-.edge-card{position:relative;z-index:2;width:min(1080px,100%);overflow:hidden;border-radius:clamp(26px,3vw,40px);
-  padding:clamp(1.6rem,3vw,2.7rem) clamp(1.2rem,2.6vw,2.4rem) clamp(1.5rem,2.6vw,2.2rem);
-  background:linear-gradient(155deg,rgba(255,255,255,.74),rgba(255,255,255,.46));
-  backdrop-filter:blur(34px) saturate(175%);-webkit-backdrop-filter:blur(34px) saturate(175%);
-  border:1px solid rgba(255,255,255,.7);
-  box-shadow:0 44px 110px rgba(55,48,38,.26),inset 0 1px 0 rgba(255,255,255,.92),inset 0 -1px 2px rgba(255,255,255,.4);
-  opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);}
-.edge.in .edge-card{opacity:1;transform:none;}
-.edge-sheen{position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;
-  background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.5) 50%,transparent 60%);
-  background-size:260% 100%;animation:edgeSheen 9s ease-in-out infinite;mix-blend-mode:overlay;}
-@keyframes edgeSheen{0%{background-position:170% 0}55%,100%{background-position:-70% 0}}
-.edge-cur{position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;opacity:0;transition:opacity .4s;
-  background:radial-gradient(280px 280px at var(--mx,50%) var(--my,50%),rgba(255,255,255,.5),transparent 60%);mix-blend-mode:overlay;}
-.edge-card:hover .edge-cur{opacity:1;}
-.edge-card>*{position:relative;z-index:2;}
-/* en-tête (dans la carte) */
-.edge-head{text-align:center;max-width:720px;margin:0 auto clamp(1.4rem,2.6vw,2rem);}
-.edge-eye{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.64rem;font-weight:700;
-  letter-spacing:.22em;text-transform:uppercase;color:var(--sage2);
-  background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.8);padding:7px 15px;border-radius:50px;}
-.edge-eye::before{content:"✦";color:var(--lime);}
-.edge-title{font-family:var(--sky);font-weight:700;color:var(--ob);margin-top:.9rem;}
-.edge-title em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
-.edge-sub{margin:.8rem auto 0;max-width:52ch;font-size:clamp(.95rem,1.2vw,1.08rem);line-height:1.6;color:var(--ob2);}
-/* ── le tableau ── */
-.edge-table{--aecw:clamp(120px,15vw,176px);--cols:minmax(0,1fr) clamp(94px,12vw,148px) var(--aecw);
-  position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(21,20,18,.08);background:rgba(255,255,255,.32);}
-/* colonne Aeconomia mise en avant (panneau continu derrière la colonne) */
-.col-aec{position:absolute;top:0;bottom:0;right:0;width:var(--aecw);z-index:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(188,212,26,.13),rgba(255,255,255,.30));
-  border-left:1.5px solid rgba(188,212,26,.5);border-right:1.5px solid rgba(188,212,26,.5);}
-.edge-thead,.edge-trow{display:grid;grid-template-columns:var(--cols);align-items:center;}
-.edge-thead{position:relative;z-index:1;border-bottom:1px solid rgba(21,20,18,.1);}
-.edge-thead>*{padding:clamp(.75rem,1.5vw,1.05rem) clamp(.5rem,1.2vw,1rem);}
-.eh-crit{font-family:var(--sky);font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
-.eh-classic{text-align:center;font-family:var(--sky);font-size:.66rem;font-weight:600;line-height:1.2;color:var(--ob2);}
-.eh-aec{text-align:center;display:flex;flex-direction:column;align-items:center;gap:.32rem;}
-.eh-aec .brand{font-family:var(--body);font-weight:800;font-size:1.04rem;letter-spacing:-.4px;color:var(--ob);}
-.eh-aec .brand i{font-style:normal;color:#6f8410;}
-.edge-reco{font-family:var(--sky);font-size:.46rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ob);
-  background:var(--lime);padding:3px 9px;border-radius:50px;box-shadow:0 4px 12px rgba(188,212,26,.5);}
-.edge-trow{position:relative;z-index:1;border-top:1px solid rgba(21,20,18,.07);
-  opacity:0;transform:translateY(14px);transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1),background .25s;}
-.edge.in .edge-trow{opacity:1;transform:none;}
-.edge-trow:hover{background:rgba(255,255,255,.4);}
-.edge-trow>*{padding:clamp(.75rem,1.5vw,1.05rem) clamp(.5rem,1.2vw,1rem);}
-.ecrit{display:flex;align-items:center;gap:.7rem;}
-.eico{flex:none;width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1rem;
-  background:linear-gradient(160deg,rgba(255,255,255,.9),rgba(237,232,223,.7));border:1px solid rgba(21,20,18,.06);box-shadow:inset 0 1px 0 rgba(255,255,255,.9);}
-.ecrit .t{font-family:var(--sky);font-weight:700;font-size:clamp(.92rem,1.2vw,1.04rem);color:var(--ob);letter-spacing:-.2px;line-height:1.2;display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;}
-.ecrit .d{font-size:.8rem;line-height:1.4;color:var(--ob2);margin-top:.22rem;max-width:44ch;}
-.edge-excl{font-family:var(--sky);font-size:.46rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#5a6e00;
-  background:rgba(188,212,26,.22);border:1px solid rgba(188,212,26,.5);padding:2px 7px;border-radius:50px;}
-/* marques ✓ / ✕ / – */
-.emark{display:flex;align-items:center;justify-content:center;}
-.x,.mid{position:relative;width:24px;height:24px;border-radius:50%;background:rgba(21,20,18,.05);border:1px solid rgba(21,20,18,.1);}
-.x::before,.x::after{content:"";position:absolute;left:50%;top:50%;width:9px;height:1.8px;border-radius:2px;background:rgba(21,20,18,.32);}
-.x::before{transform:translate(-50%,-50%) rotate(45deg);}.x::after{transform:translate(-50%,-50%) rotate(-45deg);}
-.mid::after{content:"";position:absolute;left:50%;top:50%;width:9px;height:1.8px;border-radius:2px;background:rgba(21,20,18,.32);transform:translate(-50%,-50%);}
-.ck{position:relative;width:28px;height:28px;border-radius:50%;background:var(--lime);box-shadow:0 5px 14px rgba(188,212,26,.5);transform:scale(.35);opacity:0;}
-.ck::after{content:"";position:absolute;left:10px;top:6px;width:6px;height:11px;border:2.4px solid var(--ob);border-top:0;border-left:0;transform:rotate(45deg);}
-.edge.in .ck{transform:scale(1);opacity:1;transition:transform .55s cubic-bezier(.34,1.56,.64,1),opacity .4s;}
-.edge-trow:hover .ck{transform:scale(1.1);transition:transform .25s;}
+.vsx-beam{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
+.vsx-beam::before{content:"";position:absolute;top:-60%;left:-30%;width:38%;height:220%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55) 50%,transparent);
+  transform:rotate(12deg);filter:blur(16px);animation:vsxBeam 9s ease-in-out infinite;}
+@keyframes vsxBeam{0%{transform:translateX(-30%) rotate(12deg);opacity:0}42%,55%{opacity:.85}100%{transform:translateX(430%) rotate(12deg);opacity:0}}
+/* reflet + lueur curseur sur le cadre */
+.vsx-sheen{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.45) 50%,transparent 60%);
+  background-size:260% 100%;animation:vsxSheenF 9s ease-in-out infinite;mix-blend-mode:overlay;}
+@keyframes vsxSheenF{0%{background-position:170% 0}55%,100%{background-position:-70% 0}}
+.vsx-cur{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(300px 300px at var(--mx,50%) var(--my,50%),rgba(255,255,255,.5),transparent 60%);mix-blend-mode:overlay;}
+.vsx-frame:hover .vsx-cur{opacity:1;}
+/* contenu au-dessus de l'image */
+.vsx-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:clamp(1.2rem,2.4vw,1.9rem);}
+/* en-tête */
+.vsx-head{position:relative;z-index:1;text-align:center;max-width:760px;}
+.vsx-eye{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sky);font-size:.62rem;font-weight:600;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--sage2);}
+.vsx-eye::before{content:"";width:22px;height:2px;background:var(--lime);border-radius:2px;}
+.vsx-title{font-family:var(--sky);font-weight:700;font-size:clamp(1.8rem,3.9vw,2.9rem);line-height:1.05;
+  letter-spacing:-1.6px;color:var(--ob);margin-top:.7rem;}
+.vsx-title em{font-family:var(--body);font-style:italic;font-weight:800;color:var(--sage2);}
+.vsx-sub{margin:.8rem auto 0;max-width:58ch;font-size:clamp(.9rem,1.2vw,1.04rem);line-height:1.55;color:var(--ob2);}
+.vsx-sub b{color:var(--ob);font-weight:700;}
+/* carte verre (le tableau) — par-dessus l'image */
+.vsx-card{position:relative;z-index:1;width:min(1000px,100%);
+  --g:minmax(0,1.45fr) minmax(140px,.92fr) minmax(168px,1.04fr);
+  border-radius:26px;padding:clamp(.45rem,1vw,.8rem) clamp(.55rem,1.3vw,1.05rem) clamp(.6rem,1vw,.9rem);
+  background:linear-gradient(160deg,rgba(255,255,255,.74),rgba(255,255,255,.44));
+  backdrop-filter:blur(32px) saturate(170%);-webkit-backdrop-filter:blur(32px) saturate(170%);
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:0 40px 100px rgba(80,66,48,.20),inset 0 1px 0 rgba(255,255,255,.95),inset 0 -1px 2px rgba(255,255,255,.4);}
+/* rail lumineux derrière la colonne Aeconomia (placé en JS) */
+.vsx-spot{position:absolute;top:8px;bottom:8px;left:0;width:0;z-index:0;border-radius:18px;pointer-events:none;overflow:hidden;
+  background:linear-gradient(170deg,rgba(255,255,255,.94),rgba(247,250,233,.74));
+  border:1px solid rgba(188,212,26,.42);
+  box-shadow:0 22px 50px rgba(120,140,30,.16),inset 0 1px 0 rgba(255,255,255,1);
+  opacity:0;transition:opacity .5s ease;}
+.vsx-spot.ready{opacity:1;}
+.vsx-spot::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg,transparent,var(--lime),transparent);}
+.vsx-spot::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.6) 50%,transparent 60%);
+  background-size:250% 100%;animation:vsxSheen 8s ease-in-out infinite;mix-blend-mode:overlay;}
+@keyframes vsxSheen{0%{background-position:165% 0}55%,100%{background-position:-65% 0}}
+/* en-tête de colonnes (Le critère reste NORMAL) */
+.vsx-cols{position:relative;z-index:2;display:grid;grid-template-columns:var(--g);align-items:end;
+  border-bottom:1px solid rgba(21,20,18,.1);}
+.vsx-cols>*{padding:.4rem clamp(.5rem,1vw,.9rem) .7rem;}
+.vsx-cols .c1{font-family:var(--sky);font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+.vsx-col{display:flex;flex-direction:column;gap:.3rem;}
+.vsx-col.seul .k{font-family:var(--sky);font-size:.74rem;font-weight:600;color:var(--ob2);line-height:1.15;}
+.vsx-col.pro{align-items:flex-start;}
+.vsx-col.pro .brand{font-family:var(--body);font-weight:800;font-size:1.02rem;letter-spacing:-.4px;color:var(--ob);}
+.vsx-col.pro .brand i{font-style:normal;color:var(--lime);}
+.vsx-reco{display:inline-flex;align-items:center;font-family:var(--sky);font-size:.48rem;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ob);background:var(--lime);
+  padding:3px 9px;border-radius:50px;box-shadow:0 4px 12px rgba(188,212,26,.5);}
+/* lignes */
+.vsx-rows{position:relative;z-index:2;}
+.vsx-row{position:relative;display:grid;grid-template-columns:var(--g);align-items:stretch;border-radius:12px;
+  opacity:0;transform:translateY(14px);transition:background .25s;}
+.vsx.in .vsx-row{opacity:1;transform:none;
+  transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1),background .25s;}
+.vsx-row+.vsx-row::before{content:"";position:absolute;left:clamp(.5rem,1vw,.9rem);right:clamp(.5rem,1vw,.9rem);top:0;height:1px;background:rgba(21,20,18,.07);}
+.vsx-row:hover{background:rgba(255,255,255,.4);}
+.vsx.in .vsx-row:nth-child(1){transition-delay:.05s}.vsx.in .vsx-row:nth-child(2){transition-delay:.10s}
+.vsx.in .vsx-row:nth-child(3){transition-delay:.15s}.vsx.in .vsx-row:nth-child(4){transition-delay:.20s}
+.vsx.in .vsx-row:nth-child(5){transition-delay:.25s}.vsx.in .vsx-row:nth-child(6){transition-delay:.30s}
+.vsx.in .vsx-row:nth-child(7){transition-delay:.35s}
+.vsx-cell{display:flex;align-items:center;gap:.6rem;min-height:clamp(52px,7vh,66px);padding:.5rem clamp(.5rem,1vw,.9rem);}
+.vsx-crit{position:relative;cursor:help;}
+.vsx-ico{flex:none;width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.02rem;
+  background:linear-gradient(160deg,rgba(255,255,255,.88),rgba(237,232,223,.7));border:1px solid rgba(21,20,18,.06);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);}
+.vsx-clbl{font-family:var(--sky);font-size:.85rem;font-weight:600;letter-spacing:-.1px;color:var(--ob);line-height:1.2;transition:color .25s;}
+.vsx-crit:hover .vsx-clbl,.vsx-crit:focus-visible .vsx-clbl{color:var(--sage2);}
+.vsx-i{flex:none;width:15px;height:15px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--sky);font-size:.55rem;font-weight:800;font-style:italic;color:var(--sage2);
+  background:rgba(117,132,124,.14);border:1px solid rgba(117,132,124,.28);transition:background .25s,color .25s,border-color .25s;}
+.vsx-crit:hover .vsx-i,.vsx-crit:focus-visible .vsx-i{background:var(--lime);color:var(--ob);border-color:transparent;}
+.vsx-tip{position:absolute;left:.2rem;bottom:calc(100% + 13px);width:min(290px,74vw);z-index:30;
+  font-family:var(--body);font-size:.76rem;line-height:1.5;font-weight:500;color:#fff;
+  background:linear-gradient(165deg,rgba(30,28,24,.96),rgba(20,19,16,.96));
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:.72rem .85rem;
+  box-shadow:0 20px 44px rgba(20,19,16,.36);
+  opacity:0;transform:translateY(7px) scale(.97);transform-origin:left bottom;pointer-events:none;
+  transition:opacity .28s cubic-bezier(.22,1,.36,1),transform .28s cubic-bezier(.22,1,.36,1);}
+.vsx-tip b{color:var(--lime);font-weight:700;}
+.vsx-tip::before{content:"";position:absolute;left:26px;top:100%;width:14px;height:14px;background:inherit;
+  border-right:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);transform:translateY(-7px) rotate(45deg);}
+.vsx-crit:hover .vsx-tip,.vsx-crit:focus-visible .vsx-tip,.vsx-crit:focus .vsx-tip{opacity:1;transform:translateY(0) scale(1);}
+.vsx-seul{color:var(--muted);}
+.vsx-seul .t{font-size:.81rem;line-height:1.3;}
+.vsx-no{flex:none;position:relative;width:20px;height:20px;border-radius:50%;background:rgba(21,20,18,.05);border:1px solid rgba(21,20,18,.09);}
+.vsx-no::before,.vsx-no::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:1.7px;border-radius:2px;background:rgba(21,20,18,.34);}
+.vsx-no::before{transform:translate(-50%,-50%) rotate(45deg);}
+.vsx-no::after{transform:translate(-50%,-50%) rotate(-45deg);}
+.vsx-pro{color:var(--ob);}
+.vsx-pro .t{font-size:.85rem;font-weight:600;line-height:1.3;}
+.vsx-ck{flex:none;position:relative;width:23px;height:23px;border-radius:50%;background:var(--lime);
+  box-shadow:0 4px 12px rgba(188,212,26,.5);transform:scale(.4);opacity:0;}
+.vsx-ck::after{content:"";position:absolute;left:8px;top:5px;width:5px;height:10px;border:2px solid var(--ob);border-top:0;border-left:0;transform:rotate(45deg);}
+.vsx.in .vsx-ck{transform:scale(1);opacity:1;transition:transform .55s cubic-bezier(.34,1.56,.64,1),opacity .4s;}
+.vsx.in .vsx-row:nth-child(1) .vsx-ck{transition-delay:.20s}.vsx.in .vsx-row:nth-child(2) .vsx-ck{transition-delay:.27s}
+.vsx.in .vsx-row:nth-child(3) .vsx-ck{transition-delay:.34s}.vsx.in .vsx-row:nth-child(4) .vsx-ck{transition-delay:.41s}
+.vsx.in .vsx-row:nth-child(5) .vsx-ck{transition-delay:.48s}.vsx.in .vsx-row:nth-child(6) .vsx-ck{transition-delay:.55s}
+.vsx.in .vsx-row:nth-child(7) .vsx-ck{transition-delay:.62s}
+.vsx-row:hover .vsx-ck{transform:scale(1.1);transition:transform .25s;}
 /* pied : chips + CTA */
-.edge-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 1.4rem;margin-top:clamp(1.2rem,2.2vw,1.7rem);}
-.edge-chips{display:flex;flex-wrap:wrap;gap:.5rem;}
-.edge-chip{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sky);font-size:.72rem;font-weight:600;color:var(--ob2);
-  background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);padding:8px 14px;border-radius:50px;}
-.edge-chip b{color:var(--ob);font-weight:700;}
-.edge-cta{position:relative;overflow:hidden;flex:none;display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sky);font-weight:700;
-  font-size:.96rem;color:var(--ob);background:var(--lime);padding:14px 24px;border-radius:50px;box-shadow:0 14px 32px rgba(188,212,26,.45);
+.vsx-foot{position:relative;z-index:1;width:min(1000px,100%);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:.9rem 1.4rem;padding:clamp(.9rem,1.7vw,1.3rem) clamp(1.1rem,2.4vw,1.7rem);border-radius:18px;
+  background:linear-gradient(135deg,rgba(188,212,26,.18),rgba(255,255,255,.55));
+  border:1px solid rgba(188,212,26,.4);box-shadow:inset 0 1px 0 rgba(255,255,255,.85);}
+.vsx-chips{display:flex;flex-wrap:wrap;gap:.5rem;}
+.vsx-chip{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--sky);font-size:.74rem;font-weight:600;color:var(--ob2);
+  background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.9);padding:7px 13px;border-radius:50px;box-shadow:0 6px 16px rgba(80,66,48,.08);}
+.vsx-chip b{color:#5a6e00;font-weight:800;}
+.vsx-cta{position:relative;overflow:hidden;flex:none;display:inline-flex;align-items:center;gap:.6rem;font-family:var(--sky);font-weight:700;
+  font-size:.94rem;color:#fff;background:var(--ob);padding:14px 24px;border-radius:50px;box-shadow:0 14px 32px rgba(21,20,18,.28);
   transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;}
-.edge-cta:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(188,212,26,.6);}
-.edge-cta i{font-style:normal;transition:transform .35s;}.edge-cta:hover i{transform:translateX(5px);}
-/* mobile : on empile, marques étiquetées */
-@media(max-width:720px){
-  .edge-table{--cols:1fr;}
-  .edge-thead,.col-aec{display:none;}
-  .edge-trow{grid-template-columns:1fr 1fr;grid-template-areas:"crit crit" "ca cb";gap:.1rem .6rem;padding-bottom:.9rem;}
-  .ecrit{grid-area:crit;}
-  .emark{justify-content:flex-start;gap:.5rem;}
-  .emark.classic{grid-area:ca;}.emark.aec{grid-area:cb;}
-  .emark::before{font-family:var(--sky);font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
-  .emark.classic::before{content:"Les autres";}
-  .emark.aec::before{content:"Aeconomia";color:#5a6e00;}
-  .edge-foot{flex-direction:column;align-items:stretch;text-align:center;}
-  .edge-cta{justify-content:center;}
+.vsx-cta::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(188,212,26,.55) 50%,transparent 65%);transform:translateX(-120%) skewX(-12deg);transition:transform .9s cubic-bezier(.22,1,.36,1);}
+.vsx-cta:hover::before{transform:translateX(120%) skewX(-12deg);}
+.vsx-cta:hover{transform:translateY(-3px);box-shadow:0 20px 46px rgba(21,20,18,.4),0 0 0 3px rgba(188,212,26,.4);}
+.vsx-cta i{font-style:normal;transition:transform .35s;}.vsx-cta:hover i{transform:translateX(5px);}
+/* ── MOBILE : colonnes empilées ── */
+@media(max-width:760px){
+  .vsx{padding:clamp(2rem,7vw,3.2rem) clamp(.7rem,4vw,1.4rem);}
+  .vsx-frame{padding:clamp(1.1rem,4vw,1.8rem) clamp(.7rem,3vw,1.2rem) clamp(1.2rem,4vw,1.8rem);}
+  .vsx-card{--g:1fr;padding:.35rem .45rem .55rem;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border:0;box-shadow:none;}
+  .vsx-spot,.vsx-cols{display:none;}
+  .vsx-rows{display:flex;flex-direction:column;gap:.7rem;}
+  .vsx-row{grid-template-columns:1fr 1fr;grid-template-areas:"crit crit" "seul pro";border:1px solid rgba(21,20,18,.08);border-radius:16px;overflow:hidden;
+    background:linear-gradient(160deg,rgba(255,255,255,.82),rgba(255,255,255,.62));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 16px 38px rgba(80,66,48,.1);}
+  .vsx-row+.vsx-row::before{display:none;}
+  .vsx-crit{grid-area:crit;background:rgba(21,20,18,.035);border-bottom:1px solid rgba(21,20,18,.07);min-height:0;padding:.7rem .9rem;}
+  .vsx-seul{grid-area:seul;border-right:1px solid rgba(21,20,18,.07);}
+  .vsx-pro{grid-area:pro;background:linear-gradient(160deg,rgba(188,212,26,.14),rgba(255,255,255,.4));}
+  .vsx-seul,.vsx-pro{position:relative;align-items:flex-start;padding-top:1.7rem;min-height:0;}
+  .vsx-seul::before,.vsx-pro::before{position:absolute;top:.5rem;left:.9rem;font-family:var(--sky);font-size:.48rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;}
+  .vsx-seul::before{content:"Seul";color:var(--muted);}
+  .vsx-pro::before{content:"Aeconomia";color:#6a7e00;}
+  .vsx-tip{left:auto;right:.2rem;}.vsx-tip::before{left:auto;right:26px;}
+  .vsx-foot{flex-direction:column;align-items:stretch;text-align:center;}
+  .vsx-chips{justify-content:center;}.vsx-cta{justify-content:center;}
 }
 @media(prefers-reduced-motion:reduce){
+  .vsx-bg{transform:none!important;}.vsx-beam::before,.vsx-sheen,.vsx-spot::after{animation:none;}
+  .vsx-row{opacity:1;transform:none;}
+  .vsx-ck{opacity:1;transform:none;}
+}
+  
   .edge-bg{transform:none!important;}.edge-beam::before,.edge-sheen{animation:none;}
   .edge-card,.edge-trow{opacity:1!important;transform:none!important;}
   .ck{opacity:1!important;transform:none!important;}
@@ -2108,100 +2174,108 @@ body{
   </div>
 </div>
 
-<!-- ═══════ COURTIER OU SEUL ? — comparatif (1 écran) ═══════ -->
+
+<!-- ═══════ COURTIER OU SEUL ? — verre sur image parallax ═══════ -->
 <section class="vsx" id="vs">
-  <div class="vsx-amb" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="vsx-frame">
+    <div class="vsx-bg" id="vsxBg" aria-hidden="true"></div>
+    <div class="vsx-veil" aria-hidden="true"></div>
+    <span class="vsx-beam" aria-hidden="true"></span>
+    <span class="vsx-sheen" aria-hidden="true"></span>
+    <span class="vsx-cur" aria-hidden="true"></span>
 
-  <div class="vsx-head">
-    <span class="vsx-eye">Courtier ou seul ?</span>
-    <h2 class="vsx-title">Un courtier ne vous coûte pas.<br/><em>Il vous rapporte.</em></h2>
-    <p class="vsx-sub">Votre banque seul·e, face à un courtier qui négocie pour vous. <b>Le coût d'Aeconomia ? Déjà compris dans ce qu'on vous fait économiser.</b></p>
-  </div>
+    <div class="vsx-inner">
+      <div class="vsx-head">
+        <span class="vsx-eye">Courtier ou seul ?</span>
+        <h2 class="vsx-title">Un courtier ne vous coûte pas.<br/><em>Il vous rapporte.</em></h2>
+        <p class="vsx-sub">Votre banque seul·e, face à un courtier qui négocie pour vous. <b>Le coût d'Aeconomia ? Déjà compris dans ce qu'on vous fait économiser.</b></p>
+      </div>
 
-  <div class="vsx-card">
-    <div class="vsx-spot" aria-hidden="true"></div>
+      <div class="vsx-card">
+        <div class="vsx-spot" aria-hidden="true"></div>
 
-    <div class="vsx-cols">
-      <div class="c1">Le critère</div>
-      <div class="vsx-col seul"><span class="k">Seul, face<br/>à votre banque</span></div>
-      <div class="vsx-col pro"><span class="brand">/aeconomia<i>.</i></span><span class="vsx-reco">Recommandé</span></div>
+        <div class="vsx-cols">
+          <div class="c1">Le critère</div>
+          <div class="vsx-col seul"><span class="k">Seul, face<br/>à votre banque</span></div>
+          <div class="vsx-col pro"><span class="brand">/aeconomia<i>.</i></span><span class="vsx-reco">Recommandé</span></div>
+        </div>
+
+        <div class="vsx-rows">
+          <div class="vsx-row">
+            <div class="vsx-cell vsx-crit" tabindex="0">
+              <span class="vsx-ico">🏦</span><span class="vsx-clbl">Banques consultées</span><span class="vsx-i" aria-hidden="true">i</span>
+              <span class="vsx-tip" role="tooltip">La mise en concurrence, c'est <b>le</b> levier qui fait baisser votre taux. Seul, vous n'avez qu'une seule offre — à prendre ou à laisser.</span>
+            </div>
+            <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">1 seule : la vôtre</span></div>
+            <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">20+ banques en concurrence</span></div>
+          </div>
+
+          <div class="vsx-row">
+            <div class="vsx-cell vsx-crit" tabindex="0">
+              <span class="vsx-ico">📉</span><span class="vsx-clbl">Le taux décroché</span><span class="vsx-i" aria-hidden="true">i</span>
+              <span class="vsx-tip" role="tooltip">Quelques dixièmes de point négociés, et c'est <b>plusieurs milliers d'euros</b> d'intérêts en moins sur la durée.</span>
+            </div>
+            <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">celui qu'on veut bien vous donner</span></div>
+            <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">le meilleur du marché, négocié</span></div>
+          </div>
+
+          <div class="vsx-row">
+            <div class="vsx-cell vsx-crit" tabindex="0">
+              <span class="vsx-ico">🛡️</span><span class="vsx-clbl">L'assurance emprunteur</span><span class="vsx-i" aria-hidden="true">i</span>
+              <span class="vsx-tip" role="tooltip">Elle peut peser jusqu'à <b>un tiers</b> du coût d'un crédit. En direct fournisseur, elle est souvent 2× moins chère.</span>
+            </div>
+            <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">au tarif de la banque</span></div>
+            <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">prix fournisseur, jusqu'à −50 %</span></div>
+          </div>
+
+          <div class="vsx-row">
+            <div class="vsx-cell vsx-crit" tabindex="0">
+              <span class="vsx-ico">📂</span><span class="vsx-clbl">Le montage du dossier</span><span class="vsx-i" aria-hidden="true">i</span>
+              <span class="vsx-tip" role="tooltip">Un dossier clair et argumenté <b>rassure le banquier</b> et débloque de meilleures conditions. On sait ce qu'ils veulent voir.</span>
+            </div>
+            <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">à vous de tout constituer</span></div>
+            <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">un dossier béton, monté pour vous</span></div>
+          </div>
+
+          <div class="vsx-row">
+            <div class="vsx-cell vsx-crit" tabindex="0">
+              <span class="vsx-ico">⏳</span><span class="vsx-clbl">Votre temps</span><span class="vsx-i" aria-hidden="true">i</span>
+              <span class="vsx-tip" role="tooltip">Pièces, relances, rendez-vous, allers-retours : on absorbe <b>toute la charge</b>. De votre côté, l'essentiel et rien d'autre.</span>
+            </div>
+            <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">des semaines de paperasse</span></div>
+            <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">quelques heures, c'est tout</span></div>
+          </div>
+
+          <div class="vsx-row">
+            <div class="vsx-cell vsx-crit" tabindex="0">
+              <span class="vsx-ico">🧩</span><span class="vsx-clbl">Dossier atypique ou refusé</span><span class="vsx-i" aria-hidden="true">i</span>
+              <span class="vsx-tip" role="tooltip">Indépendant, CDD, peu d'apport, déjà refusé… On cible précisément les banques qui <b>disent oui</b> à votre profil.</span>
+            </div>
+            <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">souvent un mur</span></div>
+            <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">on sait débloquer la situation</span></div>
+          </div>
+
+          <div class="vsx-row">
+            <div class="vsx-cell vsx-crit" tabindex="0">
+              <span class="vsx-ico">🧾</span><span class="vsx-clbl">Ce que ça vous coûte</span><span class="vsx-i" aria-hidden="true">i</span>
+              <span class="vsx-tip" role="tooltip">Notre rémunération ne tombe <b>que si votre crédit aboutit</b> — et elle est déjà couverte par ce qu'on vous fait gagner.</span>
+            </div>
+            <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">votre temps, et souvent plus cher</span></div>
+            <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">0 € tant que vous n'avez pas signé</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vsx-foot">
+        <div class="vsx-chips">
+          <span class="vsx-chip"><b>0 €</b> tant que vous ne signez pas</span>
+          <span class="vsx-chip"><b>1ʳᵉ</b> renégociation offerte, à vie</span>
+        </div>
+        <a href="simulation.html" class="vsx-cta"><span>Calculer mon économie</span><i>→</i></a>
+      </div>
     </div>
-
-    <div class="vsx-rows">
-      <div class="vsx-row">
-        <div class="vsx-cell vsx-crit" tabindex="0">
-          <span class="vsx-ico">🏦</span><span class="vsx-clbl">Banques consultées</span><span class="vsx-i" aria-hidden="true">i</span>
-          <span class="vsx-tip" role="tooltip">La mise en concurrence, c'est <b>le</b> levier qui fait baisser votre taux. Seul, vous n'avez qu'une seule offre — à prendre ou à laisser.</span>
-        </div>
-        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">1 seule : la vôtre</span></div>
-        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">20+ banques en concurrence</span></div>
-      </div>
-
-      <div class="vsx-row">
-        <div class="vsx-cell vsx-crit" tabindex="0">
-          <span class="vsx-ico">📉</span><span class="vsx-clbl">Le taux décroché</span><span class="vsx-i" aria-hidden="true">i</span>
-          <span class="vsx-tip" role="tooltip">Quelques dixièmes de point négociés, et c'est <b>plusieurs milliers d'euros</b> d'intérêts en moins sur la durée.</span>
-        </div>
-        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">celui qu'on veut bien vous donner</span></div>
-        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">le meilleur du marché, négocié</span></div>
-      </div>
-
-      <div class="vsx-row">
-        <div class="vsx-cell vsx-crit" tabindex="0">
-          <span class="vsx-ico">🛡️</span><span class="vsx-clbl">L'assurance emprunteur</span><span class="vsx-i" aria-hidden="true">i</span>
-          <span class="vsx-tip" role="tooltip">Elle peut peser jusqu'à <b>un tiers</b> du coût d'un crédit. En direct fournisseur, elle est souvent 2× moins chère.</span>
-        </div>
-        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">au tarif de la banque</span></div>
-        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">prix fournisseur, jusqu'à −50 %</span></div>
-      </div>
-
-      <div class="vsx-row">
-        <div class="vsx-cell vsx-crit" tabindex="0">
-          <span class="vsx-ico">📂</span><span class="vsx-clbl">Le montage du dossier</span><span class="vsx-i" aria-hidden="true">i</span>
-          <span class="vsx-tip" role="tooltip">Un dossier clair et argumenté <b>rassure le banquier</b> et débloque de meilleures conditions. On sait ce qu'ils veulent voir.</span>
-        </div>
-        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">à vous de tout constituer</span></div>
-        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">un dossier béton, monté pour vous</span></div>
-      </div>
-
-      <div class="vsx-row">
-        <div class="vsx-cell vsx-crit" tabindex="0">
-          <span class="vsx-ico">⏳</span><span class="vsx-clbl">Votre temps</span><span class="vsx-i" aria-hidden="true">i</span>
-          <span class="vsx-tip" role="tooltip">Pièces, relances, rendez-vous, allers-retours : on absorbe <b>toute la charge</b>. De votre côté, l'essentiel et rien d'autre.</span>
-        </div>
-        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">des semaines de paperasse</span></div>
-        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">quelques heures, c'est tout</span></div>
-      </div>
-
-      <div class="vsx-row">
-        <div class="vsx-cell vsx-crit" tabindex="0">
-          <span class="vsx-ico">🧩</span><span class="vsx-clbl">Dossier atypique ou refusé</span><span class="vsx-i" aria-hidden="true">i</span>
-          <span class="vsx-tip" role="tooltip">Indépendant, CDD, peu d'apport, déjà refusé… On cible précisément les banques qui <b>disent oui</b> à votre profil.</span>
-        </div>
-        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">souvent un mur</span></div>
-        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">on sait débloquer la situation</span></div>
-      </div>
-
-      <div class="vsx-row">
-        <div class="vsx-cell vsx-crit" tabindex="0">
-          <span class="vsx-ico">🧾</span><span class="vsx-clbl">Ce que ça vous coûte</span><span class="vsx-i" aria-hidden="true">i</span>
-          <span class="vsx-tip" role="tooltip">Notre rémunération ne tombe <b>que si votre crédit aboutit</b> — et elle est déjà couverte par ce qu'on vous fait gagner.</span>
-        </div>
-        <div class="vsx-cell vsx-seul"><span class="vsx-no" aria-hidden="true"></span><span class="t">votre temps, et souvent plus cher</span></div>
-        <div class="vsx-cell vsx-pro"><span class="vsx-ck" aria-hidden="true"></span><span class="t">0 € tant que vous n'avez pas signé</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="vsx-foot">
-    <div class="vsx-chips">
-      <span class="vsx-chip"><b>0 €</b> tant que vous ne signez pas</span>
-      <span class="vsx-chip"><b>1ʳᵉ</b> renégociation offerte, à vie</span>
-    </div>
-    <a href="simulation.html" class="vsx-cta"><span>Calculer mon économie</span><i>→</i></a>
   </div>
 </section>
-
   
 <section class="rev" id="reviews">
   <div class="rev-head">
@@ -3432,10 +3506,18 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 
 
 
-/* ─── COMPARATIF Seul vs Aeconomia : rail Aeconomia + révélation ─── */
+/* ─── COURTIER OU SEUL ? : rail Aeconomia + parallax image + lueur curseur ─── */
 (function(){
   var sec=document.getElementById('vs');if(!sec||!sec.classList.contains('vsx'))return;
-  var card=sec.querySelector('.vsx-card'),spot=sec.querySelector('.vsx-spot'),probe=sec.querySelector('.vsx-col.pro');
+  var frame=sec.querySelector('.vsx-frame'),
+      bg=sec.querySelector('.vsx-bg'),
+      cur=sec.querySelector('.vsx-cur'),
+      card=sec.querySelector('.vsx-card'),
+      spot=sec.querySelector('.vsx-spot'),
+      probe=sec.querySelector('.vsx-col.pro'),
+      fine=matchMedia('(hover:hover) and (pointer:fine)').matches,
+      reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,ticking=false;
+
   function place(){
     if(!card||!spot||!probe)return;
     if(getComputedStyle(spot).display==='none'){spot.classList.remove('ready');return;}
@@ -3456,8 +3538,21 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     });},{threshold:.16});
     io.observe(sec);
   }else sec.classList.add('in');
-})();
 
+  if(bg&&!reduce){
+    var upd=function(){ticking=false;var r=sec.getBoundingClientRect();
+      if(r.bottom>0&&r.top<innerHeight)
+        bg.style.transform='translateY('+((r.top+r.height/2-innerHeight/2)*-0.12).toFixed(1)+'px)';};
+    addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(upd);}},{passive:true});
+    addEventListener('resize',upd);upd();
+  }
+
+  if(frame&&cur&&fine){
+    frame.addEventListener('pointermove',function(e){var r=frame.getBoundingClientRect();
+      cur.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+      cur.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');});
+  }
+})();
 
   /* ─── CE QUE LES AUTRES N'ONT PAS : reveal + ✓ + parallax image + lueur curseur ─── */
 (function(){
