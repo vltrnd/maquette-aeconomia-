@@ -2740,8 +2740,9 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   function gate(){if(barDone&&loaded)finish();}
   addEventListener('load',function(){loaded=true;gate();});
   gate();
+    gate();
   setTimeout(finish,2900);                        // garde-fou : total ≤ ~3 s
-
+})();
 
 /* ─── CHIFFRES CLÉS + RÉVÉLATIONS + SCROLL ÉPINGLÉ ─── */
 (function(){
