@@ -1942,7 +1942,118 @@ body{
   #vs .vsx-cols>*{padding-bottom:.5rem;}
   #vs .vsx-foot{padding-top:clamp(.6rem,1.1vw,.9rem);padding-bottom:clamp(.6rem,1.1vw,.9rem);}
 }
- 
+
+
+  /* ═══════════════════════════════════════════════════════════════
+   ✦ MOBILE v4 — expérience « application » sur téléphone
+   À COLLER EN TOUT DERNIER dans le <style>. Garde couleurs/images/
+   polices · n'agit qu'à ≤ 760px · le menu n'est pas touché.
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:760px){
+
+  /* ░░ 0 · FONDATIONS — zéro scroll horizontal (même iOS ancien) + tactile net ░░ */
+  html,body{overflow-x:hidden!important;max-width:100%;}
+  *{-webkit-tap-highlight-color:transparent;}
+  img,svg,video{max-width:100%;}
+  body{background-size:74px 74px;}                               /* maille de fond plus fine */
+  .steps-stack .scard{position:static!important;transform:none!important;margin-left:auto;margin-right:auto;} /* cartes simples (le sticky empêchait le confinement) */
+  .faq-main,.faq-list,.faq-item,.vsx-rows,.vsx-card,.edge-card,.ig-grid,.rev-stack,.gh-text{min-width:0!important;} /* hygiène flex/grid anti-débordement */
+  .trust,.icx,.broker-mobile,.team-head,.rev,.ig,.faq,.ctaband{padding-left:18px!important;padding-right:18px!important;} /* gouttières d'app homogènes */
+
+  /* ░░ HERO ░░ */
+  .hero{padding:104px 18px 44px!important;}
+  .hero-h1 .l2{text-align:left!important;}
+  .hero-bottom p{font-size:1rem!important;}
+  .hero-cta2{width:100%;}
+  .hero-cta2 .hcta{flex:1 1 46%;justify-content:center;min-height:52px;}   /* boutons pleine largeur, gros */
+  .tilewrap{width:100%!important;}
+
+  /* ░░ CONFIANCE ░░ */
+  .trust-stats{grid-template-columns:1fr 1fr!important;gap:.7rem!important;}
+  .tstat{padding:1.5rem .8rem!important;border-radius:20px!important;}
+  .tstat:nth-child(3),.tstat:nth-child(4){padding-top:1.5rem!important;}
+  .logos-track{animation-duration:34s;}
+
+  /* ░░ C'EST QUOI UN COURTIER ░░ */
+  .icx-note,.icx.in .icx-note{transform:none!important;border-radius:18px!important;}
+
+  /* ░░ ÉQUIPE — carrousel doigt (swipe + snap) ░░ */
+  .team-track{padding-left:18px!important;padding-right:18px!important;gap:14px!important;}
+  .team-mask{scroll-padding-left:18px;}
+  .tcard{width:78vw!important;max-width:320px!important;scroll-snap-align:center;}
+
+  /* ░░ COURTIER OU SEUL ░░ */
+  #vs{overflow:hidden!important;padding:clamp(1.8rem,6vw,2.6rem) 14px!important;}
+  #vs .vsx-frame{padding:clamp(1.4rem,5vw,1.9rem) 14px clamp(1.3rem,4vw,1.7rem)!important;border-radius:24px!important;}
+  .vsx-clbl{font-size:.92rem!important;}
+  .vsx-foot{width:100%;}
+
+  /* ░░ AVIS ░░ */
+  .rev-plat{min-width:0!important;flex:1 1 44%!important;}        /* ← corrige un vrai débordement (min-width:172) */
+  .rcm{border-radius:18px!important;padding:1.2rem!important;}
+  .rcm p{font-size:.95rem!important;}
+
+  /* ░░ CE QUE LES AUTRES N'ONT PAS ░░ */
+  .edge{padding:clamp(2.4rem,8vw,3.4rem) 14px!important;}
+  .edge-frame{padding:clamp(1.3rem,5vw,1.8rem) 14px clamp(1.4rem,5vw,1.8rem)!important;}
+  .edge-info .t{font-size:1rem!important;}
+  .edge-info .d{font-size:.85rem!important;}
+
+  /* ░░ ÉTAPES ░░ */
+  .steps-hero{height:auto!important;min-height:60vh!important;}   /* moins d'image vide */
+  .steps-stack{margin-top:-6vh!important;}
+  .scard{border-radius:24px!important;}
+  .scard+.scard{margin-top:1.4rem!important;}
+  .scard-in{padding:clamp(1.5rem,6vw,2rem)!important;gap:1.3rem!important;}
+  .scard-media{aspect-ratio:16/10!important;border-radius:18px!important;}
+  .scard-p{font-size:1rem!important;}
+
+  /* ░░ TAUX → ÉCONOMIE ░░ */
+  .rate-card{border-radius:22px!important;}
+
+  /* ░░ CTA VIDÉO ░░ */
+  .vcta-inner{padding:clamp(2.4rem,9vw,4rem) 22px!important;}
+  .vcta-p{font-size:1rem!important;}
+  .vcta-btns{flex-direction:column;width:100%;align-items:stretch;} /* boutons empilés pleine largeur */
+  .vcta-btn{justify-content:center;min-height:54px;}
+
+  /* ░░ INSTAGRAM ░░ */
+  .ig-grid{gap:.5rem!important;}
+  .ig-post .meta{opacity:1!important;transform:none!important;}   /* infos visibles (pas de survol au doigt) */
+
+  /* ░░ SIMULATEUR (verre) ░░ */
+  .gh{margin:14px!important;min-height:0!important;padding:clamp(1.6rem,6vw,2.2rem) 14px!important;}
+  .gh-card{padding:clamp(1rem,4vw,1.4rem)!important;border-radius:22px!important;}
+  .gh-media{aspect-ratio:16/11!important;}
+  .gh-text{padding:.4rem .4rem 0 .4rem!important;}
+  .gh-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;min-height:52px;}
+
+  /* ░░ FAQ ░░ */
+  .faq-wrap{display:flex!important;flex-direction:column!important;gap:clamp(1.6rem,5vw,2.2rem)!important;} /* titre+image puis questions */
+  .faq-img{max-height:200px!important;}
+  .faq-q{padding:1.15rem 1.1rem!important;}
+  .faq-qt{font-size:1rem!important;}
+  #faqFilter{-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;}   /* onglets swipe */
+  .faq-tab{scroll-snap-align:start;padding:11px 16px!important;}
+
+  /* ░░ CTA BANDEAU ░░ */
+  .ctaband-box{padding:clamp(2rem,8vw,3rem) clamp(1.4rem,6vw,2rem)!important;border-radius:26px!important;}
+  .ctaband-arrow{width:84px!important;}
+
+  /* ░░ FOOTER ░░ */
+  .ftr{padding-left:14px!important;padding-right:14px!important;padding-bottom:calc(clamp(1.1rem,3vw,2.2rem) + env(safe-area-inset-bottom))!important;}
+  .ftr-card{padding:clamp(1.6rem,6vw,2.2rem) clamp(1.1rem,5vw,1.6rem)!important;}
+
+  /* ░░ PERF — moins de flou = plus fluide sur tél ░░ */
+  .faq-item,.tstat,.rate-card,.gh-card{backdrop-filter:blur(14px) saturate(140%)!important;-webkit-backdrop-filter:blur(14px) saturate(140%)!important;}
+}
+
+/* ░░ TRÈS PETITS ÉCRANS (≤ 380px : iPhone SE/mini, petits Android) ░░ */
+@media(max-width:380px){
+  .hero-cta2 .hcta{flex:1 1 100%;}     /* 1 bouton par ligne */
+  .rev-plat{flex:1 1 100%!important;}
+  .tstat{padding:1.25rem .6rem!important;}
+}
   
 </style></head>
 
