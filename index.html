@@ -1956,7 +1956,7 @@ body{
   *{-webkit-tap-highlight-color:transparent;}
   img,svg,video{max-width:100%;}
   body{background-size:74px 74px;}                               /* maille de fond plus fine */
-  .steps-stack .scard{position:static!important;transform:none!important;margin-left:auto;margin-right:auto;} /* cartes simples (le sticky empêchait le confinement) */
+
   .faq-main,.faq-list,.faq-item,.vsx-rows,.vsx-card,.edge-card,.ig-grid,.rev-stack,.gh-text{min-width:0!important;} /* hygiène flex/grid anti-débordement */
   .trust,.icx,.broker-mobile,.team-head,.rev,.ig,.faq,.ctaband{padding-left:18px!important;padding-right:18px!important;} /* gouttières d'app homogènes */
 
@@ -2054,6 +2054,94 @@ body{
   .rev-plat{flex:1 1 100%!important;}
   .tstat{padding:1.25rem .6rem!important;}
 }
+
+
+
+  /* ═══════════════════════════════════════════════════════════════
+   ✦ MOBILE v5 — chaque bloc devient une vraie proposition (≤760px)
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:760px){
+
+  /* ───── 1 · LES 3 AVANTAGES → carrousel swipe + n° + pastilles ───── */
+  .broker-mobile{display:flex!important;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:.4rem 18px 1rem!important;counter-reset:bm;}
+  .broker-mobile::-webkit-scrollbar{display:none;}
+  .bm-item{flex:0 0 84vw!important;max-width:340px;scroll-snap-align:center;counter-increment:bm;margin:0!important;padding:0!important;border:0!important;border-radius:24px;overflow:hidden;background:linear-gradient(165deg,#fff,#f6f1e6);box-shadow:0 22px 50px rgba(20,19,16,.16);opacity:1!important;transform:none!important;}
+  .bm-img{aspect-ratio:5/4!important;border-radius:0!important;margin:0!important;opacity:1!important;transform:none!important;}
+  .bm-txt{margin:0!important;padding:1.3rem 1.3rem 1.5rem!important;opacity:1!important;transform:none!important;position:relative;}
+  .bm-txt::before{content:counter(bm,decimal-leading-zero);position:absolute;top:-1.7rem;right:1.1rem;width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:var(--sky);font-weight:700;font-size:1.05rem;color:var(--ob);background:var(--lime);box-shadow:0 10px 22px rgba(140,160,20,.5);}
+  .bm-txt h2{font-size:1.5rem!important;}
+  .bm-txt p{font-size:.95rem!important;}
+  .bm-dots,.rev-dots-m{display:flex;justify-content:center;gap:.45rem;margin-top:0;}
+  .bm-dots i,.rev-dots-m i{width:7px;height:7px;border-radius:50%;background:rgba(21,20,18,.18);transition:width .3s,background .3s;}
+  .bm-dots i.on,.rev-dots-m i.on{width:22px;border-radius:4px;background:var(--ob);}
+
+  /* ───── 2 · COURTIER OU SEUL → cartes blanches lisibles ───── */
+  #vs .vsx-card{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:0!important;box-shadow:none!important;}
+  #vs .vsx-spot{display:none!important;}
+  #vs .vsx-row{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:1px solid rgba(21,20,18,.06)!important;box-shadow:0 14px 34px rgba(8,7,6,.22)!important;border-radius:18px!important;}
+  #vs .vsx-crit{background:linear-gradient(180deg,#fff,#f7f3ea)!important;padding:.9rem 1rem!important;}
+  #vs .vsx-clbl{font-size:.98rem!important;font-weight:700!important;}
+  #vs .vsx-crit .vsx-i{display:none!important;}
+  #vs .vsx-seul,#vs .vsx-pro{padding:.85rem 1rem 1rem!important;}
+  #vs .vsx-pro{background:linear-gradient(180deg,rgba(188,212,26,.18),rgba(188,212,26,.05))!important;}
+  #vs .vsx-seul .t,#vs .vsx-pro .t{font-size:.85rem!important;}
+
+  /* ───── 3 · AVIS → carrousel swipe + pastilles ───── */
+  .rev-stack{display:flex!important;flex-direction:row!important;align-items:stretch!important;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:.4rem 18px 1rem!important;}
+  .rev-stack::-webkit-scrollbar{display:none;}
+  .rcm{flex:0 0 80vw!important;max-width:330px;scroll-snap-align:center;margin:0!important;border-radius:20px!important;padding:1.3rem!important;box-shadow:0 20px 46px rgba(40,33,24,.16)!important;}
+  .rcm p{font-size:.98rem!important;}
+
+  /* ───── 4 · CE QUE LES AUTRES N'ONT PAS → cartes « atout » ───── */
+  .edge-card{background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:0!important;box-shadow:none!important;display:flex!important;flex-direction:column;gap:.65rem;}
+  .edge-thead{display:none!important;}
+  .edge-row{display:grid!important;grid-template-columns:44px 1fr!important;grid-template-areas:"mk info"!important;gap:.9rem!important;align-items:start!important;background:rgba(255,255,255,.97)!important;border:1px solid rgba(255,255,255,.7)!important;border-radius:18px!important;box-shadow:0 14px 32px rgba(80,66,48,.16)!important;padding:1.1rem!important;}
+  .edge-info{grid-area:info;}
+  .edge-mark{grid-area:mk;}
+  .edge-mark.no,.edge-mark.mid{display:none!important;}
+  .edge-mark.yes{align-self:start;width:44px!important;height:44px!important;border-radius:13px!important;font-size:1.2rem!important;}
+  .edge-info .t{font-size:1.05rem!important;}
+  .edge-info .d{font-size:.86rem!important;}
+
+  /* ───── 6 · ÉTAPES → cartes qui s'empilent ───── */
+  .steps-stack{margin-top:-4vh!important;padding:0 16px clamp(4rem,16vw,7rem)!important;}
+  .steps-stack .scard{position:sticky!important;top:84px!important;border-radius:26px!important;width:100%!important;max-width:none!important;}
+  .scard+.scard{margin-top:18px!important;}
+  .scard-in{grid-template-columns:1fr!important;min-height:clamp(420px,64vh,560px)!important;padding:0!important;display:flex!important;flex-direction:column!important;}
+  .scard-media{order:-1;aspect-ratio:16/11!important;border-radius:0!important;border:0!important;}
+  .scard-text{padding:clamp(1.4rem,6vw,2rem)!important;}
+  .scard-h{font-size:1.9rem!important;}
+  .scard-p{font-size:1rem!important;}
+
+  /* ───── 9 · INSTAGRAM → mosaïque bento + apparition cascade ───── */
+  .ig-wrap{display:flex!important;flex-direction:column;gap:1.3rem!important;}
+  .ig-card{order:-1;border-radius:22px!important;padding:1.3rem!important;}
+  .ig-ava{width:64px!important;height:64px!important;}
+  .ig-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:.5rem!important;}
+  .ig-grid .ig-post:nth-child(1){grid-column:span 2;grid-row:span 2;}
+  .ig-post{border-radius:16px!important;opacity:0;transform:translateY(16px) scale(.96);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1);}
+  .ig.in .ig-post{opacity:1;transform:none;}
+  .ig.in .ig-post:nth-child(2){transition-delay:.05s}.ig.in .ig-post:nth-child(3){transition-delay:.1s}.ig.in .ig-post:nth-child(4){transition-delay:.15s}.ig.in .ig-post:nth-child(5){transition-delay:.2s}.ig.in .ig-post:nth-child(6){transition-delay:.25s}
+
+  /* ───── 10 · FAQ → style app (image retirée = bug réglé) ───── */
+  .faq-wrap{display:flex!important;flex-direction:column!important;gap:1.2rem!important;}
+  .faq-img{display:none!important;}
+  .faq-sub{max-width:none!important;}
+  #faqFilter{margin:.4rem -18px 1rem!important;padding:0 18px!important;}
+  .faq-item{border-radius:16px!important;}
+
+  /* ───── 11 · FOOTER → compact + vidéo de fond ré-affichée ───── */
+  .ftr-bg{display:block!important;}
+  .ftr-card{background:linear-gradient(160deg,rgba(250,248,243,.5),rgba(244,239,230,.4))!important;backdrop-filter:blur(16px) saturate(140%)!important;-webkit-backdrop-filter:blur(16px) saturate(140%)!important;}
+  .ftr-head{grid-template-columns:1fr!important;gap:1.3rem!important;padding-bottom:1.3rem!important;margin-bottom:1.3rem!important;}
+  .ftr-nav{grid-template-columns:1fr 1fr!important;gap:1.3rem!important;}
+  .ftr-col.zones{grid-column:1/-1;}
+  .ftr-legal{grid-template-columns:1fr!important;gap:.8rem!important;}
+  .ftr-lblock p{font-size:.68rem!important;}
+  .ftr-claim{font-size:1.5rem!important;}
+  .ftr-desc{font-size:.85rem!important;}
+}
+
   
 </style></head>
 
@@ -3329,7 +3417,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     if(ecoEl)ecoEl.textContent=fmt(ecoT)+' €';
   }
   function read(){ticking=false;
-    if(reduce||!desktop){draw(1);return;}
+   if(reduce){draw(1);return;} if(!desktop)return;   /* sur mobile, l'anim au reveau de MOBILE v5 prend le relais */
     var r=track.getBoundingClientRect(),total=track.offsetHeight-innerHeight;
     draw(cl(-r.top/(total||1),0,1));
   }
@@ -3993,6 +4081,69 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   }
   var chk=function(){var r=sec.getBoundingClientRect();if(r.top<innerHeight*0.82&&r.bottom>0){lit();removeEventListener('scroll',chk);}};
   addEventListener('scroll',chk,{passive:true});chk();
+})();
+
+
+  /* ✦ MOBILE v5 — interactions */
+(function(){
+  if(!matchMedia('(max-width:760px)').matches) return;
+  var MB='https://raw.githubusercontent.com/vltrnd/maquette-aeconomia-/main/';
+
+  /* photo mobile du bloc « Nous sommes à vos côtés… » */
+  var sb=document.getElementById('stepsBg'); if(sb) sb.src=MB+'photocarremobilecotes.png';
+
+  /* vidéos mobiles des 2 CTA */
+  function swapVid(sel,name){var v=document.querySelector(sel+' video');if(!v)return;var s=v.querySelector('source');if(s)s.src=MB+name;v.load();var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});}
+  swapVid('#vcta','videopparalax1.mp4');
+  swapVid('#vcta3','videopparalax2.mp4');
+
+  /* pastilles de carrousel (broker + avis) */
+  function dots(scroller,cls){
+    if(!scroller||scroller.__dots)return;scroller.__dots=1;
+    (function run(){
+      var items=[].slice.call(scroller.children).filter(function(c){return c.nodeType===1;});
+      if(!items.length){return setTimeout(run,80);}                 /* avis : construit en JS → on patiente */
+      var w=document.createElement('div');w.className=cls;w.innerHTML=items.map(function(){return '<i></i>';}).join('');
+      scroller.parentNode.insertBefore(w,scroller.nextSibling);
+      var ds=[].slice.call(w.children);
+      function upd(){var c=scroller.scrollLeft+scroller.clientWidth/2,best=0,bd=1e9;items.forEach(function(it,i){var m=it.offsetLeft+it.offsetWidth/2,d=Math.abs(m-c);if(d<bd){bd=d;best=i;}});ds.forEach(function(d,i){d.classList.toggle('on',i===best);});}
+      scroller.addEventListener('scroll',function(){requestAnimationFrame(upd);},{passive:true});upd();
+    })();
+  }
+  dots(document.querySelector('.broker-mobile'),'bm-dots');
+  dots(document.getElementById('revStack'),'rev-dots-m');
+
+  /* INSTAGRAM : mosaïque qui apparaît au scroll */
+  var ig=document.getElementById('insta');
+  if(ig){ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){ig.classList.add('in');io.disconnect();}});},{threshold:.12});io.observe(ig);} else ig.classList.add('in'); }
+
+  /* ÉTAPES : empilement — la carte derrière recule et se penche */
+  var cards=[].slice.call(document.querySelectorAll('.steps-stack .scard')),topS=84,tk=false;
+  if(cards.length){
+    var readS=function(){tk=false;var vh=innerHeight;for(var i=0;i<cards.length;i++){var r=cards[i].getBoundingClientRect(),d=r.top-topS,s,rot=0;
+      if(d>4){var p=1-Math.min(1,d/(vh*0.6));s=0.93+0.07*p;}
+      else{var nx=cards[i+1],back=0;if(nx){var nd=nx.getBoundingClientRect().top-topS;back=1-Math.min(1,Math.max(0,nd)/(vh*0.6));}s=1-0.05*back;rot=back*2.2*((i%2)?-1:1);}
+      cards[i].style.transform='scale('+s.toFixed(3)+') rotate('+rot.toFixed(2)+'deg)';}};
+    addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(readS);}},{passive:true});addEventListener('resize',readS);readS();
+  }
+
+  /* TAUX : la courbe se trace + les chiffres défilent à l'arrivée */
+  if(matchMedia('(max-width:1024px)').matches){
+    var line=document.getElementById('rateLine'),clip=document.getElementById('rateClipRect'),dot=document.getElementById('rateDot'),
+        nowEl=document.getElementById('rateNow'),mensEl=document.getElementById('rateMens'),deltaEl=document.getElementById('rateDelta'),ecoEl=document.getElementById('rateEco'),
+        sec=document.getElementById('rate');
+    if(line&&sec){
+      var RT=[4.15,4.05,3.95,3.85,3.75,3.65,3.55,3.45,3.35,3.25,3.15,3.05],MN=[1534,1521,1508,1495,1482,1469,1456,1443,1430,1417,1405,1392],REF=1534,N=12,lp=16,pw=568;
+      var fmt=function(n){return Math.round(n).toLocaleString('fr-FR');};
+      var yAtX=function(x){var len=line.getTotalLength(),lo=0,hi=len,pt;for(var k=0;k<18;k++){var m=(lo+hi)/2;pt=line.getPointAtLength(m);if(pt.x<x)lo=m;else hi=m;}return pt?pt.y:0;};
+      var draw=function(p){clip.setAttribute('width',(lp+pw*p+0.5).toFixed(1));var x=lp+pw*p,y=yAtX(x);dot.setAttribute('cx',x.toFixed(1));dot.setAttribute('cy',y.toFixed(1));dot.style.opacity=p>0.004?1:0;
+        var f=p*(N-1),i=Math.min(N-2,Math.floor(f)),fr=f-i,rate=p>=1?RT[N-1]:RT[i]+(RT[i+1]-RT[i])*fr,mens=p>=1?MN[N-1]:MN[i]+(MN[i+1]-MN[i])*fr;
+        if(nowEl)nowEl.textContent=rate.toFixed(2).replace('.',',');if(mensEl)mensEl.textContent=fmt(mens)+' €';if(deltaEl)deltaEl.textContent='−'+fmt(REF-mens)+' €/mois';if(ecoEl)ecoEl.textContent=fmt((REF-mens)*240)+' €';};
+      draw(0);
+      var played=false,play=function(){if(played)return;played=true;var t0=null;(function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/1900);draw(1-Math.pow(1-p,3));if(p<1)requestAnimationFrame(step);})(performance.now());};
+      if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)play();});},{threshold:.35}).observe(sec);}else play();
+    }
+  }
 })();
   
 </script>
