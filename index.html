@@ -2144,6 +2144,71 @@ body{
 
 
   /* ═══════════════════════════════════════════════════════════════
+   ✦ MOBILE v6 — « Ce que les autres n'ont pas » : carrousel 1 écran
+   (≤760px · 1 atout qu'on swipe + pastilles · prioritaire car en dernier)
+   ═══════════════════════════════════════════════════════════════ */
+.edge-dots-m{display:none;}
+
+@media(max-width:760px){
+  .edge{padding:clamp(2rem,7vw,2.8rem) 0!important;}
+  .edge-frame{margin:0 12px;padding:clamp(1.3rem,5vw,1.8rem) 0 clamp(1.2rem,4vw,1.5rem)!important;border-radius:24px!important;}
+  .edge-inner{gap:1.05rem!important;}
+  .edge-head{padding:0 18px;}
+  .edge-sub{font-size:.92rem!important;line-height:1.5!important;}
+
+  /* le tableau devient un RAIL horizontal (1 atout par écran) */
+  .edge-card{
+    display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:stretch!important;
+    width:100%!important;gap:12px!important;
+    overflow-x:auto!important;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    border:0!important;box-shadow:none!important;border-radius:0!important;
+    padding:.4rem 18px 1rem!important;}
+  .edge-card::-webkit-scrollbar{display:none;}
+  .edge-thead{display:none!important;}
+
+  /* une CARTE = un atout ; comparaison Classique / Aeconomia en bas */
+  .edge-row{
+    flex:0 0 80%!important;max-width:330px;scroll-snap-align:center;
+    display:grid!important;grid-template-columns:1fr 1fr!important;grid-template-rows:1fr auto!important;
+    grid-template-areas:"info info" "classic aeco"!important;gap:1rem .7rem!important;align-items:stretch!important;
+    min-height:clamp(228px,64vw,300px);
+    background:linear-gradient(165deg,#fff,#f6f1e6)!important;
+    border:1px solid rgba(255,255,255,.8)!important;border-radius:20px!important;border-bottom:1px solid rgba(255,255,255,.8)!important;
+    box-shadow:0 18px 42px rgba(80,66,48,.18)!important;
+    padding:1.3rem 1.3rem 1.4rem!important;
+    opacity:1!important;transform:none!important;transition:none!important;}
+
+  .edge-info{grid-area:info;}
+  .edge-info .t{font-size:1.08rem!important;}
+  .edge-info .d{font-size:.88rem!important;margin-top:.45rem;max-width:none!important;}
+
+  /* les deux pastilles de comparaison, alignées en bas de carte */
+  .edge-mark{justify-self:stretch;align-self:end;
+    width:auto!important;height:auto!important;border-radius:13px!important;
+    display:flex!important;flex-direction:column;align-items:center;gap:.32rem;
+    padding:.62rem .4rem!important;font-size:1.12rem!important;line-height:1;}
+  .edge-mark:nth-of-type(2){grid-area:classic;}
+  .edge-mark:nth-of-type(3){grid-area:aeco;}
+  .edge-mark::before{font-family:var(--sky);font-size:.5rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+  .edge-mark.no,.edge-mark.mid{display:flex!important;}
+  .edge-mark.no::before,.edge-mark.mid::before{content:"Classique";color:var(--muted);}
+  /* bat la spécificité de l'ancien bloc v5 (.edge-mark.yes 44px) */
+  .edge-mark.yes{width:auto!important;height:auto!important;align-self:end!important;font-size:1.12rem!important;border-radius:13px!important;transform:none!important;opacity:1!important;}
+  .edge-mark.yes::before{content:"Aeconomia";color:#5a6e00;}
+
+  /* pastilles de progression (comme broker / avis) */
+  .edge-dots-m{display:flex;justify-content:center;gap:.45rem;margin-top:-.1rem;}
+  .edge-dots-m i{width:7px;height:7px;border-radius:50%;background:rgba(21,20,18,.18);transition:width .3s,background .3s;}
+  .edge-dots-m i.on{width:22px;border-radius:4px;background:var(--ob);}
+
+  /* pied compact */
+  .edge-foot{flex-direction:column;align-items:stretch;text-align:center;gap:.9rem;padding:0 18px;}
+  .edge-chips{justify-content:center;}
+  .edge-cta{justify-content:center;}
+}
+
+  /* ═══════════════════════════════════════════════════════════════
    ✦ FAQ MOBILE v6 — fix « trop large » + ergonomie téléphone (≤760px)
    CAUSE : en flex-colonne, .faq-wrap gardait align-items:start → la
    colonne des questions prenait la largeur de son texte (débordait).
@@ -4110,6 +4175,8 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 })();
 
 
+  
+
   /* ✦ MOBILE v5 — interactions */
 (function(){
   if(!matchMedia('(max-width:760px)').matches) return;
@@ -4171,6 +4238,25 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     }
   }
 })();
+
+
+  /* ─── CE QUE LES AUTRES N'ONT PAS : carrousel mobile + pastilles ─── */
+(function(){
+  if(!matchMedia('(max-width:760px)').matches)return;
+  var sc=document.querySelector('#edge .edge-card');if(!sc)return;
+  var items=[].slice.call(sc.children).filter(function(c){return c.nodeType===1 && !c.classList.contains('edge-thead');});
+  if(items.length<2)return;
+  var w=document.createElement('div');w.className='edge-dots-m';
+  w.innerHTML=items.map(function(){return '<i></i>';}).join('');
+  sc.parentNode.insertBefore(w,sc.nextSibling);
+  var ds=[].slice.call(w.children),tk=false;
+  function upd(){tk=false;var c=sc.scrollLeft+sc.clientWidth/2,best=0,bd=1e9;
+    items.forEach(function(it,i){var m=it.offsetLeft+it.offsetWidth/2,d=Math.abs(m-c);if(d<bd){bd=d;best=i;}});
+    ds.forEach(function(d,i){d.classList.toggle('on',i===best);});}
+  sc.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(upd);}},{passive:true});
+  upd();
+})();
+
   
 </script>
 </body></html>
