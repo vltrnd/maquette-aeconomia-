@@ -2232,6 +2232,52 @@ body{
   .faq-a-in p{max-width:none!important;font-size:.95rem!important;line-height:1.6!important;padding:0 1.15rem 1.2rem!important;}
 }
 
+
+  /* ═══════════════════════════════════════════════════════════════
+   ✦ MOBILE v7 — TAUX → ÉCONOMIE : scène épinglée + courbe qui se
+   TRACE AU SCROLL (façon Apple), compacte, tient sur 1 écran (≤1024px)
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:1024px){
+  /* la section redevient une scène épinglée : on scrolle "à travers" elle */
+  #rate .rate-track{height:260vh!important;}
+  #rate .rate-stage{position:sticky!important;top:0!important;height:100svh!important;min-height:580px!important;
+    overflow:hidden!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;}
+  #rate .rate-wrap{display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:center!important;
+    width:100%!important;max-width:430px!important;margin:0 auto!important;padding:0 20px!important;gap:0!important;}
+
+  /* on dégage le superflu → tout tient sur un écran (la courbe est la star) */
+  #rate .rate-text{display:contents!important;}                       /* libère eyebrow/titre/CTA pour les réordonner */
+  #rate .rate-desc,#rate .rate-bonus,#rate .rate-foot{display:none!important;}
+
+  /* en-tête compact + centré */
+  #rate .rate-eyebrow{order:0;display:flex!important;justify-content:center;}
+  #rate .rate-title{order:0;text-align:center;margin:.55rem 0 1rem!important;
+    font-size:clamp(1.45rem,5.6vw,1.9rem)!important;line-height:1.14!important;letter-spacing:-.6px!important;}
+
+  /* LA CARTE = la star */
+  #rate .rate-card{order:1;border-radius:24px!important;padding:1.15rem 1.15rem 1.25rem!important;
+    backdrop-filter:blur(22px) saturate(155%)!important;-webkit-backdrop-filter:blur(22px) saturate(155%)!important;}
+  #rate .rate-card-top{margin-bottom:.55rem!important;}
+  #rate .rate-figs{gap:.45rem .6rem!important;margin-bottom:.1rem!important;}
+  #rate .rate-now{font-size:2.7rem!important;}
+  #rate .rate-mens b{font-size:1.02rem!important;}
+  #rate .rate-svg{aspect-ratio:600/220!important;margin-top:.35rem!important;}   /* courbe plus courte */
+  #rate .rate-axis{font-size:.56rem!important;}
+  #rate .rate-eco{margin-top:.85rem!important;padding:.9rem 1.05rem!important;}
+  #rate .rate-eco-n{font-size:2.15rem!important;}
+  #rate .rate-eco-s{font-size:.68rem!important;}
+
+  /* barre de progression du scroll (touche tech) */
+  #rate .rate-prog{order:1;height:3px;width:64px;margin:.9rem auto 0;border-radius:3px;background:rgba(21,20,18,.12);overflow:hidden;}
+  #rate .rate-prog i{display:block;height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--lime),#a8c00f);box-shadow:0 0 10px rgba(188,212,26,.7);}
+
+  #rate .rate-cta{order:2;align-self:center;margin-top:.9rem!important;}
+}
+/* mouvement réduit : pas de scène épinglée, état final figé */
+@media(max-width:1024px) and (prefers-reduced-motion:reduce){
+  #rate .rate-track{height:auto!important;}
+  #rate .rate-stage{position:static!important;height:auto!important;min-height:0!important;padding:clamp(3rem,9vw,4.5rem) 0!important;}
+}
   
 </style></head>
 
