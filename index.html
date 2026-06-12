@@ -2103,15 +2103,34 @@ body{
   .edge-info .t{font-size:1.05rem!important;}
   .edge-info .d{font-size:.86rem!important;}
 
-  /* ───── 6 · ÉTAPES → cartes qui s'empilent ───── */
-  .steps-stack{margin-top:-4vh!important;padding:0 16px clamp(4rem,16vw,7rem)!important;}
-  .steps-stack .scard{position:sticky!important;top:84px!important;border-radius:26px!important;width:100%!important;max-width:none!important;}
+   /* ───── 6 · ÉTAPES → STACK « DECK » premium (1 seul pilote, zéro rotation) ───── */
+  .steps-hero{height:auto!important;min-height:42vh!important;}
+  .steps-stack{margin-top:-5vh!important;padding:0 14px clamp(5rem,22vw,9rem)!important;}
+
+  .steps-stack .scard{
+    position:sticky!important;width:100%!important;max-width:none!important;
+    border-radius:24px!important;transform-origin:50% 0!important;will-change:transform,filter;
+    background:linear-gradient(162deg,#FFFFFF,#F4EEE2)!important;          /* OPAQUE : le dépassement reste visible */
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    border:1px solid rgba(255,255,255,.9)!important;
+    box-shadow:0 -10px 24px -12px rgba(40,33,24,.30),0 18px 34px -12px rgba(40,33,24,.34),0 2px 0 rgba(255,255,255,.9) inset!important;}
+  /* tops décalés → chaque carte précédente “dépasse” d’un cran (effet jeu de cartes) */
+  .steps-stack .scard:nth-of-type(1){top:76px!important;}
+  .steps-stack .scard:nth-of-type(2){top:90px!important;}
+  .steps-stack .scard:nth-of-type(3){top:104px!important;}
+  .steps-stack .scard:nth-of-type(4){top:118px!important;}
   .scard+.scard{margin-top:18px!important;}
-  .scard-in{grid-template-columns:1fr!important;min-height:clamp(420px,64vh,560px)!important;padding:0!important;display:flex!important;flex-direction:column!important;}
-  .scard-media{order:-1;aspect-ratio:16/11!important;border-radius:0!important;border:0!important;}
-  .scard-text{padding:clamp(1.4rem,6vw,2rem)!important;}
-  .scard-h{font-size:1.9rem!important;}
-  .scard-p{font-size:1rem!important;}
+
+  .scard-in{grid-template-columns:1fr!important;min-height:clamp(430px,72vh,580px)!important;padding:0!important;display:flex!important;flex-direction:column!important;}
+  .scard-media{order:-1;aspect-ratio:16/10!important;border-radius:0!important;border:0!important;}
+  .scard-text{padding:1.4rem 1.4rem 1.6rem!important;}
+  .scard-step{margin:0!important;}
+  .scard-h{font-size:1.78rem!important;margin-top:.9rem!important;}
+  .scard-k{margin-top:1.3rem!important;padding-top:1rem!important;}
+  .scard-p{font-size:1rem!important;margin-top:.7rem!important;}
+  .steps-stack .scard::before{content:"";position:absolute;top:0;left:0;right:0;height:30px;z-index:4;pointer-events:none;
+    background:linear-gradient(180deg,rgba(255,255,255,.5),transparent);opacity:0;transition:opacity .3s;}
+  .steps-stack .scard.is-behind::before{opacity:1;}
 
   /* ───── 9 · INSTAGRAM → mosaïque bento + apparition cascade ───── */
   .ig-wrap{display:flex!important;flex-direction:column;gap:1.3rem!important;}
@@ -3482,7 +3501,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
       var hr=hero.getBoundingClientRect();
       if(hr.bottom>0&&hr.top<innerHeight)bg.style.transform='translate3d(0,'+(hr.top*-0.22).toFixed(1)+'px,0)';  /* ← grand parallax */
     }
-    if(reduce)return;
+        if(reduce||matchMedia('(max-width:760px)').matches)return;
     var vh=innerHeight;
     for(var i=0;i<cards.length;i++){
       var r=cards[i].getBoundingClientRect(),d=r.top-stick,s,rot=0;
@@ -4264,15 +4283,40 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   var ig=document.getElementById('insta');
   if(ig){ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){ig.classList.add('in');io.disconnect();}});},{threshold:.12});io.observe(ig);} else ig.classList.add('in'); }
 
-  /* ÉTAPES : empilement — la carte derrière recule et se penche */
-  var cards=[].slice.call(document.querySelectorAll('.steps-stack .scard')),topS=84,tk=false;
-  if(cards.length){
-    var readS=function(){tk=false;var vh=innerHeight;for(var i=0;i<cards.length;i++){var r=cards[i].getBoundingClientRect(),d=r.top-topS,s,rot=0;
-      if(d>4){var p=1-Math.min(1,d/(vh*0.6));s=0.93+0.07*p;}
-      else{var nx=cards[i+1],back=0;if(nx){var nd=nx.getBoundingClientRect().top-topS;back=1-Math.min(1,Math.max(0,nd)/(vh*0.6));}s=1-0.05*back;rot=back*2.2*((i%2)?-1:1);}
-      cards[i].style.transform='scale('+s.toFixed(3)+') rotate('+rot.toFixed(2)+'deg)';}};
-    addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(readS);}},{passive:true});addEventListener('resize',readS);readS();
+  /* ✦ ÉTAPES mobile — stack « deck » premium (≤760px, pilote unique) */
+(function(){
+  var mq=matchMedia('(max-width:760px)');
+  var cards=[].slice.call(document.querySelectorAll('.steps-stack .scard'));
+  if(!cards.length)return;
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var BASE=76, STEP=14, RANGE=260, DSC=0.05, DBR=0.06, tk=false;
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function clear(){cards.forEach(function(c){c.style.transform='';c.style.filter='';c.classList.remove('is-behind');});}
+  function read(){
+    tk=false; if(!mq.matches)return;
+    var n=cards.length,cov=new Array(n),i,s=0,depth=new Array(n);
+    for(i=0;i<n;i++){
+      if(i===n-1){cov[i]=0;continue;}
+      var line=BASE+(i+1)*STEP, nt=cards[i+1].getBoundingClientRect().top;
+      cov[i]=clamp(1-(nt-line)/RANGE,0,1);
+    }
+    for(i=n-1;i>=0;i--){s+=cov[i];depth[i]=s;}          /* profondeur = nb de cartes au-dessus */
+    for(i=0;i<n;i++){
+      var dp=Math.min(depth[i],3);
+      if(reduce){cards[i].style.transform='';cards[i].style.filter='';}
+      else{
+        cards[i].style.transform='scale('+(1-DSC*dp).toFixed(4)+')';   /* recule, origine en haut */
+        cards[i].style.filter=dp>0.02?'brightness('+(1-DBR*Math.min(dp,2)).toFixed(3)+')':'';
+      }
+      cards[i].classList.toggle('is-behind',dp>0.35);
+    }
   }
+  function init(){ mq.matches?read():clear(); }
+  addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(read);}},{passive:true});
+  addEventListener('resize',init);
+  (mq.addEventListener?mq.addEventListener('change',init):mq.addListener(init));
+  init();
+})();
 
   /* TAUX : la courbe se trace + les chiffres défilent à l'arrivée */
   if(matchMedia('(max-width:1024px)').matches){
