@@ -4471,7 +4471,44 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   upd();
 })();
 
-  
+  /* A · COURTIER OU SEUL — carrousel critères (pastilles + focus coverflow) */
+(function(){
+  if(!matchMedia('(max-width:760px)').matches)return;
+  var sec=document.getElementById('vs');if(!sec)return;
+  var sc=sec.querySelector('.vsx-rows');if(!sc)return;
+  var items=[].slice.call(sc.children).filter(function(c){return c.nodeType===1&&c.classList.contains('vsx-row');});
+  if(items.length<2)return;
+  sec.classList.add('cf');
+  var inner=sc.closest('.vsx-inner'),foot=sec.querySelector('.vsx-foot');
+  var w=document.createElement('div');w.className='vsx-dots-m';
+  w.innerHTML=items.map(function(){return '<i></i>';}).join('');
+  if(inner)inner.insertBefore(w,foot||null);
+  var ds=[].slice.call(w.children),tk=false;
+  function upd(){tk=false;var c=sc.scrollLeft+sc.clientWidth/2,best=0,bd=1e9;
+    items.forEach(function(it,i){var m=it.offsetLeft+it.offsetWidth/2,d=Math.abs(m-c);if(d<bd){bd=d;best=i;}});
+    items.forEach(function(it,i){it.classList.toggle('is-active',i===best);});
+    ds.forEach(function(d,i){d.classList.toggle('on',i===best);});}
+  sc.addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(upd);}},{passive:true});
+  upd();
+})();
+
+/* B · GLASS HERO — remplace le paragraphe par 3 lignes-bénéfices (mobile) */
+(function(){
+  if(!matchMedia('(max-width:760px)').matches)return;
+  var sec=document.getElementById('glasshero');if(!sec)return;
+  var h=sec.querySelector('.gh-h'),cta=sec.querySelector('.gh-cta');
+  if(!h||sec.querySelector('.gh-feats'))return;
+  var FEATS=[
+    ['⚡','Résultat en 2 minutes','Sans engagement, 0 € d’avance'],
+    ['📄','Accord de principe','Rassure les vendeurs, accélère l’achat'],
+    ['🤝','Un courtier local','Vous rappelle pour tout affiner']
+  ];
+  var wrap=document.createElement('div');wrap.className='gh-feats';
+  wrap.innerHTML=FEATS.map(function(f){return '<div class="gh-feat"><span class="ic">'+f[0]+'</span><div><b>'+f[1]+'</b><span class="s">'+f[2]+'</span></div></div>';}).join('');
+  h.parentNode.insertBefore(wrap,cta||null);
+  var p=sec.querySelector('.gh-p'),by=sec.querySelector('.gh-by');
+  if(p)p.style.display='none';if(by)by.style.display='none';
+})();
 </script>
 </body></html>
          
