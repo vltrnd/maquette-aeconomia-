@@ -4187,8 +4187,8 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 
   /* vidéos mobiles des 2 CTA */
   function swapVid(sel,name){var v=document.querySelector(sel+' video');if(!v)return;var s=v.querySelector('source');if(s)s.src=MB+name;v.load();var p=v.play&&v.play();if(p&&p.catch)p.catch(function(){});}
-  swapVid('#vcta','videoparralaxmobile1.mp4');
-  swapVid('#vcta3','videopparalax2.mp4');
+  swapVid('#vcta','videoparralaxm1.mp4');
+  swapVid('#vcta3','videoparralaxm2.mp4');
 
   /* pastilles de carrousel (broker + avis) */
   function dots(scroller,cls){
