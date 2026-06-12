@@ -2142,6 +2142,31 @@ body{
   .ftr-desc{font-size:.85rem!important;}
 }
 
+
+  /* ═══════════════════════════════════════════════════════════════
+   ✦ FAQ MOBILE v6 — fix « trop large » + ergonomie téléphone (≤760px)
+   CAUSE : en flex-colonne, .faq-wrap gardait align-items:start → la
+   colonne des questions prenait la largeur de son texte (débordait).
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:760px){
+  /* 1 · la colonne questions remplit l'écran (fini le débordement) */
+  .faq-wrap{align-items:stretch!important;}
+  .faq-main{width:100%!important;min-width:0!important;}
+  .faq-list,.faq-item,.faq-q,.faq-qt{min-width:0!important;}   /* le texte se replie au lieu d'être coupé */
+
+  /* 2 · barre de catégories : bord-à-bord, glisse au doigt + accroche */
+  #faqFilter{gap:.45rem!important;margin:.2rem -18px .9rem!important;padding:.1rem 18px .6rem!important;
+    scroll-snap-type:x proximity;}
+  .faq-tab{scroll-snap-align:center;padding:10px 15px!important;font-size:.85rem!important;}
+
+  /* 3 · questions : confort tactile + lisibilité */
+  .faq-list{gap:.6rem!important;}
+  .faq-q{padding:1.1rem 1.15rem!important;gap:.85rem!important;}
+  .faq-qt{font-size:1rem!important;line-height:1.34!important;}
+  .faq-ico{width:32px!important;height:32px!important;}
+  .faq-a-in p{max-width:none!important;font-size:.95rem!important;line-height:1.6!important;padding:0 1.15rem 1.2rem!important;}
+}
+
   
 </style></head>
 
@@ -4045,6 +4070,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     var b=e.target.closest('.faq-tab'); if(!b)return;
     [].forEach.call(filterEl.children,function(x){x.classList.toggle('on',x===b);});
     applyCat(b.getAttribute('data-cat')); reveal();
+        filterEl.scrollTo&&filterEl.scrollTo({left:b.offsetLeft-(filterEl.clientWidth-b.offsetWidth)/2,behavior:'smooth'});
   });
 
   applyCat(CATMETA[0].k);   /* catégorie par défaut */
