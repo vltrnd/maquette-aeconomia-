@@ -2412,6 +2412,33 @@ body{
   #glasshero .gh-cta{margin-top:1.3rem!important;gap:.6rem;}
   #glasshero .gh-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;min-height:54px;background:var(--lime)!important;color:var(--ob)!important;font-size:1rem!important;box-shadow:0 12px 30px rgba(188,212,26,.4)!important;}
   #glasshero .gh-arrow{width:54px;height:54px;flex:none;background:rgba(255,255,255,.12)!important;color:#fff!important;border-color:rgba(255,255,255,.24)!important;}
+
+
+
+  /* ═══════════════════════════════════════════════════════════════
+   ✦ MOBILE v8 — ÉCRAN DE CHARGEMENT (intro) · ≤760px UNIQUEMENT
+   mots + “aeconomia.” plus gros · vidéo de fond tournée 90° pour
+   remplir l'écran · badge avis compact — desktop inchangé
+   ═══════════════════════════════════════════════════════════════ */
+@media(max-width:760px){
+
+  /* 1 · les mots qui défilent + “aeconomia.” un peu plus gros */
+  .intro-type{font-size:clamp(2.5rem,9vw,3rem)!important;}
+
+  /* 2 · vidéo de fond TOURNÉE 90° → elle remplit l'écran portrait
+        (avant : cadrée en paysage, elle “n'apparaissait” pas) */
+  .intro-bg .bgvid{
+    width:100vh!important;height:100vw!important;
+    top:50%!important;left:50%!important;right:auto!important;bottom:auto!important;
+    transform:translate(-50%,-50%) rotate(90deg)!important;
+    transform-origin:center center!important;opacity:.8!important;}
+
+  /* 4 · badge avis (étoiles) nettement plus compact → header allégé */
+  .hero-review{gap:.5rem!important;padding:6px 11px 6px 7px!important;border-radius:12px!important;}
+  .hr-badge{width:26px!important;height:26px!important;border-radius:8px!important;font-size:.74rem!important;}
+  .hr-stars{font-size:.66rem!important;letter-spacing:1.5px!important;}
+  .hr-sub{font-size:.64rem!important;}
+}
 }
   
 </style></head>
@@ -3436,7 +3463,7 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
     lockFinal(function(){
       hero.classList.add('go');
       var tw=document.querySelector('.tilewrap');
-      var ok=tw&&getComputedStyle(tw).display!=='none'&&window.innerWidth>1100;
+        var ok=tw&&getComputedStyle(tw).display!=='none';
       if(fill)fill.parentNode.parentNode.classList.add('hide');
       if(reduce||!ok){
         setTimeout(function(){
