@@ -2440,7 +2440,100 @@ body{
   .hr-sub{font-size:.64rem!important;}
 }
 }
-  
+
+
+
+  /* ════════════════════════════════════════════════════════════════
+   ✦ AVIS — MODULE MOBILE « Apple-grade »  (≤760px UNIQUEMENT)
+   ════════════════════════════════════════════════════════════════ */
+@media(max-width:760px){
+  /* on retire l'ancien carrousel mobile + ses pastilles */
+  #reviews .rev-stack,#reviews .rev-dots-m{display:none!important;}
+
+  #reviews{padding:clamp(2.8rem,9vw,3.6rem) 0 clamp(3rem,9vw,4rem)!important;overflow:visible!important;}
+  #reviews .rev-head{padding:0 20px;}
+  #reviews .rev-title{font-size:1.62rem!important;letter-spacing:-.6px!important;line-height:1.18!important;}
+
+  /* — note globale resserrée — */
+  #reviews .rev-score{gap:.45rem;margin-top:1.5rem;}
+  #reviews .rev-score-big{font-size:4rem;}
+  #reviews .rev-score-count{font-size:.9rem;padding:9px 17px;}
+
+  /* — plateformes : rangée nette de 3 « jetons » — */
+  #reviews .rev-plats{flex-wrap:nowrap;gap:.5rem;margin-top:1.5rem;padding:0 20px;}
+  #reviews .rev-plat{flex:1 1 0;min-width:0!important;padding:.95rem .5rem .85rem!important;border-radius:18px;gap:.4rem;}
+  #reviews .rev-plat-logo{height:24px;margin-bottom:0;}
+  #reviews .rev-plat-logo img{height:auto;width:auto;max-height:22px;max-width:100%;object-fit:contain;}
+  #reviews .rev-plat-logo.imo img{max-height:17px;}
+  #reviews .rev-plat-rate{font-size:1.02rem;gap:.3rem;}
+  #reviews .rev-plat-rate .st{font-size:.66rem;letter-spacing:.5px;}
+  #reviews .rev-plat-count{font-size:.6rem;}
+
+  /* ───────── LE CARROUSEL ───────── */
+  .rmx{position:relative;margin-top:clamp(1.8rem,6vw,2.4rem);opacity:0;transform:translateY(18px);
+    transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);}
+  .rmx.in{opacity:1;transform:none;}
+
+  .rmx-track{--cw:min(78vw,338px);
+    display:flex;gap:14px;overflow-x:auto;overflow-y:visible;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    padding:26px calc((100% - var(--cw))/2) 30px;
+    -webkit-mask:linear-gradient(90deg,transparent,#000 5.5%,#000 94.5%,transparent);
+            mask:linear-gradient(90deg,transparent,#000 5.5%,#000 94.5%,transparent);}
+  .rmx-track::-webkit-scrollbar{display:none;}
+
+  .rmx-card{flex:0 0 var(--cw);scroll-snap-align:center;
+    will-change:transform,opacity;transform-origin:50% 60%;}
+  .rmx-cin{position:relative;display:flex;flex-direction:column;height:100%;min-height:202px;
+    background:linear-gradient(168deg,#FFFFFF,#FBF7F0);border:1px solid rgba(255,255,255,.9);
+    border-radius:26px;padding:1.4rem 1.4rem 1.3rem;
+    box-shadow:0 2px 4px rgba(40,33,24,.04),0 30px 56px -22px rgba(40,33,24,.4),inset 0 1px 0 rgba(255,255,255,1);
+    transition:box-shadow .5s cubic-bezier(.22,1,.36,1),border-color .5s;}
+  .rmx-card.on .rmx-cin{border-color:rgba(188,212,26,.5);
+    box-shadow:0 4px 8px rgba(40,33,24,.05),0 44px 72px -26px rgba(40,33,24,.5),0 0 0 1px rgba(188,212,26,.5),inset 0 1px 0 rgba(255,255,255,1);}
+  /* guillemet filigrane */
+  .rmx-cin::before{content:"\201C";position:absolute;top:.35rem;right:1.1rem;font-family:Georgia,serif;
+    font-size:5rem;line-height:1;color:var(--lime);opacity:.16;pointer-events:none;}
+
+  .rmx-top{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.85rem;}
+  .rmx-stars{color:#F5A623;font-size:.92rem;letter-spacing:1.5px;filter:drop-shadow(0 1px 4px rgba(245,166,35,.3));}
+  .rmx-src{display:inline-flex;align-items:center;gap:.32rem;font-family:var(--sky);font-size:.66rem;font-weight:700;color:var(--muted);
+    background:rgba(21,20,18,.04);border:1px solid rgba(21,20,18,.06);border-radius:50px;padding:4px 9px 4px 6px;}
+  .rmx-src .rmx-g{width:13px;height:13px;}
+  .rmx-q{position:relative;font-size:.95rem;line-height:1.55;color:var(--ob2);font-weight:500;margin:0 0 .2rem;
+    display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;}
+  .rmx-by{display:flex;align-items:center;gap:.6rem;margin-top:auto;padding-top:.85rem;}
+  .rmx-av{flex:none;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:var(--sky);font-weight:700;font-size:1.02rem;color:var(--ob);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 6px 14px rgba(40,33,24,.14);}
+  .rmx-who{min-width:0;line-height:1.2;}
+  .rmx-who b{display:block;font-family:var(--sky);font-size:.9rem;font-weight:700;color:var(--ob);}
+  .rmx-who small{display:flex;align-items:center;gap:.3rem;font-size:.68rem;color:var(--muted);margin-top:.1rem;}
+  .rmx-vrf{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;
+    background:var(--lime);color:var(--ob);font-size:.56rem;font-weight:900;box-shadow:0 2px 5px rgba(188,212,26,.5);}
+
+  /* pagination */
+  .rmx-dots{display:flex;justify-content:center;gap:.42rem;margin-top:.4rem;}
+  .rmx-dots button{-webkit-tap-highlight-color:transparent;border:0;padding:8px 3px;background:none;cursor:pointer;line-height:0;}
+  .rmx-dots button::before{content:"";display:block;width:7px;height:7px;border-radius:50px;background:rgba(21,20,18,.18);
+    transition:width .35s cubic-bezier(.22,1,.36,1),background .35s;}
+  .rmx-dots button.on::before{width:22px;background:var(--ob);}
+
+  /* indice de swipe */
+  .rmx-hint{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:.7rem;
+    font-family:var(--sky);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(21,20,18,.4);
+    transition:opacity .4s;}
+  .rmx-hint::before,.rmx-hint::after{content:"";width:16px;height:1.5px;border-radius:2px;background:rgba(21,20,18,.2);}
+  .rmx-hint .ar{animation:rmxHint 1.5s ease-in-out infinite;}
+  @keyframes rmxHint{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+  .rmx.moved .rmx-hint{opacity:0;}
+
+  @media(prefers-reduced-motion:reduce){
+    .rmx{opacity:1;transform:none;transition:none;}
+    .rmx-card{transform:none!important;opacity:1!important;}
+    .rmx-cin::before,.rmx-hint .ar{animation:none;}
+    .rev-score-big::before,.rev-score-count::before{animation:none;}
+  }
+}
 </style></head>
 
 
@@ -4536,6 +4629,46 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
   var p=sec.querySelector('.gh-p'),by=sec.querySelector('.gh-by');
   if(p)p.style.display='none';if(by)by.style.display='none';
 })();
+
+
+  <script>
+/* ════════ AVIS — MODULE MOBILE (≤760px) ════════ */
+(function(){
+  var sec=document.getElementById('reviews'); if(!sec) return;
+  var mq=matchMedia('(max-width:760px)'), built=false;
+
+  var DATA=[
+    {t:"Accompagnement parfait du début à la fin. Taux bien en dessous de ma banque, je recommande à 100 %.",n:"Marie L.",s:"Google"},
+    {t:"Très réactifs et de bon conseil. Dossier monté et accepté en 3 semaines, sans aucun frais. Merci !",n:"Thomas B.",s:"Google"},
+    {t:"Premier achat sans stress : ils gèrent tout et expliquent chaque étape. Pédagogues et efficaces.",n:"Sophie M.",s:"Solocal"},
+    {t:"Plus de 12 000 € économisés sur le coût total de mon crédit. Une équipe humaine et compétente.",n:"Karim D.",s:"Google"},
+    {t:"Disponibles le soir et le week-end, ça change tout. Accompagnés du premier RDV à la signature.",n:"Julie R.",s:"Immodvisor"},
+    {t:"Meilleur taux et assurance 2× moins chère que ma banque. Du grand professionnalisme, merci.",n:"Nadia K.",s:"Google"},
+    {t:"Rapide, transparent, zéro frais caché. Ils ont renégocié mon prêt et m'ont fait gagner un point.",n:"Lucas V.",s:"Solocal"},
+    {t:"Ils ont décroché un oui là où ma banque disait non. Dossier compliqué réglé en deux mois. Top.",n:"Hugo M.",s:"Google"},
+    {t:"Du premier rendez-vous à la remise des clés, un accompagnement humain. On nous appelle par notre prénom.",n:"Léa V.",s:"Solocal"}
+  ];
+  var GOOG='<svg viewBox="0 0 24 24" class="rmx-g"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.98.66-2.23 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.07H2.18a11 11 0 0 0 0 9.86l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>';
+  var PAL=[['#E7DBC4','#CDB48A'],['#D9E4D2','#A7BE7E'],['#F0E2C2','#D8BE7E'],['#E2E6D2','#BCD41A'],['#E6DCCB','#C2A98A']];
+  function src(s){return s==='Google'?GOOG+'<span>Google</span>':'<span>via '+s+'</span>';}
+
+  function build(){
+    if(built)return; built=true;
+    var head=sec.querySelector('.rev-head');
+    var wrap=document.createElement('div'); wrap.className='rmx';
+    var track=document.createElement('div'); track.className='rmx-track';
+    DATA.forEach(function(d,i){
+      var p=PAL[i%PAL.length];
+      var c=document.createElement('article'); c.className='rmx-card';
+      c.innerHTML='<div class="rmx-cin"><div class="rmx-top"><span class="rmx-stars">★★★★★</span>'
+        +'<span class="rmx-src">'+src(d.s)+'</span></div>'
+        +'<p class="rmx-q">'+d.t+'</p>'
+        +'<div class="rmx-by"><span class="rmx-av" style="background:linear-gradient(150deg,'+p[0]+','+p[1]+')">'+d.n.charAt(0)+'</span>'
+        +'<span class="rmx-who"><b>'+d.n+'</b><small><span class="rmx-vrf">✓</span> Client vérifié · '+d.s+'</small></span></div></div>';
+      track.appendChild(c);
+    });
+    var dots=document.createElement('div'); dots.className='rmx-dots';
+    DATA.forEach(function(_,i){var b=document.createElement('button');b.type='button';b.setAttr
 </script>
 </body></html>
          
