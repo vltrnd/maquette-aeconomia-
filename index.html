@@ -2297,6 +2297,122 @@ body{
   #rate .rate-track{height:auto!important;}
   #rate .rate-stage{position:static!important;height:auto!important;min-height:0!important;padding:clamp(3rem,9vw,4.5rem) 0!important;}
 }
+
+
+  /* ═══════════════════════════════════════════════════════════════
+   ✦ MOBILE v7 — 2 blocs glassmorphism repensés « app » (≤760px)
+   A · « Un courtier ne coûte pas » (#vs) → critères qu'on swipe
+   B · « Découvrez ce que vous pouvez emprunter » (#glasshero) → carte simulateur
+   Prioritaire car en dernier · desktop intact (#id + ≤760px)
+   ═══════════════════════════════════════════════════════════════ */
+.vsx-dots-m{display:none;}
+@keyframes ghCardIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes ghImgIn{from{transform:scale(1.08)}to{transform:scale(1)}}
+@keyframes ghFeatIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  #glasshero .gh-card,#glasshero .gh-media img,#glasshero .gh-feat{animation:none!important;opacity:1!important;transform:none!important;}
+  #vs.cf .vsx-row{opacity:1!important;transform:none!important;}
+}
+
+@media(max-width:760px){
+
+  /* ───────── A · COURTIER OU SEUL → carrousel de critères ───────── */
+  #vs{overflow:hidden!important;padding:clamp(1rem,4vw,1.7rem) 0!important;}
+  #vs .vsx-frame{margin:0 12px!important;padding:clamp(1rem,4vw,1.4rem) 0 clamp(1rem,3.5vw,1.3rem)!important;border-radius:26px!important;}
+  #vs .vsx-inner{gap:.8rem!important;width:100%;}
+  #vs .vsx-head{align-self:stretch;padding:0 18px;}
+  #vs .vsx-title{font-size:clamp(1.62rem,6.4vw,2.05rem)!important;line-height:1.08!important;letter-spacing:-1px!important;margin-top:.5rem!important;}
+  #vs .vsx-sub{margin-top:.5rem!important;font-size:.83rem!important;line-height:1.45!important;}
+
+  #vs .vsx-card{width:100%!important;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:0!important;box-shadow:none!important;padding:0!important;border-radius:0!important;}
+  #vs .vsx-spot,#vs .vsx-cols{display:none!important;}
+
+  /* rail horizontal */
+  #vs .vsx-rows{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:stretch!important;
+    gap:12px!important;overflow-x:auto!important;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    padding:.35rem 18px 1rem!important;}
+  #vs .vsx-rows::-webkit-scrollbar{display:none;}
+
+  /* carte critère */
+  #vs .vsx-row{flex:0 0 82%!important;max-width:332px;scroll-snap-align:center;
+    display:grid!important;grid-template-columns:1fr 1fr!important;grid-template-rows:1fr auto!important;
+    grid-template-areas:"crit crit" "seul pro"!important;gap:.8rem .6rem!important;align-items:stretch!important;overflow:visible!important;
+    min-height:clamp(276px,72vw,336px);
+    background:linear-gradient(168deg,rgba(255,255,255,.97),rgba(248,244,237,.93))!important;
+    border:1px solid rgba(255,255,255,.85)!important;border-radius:22px!important;
+    box-shadow:0 20px 44px rgba(8,7,6,.32)!important;
+    padding:1.05rem 1.1rem 1.1rem!important;}
+  #vs.cf .vsx-row{opacity:.5;transform:scale(.955);transition:opacity .4s cubic-bezier(.22,1,.36,1),transform .4s cubic-bezier(.22,1,.36,1);}
+  #vs.cf .vsx-row.is-active{opacity:1;transform:scale(1);}
+  #vs .vsx-row+.vsx-row::before{display:none!important;}
+
+  /* haut : icône + intitulé + explication (la bulle devient visible) */
+  #vs .vsx-crit{grid-area:crit;display:grid!important;grid-template-columns:auto 1fr;grid-template-areas:"ico lbl" "exp exp";
+    gap:.55rem .7rem!important;align-items:center;align-content:start;cursor:default!important;padding:0!important;min-height:0!important;background:none!important;border:0!important;}
+  #vs .vsx-ico{grid-area:ico;width:40px!important;height:40px!important;border-radius:12px!important;font-size:1.18rem!important;}
+  #vs .vsx-clbl{grid-area:lbl;font-size:1.05rem!important;font-weight:700!important;color:var(--ob)!important;letter-spacing:-.2px;}
+  #vs .vsx-i{display:none!important;}
+  #vs .vsx-tip{grid-area:exp;position:static!important;width:auto!important;opacity:1!important;transform:none!important;pointer-events:auto!important;
+    background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;z-index:auto!important;
+    color:var(--ob2)!important;font-family:var(--body)!important;font-weight:500!important;font-size:.82rem!important;line-height:1.45!important;padding:0!important;margin-top:.2rem;}
+  #vs .vsx-tip b{color:#6a7e00!important;font-weight:700;}
+  #vs .vsx-tip::before{display:none!important;}
+
+  /* bas : 2 panneaux Seul / Aeconomia */
+  #vs .vsx-seul,#vs .vsx-pro{position:relative;display:flex!important;flex-wrap:wrap;align-items:center;gap:.45rem;
+    padding:1.5rem .75rem .7rem!important;border-radius:14px!important;min-height:0!important;align-self:end;border-right:0!important;}
+  #vs .vsx-seul{grid-area:seul;background:rgba(21,20,18,.05)!important;border:1px solid rgba(21,20,18,.08)!important;}
+  #vs .vsx-pro{grid-area:pro;background:linear-gradient(165deg,rgba(188,212,26,.24),rgba(188,212,26,.06))!important;border:1px solid rgba(188,212,26,.42)!important;}
+  #vs .vsx-seul::before,#vs .vsx-pro::before{position:absolute;top:.5rem;left:.75rem;font-family:var(--sky);font-size:.5rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;}
+  #vs .vsx-seul::before{content:"Seul";color:var(--muted);}
+  #vs .vsx-pro::before{content:"Aeconomia";color:#5a6e00;}
+  #vs .vsx-seul .t,#vs .vsx-pro .t{flex:1 1 58%;font-size:.8rem!important;line-height:1.28;}
+  #vs .vsx-pro .t{font-weight:600;color:var(--ob)!important;}
+  #vs .vsx-ck{opacity:1!important;transform:none!important;}
+
+  /* pastilles (sur cadre sombre → claires) */
+  .vsx-dots-m{display:flex;justify-content:center;gap:.45rem;margin-top:-.1rem;}
+  .vsx-dots-m i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.38);transition:width .3s,background .3s;}
+  .vsx-dots-m i.on{width:22px;border-radius:4px;background:#fff;}
+
+  /* pied compact — flotte sur le cadre sombre, CTA lime */
+  #vs .vsx-foot{flex-direction:column;align-items:stretch;text-align:center;gap:.7rem;align-self:stretch;width:auto!important;margin:0 18px;
+    background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;}
+  #vs .vsx-chip{background:rgba(255,255,255,.9)!important;border-color:rgba(255,255,255,.7)!important;}
+  #vs .vsx-chips{justify-content:center;}
+  #vs .vsx-cta{justify-content:center;background:var(--lime)!important;color:var(--ob)!important;min-height:54px;box-shadow:0 12px 30px rgba(188,212,26,.4)!important;}
+
+  /* ───────── B · DÉCOUVREZ CE QUE VOUS POUVEZ EMPRUNTER → carte simulateur ───────── */
+  #glasshero{margin:12px!important;padding:0!important;min-height:0!important;border-radius:26px!important;background:#14110d!important;}
+  #glasshero .gh-card{grid-template-columns:1fr!important;gap:0!important;padding:0!important;border-radius:26px!important;overflow:hidden!important;
+    border:1px solid rgba(255,255,255,.14)!important;
+    background:linear-gradient(170deg,rgba(32,30,25,.42),rgba(18,17,14,.62))!important;
+    backdrop-filter:blur(22px) saturate(150%)!important;-webkit-backdrop-filter:blur(22px) saturate(150%)!important;
+    box-shadow:0 26px 60px rgba(8,7,6,.42),inset 0 1px 0 rgba(255,255,255,.14)!important;
+    animation:ghCardIn .85s cubic-bezier(.22,1,.36,1) both;}
+  #glasshero .gh-media{aspect-ratio:16/10!important;border-radius:0!important;border:0!important;}
+  #glasshero .gh-media img{animation:ghImgIn 1.5s cubic-bezier(.22,1,.36,1) both;}
+  #glasshero .gh-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(10,9,7,.55));}
+  #glasshero .gh-text{padding:1.25rem 1.3rem 1.4rem!important;}
+  #glasshero .gh-k{color:#cfe23f!important;background:rgba(188,212,26,.14)!important;border-color:rgba(188,212,26,.34)!important;}
+  #glasshero .gh-h{color:#fff!important;margin-top:.9rem!important;}
+  #glasshero .gh-h em{color:var(--lime)!important;}
+  /* fallback si JS off : le paragraphe reste lisible (sinon masqué par le JS) */
+  #glasshero .gh-p{font-size:.9rem!important;color:rgba(255,255,255,.8)!important;margin-top:.9rem!important;max-width:none!important;}
+  #glasshero .gh-by{color:rgba(255,255,255,.5)!important;margin-top:.8rem!important;}
+  /* lignes-bénéfices injectées (JS) — entrée auto en cascade */
+  #glasshero .gh-feats{display:flex;flex-direction:column;gap:.6rem;margin-top:1.05rem;}
+  #glasshero .gh-feat{display:flex;align-items:center;gap:.75rem;animation:ghFeatIn .6s cubic-bezier(.22,1,.36,1) both;}
+  #glasshero .gh-feat:nth-child(1){animation-delay:.4s}
+  #glasshero .gh-feat:nth-child(2){animation-delay:.52s}
+  #glasshero .gh-feat:nth-child(3){animation-delay:.64s}
+  #glasshero .gh-feat .ic{flex:none;width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);}
+  #glasshero .gh-feat b{font-family:var(--sky);font-weight:700;font-size:.92rem;color:#fff;letter-spacing:-.2px;line-height:1.2;display:block;}
+  #glasshero .gh-feat .s{font-size:.78rem;color:rgba(255,255,255,.66);line-height:1.3;display:block;margin-top:.05rem;}
+  #glasshero .gh-cta{margin-top:1.3rem!important;gap:.6rem;}
+  #glasshero .gh-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;min-height:54px;background:var(--lime)!important;color:var(--ob)!important;font-size:1rem!important;box-shadow:0 12px 30px rgba(188,212,26,.4)!important;}
+  #glasshero .gh-arrow{width:54px;height:54px;flex:none;background:rgba(255,255,255,.12)!important;color:#fff!important;border-color:rgba(255,255,255,.24)!important;}
+}
   
 </style></head>
 
