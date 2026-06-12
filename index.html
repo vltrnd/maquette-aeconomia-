@@ -3564,66 +3564,74 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
 })();
 
   
-/* ─── CTA VIDÉO : lecture + parallax FORT · seul #vcta s'agrandit, #vcta3 est plein écran ─── */
+/* ─── CTA VIDÉO : lecture continue + parallax VISIBLE sur mobile (rAF + scroll) ─── */
 (function(){
   function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
   function ease(t){return 1-Math.pow(1-t,3);}
+
   function setup(sec,grow){
     var frame=sec.querySelector('.vcta-frame'),
         bg=sec.querySelector('.vcta-bg'),
         vid=sec.querySelector('video'),
         reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,
-        ticking=false;
+        mobile=matchMedia('(max-width:760px)').matches,
+        near=false,running=false;
 
-    /* 1) LECTURE VIDÉO selon visibilité (toujours) */
-    if(vid&&'IntersectionObserver' in window){
-      var m=Math.round(innerHeight);
-      new IntersectionObserver(function(es){es.forEach(function(x){
-        if(x.isIntersecting){var p=vid.play();if(p&&p.catch)p.catch(function(){});}else vid.pause();
-      });},{rootMargin:m+'px 0px '+m+'px 0px'}).observe(sec);
-    }else if(vid&&vid.play){vid.play();}
-
-    /* 2) PARALLAX FORT du fond (les deux vidéos) */
-    function parallax(){
-      if(!bg)return;
-      var r=sec.getBoundingClientRect();
-      if(r.bottom<=0||r.top>=innerHeight)return;
-      var h=frame?frame.getBoundingClientRect().height:r.height;
-      var maxShift=0.50*h;
-      var g=clamp(((r.top+r.height/2-innerHeight/2)/innerHeight)*1.5,-1,1);
-      bg.style.transform='translate3d(0,'+(-g*maxShift).toFixed(1)+'px,0)';
+    /* — LECTURE robuste : (re)lance dès que prêt, tant qu'on est à proximité — */
+    function tryPlay(){ if(vid){ var p=vid.play(); if(p&&p.catch)p.catch(function(){}); } }
+    if(vid){
+      ['loadeddata','canplay','canplaythrough','waiting','stalled'].forEach(function(ev){
+        vid.addEventListener(ev,function(){ if(near) tryPlay(); });
+      });
     }
 
-    /* 3) AGRANDISSEMENT — uniquement #vcta */
-    if(grow&&frame&&!reduce){
-      var read=function(){
-        ticking=false;
-        var vh=innerHeight,r=sec.getBoundingClientRect(),c=r.top+r.height/2;
-        var small=innerWidth<=760,sw=small?92:86,sh=small?74:80;
-        var e=ease(clamp((vh-c)/(vh*0.5),0,1));
-        var H=sh+(100-sh)*e;
+    /* — PARALLAX (+ agrandissement #vcta) — */
+    function render(){
+      var r=sec.getBoundingClientRect();
+      if(grow&&frame&&!reduce){
+        var c=r.top+r.height/2,
+            sw=mobile?92:86, sh=mobile?74:80,
+            e=ease(clamp((innerHeight-c)/(innerHeight*0.5),0,1));
         frame.style.width=(sw+(100-sw)*e).toFixed(2)+'vw';
-        frame.style.height=H.toFixed(2)+'vh';
+        frame.style.height=(sh+(100-sh)*e).toFixed(2)+'vh';
         frame.style.borderRadius=(32*(1-e)).toFixed(1)+'px';
-        parallax();
-      };
-      var onScroll=function(){if(!ticking){ticking=true;requestAnimationFrame(read);}};
-      read();
-      addEventListener('scroll',onScroll,{passive:true});
-      addEventListener('resize',read);
-    }else{
-      /* #vcta3 (ou reduced-motion) : pas d'agrandissement, juste le parallax */
+      }
       if(bg&&!reduce){
-        var onScroll2=function(){if(!ticking){ticking=true;requestAnimationFrame(function(){ticking=false;parallax();});}};
-        parallax();
-        addEventListener('scroll',onScroll2,{passive:true});
-        addEventListener('resize',parallax);
+        var h=frame?frame.getBoundingClientRect().height:r.height,
+            amp=0.5*h,                                  /* forte amplitude (cadre inset -55% → jamais de bord vide) */
+            g=clamp(((r.top+r.height/2-innerHeight/2)/innerHeight)*1.5,-1,1);
+        bg.style.transform='translate3d(0,'+(-g*amp).toFixed(1)+'px,0)';
       }
     }
-  }
-  ['vcta','vcta3'].forEach(function(id){var s=document.getElementById(id);if(s)setup(s,id==='vcta');});
-})();
+    /* boucle rAF : INDISPENSABLE sur iOS (les events 'scroll' ne se déclenchent
+       pas pendant le scroll inertiel → sans ça, aucun parallax visible) */
+    function loop(){ if(!near){running=false;return;} render(); requestAnimationFrame(loop); }
+    function startLoop(){ if(!running){ running=true; requestAnimationFrame(loop); } }
 
+    /* "à proximité" = à moins de ~1,2 écran → vidéo gardée en lecture (zéro coupure) */
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){es.forEach(function(x){
+        near=x.isIntersecting;
+        if(near){ tryPlay(); startLoop(); }
+        else if(vid){ vid.pause(); }
+      });},{rootMargin:'120% 0px 120% 0px'}).observe(sec);
+    }else{ near=true; tryPlay(); startLoop(); }
+
+    /* secours desktop/Android (et réveil de la boucle) */
+    addEventListener('scroll',function(){
+      var r=sec.getBoundingClientRect();
+      if(r.bottom>-innerHeight && r.top<innerHeight*2){ render(); startLoop(); }
+    },{passive:true});
+
+    addEventListener('resize',function(){
+      mobile=matchMedia('(max-width:760px)').matches;
+      reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+      render();
+    });
+    render();
+  }
+  ['vcta','vcta3'].forEach(function(id){ var s=document.getElementById(id); if(s) setup(s,id==='vcta'); });
+})();
 
 /* ─── GLASS HERO : parallax du fond + inclinaison & lumière au survol ─── */
 (function(){
