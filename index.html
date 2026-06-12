@@ -4736,10 +4736,9 @@ function closeMenu(){document.getElementById('mm').classList.remove('open');docu
         +'<span class="rmx-who"><b>'+d.n+'</b><small><span class="rmx-vrf">✓</span> Client vérifié · '+d.s+'</small></span></div></div>';
       track.appendChild(c);
     });
-           var dots=document.createElement('div'); dots.className='rmx-dots';
-  }
-})();
-
+         var dots=document.createElement('div'); dots.className='rmx-dots';
+    dots.innerHTML=DATA.map(function(){return '<button type="button" aria-label="Voir cet avis"></button>';}).join('');
+    
 
     var hint=document.createElement('div'); hint.className='rmx-hint';
     hint.innerHTML='Glissez pour explorer <span class="ar">→</span>';
